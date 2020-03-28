@@ -23,7 +23,7 @@ PLATFORM = STM32F722
 # debug build?
 DEBUG = 1
 # optimization
-OPT = -G3 -O0
+OPT = -g3 -O0
 
 ######################################
 # include target specific commands
@@ -55,9 +55,9 @@ BIN = $(CP) -O binary -S
 # C sources
 
 C_SOURCES +=  \
-$(wildcard Src/*.c) 
+$(wildcard src/*.c) 
 
-
+$(warning $(C_SOURCES))
 
 #######################################
 # CFLAGS
@@ -68,7 +68,7 @@ AS_INCLUDES =
 
  # C includes
 C_INC +=  \
-	$(wildcard Inc/) \
+	$(wildcard inc/) \
 
 NULL=
 SPACE=$(NULL) $(NULL)
