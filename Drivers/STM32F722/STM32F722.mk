@@ -5,7 +5,9 @@ C_SOURCES += \
 	$(wildcard $(DEV_HAL)/Drivers/STM32F7xx_HAL_Driver/Src/*.c)
 endif
 C_SOURCES += \
-	$(wildcard $(DEV_HAL)/Src/*.c)
+	$(wildcard $(DEV_HAL)/Src/*.c) \
+	$(wildcard $(DEV_HAL)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/*.c) \
+	$(wildcard $(DEV_HAL)/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Src/*.c)
 
 ASM_SOURCES =  \
 	$(DEV_HAL)/startup_stm32f722xx.s
@@ -15,7 +17,9 @@ C_INC =  \
 	$(DEV_HAL)/Drivers/CMSIS/Device/ST/STM32F7xx/Include \
 	$(DEV_HAL)/Drivers/CMSIS/Include \
 	$(DEV_HAL)/Drivers/STM32F7xx_HAL_Driver/Inc \
-	$(DEV_HAL)/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy
+	$(DEV_HAL)/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy \
+	$(DEV_HAL)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
+	$(DEV_HAL)/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Inc 
 
 # link script
 LDSCRIPT = \
