@@ -121,7 +121,7 @@ static int8_t AUDIO_DeInit_FS(uint32_t options);
 static int8_t AUDIO_AudioCmd_FS(uint8_t* pbuf, uint32_t size, uint8_t cmd);
 static int8_t AUDIO_VolumeCtl_FS(uint8_t vol);
 static int8_t AUDIO_MuteCtl_FS(uint8_t cmd);
-static int8_t AUDIO_PeriodicTC_FS(uint8_t cmd);
+static int8_t AUDIO_PeriodicTC_FS(uint8_t *pbuf, uint32_t size, uint8_t cmd);
 static int8_t AUDIO_GetState_FS(void);
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_DECLARATION */
@@ -140,7 +140,7 @@ USBD_AUDIO_ItfTypeDef USBD_AUDIO_fops_FS =
   AUDIO_VolumeCtl_FS,
   AUDIO_MuteCtl_FS,
   AUDIO_PeriodicTC_FS,
-  AUDIO_GetState_FS
+  AUDIO_GetState_FS,
 };
 
 /* Private functions ---------------------------------------------------------*/
@@ -221,7 +221,7 @@ static int8_t AUDIO_MuteCtl_FS(uint8_t cmd)
   * @param  cmd: Command opcode
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
-static int8_t AUDIO_PeriodicTC_FS(uint8_t cmd)
+static int8_t AUDIO_PeriodicTC_FS(uint8_t *pbuf, uint32_t size, uint8_t cmd)
 {
   /* USER CODE BEGIN 5 */
   return (USBD_OK);
