@@ -34,7 +34,7 @@ int main (void) {
     HAL_TIM_OC_Start(&htim4, TIM_CHANNEL_2);
     //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 
-    HAL_ADC_Start_DMA(&hadc1, adc_data, 8);
+    //HAL_ADC_Start_DMA(&hadc1, adc_data, 8);
     usbd_delay_ms(10000);
 
     while(1) {

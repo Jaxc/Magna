@@ -43,182 +43,351 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     LOBYTE(USBD_CFG_SIZE),              /* wTotalLength:no of returned bytes */
     HIBYTE(USBD_CFG_SIZE),
     USBD_NUM_INTERFACES,                /* bNumInterfaces: 4 interface */
-    0x01,                               /* bConfigurationValue: Configuration value */
+    USB_CONFIG_VALUE,                   /* bConfigurationValue: Configuration value */
     USBD_IDX_CONFIG_STR,                /* iConfiguration: Index of string descriptor describing the configuration */
-    0xC0,                               /* bmAttributes: self powered */
-    0x32,                               /* MaxPower 0 mA */
+    USB_CONFIG_ATTRIBUTES,              /* bmAttributes: self powered */
+    USB_CONFIG_MAXPOWER,                /* MaxPower 100 mA */
 
-/*---------------------------------------------------------------------------*/
-/*  CDC Interface                                                            */
-/*---------------------------------------------------------------------------*/
 
-    /*Interface Descriptor */
-    USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
-    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    0x00,                               /* bInterfaceNumber: Number of Interface */
-    0x00,                               /* bAlternateSetting: Alternate setting */
-    0x01,                               /* bNumEndpoints: One endpoints used */
-    0x02,                               /* bInterfaceClass: Communication Interface Class */
-    0x02,                               /* bInterfaceSubClass: Abstract Control Model */
-    0x01,                               /* bInterfaceProtocol: Common AT commands */
-    0x06,                /* iInterface: */
-
-    /*Header Functional Descriptor*/
-    USBD_CDC_HEADER_SIZE,               /* bLength: Endpoint Descriptor size */
-    USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
-    0x00,                               /* bDescriptorSubtype: Header Func Desc */
-    0x10,                               /* bcdCDC: spec release number */
-    0x01,
-
-    /*Call Management Functional Descriptor*/
-    USBD_CDC_CALL_MAN_SIZE,             /* bFunctionLength */
-    USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
-    0x01,                               /* bDescriptorSubtype: Call Management Func Desc */
-    0x00,                               /* bmCapabilities: D0+D1 */
-    0x01,                               /* bDataInterface: 1 */
-
-    /*ACM Functional Descriptor*/
-    USBD_CDC_ACM_SIZE,                  /* bFunctionLength */
-    USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
-    0x02,                               /* bDescriptorSubtype: Abstract Control Management desc */
-    0x02,                               /* bmCapabilities */
-
-    /*Union Functional Descriptor*/
-    USBD_CDC_UNION_SIZE,                /* bFunctionLength */
-    USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
-    0x06,                               /* bDescriptorSubtype: Union func desc */
-    0x00,                               /* bMasterInterface: Communication class interface */
-    0x01,                               /* bSlaveInterface0: Data Class Interface */
-
-    /*Endpoint 2 Descriptor*/
-    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
-    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    USBD_EP_CDC_CMD,                    /* bEndpointAddress */
-    0x03,                               /* bmAttributes: Interrupt */
-    LOBYTE(USBD_INT_PACKET_SIZE),        /* wMaxPacketSize: */
-    HIBYTE(USBD_INT_PACKET_SIZE),
-    0x0A,                               /* bInterval: */
-
-/*---------------------------------------------------------------------------*/
-
-    /*Data class interface descriptor*/
-    USB_INTERFACE_DESC_SIZE,            /* bLength: Endpoint Descriptor size */
-    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: */
-    0x01,                               /* bInterfaceNumber: Number of Interface */
-    0x00,                               /* bAlternateSetting: Alternate setting */
-    0x02,                               /* bNumEndpoints: Two endpoints used */
-    0x0A,                               /* bInterfaceClass: CDC */
-    0x00,                               /* bInterfaceSubClass: */
-    0x00,                               /* bInterfaceProtocol: */
-    USBD_IDX_CDC_IF_STR,                /* iInterface: */
-
-    /*Endpoint OUT Descriptor*/
-    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
-    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    USBD_EP_CDC_RX,                     /* bEndpointAddress */
-    0x02,                               /* bmAttributes: Bulk */
-    LOBYTE(USBD_BULK_PACKET_SIZE),      /* wMaxPacketSize: */
-    HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x00,                               /* bInterval: ignore for Bulk transfer */
-
-    /*Endpoint IN Descriptor*/
-    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
-    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    USBD_EP_CDC_TX,                     /* bEndpointAddress */
-    0x02,                               /* bmAttributes: Bulk */
-    LOBYTE(USBD_BULK_PACKET_SIZE),      /* wMaxPacketSize: */
-    HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x00,                               /* bInterval: ignore for Bulk transfer */
 
 /*---------------------------------------------------------------------------*/
 /*  Audio interface                                                           */
 /*---------------------------------------------------------------------------*/
 
-    /*Interface Descriptor */
+/* Audio control interface*/
+    USB_INTERFACE_DESC_SIZE,
+    USB_INTERFACE_DESC_TYPE,
+    USBD_AUDIO_CONTROL_INTERFACE,
+    USB_INTERFACE_ALT_0,
+    USBD_AUDIO_CONTROL_EP,
+    USBD_AUDIO_CLASS,
+    USB_AUDIO_CONTROL_SUBCLASS,
+    USB_AUDIO_PROTOCOL,
+    0x00,
+
+    /* Audio control descriptor*/
+    USB_AUDIO_CONTROL_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USBD_AC_HEADER,
+    LOBYTE(USBD_AC_BCD_VER),
+    HIBYTE(USBD_AC_BCD_VER),
+    LOBYTE(USBD_AC_SIZE),
+    HIBYTE(USBD_AC_SIZE),
+    0x02,
+    0x01,
+    0x02,
+
+    /* Audio control Terminal input analogue*/
+    USB_TERMINAL_DESC_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_AC_INPUT_TERMINAL,
+    USB_AC_INPUT_LINE_1_ID,
+    LOBYTE(USB_AC_TERMINAL_LINE),
+    HIBYTE(USB_AC_TERMINAL_LINE),
+    USB_AC_INPUT_ASSOC,
+    USB_AC_INPUT_CHANNELS,
+    LOBYTE(USB_AC_INPUT_CHANNEL_CFG),
+    HIBYTE(USB_AC_INPUT_CHANNEL_CFG),
+    0x00,
+    0x00,
+
+    /* Audio control Terminal Output USB*/
+    USB_INTERFACE_DESC_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_AC_OUTPUT_TERMINAL,
+    USB_AC_OUTPUT_USB_ID,
+    LOBYTE(USB_AC_TERMINAL_USB),
+    HIBYTE(USB_AC_TERMINAL_USB),
+    USB_AC_INPUT_ASSOC,
+    USB_AC_OUTPUT_SOURCE_ID,
+    0x00,
+
+    /* Audio control Terminal input USB */
+    USB_TERMINAL_DESC_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_AC_INPUT_TERMINAL,
+    USB_AC_INPUT_USB_ID,
+    LOBYTE(USB_AC_TERMINAL_USB),
+    HIBYTE(USB_AC_TERMINAL_USB),
+    USB_AC_INPUT_ASSOC,
+    USB_AC_INPUT_CHANNELS,
+    LOBYTE(USB_AC_INPUT_CHANNEL_CFG),
+    HIBYTE(USB_AC_INPUT_CHANNEL_CFG),
+    0x00,
+    0x00,
+
+    /* Audio control Terminal Output analogue*/
+    USB_INTERFACE_DESC_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_AC_OUTPUT_TERMINAL,
+    USB_AC_OUTPUT_MASTER_ID,
+    LOBYTE(USB_AC_TERMINAL_LINE),
+    HIBYTE(USB_AC_TERMINAL_LINE),
+    USB_AC_INPUT_ASSOC,
+    USB_AC_INPUT_USB_ID,
+    0x00,
+
+/*Interface No EP Descriptor */
     USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
     USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    0x02,                               /* bInterfaceNumber: Number of Interface */
-    0x00,                               /* bAlternateSetting: Alternate setting */
-    0x04,                               /* bNumEndpoints: One endpoints used */
-    0x01,                               /* bInterfaceClass: Communication Interface Class */
-    0x02,                               /* bInterfaceSubClass: Abstract Control Model */
-    0x00,                               /* bInterfaceProtocol: Common AT commands */
+    USBD_AUDIO_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
+    USB_INTERFACE_ALT_0,                               /* bAlternateSetting: Alternate setting */
+    USBD_AUDIO_CONTROL_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
+    USB_AUDIOSTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
+    USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
     0x00,                /* iInterface: */
+
+/*Interface Descriptor */
+    USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
+    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
+    USBD_AUDIO_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
+    USB_INTERFACE_ALT_1,                               /* bAlternateSetting: Alternate setting */
+    USBD_AUDIOSTREAM_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
+    USB_AUDIOSTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
+    USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
+    0x00,                /* iInterface: */
+
+    /* Class-specific AS General Interface Descriptor */
+    USB_AS_GENERAL_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_GENERAL_SUBTYPE,
+    USB_AC_INPUT_USB_ID,
+    USBD_AUDIO_DELAY,
+    LOBYTE(USBD_AUDIO_FORMAT_PCM),
+    HIBYTE(USBD_AUDIO_FORMAT_PCM),
+
+    /* Type I Format Type Descriptor */
+    USB_TYPE_1_FORMAT,
+    USB_CS_INTERFACE_TYPE,
+    USB_FORMAT_TYPE_SUBTYPE,
+    USB_FORMAT_TYPE_1,
+    USB_AC_INPUT_CHANNELS,
+    USBD_SUB_FRAME_SIZE,
+    USBD_AUDIO_RESOLUTION,
+    USBD_N_AUDIO_SAMPLERATE,
+    LOBYTE(USBD_AUDIO_SAMPLERATE),
+    HIBYTE(USBD_AUDIO_SAMPLERATE),
+    LOBYTE(USBD_AUDIO_SAMPLERATE >> 16),
+
 
     /*Endpoint 0 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x83,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
+    USBD_AUDIO_IN_CHN1,                    /* bEndpointAddress */
+    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
+    USBD_AUDIO_INTERVAL,                               /* bInterval: */
+
+    /* Class-specific Isochronous Audio Data Endpoint Descriptor */
+    USB_AS_GENERAL_SIZE,
+    USB_CS_ENDPOINT_TYPE,
+    USB_GENERAL_SUBTYPE,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+
 
     /*Endpoint 1 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x84,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
+    USBD_AUDIO_IN_CHN2,                    /* bEndpointAddress */
+    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
+    USBD_AUDIO_INTERVAL,                               /* bInterval: */
+
+/*Interface No EP Descriptor */
+    USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
+    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
+    USBD_AUDIO_INTERFACE2,                               /* bInterfaceNumber: Number of Interface */
+    USB_INTERFACE_ALT_0,                               /* bAlternateSetting: Alternate setting */
+    USBD_AUDIO_CONTROL_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
+    USB_AUDIOSTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
+    USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
+    0x00,                /* iInterface: */
+
+/*Interface Descriptor */
+    USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
+    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
+    USBD_AUDIO_INTERFACE2,                               /* bInterfaceNumber: Number of Interface */
+    USB_INTERFACE_ALT_1,                               /* bAlternateSetting: Alternate setting */
+    USBD_AUDIOSTREAM_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
+    USB_AUDIOSTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
+    USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
+    0x00,                /* iInterface: */
+
+    /* Class-specific AS General Interface Descriptor */
+    USB_AS_GENERAL_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_GENERAL_SUBTYPE,
+    USB_AC_INPUT_USB_ID,
+    USBD_AUDIO_DELAY,
+    LOBYTE(USBD_AUDIO_FORMAT_PCM),
+    HIBYTE(USBD_AUDIO_FORMAT_PCM),
+
+    /* Type I Format Type Descriptor */
+    USB_TYPE_1_FORMAT,
+    USB_CS_INTERFACE_TYPE,
+    USB_FORMAT_TYPE_SUBTYPE,
+    USB_FORMAT_TYPE_1,
+    USB_AC_INPUT_CHANNELS,
+    USBD_SUB_FRAME_SIZE,
+    USBD_AUDIO_RESOLUTION,
+    USBD_N_AUDIO_SAMPLERATE,
+    LOBYTE(USBD_AUDIO_SAMPLERATE),
+    HIBYTE(USBD_AUDIO_SAMPLERATE),
+    LOBYTE(USBD_AUDIO_SAMPLERATE >> 16),
+
 
     /*Endpoint 2 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x03,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
+    USBD_AUDIO_MASTER,                    /* bEndpointAddress */
+    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
+    USBD_AUDIO_INTERVAL,                               /* bInterval: */
+
+    /* Class-specific Isochronous Audio Data Endpoint Descriptor */
+    USB_AS_GENERAL_SIZE,
+    USB_CS_ENDPOINT_TYPE,
+    USB_GENERAL_SUBTYPE,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
 
     /*Endpoint 3 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x04,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
+    USBD_AUDIO_PHONES,                    /* bEndpointAddress */
+    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
+    USBD_AUDIO_INTERVAL,                               /* bInterval: */
 
+#if 0
+/*---------------------------------------------------------------------------*/
+/*  MIDI interface                                                           */
 /*---------------------------------------------------------------------------*/
 
     USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
     USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    0x03,                               /* bInterfaceNumber: Number of Interface */
-    0x00,                               /* bAlternateSetting: Alternate setting */
-    0x02,                               /* bNumEndpoints: One endpoints used */
-    0x01,                               /* bInterfaceClass: Communication Interface Class */
-    0x03,                               /* bInterfaceSubClass: Abstract Control Model */
-    0x00,                               /* bInterfaceProtocol: Common AT commands */
+    USBD_AUDIO_INTERFACE,//UDBD_MIDI_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
+    USB_INTERFACE_ALT_0,                               /* bAlternateSetting: Alternate setting */
+    USBD_MIDI_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
+    USB_MIDISTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
+    USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
     0x00,                               /* iInterface: */
 
     /*Endpoint 0 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x85,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
+    USBD_MIDI_IN,                    /* bEndpointAddress */
+    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
-
-    /*Endpoint 0 Descriptor*/
-    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
-    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x85,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
-    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
-    HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
+    USBD_AUDIO_INTERVAL,                               /* bInterval: */
 
     /*Endpoint 1 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    0x85,                    /* bEndpointAddress */
-    0x05,                               /* bmAttributes: Interrupt */
+    USBD_MIDI_OUT,                    /* bEndpointAddress */
+    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x01,                               /* bInterval: */
+    USBD_AUDIO_INTERVAL,                               /* bInterval: */
+
+
+    /*---------------------------------------------------------------------------*/
+    /*  CDC Interface                                                            */
+    /*---------------------------------------------------------------------------*/
+
+        /*Interface Descriptor */
+        USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
+        USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
+        USBD_CDC_CONTROL_INTERFACE,          /* bInterfaceNumber: Number of Interface */
+        USB_INTERFACE_ALT_0,    /* bAlternateSetting: Alternate setting */
+        USBD_CDC_CONTROL_ENDPOINTS,         /* bNumEndpoints: One endpoint used */
+        USBD_CDC_ACM_CLASS,                  /* bInterfaceClass: Communication Interface Class */
+        USBD_CDC_ACM_SUBCLASS,               /* bInterfaceSubClass: Abstract Control Model */
+        USBD_CDC_ACM_PROTOCOL,              /* bInterfaceProtocol: Common AT commands */
+        USBD_IDX_CDC_IF_STR,                /* iInterface: */
+
+        /*Header Functional Descriptor*/
+        USBD_CDC_HEADER_SIZE,               /* bLength: Endpoint Descriptor size */
+        USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
+        0x00,                               /* bDescriptorSubtype: Header Func Desc */
+        0x10,                               /* bcdCDC: spec release number */
+        0x01,
+
+        /*Call Management Functional Descriptor*/
+        USBD_CDC_CALL_MAN_SIZE,             /* bFunctionLength */
+        USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
+        0x01,                               /* bDescriptorSubtype: Call Management Func Desc */
+        0x00,                               /* bmCapabilities: D0+D1 */
+        0x01,                               /* bDataInterface: 1 */
+
+        /*ACM Functional Descriptor*/
+        USBD_CDC_ACM_SIZE,                  /* bFunctionLength */
+        USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
+        0x02,                               /* bDescriptorSubtype: Abstract Control Management desc */
+        0x02,                               /* bmCapabilities */
+
+        /*Union Functional Descriptor*/
+        USBD_CDC_UNION_SIZE,                /* bFunctionLength */
+        USBD_CDC_CS_IF_DESC_TYPE,           /* bDescriptorType: CS_INTERFACE */
+        0x06,                               /* bDescriptorSubtype: Union func desc */
+        0x00,                               /* bMasterInterface: Communication class interface */
+        0x01,                               /* bSlaveInterface0: Data Class Interface */
+
+        /*Endpoint 2 Descriptor*/
+        USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+        USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+        USBD_EP_CDC_CMD,                    /* bEndpointAddress */
+        USBD_EP_INTR_TYPE,                  /* bmAttributes: Interrupt */
+        LOBYTE(USBD_INT_PACKET_SIZE),       /* wMaxPacketSize: */
+        HIBYTE(USBD_INT_PACKET_SIZE),
+        USBD_CDC_EP_INTERVAL,               /* bInterval: */
+
+    /*---------------------------------------------------------------------------*/
+
+        /*Data class interface descriptor*/
+        USB_INTERFACE_DESC_SIZE,            /* bLength: Endpoint Descriptor size */
+        USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: */
+        USBD_CDC_DATA_INTERFACE,            /* bInterfaceNumber: Number of Interface */
+        USB_INTERFACE_ALT_0,                               /* bAlternateSetting: Alternate setting */
+        USBD_CDC_DATA_ENDPOINTS,                               /* bNumEndpoints: Two endpoints used */
+        USBD_CDC_DATA_CLASS,                               /* bInterfaceClass: CDC */
+        USBD_CDC_DATA_SUBCLASS,                               /* bInterfaceSubClass: */
+        USBD_CDC_DATA_PROTOCOL,                               /* bInterfaceProtocol: */
+        USBD_IDX_CDC_IF_STR,                /* iInterface: */
+
+        /*Endpoint OUT Descriptor*/
+        USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+        USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+        USBD_EP_CDC_RX,                     /* bEndpointAddress */
+        USBD_EP_BULK_TYPE,                               /* bmAttributes: Bulk */
+        LOBYTE(USBD_BULK_PACKET_SIZE),      /* wMaxPacketSize: */
+        HIBYTE(USBD_BULK_PACKET_SIZE),
+        USBD_CDC_DATA_INTERVAL,                               /* bInterval: ignore for Bulk transfer */
+
+        /*Endpoint IN Descriptor*/
+        USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+        USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+        USBD_EP_CDC_TX,                     /* bEndpointAddress */
+        USBD_EP_BULK_TYPE,                               /* bmAttributes: Bulk */
+        LOBYTE(USBD_BULK_PACKET_SIZE),      /* wMaxPacketSize: */
+        HIBYTE(USBD_BULK_PACKET_SIZE),
+        USBD_CDC_DATA_INTERVAL,                               /* bInterval: ignore for Bulk transfer */
+#endif
 };
 
 #define USB_STRING(Name, String) \
