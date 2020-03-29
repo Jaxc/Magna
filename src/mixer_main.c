@@ -5,14 +5,14 @@
  *      Author: jaxc
  */
 
-#include "HAL_init.h"
+#include "magna_hal_init.h"
 #include "tim.h"
 #include "adc.h"
 
 uint16_t adc_data[8];
 
 int main (void) {
-    init_hal();
+    magna_hal_init();
 
     //__HAL_RCC_DMA1_CLK_ENABLE();
     __HAL_DBGMCU_FREEZE_TIM1();

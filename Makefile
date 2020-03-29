@@ -55,9 +55,8 @@ BIN = $(CP) -O binary -S
 # C sources
 
 C_SOURCES +=  \
-$(wildcard src/*.c) 
-
-$(warning $(C_SOURCES))
+	$(wildcard src/*.c) \
+	$(wildcard usbd/src/*.c)
 
 #######################################
 # CFLAGS
@@ -67,8 +66,9 @@ $(warning $(C_SOURCES))
 AS_INCLUDES = 
 
  # C includes
-C_INC +=  \
-	$(wildcard inc/) \
+C_INC += \
+	inc/ \
+	$(wildcard usbd/inc/)
 
 NULL=
 SPACE=$(NULL) $(NULL)
@@ -99,7 +99,6 @@ LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BU
 
 # default action: build all
 all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
-
 
 #######################################
 # build the application
