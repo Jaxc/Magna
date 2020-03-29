@@ -6,8 +6,10 @@
  */
 
 #include "magna_hal_init.h"
+#include "usb_magna.h"
 #include "tim.h"
 #include "adc.h"
+#include "error_codes.h"
 
 uint16_t adc_data[8];
 
@@ -33,10 +35,15 @@ int main (void) {
     //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 
     HAL_ADC_Start_DMA(&hadc1, adc_data, 8);
+    usbd_delay_ms(10000);
 
     while(1) {
-        //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
-        //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+        usbd_delay_ms(1000);
+        static uint8_t msg[256] = "Hello world\r\n";
+        int msg_len = sizeof(msg);
+
+        manga_error_code_t ret = usb_cdc_transmit(msg, msg_len);
+
     }
 }
 

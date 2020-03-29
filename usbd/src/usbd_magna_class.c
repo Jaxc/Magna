@@ -1,6 +1,6 @@
 
-#include "usb_class.h"
-#include "usbd_desc.h"
+#include "usb_magna.h"
+#include "usbd_magna_desc.h"
 #include "usbd_internal.h"
 #include "error_codes.h"
 #include "stm32f7xx_hal.h"
@@ -19,7 +19,7 @@ static struct {
 };
 
 static uint8_t tx_busy = 0;
-static usb_device_t *device = NULL;
+static usb_magna_t *magna = NULL;
 
 static int usb_transmit(uint8_t epnum, uint8_t *data, uint16_t length)
 {
@@ -27,7 +27,7 @@ static int usb_transmit(uint8_t epnum, uint8_t *data, uint16_t length)
 
     if (tx_busy)
     {
-        return MAGNA_BUSY;
+        return ret;
     }
 
     ret = usbd_transmit(epnum, data, length);
@@ -43,7 +43,7 @@ static int usb_transmit(uint8_t epnum, uint8_t *data, uint16_t length)
     return ret;
 }
 
-int usbd_device_class_init(usbd_context_t *ctx, uint8_t cfgidx)
+int usbd_magna_class_init(usbd_context_t *ctx, uint8_t cfgidx)
 {
 	(void)cfgidx;
     int ret = 0;
@@ -70,11 +70,11 @@ int usbd_device_class_init(usbd_context_t *ctx, uint8_t cfgidx)
         goto error;
     }
 
-    if ((ctx != NULL) && (device != NULL))
+    if ((ctx != NULL) && (magna != NULL))
     {
-        ctx->class_data = (void *)device;
+        ctx->class_data = (void *)magna;
 
-        usbd_ep_receive(ctx, USBD_EP_CDC_RX, device->cdc_rx_buffer, device->cdc_rx_size);
+        usbd_ep_receive(ctx, USBD_EP_CDC_RX, magna->cdc_rx_buffer, magna->cdc_rx_size);
     }
     else
     {
@@ -86,7 +86,7 @@ error:
     return ret;
 }
 
-int usbd_device_class_deinit(usbd_context_t *ctx, uint8_t cfgidx)
+int usbd_magna_class_deinit(usbd_context_t *ctx, uint8_t cfgidx)
 {
 	(void)cfgidx;
     int ret = 0;
@@ -116,7 +116,7 @@ error:
     return ret;
 }
 
-int usbd_device_setup(usbd_context_t *ctx,
+int usbd_magna_setup(usbd_context_t *ctx,
                        usb_setup_packet_t *setup)
 {
     uint8_t ifalt = 0;
@@ -154,52 +154,52 @@ int usbd_device_setup(usbd_context_t *ctx,
 
 void usbd_cdc_tx(usbd_context_t *ctx)
 {
-    usb_device_t *hj = (usb_device_t *)ctx->class_data;
+    usb_magna_t *mag = (usb_magna_t *)ctx->class_data;
     tx_busy = 0;
 
-    if (hj)
+    if (mag)
     {
-        if (hj->cdc_tx_complete)
+        if (mag->cdc_tx_complete)
         {
-            hj->cdc_tx_complete(hj->cdc_user);
+            mag->cdc_tx_complete(mag->cdc_user);
         }
     }
 }
 
 void usbd_cdc_rx(usbd_context_t *ctx, uint16_t length)
 {
-    usb_device_t *hj = (usb_device_t *)ctx->class_data;
-    if (hj)
+    usb_magna_t *mag = (usb_magna_t *)ctx->class_data;
+    if (mag)
     {
-        if (hj->cdc_rx_complete)
+        if (mag->cdc_rx_complete)
         {
-            hj->cdc_rx_complete(hj->cdc_rx_buffer, length, hj->cdc_user);
+            mag->cdc_rx_complete(mag->cdc_rx_buffer, length, mag->cdc_user);
         }
 
-        usbd_ep_receive(ctx, USBD_EP_CDC_RX, hj->cdc_rx_buffer, hj->cdc_rx_size);
+        usbd_ep_receive(ctx, USBD_EP_CDC_RX, mag->cdc_rx_buffer, mag->cdc_rx_size);
     }
 }
 
 int usb_cdc_transmit(uint8_t *data, uint16_t length)
 {
-    __disable_irq();
+    //__disable_irq();
     return usb_transmit(USBD_EP_CDC_TX, data, length);
-    __enable_irq();
+    //__enable_irq();
 }
 
-int usb_device_init(usb_device_t *usb_device)
+int usb_magna_init(usb_magna_t *usb_magna)
 {
     int ret = MAGNA_OK;
 
-    if (usb_device == NULL)
+    if (usb_magna == NULL)
     {
         ret = MAGNA_FAILED;
         goto error;
     }
 
     /* Check if we have valid buffers */
-    if ((usb_device->cdc_rx_buffer == NULL) ||
-        (usb_device->cdc_rx_size == 0))
+    if ((usb_magna->cdc_rx_buffer == NULL) ||
+        (usb_magna->cdc_rx_size == 0))
     {
         ret = MAGNA_INVALID_ARGUMENT;
         goto error;
@@ -211,16 +211,16 @@ int usb_device_init(usb_device_t *usb_device)
         goto error;
     }
 
-    device = usb_device;
+    magna = usb_magna;
 
 error:
 
     return ret;
 }
 
-int usb_device_deinit(void)
+int usb_magna_deinit(void)
 {
-    device = NULL;
+    magna = NULL;
 
     return usbd_deinit();
 }

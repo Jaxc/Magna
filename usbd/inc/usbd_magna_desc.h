@@ -2,14 +2,14 @@
 #define USB_DESC_H_
 
 #include <stdint.h>
-
+#include <usbd_internal.h>
 /*------------------------------------------------------------------------------*/
 /*  General descriptors                                                         */
 /*------------------------------------------------------------------------------*/
 
 #define USBD_NUM_CONFIGS                1
-#define USBD_NUM_INTERFACES             2
-#define USBD_CFG_SIZE                   75
+#define USBD_NUM_INTERFACES             3
+#define USBD_CFG_SIZE                   127
 
 #define USB_DEVICE_DESC_TYPE            1
 #define USB_CONFIG_DESC_TYPE            2
@@ -22,6 +22,12 @@
 #define USB_BOS_DESC_TYPE               0x0f
 #define USB_CS_INTERFACE_TYPE           0x24
 #define USB_CS_ENDPOINT_TYPE            0x25
+
+#define USB_DEVICE_USB_VERSION          0x0200
+#define USB_DEVICE_CLASS                0x00
+#define USB_DEVICE_SUB_CLASS            0x00
+#define USB_DEVICE_PROTOCAL_CLASS       0x00
+#define MAGNA_VERSION                   0x0001
 
 #define USB_DEVICE_DESC_SIZE            18
 #define USB_CONFIG_DESC_SIZE            9

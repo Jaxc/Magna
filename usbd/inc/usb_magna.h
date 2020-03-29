@@ -1,6 +1,6 @@
 
-#ifndef USB_CLASS_H_
-#define USB_CLASS_H_
+#ifndef USB_MAGNA_H_
+#define USB_MAGNA_H_
 
 #include <stdint.h>
 
@@ -18,13 +18,13 @@ typedef struct {
     void (* midi_tx_complete)(void *);
     void (* cdc_rx_complete)(uint8_t *, uint16_t, void *);
     void (* cdc_tx_complete)(void *);
-} usb_device_t;
+} usb_magna_t;
 
-int usb_is_configured(void);
+int usb_magna_is_configured(void);
 int usb_midi_transmit(uint8_t *data, uint16_t length);
 int usb_cdc_transmit(uint8_t *data, uint16_t length);
 
-int usb_device_init(usb_device_t *usb_device);
-int usb_device_deinit(void);
+int usb_magna_init(usb_magna_t *usb_magna);
+int usb_magna_deinit(void);
 
-#endif /* USB_CLASS_H_ */
+#endif /* USB_MAGNA_H_ */

@@ -1,10 +1,10 @@
 
 #include "usbd_internal.h"
-#include "usb_otg.h"
-#include "usbd_desc.h"
+
+#include "usbd_magna_desc.h"
 #include "error_codes.h"
 
-static usbd_context_t device_ctx = { 0 };
+static usbd_context_t magna_ctx = { 0 };
 
 static void usbd_ctrl_error(usbd_context_t *ctx)
 {
@@ -125,7 +125,7 @@ static void usbd_setup_config(usbd_context_t *ctx, usb_setup_packet_t *setup)
                 ctx->current_config = cfg;
                 ctx->current_state = USB_DEVICE_STATE_CONFIGURED;
                 ctx->restore_state = USB_DEVICE_STATE_CONFIGURED;
-                if (usbd_device_class_init(ctx, cfg))
+                if (usbd_magna_class_init(ctx, cfg))
                 {
                     usbd_ctrl_error(ctx);
                     return;
@@ -144,7 +144,7 @@ static void usbd_setup_config(usbd_context_t *ctx, usb_setup_packet_t *setup)
                 ctx->current_state = USB_DEVICE_STATE_ADDRESSED;
                 ctx->restore_state = USB_DEVICE_STATE_ADDRESSED;
                 ctx->current_config = cfg;
-                if (usbd_device_class_deinit(ctx, cfg))
+                if (usbd_magna_class_deinit(ctx, cfg))
                 {
                     usbd_ctrl_error(ctx);
                     return;
@@ -154,7 +154,7 @@ static void usbd_setup_config(usbd_context_t *ctx, usb_setup_packet_t *setup)
             else if (cfg != ctx->current_config)
             {
                 ctx->current_config = cfg;
-                if (usbd_device_class_init(ctx, cfg))
+                if (usbd_magna_class_init(ctx, cfg))
                 {
                     usbd_ctrl_error(ctx);
                     return;
@@ -275,7 +275,7 @@ static void usbd_std_if_request(usbd_context_t *ctx, usb_setup_packet_t *setup)
     case USB_DEVICE_STATE_CONFIGURED:
         if (LOBYTE(setup->wIndex) <= USBD_NUM_INTERFACES)
         {
-            usbd_device_setup(ctx, setup);
+            usbd_magna_setup(ctx, setup);
 
             if (setup->wLength == 0)
             {
@@ -300,7 +300,7 @@ static void usbd_std_ep_request(usbd_context_t *ctx, usb_setup_packet_t *setup)
 
     if (setup->bmRequestType.type == USB_REQUEST_TYPE_CLASS)
     {
-        usbd_device_setup(ctx, setup);
+        usbd_magna_setup(ctx, setup);
     }
     else
     {
@@ -322,7 +322,7 @@ static void usbd_std_ep_request(usbd_context_t *ctx, usb_setup_packet_t *setup)
                     usbd_ep_stall(ctx, epnum);
                 }
 
-                usbd_device_setup(ctx, setup);
+                usbd_magna_setup(ctx, setup);
                 usbd_ctrl_send_status(ctx);
                 break;
 
@@ -332,7 +332,7 @@ static void usbd_std_ep_request(usbd_context_t *ctx, usb_setup_packet_t *setup)
                     if (epnum & 0x7F)
                     {
                         usbd_ep_stall(ctx, epnum);
-                        usbd_device_setup(ctx, setup);
+                        usbd_magna_setup(ctx, setup);
                     }
 
                     usbd_ctrl_send_status(ctx);
@@ -513,12 +513,12 @@ void usbd_disconnect(usbd_context_t *ctx)
 
 int usbd_is_ready(void)
 {
-    return (device_ctx.current_state == USB_DEVICE_STATE_CONFIGURED);
+    return (magna_ctx.current_state == USB_DEVICE_STATE_CONFIGURED);
 }
 
 int usbd_transmit(uint8_t epnum, uint8_t *xfer_buff, uint16_t length)
 {
-    usbd_context_t *ctx = &device_ctx;
+    usbd_context_t *ctx = &magna_ctx;
 
     if (ctx->current_state == USB_DEVICE_STATE_CONFIGURED)
     {
@@ -550,66 +550,31 @@ void usbd_ctrl_receive(usbd_context_t *ctx,
 
 usbd_context_t *usbd_get_context(void)
 {
-    return &device_ctx;
-}
-
-int usbd_hw_init(usbd_context_t *ctx)
-{
-    /* Init USB_IP */
-    hpcd_USB_OTG_FS.pData = ctx;
-    ctx->dev_data = &hpcd_USB_OTG_FS;
-
-    hpcd_USB_OTG_FS.Instance = USB_OTG_FS;
-    hpcd_USB_OTG_FS.Init.dev_endpoints = 7;
-    hpcd_USB_OTG_FS.Init.speed = PCD_SPEED_FULL;
-    hpcd_USB_OTG_FS.Init.dma_enable = DISABLE;
-    hpcd_USB_OTG_FS.Init.ep0_mps = DEP0CTL_MPS_64;
-    hpcd_USB_OTG_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
-    hpcd_USB_OTG_FS.Init.Sof_enable = DISABLE;
-    hpcd_USB_OTG_FS.Init.low_power_enable = DISABLE;
-    hpcd_USB_OTG_FS.Init.lpm_enable = DISABLE;
-    hpcd_USB_OTG_FS.Init.vbus_sensing_enable = DISABLE;
-    hpcd_USB_OTG_FS.Init.use_dedicated_ep1 = DISABLE;
-    if (HAL_PCD_Init(&hpcd_USB_OTG_FS) != HAL_OK)
-    {
-        return MAGNA_FAILED;
-    }
-
-    HAL_PCDEx_SetRxFiFo(&hpcd_USB_OTG_FS, 0x100);
-    HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_FS, 0, 0x40);
-    HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_FS, 1, 0x100);
-    HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_FS, 2, 0x100);
-    HAL_PCDEx_SetTxFiFo(&hpcd_USB_OTG_FS, 3, 0x80);
-
-    return MAGNA_OK;
+    return &magna_ctx;
 }
 
 int usbd_init(void)
 {
-    memset(&device_ctx, 0, sizeof(usbd_context_t));
+    memset(&magna_ctx, 0, sizeof(usbd_context_t));
 
-    device_ctx.current_state = USB_DEVICE_STATE_DEFAULT;
-    device_ctx.restore_state = USB_DEVICE_STATE_DEFAULT;
+    magna_ctx.current_state = USB_DEVICE_STATE_DEFAULT;
+    magna_ctx.restore_state = USB_DEVICE_STATE_DEFAULT;
 
-    //hpcd_USB_OTG_FS.pData = &device_ctx;
-
-    //MX_USB_OTG_FS_PCD_Init();
-
-    if (usbd_hw_init(&device_ctx) != MAGNA_OK)
+    if (usbd_hw_init(&magna_ctx) != MAGNA_OK)
     {
         return MAGNA_FAILED;
     }
 
-    return HAL_PCD_Start(&hpcd_USB_OTG_FS);
+    return usbd_start(&magna_ctx);
 }
 
 int usbd_deinit(void)
 {
-    usbd_stop(&device_ctx);
+    usbd_stop(&magna_ctx);
 
-    usbd_hw_deinit(&device_ctx);
+    usbd_hw_deinit(&magna_ctx);
 
-    memset(&device_ctx, 0, sizeof(usbd_context_t));
+    memset(&magna_ctx, 0, sizeof(usbd_context_t));
 
     return MAGNA_OK;
 }

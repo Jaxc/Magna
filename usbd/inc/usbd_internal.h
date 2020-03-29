@@ -76,8 +76,8 @@
 #define EP_IS_TX(epnum)                 (0x7F & epnum)
 #define EP_IS_RX(epnum)                 !(0x7F & epnum)
 
-#define USBD_DEVICE_NUM_EP_IN          4 /* CTRL + IN */
-#define USBD_DEVIC_NUM_EP_OUT         3 /* CTRL + OUT */
+#define USBD_MAGNA_NUM_EP_IN          4 /* CTRL + IN */
+#define USBD_MAGNA_NUM_EP_OUT         3 /* CTRL + OUT */
 
 /*  EP0 State */
 #define USBD_EP0_IDLE                   0
@@ -180,9 +180,9 @@ int usbd_ep_receive(usbd_context_t *ctx, uint8_t ep_addr,
 int usbd_init(void);
 int usbd_deinit(void);
 
-int usbd_device_class_init(usbd_context_t *ctx, uint8_t cfgidx);
-int usbd_device_class_deinit(usbd_context_t *ctx, uint8_t cfgidx);
-int usbd_device_setup(usbd_context_t *ctx,
+int usbd_magna_class_init(usbd_context_t *ctx, uint8_t cfgidx);
+int usbd_magna_class_deinit(usbd_context_t *ctx, uint8_t cfgidx);
+int usbd_magna_setup(usbd_context_t *ctx,
                        usb_setup_packet_t *setup);
 void usbd_midi_tx(usbd_context_t *ctx);
 void usbd_midi_rx(usbd_context_t *ctx, uint16_t length);

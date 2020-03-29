@@ -18,7 +18,7 @@
 #ifndef INC_ERROR_CODES_H_
 #define INC_ERROR_CODES_H_
 
-typedef enum general_erros{
+typedef enum general_errors{
     MAGNA_OK                 = 0,
     MAGNA_FAILED             = -1,
     MAGNA_BUSY               = -2,
@@ -29,7 +29,5 @@ typedef enum general_erros{
     MAGNA_QUEUE_FULL         = -7,
     MAGNA_HAL_ERROR         = -8
 } manga_error_code_t;
-
-
 
 #endif /* INC_ERROR_CODES_H_ */

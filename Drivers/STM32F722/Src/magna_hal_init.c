@@ -7,6 +7,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "magna_hal_init.h"
+
+#include "../../../usbd/inc/usb_magna.h"
 #include "dma.h"
 #include "adc.h"
 #include "tim.h"
@@ -14,11 +16,10 @@
 #include "gpio.h"
 #include "sai.h"
 #include "spi.h"
-#include "usb_class.h"
 
 uint8_t test_0[256], test_1[256];
 
-static usb_device_t hj = {
+static usb_magna_t mag = {
     .midi_rx_buffer = &test_0[0],
     .cdc_rx_buffer = &test_1[0],
     .midi_rx_size = 256,
@@ -52,6 +53,6 @@ void magna_hal_init(void)
   MX_SAI2_Init();
   MX_SPI2_Init();
 
-  usb_device_init(&hj);
+  usb_magna_init(&mag);
 
 }

@@ -1,5 +1,5 @@
 
-#include "usbd_desc.h"
+#include "usbd_magna_desc.h"
 
 #include "usbd_internal.h"
 
@@ -7,36 +7,36 @@
 #define USBD_PID                        0x5740 /*STM32 Full Speed Default PID*/
 
 #define USBD_LANGID_ENG_US              0x0409
-#define USBD_MANUFACTURER_STRING        L"STMicroelectronics"
-#define USBD_PRODUCT_STRING             L"Skrooter Magna"
-#define USBD_SERIALNUMBER_STRING        L"00000000002A"
-#define USBD_CONFIGURATION_STRING       L"Skrooter Magna Config"
-#define USBD_CDC_IF_STRING              L"Skrooter Magna CDC Interface"
+#define USBD_MANUFACTURER_STRING        L"Skrooter Audio"
+#define USBD_PRODUCT_STRING             L"Magna DJ Mixer"
+#define USBD_SERIALNUMBER_STRING        L"00000000001A"
+#define USBD_CONFIGURATION_STRING       L"Magna Config"
+#define USBD_CDC_IF_STRING              L"Magna CDC Interface"
 
 /* USB Standard Device Descriptor */
-static uint8_t usbd_device_dev_desc[USB_DEVICE_DESC_SIZE] = {
+static uint8_t usbd_magna_dev_desc[USB_DEVICE_DESC_SIZE] = {
     USB_DEVICE_DESC_SIZE,
     USB_DEVICE_DESC_TYPE,
-    0x00,
-    0x02,
-    0x00,
-    0x00,
-    0x00,
+    LOBYTE(USB_DEVICE_USB_VERSION),
+    HIBYTE(USB_DEVICE_USB_VERSION),
+    USB_DEVICE_CLASS,
+    USB_DEVICE_SUB_CLASS,
+    USB_DEVICE_PROTOCAL_CLASS,
     USBD_CTRL_PACKET_SIZE,
     LOBYTE(USBD_VID),
     HIBYTE(USBD_VID),
     LOBYTE(USBD_PID),
     HIBYTE(USBD_PID),
-    0x00,
-    0x02,
+    LOBYTE(MAGNA_VERSION),
+    HIBYTE(MAGNA_VERSION),
     USBD_IDX_MFC_STR,
     USBD_IDX_PRODUCT_STR,
     USBD_IDX_SERIAL_STR,
-    0x01,
+    USBD_NUM_CONFIGS,
 };
 
 /* USB CDC device Configuration Descriptor */
-static uint8_t usbd_device_cfg_desc[USBD_CFG_SIZE] = {
+static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     /*Configuration Descriptor*/
     USB_CONFIG_DESC_SIZE,               /* bLength: Configuration Descriptor size */
     USB_CONFIG_DESC_TYPE,               /* bDescriptorType: Configuration */
@@ -47,18 +47,6 @@ static uint8_t usbd_device_cfg_desc[USBD_CFG_SIZE] = {
     USBD_IDX_CONFIG_STR,                /* iConfiguration: Index of string descriptor describing the configuration */
     0xC0,                               /* bmAttributes: self powered */
     0x32,                               /* MaxPower 0 mA */
-
-/*---------------------------------------------------------------------------*/
-
-    /* IAD Class descriptor */
-    USB_IAD_DESC_SIZE,                  /* bLength: Interface Descriptor size */
-    USB_IAD_DESC_TYPE,                  /* bDescriptorType: IAD */
-    0x00,                               /* bInterfaceNumber: Number of Interface */
-    0x02,                               /* bNumInterfaces: 2 interfaces */
-    0x02,                               /* bFunctionClass: Communication Interface Class */
-    0x02,                               /* bFunctionSubClass: Abstract Control Model */
-    0x01,                               /* bFunctionProtocol: Common AT commands */
-    0x02,                               /* iFunction */
 
 /*---------------------------------------------------------------------------*/
 /*  CDC Interface                                                            */
@@ -73,7 +61,7 @@ static uint8_t usbd_device_cfg_desc[USBD_CFG_SIZE] = {
     0x02,                               /* bInterfaceClass: Communication Interface Class */
     0x02,                               /* bInterfaceSubClass: Abstract Control Model */
     0x01,                               /* bInterfaceProtocol: Common AT commands */
-    0,                /* iInterface: */
+    0x06,                /* iInterface: */
 
     /*Header Functional Descriptor*/
     USBD_CDC_HEADER_SIZE,               /* bLength: Endpoint Descriptor size */
@@ -140,7 +128,97 @@ static uint8_t usbd_device_cfg_desc[USBD_CFG_SIZE] = {
     0x02,                               /* bmAttributes: Bulk */
     LOBYTE(USBD_BULK_PACKET_SIZE),      /* wMaxPacketSize: */
     HIBYTE(USBD_BULK_PACKET_SIZE),
-    0x00                                /* bInterval: ignore for Bulk transfer */
+    0x00,                               /* bInterval: ignore for Bulk transfer */
+
+/*---------------------------------------------------------------------------*/
+/*  Audio interface                                                           */
+/*---------------------------------------------------------------------------*/
+
+    /*Interface Descriptor */
+    USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
+    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
+    0x02,                               /* bInterfaceNumber: Number of Interface */
+    0x00,                               /* bAlternateSetting: Alternate setting */
+    0x04,                               /* bNumEndpoints: One endpoints used */
+    0x01,                               /* bInterfaceClass: Communication Interface Class */
+    0x02,                               /* bInterfaceSubClass: Abstract Control Model */
+    0x00,                               /* bInterfaceProtocol: Common AT commands */
+    0x00,                /* iInterface: */
+
+    /*Endpoint 0 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x83,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
+
+    /*Endpoint 1 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x84,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
+
+    /*Endpoint 2 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x03,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
+
+    /*Endpoint 3 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x04,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
+
+/*---------------------------------------------------------------------------*/
+
+    USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
+    USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
+    0x03,                               /* bInterfaceNumber: Number of Interface */
+    0x00,                               /* bAlternateSetting: Alternate setting */
+    0x02,                               /* bNumEndpoints: One endpoints used */
+    0x01,                               /* bInterfaceClass: Communication Interface Class */
+    0x03,                               /* bInterfaceSubClass: Abstract Control Model */
+    0x00,                               /* bInterfaceProtocol: Common AT commands */
+    0x00,                               /* iInterface: */
+
+    /*Endpoint 0 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x85,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
+
+    /*Endpoint 0 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x85,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
+
+    /*Endpoint 1 Descriptor*/
+    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
+    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
+    0x85,                    /* bEndpointAddress */
+    0x05,                               /* bmAttributes: Interrupt */
+    LOBYTE(USBD_BULK_PACKET_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_BULK_PACKET_SIZE),
+    0x01,                               /* bInterval: */
 };
 
 #define USB_STRING(Name, String) \
@@ -154,13 +232,13 @@ struct { \
     .wString = String \
 }
 
-USB_STRING(usbd_device_mfc_str, USBD_MANUFACTURER_STRING);
-USB_STRING(usbd_device_prod_str, USBD_PRODUCT_STRING);
-USB_STRING(usbd_device_serial_str, USBD_SERIALNUMBER_STRING);
-USB_STRING(usbd_device_cfg_str, USBD_CONFIGURATION_STRING);
-USB_STRING(usbd_device_cdc_if_str, USBD_CDC_IF_STRING);
+USB_STRING(usbd_magna_mfc_str, USBD_MANUFACTURER_STRING);
+USB_STRING(usbd_magna_prod_str, USBD_PRODUCT_STRING);
+USB_STRING(usbd_magna_serial_str, USBD_SERIALNUMBER_STRING);
+USB_STRING(usbd_magna_cfg_str, USBD_CONFIGURATION_STRING);
+USB_STRING(usbd_magna_cdc_if_str, USBD_CDC_IF_STRING);
 
-static uint8_t usbd_device_langid_str[4] = {
+static uint8_t usbd_magna_langid_str[4] = {
     4,
     USB_LANGID_DESC_TYPE,
     LOBYTE(USBD_LANGID_ENG_US),
@@ -170,48 +248,48 @@ static uint8_t usbd_device_langid_str[4] = {
 uint8_t *usbd_get_dev_desc(uint16_t *length)
 {
     *length = USB_DEVICE_DESC_SIZE;
-    return usbd_device_dev_desc;
+    return usbd_magna_dev_desc;
 }
 
 uint8_t *usbd_get_cfg_desc(uint8_t cfg_no, uint16_t *length)
 {
     (void)cfg_no;
     *length = USBD_CFG_SIZE;
-    return usbd_device_cfg_desc;
+    return usbd_magna_cfg_desc;
 }
 
 uint8_t *usbd_get_langid_str(uint16_t *length)
 {
-    *length = sizeof(usbd_device_langid_str);
-    return usbd_device_langid_str;
+    *length = sizeof(usbd_magna_langid_str);
+    return usbd_magna_langid_str;
 }
 
 uint8_t *usbd_get_mfc_str(uint16_t *length)
 {
-    *length = sizeof(usbd_device_mfc_str);
-    return (uint8_t *)&usbd_device_mfc_str;
+    *length = sizeof(usbd_magna_mfc_str);
+    return (uint8_t *)&usbd_magna_mfc_str;
 }
 
 uint8_t *usbd_get_prod_str(uint16_t *length)
 {
-    *length = sizeof(usbd_device_prod_str);
-    return (uint8_t *)&usbd_device_prod_str;
+    *length = sizeof(usbd_magna_prod_str);
+    return (uint8_t *)&usbd_magna_prod_str;
 }
 
 uint8_t *usbd_get_serial_str(uint16_t *length)
 {
-    *length = sizeof(usbd_device_serial_str);
-    return (uint8_t *)&usbd_device_serial_str;
+    *length = sizeof(usbd_magna_serial_str);
+    return (uint8_t *)&usbd_magna_serial_str;
 }
 
 uint8_t *usbd_get_cfg_str(uint16_t *length)
 {
-    *length = sizeof(usbd_device_cfg_str);
-    return (uint8_t *)&usbd_device_cfg_str;
+    *length = sizeof(usbd_magna_cfg_str);
+    return (uint8_t *)&usbd_magna_cfg_str;
 }
 
 uint8_t *usbd_get_cdc_if_str(uint16_t *length)
 {
-    *length = sizeof(usbd_device_cdc_if_str);
-    return (uint8_t *)&usbd_device_cdc_if_str;
+    *length = sizeof(usbd_magna_cdc_if_str);
+    return (uint8_t *)&usbd_magna_cdc_if_str;
 }
