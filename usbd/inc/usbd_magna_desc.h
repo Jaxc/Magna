@@ -8,7 +8,7 @@
 /*------------------------------------------------------------------------------*/
 
 #define USBD_NUM_CONFIGS                1
-#define USBD_NUM_INTERFACES             2
+#define USBD_NUM_INTERFACES             3
 #define USBD_CFG_SIZE                   (USB_CONFIG_DESC_SIZE + USB_AUDIO_BLOCK_SIZE)
 /*136 */
 
@@ -102,26 +102,31 @@
 #define USB_AC_OUTPUT_TERMINAL          0x03
 
 #define USB_AC_INPUT_LINE_1_ID          0x01
-#define USB_AC_INPUT_USB_ID             0x02
-#define USB_AC_OUTPUT_USB_ID            0x03
-#define USB_AC_OUTPUT_MASTER_ID         0x04
+#define USB_AC_INPUT_LINE_2_ID          0x02
+#define USB_AC_INPUT_USB_1_ID           0x03
+#define USB_AC_INPUT_USB_2_ID           0x04
+#define USB_AC_OUTPUT_USB_1_ID          0x05
+#define USB_AC_OUTPUT_USB_2_ID          0x06
+#define USB_AC_OUTPUT_MASTER_ID         0x07
+#define USB_AC_OUTPUT_PHONES_ID         0x08
 
 #define USB_AC_TERMINAL_LINE            0x0603
 #define USB_AC_TERMINAL_USB             0x0101
 #define USB_AC_INPUT_ASSOC              0x00
 #define USB_AC_INPUT_CHANNELS           0x02
-#define USB_AC_INPUT_CHANNEL_CFG        0x0003
+#define USB_AC_INPUT_CHANNEL_CFG        0x0300
 #define USB_AC_OUTPUT_SOURCE_ID         0x01
 
 #define USBD_ENDPOINT_0_SIZE            (USB_ENDPOINT_DESC_SIZE + USB_AS_GENERAL_SIZE)
-#define USBD_ENDPOINT_1_SIZE            (USB_ENDPOINT_DESC_SIZE)
+#define USBD_ENDPOINT_1_SIZE            (0)
 #define USBD_ENDPOINT_2_SIZE            (USB_ENDPOINT_DESC_SIZE + USB_AS_GENERAL_SIZE)
-#define USBD_ENDPOINT_3_SIZE            (USB_ENDPOINT_DESC_SIZE)
+#define USBD_ENDPOINT_3_SIZE            (0)
 #define USBD_ENPOINTS_SIZE              (USBD_ENDPOINT_0_SIZE + USBD_ENDPOINT_1_SIZE \
                                         + USBD_ENDPOINT_2_SIZE + USBD_ENDPOINT_3_SIZE)
 
 #define USBD_AUDIO_INTERFACE_SIZE       (2 * USB_INTERFACE_DESC_SIZE + USB_AS_GENERAL_SIZE \
                                         + USB_TYPE_1_FORMAT)
+
 
 #define USB_AUDIO_BLOCK_SIZE            (USBD_AC_BLOCK_SIZE + USBD_ENPOINTS_SIZE \
                                         + 2 * USBD_AUDIO_INTERFACE_SIZE)
@@ -154,13 +159,8 @@
 #define USBD_MIDI_JACK_EXTERNAL         0x02
 
 #define USBD_AUDIO_CONTROL_EP           0x00
-#define USBD_AUDIOSTREAM_EP             0x04
+#define USBD_AUDIOSTREAM_EP             0x01/*0x02 */
 #define USBD_MIDI_EP                    0x02
-
-#define USBD_AUDIO_IN_CHN1              0x81
-#define USBD_AUDIO_IN_CHN2              0x82
-#define USBD_AUDIO_MASTER               0x01
-#define USBD_AUDIO_PHONES               0x02
 
 #define USBD_MIDI_IN                    0x85
 #define USBD_MIDI_OUT                   0x05
@@ -169,11 +169,11 @@
 
 #define USBD_AUDIO_INTERVAL             0x01
 
-#define USBD_AUDIO_DELAY                0x01
+#define USBD_AUDIO_DELAY                0x00
 
 #define USBD_AUDIO_RESOLUTION           24
 #define USBD_N_AUDIO_SAMPLERATE         0x01
-#define USBD_AUDIO_SAMPLERATE           96000
+#define USBD_AUDIO_SAMPLERATE           48000
 
 #define USBD_SUB_FRAME_SIZE              0x04
 /*------------------------------------------------------------------------------*/

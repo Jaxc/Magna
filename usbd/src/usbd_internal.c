@@ -3,6 +3,7 @@
 
 #include "usbd_magna_desc.h"
 #include "error_codes.h"
+#include <stdio.h>
 
 static usbd_context_t magna_ctx = { 0 };
 
@@ -65,6 +66,7 @@ static void usbd_get_descriptor(usbd_context_t *ctx, usb_setup_packet_t *setup)
             return;
         }
         break;
+    case USB_DEVICE_QUALIFIER_DESC_TYPE:
     default:
         usbd_ctrl_error(ctx);
         return;
@@ -200,7 +202,7 @@ static void usbd_get_config(usbd_context_t *ctx, usb_setup_packet_t *setup)
 static void usbd_get_status(usbd_context_t *ctx, usb_setup_packet_t *setup)
 {
 	(void)setup;
-    const uint16_t dev_cfg = (USB_CONFIG_SELF_POWERED | USB_CONFIG_REMOTE_WAKEUP);
+    const uint16_t dev_cfg = (USB_CONFIG_SELF_POWERED);
 
     if ((ctx->current_state == USB_DEVICE_STATE_ADDRESSED) ||
         (ctx->current_state == USB_DEVICE_STATE_CONFIGURED))
@@ -354,13 +356,22 @@ static void usbd_std_ep_request(usbd_context_t *ctx, usb_setup_packet_t *setup)
     }
 }
 
+usb_setup_packet_t setup_trace[1024] = {0};
+uint16_t trace_cnt = 0;
+
+
+
 void usbd_setup_stage(usbd_context_t *ctx, usb_setup_packet_t *setup)
 {
+
     ctx->ep0_state = USBD_EP0_SETUP;
 
     setup->wValue = SWAPBYTE(&(setup->wValue));
     setup->wIndex = SWAPBYTE(&(setup->wIndex));
     setup->wLength = SWAPBYTE(&(setup->wLength));
+
+    memcpy(&setup_trace[trace_cnt], setup, sizeof(usb_setup_packet_t));
+    trace_cnt++;
 
     switch (setup->bmRequestType.recipient)
     {
@@ -404,9 +415,9 @@ void usbd_data_rx_stage(usbd_context_t *ctx, uint8_t epnum,
     else if (ctx->current_state == USB_DEVICE_STATE_CONFIGURED)
     {
         switch (epnum) {
-        case USBD_EP_CDC_RX:
+        /*case USBD_EP_CDC_RX:
             usbd_cdc_rx(ctx, xfer_count);
-            break;
+            break;*/
         default:
             break;
         }
@@ -443,19 +454,22 @@ void usbd_data_tx_stage(usbd_context_t *ctx, uint8_t epnum, uint8_t *xfer_buff)
     }
     else if (ctx->current_state == USB_DEVICE_STATE_CONFIGURED)
     {
-        switch (USB_EP_TX(epnum)) {
+      /*  switch (USB_EP_TX(epnum)) {
         case USBD_EP_CDC_TX:
             usbd_cdc_tx(ctx);
             break;
         default:
             break;
-        }
+        }*/
     }
 }
+
+uint8_t dummy_data[USBD_ISOC_PACKET_SIZE] = "THIS IS SOME DUMMY DATA";
 
 void usbd_start_of_frame(usbd_context_t *ctx)
 {
     (void)ctx;
+    usb_transmit(USBD_AUDIO_IN_CHN1, dummy_data, USBD_ISOC_PACKET_SIZE);
     return;
 }
 
@@ -468,9 +482,10 @@ void usbd_reset(usbd_context_t *ctx)
     ctx->current_config = 0;
     ctx->ep0_state = USBD_EP0_IDLE;
 
-    usbd_ep_close(ctx, USBD_EP_CDC_TX);
-    usbd_ep_close(ctx, USBD_EP_CDC_RX);
-    usbd_ep_close(ctx, USBD_EP_CDC_CMD);
+    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN1);
+    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN2);
+    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN1);
+    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN2);
 
     usbd_ep_open(ctx, USBD_EP_CTRL_TX,
                  USBD_EP_CTRL_TYPE, USBD_CTRL_PACKET_SIZE);
@@ -506,9 +521,10 @@ void usbd_disconnect(usbd_context_t *ctx)
     ctx->address = 0;
     ctx->current_config = 0;
 
-    usbd_ep_close(ctx, USBD_EP_CDC_TX);
-    usbd_ep_close(ctx, USBD_EP_CDC_RX);
-    usbd_ep_close(ctx, USBD_EP_CDC_CMD);
+    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN1);
+    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN2);
+    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN1);
+    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN2);
 }
 
 int usbd_is_ready(void)

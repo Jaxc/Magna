@@ -106,7 +106,7 @@ int usbd_hw_init(usbd_context_t *ctx)
     hpcd_magna.Init.dma_enable = DISABLE;
     hpcd_magna.Init.ep0_mps = DEP0CTL_MPS_64;
     hpcd_magna.Init.phy_itface = PCD_PHY_EMBEDDED;
-    hpcd_magna.Init.Sof_enable = DISABLE;
+    hpcd_magna.Init.Sof_enable = ENABLE;
     hpcd_magna.Init.low_power_enable = DISABLE;
     hpcd_magna.Init.lpm_enable = DISABLE;
     hpcd_magna.Init.vbus_sensing_enable = DISABLE;
@@ -116,11 +116,14 @@ int usbd_hw_init(usbd_context_t *ctx)
         return MAGNA_FAILED;
     }
 
+    /* Set RX FIFO */
     HAL_PCDEx_SetRxFiFo(&hpcd_magna, 0x100);
+
+    /* Set EP0(control) Fifo*/
     HAL_PCDEx_SetTxFiFo(&hpcd_magna, 0, 0x40);
+    /* Set audio out fifos*/
     HAL_PCDEx_SetTxFiFo(&hpcd_magna, 1, 0x100);
     HAL_PCDEx_SetTxFiFo(&hpcd_magna, 2, 0x100);
-    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 3, 0x80);
 
     return MAGNA_OK;
 }

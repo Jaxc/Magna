@@ -17,19 +17,25 @@
 #include "sai.h"
 #include "spi.h"
 
-uint8_t test_0[256], test_1[256];
+#define BUFFER_SIZE 256
+uint8_t audio_rx_1_buf[BUFFER_SIZE], audio_rx_2_buf[BUFFER_SIZE];
+uint8_t audio_tx_1_buf[BUFFER_SIZE], audio_tx_2_buf[BUFFER_SIZE];
 
-static usb_magna_t mag = {
-    .midi_rx_buffer = &test_0[0],
-    .cdc_rx_buffer = &test_1[0],
-    .midi_rx_size = 256,
-    .cdc_rx_size = 256,
+static usb_magna_t magna_buffer_config = {
+    .audio_rx_1_buffer = &audio_rx_1_buf[0],
+    .audio_rx_2_buffer = &audio_rx_2_buf[0],
+    .audio_tx_1_buffer = &audio_tx_1_buf[0],
+    .audio_tx_2_buffer = &audio_tx_2_buf[0],
+    .audio_rx_1_size = BUFFER_SIZE,
+    .audio_rx_2_size = BUFFER_SIZE,
+    .audio_tx_1_size = BUFFER_SIZE,
+    .audio_tx_2_size = BUFFER_SIZE,
     .midi_user = NULL,
     .cdc_user = NULL,
-    .midi_rx_complete = NULL,
-    .midi_tx_complete = NULL,
-    .cdc_rx_complete = NULL,
-    .cdc_tx_complete = NULL,
+    .audio_rx_1_complete = NULL,
+    .audio_rx_2_complete = NULL,
+    .audio_tx_1_complete = NULL,
+    .audio_tx_2_complete = NULL,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -53,6 +59,6 @@ void magna_hal_init(void)
   MX_SAI2_Init();
   MX_SPI2_Init();
 
-  usb_magna_init(&mag);
+  usb_magna_init(&magna_buffer_config);
 
 }

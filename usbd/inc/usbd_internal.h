@@ -57,15 +57,14 @@
 #define USBD_EP_CTRL_TX                 0x80 //USB_EP_TX(0)
 #define USBD_EP_CTRL_RX                 0x00 //USB_EP_RX(0)
 
-#define USBD_EP_MIDI_TX                 0x81 //USB_EP_TX(1)
-#define USBD_EP_MIDI_RX                 0x01 //USB_EP_RX(1)
-
-#define USBD_EP_CDC_TX                  0x82 //USB_EP_TX(2)
-#define USBD_EP_CDC_RX                  0x02 //USB_EP_RX(2)
-#define USBD_EP_CDC_CMD                 0x83 //USB_EP_TX(3)
+#define USBD_AUDIO_IN_CHN1              0x83
+#define USBD_AUDIO_IN_CHN2              0x84
+#define USBD_AUDIO_OUT_CHN1             0x01
+#define USBD_AUDIO_OUT_CHN2             0x02
 
 #define USBD_CTRL_PACKET_SIZE           0x40
 #define USBD_BULK_PACKET_SIZE           0x40
+#define USBD_ISOC_PACKET_SIZE           0x40
 #define USBD_INT_PACKET_SIZE            0x08
 
 #define USBD_EP_CTRL_TYPE               0
@@ -181,6 +180,7 @@ int usbd_init(void);
 int usbd_deinit(void);
 
 int usbd_magna_class_init(usbd_context_t *ctx, uint8_t cfgidx);
+int usbd_magna_setup_endpoints(usbd_context_t *ctx, usb_setup_packet_t *setup);
 int usbd_magna_class_deinit(usbd_context_t *ctx, uint8_t cfgidx);
 int usbd_magna_setup(usbd_context_t *ctx,
                        usb_setup_packet_t *setup);
