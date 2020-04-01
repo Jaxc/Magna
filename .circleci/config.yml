@@ -1,0 +1,38 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+
+    steps:
+      - checkout
+
+      - run:
+          name: update apt
+          command: apt-get update
+
+      - run: 
+          name: install tools
+          command: apt-get -y install make gcc-arm-none-eabi wget unzip curl
+
+      - run:
+          name: build all
+          command: ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir sonar_info make all
+
+      - run:
+          name: build test
+          command: make test
+
+      - sonarcloud/scan
+
+
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
