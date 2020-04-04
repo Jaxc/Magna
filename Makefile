@@ -56,7 +56,7 @@ BIN = $(CP) -O binary -S
 
 C_SOURCES +=  \
 	$(wildcard src/*.c) \
-	$(wildcard usbd/src/*.c)
+	$(wildcard */src/*.c)
 
 #######################################
 # CFLAGS
@@ -68,7 +68,7 @@ AS_INCLUDES =
  # C includes
 C_INC += \
 	inc/ \
-	$(wildcard usbd/inc/)
+	$(wildcard */inc/)
 
 NULL=
 SPACE=$(NULL) $(NULL)

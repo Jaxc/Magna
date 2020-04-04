@@ -57,15 +57,16 @@
 #define USBD_EP_CTRL_TX                 0x80 //USB_EP_TX(0)
 #define USBD_EP_CTRL_RX                 0x00 //USB_EP_RX(0)
 
-#define USBD_AUDIO_IN_CHN1              0x83
-#define USBD_AUDIO_IN_CHN2              0x84
-#define USBD_AUDIO_OUT_CHN1             0x01
-#define USBD_AUDIO_OUT_CHN2             0x02
+#define USBD_EP_AUDIO_IN                0x83
+#define USBD_EP_AUDIO_OUT               0x01
+#define USBD_EP_AUDIO_FEEDBACK          0x82
 
 #define USBD_CTRL_PACKET_SIZE           0x40
 #define USBD_BULK_PACKET_SIZE           0x40
-#define USBD_ISOC_PACKET_SIZE           0x40
+#define USBD_ISOC_PACKET_SIZE           0x180
+#define USBD_FEEDBACK_SIZE              0x04
 #define USBD_INT_PACKET_SIZE            0x08
+#define USBD_FEEDBACK_PACKET_SIZE       0x08
 
 #define USBD_EP_CTRL_TYPE               0
 #define USBD_EP_ISOC_TYPE               1
@@ -75,8 +76,8 @@
 #define EP_IS_TX(epnum)                 (0x7F & epnum)
 #define EP_IS_RX(epnum)                 !(0x7F & epnum)
 
-#define USBD_MAGNA_NUM_EP_IN          4 /* CTRL + IN */
-#define USBD_MAGNA_NUM_EP_OUT         3 /* CTRL + OUT */
+#define USBD_MAGNA_NUM_EP_IN          2 /* CTRL + IN */
+#define USBD_MAGNA_NUM_EP_OUT         1 /* CTRL + OUT */
 
 /*  EP0 State */
 #define USBD_EP0_IDLE                   0

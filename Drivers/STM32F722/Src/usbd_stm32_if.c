@@ -1,10 +1,12 @@
 
 /* Includes ------------------------------------------------------------------*/
-#include "../../../usbd/inc/usbd_magna_desc.h"
+#include "usbd_magna_desc.h"
 #include "stm32f7xx.h"
 #include "stm32f7xx_hal.h"
 #include "usbd_internal.h"
 #include "error_codes.h"
+#include "usb_magna.h"
+#include "tim.h"
 
 #define VBUS_FS_Pin                     GPIO_PIN_9
 #define VBUS_FS_GPIO_Port               GPIOA
@@ -59,9 +61,22 @@ void HAL_PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
     usbd_data_tx_stage((usbd_context_t *)hpcd->pData, epnum, xfer_buff);
 }
 
+volatile uint16_t sof_times[256];
+uint8_t sof_times_cnt;
+
 void HAL_PCD_SOFCallback(PCD_HandleTypeDef *hpcd)
 {
+//    htim11.Instance->CNT = 0;
+
     usbd_start_of_frame((usbd_context_t *)hpcd->pData);
+//    __disable_irq();
+//    __HAL_TIM_ENABLE(&htim11);
+//    sof_times_cnt++;
+//    __HAL_TIM_DISABLE(&htim11);
+//    __enable_irq();
+//    sof_times[sof_times_cnt] = htim11.Instance->CNT;
+
+
 }
 
 void HAL_PCD_ResetCallback(PCD_HandleTypeDef *hpcd)
@@ -90,6 +105,12 @@ void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef *hpcd)
     usbd_disconnect((usbd_context_t *)hpcd->pData);
 }
 
+void HAL_PCD_ISOOUTIncompleteCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum) {
+
+    if (0 != epnum) {
+        HAL_Delay(1);
+    }
+}
 /*------------------------------------------------------------------------------*/
 /*  STM32 HAL_PCD driver interface                                              */
 /*------------------------------------------------------------------------------*/
@@ -106,7 +127,7 @@ int usbd_hw_init(usbd_context_t *ctx)
     hpcd_magna.Init.dma_enable = DISABLE;
     hpcd_magna.Init.ep0_mps = DEP0CTL_MPS_64;
     hpcd_magna.Init.phy_itface = PCD_PHY_EMBEDDED;
-    hpcd_magna.Init.Sof_enable = ENABLE;
+    hpcd_magna.Init.Sof_enable = DISABLE;
     hpcd_magna.Init.low_power_enable = DISABLE;
     hpcd_magna.Init.lpm_enable = DISABLE;
     hpcd_magna.Init.vbus_sensing_enable = DISABLE;
@@ -117,13 +138,13 @@ int usbd_hw_init(usbd_context_t *ctx)
     }
 
     /* Set RX FIFO */
-    HAL_PCDEx_SetRxFiFo(&hpcd_magna, 0x100);
+    HAL_PCDEx_SetRxFiFo(&hpcd_magna, 0x200);
 
     /* Set EP0(control) Fifo*/
-    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 0, 0x40);
+    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 0, 0x80);
     /* Set audio out fifos*/
-    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 1, 0x100);
-    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 2, 0x100);
+    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 1, 0x200);
+    HAL_PCDEx_SetTxFiFo(&hpcd_magna, 2, 0x200);
 
     return MAGNA_OK;
 }

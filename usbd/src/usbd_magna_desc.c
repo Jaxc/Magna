@@ -3,8 +3,8 @@
 
 #include "usbd_internal.h"
 
-#define USBD_VID                        0x0483 /*STM32 Full Speed Default VID*/
-#define USBD_PID                        0x5740 /*STM32 Full Speed Default PID*/
+#define USBD_VID                        0x1209 /*STM32 Full Speed Default VID*/
+#define USBD_PID                        0x000D /*STM32 Full Speed Default PID*/
 
 #define USBD_LANGID_ENG_US              0x0409
 #define USBD_MANUFACTURER_STRING        L"Skrooter Audio"
@@ -65,6 +65,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     USB_AUDIO_PROTOCOL,
     0x00,
 
+
     /* Audio control descriptor*/
     USB_AUDIO_CONTROL_SIZE,
     USB_CS_INTERFACE_TYPE,
@@ -78,12 +79,27 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     0x02,
 
 /*---------------------------------------------------------------------------*/
+#if 0
+    /* Audio clock source descriptor*/
+    USB_CLOCK_DESC_SIZE,
+    USB_CS_INTERFACE_TYPE,
+    USB_AC_CLOCK_TYPE,
+    USB_AC_CLOCK_ID,
+    USB_AC_CLOCK_ATTRIBUTE,
+    USB_AC_CLOCK_CONTROL,
+    USB_AC_CLOCK_ASSOC,
+    USB_AC_CLOCK_SOURCE,
+
+
+    /* Audio clock selector descriptor*/
+#endif
+/*---------------------------------------------------------------------------*/
 
     /* Line1 Terminal input analogue*/
     USB_TERMINAL_DESC_SIZE,
     USB_CS_INTERFACE_TYPE,
     USB_AC_INPUT_TERMINAL,
-    USB_AC_INPUT_LINE_1_ID,
+    USB_AC_INPUT_LINE,
     LOBYTE(USB_AC_TERMINAL_LINE),
     HIBYTE(USB_AC_TERMINAL_LINE),
     USB_AC_INPUT_ASSOC,
@@ -97,51 +113,24 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     USB_INTERFACE_DESC_SIZE,
     USB_CS_INTERFACE_TYPE,
     USB_AC_OUTPUT_TERMINAL,
-    USB_AC_OUTPUT_USB_1_ID,
+    USB_AC_OUTPUT_USB,
     LOBYTE(USB_AC_TERMINAL_USB),
     HIBYTE(USB_AC_TERMINAL_USB),
     USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_LINE_1_ID,
+    USB_AC_INPUT_LINE,
     0x00,
 
 /*---------------------------------------------------------------------------*/
-#if 0
-    /* Line 2 Terminal input analogue*/
-    USB_TERMINAL_DESC_SIZE,
-    USB_CS_INTERFACE_TYPE,
-    USB_AC_INPUT_TERMINAL,
-    USB_AC_INPUT_LINE_2_ID,
-    LOBYTE(USB_AC_TERMINAL_LINE),
-    HIBYTE(USB_AC_TERMINAL_LINE),
-    USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_CHANNELS,
-    LOBYTE(USB_AC_INPUT_CHANNEL_CFG),
-    HIBYTE(USB_AC_INPUT_CHANNEL_CFG),
-    0x00,
-    0x00,
-
-    /* Line 2 Terminal Output USB*/
-    USB_INTERFACE_DESC_SIZE,
-    USB_CS_INTERFACE_TYPE,
-    USB_AC_OUTPUT_TERMINAL,
-    USB_AC_OUTPUT_USB_2_ID,
-    LOBYTE(USB_AC_TERMINAL_USB),
-    HIBYTE(USB_AC_TERMINAL_USB),
-    USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_LINE_2_ID,
-    0x00,
-
-    /*---------------------------------------------------------------------------*/
 
     /* Audio control Terminal input USB */
     USB_TERMINAL_DESC_SIZE,
     USB_CS_INTERFACE_TYPE,
     USB_AC_INPUT_TERMINAL,
-    USB_AC_INPUT_USB_1_ID,
+    USB_AC_INPUT_USB,
     LOBYTE(USB_AC_TERMINAL_USB),
     HIBYTE(USB_AC_TERMINAL_USB),
     USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_CHANNELS,
+    USB_AC_OUTPUT_CHANNELS,
     LOBYTE(USB_AC_INPUT_CHANNEL_CFG),
     HIBYTE(USB_AC_INPUT_CHANNEL_CFG),
     0x00,
@@ -151,38 +140,11 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     USB_INTERFACE_DESC_SIZE,
     USB_CS_INTERFACE_TYPE,
     USB_AC_OUTPUT_TERMINAL,
-    USB_AC_OUTPUT_MASTER_ID,
+    USB_AC_OUTPUT_LINE,
     LOBYTE(USB_AC_TERMINAL_LINE),
     HIBYTE(USB_AC_TERMINAL_LINE),
     USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_USB_1_ID,
-    0x00,
-#endif
-/*---------------------------------------------------------------------------*/
-
-    /* Audio control Terminal input USB */
-    USB_TERMINAL_DESC_SIZE,
-    USB_CS_INTERFACE_TYPE,
-    USB_AC_INPUT_TERMINAL,
-    USB_AC_INPUT_USB_2_ID,
-    LOBYTE(USB_AC_TERMINAL_USB),
-    HIBYTE(USB_AC_TERMINAL_USB),
-    USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_CHANNELS,
-    LOBYTE(USB_AC_INPUT_CHANNEL_CFG),
-    HIBYTE(USB_AC_INPUT_CHANNEL_CFG),
-    0x00,
-    0x00,
-
-    /* Audio control Terminal Output analogue*/
-    USB_INTERFACE_DESC_SIZE,
-    USB_CS_INTERFACE_TYPE,
-    USB_AC_OUTPUT_TERMINAL,
-    USB_AC_OUTPUT_PHONES_ID,
-    LOBYTE(USB_AC_TERMINAL_LINE),
-    HIBYTE(USB_AC_TERMINAL_LINE),
-    USB_AC_INPUT_ASSOC,
-    USB_AC_INPUT_USB_2_ID,
+    USB_AC_INPUT_USB,
     0x00,
 
 /*---------------------------------------------------------------------------*/
@@ -190,7 +152,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
 /*Interface No EP Descriptor */
     USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
     USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    USBD_AUDIO_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
+    USBD_AUDIO_INTERFACE2,                               /* bInterfaceNumber: Number of Interface */
     USB_INTERFACE_ALT_0,                               /* bAlternateSetting: Alternate setting */
     USBD_AUDIO_CONTROL_EP,                               /* bNumEndpoints: One endpoints used */
     USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
@@ -201,9 +163,9 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
 /*Interface Descriptor */
     USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
     USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    USBD_AUDIO_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
+    USBD_AUDIO_INTERFACE2,                               /* bInterfaceNumber: Number of Interface */
     USB_INTERFACE_ALT_1,                               /* bAlternateSetting: Alternate setting */
-    USBD_AUDIOSTREAM_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIOSTREAM_OUT_EP,                               /* bNumEndpoints: One endpoints used */
     USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
     USB_AUDIOSTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
     USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
@@ -213,7 +175,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     USB_AS_GENERAL_SIZE,
     USB_CS_INTERFACE_TYPE,
     USB_GENERAL_SUBTYPE,
-    USB_AC_INPUT_USB_1_ID,
+    USB_AC_OUTPUT_USB,
     USBD_AUDIO_DELAY,
     LOBYTE(USBD_AUDIO_FORMAT_PCM),
     HIBYTE(USBD_AUDIO_FORMAT_PCM),
@@ -223,7 +185,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     USB_CS_INTERFACE_TYPE,
     USB_FORMAT_TYPE_SUBTYPE,
     USB_FORMAT_TYPE_1,
-    USB_AC_INPUT_CHANNELS,
+    USB_AC_OUTPUT_CHANNELS,
     USBD_SUB_FRAME_SIZE,
     USBD_AUDIO_RESOLUTION,
     USBD_N_AUDIO_SAMPLERATE,
@@ -232,10 +194,10 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     LOBYTE(USBD_AUDIO_SAMPLERATE >> 16),
 
 
-    /*Endpoint 0 Descriptor*/
+    /* Endpoint OUT 2 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    USBD_AUDIO_IN_CHN1,                    /* bEndpointAddress */
+    USBD_EP_AUDIO_OUT,                    /* bEndpointAddress */
     USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_ISOC_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_ISOC_PACKET_SIZE),
@@ -250,20 +212,19 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     0x00,
     0x00,
 
-#if 0
-    /*Endpoint 1 Descriptor*/
-    USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
-    USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    USBD_AUDIO_IN_CHN2,                    /* bEndpointAddress */
-    USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
-    LOBYTE(USBD_ISOC_PACKET_SIZE),        /* wMaxPacketSize: */
-    HIBYTE(USBD_ISOC_PACKET_SIZE),
-    USBD_AUDIO_INTERVAL,                               /* bInterval: */
-#endif
+    /* Endpoint IN 2 descriptor (feedback) */
+    USB_ENDPOINT_DESC_SIZE,
+    USB_ENDPOINT_DESC_TYPE,
+    USBD_EP_AUDIO_FEEDBACK,
+    USDB_AUDIO_FEEDBACK,
+    LOBYTE(USBD_FEEDBACK_SIZE),        /* wMaxPacketSize: */
+    HIBYTE(USBD_FEEDBACK_SIZE),
+    USBD_FEEDBACK_INTERVAL,
+
 /*Interface No EP Descriptor */
     USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
     USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    USBD_AUDIO_INTERFACE2,                               /* bInterfaceNumber: Number of Interface */
+    USBD_AUDIO_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
     USB_INTERFACE_ALT_0,                               /* bAlternateSetting: Alternate setting */
     USBD_AUDIO_CONTROL_EP,                               /* bNumEndpoints: One endpoints used */
     USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
@@ -274,9 +235,9 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
 /*Interface Descriptor */
     USB_INTERFACE_DESC_SIZE,            /* bLength: Interface Descriptor size */
     USB_INTERFACE_DESC_TYPE,            /* bDescriptorType: Interface */
-    USBD_AUDIO_INTERFACE2,                               /* bInterfaceNumber: Number of Interface */
+    USBD_AUDIO_INTERFACE,                               /* bInterfaceNumber: Number of Interface */
     USB_INTERFACE_ALT_1,                               /* bAlternateSetting: Alternate setting */
-    USBD_AUDIOSTREAM_EP,                               /* bNumEndpoints: One endpoints used */
+    USBD_AUDIOSTREAM_IN_EP,                               /* bNumEndpoints: One endpoints used */
     USBD_AUDIO_CLASS,                               /* bInterfaceClass: Communication Interface Class */
     USB_AUDIOSTREAMING_SUBCLASS,                               /* bInterfaceSubClass: Abstract Control Model */
     USB_AUDIO_PROTOCOL,                               /* bInterfaceProtocol: Common AT commands */
@@ -286,7 +247,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     USB_AS_GENERAL_SIZE,
     USB_CS_INTERFACE_TYPE,
     USB_GENERAL_SUBTYPE,
-    USB_AC_OUTPUT_USB_1_ID,
+    USB_AC_INPUT_USB,
     USBD_AUDIO_DELAY,
     LOBYTE(USBD_AUDIO_FORMAT_PCM),
     HIBYTE(USBD_AUDIO_FORMAT_PCM),
@@ -308,7 +269,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     /*Endpoint 2 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESC_TYPE,             /* bDescriptorType: Endpoint */
-    USBD_AUDIO_OUT_CHN1,                    /* bEndpointAddress */
+    USBD_EP_AUDIO_IN,                    /* bEndpointAddress */
     USDB_AUDIO_ASYNC,                               /* bmAttributes: Interrupt */
     LOBYTE(USBD_ISOC_PACKET_SIZE),        /* wMaxPacketSize: */
     HIBYTE(USBD_ISOC_PACKET_SIZE),
@@ -322,6 +283,7 @@ static uint8_t usbd_magna_cfg_desc[USBD_CFG_SIZE] = {
     0x00,
     0x00,
     0x00,
+
 #if 0
     /*Endpoint 3 Descriptor*/
     USB_ENDPOINT_DESC_SIZE,             /* bLength: Endpoint Descriptor size */

@@ -1,0 +1,65 @@
+/*
+ * CS42L22.h
+ *
+ *  Created on: Apr 2, 2020
+ *      Author: jaxc
+ */
+
+#ifndef AUDIO_INTERFACE_INC_CS43L22_H_
+#define AUDIO_INTERFACE_INC_CS43L22_H_
+
+#include <stdint.h>
+
+/*Device address */
+#define CS42L2_ADDR_1 0x94
+#define CS42L2_ADDR_2 0x96
+
+/* Device register addresses */
+#define CS42L22_REG_ID              0x01
+#define CS42L22_REG_POWER_CTL_1     0x02
+#define CS42L22_REG_POWER_CTL_2     0x04
+#define CS42L22_REG_CLOCKING_CTL    0x05
+#define CS42L22_REG_INTERFACE_CTL_1 0x06
+#define CS42L22_REG_INTERFACE_CTL_2 0x07
+#define CS42L22_REG_PASS_SELECT_A   0x08
+#define CS42L22_REG_PASS_SELECT_B   0x09
+#define CS42L22_REG_ANALOG_SZ_SR    0x0A
+#define CS42L22_REG_PASS_GANG_CTL   0x0C
+#define CS42L22_REG_PLAYBACK_CTL_1  0x0D
+#define CS42L22_REG_MISC_CTL        0x0E
+#define CS42L22_REG_PLAYBACK_CTL_2  0x0F
+#define CS42L22_REG_PASS_A_VOLUME   0x14
+#define CS42L22_REG_PASS_B_VOLUME   0x15
+#define CS42L22_REG_PCM_A_VOLUME    0x1A
+#define CS42L22_REG_PCM_B_VOLUME    0x1B
+#define CS42L22_REG_BEEP_TIME_ON    0x1C
+#define CS42L22_REG_BEEP_TIME_OFF   0x1D
+#define CS42L22_REG_BEEP_TONE_ON    0x1E
+#define CS42L22_REG_TONE_CTL        0x1F
+#define CS42L22_REG_MASTER_A_VOL    0x20
+#define CS42L22_REG_MASTER_B_VOL    0x21
+#define CS42L22_REG_HEADPHONE_VOL_A 0x22
+#define CS42L22_REG_HEADPHONE_VOL_B 0x23
+#define CS42L22_REG_SPEAKER_VOL_A   0x24
+#define CS42L22_REG_SPEAKER_VOL_B   0x25
+#define CS42L22_REG_MIXER_SWAP      0x26
+#define CS42L22_REG_LIMIT_CTL_1     0x27
+#define CS42L22_REG_LIMIT_CTL_2     0x28
+#define CS42L22_REG_LIMIT_CTL_3     0x29
+#define CS42L22_REG_CLOCK_OVERFLOW  0x2E
+#define CS42L22_REG_BATTERY_COMP    0x2F
+#define CS42L22_REG_VP_BATTERY_LVL  0x30
+#define CS42L22_REG_SPEAKER_STATUS  0x31
+#define CS42L22_REG_CHARGE_PMP_FREQ 0x34
+
+
+
+
+
+
+struct device_registers {
+    uint8_t addr;
+    uint8_t data;
+};
+
+#endif /* AUDIO_INTERFACE_INC_CS43L22_H_ */

@@ -415,9 +415,10 @@ void usbd_data_rx_stage(usbd_context_t *ctx, uint8_t epnum,
     else if (ctx->current_state == USB_DEVICE_STATE_CONFIGURED)
     {
         switch (epnum) {
-        /*case USBD_EP_CDC_RX:
-            usbd_cdc_rx(ctx, xfer_count);
-            break;*/
+        case USBD_EP_AUDIO_OUT:
+            usbd_audio_rx(ctx, xfer_count);
+
+            break;
         default:
             break;
         }
@@ -465,11 +466,14 @@ void usbd_data_tx_stage(usbd_context_t *ctx, uint8_t epnum, uint8_t *xfer_buff)
 }
 
 uint8_t dummy_data[USBD_ISOC_PACKET_SIZE] = "THIS IS SOME DUMMY DATA";
-
+uint8_t test_buffer[USBD_ISOC_PACKET_SIZE];
 void usbd_start_of_frame(usbd_context_t *ctx)
 {
     (void)ctx;
-    usb_transmit(USBD_AUDIO_IN_CHN1, dummy_data, USBD_ISOC_PACKET_SIZE);
+    //usb_transmit(USBD_AUDIO_IN_CHN1, dummy_data, USBD_ISOC_PACKET_SIZE);
+    //usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT,
+    //                   test_buffer, USBD_ISOC_PACKET_SIZE);
+    //usb_transmit(USBD_EP_AUDIO_IN, test_buffer, USBD_ISOC_PACKET_SIZE);
     return;
 }
 
@@ -482,10 +486,9 @@ void usbd_reset(usbd_context_t *ctx)
     ctx->current_config = 0;
     ctx->ep0_state = USBD_EP0_IDLE;
 
-    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN1);
-    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN2);
-    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN1);
-    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN2);
+    usbd_ep_close(ctx, USBD_EP_AUDIO_IN);
+    usbd_ep_close(ctx, USBD_EP_AUDIO_FEEDBACK);
+    usbd_ep_close(ctx, USBD_EP_AUDIO_OUT);
 
     usbd_ep_open(ctx, USBD_EP_CTRL_TX,
                  USBD_EP_CTRL_TYPE, USBD_CTRL_PACKET_SIZE);
@@ -521,10 +524,9 @@ void usbd_disconnect(usbd_context_t *ctx)
     ctx->address = 0;
     ctx->current_config = 0;
 
-    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN1);
-    usbd_ep_close(ctx, USBD_AUDIO_IN_CHN2);
-    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN1);
-    usbd_ep_close(ctx, USBD_AUDIO_OUT_CHN2);
+    usbd_ep_close(ctx, USBD_EP_AUDIO_IN);
+    usbd_ep_close(ctx, USBD_EP_AUDIO_FEEDBACK);
+    usbd_ep_close(ctx, USBD_EP_AUDIO_OUT);
 }
 
 int usbd_is_ready(void)
