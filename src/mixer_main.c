@@ -14,6 +14,7 @@
 #include "usbd_internal.h"
 #include "usart.h"
 #include "audio_interface.h"
+#include "queue.h"
 
 uint16_t adc_data[8];
 
@@ -52,28 +53,8 @@ int main (void) {
     //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 
     //HAL_ADC_Start_DMA(&hadc1, adc_data, 8);
-    usbd_delay_ms(10000);
-
-    uint8_t status_size = 45;
-
-    char current_status[status_size];
-    for (int i = 0; i < trace_cnt; i++) {
-
-        snprintf(current_status,status_size,"%03d recip: %02x, req:%02x,index:%04x,val:%04x \r\n", i, setup_trace[i].bmRequestType.recipient, setup_trace[i].bRequest, setup_trace[i].wIndex, setup_trace[i].wValue);
-        HAL_UART_Transmit(&huart3,(uint8_t *)current_status, status_size, 1000);
-        _write(0,current_status, status_size);
-        //usbd_delay_ms(10);
-
-    }
-
-    uint8_t new_usb_data = 0;
     while(1) {
-
-        if (0 != new_usb_data) {
-
-
-        }
-
+        queue_execute();
 
         //usbd_delay_ms(1000);
         //static uint8_t msg[256] = "Hello world\r\n";

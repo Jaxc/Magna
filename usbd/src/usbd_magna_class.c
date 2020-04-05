@@ -4,6 +4,7 @@
 #include "usbd_internal.h"
 #include "error_codes.h"
 #include "stm32f7xx_hal.h"
+#include "queue.h"
 
 
 static struct {
@@ -22,7 +23,8 @@ static uint8_t tx_busy = 0;
 static usb_magna_t *magna = NULL;
 
 uint8_t circular_counter = 0;
-uint8_t buffer_buffer[512] = {0};
+uint8_t usbd_internal_buffer[512] = {0};
+uint8_t usbd_internal_buffer_cnt = 0;
 
 /*static */ int usb_transmit(uint8_t epnum, uint8_t *data, uint16_t length)
 {
@@ -225,6 +227,15 @@ void usbd_cdc_tx(usbd_context_t *ctx)
     }
 }
 
+void usbd_handle_rx_buffer(void *received_buffer) {
+    if (usbd_internal_buffer_cnt < 200) {
+        if (received_buffer != NULL) {
+            memcpy(received_buffer,usbd_internal_buffer,512);
+        }
+    }
+
+}
+
 
 
 void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
@@ -233,13 +244,14 @@ void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
     usb_magna_t *mag = (usb_magna_t *)ctx->class_data;
     if (mag)
     {
-        memcpy(&mag->audio_rx_buffer[circular_counter],buffer_buffer,512);
-        if (circular_counter < 3) {
-            circular_counter++;
-        } else {
-            circular_counter = 0;
+        if(queue_add(&usbd_handle_rx_buffer, &mag->audio_rx_buffer[circular_counter]) == MAGNA_OK) {
+            if (circular_counter < 3) {
+                circular_counter++;
+            } else {
+                circular_counter = 0;
+            }
         }
-        usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, mag->audio_rx_buffer[circular_counter], mag->audio_rx_size);
+        usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, &mag->audio_rx_buffer[circular_counter], mag->audio_rx_size);
     }
 }
 

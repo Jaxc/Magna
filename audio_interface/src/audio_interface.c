@@ -30,8 +30,8 @@ void HAL_SAI_TxCpltCallback(SAI_HandleTypeDef *hsai) {
 
     (void) hsai;
     for(uint8_t i; i < OUTPUT_BUFFER_SIZE; i+=2) {
-        audio_output_buffer[i] = (uint16_t)triangle_wave << 8;
-        audio_output_buffer[i+1] = (uint16_t)triangle_wave_2 << 8;
+        audio_output_buffer[i] = (uint32_t)triangle_wave << 8;
+        audio_output_buffer[i+1] = 0;//(uint32_t)triangle_wave_2 << 8;
         triangle_wave ++;
         triangle_wave_2 += 2;
     }
