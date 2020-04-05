@@ -19,13 +19,14 @@
 #include "i2c.h"
 #include "gpio.h"
 
-#define BUFFER_SIZE 256
-uint8_t audio_rx_buf[BUFFER_SIZE], audio_rx_2_buf[BUFFER_SIZE];
-uint8_t audio_tx_buf[BUFFER_SIZE], audio_tx_2_buf[BUFFER_SIZE];
+#define BUFFER_SIZE 512
+#define BUFFER_CIRCLE_SIZE 3
+uint8_t audio_rx_buf[BUFFER_CIRCLE_SIZE][BUFFER_SIZE], audio_rx_2_buf[BUFFER_SIZE];
+uint8_t audio_tx_buf[BUFFER_CIRCLE_SIZE][BUFFER_SIZE], audio_tx_2_buf[BUFFER_SIZE];
 
 static usb_magna_t magna_buffer_config = {
-    .audio_rx_buffer = &audio_rx_buf[0],
-    .audio_tx_buffer = &audio_tx_buf[0],
+    .audio_rx_buffer = &audio_rx_buf[0][0],
+    .audio_tx_buffer = &audio_tx_buf[0][0],
     .audio_rx_size = BUFFER_SIZE,
     .audio_tx_size = BUFFER_SIZE,
     .midi_user = NULL,

@@ -21,6 +21,9 @@ static struct {
 static uint8_t tx_busy = 0;
 static usb_magna_t *magna = NULL;
 
+uint8_t circular_counter = 0;
+uint8_t buffer_buffer[512] = {0};
+
 /*static */ int usb_transmit(uint8_t epnum, uint8_t *data, uint16_t length)
 {
     int ret = MAGNA_BUSY;
@@ -47,7 +50,7 @@ int usbd_magna_class_init(usbd_context_t *ctx, uint8_t cfgidx)
     int ret = 0;
 
     /* Open Endpoints */
-    ret = usbd_ep_open(ctx, USBD_EP_AUDIO_IN,
+    /*ret = usbd_ep_open(ctx, USBD_EP_AUDIO_IN,
                        USBD_EP_ISOC_TYPE, USBD_ISOC_PACKET_SIZE);
     if (ret)
     {
@@ -66,7 +69,7 @@ int usbd_magna_class_init(usbd_context_t *ctx, uint8_t cfgidx)
     if (ret)
     {
         goto error;
-    }
+    }*/
 
     if ((ctx != NULL) && (magna != NULL))
     {
@@ -188,7 +191,7 @@ int usbd_magna_setup_endpoints(usbd_context_t *ctx,
 
             if (!ret)
             {
-                ret = usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, magna->audio_rx_buffer, magna->audio_rx_size);
+                ret = usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, &magna->audio_rx_buffer[circular_counter], magna->audio_rx_size);
             }
 
             if (!ret)
@@ -223,17 +226,20 @@ void usbd_cdc_tx(usbd_context_t *ctx)
 }
 
 
+
 void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
 {
+
     usb_magna_t *mag = (usb_magna_t *)ctx->class_data;
     if (mag)
     {
-        /*if (mag->audio_rx_complete)
-        {
-            mag->audio_rx_complete(mag->cdc_rx_buffer, length, mag->cdc_user);
-        }*/
-
-        usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, mag->audio_rx_buffer, mag->audio_rx_size);
+        memcpy(&mag->audio_rx_buffer[circular_counter],buffer_buffer,512);
+        if (circular_counter < 3) {
+            circular_counter++;
+        } else {
+            circular_counter = 0;
+        }
+        usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, mag->audio_rx_buffer[circular_counter], mag->audio_rx_size);
     }
 }
 

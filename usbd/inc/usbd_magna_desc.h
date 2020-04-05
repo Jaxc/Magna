@@ -117,11 +117,11 @@
 #define USB_AC_TERMINAL_LINE            0x0603
 #define USB_AC_TERMINAL_USB             0x0101
 #define USB_AC_INPUT_ASSOC              0x00
-#define USB_AC_INPUT_CHANNELS           0x04
-#define USB_AC_INPUT_CHANNEL_CFG        0x0300
+#define USB_AC_INPUT_CHANNELS           0x02
+#define USB_AC_INPUT_CHANNEL_CFG        0x0000
 #define USB_AC_OUTPUT_SOURCE_ID         0x01
 
-#define USB_AC_OUTPUT_CHANNELS          0x04
+#define USB_AC_OUTPUT_CHANNELS          0x02
 
 #define USBD_ENDPOINT_0_SIZE            (USB_ENDPOINT_DESC_SIZE + USB_AS_GENERAL_SIZE)
 #define USBD_ENDPOINT_1_SIZE            (USB_ENDPOINT_DESC_SIZE)

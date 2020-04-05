@@ -455,13 +455,16 @@ void usbd_data_tx_stage(usbd_context_t *ctx, uint8_t epnum, uint8_t *xfer_buff)
     }
     else if (ctx->current_state == USB_DEVICE_STATE_CONFIGURED)
     {
-      /*  switch (USB_EP_TX(epnum)) {
-        case USBD_EP_CDC_TX:
+      switch (USB_EP_TX(epnum)) {
+        case USBD_EP_AUDIO_OUT:
+            usbd_cdc_tx(ctx);
+            break;
+        case USBD_EP_AUDIO_FEEDBACK:
             usbd_cdc_tx(ctx);
             break;
         default:
             break;
-        }*/
+        }
     }
 }
 

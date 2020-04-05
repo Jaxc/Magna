@@ -63,7 +63,7 @@
 
 #define USBD_CTRL_PACKET_SIZE           0x40
 #define USBD_BULK_PACKET_SIZE           0x40
-#define USBD_ISOC_PACKET_SIZE           0x180
+#define USBD_ISOC_PACKET_SIZE           0x126
 #define USBD_FEEDBACK_SIZE              0x04
 #define USBD_INT_PACKET_SIZE            0x08
 #define USBD_FEEDBACK_PACKET_SIZE       0x08
