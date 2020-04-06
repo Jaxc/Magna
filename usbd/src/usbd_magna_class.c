@@ -25,7 +25,7 @@ static usb_magna_t *magna = NULL;
 #define BUFFERSIZE 200
 
 uint8_t circular_counter = 0;
-uint32_t usbd_internal_buffer[96*2 * 2] = {0};
+uint32_t usbd_internal_buffer[48 * 2] = {0};
 uint32_t usbd_internal_buffer_cnt = 0;
 
 struct rx_buffer_info_t {
@@ -247,23 +247,11 @@ void usbd_handle_rx_buffer(void *received_buffer_info)
                  +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
             usbd_internal_buffer[i+1] = received_buffer_info_int->data[j+3]
                  +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
-            usbd_internal_buffer[i+2] = received_buffer_info_int->data[j]
-                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
-            usbd_internal_buffer[i+3] = received_buffer_info_int->data[j+3]
-                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
-            usbd_internal_buffer[i+4] = received_buffer_info_int->data[j]
-                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
-            usbd_internal_buffer[i+5] = received_buffer_info_int->data[j+3]
-                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
-            usbd_internal_buffer[i+6] = received_buffer_info_int->data[j]
-                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
-            usbd_internal_buffer[i+7] = received_buffer_info_int->data[j+3]
-                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
-            i+=8;
+            i+=2;
         }
     }
 
-    usbd_internal_buffer_cnt ++;
+
 
 }
 
@@ -287,6 +275,9 @@ void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
     }
 
     usb_feedback_transmit();
+
+    usbd_internal_buffer_cnt ++;
+
 }
 
 void usbd_cdc_rx(usbd_context_t *ctx, uint16_t length)
@@ -307,7 +298,7 @@ void usbd_cdc_rx(usbd_context_t *ctx, uint16_t length)
 int usb_feedback_transmit(void)
 {
    uint32_t data;
-   data = 96 << 14;
+   data = (48*1) << 14;
     return usb_transmit(USBD_EP_AUDIO_FEEDBACK, (uint8_t * )&data, 4);
 }
 

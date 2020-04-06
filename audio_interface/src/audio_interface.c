@@ -8,10 +8,10 @@
 #include <string.h>
 
 #define BUFFERSIZE 200
-extern uint32_t usbd_internal_buffer[96 * 2 * 2];
+extern uint32_t usbd_internal_buffer[48 * 2 ];
 uint32_t buffer_read_ = 0;
 
-#define OUTPUT_BUFFER_SAMPLES 96 * 2
+#define OUTPUT_BUFFER_SAMPLES 48
 #define OUTPUT_BUFFER_CHANNELS 2
 #define OUTPUT_BUFFER_SIZE OUTPUT_BUFFER_SAMPLES * OUTPUT_BUFFER_CHANNELS
 
@@ -46,6 +46,9 @@ void HAL_SAI_TxCpltCallback(SAI_HandleTypeDef *hsai) {
 
     buffer_sel = (buffer_sel + 1) % 2;
     memcpy(&audio_output_buffer[buffer_sel], &usbd_internal_buffer, sizeof(usbd_internal_buffer));
+    for(uint8_t i = 0; i < OUTPUT_BUFFER_SIZE; i++) {
+
+    }
     buffer_read_++;
 }
 

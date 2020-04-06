@@ -103,10 +103,6 @@ __BKPT();
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
-    (void)usage_fault;
-    (void)mem_managa_fault;
-    (void)bus_faults;
-    (void)operation_fault;
     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
     /* USER CODE END W1_HardFault_IRQn 0 */
   }

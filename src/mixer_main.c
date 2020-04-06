@@ -20,8 +20,14 @@ uint16_t adc_data[8];
 
 int _write(int file, char *ptr, int len);
 
-extern usb_setup_packet_t setup_trace[1024];
+
+uint32_t sample_buffer[1024];
+uint8_t sample_buffer_2[1024*4];
+
 extern uint16_t trace_cnt;
+
+extern uint32_t usbd_internal_buffer_cnt;
+extern uint32_t buffer_read_;
 
 int main (void) {
     magna_hal_init();
@@ -34,6 +40,7 @@ int main (void) {
     __HAL_DBGMCU_FREEZE_TIM2();
     __HAL_DBGMCU_FREEZE_TIM3();
     __HAL_DBGMCU_FREEZE_TIM4();
+    __HAL_DBGMCU_FREEZE_TIM5();
     __HAL_DBGMCU_FREEZE_TIM6();
     __HAL_DBGMCU_FREEZE_TIM7();
     __HAL_DBGMCU_FREEZE_TIM14();
@@ -46,6 +53,7 @@ int main (void) {
     HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_1);
     //HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_2);
     HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_3);
+    HAL_TIM_Base_Start(&htim5);
     //HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_3);
     HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_1);
     HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_4);
@@ -53,8 +61,19 @@ int main (void) {
     //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 
     //HAL_ADC_Start_DMA(&hadc1, adc_data, 8);
+
+    uint32_t start_time = HAL_GetTick();
+
     while(1) {
         queue_execute();
+
+        if((HAL_GetTick() - start_time) >= 1000) {
+            start_time = HAL_GetTick();
+            usbd_internal_buffer_cnt = 0;
+            buffer_read_ = 0;
+            htim5.Instance->CNT = 0;
+
+        }
 
         //usbd_delay_ms(1000);
         //static uint8_t msg[256] = "Hello world\r\n";

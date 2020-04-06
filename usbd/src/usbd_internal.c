@@ -356,7 +356,6 @@ static void usbd_std_ep_request(usbd_context_t *ctx, usb_setup_packet_t *setup)
     }
 }
 
-usb_setup_packet_t setup_trace[1024] = {0};
 uint16_t trace_cnt = 0;
 
 
@@ -369,9 +368,6 @@ void usbd_setup_stage(usbd_context_t *ctx, usb_setup_packet_t *setup)
     setup->wValue = SWAPBYTE(&(setup->wValue));
     setup->wIndex = SWAPBYTE(&(setup->wIndex));
     setup->wLength = SWAPBYTE(&(setup->wLength));
-
-    memcpy(&setup_trace[trace_cnt], setup, sizeof(usb_setup_packet_t));
-    trace_cnt++;
 
     switch (setup->bmRequestType.recipient)
     {
