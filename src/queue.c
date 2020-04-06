@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "queue.h"
+#include "stm32f7xx.h"
 
 #define QUEUE_SIZE 32
 
@@ -29,14 +30,16 @@ uint8_t queue_write = 0;
 manga_error_code_t queue_add (queue_fcn_t queue_fcn, void *queue_data) {
     manga_error_code_t ret = MAGNA_OK;
     if (queue_fcn != NULL) {
-
+        if ((uint32_t) queue_fcn == 0xffffff) {
+            __BKPT();
+        }
         if (!queue_full()) {
             queue[queue_write].function = queue_fcn;
             queue[queue_write].data = queue_data;
 
-            if (queue_write < QUEUE_SIZE) {
-                queue_write++;
-            } else {
+            queue_write++;
+
+            if (queue_write >= QUEUE_SIZE) {
                 queue_write = 0;
             }
             ret = MAGNA_OK;
@@ -60,9 +63,9 @@ void queue_execute(void) {
         queue[queue_read].function(queue[queue_read].data);
         queue[queue_read].function = NULL;
         queue[queue_read].data = NULL;
-        if (queue_read < QUEUE_SIZE) {
-            queue_read++;
-        } else {
+
+        queue_read++;
+        if (queue_read >= QUEUE_SIZE) {
             queue_read = 0;
         }
     }

@@ -106,7 +106,7 @@ void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef *hpcd)
 }
 
 void HAL_PCD_ISOOUTIncompleteCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum) {
-
+    (void)hpcd;
     if (0 != epnum) {
         HAL_Delay(1);
     }

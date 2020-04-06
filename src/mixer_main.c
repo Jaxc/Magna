@@ -66,5 +66,5 @@ int main (void) {
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
-
+    (void)hadc;
 }

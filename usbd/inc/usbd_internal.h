@@ -188,6 +188,7 @@ int usbd_magna_setup(usbd_context_t *ctx,
 void usbd_midi_tx(usbd_context_t *ctx);
 void usbd_midi_rx(usbd_context_t *ctx, uint16_t length);
 void usbd_cdc_tx(usbd_context_t *ctx);
+void usbd_audio_rx(usbd_context_t *ctx, uint16_t length);
 void usbd_cdc_rx(usbd_context_t *ctx, uint16_t length);
 
 #endif /* USB_IF_H__ */

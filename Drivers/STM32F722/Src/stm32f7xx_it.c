@@ -94,10 +94,19 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+ uint16_t *usage_fault = (volatile uint16_t *)0xE000ED2A;
+ uint8_t *mem_managa_fault = (volatile uint8_t *)0xE000ED28;
+ uint8_t *bus_faults = (volatile uint8_t *)0xE000ED29;
+ uint32_t *operation_fault = (volatile uint32_t *)0xE000ED38;
 
+__BKPT();
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
+    (void)usage_fault;
+    (void)mem_managa_fault;
+    (void)bus_faults;
+    (void)operation_fault;
     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
     /* USER CODE END W1_HardFault_IRQn 0 */
   }

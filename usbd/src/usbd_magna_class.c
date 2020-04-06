@@ -22,9 +22,21 @@ static struct {
 static uint8_t tx_busy = 0;
 static usb_magna_t *magna = NULL;
 
+#define BUFFERSIZE 200
+
 uint8_t circular_counter = 0;
-uint8_t usbd_internal_buffer[512] = {0};
-uint8_t usbd_internal_buffer_cnt = 0;
+uint32_t usbd_internal_buffer[96*2 * 2] = {0};
+uint32_t usbd_internal_buffer_cnt = 0;
+
+struct rx_buffer_info_t {
+    uint8_t *data;
+    uint16_t length;
+};
+
+struct rx_buffer_info_t rx_buffer_info;
+
+
+int usb_feedback_transmit(void);
 
 /*static */ int usb_transmit(uint8_t epnum, uint8_t *data, uint16_t length)
 {
@@ -83,8 +95,6 @@ int usbd_magna_class_init(usbd_context_t *ctx, uint8_t cfgidx)
     {
         ret = MAGNA_FAILED;
     }
-
-error:
 
     return ret;
 }
@@ -227,15 +237,35 @@ void usbd_cdc_tx(usbd_context_t *ctx)
     }
 }
 
-void usbd_handle_rx_buffer(void *received_buffer) {
-    if (usbd_internal_buffer_cnt < 200) {
-        if (received_buffer != NULL) {
-            memcpy(received_buffer,usbd_internal_buffer,512);
+void usbd_handle_rx_buffer(void *received_buffer_info)
+{
+    if (received_buffer_info != NULL) {
+        struct rx_buffer_info_t *received_buffer_info_int = received_buffer_info;
+        uint32_t i = 0;
+        for(uint32_t j = 0; j < received_buffer_info_int->length; j += 6 ) {
+            usbd_internal_buffer[i+0] = received_buffer_info_int->data[j]
+                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
+            usbd_internal_buffer[i+1] = received_buffer_info_int->data[j+3]
+                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
+            usbd_internal_buffer[i+2] = received_buffer_info_int->data[j]
+                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
+            usbd_internal_buffer[i+3] = received_buffer_info_int->data[j+3]
+                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
+            usbd_internal_buffer[i+4] = received_buffer_info_int->data[j]
+                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
+            usbd_internal_buffer[i+5] = received_buffer_info_int->data[j+3]
+                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
+            usbd_internal_buffer[i+6] = received_buffer_info_int->data[j]
+                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
+            usbd_internal_buffer[i+7] = received_buffer_info_int->data[j+3]
+                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
+            i+=8;
         }
     }
 
-}
+    usbd_internal_buffer_cnt ++;
 
+}
 
 
 void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
@@ -244,7 +274,9 @@ void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
     usb_magna_t *mag = (usb_magna_t *)ctx->class_data;
     if (mag)
     {
-        if(queue_add(&usbd_handle_rx_buffer, &mag->audio_rx_buffer[circular_counter]) == MAGNA_OK) {
+        rx_buffer_info.data = &mag->audio_rx_buffer[circular_counter];
+        rx_buffer_info.length = length;
+        if(queue_add(&usbd_handle_rx_buffer, &rx_buffer_info) == MAGNA_OK) {
             if (circular_counter < 3) {
                 circular_counter++;
             } else {
@@ -253,10 +285,13 @@ void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
         }
         usbd_ep_receive(ctx, USBD_EP_AUDIO_OUT, &mag->audio_rx_buffer[circular_counter], mag->audio_rx_size);
     }
+
+    usb_feedback_transmit();
 }
 
 void usbd_cdc_rx(usbd_context_t *ctx, uint16_t length)
 {
+    (void)length;
     usb_magna_t *mag = (usb_magna_t *)ctx->class_data;
     if (mag)
     {
@@ -269,11 +304,21 @@ void usbd_cdc_rx(usbd_context_t *ctx, uint16_t length)
     }
 }
 
+int usb_feedback_transmit(void)
+{
+   uint32_t data;
+   data = 96 << 14;
+    return usb_transmit(USBD_EP_AUDIO_FEEDBACK, (uint8_t * )&data, 4);
+}
+
 int usb_cdc_transmit(uint8_t *data, uint16_t length)
 {
+    (void)data;
+    (void)length;
     //__disable_irq();
     //return usb_transmit(USBD_EP_CDC_TX, data, length);
     //__enable_irq();
+    return 0;
 }
 
 int usb_magna_init(usb_magna_t *usb_magna)
