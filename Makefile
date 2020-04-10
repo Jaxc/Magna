@@ -30,6 +30,11 @@ OPT = -g3 -O0
 ################S######################
 include Drivers/STM32F722/STM32F722.mk
 
+
+ifneq ($CODEC, WM8731)
+CFLAGS+=-DCODEC_WM8731
+endif
+
 #######################################
 # paths
 #######################################
@@ -77,7 +82,7 @@ C_INCLUDES = $(subst $(SPACE),$(SPACE)-I, $(C_INC))
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -Wextra -fdata-sections -ffunction-sections
 
-CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -Wextra -fdata-sections -ffunction-sections -fshort-wchar
+CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -Wextra -fdata-sections -ffunction-sections -fshort-wchar
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2

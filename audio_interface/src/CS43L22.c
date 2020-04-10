@@ -5,6 +5,8 @@
  *      Author: jaxc
  */
 
+#ifdef CODEC_CS43L22
+
 #include "CS43L22.h"
 #include "i2c.h"
 #include "gpio.h"
@@ -55,3 +57,5 @@ void init_codec (void) {
         Error_Handler();
     }
 }
+
+#endif /* CODEC_CS43L22 */
