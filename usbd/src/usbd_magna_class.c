@@ -5,6 +5,7 @@
 #include "error_codes.h"
 #include "stm32f7xx_hal.h"
 #include "queue.h"
+#include "audio_interface.h"
 
 
 static struct {
@@ -27,11 +28,6 @@ static usb_magna_t *magna = NULL;
 uint8_t circular_counter = 0;
 uint32_t usbd_internal_buffer[48 * 2] = {0};
 uint32_t usbd_internal_buffer_cnt = 0;
-
-struct rx_buffer_info_t {
-    uint8_t *data;
-    uint16_t length;
-};
 
 struct rx_buffer_info_t rx_buffer_info;
 
@@ -237,24 +233,6 @@ void usbd_cdc_tx(usbd_context_t *ctx)
     }
 }
 
-void usbd_handle_rx_buffer(void *received_buffer_info)
-{
-    if (received_buffer_info != NULL) {
-        struct rx_buffer_info_t *received_buffer_info_int = received_buffer_info;
-        uint32_t i = 0;
-        for(uint32_t j = 0; j < received_buffer_info_int->length; j += 6 ) {
-            usbd_internal_buffer[i+0] = received_buffer_info_int->data[j]
-                 +  (received_buffer_info_int->data[j+1] << 8) + (received_buffer_info_int->data[j+2] << 16);
-            usbd_internal_buffer[i+1] = received_buffer_info_int->data[j+3]
-                 +  (received_buffer_info_int->data[j+4] << 8) + (received_buffer_info_int->data[j+5] << 16);
-            i+=2;
-        }
-    }
-
-
-
-}
-
 
 void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
 {
@@ -264,7 +242,7 @@ void usbd_audio_rx(usbd_context_t *ctx, uint16_t length)
     {
         rx_buffer_info.data = &mag->audio_rx_buffer[circular_counter];
         rx_buffer_info.length = length;
-        if(queue_add(&usbd_handle_rx_buffer, &rx_buffer_info) == MAGNA_OK) {
+        if(queue_add(&audio_interface_queue_buffer, &rx_buffer_info) == MAGNA_OK) {
             if (circular_counter < 3) {
                 circular_counter++;
             } else {

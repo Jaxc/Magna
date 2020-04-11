@@ -6,8 +6,10 @@
  */
 #include "sai.h"
 #include <string.h>
+#include "audio_interface.h"
 
 #define BUFFERSIZE 200
+#define N_CIRC_BUFFER 3
 extern uint32_t usbd_internal_buffer[48 * 2 ];
 uint32_t buffer_read_ = 0;
 
@@ -15,7 +17,7 @@ uint32_t buffer_read_ = 0;
 #define OUTPUT_BUFFER_CHANNELS 2
 #define OUTPUT_BUFFER_SIZE OUTPUT_BUFFER_SAMPLES * OUTPUT_BUFFER_CHANNELS
 
-uint32_t audio_output_buffer[2][OUTPUT_BUFFER_SIZE] = {0};
+uint32_t audio_output_buffer[N_CIRC_BUFFER][OUTPUT_BUFFER_SIZE] = {0};
 uint8_t buffer_sel = 0;
 
 uint32_t audio_Input_buffer_1[OUTPUT_BUFFER_SIZE] = {0};
@@ -44,12 +46,30 @@ void HAL_SAI_TxCpltCallback(SAI_HandleTypeDef *hsai) {
     HAL_SAI_Transmit_DMA(&hsai_BlockB1, (uint8_t * )audio_output_buffer[buffer_sel], OUTPUT_BUFFER_SIZE);
     HAL_SAI_Transmit_DMA(&hsai_BlockA1, (uint8_t * )audio_output_buffer[buffer_sel], OUTPUT_BUFFER_SIZE);
 
-    buffer_sel = (buffer_sel + 1) % 2;
-    memcpy(&audio_output_buffer[buffer_sel], &usbd_internal_buffer, sizeof(usbd_internal_buffer));
+    buffer_sel = (buffer_sel + 1) % N_CIRC_BUFFER;
     for(uint8_t i = 0; i < OUTPUT_BUFFER_SIZE; i++) {
 
     }
     buffer_read_++;
+}
+
+uint32_t some_var = 0;
+
+void audio_interface_queue_buffer(void *received_buffer_info)
+{
+    if (received_buffer_info != NULL) {
+        struct rx_buffer_info_t *received_buffer_info_int = received_buffer_info;
+        uint32_t i = 0;
+        for(uint32_t j = 0; j < received_buffer_info_int->length; j += 6 ) {
+            audio_output_buffer[buffer_sel][i+0] = ((uint32_t)received_buffer_info_int->data[j+2] << 16)
+                    + ((uint32_t)received_buffer_info_int->data[j+1] << 8) + received_buffer_info_int->data[j];
+            audio_output_buffer[buffer_sel][i+1] = ((uint32_t)received_buffer_info_int->data[j+5] << 16)
+                            + ((uint32_t)received_buffer_info_int->data[j+1] << 4) + received_buffer_info_int->data[j + 3];
+            i+=2;
+        }
+    }
+
+    some_var ++;
 }
 
 void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
