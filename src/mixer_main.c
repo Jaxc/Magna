@@ -12,7 +12,6 @@
 #include "error_codes.h"
 #include <stdio.h>
 #include "usbd_internal.h"
-#include "usart.h"
 #include "audio_interface.h"
 #include "queue.h"
 
@@ -53,12 +52,9 @@ int main (void) {
     HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_1);
     //HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_2);
     HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_3);
-    HAL_TIM_Base_Start(&htim5);
     //HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_3);
     HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_1);
-    HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
     HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_4);
-    HAL_TIM_OC_Start(&htim4, TIM_CHANNEL_2);
     //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 
     //HAL_ADC_Start_DMA(&hadc1, adc_data, 8);
@@ -72,7 +68,6 @@ int main (void) {
             start_time = HAL_GetTick();
             usbd_internal_buffer_cnt = 0;
             buffer_read_ = 0;
-            htim5.Instance->CNT = 0;
 
         }
 

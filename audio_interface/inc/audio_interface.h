@@ -5,6 +5,8 @@
  *      Author: jaxc
  */
 
+#include "error_codes.h"
+
 #ifndef AUDIO_INTERFACE_INC_AUDIO_INTERFACE_H_
 #define AUDIO_INTERFACE_INC_AUDIO_INTERFACE_H_
 

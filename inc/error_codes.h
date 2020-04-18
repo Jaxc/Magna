@@ -27,7 +27,8 @@ typedef enum general_errors{
     MAGNA_NOT_IMPLEMENTED    = -5,
     MAGNA_INVALID_ARGUMENT   = -6,
     MAGNA_QUEUE_FULL         = -7,
-    MAGNA_HAL_ERROR         = -8
+    MAGNA_HAL_ERROR          = -8,
+    MAGNA_HAL_BUSY           = -9
 } manga_error_code_t;
 
 #endif /* INC_ERROR_CODES_H_ */

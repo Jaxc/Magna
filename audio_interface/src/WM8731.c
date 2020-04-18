@@ -18,7 +18,7 @@ const struct device_registers WM8731_regs[] = {
     {WM8731_REG_RIGHT_LINE_IN, 0x0017},
     {WM8731_REG_LEFT_PHN_OUT,  0x0079},
     {WM8731_REG_RIGHT_PHN_OUT, 0x0079},
-    {WM8731_REG_ANALOG_PATH,   0x0012},
+    {WM8731_REG_ANALOG_PATH,   0x0014},
     {WM8731_REG_DIGITAL_PATH,  0x0000},
     {WM8731_REG_POWER_DOWN,    0x0000},
     {WM8731_REG_DIGITAL_IF,    0x000A},
@@ -36,7 +36,7 @@ void init_codec (void) {
 
     for (uint8_t i = 0; i < sizeof(WM8731_regs)/sizeof(WM8731_regs[0]); i++) {
         data = WM8731_regs[i].data;
-        status = HAL_I2C_Mem_Write(&hi2c2, CODEC_ADDRESS, WM8731_regs[i].addr + ((data && 0xFF00) >> 8), 0x01, (uint8_t *)&data, 0x01, 1000);
+        status = HAL_I2C_Mem_Write(&hi2c1, CODEC_ADDRESS, WM8731_regs[i].addr + ((data && 0xFF00) >> 8), 0x01, (uint8_t *)&data, 0x01, 1000);
         if (HAL_OK != status) {
             Error_Handler();
         }

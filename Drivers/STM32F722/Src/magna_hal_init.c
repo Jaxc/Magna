@@ -12,10 +12,8 @@
 #include "dma.h"
 #include "adc.h"
 #include "tim.h"
-#include "usart.h"
 #include "gpio.h"
 #include "sai.h"
-#include "spi.h"
 #include "i2c.h"
 #include "gpio.h"
 
@@ -57,15 +55,9 @@ void magna_hal_init(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
-  MX_TIM3_Init();
-  MX_TIM4_Init();
-  MX_TIM5_Init();
-  MX_TIM11_Init();
-  MX_USART3_UART_Init();
   MX_SAI2_Init();
   MX_SAI1_Init();
-  MX_SPI2_Init();
-  MX_I2C2_Init();
+  MX_I2C1_Init();
   MX_GPIO_Init();
 
   usb_magna_init(&magna_buffer_config);
