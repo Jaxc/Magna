@@ -35,10 +35,11 @@ void init_codec (void) {
     //HAL_GPIO_WritePin(CODEC_NRST_GPIO_Port,CODEC_NRST_Pin, GPIO_PIN_SET);
 
     for (uint8_t i = 0; i < sizeof(WM8731_regs)/sizeof(WM8731_regs[0]); i++) {
+        HAL_Delay(100);
         data = WM8731_regs[i].data;
         status = HAL_I2C_Mem_Write(&hi2c1, CODEC_ADDRESS, WM8731_regs[i].addr + ((data && 0xFF00) >> 8), 0x01, (uint8_t *)&data, 0x01, 1000);
         if (HAL_OK != status) {
-            Error_Handler();
+            //Error_Handler();
         }
     }
 }

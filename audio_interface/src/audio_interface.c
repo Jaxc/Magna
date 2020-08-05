@@ -11,9 +11,10 @@
 #define BUFFERSIZE 200
 #define N_CIRC_BUFFER 2
 extern uint32_t usbd_internal_buffer[48 * 2 ];
-uint32_t buffer_read_ = 0;
+uint32_t buffer_read_1 = 0;
+uint32_t buffer_read_2 = 0;
 
-#define OUTPUT_BUFFER_SAMPLES 4800
+#define OUTPUT_BUFFER_SAMPLES 48
 #define OUTPUT_BUFFER_CHANNELS 2
 #define OUTPUT_BUFFER_SIZE OUTPUT_BUFFER_SAMPLES * OUTPUT_BUFFER_CHANNELS
 
@@ -188,7 +189,7 @@ void sai_buffer_1_complete_callback(SAI_HandleTypeDef *hsai) {
 
     //queue_add(&audio_interface_queue_buffer, &rx_buffer_info_audio);
 
-    buffer_read_++;
+    buffer_read_1++;
     memcpy(audio_output_buffer[0], &audio_Input_buffer_1[0], sizeof(audio_Input_buffer_1[0]));
 }
 
@@ -207,7 +208,7 @@ void sai_buffer_2_complete_callback(SAI_HandleTypeDef *hsai) {
 
     //queue_add(&audio_interface_queue_buffer, &rx_buffer_info_audio);
 
-    buffer_read_++;
+    buffer_read_2++;
     memcpy(audio_output_buffer[1], &audio_Input_buffer_1[1], sizeof(audio_Input_buffer_1[1]));
 }
 

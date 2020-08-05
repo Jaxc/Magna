@@ -49,7 +49,7 @@ void init_codec (void) {
         data = CS43L22_regs[i].data;
         status = HAL_I2C_Mem_Write(&hi2c2, CODEC_ADDRESS, CS43L22_regs[i].addr, 0x01, &data, 0x01, 1000);
         if (HAL_OK != status) {
-            Error_Handler();
+            //Error_Handler();
         }
     }
 
