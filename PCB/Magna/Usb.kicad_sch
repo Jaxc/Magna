@@ -865,6 +865,9 @@
   (junction (at 139.7 172.72) (diameter 0) (color 0 0 0 0)
     (uuid 1c47254d-d924-4635-959d-b2d76cee83c6)
   )
+  (junction (at 59.69 22.86) (diameter 0) (color 0 0 0 0)
+    (uuid 1f88f437-5767-4308-8502-05f9b4c0e3bb)
+  )
   (junction (at 157.48 139.7) (diameter 0) (color 0 0 0 0)
     (uuid 21934f83-671b-43fe-a75e-5b939d005760)
   )
@@ -953,7 +956,7 @@
     (stroke (width 0) (type default))
     (uuid 002708d3-80ed-416c-9705-e010c212a368)
   )
-  (wire (pts (xy 30.48 22.86) (xy 40.64 22.86))
+  (wire (pts (xy 30.48 22.86) (xy 59.69 22.86))
     (stroke (width 0) (type default))
     (uuid 02a5e832-ad53-4f84-9ca2-bcdd70d71920)
   )
@@ -1072,6 +1075,10 @@
     (stroke (width 0) (type default))
     (uuid 43b33535-a195-48d9-b05e-e975738c29b6)
   )
+  (wire (pts (xy 59.69 38.1) (xy 59.69 43.18))
+    (stroke (width 0) (type default))
+    (uuid 446a2395-1cca-4aef-8595-eeccb9da6b19)
+  )
   (wire (pts (xy 154.94 139.7) (xy 154.94 137.16))
     (stroke (width 0) (type default))
     (uuid 47293962-1ff2-4a21-8657-cecbfec8c572)
@@ -1137,6 +1144,10 @@
     (stroke (width 0) (type default))
     (uuid 68e390d1-e6a9-45b9-81ec-73e18c5c149e)
   )
+  (wire (pts (xy 59.69 22.86) (xy 66.04 22.86))
+    (stroke (width 0) (type default))
+    (uuid 70eb089f-18b6-4bb3-82eb-91c74f0e70ea)
+  )
   (bus (pts (xy 200.66 99.06) (xy 200.66 96.52))
     (stroke (width 0) (type default))
     (uuid 7111d187-cd43-4596-a306-6e737389a87c)
@@ -1195,10 +1206,6 @@
     (stroke (width 0) (type default))
     (uuid 8d195780-ad55-484b-ba06-ccabf13d72b4)
   )
-  (wire (pts (xy 40.64 20.32) (xy 40.64 22.86))
-    (stroke (width 0) (type default))
-    (uuid 8d8a1a53-7793-413a-ae30-1422f7a577e6)
-  )
   (wire (pts (xy 180.34 88.9) (xy 180.34 91.44))
     (stroke (width 0) (type default))
     (uuid 927fabe4-4117-419b-80b0-88e64e52ea47)
@@ -1243,6 +1250,10 @@
   (wire (pts (xy 177.8 124.46) (xy 198.12 124.46))
     (stroke (width 0) (type default))
     (uuid a94a8a5b-7cab-472c-8c9c-9e7f0b53883b)
+  )
+  (wire (pts (xy 59.69 22.86) (xy 59.69 30.48))
+    (stroke (width 0) (type default))
+    (uuid ac6589c7-6100-4219-be1e-fc01a07c39fc)
   )
   (bus (pts (xy 200.66 91.44) (xy 218.44 91.44))
     (stroke (width 0) (type default))
@@ -1503,6 +1514,14 @@
     (uuid fb2b7733-914b-4660-b2ea-6871365dfd59)
   )
 
+  (global_label "VBUS_OUT" (shape input) (at 66.04 22.86 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 7b19c082-d524-44e4-a0a3-c338154f7df1)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 78.52 22.86 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+  )
+
   (hierarchical_label "USB_PHY_RESET" (shape input) (at 218.44 129.54 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 77c863bf-0ff9-44db-87c2-91ad1a1b8456)
@@ -1527,7 +1546,7 @@
   (symbol (lib_id "Interface_USB:USB3300-EZK") (at 157.48 109.22 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 04b2aef2-a11c-49fd-87bd-6b2758bb792d)
-    (property "Reference" "U702" (at 161.9759 135.0725 0)
+    (property "Reference" "U801" (at 161.9759 135.0725 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "USB3300-EZK" (at 161.9759 136.9935 0)
@@ -1574,11 +1593,8 @@
     (pin "9" (uuid 2c52750c-dcaf-4918-b8f5-a9c4398b3763))
     (instances
       (project "Magna"
-        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/46a2120f-089e-4436-ab6c-5e02739b600f"
-          (reference "U702") (unit 1)
-        )
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "U802") (unit 1)
+          (reference "U801") (unit 1)
         )
       )
     )
@@ -1587,7 +1603,7 @@
   (symbol (lib_id "Device:R") (at 116.84 91.44 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 07aae19a-fe90-48a8-80ee-c95ea4556e47)
-    (property "Reference" "R801" (at 116.84 87.4141 90)
+    (property "Reference" "R803" (at 116.84 87.4141 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10k" (at 116.84 89.3351 90)
@@ -1604,7 +1620,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "R801") (unit 1)
+          (reference "R803") (unit 1)
         )
       )
     )
@@ -1679,7 +1695,7 @@
   (symbol (lib_id "Device:C") (at 119.38 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1456b0ce-232a-4003-a7df-c5bb3e4996ce)
-    (property "Reference" "C805" (at 122.301 178.4263 0)
+    (property "Reference" "C802" (at 122.301 178.4263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 122.301 180.3473 0)
@@ -1699,7 +1715,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "C805") (unit 1)
+          (reference "C802") (unit 1)
         )
       )
     )
@@ -1708,7 +1724,7 @@
   (symbol (lib_id "power:VBUS") (at 48.26 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 21994984-c583-472a-8eb4-29353e8ff438)
-    (property "Reference" "#PWR0808" (at 48.26 87.63 0)
+    (property "Reference" "#PWR0806" (at 48.26 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 48.26 80.3181 0)
@@ -1724,7 +1740,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0808") (unit 1)
+          (reference "#PWR0806") (unit 1)
         )
       )
     )
@@ -1733,7 +1749,7 @@
   (symbol (lib_id "power:GND") (at 129.54 187.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 27506733-60f7-4fee-87f6-957b969f4d99)
-    (property "Reference" "#PWR0817" (at 129.54 194.31 0)
+    (property "Reference" "#PWR0812" (at 129.54 194.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 129.54 192.0955 0)
@@ -1749,7 +1765,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0817") (unit 1)
+          (reference "#PWR0812") (unit 1)
         )
       )
     )
@@ -1758,7 +1774,7 @@
   (symbol (lib_id "Device:R") (at 53.34 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 29ccf9bc-4e73-431b-8f29-589570bbe5bf)
-    (property "Reference" "R804" (at 55.118 165.7263 0)
+    (property "Reference" "R802" (at 55.118 165.7263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "5k1" (at 55.118 167.6473 0)
@@ -1778,7 +1794,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "R804") (unit 1)
+          (reference "R802") (unit 1)
         )
       )
     )
@@ -1787,7 +1803,7 @@
   (symbol (lib_id "power:VDD") (at 152.4 76.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 30ed3afe-73e9-4a82-8fca-dd916a400cd8)
-    (property "Reference" "#PWR0807" (at 152.4 80.01 0)
+    (property "Reference" "#PWR0813" (at 152.4 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDD" (at 152.4 72.6981 0)
@@ -1803,7 +1819,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0807") (unit 1)
+          (reference "#PWR0813") (unit 1)
         )
       )
     )
@@ -1812,7 +1828,7 @@
   (symbol (lib_id "power:VDD") (at 101.6 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 311d16e8-32cd-415b-aa32-7b1bcb42be33)
-    (property "Reference" "#PWR0810" (at 101.6 123.19 0)
+    (property "Reference" "#PWR0808" (at 101.6 123.19 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDD" (at 101.6 115.8781 0)
@@ -1828,7 +1844,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0810") (unit 1)
+          (reference "#PWR0808") (unit 1)
         )
       )
     )
@@ -1837,7 +1853,7 @@
   (symbol (lib_id "Device:C") (at 238.76 39.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 38d7eaa0-9e9e-4fe7-9a1f-64ae21e94072)
-    (property "Reference" "C803" (at 241.681 38.7263 0)
+    (property "Reference" "C806" (at 241.681 38.7263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4.7uF" (at 241.681 40.6473 0)
@@ -1857,7 +1873,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "C803") (unit 1)
+          (reference "C806") (unit 1)
         )
       )
     )
@@ -1866,7 +1882,7 @@
   (symbol (lib_id "power:GND") (at 238.76 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 42c180e3-2cb5-414d-b490-d1f0b0a77e0e)
-    (property "Reference" "#PWR0806" (at 238.76 52.07 0)
+    (property "Reference" "#PWR0816" (at 238.76 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 238.76 49.8555 0)
@@ -1882,35 +1898,32 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0806") (unit 1)
+          (reference "#PWR0816") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "power:VBUS") (at 40.64 20.32 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 59.69 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 4e3d180d-2f0f-4702-8001-21225473a908)
-    (property "Reference" "#PWR0902" (at 40.64 24.13 0)
+    (uuid 467376db-2096-4978-9d83-a8ccdc24b92d)
+    (property "Reference" "#PWR0805" (at 59.69 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "VBUS" (at 40.64 16.8181 0)
+    (property "Value" "GND" (at 59.69 47.3155 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 40.64 20.32 0)
+    (property "Footprint" "" (at 59.69 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 40.64 20.32 0)
+    (property "Datasheet" "" (at 59.69 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 76b637ec-0d9a-4286-ad60-b4b366b099bc))
+    (pin "1" (uuid cf5acff4-b05b-4e9b-952a-a950a03e1764))
     (instances
       (project "Magna"
-        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0902") (unit 1)
-        )
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0818") (unit 1)
+          (reference "#PWR0805") (unit 1)
         )
       )
     )
@@ -1919,7 +1932,7 @@
   (symbol (lib_id "Device:C") (at 218.44 39.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5d55d3e1-dff1-421f-bf87-aca5afbd0a41)
-    (property "Reference" "C802" (at 221.361 38.7263 0)
+    (property "Reference" "C805" (at 221.361 38.7263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4.7uF" (at 221.361 40.6473 0)
@@ -1939,7 +1952,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "C802") (unit 1)
+          (reference "C805") (unit 1)
         )
       )
     )
@@ -1948,7 +1961,7 @@
   (symbol (lib_id "Device:C") (at 139.7 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 61a0bfc7-e294-4e4a-a625-e9ab4d08814c)
-    (property "Reference" "C806" (at 142.621 178.4263 0)
+    (property "Reference" "C803" (at 142.621 178.4263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 142.621 180.3473 0)
@@ -1968,7 +1981,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "C806") (unit 1)
+          (reference "C803") (unit 1)
         )
       )
     )
@@ -1977,7 +1990,7 @@
   (symbol (lib_id "Device:R") (at 43.18 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 63084bd7-5fa3-42e2-94f2-00cd6b1599e2)
-    (property "Reference" "R803" (at 44.958 165.7263 0)
+    (property "Reference" "R801" (at 44.958 165.7263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "5k1" (at 44.958 167.6473 0)
@@ -1997,7 +2010,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "R803") (unit 1)
+          (reference "R801") (unit 1)
         )
       )
     )
@@ -2031,7 +2044,7 @@
   (symbol (lib_id "power:GND") (at 127 142.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 96d5356a-14af-4359-bb1b-92934faeff1a)
-    (property "Reference" "#PWR0813" (at 127 148.59 0)
+    (property "Reference" "#PWR0810" (at 127 148.59 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 127 146.3755 0)
@@ -2047,7 +2060,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0813") (unit 1)
+          (reference "#PWR0810") (unit 1)
         )
       )
     )
@@ -2056,7 +2069,7 @@
   (symbol (lib_id "Device:C") (at 160.02 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a9682ee1-9e54-42ef-aec6-9a0424557000)
-    (property "Reference" "C807" (at 162.941 178.4263 0)
+    (property "Reference" "C804" (at 162.941 178.4263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 162.941 180.3473 0)
@@ -2076,7 +2089,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "C807") (unit 1)
+          (reference "C804") (unit 1)
         )
       )
     )
@@ -2114,7 +2127,7 @@
   (symbol (lib_id "power:VDD") (at 129.54 170.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cda52629-2cd5-4674-bef8-c2c3f207456d)
-    (property "Reference" "#PWR0815" (at 129.54 173.99 0)
+    (property "Reference" "#PWR0811" (at 129.54 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDD" (at 129.54 166.6781 0)
@@ -2130,7 +2143,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0815") (unit 1)
+          (reference "#PWR0811") (unit 1)
         )
       )
     )
@@ -2164,7 +2177,7 @@
   (symbol (lib_id "power:GND") (at 218.44 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d3f6d394-5d8d-4cb9-8913-a2c4ab53dd9e)
-    (property "Reference" "#PWR0805" (at 218.44 52.07 0)
+    (property "Reference" "#PWR0815" (at 218.44 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 218.44 49.8555 0)
@@ -2180,7 +2193,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0805") (unit 1)
+          (reference "#PWR0815") (unit 1)
         )
       )
     )
@@ -2189,7 +2202,7 @@
   (symbol (lib_id "Skrooterlib:SHIELD") (at 17.78 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d74af502-b482-4775-80e0-5770df06aa3b)
-    (property "Reference" "#PWR0802" (at 17.78 48.26 0)
+    (property "Reference" "#PWR0801" (at 17.78 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "SHIELD" (at 17.653 46.9091 0)
@@ -2205,7 +2218,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0802") (unit 1)
+          (reference "#PWR0801") (unit 1)
         )
       )
     )
@@ -2214,7 +2227,7 @@
   (symbol (lib_id "Skrooterlib:SHIELD") (at 20.32 132.08 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e3eb11de-9839-4fec-b743-627ddd36c0dd)
-    (property "Reference" "#PWR0811" (at 20.32 137.16 0)
+    (property "Reference" "#PWR0802" (at 20.32 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "SHIELD" (at 20.193 135.8091 0)
@@ -2230,7 +2243,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0811") (unit 1)
+          (reference "#PWR0802") (unit 1)
         )
       )
     )
@@ -2239,7 +2252,7 @@
   (symbol (lib_id "power:GND") (at 27.94 132.08 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e720e595-b15f-402b-a6e4-1f66fda155fa)
-    (property "Reference" "#PWR0812" (at 27.94 138.43 0)
+    (property "Reference" "#PWR0804" (at 27.94 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 27.94 136.2155 0)
@@ -2255,7 +2268,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0812") (unit 1)
+          (reference "#PWR0804") (unit 1)
         )
       )
     )
@@ -2264,7 +2277,7 @@
   (symbol (lib_id "Device:C") (at 99.06 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e8292cfd-97d8-4c2b-80c6-33bc73f0491a)
-    (property "Reference" "C804" (at 101.981 178.4263 0)
+    (property "Reference" "C801" (at 101.981 178.4263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 101.981 180.3473 0)
@@ -2284,7 +2297,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "C804") (unit 1)
+          (reference "C801") (unit 1)
         )
       )
     )
@@ -2293,7 +2306,7 @@
   (symbol (lib_id "Device:R") (at 127 135.89 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e9272910-c7eb-46cc-ad14-43912e7eea38)
-    (property "Reference" "R802" (at 128.778 135.2463 0)
+    (property "Reference" "R804" (at 128.778 135.2463 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "12k" (at 128.778 137.1673 0)
@@ -2310,7 +2323,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "R802") (unit 1)
+          (reference "R804") (unit 1)
         )
       )
     )
@@ -2319,7 +2332,7 @@
   (symbol (lib_id "power:GND") (at 48.26 177.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fc0ca43c-26f3-4ef3-ad00-53b69abb6b21)
-    (property "Reference" "#PWR0816" (at 48.26 184.15 0)
+    (property "Reference" "#PWR0807" (at 48.26 184.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 48.26 181.9355 0)
@@ -2335,7 +2348,33 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
-          (reference "#PWR0816") (unit 1)
+          (reference "#PWR0807") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 59.69 34.29 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid fcb2dc3a-fc00-4b55-9dbc-642de1ce0469)
+    (property "Reference" "C807" (at 63.5 33.02 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "120uF" (at 63.5 35.56 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "" (at 60.6552 38.1 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 59.69 34.29 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "2" (uuid 4a0e799d-fba3-42bf-b261-8d7094c94c5d))
+    (pin "1" (uuid a878777d-b3f1-4292-98a6-c059bd173452))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/88a21758-36a3-49a3-837c-3425b2f619de"
+          (reference "C807") (unit 1)
         )
       )
     )

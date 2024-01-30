@@ -451,6 +451,57 @@
         )
       )
     )
+    (symbol "Power_Management:AP2171W" (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 -6.35 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Value" "AP2171W" (at -7.62 6.35 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 -10.16 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP2161.pdf" (at 0 1.27 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "Limit USB Active High" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Current limited power switch, single channel, SOT-23-5" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "SOT?23*" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "AP2171W_0_1"
+        (rectangle (start -7.62 5.08) (end 7.62 -5.08)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "AP2171W_1_1"
+        (pin power_out line (at 10.16 2.54 180) (length 2.54)
+          (name "OUT" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin power_in line (at 0 -7.62 90) (length 2.54)
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin open_collector line (at 10.16 -2.54 180) (length 2.54)
+          (name "~{FLG}" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+        (pin input line (at -10.16 -2.54 0) (length 2.54)
+          (name "EN" (effects (font (size 1.27 1.27))))
+          (number "4" (effects (font (size 1.27 1.27))))
+        )
+        (pin power_in line (at -10.16 2.54 0) (length 2.54)
+          (name "IN" (effects (font (size 1.27 1.27))))
+          (number "5" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "Regulator_Linear:AMS1117-5.0" (in_bom yes) (on_board yes)
       (property "Reference" "U" (at -3.81 3.175 0)
         (effects (font (size 1.27 1.27)))
@@ -937,6 +988,12 @@
   (junction (at 60.96 101.6) (diameter 0) (color 0 0 0 0)
     (uuid 413eff5a-26fb-4ba5-be9d-6c05bb609292)
   )
+  (junction (at 45.72 35.56) (diameter 0) (color 0 0 0 0)
+    (uuid 44179e1e-e03d-4a4e-ba83-eb7f5e849661)
+  )
+  (junction (at 278.13 40.64) (diameter 0) (color 0 0 0 0)
+    (uuid 4f9c9570-8e36-453c-9a91-e4d3e61250f6)
+  )
   (junction (at 139.7 160.02) (diameter 0) (color 0 0 0 0)
     (uuid 56a64ab4-b95b-4eb0-983f-c0b26fb40b85)
   )
@@ -952,14 +1009,17 @@
   (junction (at 132.08 101.6) (diameter 0) (color 0 0 0 0)
     (uuid 73548acf-9927-4d23-81e7-13af43b2e7c1)
   )
-  (junction (at 60.96 114.3) (diameter 0) (color 0 0 0 0)
-    (uuid 874b054d-80c4-4abe-a41f-b144f5c705ed)
-  )
   (junction (at 124.46 49.53) (diameter 0) (color 0 0 0 0)
     (uuid 88dd9826-3bea-49d8-8582-215bc2297640)
   )
+  (junction (at 199.39 35.56) (diameter 0) (color 0 0 0 0)
+    (uuid 9113d9c1-8e57-4fd0-bc5b-5245c3dc6664)
+  )
   (junction (at 81.28 101.6) (diameter 0) (color 0 0 0 0)
     (uuid 9eac806f-d514-4b12-b82d-9d2330b1a95c)
+  )
+  (junction (at 245.11 35.56) (diameter 0) (color 0 0 0 0)
+    (uuid a259b090-27a3-4332-b322-cccd44371b66)
   )
   (junction (at 149.86 160.02) (diameter 0) (color 0 0 0 0)
     (uuid a7343484-9647-44fb-9c49-596e985bf287)
@@ -987,6 +1047,9 @@
   )
   (junction (at 200.66 101.6) (diameter 0) (color 0 0 0 0)
     (uuid d3446cc0-660f-45e9-814e-8d54968f47aa)
+  )
+  (junction (at 231.14 52.07) (diameter 0) (color 0 0 0 0)
+    (uuid df4938ff-60d3-4d3c-8872-5a1f13774a6a)
   )
   (junction (at 83.82 35.56) (diameter 0) (color 0 0 0 0)
     (uuid e014ffcc-41fb-464a-a16e-661766ef7999)
@@ -1021,6 +1084,10 @@
     (stroke (width 0) (type default))
     (uuid 0a492b22-4f92-47ea-99cc-adaf9dec0325)
   )
+  (wire (pts (xy 199.39 45.72) (xy 199.39 49.53))
+    (stroke (width 0) (type default))
+    (uuid 0be66b04-96f2-4ddd-a1af-82853bd5bbdb)
+  )
   (wire (pts (xy 132.08 35.56) (xy 132.08 45.72))
     (stroke (width 0) (type default))
     (uuid 0f06cddd-0111-4e84-b2f4-2c25fbe47fbe)
@@ -1045,6 +1112,10 @@
     (stroke (width 0) (type default))
     (uuid 18834018-d781-4088-b329-27bf6d36c34b)
   )
+  (wire (pts (xy 25.4 121.92) (xy 60.96 121.92))
+    (stroke (width 0) (type default))
+    (uuid 1a299d40-ca80-48d4-b19d-89368ac303d3)
+  )
   (wire (pts (xy 81.28 101.6) (xy 86.36 101.6))
     (stroke (width 0) (type default))
     (uuid 1bd443df-690f-408f-a990-bbea4f363580)
@@ -1068,6 +1139,10 @@
   (wire (pts (xy 99.06 101.6) (xy 99.06 106.68))
     (stroke (width 0) (type default))
     (uuid 258a53b5-1a54-481c-82a9-d32ae713218c)
+  )
+  (wire (pts (xy 245.11 35.56) (xy 248.92 35.56))
+    (stroke (width 0) (type default))
+    (uuid 26af6571-b34f-4d45-a1d3-8703cd35c6c7)
   )
   (wire (pts (xy 60.96 114.3) (xy 63.5 114.3))
     (stroke (width 0) (type default))
@@ -1097,6 +1172,14 @@
     (stroke (width 0) (type default))
     (uuid 317ea81d-ee4f-4175-b535-741ad3d47b99)
   )
+  (wire (pts (xy 245.11 49.53) (xy 245.11 52.07))
+    (stroke (width 0) (type default))
+    (uuid 345ae436-2f17-4faa-b6b7-1123c93868f8)
+  )
+  (wire (pts (xy 278.13 36.83) (xy 278.13 40.64))
+    (stroke (width 0) (type default))
+    (uuid 35f52d53-9838-4a38-8cab-bfbe4215308a)
+  )
   (wire (pts (xy 45.72 35.56) (xy 55.88 35.56))
     (stroke (width 0) (type default))
     (uuid 36592b8b-e695-402e-89cd-fb7be34fe032)
@@ -1117,6 +1200,10 @@
     (stroke (width 0) (type default))
     (uuid 3fb37edc-1296-4ae7-814f-3ebf5f822e70)
   )
+  (wire (pts (xy 256.54 35.56) (xy 260.35 35.56))
+    (stroke (width 0) (type default))
+    (uuid 421d4b79-aa4b-4165-818c-8308c5f45456)
+  )
   (wire (pts (xy 124.46 60.96) (xy 124.46 66.04))
     (stroke (width 0) (type default))
     (uuid 4302933a-3069-4b92-b54a-fe05bb2e7e0e)
@@ -1133,6 +1220,10 @@
     (stroke (width 0) (type default))
     (uuid 46b1f783-83cc-4f18-b3e7-6b8afc84b57d)
   )
+  (wire (pts (xy 199.39 35.56) (xy 199.39 38.1))
+    (stroke (width 0) (type default))
+    (uuid 4c4faedb-d73d-4c8b-9f65-8c99dcf8bb92)
+  )
   (wire (pts (xy 193.04 101.6) (xy 200.66 101.6))
     (stroke (width 0) (type default))
     (uuid 4f6c781e-fde1-4221-beec-2de727faeff6)
@@ -1145,9 +1236,9 @@
     (stroke (width 0) (type default))
     (uuid 55affbcb-abe8-461e-9844-3494980e373a)
   )
-  (wire (pts (xy 63.5 116.84) (xy 60.96 116.84))
+  (wire (pts (xy 278.13 27.94) (xy 278.13 29.21))
     (stroke (width 0) (type default))
-    (uuid 58c44099-c22c-4f51-a99e-7676592866d4)
+    (uuid 5d05d3ae-9c20-410b-86b6-e8ec07ad1b38)
   )
   (wire (pts (xy 111.76 165.1) (xy 111.76 170.18))
     (stroke (width 0) (type default))
@@ -1165,6 +1256,10 @@
     (stroke (width 0) (type default))
     (uuid 68d7583a-0912-4694-8e45-5f457da5cf00)
   )
+  (wire (pts (xy 45.72 35.56) (xy 45.72 48.26))
+    (stroke (width 0) (type default))
+    (uuid 68e29013-5d6e-4e33-aae6-e39a504fd6be)
+  )
   (wire (pts (xy 137.16 49.53) (xy 124.46 49.53))
     (stroke (width 0) (type default))
     (uuid 6aac9180-c8ef-44f9-be91-6706acdb7697)
@@ -1177,13 +1272,17 @@
     (stroke (width 0) (type default))
     (uuid 6df61488-6086-4f05-ad9e-4045306b32ff)
   )
+  (wire (pts (xy 278.13 40.64) (xy 241.3 40.64))
+    (stroke (width 0) (type default))
+    (uuid 6f1674a7-ee15-4274-ad7d-709610dd5768)
+  )
+  (wire (pts (xy 245.11 35.56) (xy 245.11 41.91))
+    (stroke (width 0) (type default))
+    (uuid 733c7ecb-06a3-4428-bb07-150984983f71)
+  )
   (wire (pts (xy 132.08 119.38) (xy 132.08 129.54))
     (stroke (width 0) (type default))
     (uuid 73ceb298-7bee-4b59-92cf-399522d63dc9)
-  )
-  (wire (pts (xy 60.96 116.84) (xy 60.96 114.3))
-    (stroke (width 0) (type default))
-    (uuid 74cd2085-26ce-487d-9c1b-dbcb5d189922)
   )
   (wire (pts (xy 71.12 127) (xy 71.12 129.54))
     (stroke (width 0) (type default))
@@ -1193,9 +1292,21 @@
     (stroke (width 0) (type default))
     (uuid 78bfbbd7-ea24-4f1a-96b9-51fb7dcecf9b)
   )
+  (wire (pts (xy 63.5 116.84) (xy 60.96 116.84))
+    (stroke (width 0) (type default))
+    (uuid 7970c6cb-b9c4-45d9-81b0-1ef2dbd05e1c)
+  )
   (wire (pts (xy 154.94 101.6) (xy 160.02 101.6))
     (stroke (width 0) (type default))
     (uuid 7ac2ec74-e3bb-498d-a1b7-3928c06d9da8)
+  )
+  (wire (pts (xy 173.99 35.56) (xy 173.99 33.02))
+    (stroke (width 0) (type default))
+    (uuid 7ae36fbb-8241-401d-b837-551a499d3e79)
+  )
+  (wire (pts (xy 173.99 35.56) (xy 184.15 35.56))
+    (stroke (width 0) (type default))
+    (uuid 7d5f9bae-3a45-428c-82cb-7fad587441a2)
   )
   (wire (pts (xy 160.02 101.6) (xy 177.8 101.6))
     (stroke (width 0) (type default))
@@ -1220,6 +1331,10 @@
   (wire (pts (xy 109.22 38.1) (xy 109.22 35.56))
     (stroke (width 0) (type default))
     (uuid 89b38d7c-6205-4456-8305-c0428eecc61e)
+  )
+  (wire (pts (xy 45.72 55.88) (xy 45.72 66.04))
+    (stroke (width 0) (type default))
+    (uuid 922d048a-8c17-49ee-a3af-e51a3cf21ef1)
   )
   (wire (pts (xy 106.68 165.1) (xy 111.76 165.1))
     (stroke (width 0) (type default))
@@ -1253,6 +1368,10 @@
     (stroke (width 0) (type default))
     (uuid af1f794e-047d-4b47-9301-2ef79bffacbc)
   )
+  (wire (pts (xy 60.96 116.84) (xy 60.96 121.92))
+    (stroke (width 0) (type default))
+    (uuid af5002aa-8244-4c2c-90fc-6129c772464f)
+  )
   (wire (pts (xy 68.58 55.88) (xy 68.58 66.04))
     (stroke (width 0) (type default))
     (uuid b0d0586d-9a96-4ff0-a9b1-694ac781d4c7)
@@ -1277,6 +1396,14 @@
     (stroke (width 0) (type default))
     (uuid b7cb63b1-b6be-475a-aa77-fc289149d94e)
   )
+  (wire (pts (xy 218.44 40.64) (xy 220.98 40.64))
+    (stroke (width 0) (type default))
+    (uuid b7cdb9b8-b39c-4f17-beb6-e46c42c42251)
+  )
+  (wire (pts (xy 199.39 35.56) (xy 220.98 35.56))
+    (stroke (width 0) (type default))
+    (uuid b9fa26f1-2127-416d-981e-53496de1f70a)
+  )
   (wire (pts (xy 25.4 99.06) (xy 25.4 101.6))
     (stroke (width 0) (type default))
     (uuid ba6617bd-efce-45b9-bca6-80a633c2fb62)
@@ -1297,9 +1424,21 @@
     (stroke (width 0) (type default))
     (uuid c5d156cd-4c7b-426a-919f-51bd426017a9)
   )
+  (wire (pts (xy 241.3 35.56) (xy 245.11 35.56))
+    (stroke (width 0) (type default))
+    (uuid c6d47e29-653b-4e8f-abf3-8d0b350b9f8c)
+  )
+  (wire (pts (xy 231.14 52.07) (xy 231.14 53.34))
+    (stroke (width 0) (type default))
+    (uuid cceff223-258f-4181-8ae5-28fa4806f0a6)
+  )
   (wire (pts (xy 109.22 49.53) (xy 109.22 53.34))
     (stroke (width 0) (type default))
     (uuid ce9669e8-7306-4284-93b4-e9ff4595cabc)
+  )
+  (wire (pts (xy 278.13 40.64) (xy 281.94 40.64))
+    (stroke (width 0) (type default))
+    (uuid ceffa73c-311e-4cc6-9425-cb5ea325b879)
   )
   (wire (pts (xy 147.32 63.5) (xy 147.32 66.04))
     (stroke (width 0) (type default))
@@ -1345,6 +1484,10 @@
     (stroke (width 0) (type default))
     (uuid e3eba7c9-39b8-4704-b876-7c04176ad263)
   )
+  (wire (pts (xy 191.77 35.56) (xy 199.39 35.56))
+    (stroke (width 0) (type default))
+    (uuid e5d72ecf-5973-4299-b6f9-abac0acb8e59)
+  )
   (wire (pts (xy 91.44 165.1) (xy 83.82 165.1))
     (stroke (width 0) (type default))
     (uuid e61e419e-aab2-41eb-9e54-b835d1a2c225)
@@ -1377,6 +1520,10 @@
     (stroke (width 0) (type default))
     (uuid f634b0b2-6d79-4386-abb9-d78075ec48d6)
   )
+  (wire (pts (xy 245.11 52.07) (xy 231.14 52.07))
+    (stroke (width 0) (type default))
+    (uuid f6ca37fb-b0f9-42c2-8faf-fb9fd9cd9e68)
+  )
   (wire (pts (xy 50.8 160.02) (xy 50.8 170.18))
     (stroke (width 0) (type default))
     (uuid f712224f-cb80-4c91-8e2b-493a11f2c39e)
@@ -1405,6 +1552,10 @@
     (stroke (width 0) (type default))
     (uuid fd8a0c49-e13b-4bd0-86bd-da1bdadf3ecd)
   )
+  (wire (pts (xy 231.14 45.72) (xy 231.14 52.07))
+    (stroke (width 0) (type default))
+    (uuid fd91c1a3-b858-4326-9c1b-46b361a81c59)
+  )
   (wire (pts (xy 158.75 45.72) (xy 165.1 45.72))
     (stroke (width 0) (type default))
     (uuid fe3e0f39-a46a-45f2-bc0e-a0e6ff547e3c)
@@ -1418,7 +1569,7 @@
     (uuid ff476220-8f1d-40a6-a47f-170cc46fd584)
   )
 
-  (text "5V/250mA" (at 228.6 96.52 0)
+  (text "5V/250mA" (at 226.06 93.98 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2a9d96bb-15b8-4703-bdb4-3da28c125866)
   )
@@ -1438,7 +1589,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid c4f3abff-96f1-4af9-b419-ddae5e828ef3)
   )
-  (text "Requirements:\n5V in\n5V/250mA analog out\n~3v/250mA digital out\n\nTotal current on 5V:\n700mA"
+  (text "Requirements:\n5V in\n5V/250mA analog out\n~3v/250mA digital out\n5V/250mA USB out\n\nMax current on 5V:\n950mA"
     (at 15.24 30.48 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid da3f4041-ae9c-460b-b1df-08344c051f40)
@@ -1469,15 +1620,35 @@
     (uuid eaf834d5-b0be-497a-a70e-6a0a2c9dcf8c)
   )
 
+  (global_label "VBUS_OUT" (shape output) (at 260.35 35.56 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid ed9360f5-1748-46d4-800f-0a0bc56d0393)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 272.83 35.56 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+  )
+
+  (hierarchical_label "USB_A_PWR_EN" (shape input) (at 218.44 40.64 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 34343d2b-cbdf-457a-b813-6e0796594950)
+  )
   (hierarchical_label "~{HSW_EN}" (shape input) (at 104.14 66.04 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 92bfed11-dadd-4856-b162-e52a444dbb9f)
+  )
+  (hierarchical_label "VA_en" (shape input) (at 25.4 121.92 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid b16b97fc-fd4c-4c95-9a90-82fe5ca2fe16)
+  )
+  (hierarchical_label "~{VBUS_OUT_FLG}" (shape output) (at 281.94 40.64 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid f7e80c46-0cbe-4e0c-9082-69375f211be1)
   )
 
   (symbol (lib_id "power:GND") (at 200.66 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 013fb851-7d7c-43a7-a059-00f5f625540a)
-    (property "Reference" "#PWR0907" (at 200.66 135.89 0)
+    (property "Reference" "#PWR0920" (at 200.66 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 200.66 133.6755 0)
@@ -1493,7 +1664,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0907") (unit 1)
+          (reference "#PWR0920") (unit 1)
         )
       )
     )
@@ -1502,7 +1673,7 @@
   (symbol (lib_id "power:GND") (at 116.84 172.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 07a8c5e4-0953-4bf1-98da-666a2264874f)
-    (property "Reference" "#PWR0922" (at 116.84 179.07 0)
+    (property "Reference" "#PWR0911" (at 116.84 179.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 116.84 176.8555 0)
@@ -1518,7 +1689,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0922") (unit 1)
+          (reference "#PWR0911") (unit 1)
         )
       )
     )
@@ -1527,7 +1698,7 @@
   (symbol (lib_id "power:VAA") (at 228.6 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0a7a12dd-2553-440f-b9af-53b0d7c6115f)
-    (property "Reference" "#PWR?" (at 228.6 102.87 0)
+    (property "Reference" "#PWR0921" (at 228.6 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VAA" (at 228.6 95.4842 0)
@@ -1542,14 +1713,8 @@
     (pin "1" (uuid 0e4b8a62-ca09-4d03-96c7-e5543ca04b99))
     (instances
       (project "Magna"
-        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/22259812-9e7f-4230-9f2b-a9eb5ce4aaf1/beaa37c2-0104-4021-8685-9eb18db04351"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/22259812-9e7f-4230-9f2b-a9eb5ce4aaf1/63203deb-a3d6-4c27-a099-379311360062"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0901") (unit 1)
+          (reference "#PWR0921") (unit 1)
         )
       )
     )
@@ -1558,7 +1723,7 @@
   (symbol (lib_id "Regulator_Linear:AMS1117-5.0") (at 185.42 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1a335b95-471e-4b54-94b3-df7dfb8c5442)
-    (property "Reference" "U901" (at 185.42 96.6851 0)
+    (property "Reference" "U904" (at 185.42 96.6851 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "AMS1117-5.0" (at 185.42 98.6061 0)
@@ -1576,7 +1741,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "U901") (unit 1)
+          (reference "U904") (unit 1)
         )
       )
     )
@@ -1585,7 +1750,7 @@
   (symbol (lib_id "power:GND") (at 91.44 187.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1bfc5178-8f05-41e3-9814-85610ff02fc9)
-    (property "Reference" "#PWR0912" (at 91.44 194.31 0)
+    (property "Reference" "#PWR0909" (at 91.44 194.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 91.44 192.0955 0)
@@ -1601,7 +1766,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0912") (unit 1)
+          (reference "#PWR0909") (unit 1)
         )
       )
     )
@@ -1610,7 +1775,7 @@
   (symbol (lib_id "power:GND") (at 83.82 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1d2a5f9a-408d-4040-bd73-4a62618037f7)
-    (property "Reference" "#PWR0919" (at 83.82 72.39 0)
+    (property "Reference" "#PWR0908" (at 83.82 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 83.82 70.1755 0)
@@ -1626,7 +1791,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0919") (unit 1)
+          (reference "#PWR0908") (unit 1)
         )
       )
     )
@@ -1635,7 +1800,7 @@
   (symbol (lib_id "power:GND") (at 147.32 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1e44b83e-452b-40de-ae41-9e5e22cdf8bd)
-    (property "Reference" "#PWR0909" (at 147.32 72.39 0)
+    (property "Reference" "#PWR0914" (at 147.32 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 147.32 70.1755 0)
@@ -1651,7 +1816,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0909") (unit 1)
+          (reference "#PWR0914") (unit 1)
         )
       )
     )
@@ -1660,7 +1825,7 @@
   (symbol (lib_id "Regulator_Switching:XL1509-ADJ") (at 73.66 162.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1f0a02fe-e832-4d43-ad4a-7b693f92e41f)
-    (property "Reference" "U904" (at 73.66 154.4701 0)
+    (property "Reference" "U902" (at 73.66 154.4701 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "XL1509-ADJ" (at 73.66 156.3911 0)
@@ -1686,7 +1851,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "U904") (unit 1)
+          (reference "U902") (unit 1)
         )
       )
     )
@@ -1695,7 +1860,7 @@
   (symbol (lib_id "Device:C") (at 102.87 170.18 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1ff5c52e-1987-487c-9099-dea253931185)
-    (property "Reference" "C912" (at 102.87 175.3489 90)
+    (property "Reference" "C904" (at 102.87 175.3489 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10nF" (at 102.87 173.4279 90)
@@ -1715,7 +1880,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C912") (unit 1)
+          (reference "C904") (unit 1)
         )
       )
     )
@@ -1724,7 +1889,7 @@
   (symbol (lib_id "power:GND") (at 71.12 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2220f26a-213c-40b0-b74b-9ac5a8fefd98)
-    (property "Reference" "#PWR0903" (at 71.12 135.89 0)
+    (property "Reference" "#PWR0906" (at 71.12 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 71.12 133.6755 0)
@@ -1740,7 +1905,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0903") (unit 1)
+          (reference "#PWR0906") (unit 1)
         )
       )
     )
@@ -1749,7 +1914,7 @@
   (symbol (lib_id "Device:FerriteBead") (at 39.37 160.02 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 23b1d4d5-7277-4f36-9d74-ae50113465e7)
-    (property "Reference" "FB904" (at 39.3192 154.3685 90)
+    (property "Reference" "FB902" (at 39.3192 154.3685 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "FerriteBead" (at 39.3192 156.2895 90)
@@ -1769,7 +1934,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "FB904") (unit 1)
+          (reference "FB902") (unit 1)
         )
       )
     )
@@ -1778,7 +1943,7 @@
   (symbol (lib_id "Device:C") (at 165.1 57.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 29ca3a78-38bf-4e9c-9f67-f01caf3691b5)
-    (property "Reference" "C905" (at 168.021 56.5063 0)
+    (property "Reference" "C910" (at 168.021 56.5063 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4.7uF/16V" (at 168.021 58.4273 0)
@@ -1798,7 +1963,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C905") (unit 1)
+          (reference "C910") (unit 1)
         )
       )
     )
@@ -1836,7 +2001,7 @@
   (symbol (lib_id "power:GND") (at 160.02 130.81 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 348536ce-1925-4ea4-84bc-7308354ac90b)
-    (property "Reference" "#PWR0905" (at 160.02 137.16 0)
+    (property "Reference" "#PWR0917" (at 160.02 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 160.02 134.9455 0)
@@ -1852,7 +2017,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0905") (unit 1)
+          (reference "#PWR0917") (unit 1)
         )
       )
     )
@@ -1890,7 +2055,7 @@
   (symbol (lib_id "power:+5V") (at 25.4 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3e4b1f54-ec3c-4d1b-88b7-36a9ef5f1567)
-    (property "Reference" "#PWR0916" (at 25.4 102.87 0)
+    (property "Reference" "#PWR0901" (at 25.4 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 25.4 95.5581 0)
@@ -1906,7 +2071,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0916") (unit 1)
+          (reference "#PWR0901") (unit 1)
         )
       )
     )
@@ -1915,7 +2080,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 228.6 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 45729511-6959-48c8-88e8-7d299d7f55c3)
-    (property "Reference" "C907" (at 231.521 114.0373 0)
+    (property "Reference" "C912" (at 231.521 114.0373 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 231.521 115.9583 0)
@@ -1935,7 +2100,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C907") (unit 1)
+          (reference "C912") (unit 1)
         )
       )
     )
@@ -1944,7 +2109,7 @@
   (symbol (lib_id "Regulator_Switching:TPS61040DBV") (at 71.12 116.84 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4d698913-f088-4718-b757-673bdb485481)
-    (property "Reference" "U903" (at 71.12 108.7501 0)
+    (property "Reference" "U901" (at 71.12 108.7501 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TPS61040DBV" (at 71.12 110.6711 0)
@@ -1964,7 +2129,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "U903") (unit 1)
+          (reference "U901") (unit 1)
         )
       )
     )
@@ -1973,7 +2138,7 @@
   (symbol (lib_id "Skrooterlib:WS3222D") (at 147.32 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5d56c58d-32b8-47ab-8d4c-b0ed01013d23)
-    (property "Reference" "U902" (at 147.955 40.2209 0)
+    (property "Reference" "U903" (at 147.955 40.2209 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "WS3222D" (at 147.955 42.1419 0)
@@ -2000,7 +2165,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "U902") (unit 1)
+          (reference "U903") (unit 1)
         )
       )
     )
@@ -2009,7 +2174,7 @@
   (symbol (lib_id "Device:C") (at 111.76 110.49 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 61830787-10b8-410e-86fb-0ac66805a65e)
-    (property "Reference" "C901" (at 114.681 109.8463 0)
+    (property "Reference" "C905" (at 114.681 109.8463 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "220pF/50V" (at 114.681 111.7673 0)
@@ -2029,7 +2194,33 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C901") (unit 1)
+          (reference "C905") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R") (at 278.13 33.02 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 61cc0039-79d1-425e-b33c-879f3c45767c)
+    (property "Reference" "R908" (at 280.67 31.75 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "10k" (at 280.67 34.29 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "" (at 276.352 33.02 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 278.13 33.02 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "2" (uuid 824ef1bd-4ad3-45c0-b156-2b9d7e8a1cce))
+    (pin "1" (uuid 63ee0702-710c-4f7a-85ec-7a2ddfd3e674))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "R908") (unit 1)
         )
       )
     )
@@ -2038,7 +2229,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 149.86 173.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6392a78e-1484-4fa2-9ab9-24c43734b30e)
-    (property "Reference" "C911" (at 152.781 172.4573 0)
+    (property "Reference" "C908" (at 152.781 172.4573 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 152.781 174.3783 0)
@@ -2058,7 +2249,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C911") (unit 1)
+          (reference "C908") (unit 1)
         )
       )
     )
@@ -2067,7 +2258,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 132.08 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 67d48041-4a15-4eae-b519-9405a5610579)
-    (property "Reference" "C902" (at 135.001 114.0373 0)
+    (property "Reference" "C907" (at 135.001 114.0373 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 135.001 115.9583 0)
@@ -2087,7 +2278,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C902") (unit 1)
+          (reference "C907") (unit 1)
         )
       )
     )
@@ -2125,7 +2316,7 @@
   (symbol (lib_id "Device:R") (at 148.59 35.56 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 75e1db25-0bbe-47cc-aeef-d33522904745)
-    (property "Reference" "R901" (at 148.59 31.5341 90)
+    (property "Reference" "R907" (at 148.59 31.5341 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "220R" (at 148.59 33.4551 90)
@@ -2145,7 +2336,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "R901") (unit 1)
+          (reference "R907") (unit 1)
         )
       )
     )
@@ -2154,7 +2345,7 @@
   (symbol (lib_id "Device:FerriteBead") (at 212.09 101.6 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 76a2a2ae-7a1f-4624-8909-976d22e6ac44)
-    (property "Reference" "FB902" (at 212.0392 95.9485 90)
+    (property "Reference" "FB904" (at 212.0392 95.9485 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "FerriteBead" (at 212.0392 97.8695 90)
@@ -2174,7 +2365,32 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "FB902") (unit 1)
+          (reference "FB904") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 45.72 66.04 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 7d7599e0-b82b-49d4-b06b-a840155aa393)
+    (property "Reference" "#PWR0924" (at 45.72 72.39 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 45.72 70.1755 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 45.72 66.04 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 45.72 66.04 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 297c2e0f-d05d-450f-93ba-1ee9ae490bb8))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "#PWR0924") (unit 1)
         )
       )
     )
@@ -2183,7 +2399,7 @@
   (symbol (lib_id "Device:C") (at 124.46 57.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7e570a58-c737-4d55-97f8-4ed4d4725741)
-    (property "Reference" "C909" (at 127.381 56.5063 0)
+    (property "Reference" "C906" (at 127.381 56.5063 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22pF/50V" (at 127.381 58.4273 0)
@@ -2203,7 +2419,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C909") (unit 1)
+          (reference "C906") (unit 1)
         )
       )
     )
@@ -2212,7 +2428,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 200.66 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8456aa77-2ee3-4caf-a7a3-4ddf7481598f)
-    (property "Reference" "C906" (at 203.581 114.0373 0)
+    (property "Reference" "C911" (at 203.581 114.0373 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 203.581 115.9583 0)
@@ -2232,7 +2448,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C906") (unit 1)
+          (reference "C911") (unit 1)
         )
       )
     )
@@ -2241,7 +2457,7 @@
   (symbol (lib_id "Device:R") (at 99.06 123.19 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8ad2e32f-a7a2-470d-98c5-652727979dd1)
-    (property "Reference" "R904" (at 100.838 122.5463 0)
+    (property "Reference" "R903" (at 100.838 122.5463 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 100.838 124.4673 0)
@@ -2261,7 +2477,32 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "R904") (unit 1)
+          (reference "R903") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 199.39 49.53 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 8b48035b-ae83-42ca-9344-79c55bc119c8)
+    (property "Reference" "#PWR0925" (at 199.39 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 199.39 54.61 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 199.39 49.53 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 199.39 49.53 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid d7969007-b223-4b22-8b54-537451365cae))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "#PWR0925") (unit 1)
         )
       )
     )
@@ -2270,7 +2511,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 45.72 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8bf1696e-2ac1-442f-bb96-8d55682cdaf4)
-    (property "Reference" "C903" (at 48.641 114.0373 0)
+    (property "Reference" "C901" (at 48.641 114.0373 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 48.641 115.9583 0)
@@ -2290,7 +2531,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C903") (unit 1)
+          (reference "C901") (unit 1)
         )
       )
     )
@@ -2299,7 +2540,7 @@
   (symbol (lib_id "power:GND") (at 149.86 187.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8ea5cea4-64ab-40a7-8df1-22054690f280)
-    (property "Reference" "#PWR0923" (at 149.86 194.31 0)
+    (property "Reference" "#PWR0916" (at 149.86 194.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 149.86 192.0955 0)
@@ -2315,7 +2556,59 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0923") (unit 1)
+          (reference "#PWR0916") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 245.11 45.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 8fdc81be-ab8c-4e98-b465-69e451d537fb)
+    (property "Reference" "C915" (at 248.92 44.45 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "100n" (at 248.92 46.99 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "" (at 246.0752 49.53 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 245.11 45.72 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "2" (uuid 8fc61368-57e6-4376-a9da-eab4fb05e22f))
+    (pin "1" (uuid 02ac4abc-7e6b-4dc9-8b85-cf7af5785436))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "C915") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 45.72 52.07 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 903df6f9-b879-41c8-83d8-c662044fe90a)
+    (property "Reference" "C913" (at 49.53 50.8 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "10uF" (at 49.53 53.34 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "" (at 46.6852 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 45.72 52.07 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "2" (uuid c1fd159f-6bdb-438f-a99d-8f16cd1c1755))
+    (pin "1" (uuid 6e5444e0-4c30-4a24-9586-6a3584204598))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "C913") (unit 1)
         )
       )
     )
@@ -2324,7 +2617,7 @@
   (symbol (lib_id "Device:R") (at 109.22 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 912d648b-7f38-4e03-a91f-7accf0a748ea)
-    (property "Reference" "R903" (at 110.998 41.0753 0)
+    (property "Reference" "R905" (at 110.998 41.0753 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "18k" (at 110.998 43.6122 0)
@@ -2344,12 +2637,12 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "R903") (unit 1)
+          (reference "R905") (unit 1)
         )
       )
       (project "SmallLedPlatform"
         (path "/84eef422-4118-4730-b7a0-1fdaa916c3b4/d71115cb-c282-4713-80a7-e4f7bd9dfc70"
-          (reference "R212") (unit 1)
+          (reference "R?") (unit 1)
         )
       )
     )
@@ -2358,7 +2651,7 @@
   (symbol (lib_id "Device:D_Schottky") (at 90.17 101.6 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 933b6c11-2ac9-4c5e-9de8-f795acc7216c)
-    (property "Reference" "D901" (at 90.4875 97.3201 0)
+    (property "Reference" "D902" (at 90.4875 97.3201 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "5A" (at 90.4875 99.2411 0)
@@ -2378,7 +2671,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "D901") (unit 1)
+          (reference "D902") (unit 1)
         )
       )
     )
@@ -2387,7 +2680,7 @@
   (symbol (lib_id "power:GND") (at 73.66 187.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9cc38b50-3335-4037-b065-a4da023a556d)
-    (property "Reference" "#PWR0921" (at 73.66 194.31 0)
+    (property "Reference" "#PWR0907" (at 73.66 194.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 73.66 192.0955 0)
@@ -2403,7 +2696,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0921") (unit 1)
+          (reference "#PWR0907") (unit 1)
         )
       )
     )
@@ -2412,7 +2705,7 @@
   (symbol (lib_id "Device:R") (at 91.44 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9cde3659-4883-4a30-a43e-95b8095f4bf9)
-    (property "Reference" "R906" (at 93.218 178.4263 0)
+    (property "Reference" "R901" (at 93.218 178.4263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1k" (at 93.218 180.3473 0)
@@ -2432,7 +2725,32 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "R906") (unit 1)
+          (reference "R901") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:VBUS") (at 173.99 33.02 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 9e2a592f-cdcf-4ecc-9538-4e309f0298af)
+    (property "Reference" "#PWR0923" (at 173.99 36.83 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "VBUS" (at 173.99 29.5181 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 173.99 33.02 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 173.99 33.02 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 4188f3f8-03a6-40b4-afe9-dc6b65698920))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "#PWR0923") (unit 1)
         )
       )
     )
@@ -2441,7 +2759,7 @@
   (symbol (lib_id "power:GND") (at 99.06 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9e73a3ad-d06f-4d43-9014-9d9f14693888)
-    (property "Reference" "#PWR0904" (at 99.06 135.89 0)
+    (property "Reference" "#PWR0910" (at 99.06 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 99.06 133.6755 0)
@@ -2457,7 +2775,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0904") (unit 1)
+          (reference "#PWR0910") (unit 1)
         )
       )
     )
@@ -2466,7 +2784,7 @@
   (symbol (lib_id "power:GND") (at 124.46 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9f06299f-cd93-4aa2-8c73-0c95b7bf2bd1)
-    (property "Reference" "#PWR0914" (at 124.46 72.39 0)
+    (property "Reference" "#PWR0912" (at 124.46 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 124.46 70.1755 0)
@@ -2482,7 +2800,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0914") (unit 1)
+          (reference "#PWR0912") (unit 1)
         )
       )
     )
@@ -2491,7 +2809,7 @@
   (symbol (lib_id "power:GND") (at 68.58 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a5a1012b-5a2e-45de-8bbe-ee1c4df7fb86)
-    (property "Reference" "#PWR0918" (at 68.58 72.39 0)
+    (property "Reference" "#PWR0905" (at 68.58 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 68.58 70.1755 0)
@@ -2507,7 +2825,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0918") (unit 1)
+          (reference "#PWR0905") (unit 1)
         )
       )
     )
@@ -2516,7 +2834,7 @@
   (symbol (lib_id "power:GND") (at 50.8 187.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a6742ddd-131a-49ab-842c-8bc895bfacdd)
-    (property "Reference" "#PWR0911" (at 50.8 194.31 0)
+    (property "Reference" "#PWR0904" (at 50.8 194.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 50.8 192.0955 0)
@@ -2532,7 +2850,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0911") (unit 1)
+          (reference "#PWR0904") (unit 1)
         )
       )
     )
@@ -2541,7 +2859,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 160.02 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a85852ba-d392-44de-b46c-4b194bcd6ceb)
-    (property "Reference" "C904" (at 162.941 114.0373 0)
+    (property "Reference" "C909" (at 162.941 114.0373 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 162.941 115.9583 0)
@@ -2561,7 +2879,36 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C904") (unit 1)
+          (reference "C909") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Power_Management:AP2171W") (at 231.14 38.1 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid afefba28-31a5-4522-9b90-06cfbb3d4b0f)
+    (property "Reference" "U905" (at 231.14 27.94 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "AP2171W" (at 231.14 30.48 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 231.14 48.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP2161.pdf" (at 231.14 36.83 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "5" (uuid 21d0173c-832b-467c-bf5b-7a1155b26d5c))
+    (pin "4" (uuid 503edd41-09f4-408f-a17d-490917f52e4c))
+    (pin "2" (uuid 20e38ca4-59c6-41d0-9cdc-0127643546fa))
+    (pin "3" (uuid 588e34a5-9e8d-41f4-8126-f47355b51343))
+    (pin "1" (uuid 24a84050-d6f1-4c9c-9618-18803c9525e4))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "U905") (unit 1)
         )
       )
     )
@@ -2570,7 +2917,7 @@
   (symbol (lib_id "Device:R") (at 109.22 57.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b6f1d6f3-1ff6-49d4-bf17-3ae7118cd4ba)
-    (property "Reference" "R905" (at 110.998 56.3153 0)
+    (property "Reference" "R906" (at 110.998 56.3153 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 110.998 58.8522 0)
@@ -2590,12 +2937,12 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "R905") (unit 1)
+          (reference "R906") (unit 1)
         )
       )
       (project "SmallLedPlatform"
         (path "/84eef422-4118-4730-b7a0-1fdaa916c3b4/d71115cb-c282-4713-80a7-e4f7bd9dfc70"
-          (reference "R213") (unit 1)
+          (reference "R?") (unit 1)
         )
       )
     )
@@ -2604,7 +2951,7 @@
   (symbol (lib_id "Device:L") (at 128.27 160.02 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b8df95af-d28c-4057-97d7-f75bfda5191c)
-    (property "Reference" "L903" (at 128.27 156.5047 90)
+    (property "Reference" "L902" (at 128.27 156.5047 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22µH" (at 128.27 158.4257 90)
@@ -2624,7 +2971,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "L903") (unit 1)
+          (reference "L902") (unit 1)
         )
       )
     )
@@ -2633,7 +2980,7 @@
   (symbol (lib_id "Device:D_Zener") (at 68.58 52.07 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b9185261-3f36-4205-a4ee-f05a9b0b80cc)
-    (property "Reference" "D904" (at 70.612 51.4263 90)
+    (property "Reference" "D901" (at 70.612 51.4263 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "5V" (at 70.612 53.3473 90)
@@ -2653,7 +3000,33 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "D904") (unit 1)
+          (reference "D901") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:Polyfuse") (at 187.96 35.56 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid be1c6d65-eb4c-4c00-a7d3-869bd7574a8b)
+    (property "Reference" "F902" (at 187.96 29.21 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "250mA" (at 187.96 31.75 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 193.04 34.29 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datasheet" "~" (at 187.96 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "2" (uuid 5a9110c8-81f9-490f-bef6-fb3ca896af34))
+    (pin "1" (uuid d868b0b7-a40e-4c79-a44d-21282784bcb9))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "F902") (unit 1)
         )
       )
     )
@@ -2662,7 +3035,7 @@
   (symbol (lib_id "Device:FerriteBead") (at 151.13 101.6 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c030a5a6-3ff9-4fb1-b8eb-e22922b860f2)
-    (property "Reference" "FB901" (at 151.0792 95.9485 90)
+    (property "Reference" "FB903" (at 151.0792 95.9485 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "FerriteBead" (at 151.0792 97.8695 90)
@@ -2682,7 +3055,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "FB901") (unit 1)
+          (reference "FB903") (unit 1)
         )
       )
     )
@@ -2691,7 +3064,7 @@
   (symbol (lib_id "power:GND") (at 185.42 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c3ca73eb-658f-499a-be03-9a44bc2f7c35)
-    (property "Reference" "#PWR0906" (at 185.42 135.89 0)
+    (property "Reference" "#PWR0919" (at 185.42 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 185.42 133.6755 0)
@@ -2707,7 +3080,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0906") (unit 1)
+          (reference "#PWR0919") (unit 1)
         )
       )
     )
@@ -2716,7 +3089,7 @@
   (symbol (lib_id "Device:R") (at 102.87 165.1 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c7bca64c-c2c8-479f-aa8b-0ffed644e9e3)
-    (property "Reference" "R907" (at 102.87 161.0741 90)
+    (property "Reference" "R904" (at 102.87 161.0741 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k5" (at 102.87 162.9951 90)
@@ -2736,7 +3109,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "R907") (unit 1)
+          (reference "R904") (unit 1)
         )
       )
     )
@@ -2745,7 +3118,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 50.8 173.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c8c91ee2-a970-4f71-9867-cea9c9823aa6)
-    (property "Reference" "C908" (at 53.721 172.4573 0)
+    (property "Reference" "C902" (at 53.721 172.4573 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "470uF/10V" (at 53.721 174.3783 0)
@@ -2765,7 +3138,36 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C908") (unit 1)
+          (reference "C902") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:FerriteBead") (at 252.73 35.56 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid ce7c6a10-22ad-4243-8b3d-2def8d69db69)
+    (property "Reference" "FB905" (at 252.6792 29.9085 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "FerriteBead" (at 252.6792 31.8295 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (at 252.73 37.338 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 252.73 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "LCSC" "C1002" (at 252.73 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 2d69c6d1-395e-40f2-97e0-9f6561fda5d9))
+    (pin "2" (uuid fffbb7b7-f0dd-4642-9713-ec276fee69b5))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "FB905") (unit 1)
         )
       )
     )
@@ -2774,7 +3176,7 @@
   (symbol (lib_id "power:VDD") (at 149.86 152.4 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cf2af49a-c71f-4ded-92b6-7fee8d91200c)
-    (property "Reference" "#PWR0910" (at 149.86 156.21 0)
+    (property "Reference" "#PWR0915" (at 149.86 156.21 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDD" (at 149.86 148.8981 0)
@@ -2790,7 +3192,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0910") (unit 1)
+          (reference "#PWR0915") (unit 1)
         )
       )
     )
@@ -2799,7 +3201,7 @@
   (symbol (lib_id "Device:FerriteBead") (at 36.83 101.6 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d018a633-f040-4c78-abac-258034a12539)
-    (property "Reference" "FB903" (at 36.7792 95.9485 90)
+    (property "Reference" "FB901" (at 36.7792 95.9485 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "FerriteBead" (at 36.7792 97.8695 90)
@@ -2819,7 +3221,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "FB903") (unit 1)
+          (reference "FB901") (unit 1)
         )
       )
     )
@@ -2828,7 +3230,7 @@
   (symbol (lib_id "Device:C") (at 83.82 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d7a89cfe-f5c7-48e3-a887-0027a00e389e)
-    (property "Reference" "C910" (at 86.741 51.4263 0)
+    (property "Reference" "C903" (at 86.741 51.4263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1uF" (at 86.741 53.3473 0)
@@ -2848,7 +3250,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "C910") (unit 1)
+          (reference "C903") (unit 1)
         )
       )
     )
@@ -2857,7 +3259,7 @@
   (symbol (lib_id "power:GND") (at 228.6 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d861c0aa-71f5-4e4a-a1b0-bc351d222c71)
-    (property "Reference" "#PWR0908" (at 228.6 135.89 0)
+    (property "Reference" "#PWR0922" (at 228.6 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 228.6 133.6755 0)
@@ -2873,7 +3275,58 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0908") (unit 1)
+          (reference "#PWR0922") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:VDD") (at 278.13 27.94 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid dc498635-a763-42eb-bc65-acf2e0dcab78)
+    (property "Reference" "#PWR0926" (at 278.13 31.75 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "VDD" (at 278.13 24.4381 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 278.13 27.94 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 278.13 27.94 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 20cfd636-f997-486e-9e5a-c2f8478b0c35))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "#PWR0926") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 199.39 41.91 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid e9f57213-887d-45fa-919c-063ee84c0d87)
+    (property "Reference" "C914" (at 195.58 40.64 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Value" "100n" (at 195.58 43.18 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Footprint" "" (at 200.3552 45.72 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 199.39 41.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "2" (uuid 714dc422-8453-40de-9447-72c8e70e93a4))
+    (pin "1" (uuid aec78f3d-9939-4076-bef9-0d6380ceefe2))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "C914") (unit 1)
         )
       )
     )
@@ -2905,10 +3358,35 @@
     )
   )
 
+  (symbol (lib_id "power:GND") (at 231.14 53.34 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid f43244e2-c8b3-46db-ac69-7a6aa5a8879c)
+    (property "Reference" "#PWR0927" (at 231.14 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 231.14 58.42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 231.14 53.34 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 231.14 53.34 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid d4169674-57d4-4431-8d84-3322fc50d917))
+    (instances
+      (project "Magna"
+        (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
+          (reference "#PWR0927") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:GND") (at 132.08 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f8e25403-ee74-48a6-8d48-fa5ac6555c02)
-    (property "Reference" "#PWR0920" (at 132.08 135.89 0)
+    (property "Reference" "#PWR0913" (at 132.08 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 132.08 133.6755 0)
@@ -2924,7 +3402,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0920") (unit 1)
+          (reference "#PWR0913") (unit 1)
         )
       )
     )
@@ -2933,7 +3411,7 @@
   (symbol (lib_id "power:VBUS") (at 45.72 30.48 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f9b7e234-bb91-4da4-9524-f3ab895c135c)
-    (property "Reference" "#PWR0902" (at 45.72 34.29 0)
+    (property "Reference" "#PWR0903" (at 45.72 34.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 45.72 26.9781 0)
@@ -2949,7 +3427,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0902") (unit 1)
+          (reference "#PWR0903") (unit 1)
         )
       )
     )
@@ -2958,7 +3436,7 @@
   (symbol (lib_id "power:+5V") (at 25.4 151.13 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fcc05c86-94f9-4023-b5a7-87d0b0dac8a6)
-    (property "Reference" "#PWR0917" (at 25.4 154.94 0)
+    (property "Reference" "#PWR0902" (at 25.4 154.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 25.4 147.6281 0)
@@ -2974,7 +3452,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0917") (unit 1)
+          (reference "#PWR0902") (unit 1)
         )
       )
     )
@@ -2983,7 +3461,7 @@
   (symbol (lib_id "power:+5V") (at 165.1 33.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ff4aa435-6db4-47cd-98b5-069925e0000a)
-    (property "Reference" "#PWR0915" (at 165.1 36.83 0)
+    (property "Reference" "#PWR0918" (at 165.1 36.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 165.1 29.5181 0)
@@ -2999,7 +3477,7 @@
     (instances
       (project "Magna"
         (path "/1469ea1f-a157-49dc-a369-2d42fa17695d/b088328e-b490-4b17-95e1-21a9080368b1"
-          (reference "#PWR0915") (unit 1)
+          (reference "#PWR0918") (unit 1)
         )
       )
     )
