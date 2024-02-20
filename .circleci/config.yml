@@ -9,15 +9,15 @@ jobs:
 
       - run:
           name: update apt
-          command: apt-get update
+          command: sudo apt-get update
 
       - run: 
           name: install tools
-          command: apt-get -y install make gcc-arm-none-eabi wget unzip curl
+          command: sudo apt-get -y install make gcc-arm-none-eabi wget unzip curl
 
       - run:
           name: build all
-          command: chmod +x ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 && ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir sonar_info make all -j 2
+          command: sudo chmod +x ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 && ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir sonar_info make all -j 2
 
       - sonarcloud/scan
 
