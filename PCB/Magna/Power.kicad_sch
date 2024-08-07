@@ -1323,7 +1323,7 @@
 				)
 			)
 		)
-		(symbol "Skrooter_symbols:WS3222D"
+		(symbol "SkrooterLib:WS3222D"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1550,9 +1550,9 @@
 		)
 		(symbol "power:+5V"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1650,8 +1650,8 @@
 			(symbol "+5V_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
-					(name "+5V"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1670,9 +1670,9 @@
 		)
 		(symbol "power:GND"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1746,8 +1746,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
-					(name "GND"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1829,7 +1829,7 @@
 				(pin power_out line
 					(at 0 0 90)
 					(length 0)
-					(name "pwr"
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1862,9 +1862,9 @@
 		)
 		(symbol "power:VBUS"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1878,7 +1878,7 @@
 				)
 			)
 			(property "Value" "VBUS"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1962,8 +1962,8 @@
 			(symbol "VBUS_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
-					(name "VBUS"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1982,9 +1982,9 @@
 		)
 		(symbol "power:VDD"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1998,7 +1998,7 @@
 				)
 			)
 			(property "Value" "VDD"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2082,8 +2082,8 @@
 			(symbol "VDD_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
-					(name "VDD"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4042,7 +4042,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Special symbol for telling ERC where power comes from"
 			(at 254 81.28 0)
 			(effects
 				(font
@@ -4108,7 +4108,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 93.98 166.37 0)
 			(effects
 				(font
@@ -4174,7 +4174,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Special symbol for telling ERC where power comes from"
 			(at 157.48 129.54 0)
 			(effects
 				(font
@@ -4240,7 +4240,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 114.3 62.23 0)
 			(effects
 				(font
@@ -4306,7 +4306,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 177.8 62.23 0)
 			(effects
 				(font
@@ -4371,7 +4371,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 105.41 148.59 0)
 			(effects
 				(font
@@ -4382,6 +4382,15 @@
 		)
 		(property "LCSC" "C3908881"
 			(at 105.41 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
+			(at 105.41 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4448,7 +4457,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ferrite bead"
 			(at 26.67 138.43 0)
 			(effects
 				(font
@@ -4458,6 +4467,15 @@
 			)
 		)
 		(property "LCSC" "C1015"
+			(at 26.67 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 26.67 138.43 0)
 			(effects
 				(font
@@ -4526,7 +4544,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 195.58 53.34 0)
 			(effects
 				(font
@@ -4536,6 +4554,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 195.58 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 195.58 53.34 0)
 			(effects
 				(font
@@ -4605,7 +4632,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 175.26 96.52 0)
 			(effects
 				(font
@@ -4615,6 +4642,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 175.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 175.26 96.52 0)
 			(effects
 				(font
@@ -4683,7 +4719,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 152.4 138.43 0)
 			(effects
 				(font
@@ -4693,6 +4729,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 152.4 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 152.4 138.43 0)
 			(effects
 				(font
@@ -4762,7 +4807,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 53.34 147.32 0)
 			(effects
 				(font
@@ -4772,6 +4817,15 @@
 			)
 		)
 		(property "LCSC" "C16772"
+			(at 53.34 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 53.34 147.32 0)
 			(effects
 				(font
@@ -4840,7 +4894,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
+			(at 266.7 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 266.7 26.67 0)
 			(effects
 				(font
@@ -4906,7 +4969,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 38.1 147.32 0)
 			(effects
 				(font
@@ -4916,6 +4979,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 38.1 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 38.1 147.32 0)
 			(effects
 				(font
@@ -4985,7 +5057,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 76.2 48.26 0)
 			(effects
 				(font
@@ -4995,6 +5067,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 76.2 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 76.2 48.26 0)
 			(effects
 				(font
@@ -5063,7 +5144,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 154.94 53.34 0)
 			(effects
 				(font
@@ -5073,6 +5154,15 @@
 			)
 		)
 		(property "LCSC" "C1634"
+			(at 154.94 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 154.94 53.34 0)
 			(effects
 				(font
@@ -5097,7 +5187,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Skrooter_symbols:WS3222D")
+		(lib_id "SkrooterLib:WS3222D")
 		(at 177.8 39.37 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5107,7 +5197,7 @@
 		(fields_autoplaced yes)
 		(uuid "5d56c58d-32b8-47ab-8d4c-b0ed01013d23")
 		(property "Reference" "U602"
-			(at 178.435 36.4109 0)
+			(at 178.435 35.2763 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5115,7 +5205,7 @@
 			)
 		)
 		(property "Value" "WS3222D"
-			(at 178.435 38.3319 0)
+			(at 178.435 37.7006 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5150,6 +5240,15 @@
 			)
 		)
 		(property "LCSC" "C239703"
+			(at 177.8 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 177.8 39.37 0)
 			(effects
 				(font
@@ -5240,7 +5339,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 247.65 63.5 0)
 			(effects
 				(font
@@ -5250,6 +5349,15 @@
 			)
 		)
 		(property "LCSC" "C17414"
+			(at 247.65 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 247.65 63.5 0)
 			(effects
 				(font
@@ -5318,7 +5426,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 48.26 147.32 0)
 			(effects
 				(font
@@ -5328,6 +5436,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 48.26 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 48.26 147.32 0)
 			(effects
 				(font
@@ -5396,7 +5513,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
+			(at 260.35 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 260.35 82.55 0)
 			(effects
 				(font
@@ -5462,7 +5588,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 167.64 138.43 0)
 			(effects
 				(font
@@ -5472,6 +5598,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 167.64 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 167.64 138.43 0)
 			(effects
 				(font
@@ -5539,7 +5674,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 179.07 31.75 0)
 			(effects
 				(font
@@ -5550,6 +5685,15 @@
 		)
 		(property "LCSC" "C17557"
 			(at 179.07 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
+			(at 179.07 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5617,7 +5761,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 43.18 147.32 0)
 			(effects
 				(font
@@ -5627,6 +5771,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 43.18 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 43.18 147.32 0)
 			(effects
 				(font
@@ -5695,7 +5848,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 76.2 62.23 0)
 			(effects
 				(font
@@ -5760,7 +5913,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 266.7 29.21 0)
 			(effects
 				(font
@@ -5817,7 +5970,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps563201.pdf"
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps563200.pdf"
 			(at 76.2 140.97 0)
 			(effects
 				(font
@@ -5826,7 +5979,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "3A Synchronous Step-Down Voltage Regulator, Adjustable Output Voltage, 4.5-17V Input Voltage, SOT-23-6"
 			(at 76.2 140.97 0)
 			(effects
 				(font
@@ -5836,6 +5989,15 @@
 			)
 		)
 		(property "LCSC" "C116592"
+			(at 76.2 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 76.2 140.97 0)
 			(effects
 				(font
@@ -5917,7 +6079,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 93.98 137.16 0)
 			(effects
 				(font
@@ -5927,6 +6089,15 @@
 			)
 		)
 		(property "LCSC" "C16772"
+			(at 93.98 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 93.98 137.16 0)
 			(effects
 				(font
@@ -5995,7 +6166,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 238.76 99.06 0)
 			(effects
 				(font
@@ -6005,6 +6176,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 238.76 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 238.76 99.06 0)
 			(effects
 				(font
@@ -6073,7 +6253,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 182.88 104.14 0)
 			(effects
 				(font
@@ -6139,7 +6319,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 60.96 161.29 0)
 			(effects
 				(font
@@ -6206,7 +6386,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 231.14 99.06 0)
 			(effects
 				(font
@@ -6216,6 +6396,15 @@
 			)
 		)
 		(property "LCSC" "C16772"
+			(at 231.14 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 231.14 99.06 0)
 			(effects
 				(font
@@ -6285,7 +6474,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 139.7 38.1 0)
 			(effects
 				(font
@@ -6295,6 +6484,15 @@
 			)
 		)
 		(property "LCSC" "C17713"
+			(at 139.7 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 139.7 38.1 0)
 			(effects
 				(font
@@ -6369,7 +6567,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 147.32 138.43 0)
 			(effects
 				(font
@@ -6379,6 +6577,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 147.32 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 147.32 138.43 0)
 			(effects
 				(font
@@ -6447,7 +6654,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 162.56 138.43 0)
 			(effects
 				(font
@@ -6457,6 +6664,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 162.56 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 162.56 138.43 0)
 			(effects
 				(font
@@ -6525,7 +6741,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 142.24 138.43 0)
 			(effects
 				(font
@@ -6535,6 +6751,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 142.24 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 142.24 138.43 0)
 			(effects
 				(font
@@ -6603,7 +6828,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 76.2 166.37 0)
 			(effects
 				(font
@@ -6669,7 +6894,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
 			(at 153.67 87.63 0)
 			(effects
 				(font
@@ -6735,7 +6960,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 154.94 62.23 0)
 			(effects
 				(font
@@ -6801,7 +7026,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 99.06 62.23 0)
 			(effects
 				(font
@@ -6866,7 +7091,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Current limited power switch, single channel, SOT-23-5"
 			(at 210.82 92.71 0)
 			(effects
 				(font
@@ -6876,6 +7101,15 @@
 			)
 		)
 		(property "LCSC" "C110466"
+			(at 210.82 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 210.82 92.71 0)
 			(effects
 				(font
@@ -6953,7 +7187,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 173.99 148.59 0)
 			(effects
 				(font
@@ -7019,7 +7253,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
+			(at 189.23 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 189.23 22.86 0)
 			(effects
 				(font
@@ -7085,7 +7328,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 157.48 138.43 0)
 			(effects
 				(font
@@ -7095,6 +7338,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 157.48 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 157.48 138.43 0)
 			(effects
 				(font
@@ -7164,7 +7416,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 139.7 53.34 0)
 			(effects
 				(font
@@ -7174,6 +7426,15 @@
 			)
 		)
 		(property "LCSC" "C17444"
+			(at 139.7 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 139.7 53.34 0)
 			(effects
 				(font
@@ -7247,7 +7508,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Inductor"
 			(at 130.81 132.08 0)
 			(effects
 				(font
@@ -7258,6 +7519,15 @@
 		)
 		(property "LCSC" "C182126"
 			(at 130.81 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
+			(at 130.81 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7326,7 +7596,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Zener diode"
 			(at 99.06 48.26 0)
 			(effects
 				(font
@@ -7337,6 +7607,15 @@
 		)
 		(property "LCSC" "C8062"
 			(at 99.06 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
+			(at 99.06 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7402,7 +7681,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 62.23 143.51 0)
 			(effects
 				(font
@@ -7412,6 +7691,15 @@
 			)
 		)
 		(property "LCSC" "C17414"
+			(at 62.23 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 62.23 143.51 0)
 			(effects
 				(font
@@ -7480,7 +7768,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
 			(at 167.64 90.17 0)
 			(effects
 				(font
@@ -7490,6 +7778,15 @@
 			)
 		)
 		(property "LCSC" "C20820"
+			(at 167.64 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 167.64 90.17 0)
 			(effects
 				(font
@@ -7558,7 +7855,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Special symbol for telling ERC where power comes from"
 			(at 43.18 132.08 0)
 			(effects
 				(font
@@ -7624,7 +7921,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Special symbol for telling ERC where power comes from"
 			(at 182.88 81.28 0)
 			(effects
 				(font
@@ -7689,7 +7986,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ferrite bead"
 			(at 246.38 90.17 0)
 			(effects
 				(font
@@ -7699,6 +7996,15 @@
 			)
 		)
 		(property "LCSC" "C1015"
+			(at 246.38 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 246.38 90.17 0)
 			(effects
 				(font
@@ -7766,7 +8072,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 147.32 124.46 0)
 			(effects
 				(font
@@ -7833,7 +8139,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 114.3 48.26 0)
 			(effects
 				(font
@@ -7843,6 +8149,15 @@
 			)
 		)
 		(property "LCSC" "C45783"
+			(at 114.3 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 114.3 48.26 0)
 			(effects
 				(font
@@ -7912,7 +8227,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 93.98 157.48 0)
 			(effects
 				(font
@@ -7922,6 +8237,15 @@
 			)
 		)
 		(property "LCSC" "C17444"
+			(at 93.98 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 93.98 157.48 0)
 			(effects
 				(font
@@ -7989,7 +8313,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 247.65 58.42 0)
 			(effects
 				(font
@@ -8054,7 +8378,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 105.41 143.51 0)
 			(effects
 				(font
@@ -8064,6 +8388,15 @@
 			)
 		)
 		(property "LCSC" "C17713"
+			(at 105.41 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 105.41 143.51 0)
 			(effects
 				(font
@@ -8133,7 +8466,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 182.88 96.52 0)
 			(effects
 				(font
@@ -8143,6 +8476,15 @@
 			)
 		)
 		(property "LCSC" "C16772"
+			(at 182.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 182.88 96.52 0)
 			(effects
 				(font
@@ -8211,7 +8553,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
 			(at 90.17 31.75 0)
 			(effects
 				(font
@@ -8221,6 +8563,15 @@
 			)
 		)
 		(property "LCSC" "C20822"
+			(at 90.17 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 90.17 31.75 0)
 			(effects
 				(font
@@ -8289,7 +8640,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Special symbol for telling ERC where power comes from"
 			(at 162.56 25.4 0)
 			(effects
 				(font
@@ -8355,7 +8706,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 210.82 107.95 0)
 			(effects
 				(font
@@ -8421,7 +8772,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
 			(at 76.2 26.67 0)
 			(effects
 				(font
@@ -8487,7 +8838,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
 			(at 17.78 129.54 0)
 			(effects
 				(font
@@ -8553,7 +8904,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
+			(at 167.64 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LSCS" ""
 			(at 167.64 130.81 0)
 			(effects
 				(font
@@ -8619,7 +8979,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
 			(at 195.58 29.21 0)
 			(effects
 				(font
