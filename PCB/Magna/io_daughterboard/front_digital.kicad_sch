@@ -1,14 +1,18 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "633b15b6-c73c-4dbb-abf5-4b06d34c659e")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.762) hide)
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -106,11 +110,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -180,10 +189,10 @@
 			(symbol "C_Small_0_1"
 				(polyline
 					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
+						(xy -1.524 0.508) (xy 1.524 0.508)
 					)
 					(stroke
-						(width 0.3302)
+						(width 0.3048)
 						(type default)
 					)
 					(fill
@@ -192,10 +201,10 @@
 				)
 				(polyline
 					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
 					)
 					(stroke
-						(width 0.3048)
+						(width 0.3302)
 						(type default)
 					)
 					(fill
@@ -241,9 +250,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -362,30 +374,33 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "R"
-				(at 0.762 0.508 0)
+				(at 0 0 90)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(size 1.016 1.016)
 					)
-					(justify left)
 				)
 			)
 			(property "Value" "R_Small"
-				(at 0.762 -1.016 0)
+				(at 1.778 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
 			(property "Footprint" ""
@@ -484,6 +499,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Interface_Expansion:TCA9535PWR"
 			(pin_names
@@ -567,6 +583,42 @@
 				)
 			)
 			(symbol "TCA9535PWR_1_1"
+				(pin bidirectional line
+					(at -17.78 20.32 0)
+					(length 5.08)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 17.78 0)
+					(length 5.08)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "22"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 				(pin open_collector line
 					(at -17.78 15.24 0)
 					(length 5.08)
@@ -578,6 +630,204 @@
 						)
 					)
 					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 -15.24 0)
+					(length 5.08)
+					(name "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 -17.78 0)
+					(length 5.08)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 -20.32 0)
+					(length 5.08)
+					(name "A0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 27.94 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "24"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -27.94 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 20.32 180)
+					(length 5.08)
+					(name "P00"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 17.78 180)
+					(length 5.08)
+					(name "P01"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 15.24 180)
+					(length 5.08)
+					(name "P02"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 12.7 180)
+					(length 5.08)
+					(name "P03"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 10.16 180)
+					(length 5.08)
+					(name "P04"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 7.62 180)
+					(length 5.08)
+					(name "P05"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -614,24 +864,6 @@
 						)
 					)
 					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -27.94 90)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -765,24 +997,6 @@
 						)
 					)
 				)
-				(pin input line
-					(at -17.78 -17.78 0)
-					(length 5.08)
-					(name "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin bidirectional line
 					(at 17.78 -20.32 180)
 					(length 5.08)
@@ -801,210 +1015,17 @@
 						)
 					)
 				)
-				(pin input line
-					(at -17.78 -20.32 0)
-					(length 5.08)
-					(name "A0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "21"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -17.78 17.78 0)
-					(length 5.08)
-					(name "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -17.78 20.32 0)
-					(length 5.08)
-					(name "SDA"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 27.94 270)
-					(length 5.08)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "24"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -17.78 -15.24 0)
-					(length 5.08)
-					(name "A2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 17.78 20.32 180)
-					(length 5.08)
-					(name "P00"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 17.78 17.78 180)
-					(length 5.08)
-					(name "P01"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 17.78 15.24 180)
-					(length 5.08)
-					(name "P02"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 17.78 12.7 180)
-					(length 5.08)
-					(name "P03"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 17.78 10.16 180)
-					(length 5.08)
-					(name "P04"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 17.78 7.62 180)
-					(length 5.08)
-					(name "P05"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Switch:SW_Push"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1085,10 +1106,9 @@
 						(type none)
 					)
 				)
-				(polyline
-					(pts
-						(xy 2.54 1.27) (xy -2.54 1.27)
-					)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
 					(stroke
 						(width 0)
 						(type default)
@@ -1097,9 +1117,10 @@
 						(type none)
 					)
 				)
-				(circle
-					(center 2.032 0)
-					(radius 0.508)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy -2.54 1.27)
+					)
 					(stroke
 						(width 0)
 						(type default)
@@ -1145,12 +1166,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1241,12 +1267,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:VDD"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1318,7 +1349,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1330,7 +1361,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1361,7 +1392,184 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(text "SPARE 2"
+		(exclude_from_sim no)
+		(at 260.35 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "076c6bf8-bdb5-4fab-bf02-e3cc9d2dc3ee")
+	)
+	(text "CUE EFFECT"
+		(exclude_from_sim no)
+		(at 219.71 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0af9e071-c515-4ed6-bc29-27787dd9b28c")
+	)
+	(text "CUE CH2"
+		(exclude_from_sim no)
+		(at 175.26 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1500ceaf-9b1d-4d4e-b20e-b3aaa4d688fd")
+	)
+	(text "EFFECT ASSIGN 1"
+		(exclude_from_sim no)
+		(at 175.26 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1ce1755f-0963-4b7c-993e-2368d6533944")
+	)
+	(text "COLOUR SEL 4"
+		(exclude_from_sim no)
+		(at 260.35 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "32eec8c7-3597-4200-91a0-b15230485cf4")
+	)
+	(text "SPARE 1"
+		(exclude_from_sim no)
+		(at 260.35 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "363bc84e-1c3e-4ec4-bdd6-c341e0050e63")
+	)
+	(text "SPARE 6"
+		(exclude_from_sim no)
+		(at 264.16 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3bc295cd-a585-48c9-9ade-4e87ab4db429")
+	)
+	(text "CUE CH1"
+		(exclude_from_sim no)
+		(at 130.81 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4a73516a-f857-4ce0-90b3-8f00360561ef")
+	)
+	(text "COLOUR SEL 1"
+		(exclude_from_sim no)
+		(at 130.81 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "54999c17-9c49-47ef-9af0-563ca23e4c39")
+	)
+	(text "SPARE 4"
+		(exclude_from_sim no)
+		(at 175.26 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6466dfe4-f6ca-4ea3-ae2b-6a009c2a8387")
+	)
+	(text "COLOUR SEL 2"
+		(exclude_from_sim no)
+		(at 175.26 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8db4dedf-522a-4d6a-91bb-32aa4edf4a5b")
+	)
+	(text "SPARE 3"
+		(exclude_from_sim no)
+		(at 130.81 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "992368c0-0836-45a8-947f-f6c0ba61616e")
+	)
+	(text "COLOUR SEL 3"
+		(exclude_from_sim no)
+		(at 219.71 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9f639098-0d97-4e13-a303-bd22c75c5fc1")
+	)
+	(text "EFFECT ASSIGN 2"
+		(exclude_from_sim no)
+		(at 219.71 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3f953fa-063f-474c-9755-10d7e687095b")
+	)
+	(text "SPARE 5"
+		(exclude_from_sim no)
+		(at 219.71 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c0623c1b-ab0e-4e3c-a053-479a8ba2eb4f")
+	)
+	(text "EFFECT ON"
+		(exclude_from_sim no)
+		(at 130.81 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e945da67-004c-4fbc-9664-00e4b1c15948")
 	)
 	(junction
 		(at 120.65 114.3)
@@ -3859,185 +4067,8 @@
 		)
 		(uuid "ffa06c41-cbd8-4aac-ba7e-24ab1e5bc126")
 	)
-	(text "SPARE 2"
-		(exclude_from_sim no)
-		(at 260.35 66.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "076c6bf8-bdb5-4fab-bf02-e3cc9d2dc3ee")
-	)
-	(text "CUE EFFECT"
-		(exclude_from_sim no)
-		(at 219.71 33.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0af9e071-c515-4ed6-bc29-27787dd9b28c")
-	)
-	(text "CUE CH2"
-		(exclude_from_sim no)
-		(at 175.26 33.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1500ceaf-9b1d-4d4e-b20e-b3aaa4d688fd")
-	)
-	(text "EFFECT ASSIGN 1"
-		(exclude_from_sim no)
-		(at 175.26 66.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1ce1755f-0963-4b7c-993e-2368d6533944")
-	)
-	(text "COLOUR SEL 4"
-		(exclude_from_sim no)
-		(at 260.35 99.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "32eec8c7-3597-4200-91a0-b15230485cf4")
-	)
-	(text "SPARE 1"
-		(exclude_from_sim no)
-		(at 260.35 33.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "363bc84e-1c3e-4ec4-bdd6-c341e0050e63")
-	)
-	(text "SPARE 6"
-		(exclude_from_sim no)
-		(at 264.16 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3bc295cd-a585-48c9-9ade-4e87ab4db429")
-	)
-	(text "CUE CH1"
-		(exclude_from_sim no)
-		(at 130.81 33.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4a73516a-f857-4ce0-90b3-8f00360561ef")
-	)
-	(text "COLOUR SEL 1"
-		(exclude_from_sim no)
-		(at 130.81 99.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "54999c17-9c49-47ef-9af0-563ca23e4c39")
-	)
-	(text "SPARE 4"
-		(exclude_from_sim no)
-		(at 175.26 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6466dfe4-f6ca-4ea3-ae2b-6a009c2a8387")
-	)
-	(text "COLOUR SEL 2"
-		(exclude_from_sim no)
-		(at 175.26 99.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8db4dedf-522a-4d6a-91bb-32aa4edf4a5b")
-	)
-	(text "SPARE 3"
-		(exclude_from_sim no)
-		(at 130.81 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "992368c0-0836-45a8-947f-f6c0ba61616e")
-	)
-	(text "COLOUR SEL 3"
-		(exclude_from_sim no)
-		(at 219.71 99.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9f639098-0d97-4e13-a303-bd22c75c5fc1")
-	)
-	(text "EFFECT ASSIGN 2"
-		(exclude_from_sim no)
-		(at 219.71 66.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a3f953fa-063f-474c-9755-10d7e687095b")
-	)
-	(text "SPARE 5"
-		(exclude_from_sim no)
-		(at 219.71 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c0623c1b-ab0e-4e3c-a053-479a8ba2eb4f")
-	)
-	(text "EFFECT ON"
-		(exclude_from_sim no)
-		(at 130.81 66.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e945da67-004c-4fbc-9664-00e4b1c15948")
-	)
 	(label "COLOUR_SEL_4"
 		(at 234.95 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4048,7 +4079,6 @@
 	)
 	(label "SPARE_6"
 		(at 238.76 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4059,7 +4089,6 @@
 	)
 	(label "EFFECT_ASSIGN_CH2"
 		(at 83.82 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4070,7 +4099,6 @@
 	)
 	(label "SPARE_4"
 		(at 83.82 86.36 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4081,7 +4109,6 @@
 	)
 	(label "COLOUR_SEL_1"
 		(at 105.41 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4092,7 +4119,6 @@
 	)
 	(label "SPARE_1"
 		(at 234.95 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4103,7 +4129,6 @@
 	)
 	(label "COLOUR_SEL_4"
 		(at 83.82 121.92 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4114,7 +4139,6 @@
 	)
 	(label "CUE_EFFECT_SEL"
 		(at 193.04 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4125,7 +4149,6 @@
 	)
 	(label "SPARE_3"
 		(at 83.82 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4136,7 +4159,6 @@
 	)
 	(label "CUE_CH2_SEL"
 		(at 83.82 109.22 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4147,7 +4169,6 @@
 	)
 	(label "CUE_EFFECT_SEL"
 		(at 83.82 96.52 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4158,7 +4179,6 @@
 	)
 	(label "EFFECT ON"
 		(at 83.82 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4169,7 +4189,6 @@
 	)
 	(label "COLOUR_SEL_2"
 		(at 149.86 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4180,7 +4199,6 @@
 	)
 	(label "CUE_CH2_SEL"
 		(at 149.86 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4191,7 +4209,6 @@
 	)
 	(label "COLOUR_SEL_1"
 		(at 83.82 114.3 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4202,7 +4219,6 @@
 	)
 	(label "SPARE_4"
 		(at 149.86 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4213,7 +4229,6 @@
 	)
 	(label "EFFECT_ASSIGN_CH2"
 		(at 189.23 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4224,7 +4239,6 @@
 	)
 	(label "SPARE_6"
 		(at 83.82 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4235,7 +4249,6 @@
 	)
 	(label "SPARE_5"
 		(at 194.31 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4246,7 +4259,6 @@
 	)
 	(label "SPARE_3"
 		(at 105.41 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4257,7 +4269,6 @@
 	)
 	(label "EFFECT ON"
 		(at 105.41 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4268,7 +4279,6 @@
 	)
 	(label "COLOUR_SEL_3"
 		(at 83.82 119.38 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4279,7 +4289,6 @@
 	)
 	(label "SPARE_1"
 		(at 83.82 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4290,7 +4299,6 @@
 	)
 	(label "EFFECT_ASSIGN_CH1"
 		(at 144.78 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4301,7 +4309,6 @@
 	)
 	(label "CUE_CH1_SEL"
 		(at 83.82 111.76 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4312,7 +4319,6 @@
 	)
 	(label "EFFECT_ASSIGN_CH1"
 		(at 83.82 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4323,7 +4329,6 @@
 	)
 	(label "CUE_CH1_SEL"
 		(at 97.79 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4334,7 +4339,6 @@
 	)
 	(label "SPARE_5"
 		(at 83.82 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4345,7 +4349,6 @@
 	)
 	(label "COLOUR_SEL_2"
 		(at 83.82 116.84 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4356,7 +4359,6 @@
 	)
 	(label "COLOUR_SEL_3"
 		(at 194.31 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4367,7 +4369,6 @@
 	)
 	(label "SPARE_2"
 		(at 234.95 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4378,7 +4379,6 @@
 	)
 	(label "SPARE_2"
 		(at 83.82 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4390,7 +4390,6 @@
 	(hierarchical_label "button_interrupt"
 		(shape output)
 		(at 24.13 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4402,7 +4401,6 @@
 	(hierarchical_label "I2C_SDA"
 		(shape bidirectional)
 		(at 24.13 81.28 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4414,7 +4412,6 @@
 	(hierarchical_label "I2C_SCL"
 		(shape input)
 		(at 24.13 83.82 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4433,7 +4430,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "009fa952-0b48-4173-b5ef-4d2335e36296")
-		(property "Reference" "R1828"
+		(property "Reference" "R328"
 			(at 247.65 34.29 0)
 			(effects
 				(font
@@ -4517,7 +4514,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0a592e90-a081-49f1-a0f8-344b1988029d")
-		(property "Reference" "C1817"
+		(property "Reference" "C317"
 			(at 251.46 142.2463 0)
 			(effects
 				(font
@@ -4602,7 +4599,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0b54f854-52ac-444a-97c3-c3b602cea58b")
-		(property "Reference" "#PWR01812"
+		(property "Reference" "#PWR0312"
 			(at 120.65 154.94 0)
 			(effects
 				(font
@@ -4674,7 +4671,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0ccdc733-34c3-4682-85f5-80e2139e7c83")
-		(property "Reference" "#PWR01805"
+		(property "Reference" "#PWR0305"
 			(at 120.65 34.29 0)
 			(effects
 				(font
@@ -4746,7 +4743,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0d5ba846-7eea-4a30-8eef-79a0e9340ca5")
-		(property "Reference" "#PWR01806"
+		(property "Reference" "#PWR0306"
 			(at 120.65 55.88 0)
 			(effects
 				(font
@@ -4817,7 +4814,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0e3ea626-b1dc-4e27-a6ac-a9ff1adbbbd0")
-		(property "Reference" "C1814"
+		(property "Reference" "C314"
 			(at 247.65 43.1863 0)
 			(effects
 				(font
@@ -4901,7 +4898,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0fb95d9e-b562-4506-89ff-c5b3dd3d53bc")
-		(property "Reference" "C1812"
+		(property "Reference" "C312"
 			(at 207.01 109.2263 0)
 			(effects
 				(font
@@ -4985,7 +4982,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "113db2ff-943d-4d91-a369-bbc6f4255cd3")
-		(property "Reference" "SW1804"
+		(property "Reference" "SW304"
 			(at 134.62 134.62 0)
 			(effects
 				(font
@@ -5069,7 +5066,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "11b2b9c9-ba80-4780-8c9a-d28d7632255f")
-		(property "Reference" "#PWR01819"
+		(property "Reference" "#PWR0319"
 			(at 165.1 133.35 0)
 			(effects
 				(font
@@ -5141,7 +5138,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15f751f6-759d-4c17-b2f5-60c6940ba9b0")
-		(property "Reference" "#PWR01811"
+		(property "Reference" "#PWR0311"
 			(at 120.65 133.35 0)
 			(effects
 				(font
@@ -5212,7 +5209,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1c7a9a1a-3842-4211-b2cc-6b82061e0d80")
-		(property "Reference" "R1803"
+		(property "Reference" "R303"
 			(at 45.72 68.58 0)
 			(effects
 				(font
@@ -5296,7 +5293,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1c85831d-912f-4c1b-aa51-6d08128f39a6")
-		(property "Reference" "C1813"
+		(property "Reference" "C313"
 			(at 207.01 142.2463 0)
 			(effects
 				(font
@@ -5381,7 +5378,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "25a8a12d-0c4e-4743-802f-da4dbc350dec")
-		(property "Reference" "R1820"
+		(property "Reference" "R320"
 			(at 207.01 34.29 0)
 			(effects
 				(font
@@ -5465,7 +5462,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2741ea29-4f90-4b6a-90e6-a7604508e79e")
-		(property "Reference" "SW1806"
+		(property "Reference" "SW306"
 			(at 179.07 68.58 0)
 			(effects
 				(font
@@ -5548,7 +5545,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "28c66afe-5204-4a88-94a8-8d8bf0b93c63")
-		(property "Reference" "SW1814"
+		(property "Reference" "SW314"
 			(at 264.16 68.58 0)
 			(effects
 				(font
@@ -5632,8 +5629,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "29f8baed-7027-4c67-bf3c-785a2f736a1b")
-		(property "Reference" "R1827"
-			(at 213.36 134.62 90)
+		(property "Reference" "R327"
+			(at 213.36 134.8189 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5641,7 +5638,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 213.36 137.16 90)
+			(at 213.36 137.2432 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5715,7 +5712,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2a1d164e-912b-4e38-9e6a-4b8a4ac1af7e")
-		(property "Reference" "#PWR01822"
+		(property "Reference" "#PWR0322"
 			(at 209.55 55.88 0)
 			(effects
 				(font
@@ -5787,8 +5784,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2cfa48f6-e358-4355-89cc-523f7ebb2426")
-		(property "Reference" "R1831"
-			(at 254 35.56 90)
+		(property "Reference" "R331"
+			(at 254 35.7589 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5796,7 +5793,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 254 38.1 90)
+			(at 254 38.1832 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5869,7 +5866,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2d9a20c4-9e03-475c-b07d-fe4c834354a7")
-		(property "Reference" "C1811"
+		(property "Reference" "C311"
 			(at 207.01 76.2063 0)
 			(effects
 				(font
@@ -5954,7 +5951,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "305b07ae-0eb9-45c5-8c04-7589c04d31ed")
-		(property "Reference" "#PWR01801"
+		(property "Reference" "#PWR0301"
 			(at 63.5 59.69 0)
 			(effects
 				(font
@@ -6026,7 +6023,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3930f0c3-a7b7-4911-800e-bb76ce7f4352")
-		(property "Reference" "R1814"
+		(property "Reference" "R314"
 			(at 162.56 100.33 0)
 			(effects
 				(font
@@ -6111,7 +6108,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "40e8f9a3-8c82-43d5-ab7b-e47efae27f97")
-		(property "Reference" "#PWR01817"
+		(property "Reference" "#PWR0317"
 			(at 165.1 100.33 0)
 			(effects
 				(font
@@ -6182,7 +6179,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "40ec5cee-3d46-433a-b07c-4a7ab209a309")
-		(property "Reference" "SW1812"
+		(property "Reference" "SW312"
 			(at 223.52 134.62 0)
 			(effects
 				(font
@@ -6265,7 +6262,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "42906473-6e9d-4c7b-ad54-b016289cbb7b")
-		(property "Reference" "R1824"
+		(property "Reference" "R324"
 			(at 213.36 35.56 90)
 			(effects
 				(font
@@ -6347,7 +6344,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "43903b2a-342d-4751-a457-b63796327dfc")
-		(property "Reference" "SW1809"
+		(property "Reference" "SW309"
 			(at 223.52 35.56 0)
 			(effects
 				(font
@@ -6431,7 +6428,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "46493f7c-e2b0-4a4e-96b7-712f421a96a7")
-		(property "Reference" "#PWR01810"
+		(property "Reference" "#PWR0310"
 			(at 120.65 121.92 0)
 			(effects
 				(font
@@ -6503,7 +6500,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4a986c30-6c48-4014-9475-83d686db56f0")
-		(property "Reference" "#PWR01827"
+		(property "Reference" "#PWR0327"
 			(at 209.55 133.35 0)
 			(effects
 				(font
@@ -6575,8 +6572,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4ff23489-2d02-4ef0-9c93-b0e8dda1c074")
-		(property "Reference" "R1826"
-			(at 213.36 101.6 90)
+		(property "Reference" "R326"
+			(at 213.36 101.7989 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6584,7 +6581,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 213.36 104.14 90)
+			(at 213.36 104.2232 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6657,7 +6654,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "52021a34-718c-4c0f-8d0d-dcb5bf5de959")
-		(property "Reference" "R1808"
+		(property "Reference" "R308"
 			(at 124.46 35.56 90)
 			(effects
 				(font
@@ -6740,7 +6737,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "530900fe-dd25-4ab0-a678-f7cdbfa979df")
-		(property "Reference" "#PWR01826"
+		(property "Reference" "#PWR0326"
 			(at 209.55 121.92 0)
 			(effects
 				(font
@@ -6812,7 +6809,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5316d3cf-27b5-4eec-9caf-5e61e440e3ce")
-		(property "Reference" "#PWR01832"
+		(property "Reference" "#PWR0332"
 			(at 250.19 88.9 0)
 			(effects
 				(font
@@ -6883,7 +6880,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "54f3ca95-be5d-43b8-9344-783a28c4bb1c")
-		(property "Reference" "C1803"
+		(property "Reference" "C303"
 			(at 118.11 76.2063 0)
 			(effects
 				(font
@@ -6967,7 +6964,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "55aca2e4-1b7b-400a-90e8-ebe3065098c3")
-		(property "Reference" "SW1802"
+		(property "Reference" "SW302"
 			(at 134.62 68.58 0)
 			(effects
 				(font
@@ -7051,7 +7048,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "58a78712-060b-4442-8f99-0569ff7fefcf")
-		(property "Reference" "#PWR01813"
+		(property "Reference" "#PWR0313"
 			(at 165.1 34.29 0)
 			(effects
 				(font
@@ -7122,7 +7119,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6000d671-97b4-4fde-863e-ada393ed605c")
-		(property "Reference" "SW1811"
+		(property "Reference" "SW311"
 			(at 223.52 101.6 0)
 			(effects
 				(font
@@ -7205,7 +7202,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6377bf3b-776a-47ab-8dbe-b6276d5370bb")
-		(property "Reference" "#PWR01804"
+		(property "Reference" "#PWR0304"
 			(at 82.55 77.47 0)
 			(effects
 				(font
@@ -7277,7 +7274,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "64f67c33-2d30-4168-bc2f-c2bbd6bcc1cc")
-		(property "Reference" "#PWR01833"
+		(property "Reference" "#PWR0333"
 			(at 250.19 100.33 0)
 			(effects
 				(font
@@ -7349,7 +7346,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "69e2bd2a-604e-4bfe-8e62-e0a90484380a")
-		(property "Reference" "#PWR01831"
+		(property "Reference" "#PWR0331"
 			(at 250.19 67.31 0)
 			(effects
 				(font
@@ -7421,7 +7418,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7169412a-1870-400a-bb80-a00e058ff116")
-		(property "Reference" "#PWR01814"
+		(property "Reference" "#PWR0314"
 			(at 165.1 55.88 0)
 			(effects
 				(font
@@ -7493,7 +7490,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "716e0499-9532-4fda-be21-fc84edd5ea45")
-		(property "Reference" "R1829"
+		(property "Reference" "R329"
 			(at 247.65 67.31 0)
 			(effects
 				(font
@@ -7578,7 +7575,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "73968c04-058e-43ce-be01-2a8b6b5ae8e1")
-		(property "Reference" "R1812"
+		(property "Reference" "R312"
 			(at 162.56 34.29 0)
 			(effects
 				(font
@@ -7663,7 +7660,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "73fef383-fdd5-4cf0-9dc6-7c1d8f66ebed")
-		(property "Reference" "R1830"
+		(property "Reference" "R330"
 			(at 247.65 100.33 0)
 			(effects
 				(font
@@ -7748,7 +7745,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "77f98711-d74a-44df-bfc0-498ed72ac614")
-		(property "Reference" "R1805"
+		(property "Reference" "R305"
 			(at 118.11 67.31 0)
 			(effects
 				(font
@@ -7832,7 +7829,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "78359bab-52f8-4e2b-90ec-019829af1158")
-		(property "Reference" "C1804"
+		(property "Reference" "C304"
 			(at 118.11 109.2263 0)
 			(effects
 				(font
@@ -7917,8 +7914,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "799e9b4b-321c-4a8a-b2c2-b92fcfd4867a")
-		(property "Reference" "R1819"
-			(at 168.91 134.62 90)
+		(property "Reference" "R319"
+			(at 168.91 134.8189 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7926,7 +7923,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 168.91 137.16 90)
+			(at 168.91 137.2432 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8000,7 +7997,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7c11e3de-0257-434d-854f-25d9b7439e05")
-		(property "Reference" "R1807"
+		(property "Reference" "R307"
 			(at 118.11 133.35 0)
 			(effects
 				(font
@@ -8085,7 +8082,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "80b1625c-1afd-4137-a493-1112b7c9cf30")
-		(property "Reference" "#PWR01820"
+		(property "Reference" "#PWR0320"
 			(at 165.1 154.94 0)
 			(effects
 				(font
@@ -8156,7 +8153,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "856ea335-a477-43a5-9657-2383f50f0840")
-		(property "Reference" "SW1805"
+		(property "Reference" "SW305"
 			(at 179.07 35.56 0)
 			(effects
 				(font
@@ -8240,7 +8237,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "85ce3be9-1136-407a-aa09-d931a2ce49c5")
-		(property "Reference" "#PWR01802"
+		(property "Reference" "#PWR0302"
 			(at 63.5 139.7 0)
 			(effects
 				(font
@@ -8312,8 +8309,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "86f2a28f-4255-4821-afe9-1383e88425a8")
-		(property "Reference" "R1818"
-			(at 168.91 101.6 90)
+		(property "Reference" "R318"
+			(at 168.91 101.7989 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8321,7 +8318,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 168.91 104.14 90)
+			(at 168.91 104.2232 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8394,7 +8391,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "875e7d09-0ec1-4f9a-9a47-10cfde765441")
-		(property "Reference" "C1801"
+		(property "Reference" "C301"
 			(at 80.01 64.7763 0)
 			(effects
 				(font
@@ -8479,7 +8476,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8ae3320a-a496-4de0-8273-9d56d494747c")
-		(property "Reference" "R1822"
+		(property "Reference" "R322"
 			(at 207.01 100.33 0)
 			(effects
 				(font
@@ -8563,7 +8560,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8bef3ba4-a9a5-4d49-bfc6-8d8d049bade6")
-		(property "Reference" "SW1816"
+		(property "Reference" "SW316"
 			(at 267.97 134.62 0)
 			(effects
 				(font
@@ -8647,7 +8644,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8dfff0fd-6e7f-4da5-b6d1-315e3156285c")
-		(property "Reference" "#PWR01818"
+		(property "Reference" "#PWR0318"
 			(at 165.1 121.92 0)
 			(effects
 				(font
@@ -8719,7 +8716,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8ecfc9dd-26db-4be5-87c1-16e9bb49e3bb")
-		(property "Reference" "R1806"
+		(property "Reference" "R306"
 			(at 118.11 100.33 0)
 			(effects
 				(font
@@ -8804,7 +8801,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "905de3d7-ab76-4ebb-ae21-b0fb698eb035")
-		(property "Reference" "R1813"
+		(property "Reference" "R313"
 			(at 162.56 67.31 0)
 			(effects
 				(font
@@ -8888,7 +8885,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9283c1d0-04eb-4643-b863-4b5cf8d77ce1")
-		(property "Reference" "C1809"
+		(property "Reference" "C309"
 			(at 162.56 142.2463 0)
 			(effects
 				(font
@@ -8972,7 +8969,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "961273f3-c917-4d44-b41d-ebb18a60ec75")
-		(property "Reference" "R1816"
+		(property "Reference" "R316"
 			(at 168.91 35.56 90)
 			(effects
 				(font
@@ -9054,7 +9051,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "99d39aac-b685-4bed-80ed-33dafe0be90b")
-		(property "Reference" "SW1801"
+		(property "Reference" "SW301"
 			(at 134.62 35.56 0)
 			(effects
 				(font
@@ -9137,7 +9134,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9cc47e33-ba98-45e5-b175-f7983dfb1717")
-		(property "Reference" "C1808"
+		(property "Reference" "C308"
 			(at 162.56 109.2263 0)
 			(effects
 				(font
@@ -9222,7 +9219,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9f2b7f22-be4e-42ad-b85d-dc14d0b32a77")
-		(property "Reference" "#PWR01809"
+		(property "Reference" "#PWR0309"
 			(at 120.65 100.33 0)
 			(effects
 				(font
@@ -9294,8 +9291,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1f32fc6-5567-4580-91ff-d73acb9c8e50")
-		(property "Reference" "R1833"
-			(at 254 101.6 90)
+		(property "Reference" "R333"
+			(at 254 101.7989 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9303,7 +9300,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 254 104.14 90)
+			(at 254 104.2232 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9377,8 +9374,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a3f3e322-b12c-49f2-a2b7-5541c149b251")
-		(property "Reference" "R1809"
-			(at 124.46 68.58 90)
+		(property "Reference" "R309"
+			(at 124.46 68.7789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9386,7 +9383,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 124.46 71.12 90)
+			(at 124.46 71.2032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9460,7 +9457,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a59c3d6b-0f49-4798-ac56-924f634cfa55")
-		(property "Reference" "R1802"
+		(property "Reference" "R302"
 			(at 33.02 68.58 0)
 			(effects
 				(font
@@ -9545,7 +9542,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a5c426b5-eb2a-4af1-98bc-b0548c79117c")
-		(property "Reference" "#PWR01835"
+		(property "Reference" "#PWR0335"
 			(at 254 133.35 0)
 			(effects
 				(font
@@ -9617,8 +9614,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8b696f9-30df-4241-857e-d50575b3ea60")
-		(property "Reference" "R1832"
-			(at 254 68.58 90)
+		(property "Reference" "R332"
+			(at 254 68.7789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9626,7 +9623,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 254 71.12 90)
+			(at 254 71.2032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9700,7 +9697,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ab7578dc-e823-473b-8961-1b0c6213b157")
-		(property "Reference" "R1821"
+		(property "Reference" "R321"
 			(at 207.01 67.31 0)
 			(effects
 				(font
@@ -9785,7 +9782,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "abb1aeed-4482-46cb-9e52-2ff4a455db23")
-		(property "Reference" "#PWR01807"
+		(property "Reference" "#PWR0307"
 			(at 120.65 67.31 0)
 			(effects
 				(font
@@ -9857,7 +9854,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "abdc9f45-2eda-495f-986f-f83ca9d69112")
-		(property "Reference" "R1815"
+		(property "Reference" "R315"
 			(at 162.56 133.35 0)
 			(effects
 				(font
@@ -9942,7 +9939,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ac34f731-52d8-4726-bf7c-0f1ed569343d")
-		(property "Reference" "#PWR01829"
+		(property "Reference" "#PWR0329"
 			(at 250.19 34.29 0)
 			(effects
 				(font
@@ -10014,7 +10011,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ade178e3-a2fb-4b73-9615-55ee4fceef22")
-		(property "Reference" "#PWR01824"
+		(property "Reference" "#PWR0324"
 			(at 209.55 88.9 0)
 			(effects
 				(font
@@ -10085,7 +10082,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b13d1665-dc6c-4247-aead-6cb1e7287702")
-		(property "Reference" "C1810"
+		(property "Reference" "C310"
 			(at 207.01 43.1863 0)
 			(effects
 				(font
@@ -10170,7 +10167,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b14dba74-a9c0-4c14-8deb-b4f068098608")
-		(property "Reference" "#PWR01836"
+		(property "Reference" "#PWR0336"
 			(at 254 154.94 0)
 			(effects
 				(font
@@ -10241,7 +10238,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b36f0aa0-345f-4832-8ee9-d2f1eee88b89")
-		(property "Reference" "C1816"
+		(property "Reference" "C316"
 			(at 247.65 109.2263 0)
 			(effects
 				(font
@@ -10326,7 +10323,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b54c0529-141c-4cea-aa94-8fb73ffc075d")
-		(property "Reference" "#PWR01823"
+		(property "Reference" "#PWR0323"
 			(at 209.55 67.31 0)
 			(effects
 				(font
@@ -10398,7 +10395,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b8184097-2899-4e06-b23b-a69f5199c6dd")
-		(property "Reference" "R1823"
+		(property "Reference" "R323"
 			(at 207.01 133.35 0)
 			(effects
 				(font
@@ -10482,7 +10479,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bc80b911-c4f4-478e-8496-77d521b4823a")
-		(property "Reference" "SW1807"
+		(property "Reference" "SW307"
 			(at 179.07 101.6 0)
 			(effects
 				(font
@@ -10565,7 +10562,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bcc6fdcd-d334-4e3c-819e-06fd8a55d8aa")
-		(property "Reference" "SW1815"
+		(property "Reference" "SW315"
 			(at 264.16 101.6 0)
 			(effects
 				(font
@@ -10649,7 +10646,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bec1df0a-6f18-4761-b129-93ed5724cf59")
-		(property "Reference" "U1801"
+		(property "Reference" "U301"
 			(at 65.6941 73.66 0)
 			(effects
 				(font
@@ -10799,7 +10796,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "becf4685-0c62-4850-8882-c810e44ad923")
-		(property "Reference" "SW1803"
+		(property "Reference" "SW303"
 			(at 134.62 101.6 0)
 			(effects
 				(font
@@ -10882,7 +10879,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bf31e764-a449-426e-abe0-0520c33d7181")
-		(property "Reference" "#PWR01803"
+		(property "Reference" "#PWR0303"
 			(at 63.5 175.26 0)
 			(effects
 				(font
@@ -10953,7 +10950,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c22bf277-c541-4ebb-a32a-151ce0fcf284")
-		(property "Reference" "TP1801"
+		(property "Reference" "TP301"
 			(at 24.13 112.522 0)
 			(effects
 				(font
@@ -11026,7 +11023,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c2bad43a-7fbf-4291-a3d7-338c11e15724")
-		(property "Reference" "R1801"
+		(property "Reference" "R301"
 			(at 24.13 68.58 0)
 			(effects
 				(font
@@ -11111,7 +11108,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c4abfc2f-8807-4530-93a2-821d6380309b")
-		(property "Reference" "#PWR01828"
+		(property "Reference" "#PWR0328"
 			(at 209.55 154.94 0)
 			(effects
 				(font
@@ -11183,8 +11180,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c5334e96-378a-4f6d-adea-9ec8d82dae6b")
-		(property "Reference" "R1835"
-			(at 257.81 134.62 90)
+		(property "Reference" "R335"
+			(at 257.81 134.8189 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11192,7 +11189,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 257.81 137.16 90)
+			(at 257.81 137.2432 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11266,7 +11263,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c7ffc8e2-92f6-4bae-9189-0b6de1471fad")
-		(property "Reference" "R1834"
+		(property "Reference" "R334"
 			(at 251.46 133.35 0)
 			(effects
 				(font
@@ -11351,7 +11348,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cd176eed-e580-4ce0-b66e-f91ebcec9e6f")
-		(property "Reference" "#PWR01821"
+		(property "Reference" "#PWR0321"
 			(at 209.55 34.29 0)
 			(effects
 				(font
@@ -11422,7 +11419,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ced60b15-d73c-4f56-b01b-754683047b4e")
-		(property "Reference" "TP1802"
+		(property "Reference" "TP302"
 			(at 27.94 120.142 0)
 			(effects
 				(font
@@ -11495,8 +11492,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3844006-74ca-4934-903b-e96cbc3a16de")
-		(property "Reference" "R1825"
-			(at 213.36 68.58 90)
+		(property "Reference" "R325"
+			(at 213.36 68.7789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11504,7 +11501,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 213.36 71.12 90)
+			(at 213.36 71.2032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11578,7 +11575,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d416cafe-a06a-4708-bb60-ab714f773470")
-		(property "Reference" "R1804"
+		(property "Reference" "R304"
 			(at 118.11 34.29 0)
 			(effects
 				(font
@@ -11662,7 +11659,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d545dd0a-752d-49b8-b2c7-e25e17869841")
-		(property "Reference" "SW1810"
+		(property "Reference" "SW310"
 			(at 223.52 68.58 0)
 			(effects
 				(font
@@ -11746,8 +11743,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d97cc273-99d7-42df-bb42-a3a2581dc32b")
-		(property "Reference" "R1811"
-			(at 124.46 134.62 90)
+		(property "Reference" "R311"
+			(at 124.46 134.8189 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11755,7 +11752,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 124.46 137.16 90)
+			(at 124.46 137.2432 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11828,7 +11825,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "da10bbd9-5947-4f92-bd28-f2a4a49947b7")
-		(property "Reference" "C1807"
+		(property "Reference" "C307"
 			(at 162.56 76.2063 0)
 			(effects
 				(font
@@ -11913,7 +11910,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dcf3b2d7-23fe-4d85-a754-1c2cdff7ebd9")
-		(property "Reference" "#PWR01808"
+		(property "Reference" "#PWR0308"
 			(at 120.65 88.9 0)
 			(effects
 				(font
@@ -11984,7 +11981,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dded43f7-4b60-4b29-ad1c-bd86bb7e586b")
-		(property "Reference" "TP1803"
+		(property "Reference" "TP303"
 			(at 40.64 98.552 0)
 			(effects
 				(font
@@ -12056,7 +12053,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e3cc5d96-9215-463b-9f52-730ac8f02dda")
-		(property "Reference" "C1806"
+		(property "Reference" "C306"
 			(at 162.56 43.1863 0)
 			(effects
 				(font
@@ -12141,7 +12138,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e4c3b5b6-6a2c-4376-814d-9db81827d581")
-		(property "Reference" "#PWR01825"
+		(property "Reference" "#PWR0325"
 			(at 209.55 100.33 0)
 			(effects
 				(font
@@ -12213,7 +12210,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e50df9a7-da6b-4457-bcd8-a3f966c43d3c")
-		(property "Reference" "C1802"
+		(property "Reference" "C302"
 			(at 123.19 43.1863 0)
 			(effects
 				(font
@@ -12297,7 +12294,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e6cd0caa-0231-4752-b1f6-fcc295223e48")
-		(property "Reference" "C1805"
+		(property "Reference" "C305"
 			(at 118.11 142.2463 0)
 			(effects
 				(font
@@ -12381,7 +12378,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f0949a24-a35d-426d-8055-7ebc0770fff6")
-		(property "Reference" "C1815"
+		(property "Reference" "C315"
 			(at 247.65 76.2063 0)
 			(effects
 				(font
@@ -12466,8 +12463,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f0b9cc57-7018-47a0-91bc-cd698a9e3874")
-		(property "Reference" "R1817"
-			(at 168.91 68.58 90)
+		(property "Reference" "R317"
+			(at 168.91 68.7789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12475,7 +12472,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 168.91 71.12 90)
+			(at 168.91 71.2032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12548,7 +12545,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f309a41a-3673-4bbe-94b9-1034ba236e52")
-		(property "Reference" "SW1808"
+		(property "Reference" "SW308"
 			(at 179.07 134.62 0)
 			(effects
 				(font
@@ -12632,8 +12629,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f57445d2-8959-4cba-baa4-b2fb3a5b04cf")
-		(property "Reference" "R1810"
-			(at 124.46 101.6 90)
+		(property "Reference" "R310"
+			(at 124.46 101.7989 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12641,7 +12638,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 124.46 104.14 90)
+			(at 124.46 104.2232 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12714,7 +12711,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f82877fc-47b8-4dc8-9f7d-73c165d63a9e")
-		(property "Reference" "SW1813"
+		(property "Reference" "SW313"
 			(at 264.16 35.56 0)
 			(effects
 				(font
@@ -12797,7 +12794,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f9e0db55-0646-41de-b112-0405bd9bf04b")
-		(property "Reference" "TP1804"
+		(property "Reference" "TP304"
 			(at 60.96 161.798 0)
 			(effects
 				(font
@@ -12870,7 +12867,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fb5ce225-69b0-4762-b2f4-149dc36347fc")
-		(property "Reference" "#PWR01834"
+		(property "Reference" "#PWR0334"
 			(at 250.19 121.92 0)
 			(effects
 				(font
@@ -12942,7 +12939,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fc7e6c51-3f6b-4e5e-92c3-0567df1f73a4")
-		(property "Reference" "#PWR01816"
+		(property "Reference" "#PWR0316"
 			(at 165.1 88.9 0)
 			(effects
 				(font
@@ -13014,7 +13011,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fe785133-205b-4789-a92c-e03797b70f8c")
-		(property "Reference" "#PWR01830"
+		(property "Reference" "#PWR0330"
 			(at 250.19 55.88 0)
 			(effects
 				(font
@@ -13086,7 +13083,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ff0e7034-f2d5-4e5f-9eb3-de608b7ba516")
-		(property "Reference" "#PWR01815"
+		(property "Reference" "#PWR0315"
 			(at 165.1 67.31 0)
 			(effects
 				(font

@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "b5a5bbf3-0815-4195-bc9d-2aefe476051a")
 	(paper "A3")
 	(lib_symbols
@@ -71,35 +71,17 @@
 				)
 			)
 			(symbol "74HC595_1_0"
-				(pin tri_state line
-					(at 10.16 7.62 180)
-					(length 2.54)
-					(name "QB"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin input line
-					(at -10.16 2.54 0)
+					(at -10.16 10.16 0)
 					(length 2.54)
-					(name "~{SRCLR}"
+					(name "SER"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "10"
+					(number "14"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -118,6 +100,24 @@
 						)
 					)
 					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "~{SRCLR}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -161,17 +161,35 @@
 						)
 					)
 				)
-				(pin input line
-					(at -10.16 10.16 0)
+				(pin power_in line
+					(at 0 15.24 270)
 					(length 2.54)
-					(name "SER"
+					(name "VCC"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "14"
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -17.78 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -197,17 +215,17 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 0 15.24 270)
+				(pin tri_state line
+					(at 10.16 7.62 180)
 					(length 2.54)
-					(name "VCC"
+					(name "QB"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "16"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -323,24 +341,6 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 0 -17.78 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin output line
 					(at 10.16 -12.7 180)
 					(length 2.54)
@@ -373,11 +373,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.762) hide)
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -475,11 +480,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -549,10 +559,10 @@
 			(symbol "C_Small_0_1"
 				(polyline
 					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
+						(xy -1.524 0.508) (xy 1.524 0.508)
 					)
 					(stroke
-						(width 0.3302)
+						(width 0.3048)
 						(type default)
 					)
 					(fill
@@ -561,10 +571,10 @@
 				)
 				(polyline
 					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
 					)
 					(stroke
-						(width 0.3048)
+						(width 0.3302)
 						(type default)
 					)
 					(fill
@@ -610,11 +620,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:LED_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -663,6 +678,15 @@
 					(hide yes)
 				)
 			)
+			(property "Sim.Pin" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(property "ki_keywords" "LED diode light-emitting-diode"
 				(at 0 0 0)
 				(effects
@@ -696,7 +720,19 @@
 				)
 				(polyline
 					(pts
-						(xy 1.016 0) (xy -0.762 0)
+						(xy 0 0.762) (xy -0.508 1.27) (xy -0.254 1.27) (xy -0.508 1.27) (xy -0.508 1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27) (xy 0 1.778) (xy 0.254 1.778) (xy 0 1.778) (xy 0 1.524)
 					)
 					(stroke
 						(width 0)
@@ -720,19 +756,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0.762) (xy -0.508 1.27) (xy -0.254 1.27) (xy -0.508 1.27) (xy -0.508 1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.508 1.27) (xy 0 1.778) (xy 0.254 1.778) (xy 0 1.778) (xy 0 1.524)
+						(xy 1.016 0) (xy -0.762 0)
 					)
 					(stroke
 						(width 0)
@@ -781,30 +805,33 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "R"
-				(at 0.762 0.508 0)
+				(at 0 0 90)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(size 1.016 1.016)
 					)
-					(justify left)
 				)
 			)
 			(property "Value" "R_Small"
-				(at 0.762 -1.016 0)
+				(at 1.778 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
 			(property "Footprint" ""
@@ -903,12 +930,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -999,12 +1031,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:VDD"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1076,7 +1113,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1088,7 +1125,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1119,19 +1156,129 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 	)
-	(junction
-		(at 240.03 31.75)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0b687360-1adf-4586-a298-43012d50a929")
+	(text "-12dB"
+		(exclude_from_sim no)
+		(at 142.24 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "23e342be-8506-40c2-8c7e-bce2032cc589")
 	)
-	(junction
-		(at 179.07 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "14088a59-c654-4d45-82fd-f61c91889389")
+	(text "-6dB"
+		(exclude_from_sim no)
+		(at 142.24 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "26fa4581-554a-401c-b4c5-ea81f33002d8")
+	)
+	(text "-9dB"
+		(exclude_from_sim no)
+		(at 142.24 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3b6bac62-35e0-401d-862d-843c1580b0b6")
+	)
+	(text "Master"
+		(exclude_from_sim no)
+		(at 194.31 15.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5e4129f8-17d4-4873-985c-6a55b5d8ae2f")
+	)
+	(text "0dB"
+		(exclude_from_sim no)
+		(at 142.24 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "63122381-9dd1-4665-89c6-fa6ba13440b9")
+	)
+	(text "-20dB"
+		(exclude_from_sim no)
+		(at 142.24 140.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "76543b58-ff84-4989-9011-5f8e16a8cbb7")
+	)
+	(text "-3dB"
+		(exclude_from_sim no)
+		(at 142.24 64.77 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "84d9ab30-ec5b-4398-8440-5cee8a9babbb")
+	)
+	(text "CH1"
+		(exclude_from_sim no)
+		(at 152.4 15.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "94993882-ee9a-45b5-b6d1-f327ed49958a")
+	)
+	(text "-25dB"
+		(exclude_from_sim no)
+		(at 142.24 160.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f247e415-2e75-49bd-ac46-fd46f9f8d108")
+	)
+	(text "Clip"
+		(exclude_from_sim no)
+		(at 142.24 27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f2883966-1116-4013-9dce-ffe6ffeeb4dd")
+	)
+	(text "CH2"
+		(exclude_from_sim no)
+		(at 173.99 15.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ff4ffcf9-3a66-4e5b-a575-70b3cf5522f6")
 	)
 	(junction
 		(at 66.04 90.17)
@@ -1152,30 +1299,6 @@
 		(uuid "269803db-5d50-4193-a30d-14fb898b9e3b")
 	)
 	(junction
-		(at 199.39 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2bff83e1-d000-490c-aa7e-2e77298a982c")
-	)
-	(junction
-		(at 158.75 163.83)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2c5ff858-89c8-4c16-bfef-709796997214")
-	)
-	(junction
-		(at 158.75 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3a336af0-4530-4750-9ddb-ee0fd887e797")
-	)
-	(junction
-		(at 199.39 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3c62d6b1-099e-4be9-b4e8-4a5ced4b5ff1")
-	)
-	(junction
 		(at 68.58 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1194,34 +1317,10 @@
 		(uuid "468df038-2d54-40ff-af32-828460942cf8")
 	)
 	(junction
-		(at 273.05 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4bc2fd93-2f7a-495d-8e30-219faa8f9f76")
-	)
-	(junction
 		(at 60.96 204.47)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "544da486-d3ad-4c06-9184-372fc34bc6aa")
-	)
-	(junction
-		(at 158.75 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5847960b-4d36-49fa-a415-df4016ec6e83")
-	)
-	(junction
-		(at 199.39 31.75)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "631baeda-cd2a-4849-8348-deda6a463f5f")
-	)
-	(junction
-		(at 240.03 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "68c6c642-2001-4ae2-b5c9-6c5fd369c670")
 	)
 	(junction
 		(at 68.58 27.94)
@@ -1230,40 +1329,10 @@
 		(uuid "6da12bef-9154-4653-9e48-96e77bacf25e")
 	)
 	(junction
-		(at 241.3 143.51)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "77d11f7a-345f-456f-8ddc-8afa5d8f4b01")
-	)
-	(junction
 		(at 66.04 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "79a32a1f-3cb2-44e6-8918-fee8d8bfbea9")
-	)
-	(junction
-		(at 179.07 163.83)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7b72df70-6d15-494f-adbd-343397098fa4")
-	)
-	(junction
-		(at 199.39 49.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7c4027fd-f918-448a-8e69-f61d87b51e56")
-	)
-	(junction
-		(at 179.07 31.75)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "805dba15-b869-4462-b28b-7efaf401258e")
-	)
-	(junction
-		(at 179.07 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "80bb1d1b-e007-4a74-b6e8-926c096d62df")
 	)
 	(junction
 		(at 68.58 33.02)
@@ -1278,88 +1347,16 @@
 		(uuid "93db2528-76ef-4a23-bb34-ca0102b03f51")
 	)
 	(junction
-		(at 158.75 125.73)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "99360343-6147-4781-a548-a2cab3e8c28a")
-	)
-	(junction
-		(at 179.07 144.78)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9d28acd7-92c2-4f09-b01c-d4b832d55919")
-	)
-	(junction
-		(at 158.75 144.78)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a42a16f0-6ba7-4bd6-8494-b376ba07ae14")
-	)
-	(junction
-		(at 199.39 163.83)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "aa7de04a-28ab-4105-9c52-bb959fa535de")
-	)
-	(junction
-		(at 199.39 125.73)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b6d36bcd-ebbd-4ed2-a6f9-540991ed84cb")
-	)
-	(junction
-		(at 240.03 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bba64a94-4fe5-4c34-aa06-2afc16d04aea")
-	)
-	(junction
-		(at 199.39 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bdf56ddc-e17e-4fe9-a1cc-fee43eb5b1d2")
-	)
-	(junction
 		(at 60.96 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c1c9e0f5-4718-4072-b9cf-71fb47dba89a")
 	)
 	(junction
-		(at 158.75 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c677cdc4-6dbf-4d02-b680-83cbf69b651f")
-	)
-	(junction
-		(at 179.07 49.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cee22c1e-65ba-4352-8a48-be140e27b0db")
-	)
-	(junction
-		(at 199.39 144.78)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d662e682-48ce-420f-a8b1-45f803e276c1")
-	)
-	(junction
 		(at 60.96 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d6c02314-896e-4105-a34e-3fa91245097a")
-	)
-	(junction
-		(at 241.3 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d8c6183f-f3cb-4563-b494-ed42a93f2f25")
-	)
-	(junction
-		(at 158.75 49.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dbff2f07-cfe3-4e85-b436-0edf49b8e8ad")
 	)
 	(junction
 		(at 66.04 144.78)
@@ -1372,24 +1369,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e63d41e6-89de-4219-91a5-a467baa544c1")
-	)
-	(junction
-		(at 179.07 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ed7d71ea-702e-47fb-9c53-158f2757ca8b")
-	)
-	(junction
-		(at 240.03 49.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f1242e27-ff75-480f-b41d-cef433571ba5")
-	)
-	(junction
-		(at 179.07 125.73)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f266b0a2-581f-4e72-9b2b-8b5b80791283")
 	)
 	(junction
 		(at 58.42 207.01)
@@ -1476,16 +1455,6 @@
 			(type default)
 		)
 		(uuid "02bfddc2-46c3-4d6d-8d9c-7ebacd9f516b")
-	)
-	(wire
-		(pts
-			(xy 187.96 106.68) (xy 199.39 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "02f81efd-57c5-4894-8866-6e79a8c9b8fd")
 	)
 	(wire
 		(pts
@@ -1709,36 +1678,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 31.75) (xy 179.07 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ed44016-5f6b-4087-be3b-a09049f3f876")
-	)
-	(wire
-		(pts
-			(xy 223.52 68.58) (xy 240.03 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f6fc686-28db-4a8c-b3ac-c50a89d86207")
-	)
-	(wire
-		(pts
-			(xy 223.52 49.53) (xy 240.03 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f8aea13-d45d-4b27-abdf-61b177400b6e")
-	)
-	(wire
-		(pts
 			(xy 66.04 90.17) (xy 66.04 35.56)
 		)
 		(stroke
@@ -1759,16 +1698,6 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 49.53) (xy 158.75 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1169b345-ef6e-40a5-b69e-cc3893339af4")
-	)
-	(wire
-		(pts
 			(xy 68.58 87.63) (xy 52.07 87.63)
 		)
 		(stroke
@@ -1776,16 +1705,6 @@
 			(type default)
 		)
 		(uuid "1214e528-0af8-49e7-a00b-b6ab8555e095")
-	)
-	(wire
-		(pts
-			(xy 187.96 31.75) (xy 199.39 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12b42a4a-2ba1-430b-aa52-9ac7b14d9b41")
 	)
 	(wire
 		(pts
@@ -1859,16 +1778,6 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 68.58) (xy 199.39 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17d6c4d6-9400-4a30-acfa-d024f035e534")
-	)
-	(wire
-		(pts
 			(xy 73.66 137.16) (xy 76.2 137.16)
 		)
 		(stroke
@@ -1896,26 +1805,6 @@
 			(type default)
 		)
 		(uuid "1b0161d6-2ac8-41d7-98c7-3c360a25191a")
-	)
-	(wire
-		(pts
-			(xy 147.32 68.58) (xy 158.75 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1b1f1bad-c2a7-4a2e-9932-55e86354e565")
-	)
-	(wire
-		(pts
-			(xy 167.64 144.78) (xy 179.07 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1b24ad28-ae4e-480f-afad-9818c0ccf17d")
 	)
 	(wire
 		(pts
@@ -1966,16 +1855,6 @@
 			(type default)
 		)
 		(uuid "1f9b3828-fd9c-47c6-99f6-b99b9f0c0533")
-	)
-	(wire
-		(pts
-			(xy 167.64 49.53) (xy 179.07 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1fa4fb2f-d56f-4085-96ee-91b0bf31fe1c")
 	)
 	(wire
 		(pts
@@ -2199,16 +2078,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 163.83) (xy 179.07 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "337790ca-4149-4164-aab6-61e3a9acedcf")
-	)
-	(wire
-		(pts
 			(xy 199.39 162.56) (xy 199.39 163.83)
 		)
 		(stroke
@@ -2266,16 +2135,6 @@
 			(type default)
 		)
 		(uuid "356cd7ca-f59b-4035-bbf9-1c0f9199c5a7")
-	)
-	(wire
-		(pts
-			(xy 167.64 87.63) (xy 179.07 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "362249ea-7685-4c28-96d7-b687ab40c4e9")
 	)
 	(wire
 		(pts
@@ -2366,16 +2225,6 @@
 			(type default)
 		)
 		(uuid "3d0d5bd5-6cb6-41ba-8c56-26ced471d27b")
-	)
-	(wire
-		(pts
-			(xy 255.27 106.68) (xy 273.05 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3deb49ed-150a-4196-af2e-64a9994a8a53")
 	)
 	(wire
 		(pts
@@ -2489,16 +2338,6 @@
 	)
 	(wire
 		(pts
-			(xy 255.27 39.37) (xy 255.27 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "44e0985f-0b16-46f0-bfdc-87326ca4889b")
-	)
-	(wire
-		(pts
 			(xy 127 139.7) (xy 127 143.51)
 		)
 		(stroke
@@ -2536,16 +2375,6 @@
 			(type default)
 		)
 		(uuid "47ee0ece-b713-4946-89c3-77aeb985e719")
-	)
-	(wire
-		(pts
-			(xy 223.52 106.68) (xy 241.3 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a351fa1-27aa-4d89-83ca-c90c0e59a401")
 	)
 	(wire
 		(pts
@@ -2669,16 +2498,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 125.73) (xy 179.07 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4fec3af0-2f51-4a38-bdab-cfafd291dc0c")
-	)
-	(wire
-		(pts
 			(xy 170.18 60.96) (xy 167.64 60.96)
 		)
 		(stroke
@@ -2716,16 +2535,6 @@
 			(type default)
 		)
 		(uuid "52b0596e-c61b-4997-a124-2c3999bdc0c8")
-	)
-	(wire
-		(pts
-			(xy 187.96 87.63) (xy 199.39 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "536e1da8-3739-4016-89cf-54d8c5338dd0")
 	)
 	(wire
 		(pts
@@ -2829,16 +2638,6 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 143.51) (xy 241.3 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5cc833d7-ef36-4a2f-b57f-ea62e7a9638b")
-	)
-	(wire
-		(pts
 			(xy 339.09 30.48) (xy 339.09 31.75)
 		)
 		(stroke
@@ -2899,16 +2698,6 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 163.83) (xy 158.75 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "64053e57-238e-4b3a-b507-eccf4923013e")
-	)
-	(wire
-		(pts
 			(xy 179.07 86.36) (xy 179.07 87.63)
 		)
 		(stroke
@@ -2916,16 +2705,6 @@
 			(type default)
 		)
 		(uuid "650b5760-42ee-45db-8c76-5e3642be4968")
-	)
-	(wire
-		(pts
-			(xy 322.58 21.59) (xy 322.58 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "65e7f5d3-479c-44e3-81d6-8d2d405015d4")
 	)
 	(wire
 		(pts
@@ -3239,16 +3018,6 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 87.63) (xy 158.75 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "86b49f50-9660-4052-8792-9931d1d4e113")
-	)
-	(wire
-		(pts
 			(xy 86.36 238.76) (xy 86.36 241.3)
 		)
 		(stroke
@@ -3256,16 +3025,6 @@
 			(type default)
 		)
 		(uuid "86e7a5c3-9111-42e7-85ee-1fa88f307b0d")
-	)
-	(wire
-		(pts
-			(xy 187.96 144.78) (xy 199.39 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8804a84d-8d82-4da2-8173-985c1f723986")
 	)
 	(wire
 		(pts
@@ -3296,16 +3055,6 @@
 			(type default)
 		)
 		(uuid "8a564128-ac42-431e-87f2-2233aeedc405")
-	)
-	(wire
-		(pts
-			(xy 187.96 49.53) (xy 199.39 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b2e5408-6f28-4a54-8adf-5adf30bfd999")
 	)
 	(wire
 		(pts
@@ -3386,16 +3135,6 @@
 			(type default)
 		)
 		(uuid "9502e189-a12c-4d7c-bb92-3a3b6da0a1a4")
-	)
-	(wire
-		(pts
-			(xy 147.32 144.78) (xy 158.75 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "95119e52-139d-4511-854a-49d7ed8f6710")
 	)
 	(wire
 		(pts
@@ -3486,16 +3225,6 @@
 			(type default)
 		)
 		(uuid "9bcc25ca-3488-4f8d-a193-8479227c3e01")
-	)
-	(wire
-		(pts
-			(xy 223.52 87.63) (xy 240.03 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9c7a7a66-55e3-4818-b76b-f89164c872a9")
 	)
 	(wire
 		(pts
@@ -3739,16 +3468,6 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 31.75) (xy 240.03 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "afe38e38-8899-4645-99cb-1871ccccd4bc")
-	)
-	(wire
-		(pts
 			(xy 99.06 160.02) (xy 99.06 176.53)
 		)
 		(stroke
@@ -3796,16 +3515,6 @@
 			(type default)
 		)
 		(uuid "b44965ba-6b2c-4469-829c-5ea041c9eb18")
-	)
-	(wire
-		(pts
-			(xy 223.52 39.37) (xy 223.52 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b468018a-b29e-46eb-b6e9-add63eb7068f")
 	)
 	(wire
 		(pts
@@ -3896,16 +3605,6 @@
 			(type default)
 		)
 		(uuid "c026f8a9-cb40-4cf0-8bf7-dfe5babd3923")
-	)
-	(wire
-		(pts
-			(xy 147.32 106.68) (xy 158.75 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c0989bbc-8cb7-4625-965b-46d1607a82dd")
 	)
 	(wire
 		(pts
@@ -4259,16 +3958,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 68.58) (xy 179.07 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d8ac6c70-5558-4fda-85c3-dcbd4554d736")
-	)
-	(wire
-		(pts
 			(xy 190.5 137.16) (xy 187.96 137.16)
 		)
 		(stroke
@@ -4299,16 +3988,6 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 125.73) (xy 199.39 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dc30a3cd-5ba6-404d-82d1-9d72bca85e59")
-	)
-	(wire
-		(pts
 			(xy 271.78 41.91) (xy 265.43 41.91)
 		)
 		(stroke
@@ -4316,16 +3995,6 @@
 			(type default)
 		)
 		(uuid "dd5cae2d-5fe4-4447-ae19-f199ea1c25f1")
-	)
-	(wire
-		(pts
-			(xy 187.96 163.83) (xy 199.39 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dd70b157-e3cd-42ce-93c6-611db6d75efc")
 	)
 	(wire
 		(pts
@@ -4529,16 +4198,6 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 125.73) (xy 158.75 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f211f1a8-ebce-4c88-a986-278106983c1b")
-	)
-	(wire
-		(pts
 			(xy 96.52 204.47) (xy 102.87 204.47)
 		)
 		(stroke
@@ -4619,16 +4278,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 106.68) (xy 179.07 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fa5a09c4-4409-4947-8ffe-0f821af447dc")
-	)
-	(wire
-		(pts
 			(xy 149.86 118.11) (xy 147.32 118.11)
 		)
 		(stroke
@@ -4657,130 +4306,8 @@
 		)
 		(uuid "fe90debe-df68-4492-a43d-6bf59a21cbba")
 	)
-	(text "-12dB"
-		(exclude_from_sim no)
-		(at 142.24 121.92 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "23e342be-8506-40c2-8c7e-bce2032cc589")
-	)
-	(text "-6dB"
-		(exclude_from_sim no)
-		(at 142.24 83.82 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "26fa4581-554a-401c-b4c5-ea81f33002d8")
-	)
-	(text "-9dB"
-		(exclude_from_sim no)
-		(at 142.24 102.87 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3b6bac62-35e0-401d-862d-843c1580b0b6")
-	)
-	(text "Master"
-		(exclude_from_sim no)
-		(at 194.31 15.24 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5e4129f8-17d4-4873-985c-6a55b5d8ae2f")
-	)
-	(text "0dB"
-		(exclude_from_sim no)
-		(at 142.24 45.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "63122381-9dd1-4665-89c6-fa6ba13440b9")
-	)
-	(text "-20dB"
-		(exclude_from_sim no)
-		(at 142.24 140.97 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "76543b58-ff84-4989-9011-5f8e16a8cbb7")
-	)
-	(text "-3dB"
-		(exclude_from_sim no)
-		(at 142.24 64.77 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "84d9ab30-ec5b-4398-8440-5cee8a9babbb")
-	)
-	(text "CH1"
-		(exclude_from_sim no)
-		(at 152.4 15.24 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "94993882-ee9a-45b5-b6d1-f327ed49958a")
-	)
-	(text "-25dB"
-		(exclude_from_sim no)
-		(at 142.24 160.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f247e415-2e75-49bd-ac46-fd46f9f8d108")
-	)
-	(text "Clip"
-		(exclude_from_sim no)
-		(at 142.24 27.94 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f2883966-1116-4013-9dce-ffe6ffeeb4dd")
-	)
-	(text "CH2"
-		(exclude_from_sim no)
-		(at 173.99 15.24 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ff4ffcf9-3a66-4e5b-a575-70b3cf5522f6")
-	)
 	(label "Master_3db"
 		(at 187.96 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4791,7 +4318,6 @@
 	)
 	(label "Master_6db"
 		(at 102.87 147.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4802,7 +4328,6 @@
 	)
 	(label "MIDI_IN_INDICATOR"
 		(at 223.52 135.89 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4813,7 +4338,6 @@
 	)
 	(label "CH2_9db"
 		(at 167.64 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4824,7 +4348,6 @@
 	)
 	(label "COL1_Sel_Status"
 		(at 223.52 41.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4835,7 +4358,6 @@
 	)
 	(label "SPARE_LED4"
 		(at 104.14 38.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4846,7 +4368,6 @@
 	)
 	(label "CH1_6db"
 		(at 102.87 201.93 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4857,7 +4378,6 @@
 	)
 	(label "Effect_On_Status"
 		(at 104.14 30.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4868,7 +4388,6 @@
 	)
 	(label "COL1_Sel_Status"
 		(at 102.87 256.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4879,7 +4398,6 @@
 	)
 	(label "Effect_CH2_Assign"
 		(at 255.27 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4890,7 +4408,6 @@
 	)
 	(label "Effect_CH1_Assign"
 		(at 102.87 246.38 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4901,7 +4418,6 @@
 	)
 	(label "SPARE_LED1"
 		(at 292.1 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4912,7 +4428,6 @@
 	)
 	(label "COL4_Sel_Status"
 		(at 102.87 264.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4923,7 +4438,6 @@
 	)
 	(label "CH2_25db"
 		(at 167.64 156.21 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4934,7 +4448,6 @@
 	)
 	(label "Effect_On_Status"
 		(at 223.52 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4945,7 +4458,6 @@
 	)
 	(label "EFFECT_CUE_STATUS"
 		(at 322.58 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4956,7 +4468,6 @@
 	)
 	(label "SPARE_LED5"
 		(at 322.58 43.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4967,7 +4478,6 @@
 	)
 	(label "CH2_3db"
 		(at 102.87 87.63 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4978,7 +4488,6 @@
 	)
 	(label "CH1_0db"
 		(at 102.87 207.01 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4989,7 +4498,6 @@
 	)
 	(label "Master_25db"
 		(at 102.87 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5000,7 +4508,6 @@
 	)
 	(label "SPARE_LED5"
 		(at 104.14 35.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5011,7 +4518,6 @@
 	)
 	(label "SPARE_LED2"
 		(at 353.06 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5022,7 +4528,6 @@
 	)
 	(label "CH2_0db"
 		(at 167.64 41.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5033,7 +4538,6 @@
 	)
 	(label "Effect_CH2_Assign"
 		(at 102.87 248.92 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5044,7 +4548,6 @@
 	)
 	(label "CH1_CUE_Status"
 		(at 223.52 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5055,7 +4558,6 @@
 	)
 	(label "CH1_clip"
 		(at 102.87 209.55 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5066,7 +4568,6 @@
 	)
 	(label "CH1_25db"
 		(at 102.87 191.77 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5077,7 +4578,6 @@
 	)
 	(label "CH1_12db"
 		(at 102.87 196.85 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5088,7 +4588,6 @@
 	)
 	(label "CH2_20db"
 		(at 167.64 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5099,7 +4598,6 @@
 	)
 	(label "CH2_9db"
 		(at 102.87 92.71 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5110,7 +4608,6 @@
 	)
 	(label "CH2_6db"
 		(at 102.87 90.17 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5121,7 +4618,6 @@
 	)
 	(label "CH1_3db"
 		(at 102.87 204.47 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5132,7 +4628,6 @@
 	)
 	(label "Effect_CH1_Assign"
 		(at 223.52 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5143,7 +4638,6 @@
 	)
 	(label "CH2_CUE_Status"
 		(at 255.27 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5154,7 +4648,6 @@
 	)
 	(label "Master_clip"
 		(at 102.87 154.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5165,7 +4658,6 @@
 	)
 	(label "CH1_25db"
 		(at 147.32 156.21 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5176,7 +4668,6 @@
 	)
 	(label "CH1_9db"
 		(at 102.87 199.39 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5187,7 +4678,6 @@
 	)
 	(label "Master_9db"
 		(at 187.96 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5197,8 +4687,7 @@
 		(uuid "746bd803-5503-499f-9458-e5509da08585")
 	)
 	(label "COL2_Sel_Status"
-		(at 255.27 41.275 180)
-		(fields_autoplaced yes)
+		(at 255.27 41.91 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5209,7 +4698,6 @@
 	)
 	(label "CH2_clip"
 		(at 102.87 82.55 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5220,7 +4708,6 @@
 	)
 	(label "MIDI_IN_INDICATOR"
 		(at 104.14 27.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5231,7 +4718,6 @@
 	)
 	(label "CH1_clip"
 		(at 147.32 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5242,7 +4728,6 @@
 	)
 	(label "Master_3db"
 		(at 102.87 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5253,7 +4738,6 @@
 	)
 	(label "CH2_20db"
 		(at 102.87 97.79 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5264,7 +4748,6 @@
 	)
 	(label "Master_0db"
 		(at 102.87 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5275,7 +4758,6 @@
 	)
 	(label "Master_clip"
 		(at 187.96 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5286,7 +4768,6 @@
 	)
 	(label "SPARE_LED1"
 		(at 104.14 45.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5297,7 +4778,6 @@
 	)
 	(label "CH2_0db"
 		(at 102.87 85.09 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5308,7 +4788,6 @@
 	)
 	(label "SPARE_LED3"
 		(at 381 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5319,7 +4798,6 @@
 	)
 	(label "SPARE_LED2"
 		(at 104.14 43.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5330,7 +4808,6 @@
 	)
 	(label "Master_0db"
 		(at 187.96 41.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5341,7 +4818,6 @@
 	)
 	(label "CH2_clip"
 		(at 167.64 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5352,7 +4828,6 @@
 	)
 	(label "CH1_9db"
 		(at 147.32 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5363,7 +4838,6 @@
 	)
 	(label "Master_6db"
 		(at 187.96 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5374,7 +4848,6 @@
 	)
 	(label "Master_9db"
 		(at 102.87 144.78 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5385,7 +4858,6 @@
 	)
 	(label "CH1_3db"
 		(at 147.32 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5396,7 +4868,6 @@
 	)
 	(label "SPARE_LED3"
 		(at 104.14 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5407,7 +4878,6 @@
 	)
 	(label "Master_12db"
 		(at 102.87 142.24 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5418,7 +4888,6 @@
 	)
 	(label "CH2_12db"
 		(at 167.64 118.11 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5429,7 +4898,6 @@
 	)
 	(label "Master_12db"
 		(at 187.96 118.11 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5440,7 +4908,6 @@
 	)
 	(label "CH2_6db"
 		(at 167.64 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5451,7 +4918,6 @@
 	)
 	(label "CH1_0db"
 		(at 147.32 41.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5462,7 +4928,6 @@
 	)
 	(label "CH2_12db"
 		(at 102.87 95.25 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5473,7 +4938,6 @@
 	)
 	(label "COL3_Sel_Status"
 		(at 223.52 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5484,7 +4948,6 @@
 	)
 	(label "CH1_12db"
 		(at 147.32 118.11 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5495,7 +4958,6 @@
 	)
 	(label "Master_20db"
 		(at 187.96 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5506,7 +4968,6 @@
 	)
 	(label "CH2_CUE_Status"
 		(at 102.87 251.46 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5517,7 +4978,6 @@
 	)
 	(label "CH1_6db"
 		(at 147.32 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5528,7 +4988,6 @@
 	)
 	(label "Master_25db"
 		(at 187.96 156.21 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5539,7 +4998,6 @@
 	)
 	(label "COL2_Sel_Status"
 		(at 102.87 259.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5550,7 +5008,6 @@
 	)
 	(label "EFFECT_CUE_STATUS"
 		(at 104.14 33.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5561,7 +5018,6 @@
 	)
 	(label "CH1_20db"
 		(at 102.87 194.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5572,7 +5028,6 @@
 	)
 	(label "COL3_Sel_Status"
 		(at 102.87 261.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5583,7 +5038,6 @@
 	)
 	(label "CH1_CUE_Status"
 		(at 102.87 254 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5594,7 +5048,6 @@
 	)
 	(label "CH1_20db"
 		(at 147.32 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5605,7 +5058,6 @@
 	)
 	(label "SPARE_LED4"
 		(at 292.1 43.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5616,7 +5068,6 @@
 	)
 	(label "COL4_Sel_Status"
 		(at 255.27 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5627,7 +5078,6 @@
 	)
 	(label "CH2_3db"
 		(at 167.64 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5638,7 +5088,6 @@
 	)
 	(label "CH2_25db"
 		(at 102.87 100.33 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5649,7 +5098,6 @@
 	)
 	(label "Master_20db"
 		(at 102.87 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5661,7 +5109,6 @@
 	(hierarchical_label "OE_register__CLK"
 		(shape input)
 		(at 41.91 40.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5673,7 +5120,6 @@
 	(hierarchical_label "OE_serial_CLR"
 		(shape input)
 		(at 41.91 35.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5685,7 +5131,6 @@
 	(hierarchical_label "OE_serial_in"
 		(shape input)
 		(at 41.91 27.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5697,7 +5142,6 @@
 	(hierarchical_label "OE_serial_CLK"
 		(shape input)
 		(at 41.91 33.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5709,7 +5153,6 @@
 	(hierarchical_label "OE_output_ena"
 		(shape input)
 		(at 41.91 43.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5728,8 +5171,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "01bf3b42-9bf5-48da-84c3-a353f693fd12")
-		(property "Reference" "R2036"
-			(at 300.99 38.1 90)
+		(property "Reference" "R236"
+			(at 300.99 38.2989 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5737,7 +5180,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 300.99 40.64 90)
+			(at 300.99 40.7232 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5811,7 +5254,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "030eb77b-e9e5-4056-995a-ded85f68bdac")
-		(property "Reference" "#PWR02014"
+		(property "Reference" "#PWR0214"
 			(at 127 88.9 0)
 			(effects
 				(font
@@ -5949,7 +5392,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "04df2e8c-f620-4e38-92ac-2ff0dbb33bc2")
-		(property "Reference" "C2004"
+		(property "Reference" "C204"
 			(at 129.54 198.1263 0)
 			(effects
 				(font
@@ -6033,7 +5476,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0524e11a-9190-4e54-b0e3-4f5973ac5f90")
-		(property "Reference" "TP2001"
+		(property "Reference" "TP201"
 			(at 35.56 81.788 0)
 			(effects
 				(font
@@ -6238,8 +5681,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0780caac-63bf-4a2d-ad8e-36ab0cd42d42")
-		(property "Reference" "R2002"
-			(at 152.4 36.83 90)
+		(property "Reference" "R202"
+			(at 152.4 37.0289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6247,7 +5690,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 39.37 90)
+			(at 152.4 39.4532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6321,8 +5764,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0a67681e-8698-4907-ba32-b500db7f15ae")
-		(property "Reference" "R2004"
-			(at 152.4 74.93 90)
+		(property "Reference" "R204"
+			(at 152.4 75.1289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6330,7 +5773,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 77.47 90)
+			(at 152.4 77.5532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6404,8 +5847,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0efc8e3e-2f44-4c82-a666-e4fa2250b3fe")
-		(property "Reference" "D2033"
-			(at 274.32 63.4365 90)
+		(property "Reference" "D233"
+			(at 273.558 62.2822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6414,7 +5857,7 @@
 			)
 		)
 		(property "Value" "White"
-			(at 274.32 65.9765 90)
+			(at 273.558 64.7065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6455,6 +5898,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 273.558 67.1308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -6620,7 +6073,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "101f2dcb-4122-4ccd-9eea-4b4351d6fc5a")
-		(property "Reference" "#PWR02011"
+		(property "Reference" "#PWR0211"
 			(at 86.36 283.21 0)
 			(effects
 				(font
@@ -6824,8 +6277,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "11fbb83b-d78e-4130-ab22-76aa7ec29adc")
-		(property "Reference" "D2039"
-			(at 372.11 26.6065 90)
+		(property "Reference" "D239"
+			(at 371.348 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6834,7 +6287,7 @@
 			)
 		)
 		(property "Value" "White"
-			(at 372.11 29.1465 90)
+			(at 371.348 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6878,6 +6331,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 371.348 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c493f9ea-6945-45e1-a0ea-445def10d0a4")
 		)
@@ -6909,8 +6372,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "12e22268-6f77-48f0-9b64-f174f85a7d94")
-		(property "Reference" "R2015"
-			(at 172.72 132.08 90)
+		(property "Reference" "R215"
+			(at 172.72 132.2789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6918,7 +6381,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 134.62 90)
+			(at 172.72 134.7032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6992,8 +6455,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1393de32-5dbe-461e-9821-03b5ce32eada")
-		(property "Reference" "D2005"
-			(at 161.29 101.5365 90)
+		(property "Reference" "D205"
+			(at 160.528 100.3822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7002,7 +6465,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 161.29 104.0765 90)
+			(at 160.528 102.8065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7043,6 +6506,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 105.2308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -7143,8 +6616,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "179f721f-35df-4c1a-8464-9759ce0d217d")
-		(property "Reference" "R2014"
-			(at 172.72 113.03 90)
+		(property "Reference" "R214"
+			(at 172.72 113.2289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7152,7 +6625,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 115.57 90)
+			(at 172.72 115.6532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7227,7 +6700,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "188fc477-25dd-45d0-aa47-f85e6ec8f16d")
-		(property "Reference" "#PWR02016"
+		(property "Reference" "#PWR0216"
 			(at 127 143.51 0)
 			(effects
 				(font
@@ -7299,8 +6772,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1aa84222-85b9-4a69-8537-b6aa7d0b5b6b")
-		(property "Reference" "D2002"
-			(at 161.29 44.3865 90)
+		(property "Reference" "D202"
+			(at 160.528 43.2322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7309,7 +6782,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 161.29 46.9265 90)
+			(at 160.528 45.6565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7353,6 +6826,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 48.0808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "dadf6c37-917a-4f2a-ade2-15904082af9b")
 		)
@@ -7383,7 +6866,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1af400dd-f721-470c-bec4-766580e4887e")
-		(property "Reference" "C2002"
+		(property "Reference" "C202"
 			(at 124.46 90.1763 0)
 			(effects
 				(font
@@ -7534,8 +7017,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1cdfced9-f2d3-4765-8ba5-13060f0b3763")
-		(property "Reference" "D2003"
-			(at 161.29 63.4365 90)
+		(property "Reference" "D203"
+			(at 160.528 62.2822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7544,7 +7027,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 161.29 65.9765 90)
+			(at 160.528 64.7065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7588,6 +7071,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 67.1308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "71c368ff-a12e-4378-8ea0-905a06ede167")
 		)
@@ -7619,8 +7112,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d32a53e-d7b7-4158-95c9-0bd17625b8bf")
-		(property "Reference" "D2022"
-			(at 201.93 120.5865 90)
+		(property "Reference" "D222"
+			(at 201.168 119.4322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7629,7 +7122,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 201.93 123.1265 90)
+			(at 201.168 121.8565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7673,6 +7166,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 124.2808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ac653797-ef04-43ba-af24-56dd5f262832")
 		)
@@ -7704,8 +7207,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "23529bd7-d84f-4314-a2bd-5e37ce2e94a9")
-		(property "Reference" "R2019"
-			(at 193.04 55.88 90)
+		(property "Reference" "R219"
+			(at 193.04 56.0789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7713,7 +7216,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 58.42 90)
+			(at 193.04 58.5032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7787,7 +7290,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2737edeb-4c7f-406a-b4a5-e466ec7a6328")
-		(property "Reference" "#PWR02010"
+		(property "Reference" "#PWR0210"
 			(at 86.36 242.57 0)
 			(effects
 				(font
@@ -7859,8 +7362,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "273a5bea-3c16-4e07-b07c-2ebdf5811447")
-		(property "Reference" "R2026"
-			(at 231.14 36.83 90)
+		(property "Reference" "R226"
+			(at 231.14 37.0289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7868,7 +7371,7 @@
 			)
 		)
 		(property "Value" "1k5"
-			(at 231.14 39.37 90)
+			(at 231.14 39.4532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8008,8 +7511,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2b7291f3-d70f-473c-96d1-5593c50c17e2")
-		(property "Reference" "R2031"
-			(at 262.89 19.05 90)
+		(property "Reference" "R231"
+			(at 262.89 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8017,7 +7520,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 262.89 21.59 90)
+			(at 262.89 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8157,8 +7660,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2d631bd0-6e16-4cab-a5ae-291765506e03")
-		(property "Reference" "D2007"
-			(at 161.29 139.6365 90)
+		(property "Reference" "D207"
+			(at 160.528 138.4822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8167,7 +7670,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 161.29 142.1765 90)
+			(at 160.528 140.9065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8211,6 +7714,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 143.3308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4ac473c1-9254-4494-b253-51fb01cef3ee")
 		)
@@ -8242,8 +7755,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f751be1-c0cb-4211-a558-70ef0b467e6e")
-		(property "Reference" "R2007"
-			(at 152.4 132.08 90)
+		(property "Reference" "R207"
+			(at 152.4 132.2789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8251,7 +7764,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 134.62 90)
+			(at 152.4 134.7032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8325,8 +7838,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30f04906-8f60-4c51-8080-90cc6ae0f722")
-		(property "Reference" "D2024"
-			(at 201.93 158.6865 90)
+		(property "Reference" "D224"
+			(at 201.168 157.5322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8335,7 +7848,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 201.93 161.2265 90)
+			(at 201.168 159.9565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8376,6 +7889,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 162.3808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -8410,8 +7933,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "32e0dfae-5de3-4109-b1cc-78a723c74732")
-		(property "Reference" "D2014"
-			(at 181.61 120.5865 90)
+		(property "Reference" "D214"
+			(at 180.848 119.4322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8420,7 +7943,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 181.61 123.1265 90)
+			(at 180.848 121.8565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8464,6 +7987,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 124.2808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7e6c8e19-5136-48c3-850a-57b90d301868")
 		)
@@ -8495,8 +8028,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "34dd48ff-6f6a-4754-9859-5ae92dd7f518")
-		(property "Reference" "R2040"
-			(at 389.89 19.05 90)
+		(property "Reference" "R240"
+			(at 389.89 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8504,7 +8037,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 389.89 21.59 90)
+			(at 389.89 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8577,7 +8110,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "35069e0e-ade7-4b81-8c80-c25630b7889e")
-		(property "Reference" "TP2004"
+		(property "Reference" "TP204"
 			(at 49.53 81.788 0)
 			(effects
 				(font
@@ -8650,8 +8183,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "35ae6f40-b73d-4c4e-a507-38634b35e7df")
-		(property "Reference" "R2027"
-			(at 231.14 55.88 90)
+		(property "Reference" "R227"
+			(at 231.14 56.0789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8659,7 +8192,7 @@
 			)
 		)
 		(property "Value" "1k5"
-			(at 231.14 58.42 90)
+			(at 231.14 58.5032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8732,7 +8265,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "363c9dbe-8787-4f84-9277-51118a4b058d")
-		(property "Reference" "#PWR02015"
+		(property "Reference" "#PWR0215"
 			(at 127 102.87 0)
 			(effects
 				(font
@@ -8804,8 +8337,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "365dde74-a7b1-45c6-8514-8bd2da4a84c1")
-		(property "Reference" "D2034"
-			(at 275.59 101.5365 90)
+		(property "Reference" "D234"
+			(at 274.828 100.3822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8814,7 +8347,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 275.59 104.0765 90)
+			(at 274.828 102.8065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8855,6 +8388,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 274.828 105.2308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -9021,7 +8564,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "38e1a6d6-7a15-4721-bebf-9b7e15c78e4b")
-		(property "Reference" "#PWR02004"
+		(property "Reference" "#PWR0204"
 			(at 86.36 78.74 0)
 			(effects
 				(font
@@ -9093,7 +8636,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3a3e2aa2-446d-47aa-9e29-6b7af607a091")
-		(property "Reference" "U2002"
+		(property "Reference" "U202"
 			(at 88.5541 74.93 0)
 			(effects
 				(font
@@ -9220,8 +8763,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3fa33194-d3a3-4fe3-83ed-4c4490f6b2d7")
-		(property "Reference" "R2032"
-			(at 262.89 36.83 90)
+		(property "Reference" "R232"
+			(at 262.89 37.0289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9229,7 +8772,7 @@
 			)
 		)
 		(property "Value" "1k5"
-			(at 262.89 39.37 90)
+			(at 262.89 39.4532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9303,8 +8846,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "47ca9cb0-363d-4d91-8619-0e138ba1ac2a")
-		(property "Reference" "D2040"
-			(at 400.05 26.6065 90)
+		(property "Reference" "D240"
+			(at 399.288 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9313,7 +8856,7 @@
 			)
 		)
 		(property "Value" "Red"
-			(at 400.05 29.1465 90)
+			(at 399.288 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9354,6 +8897,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 399.288 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -9455,7 +9008,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4d47d6e7-1f98-4647-be65-29219b7cc9eb")
-		(property "Reference" "#PWR02012"
+		(property "Reference" "#PWR0212"
 			(at 125.73 34.29 0)
 			(effects
 				(font
@@ -9528,7 +9081,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4fa54b7b-192c-4f4f-86fb-5cec0511453a")
-		(property "Reference" "TP2006"
+		(property "Reference" "TP206"
 			(at 71.12 20.828 0)
 			(effects
 				(font
@@ -9601,7 +9154,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "51a4c1c8-7a72-430d-b03b-57514008bfcb")
-		(property "Reference" "#PWR02019"
+		(property "Reference" "#PWR0219"
 			(at 127 210.82 0)
 			(effects
 				(font
@@ -9673,8 +9226,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51c4d4b4-214a-46f2-b7b7-d2d8e6d1d6a2")
-		(property "Reference" "R2038"
-			(at 330.2 38.1 90)
+		(property "Reference" "R238"
+			(at 330.2 38.2989 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9682,7 +9235,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 330.2 40.64 90)
+			(at 330.2 40.7232 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9756,8 +9309,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "53a20898-d67a-4297-ad88-6e9772586b64")
-		(property "Reference" "D2035"
-			(at 312.42 26.6065 90)
+		(property "Reference" "D235"
+			(at 311.658 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9766,7 +9319,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 312.42 29.1465 90)
+			(at 311.658 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9810,6 +9363,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 311.658 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "27ba38e8-abf4-475b-a3b6-deebc7c66a2d")
 		)
@@ -9841,7 +9404,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "541da9b7-01bd-44b1-ac9b-04e4cd8edc90")
-		(property "Reference" "C2005"
+		(property "Reference" "C205"
 			(at 129.54 254.0063 0)
 			(effects
 				(font
@@ -10058,8 +9621,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "56e0a851-2dc0-45b8-9551-08d42a444851")
-		(property "Reference" "R2034"
-			(at 264.16 93.98 90)
+		(property "Reference" "R234"
+			(at 264.16 94.1789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10067,7 +9630,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 264.16 96.52 90)
+			(at 264.16 96.6032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10141,7 +9704,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "58cbe540-88dc-4aee-8d51-213125b397a8")
-		(property "Reference" "C2003"
+		(property "Reference" "C203"
 			(at 129.54 144.7863 0)
 			(effects
 				(font
@@ -10226,8 +9789,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5cdee576-b815-4e7b-bc0f-f9e678e03011")
-		(property "Reference" "R2020"
-			(at 193.04 74.93 90)
+		(property "Reference" "R220"
+			(at 193.04 75.1289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10235,7 +9798,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 77.47 90)
+			(at 193.04 77.5532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10309,8 +9872,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "609935a3-7087-4212-b735-2d5853fea249")
-		(property "Reference" "R2023"
-			(at 193.04 132.08 90)
+		(property "Reference" "R223"
+			(at 193.04 132.2789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10318,7 +9881,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 134.62 90)
+			(at 193.04 134.7032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10392,8 +9955,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6250fcfb-b86c-4843-819f-f2fe66f44222")
-		(property "Reference" "D2010"
-			(at 181.61 44.3865 90)
+		(property "Reference" "D210"
+			(at 180.848 43.2322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10402,7 +9965,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 181.61 46.9265 90)
+			(at 180.848 45.6565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10446,6 +10009,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 48.0808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "938efec9-9693-4deb-bf6a-539e547008d4")
 		)
@@ -10477,8 +10050,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "673b156d-febc-4621-8e0a-3462a2c8cacb")
-		(property "Reference" "R2012"
-			(at 172.72 74.93 90)
+		(property "Reference" "R212"
+			(at 172.72 75.1289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10486,7 +10059,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 77.47 90)
+			(at 172.72 77.5532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10560,8 +10133,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "674d4f94-01bd-4df8-abf0-a4a0ffea0984")
-		(property "Reference" "R2037"
-			(at 330.2 19.05 90)
+		(property "Reference" "R237"
+			(at 330.2 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10569,7 +10142,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 330.2 21.59 90)
+			(at 330.2 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10643,8 +10216,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "67d71e40-6331-4f29-9745-855d09bec1d4")
-		(property "Reference" "R2003"
-			(at 152.4 55.88 90)
+		(property "Reference" "R203"
+			(at 152.4 56.0789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10652,7 +10225,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 58.42 90)
+			(at 152.4 58.5032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10726,7 +10299,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "681e7bc3-b3d4-4413-8a98-abd71622b965")
-		(property "Reference" "C2001"
+		(property "Reference" "C201"
 			(at 128.27 35.5663 0)
 			(effects
 				(font
@@ -10811,8 +10384,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "76b1f66c-2059-4a57-b8fc-e9fedf059098")
-		(property "Reference" "D2032"
-			(at 274.32 44.3865 90)
+		(property "Reference" "D232"
+			(at 273.558 43.2322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10821,7 +10394,7 @@
 			)
 		)
 		(property "Value" "White"
-			(at 274.32 46.9265 90)
+			(at 273.558 45.6565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10865,6 +10438,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 273.558 48.0808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7b18b454-c84d-43fd-88e7-f01ce428ec72")
 		)
@@ -10895,7 +10478,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7a0cd37e-5560-4caa-81a3-e2faf79bf64d")
-		(property "Reference" "#PWR02003"
+		(property "Reference" "#PWR0203"
 			(at 86.36 64.77 0)
 			(effects
 				(font
@@ -10967,8 +10550,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7b4ce196-68d4-4286-8da7-d25c3e31d3fe")
-		(property "Reference" "D2037"
-			(at 341.63 26.6065 90)
+		(property "Reference" "D237"
+			(at 340.868 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10977,7 +10560,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 341.63 29.1465 90)
+			(at 340.868 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11021,6 +10604,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 340.868 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c70a3bce-3587-4c97-be0e-8a7e854208ee")
 		)
@@ -11052,7 +10645,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7dc12ac1-b88f-46f5-933b-7e3f1ce82891")
-		(property "Reference" "R2001"
+		(property "Reference" "R201"
 			(at 152.4 19.05 90)
 			(effects
 				(font
@@ -11201,8 +10794,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "81b7f541-ce64-4b17-879f-68d098b31dba")
-		(property "Reference" "D2029"
-			(at 243.84 101.5365 90)
+		(property "Reference" "D229"
+			(at 243.078 100.3822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11211,7 +10804,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 243.84 104.0765 90)
+			(at 243.078 102.8065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11255,6 +10848,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 243.078 105.2308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "bd19d8eb-e281-4af0-994a-841ad2ce5497")
 		)
@@ -11286,7 +10889,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "84fa9211-a252-4c7d-8000-1cf14f429c07")
-		(property "Reference" "U2005"
+		(property "Reference" "U201"
 			(at 88.5541 20.32 0)
 			(effects
 				(font
@@ -11413,7 +11016,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "876fc3ac-d515-4d4c-b2a6-df584270f520")
-		(property "Reference" "U2004"
+		(property "Reference" "U205"
 			(at 88.5541 238.76 0)
 			(effects
 				(font
@@ -11540,8 +11143,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "898c0126-d78c-42cc-a4d4-a5ef512b8356")
-		(property "Reference" "D2025"
-			(at 242.57 26.6065 90)
+		(property "Reference" "D225"
+			(at 241.808 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11550,7 +11153,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 242.57 29.1465 90)
+			(at 241.808 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11591,6 +11194,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 241.808 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -11625,8 +11238,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "89af9eff-18be-479f-b780-f33adc9c6e3e")
-		(property "Reference" "D2038"
-			(at 341.63 45.6565 90)
+		(property "Reference" "D238"
+			(at 340.868 44.5022 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11635,7 +11248,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 341.63 48.1965 90)
+			(at 340.868 46.9265 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11676,6 +11289,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 340.868 49.3508 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -11841,7 +11464,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8f2b0954-c04d-4a7a-b05d-21361692d789")
-		(property "Reference" "TP2003"
+		(property "Reference" "TP203"
 			(at 35.56 146.558 0)
 			(effects
 				(font
@@ -11914,7 +11537,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8fd2370c-3f80-4f56-9f7c-13e0cff24b21")
-		(property "Reference" "U2001"
+		(property "Reference" "U204"
 			(at 88.5541 184.15 0)
 			(effects
 				(font
@@ -12042,7 +11665,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "912ddd5a-8d92-4b89-8d46-102aab25244a")
-		(property "Reference" "#PWR02020"
+		(property "Reference" "#PWR0220"
 			(at 127 252.73 0)
 			(effects
 				(font
@@ -12246,8 +11869,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "94c7e2a9-3461-496b-831b-71466c49a110")
-		(property "Reference" "D2018"
-			(at 201.93 44.3865 90)
+		(property "Reference" "D218"
+			(at 201.168 43.2322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12256,7 +11879,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 201.93 46.9265 90)
+			(at 201.168 45.6565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12297,6 +11920,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 48.0808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -12331,8 +11964,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "95271d1d-ac45-418a-9e4d-dd357c28116b")
-		(property "Reference" "D2012"
-			(at 181.61 82.4865 90)
+		(property "Reference" "D212"
+			(at 180.848 81.3322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12341,7 +11974,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 181.61 85.0265 90)
+			(at 180.848 83.7565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12382,6 +12015,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 86.1808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -12746,7 +12389,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9b5dbfbf-52d6-413a-8bfb-559380edf718")
-		(property "Reference" "R2029"
+		(property "Reference" "R229"
 			(at 232.41 93.98 90)
 			(effects
 				(font
@@ -12828,7 +12471,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9ce3cf8b-2acf-4138-bc65-72f4d0acffb3")
-		(property "Reference" "#PWR02005"
+		(property "Reference" "#PWR0205"
 			(at 86.36 119.38 0)
 			(effects
 				(font
@@ -12900,8 +12543,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9dfdc7de-6953-4996-8032-974d32377cfa")
-		(property "Reference" "R2009"
-			(at 172.72 19.05 90)
+		(property "Reference" "R209"
+			(at 172.72 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12909,7 +12552,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 21.59 90)
+			(at 172.72 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13049,8 +12692,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9f022010-04d3-4a44-9377-05a917ab09f0")
-		(property "Reference" "D2027"
-			(at 242.57 63.4365 90)
+		(property "Reference" "D227"
+			(at 241.808 62.2822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13059,7 +12702,7 @@
 			)
 		)
 		(property "Value" "White"
-			(at 242.57 65.9765 90)
+			(at 241.808 64.7065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13103,6 +12746,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 241.808 67.1308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b11c1d48-0976-4464-a40c-ba8e92de5ce8")
 		)
@@ -13134,8 +12787,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9f53d9fa-9cda-42ef-a32a-1c1c82647f70")
-		(property "Reference" "D2004"
-			(at 161.29 82.4865 90)
+		(property "Reference" "D204"
+			(at 160.528 81.3322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13144,7 +12797,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 161.29 85.0265 90)
+			(at 160.528 83.7565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13188,6 +12841,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 86.1808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "acaf77fc-5a54-43c9-b50e-37d83af23c97")
 		)
@@ -13219,8 +12882,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a333dea6-bd7b-4e65-90c8-6ef397d1c9e4")
-		(property "Reference" "D2013"
-			(at 181.61 101.5365 90)
+		(property "Reference" "D213"
+			(at 180.848 100.3822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13229,7 +12892,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 181.61 104.0765 90)
+			(at 180.848 102.8065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13273,6 +12936,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 105.2308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c603eef0-3c18-4cce-a22e-27d803fbc9d6")
 		)
@@ -13304,8 +12977,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a44a6d77-ffaf-45c3-98ab-f2f439a91c44")
-		(property "Reference" "D2019"
-			(at 201.93 63.4365 90)
+		(property "Reference" "D219"
+			(at 201.168 62.2822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13314,7 +12987,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 201.93 65.9765 90)
+			(at 201.168 64.7065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13358,6 +13031,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 67.1308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "32a0515a-29a9-4bf8-8f16-a77b4403f153")
 		)
@@ -13389,8 +13072,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a56cb9c5-7bfc-4e27-8246-5996633f15c5")
-		(property "Reference" "R2018"
-			(at 193.04 36.83 90)
+		(property "Reference" "R218"
+			(at 193.04 37.0289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13398,7 +13081,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 39.37 90)
+			(at 193.04 39.4532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13538,7 +13221,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a733303d-9095-498d-92dd-d7e01f888ce1")
-		(property "Reference" "TP2005"
+		(property "Reference" "TP205"
 			(at 49.53 103.632 0)
 			(effects
 				(font
@@ -13611,8 +13294,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a769cb6e-ca76-4011-8cd3-fa39b4a38455")
-		(property "Reference" "R2035"
-			(at 300.99 19.05 90)
+		(property "Reference" "R235"
+			(at 300.99 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13620,7 +13303,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 300.99 21.59 90)
+			(at 300.99 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13694,8 +13377,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8547760-06d4-4c50-b1de-88e016e9ceec")
-		(property "Reference" "R2006"
-			(at 152.4 113.03 90)
+		(property "Reference" "R206"
+			(at 152.4 113.2289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13703,7 +13386,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 115.57 90)
+			(at 152.4 115.6532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13777,8 +13460,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a9c5c575-6acb-4db1-885c-ffadaaa545e0")
-		(property "Reference" "R2005"
-			(at 152.4 93.98 90)
+		(property "Reference" "R205"
+			(at 152.4 94.1789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13786,7 +13469,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 96.52 90)
+			(at 152.4 96.6032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13926,8 +13609,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ac115ef1-2dae-4ce8-9975-0fd744f45764")
-		(property "Reference" "D2006"
-			(at 161.29 120.5865 90)
+		(property "Reference" "D206"
+			(at 160.528 119.4322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13936,7 +13619,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 161.29 123.1265 90)
+			(at 160.528 121.8565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13977,6 +13660,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 124.2808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -14077,8 +13770,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b25a5faf-2205-428b-a7c9-6aa768788f7c")
-		(property "Reference" "R2033"
-			(at 262.89 55.88 90)
+		(property "Reference" "R233"
+			(at 262.89 56.0789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14086,7 +13779,7 @@
 			)
 		)
 		(property "Value" "1k5"
-			(at 262.89 58.42 90)
+			(at 262.89 58.5032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14160,8 +13853,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b60d7599-6c50-4c0e-8037-6ef682611a1e")
-		(property "Reference" "D2030"
-			(at 243.84 138.3665 90)
+		(property "Reference" "D230"
+			(at 243.078 137.2122 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14170,7 +13863,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 243.84 140.9065 90)
+			(at 243.078 139.6365 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14211,6 +13904,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 243.078 142.0608 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -14509,7 +14212,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bd1838cb-8aa8-42d0-825b-8516956d1c48")
-		(property "Reference" "#PWR02008"
+		(property "Reference" "#PWR0208"
 			(at 86.36 187.96 0)
 			(effects
 				(font
@@ -14581,8 +14284,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bd25af98-c17b-4cce-aeed-5a2ab0b23151")
-		(property "Reference" "R2028"
-			(at 231.14 74.93 90)
+		(property "Reference" "R228"
+			(at 231.14 75.1289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14590,7 +14293,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 231.14 77.47 90)
+			(at 231.14 77.5532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14664,8 +14367,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "becd8633-6267-4f78-a045-48ed0cec67d9")
-		(property "Reference" "D2009"
-			(at 181.61 26.6065 90)
+		(property "Reference" "D209"
+			(at 180.848 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14674,7 +14377,7 @@
 			)
 		)
 		(property "Value" "Red"
-			(at 181.61 29.1465 90)
+			(at 180.848 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14715,6 +14418,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -14814,7 +14527,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bfc1714a-3304-4dd5-a6bc-fe1441fab6b2")
-		(property "Reference" "#PWR02007"
+		(property "Reference" "#PWR0207"
 			(at 86.36 173.99 0)
 			(effects
 				(font
@@ -14886,8 +14599,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c1dc1972-abfc-403a-91b6-458c967af89d")
-		(property "Reference" "R2017"
-			(at 193.04 19.05 90)
+		(property "Reference" "R217"
+			(at 193.04 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14895,7 +14608,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 21.59 90)
+			(at 193.04 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14970,7 +14683,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c4a4d5cb-d4b5-4746-b940-40b497874a1d")
-		(property "Reference" "#PWR02018"
+		(property "Reference" "#PWR0218"
 			(at 127 196.85 0)
 			(effects
 				(font
@@ -15042,8 +14755,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c4ba2e45-0735-435d-8170-6cdbd53d0488")
-		(property "Reference" "D2016"
-			(at 181.61 158.6865 90)
+		(property "Reference" "D216"
+			(at 180.848 157.5322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15052,7 +14765,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 181.61 161.2265 90)
+			(at 180.848 159.9565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15096,6 +14809,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 162.3808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fc9e88aa-2238-431b-93fd-a2235283e7a7")
 		)
@@ -15127,7 +14850,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c5b4a205-f537-47c2-bf4c-27c3fa318f49")
-		(property "Reference" "TP2002"
+		(property "Reference" "TP202"
 			(at 35.56 103.632 0)
 			(effects
 				(font
@@ -15266,8 +14989,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9946907-aead-4889-afdc-9974c2afb19a")
-		(property "Reference" "D2020"
-			(at 201.93 82.4865 90)
+		(property "Reference" "D220"
+			(at 201.168 81.3322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15276,7 +14999,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 201.93 85.0265 90)
+			(at 201.168 83.7565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15320,6 +15043,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 86.1808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e7af1b61-f111-4117-928a-864b6fb0a0e3")
 		)
@@ -15351,8 +15084,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9a61d19-b253-44ac-bd40-f9894bbae94d")
-		(property "Reference" "D2001"
-			(at 161.29 26.6065 90)
+		(property "Reference" "D201"
+			(at 160.528 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15361,7 +15094,7 @@
 			)
 		)
 		(property "Value" "Red"
-			(at 161.29 29.1465 90)
+			(at 160.528 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15405,6 +15138,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "841a65b9-d328-4af8-8b20-628cff75300f")
 		)
@@ -15436,8 +15179,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cb5a0f7f-b777-4ba6-b497-0e3efa3781f3")
-		(property "Reference" "R2022"
-			(at 193.04 113.03 90)
+		(property "Reference" "R222"
+			(at 193.04 113.2289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15445,7 +15188,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 115.57 90)
+			(at 193.04 115.6532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15519,8 +15262,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cb890869-51de-4378-b8b1-cbdfd1ce4539")
-		(property "Reference" "D2023"
-			(at 201.93 139.6365 90)
+		(property "Reference" "D223"
+			(at 201.168 138.4822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15529,7 +15272,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 201.93 142.1765 90)
+			(at 201.168 140.9065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15573,6 +15316,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 143.3308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "396e5b43-fce7-43f4-add8-9aeca8681304")
 		)
@@ -15604,7 +15357,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ccfafbd4-8d08-4a5d-9c01-f3ec2b926e68")
-		(property "Reference" "#PWR02017"
+		(property "Reference" "#PWR0217"
 			(at 127 157.48 0)
 			(effects
 				(font
@@ -15676,8 +15429,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cda8a68e-2158-4c48-8798-93aeec863783")
-		(property "Reference" "D2031"
-			(at 274.32 26.6065 90)
+		(property "Reference" "D231"
+			(at 273.558 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15686,7 +15439,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 274.32 29.1465 90)
+			(at 273.558 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15730,6 +15483,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 273.558 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8c08d279-26ff-42bf-8835-3b9d9114922b")
 		)
@@ -15761,8 +15524,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d2dbec57-a994-4f0f-a274-5e4a7294770a")
-		(property "Reference" "R2013"
-			(at 172.72 93.98 90)
+		(property "Reference" "R213"
+			(at 172.72 94.1789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15770,7 +15533,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 96.52 90)
+			(at 172.72 96.6032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15844,7 +15607,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d3162fcc-da5e-406f-be8e-422a841d33f2")
-		(property "Reference" "#PWR02021"
+		(property "Reference" "#PWR0221"
 			(at 127 266.7 0)
 			(effects
 				(font
@@ -15915,7 +15678,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d466ae93-8341-43b3-bed9-cf7ad35f2300")
-		(property "Reference" "#PWR02001"
+		(property "Reference" "#PWR0201"
 			(at 38.1 160.02 0)
 			(effects
 				(font
@@ -15987,8 +15750,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d8d73ee2-9943-4264-9a45-41b1a4402252")
-		(property "Reference" "D2015"
-			(at 181.61 139.6365 90)
+		(property "Reference" "D215"
+			(at 180.848 138.4822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15997,7 +15760,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 181.61 142.1765 90)
+			(at 180.848 140.9065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16038,6 +15801,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 143.3308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -16138,8 +15911,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da003a94-3e68-494d-9849-8f8d6fe7ee0a")
-		(property "Reference" "D2008"
-			(at 161.29 158.6865 90)
+		(property "Reference" "D208"
+			(at 160.528 157.5322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16148,7 +15921,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 161.29 161.2265 90)
+			(at 160.528 159.9565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16192,6 +15965,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 160.528 162.3808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b4c766fa-0a6c-4269-a087-c9575257a5aa")
 		)
@@ -16223,8 +16006,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da1d51fd-9845-498e-9f71-e604b645c9d1")
-		(property "Reference" "R2011"
-			(at 172.72 55.88 90)
+		(property "Reference" "R211"
+			(at 172.72 56.0789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16232,7 +16015,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 58.42 90)
+			(at 172.72 58.5032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16306,8 +16089,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da83ac0f-ee26-48e9-8bca-7281cbebca90")
-		(property "Reference" "R2024"
-			(at 193.04 151.13 90)
+		(property "Reference" "R224"
+			(at 193.04 151.3289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16315,7 +16098,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 153.67 90)
+			(at 193.04 153.7532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16389,8 +16172,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "db9c0446-093f-4c43-b59c-f8b1afa4ac31")
-		(property "Reference" "D2021"
-			(at 201.93 101.5365 90)
+		(property "Reference" "D221"
+			(at 201.168 100.3822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16399,7 +16182,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 201.93 104.0765 90)
+			(at 201.168 102.8065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16440,6 +16223,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 105.2308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -16540,8 +16333,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e02299ab-de47-4f38-9b9a-ff39d90da977")
-		(property "Reference" "R2025"
-			(at 231.14 19.05 90)
+		(property "Reference" "R225"
+			(at 231.14 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16549,7 +16342,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 231.14 21.59 90)
+			(at 231.14 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16623,8 +16416,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e11f6775-ba60-454f-a538-e1f2b26ec411")
-		(property "Reference" "R2030"
-			(at 232.41 130.175 90)
+		(property "Reference" "R230"
+			(at 232.41 131.0089 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16632,7 +16425,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 232.41 132.715 90)
+			(at 232.41 133.4332 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16706,7 +16499,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e183e802-7980-463b-9268-2c5c7a73f7bb")
-		(property "Reference" "U2003"
+		(property "Reference" "U203"
 			(at 88.5541 129.54 0)
 			(effects
 				(font
@@ -16899,8 +16692,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e5b763c9-5801-468e-a371-e19ade5f0c8e")
-		(property "Reference" "R2016"
-			(at 172.72 151.13 90)
+		(property "Reference" "R216"
+			(at 172.72 151.3289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16908,7 +16701,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 153.67 90)
+			(at 172.72 153.7532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16982,7 +16775,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e8405e88-62ea-46ea-a6e6-1295683dc855")
-		(property "Reference" "#PWR02006"
+		(property "Reference" "#PWR0206"
 			(at 86.36 133.35 0)
 			(effects
 				(font
@@ -17054,8 +16847,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ea8aabe4-f1f6-4445-8803-be0d28e4f200")
-		(property "Reference" "D2036"
-			(at 312.42 45.6565 90)
+		(property "Reference" "D236"
+			(at 311.658 44.5022 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17064,7 +16857,7 @@
 			)
 		)
 		(property "Value" "green"
-			(at 312.42 48.1965 90)
+			(at 311.658 46.9265 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17108,6 +16901,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 311.658 49.3508 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e67bee8c-45ff-4789-9636-2c39d0b03b0a")
 		)
@@ -17139,8 +16942,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ed14bfee-7c26-4357-8cef-bbcadebb14df")
-		(property "Reference" "R2008"
-			(at 152.4 151.13 90)
+		(property "Reference" "R208"
+			(at 152.4 151.3289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17148,7 +16951,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 152.4 153.67 90)
+			(at 152.4 153.7532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17222,8 +17025,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ed53c00e-065b-4f0d-bd8d-03c7436ced7d")
-		(property "Reference" "D2028"
-			(at 242.57 82.4865 90)
+		(property "Reference" "D228"
+			(at 241.808 81.3322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17232,7 +17035,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 242.57 85.0265 90)
+			(at 241.808 83.7565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17276,6 +17079,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 241.808 86.1808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1bb5b904-ea9e-4a60-86d9-660893290f9b")
 		)
@@ -17307,8 +17120,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eedc75c2-bbfc-443a-8c9f-16a1999db0b5")
-		(property "Reference" "R2039"
-			(at 360.68 19.05 90)
+		(property "Reference" "R239"
+			(at 360.68 19.2489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17316,7 +17129,7 @@
 			)
 		)
 		(property "Value" "1k5"
-			(at 360.68 21.59 90)
+			(at 360.68 21.6732 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17390,8 +17203,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eff67b78-1185-43c1-9372-5f6e96011874")
-		(property "Reference" "D2011"
-			(at 181.61 63.4365 90)
+		(property "Reference" "D211"
+			(at 180.848 62.2822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17400,7 +17213,7 @@
 			)
 		)
 		(property "Value" "yellow"
-			(at 181.61 65.9765 90)
+			(at 180.848 64.7065 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17441,6 +17254,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 180.848 67.1308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -17541,8 +17364,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1babdd3-41ff-43ad-82aa-59fe9d12357c")
-		(property "Reference" "R2021"
-			(at 193.04 93.98 90)
+		(property "Reference" "R221"
+			(at 193.04 94.1789 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17550,7 +17373,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 193.04 96.52 90)
+			(at 193.04 96.6032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17624,7 +17447,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f777912e-45a1-41e4-ab7a-a81e992553f6")
-		(property "Reference" "#PWR02002"
+		(property "Reference" "#PWR0202"
 			(at 86.36 24.13 0)
 			(effects
 				(font
@@ -17696,8 +17519,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f8fc26b5-39bd-44c2-9816-fa0388ef08ff")
-		(property "Reference" "D2017"
-			(at 201.93 26.6065 90)
+		(property "Reference" "D217"
+			(at 201.168 25.4522 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17706,7 +17529,7 @@
 			)
 		)
 		(property "Value" "Red"
-			(at 201.93 29.1465 90)
+			(at 201.168 27.8765 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17750,6 +17573,16 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 201.168 30.3008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "056b05e7-579a-44b8-ae64-1bb0f29cd0d6")
 		)
@@ -17781,8 +17614,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa6170cc-f66c-4801-aa70-835757940052")
-		(property "Reference" "R2010"
-			(at 172.72 36.83 90)
+		(property "Reference" "R210"
+			(at 172.72 37.0289 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17790,7 +17623,7 @@
 			)
 		)
 		(property "Value" "220R"
-			(at 172.72 39.37 90)
+			(at 172.72 39.4532 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17929,7 +17762,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fefed597-6374-43bc-95f9-63ed662e29d2")
-		(property "Reference" "#PWR02009"
+		(property "Reference" "#PWR0209"
 			(at 86.36 228.6 0)
 			(effects
 				(font
@@ -18001,8 +17834,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ff258064-6e53-48be-9365-0eeed904b662")
-		(property "Reference" "D2026"
-			(at 242.57 44.3865 90)
+		(property "Reference" "D226"
+			(at 241.808 43.2322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18011,7 +17844,7 @@
 			)
 		)
 		(property "Value" "White"
-			(at 242.57 46.9265 90)
+			(at 241.808 45.6565 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18052,6 +17885,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at 241.808 48.0808 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)

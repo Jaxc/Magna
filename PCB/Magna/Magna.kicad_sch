@@ -1,15 +1,19 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "1469ea1f-a157-49dc-a369-2d42fa17695d")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Mechanical:MountingHole_Pad"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
-			(exclude_from_sim yes)
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
 			(in_bom no)
 			(on_board yes)
 			(property "Reference" "H"
@@ -106,8 +110,9 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
-		(symbol "SkrooterLib:SHIELD"
+		(symbol "Skrooter_symbols:SHIELD"
 			(power)
 			(pin_names
 				(offset 0)
@@ -171,18 +176,6 @@
 			(symbol "SHIELD_0_1"
 				(polyline
 					(pts
-						(xy 0 -1.27) (xy 0 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy -1.016 -1.27) (xy -1.27 -2.032) (xy -1.27 -2.032)
 					)
 					(stroke
@@ -199,6 +192,18 @@
 					)
 					(stroke
 						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
+					)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -257,7 +262,8 @@
 			(symbol "SHIELD_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "SHIELD"
 						(effects
 							(font
@@ -274,6 +280,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 	)
 	(bus_alias "ADC_CONFIG"
@@ -998,7 +1005,7 @@
 		(uuid "f6f8ddf8-0884-460e-b352-2cf70c36e89e")
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 52.07 161.29 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1140,7 +1147,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 52.07 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1358,7 +1365,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 27.94 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1424,7 +1431,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 52.07 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1490,7 +1497,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 27.94 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1632,7 +1639,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 27.94 161.29 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1926,7 +1933,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 52.07 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1992,7 +1999,7 @@
 		)
 	)
 	(symbol
-		(lib_id "SkrooterLib:SHIELD")
+		(lib_id "Skrooter_symbols:SHIELD")
 		(at 27.94 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2136,6 +2143,10 @@
 	(sheet
 		(at 219.71 91.44)
 		(size 39.37 10.16)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2165,23 +2176,23 @@
 		)
 		(pin "MIDI_{TX}" input
 			(at 219.71 96.52 180)
+			(uuid "8bc34137-5892-4a61-b17f-39a05f186515")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "8bc34137-5892-4a61-b17f-39a05f186515")
 		)
 		(pin "MIDI_{RX}" output
 			(at 259.08 96.52 0)
+			(uuid "8995d488-022d-443c-801d-148d74de8a9f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "8995d488-022d-443c-801d-148d74de8a9f")
 		)
 		(instances
 			(project "Magna"
@@ -2194,6 +2205,10 @@
 	(sheet
 		(at 125.73 45.72)
 		(size 48.26 55.88)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2223,213 +2238,213 @@
 		)
 		(pin "CLK_24MHz" output
 			(at 173.99 66.04 0)
+			(uuid "c3413dc4-d5c4-4353-9551-6723a3445cd9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c3413dc4-d5c4-4353-9551-6723a3445cd9")
 		)
 		(pin "USB_HOST_P" bidirectional
 			(at 125.73 68.58 180)
+			(uuid "9e78eeb6-71d3-4bc3-b151-623379be9245")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9e78eeb6-71d3-4bc3-b151-623379be9245")
 		)
 		(pin "USB_HOST_N" bidirectional
 			(at 125.73 71.12 180)
+			(uuid "802260ff-36b0-494b-9fb8-1d982fca9c56")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "802260ff-36b0-494b-9fb8-1d982fca9c56")
 		)
 		(pin "{USB_HS_ULPI}" bidirectional
 			(at 173.99 73.66 0)
+			(uuid "4165680f-5d10-4580-a35d-9629931b465d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "4165680f-5d10-4580-a35d-9629931b465d")
 		)
 		(pin "MIDI_RX" input
 			(at 125.73 81.28 180)
+			(uuid "fc08d350-b5ae-4d60-ad1f-78d82e7b7fe7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "fc08d350-b5ae-4d60-ad1f-78d82e7b7fe7")
 		)
 		(pin "MIDI_TX" output
 			(at 173.99 77.47 0)
+			(uuid "70a0eb3e-fd81-44b8-86d3-19317e339d15")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "70a0eb3e-fd81-44b8-86d3-19317e339d15")
 		)
 		(pin "USB_PHY_RESET" output
 			(at 173.99 68.58 0)
+			(uuid "6f406faf-0f6a-464a-a999-0420e3859a78")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "6f406faf-0f6a-464a-a999-0420e3859a78")
 		)
 		(pin "{ADC_CONFIG}" output
 			(at 125.73 53.34 180)
+			(uuid "b517e740-2844-49a2-abca-d1c5ffe0d0c7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "b517e740-2844-49a2-abca-d1c5ffe0d0c7")
 		)
 		(pin "I2C_SCA" bidirectional
 			(at 173.99 92.71 0)
+			(uuid "7d69dcc1-27cc-4249-955f-30f13e76b98c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "7d69dcc1-27cc-4249-955f-30f13e76b98c")
 		)
 		(pin "I2C_SCL" output
 			(at 173.99 90.17 0)
+			(uuid "5a86fdad-70e4-4e6f-95f7-135b46196c23")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "5a86fdad-70e4-4e6f-95f7-135b46196c23")
 		)
 		(pin "{POT_BUS}" input
 			(at 125.73 99.06 180)
+			(uuid "f8b7a914-a45b-41fd-864e-6b73368a7edb")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f8b7a914-a45b-41fd-864e-6b73368a7edb")
 		)
 		(pin "input_interrupt" input
 			(at 125.73 93.98 180)
+			(uuid "6145bd20-2563-4894-b712-213fa730072e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "6145bd20-2563-4894-b712-213fa730072e")
 		)
 		(pin "{Output_Expander_bus}" output
 			(at 173.99 87.63 0)
+			(uuid "907965e5-3866-4b25-8e25-b03fc60b4c38")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "907965e5-3866-4b25-8e25-b03fc60b4c38")
 		)
 		(pin "~{VBUS_OUT_FLG}" input
 			(at 125.73 87.63 180)
+			(uuid "3e12bbda-4baa-4023-a2a3-4bd50814173b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3e12bbda-4baa-4023-a2a3-4bd50814173b")
 		)
 		(pin "~{HSW_EN}" output
 			(at 173.99 80.01 0)
+			(uuid "2ac089f3-5e9b-4993-b70c-b56765e5d112")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "2ac089f3-5e9b-4993-b70c-b56765e5d112")
 		)
 		(pin "VAA_EN" output
 			(at 125.73 57.15 180)
+			(uuid "416b7be4-6ef2-4c49-81a3-255080d8d753")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "416b7be4-6ef2-4c49-81a3-255080d8d753")
 		)
 		(pin "USB_A_PWR_EN" output
 			(at 173.99 85.09 0)
+			(uuid "72dbb146-1349-495a-b49c-3fa63792e5c2")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "72dbb146-1349-495a-b49c-3fa63792e5c2")
 		)
 		(pin "{pot_select}" input
 			(at 173.99 96.52 0)
+			(uuid "c6f50d27-80b4-412b-992c-435c33c885c9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c6f50d27-80b4-412b-992c-435c33c885c9")
 		)
 		(pin "USB_C_VBUS_MCU" input
 			(at 125.73 64.77 180)
+			(uuid "824f8538-3fdb-4f30-b418-3243704b298f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "824f8538-3fdb-4f30-b418-3243704b298f")
 		)
 		(pin "USB_B_VBUS_MCU" input
 			(at 125.73 62.23 180)
+			(uuid "8ed52674-057b-42d6-adce-a538874747e2")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "8ed52674-057b-42d6-adce-a538874747e2")
 		)
 		(pin "{I2S_BUS}" bidirectional
 			(at 125.73 48.26 180)
+			(uuid "18a67fee-24d9-40e8-93cc-462447d94ef2")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "18a67fee-24d9-40e8-93cc-462447d94ef2")
 		)
 		(instances
 			(project "Magna"
@@ -2442,6 +2457,10 @@
 	(sheet
 		(at 219.71 64.77)
 		(size 39.37 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2471,73 +2490,73 @@
 		)
 		(pin "USB_PHY_RESET" input
 			(at 219.71 68.58 180)
+			(uuid "75aded19-111a-478d-b11a-7c1259e05323")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "75aded19-111a-478d-b11a-7c1259e05323")
 		)
 		(pin "{USB_HS_ULPI}" bidirectional
 			(at 219.71 73.66 180)
+			(uuid "fbddac70-3a8d-49e0-8c2b-f940c5e78012")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "fbddac70-3a8d-49e0-8c2b-f940c5e78012")
 		)
 		(pin "CLK_24MHz" input
 			(at 219.71 66.04 180)
+			(uuid "fd0bae3f-842a-452b-a7c7-0d075a6c9948")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "fd0bae3f-842a-452b-a7c7-0d075a6c9948")
 		)
 		(pin "USB_HOST_P" bidirectional
 			(at 259.08 73.66 0)
+			(uuid "8bca57c0-7d9c-44b8-9037-22389a3a7c5b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "8bca57c0-7d9c-44b8-9037-22389a3a7c5b")
 		)
 		(pin "USB_HOST_N" bidirectional
 			(at 259.08 76.2 0)
+			(uuid "63299106-4599-41ad-a949-5e16fbd77fd6")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "63299106-4599-41ad-a949-5e16fbd77fd6")
 		)
 		(pin "USB_B_VBUS_MCU" output
 			(at 259.08 67.31 0)
+			(uuid "c59ef0e7-f84e-40a1-a25a-b682650c581b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c59ef0e7-f84e-40a1-a25a-b682650c581b")
 		)
 		(pin "USB_C_VBUS_MCU" output
 			(at 259.08 69.85 0)
+			(uuid "fe1b83ea-0cbe-42f3-a748-eb5259013b8c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fe1b83ea-0cbe-42f3-a748-eb5259013b8c")
 		)
 		(instances
 			(project "Magna"
@@ -2550,6 +2569,10 @@
 	(sheet
 		(at 219.71 110.49)
 		(size 39.37 7.62)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2579,33 +2602,33 @@
 		)
 		(pin "~{HSW_EN}" input
 			(at 219.71 111.76 180)
+			(uuid "befce078-8f42-49c8-8904-b6dbcb61a29a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "befce078-8f42-49c8-8904-b6dbcb61a29a")
 		)
 		(pin "USB_A_PWR_EN" input
 			(at 219.71 116.84 180)
+			(uuid "feea39eb-5e26-46ff-8071-603fefb98e00")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "feea39eb-5e26-46ff-8071-603fefb98e00")
 		)
 		(pin "~{VBUS_OUT_FLG}" output
 			(at 259.08 113.03 0)
+			(uuid "a58eb6c9-8e8b-4b50-adf0-c3966c3ef624")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a58eb6c9-8e8b-4b50-adf0-c3966c3ef624")
 		)
 		(instances
 			(project "Magna"
@@ -2618,6 +2641,10 @@
 	(sheet
 		(at 125.73 106.68)
 		(size 48.26 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2647,63 +2674,63 @@
 		)
 		(pin "{POT_BUS}" output
 			(at 125.73 107.95 180)
+			(uuid "2a7f9b73-2b66-4740-b315-47766f3145a0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "2a7f9b73-2b66-4740-b315-47766f3145a0")
 		)
 		(pin "I2C_SDA" bidirectional
 			(at 173.99 113.03 0)
+			(uuid "f16bdf82-4b5a-4192-b915-6e43b0b0dbbf")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f16bdf82-4b5a-4192-b915-6e43b0b0dbbf")
 		)
 		(pin "I2C_SCL" input
 			(at 173.99 115.57 0)
+			(uuid "f20c55ad-f9ee-4e4c-83df-6d9d0f62e288")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f20c55ad-f9ee-4e4c-83df-6d9d0f62e288")
 		)
 		(pin "{pot_select}" input
 			(at 173.99 109.22 0)
+			(uuid "dd5bd300-f32f-4e66-a5be-9cee6a31be0f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "dd5bd300-f32f-4e66-a5be-9cee6a31be0f")
 		)
 		(pin "input_interrupt" output
 			(at 125.73 110.49 180)
+			(uuid "a03f9693-486e-4ace-9a7c-c55411398ad9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "a03f9693-486e-4ace-9a7c-c55411398ad9")
 		)
 		(pin "{Output_Expander_bus}" input
 			(at 173.99 119.38 0)
+			(uuid "aec22ed7-fc60-4837-ac06-d0816e10040e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "aec22ed7-fc60-4837-ac06-d0816e10040e")
 		)
 		(instances
 			(project "Magna"
@@ -2716,6 +2743,10 @@
 	(sheet
 		(at 26.67 44.45)
 		(size 15.24 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2745,33 +2776,33 @@
 		)
 		(pin "{ADC_CONFIG}" input
 			(at 41.91 53.34 0)
+			(uuid "097a639f-ee10-4f49-b15f-8139b866f91e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "097a639f-ee10-4f49-b15f-8139b866f91e")
 		)
 		(pin "{I2S_BUS}" bidirectional
 			(at 41.91 48.26 0)
+			(uuid "f575857b-7a65-4f31-8535-c1697cc11cdf")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f575857b-7a65-4f31-8535-c1697cc11cdf")
 		)
 		(pin "VAA_EN" input
 			(at 41.91 57.15 0)
+			(uuid "c45d005a-672e-43bb-a114-f2059af29d55")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c45d005a-672e-43bb-a114-f2059af29d55")
 		)
 		(instances
 			(project "Magna"
@@ -2786,4 +2817,5 @@
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )
