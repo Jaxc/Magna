@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:21.0.2-browsers
+      - image: cimg/openjdk:23.0-browsers
 
     steps:
       - checkout
@@ -11,7 +11,7 @@ jobs:
           name: update apt
           command: sudo apt-get update
 
-      - run: 
+      - run:
           name: install tools
           command: sudo apt-get -y install make gcc-arm-none-eabi wget unzip curl
 
