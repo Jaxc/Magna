@@ -296,7 +296,7 @@
 #ifndef UX_HOST_SIDE_ONLY
 #ifndef UX_DEVICE_SIDE_ONLY
 
-/* #define UX_OTG_SUPPORT */
+#define UX_OTG_SUPPORT
 
 #endif
 #endif
