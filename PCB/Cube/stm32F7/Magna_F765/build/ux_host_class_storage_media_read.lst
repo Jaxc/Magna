@@ -1,0 +1,447 @@
+ARM GAS  /tmp/ccmUJeoK.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_class_storage_media_read.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c"
+  19              		.section	.text._ux_host_class_storage_read_initialize,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ux_host_class_storage_read_initialize:
+  26              	.LVL0:
+  27              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**   Storage Class                                                       */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #include "ux_host_class_storage.h"
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #include "ux_host_stack.h"
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ARM GAS  /tmp/ccmUJeoK.s 			page 2
+
+
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #if defined(UX_HOST_STANDALONE)
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** VOID _ux_host_class_storage_read_initialize(UX_HOST_CLASS_STORAGE *storage,
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 ULONG sector_start, ULONG sector_count);
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** VOID
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #else
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** static inline VOID
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #endif
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** _ux_host_class_storage_read_initialize(UX_HOST_CLASS_STORAGE *storage,
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 ULONG sector_start, ULONG sector_count)
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** {
+  28              		.loc 1 43 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 43 1 is_stmt 0 view .LVU1
+  33 0000 70B5     		push	{r4, r5, r6, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 16
+  36              		.cfi_offset 4, -16
+  37              		.cfi_offset 5, -12
+  38              		.cfi_offset 6, -8
+  39              		.cfi_offset 14, -4
+  40 0002 0446     		mov	r4, r0
+  41 0004 0E46     		mov	r6, r1
+  42 0006 1546     		mov	r5, r2
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** UCHAR       *cbw;
+  43              		.loc 1 44 1 is_stmt 1 view .LVU2
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** UCHAR       *cbw_cb;
+  44              		.loc 1 45 1 view .LVU3
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** ULONG       command_length;
+  45              		.loc 1 46 1 view .LVU4
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Use a pointer for the cbw, easier to manipulate.  */
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     cbw = (UCHAR *)storage -> ux_host_class_storage_cbw;
+  46              		.loc 1 49 5 view .LVU5
+  47              	.LVL1:
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     cbw_cb = cbw + UX_HOST_CLASS_STORAGE_CBW_CB;
+  48              		.loc 1 50 5 view .LVU6
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Get the Read Command Length.  */
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #ifdef UX_HOST_CLASS_STORAGE_INCLUDE_LEGACY_PROTOCOL_SUPPORT
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     if (storage -> ux_host_class_storage_interface -> ux_interface_descriptor.bInterfaceSubClass ==
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         UX_HOST_CLASS_STORAGE_SUBCLASS_UFI)
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         command_length =  UX_HOST_CLASS_STORAGE_READ_COMMAND_LENGTH_UFI;
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     else
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         command_length =  UX_HOST_CLASS_STORAGE_READ_COMMAND_LENGTH_SBC;
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #else
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     command_length =  UX_HOST_CLASS_STORAGE_READ_COMMAND_LENGTH_SBC;
+  49              		.loc 1 60 5 view .LVU7
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #endif
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Initialize the CBW for this command.  */
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     _ux_host_class_storage_cbw_initialize(storage,
+  50              		.loc 1 64 5 view .LVU8
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                     UX_HOST_CLASS_STORAGE_DATA_IN,
+ARM GAS  /tmp/ccmUJeoK.s 			page 3
+
+
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                     sector_count * storage -> ux_host_class_storage_sector_size,
+  51              		.loc 1 66 44 is_stmt 0 view .LVU9
+  52 0008 D0F88820 		ldr	r2, [r0, #136]
+  53              	.LVL2:
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                     UX_HOST_CLASS_STORAGE_DATA_IN,
+  54              		.loc 1 64 5 view .LVU10
+  55 000c 0A23     		movs	r3, #10
+  56 000e 05FB02F2 		mul	r2, r5, r2
+  57 0012 8021     		movs	r1, #128
+  58              	.LVL3:
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                     UX_HOST_CLASS_STORAGE_DATA_IN,
+  59              		.loc 1 64 5 view .LVU11
+  60 0014 FFF7FEFF 		bl	_ux_host_class_storage_cbw_initialize
+  61              	.LVL4:
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                     command_length);
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Prepare the MEDIA READ command block.  */
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     *(cbw_cb + UX_HOST_CLASS_STORAGE_READ_OPERATION) =  UX_HOST_CLASS_STORAGE_SCSI_READ16;
+  62              		.loc 1 70 5 is_stmt 1 view .LVU12
+  63              		.loc 1 70 54 is_stmt 0 view .LVU13
+  64 0018 2823     		movs	r3, #40
+  65 001a 84F82B30 		strb	r3, [r4, #43]
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Store the sector start (LBA field).  */
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     _ux_utility_long_put_big_endian(cbw_cb + UX_HOST_CLASS_STORAGE_READ_LBA, sector_start);
+  66              		.loc 1 73 5 is_stmt 1 view .LVU14
+  67 001e 3146     		mov	r1, r6
+  68 0020 04F12D00 		add	r0, r4, #45
+  69 0024 FFF7FEFF 		bl	_ux_utility_long_put_big_endian
+  70              	.LVL5:
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Store the number of sectors to read.  */
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     _ux_utility_short_put_big_endian(cbw_cb + UX_HOST_CLASS_STORAGE_READ_TRANSFER_LENGTH, (USHORT) 
+  71              		.loc 1 76 5 view .LVU15
+  72 0028 A9B2     		uxth	r1, r5
+  73 002a 04F13200 		add	r0, r4, #50
+  74 002e FFF7FEFF 		bl	_ux_utility_short_put_big_endian
+  75              	.LVL6:
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** }
+  76              		.loc 1 77 1 is_stmt 0 view .LVU16
+  77 0032 70BD     		pop	{r4, r5, r6, pc}
+  78              		.loc 1 77 1 view .LVU17
+  79              		.cfi_endproc
+  80              	.LFE11:
+  82              		.section	.text._ux_host_class_storage_media_read,"ax",%progbits
+  83              		.align	1
+  84              		.global	_ux_host_class_storage_media_read
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  89              	_ux_host_class_storage_media_read:
+  90              	.LVL7:
+  91              	.LFB12:
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/ 
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ARM GAS  /tmp/ccmUJeoK.s 			page 4
+
+
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  FUNCTION                                               RELEASE        */ 
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    _ux_host_class_storage_media_read                   PORTABLE C      */ 
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                           6.1.10       */
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  AUTHOR                                                                */
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  DESCRIPTION                                                           */
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    This function will read one or more logical sector from the media.  */ 
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  INPUT                                                                 */ 
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    storage                               Pointer to storage class      */ 
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    sector_start                          Starting sector               */ 
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    sector_count                          Number of sectors to read     */ 
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    data_pointer                          Pointer to data to read       */ 
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  OUTPUT                                                                */ 
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    Completion Status                                                   */ 
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  CALLS                                                                 */ 
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    _ux_host_class_storage_cbw_initialize Initialize the CBW            */ 
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    _ux_host_class_storage_transport      Send command                  */ 
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    _ux_utility_long_put_big_endian       Put 32-bit word               */ 
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    _ux_utility_short_put_big_endian      Put 16-bit word               */ 
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  CALLED BY                                                             */ 
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    Storage Class                                                       */ 
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  RELEASE HISTORY                                                       */ 
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */ 
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                            resulting in version 6.1    */
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                            added standalone support,   */
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                            resulting in version 6.1.10 */
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /*                                                                        */
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** /**************************************************************************/
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** UINT  _ux_host_class_storage_media_read(UX_HOST_CLASS_STORAGE *storage, ULONG sector_start,
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                                     ULONG sector_count, UCHAR *data_pointer)
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** {
+  92              		.loc 1 130 1 is_stmt 1 view -0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		.loc 1 130 1 is_stmt 0 view .LVU19
+  97 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  98              	.LCFI1:
+  99              		.cfi_def_cfa_offset 28
+ARM GAS  /tmp/ccmUJeoK.s 			page 5
+
+
+ 100              		.cfi_offset 4, -28
+ 101              		.cfi_offset 5, -24
+ 102              		.cfi_offset 6, -20
+ 103              		.cfi_offset 7, -16
+ 104              		.cfi_offset 8, -12
+ 105              		.cfi_offset 9, -8
+ 106              		.cfi_offset 14, -4
+ 107 0004 85B0     		sub	sp, sp, #20
+ 108              	.LCFI2:
+ 109              		.cfi_def_cfa_offset 48
+ 110 0006 0446     		mov	r4, r0
+ 111 0008 8846     		mov	r8, r1
+ 112 000a 1746     		mov	r7, r2
+ 113 000c 9946     		mov	r9, r3
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #if defined(UX_HOST_STANDALONE)
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** UINT            status;
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     do {
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         status = _ux_host_class_storage_read_write_run(storage, UX_TRUE,
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                                     sector_start, sector_count, data_pointer);
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     } while(status == UX_STATE_WAIT);
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     return(storage -> ux_host_class_storage_status);
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #else
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** UINT            status;
+ 114              		.loc 1 139 1 is_stmt 1 view .LVU20
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** UINT            media_retry;
+ 115              		.loc 1 140 1 view .LVU21
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 142:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_CLASS_STORAGE_MEDIA_READ, storage, sector_start, sector_c
+ 116              		.loc 1 143 5 view .LVU22
+ 117 000e 0023     		movs	r3, #0
+ 118              	.LVL8:
+ 119              		.loc 1 143 5 is_stmt 0 view .LVU23
+ 120 0010 0393     		str	r3, [sp, #12]
+ 121 0012 0293     		str	r3, [sp, #8]
+ 122 0014 4FF00053 		mov	r3, #536870912
+ 123 0018 0193     		str	r3, [sp, #4]
+ 124 001a CDF80090 		str	r9, [sp]
+ 125 001e 1346     		mov	r3, r2
+ 126 0020 0A46     		mov	r2, r1
+ 127              	.LVL9:
+ 128              		.loc 1 143 5 view .LVU24
+ 129 0022 0146     		mov	r1, r0
+ 130              	.LVL10:
+ 131              		.loc 1 143 5 view .LVU25
+ 132 0024 40F21230 		movw	r0, #786
+ 133              	.LVL11:
+ 134              		.loc 1 143 5 view .LVU26
+ 135 0028 FFF7FEFF 		bl	_ux_trace_event_insert
+ 136              	.LVL12:
+ 144:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 145:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Reset the retry count.  */
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     media_retry =  UX_HOST_CLASS_STORAGE_REQUEST_SENSE_RETRY;
+ 137              		.loc 1 146 5 is_stmt 1 view .LVU27
+ 147:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* We may need several attempts.  */
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     while (media_retry-- != 0)
+ARM GAS  /tmp/ccmUJeoK.s 			page 6
+
+
+ 138              		.loc 1 149 5 view .LVU28
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 139              		.loc 1 146 17 is_stmt 0 view .LVU29
+ 140 002c 0A25     		movs	r5, #10
+ 141              	.LVL13:
+ 142              	.L4:
+ 143              		.loc 1 149 26 is_stmt 1 view .LVU30
+ 144 002e 2846     		mov	r0, r5
+ 145              		.loc 1 149 23 is_stmt 0 view .LVU31
+ 146 0030 013D     		subs	r5, r5, #1
+ 147              	.LVL14:
+ 148              		.loc 1 149 26 view .LVU32
+ 149 0032 E8B1     		cbz	r0, .L8
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     {
+ 151:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 152:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         /* Initialize CBW.  */
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         _ux_host_class_storage_read_initialize(storage, sector_start, sector_count);
+ 150              		.loc 1 153 9 is_stmt 1 view .LVU33
+ 151 0034 3A46     		mov	r2, r7
+ 152 0036 4146     		mov	r1, r8
+ 153 0038 2046     		mov	r0, r4
+ 154 003a FFF7FEFF 		bl	_ux_host_class_storage_read_initialize
+ 155              	.LVL15:
+ 154:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 155:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         /* Send the command to transport layer.  */
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         status =  _ux_host_class_storage_transport(storage, data_pointer);
+ 156              		.loc 1 156 9 view .LVU34
+ 157              		.loc 1 156 19 is_stmt 0 view .LVU35
+ 158 003e 4946     		mov	r1, r9
+ 159 0040 2046     		mov	r0, r4
+ 160 0042 FFF7FEFF 		bl	_ux_host_class_storage_transport
+ 161              	.LVL16:
+ 157:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         if (status != UX_SUCCESS)
+ 162              		.loc 1 157 9 is_stmt 1 view .LVU36
+ 163              		.loc 1 157 12 is_stmt 0 view .LVU37
+ 164 0046 0646     		mov	r6, r0
+ 165 0048 98B9     		cbnz	r0, .L3
+ 158:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             return(status);
+ 159:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         /* Did the command succeed?  */
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         if (storage -> ux_host_class_storage_sense_code == UX_SUCCESS)
+ 166              		.loc 1 161 9 is_stmt 1 view .LVU38
+ 167              		.loc 1 161 21 is_stmt 0 view .LVU39
+ 168 004a D4F89060 		ldr	r6, [r4, #144]
+ 169              		.loc 1 161 12 view .LVU40
+ 170 004e 002E     		cmp	r6, #0
+ 171 0050 EDD1     		bne	.L4
+ 162:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         {
+ 163:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             /* Check for completeness of sector read.  */
+ 165:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             if (storage -> ux_host_class_storage_data_phase_length != sector_count * storage -> ux_
+ 172              		.loc 1 165 13 is_stmt 1 view .LVU41
+ 173              		.loc 1 165 25 is_stmt 0 view .LVU42
+ 174 0052 D4F88C20 		ldr	r2, [r4, #140]
+ 175              		.loc 1 165 94 view .LVU43
+ 176 0056 D4F88830 		ldr	r3, [r4, #136]
+ 177              		.loc 1 165 84 view .LVU44
+ARM GAS  /tmp/ccmUJeoK.s 			page 7
+
+
+ 178 005a 07FB03F3 		mul	r3, r7, r3
+ 179              		.loc 1 165 16 view .LVU45
+ 180 005e 9A42     		cmp	r2, r3
+ 181 0060 07D0     		beq	.L3
+ 166:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             {
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 168:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 /* This can happen if the device sent less data than the host
+ 169:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                    requested. This does not fit our definition of success and
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                    retrying shouldn't change the outcome, so we return an error.  */
+ 171:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 172:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 /* We got an error during read. Packet not complete.  */
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_TRANSF
+ 182              		.loc 1 173 17 is_stmt 1 view .LVU46
+ 183 0062 2922     		movs	r2, #41
+ 184 0064 0721     		movs	r1, #7
+ 185 0066 0220     		movs	r0, #2
+ 186              	.LVL17:
+ 187              		.loc 1 173 17 is_stmt 0 view .LVU47
+ 188 0068 FFF7FEFF 		bl	_ux_system_error_handler
+ 189              	.LVL18:
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 175:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 /* Return to UX_MEDIA (default FileX).  */
+ 176:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****                 return(UX_ERROR);
+ 190              		.loc 1 176 17 is_stmt 1 view .LVU48
+ 191              		.loc 1 176 23 is_stmt 0 view .LVU49
+ 192 006c FF26     		movs	r6, #255
+ 193 006e 00E0     		b	.L3
+ 194              	.LVL19:
+ 195              	.L8:
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             }
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             /* The read succeeded.  */
+ 180:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****             return(UX_SUCCESS);
+ 181:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         }
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****         /* The command did not succeed. Retry.  */
+ 184:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     }
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** 
+ 186:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     /* Check if the media in the device has been removed. If so
+ 187:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****        we have to tell UX_MEDIA (default FileX) that the media is closed.  */
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c ****     return(UX_HOST_CLASS_STORAGE_SENSE_ERROR);                                            
+ 196              		.loc 1 188 11 view .LVU50
+ 197 0070 0326     		movs	r6, #3
+ 198              	.L3:
+ 189:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** #endif
+ 190:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_media_read.c **** }
+ 199              		.loc 1 190 1 view .LVU51
+ 200 0072 3046     		mov	r0, r6
+ 201 0074 05B0     		add	sp, sp, #20
+ 202              	.LCFI3:
+ 203              		.cfi_def_cfa_offset 28
+ 204              		@ sp needed
+ 205 0076 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 206              		.loc 1 190 1 view .LVU52
+ 207              		.cfi_endproc
+ 208              	.LFE12:
+ 210              		.text
+ARM GAS  /tmp/ccmUJeoK.s 			page 8
+
+
+ 211              	.Letext0:
+ 212              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 213              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 214              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 215              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 216              		.file 6 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_storage.h"
+ 217              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccmUJeoK.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_storage_media_read.c
+     /tmp/ccmUJeoK.s:20     .text._ux_host_class_storage_read_initialize:00000000 $t
+     /tmp/ccmUJeoK.s:25     .text._ux_host_class_storage_read_initialize:00000000 _ux_host_class_storage_read_initialize
+     /tmp/ccmUJeoK.s:83     .text._ux_host_class_storage_media_read:00000000 $t
+     /tmp/ccmUJeoK.s:89     .text._ux_host_class_storage_media_read:00000000 _ux_host_class_storage_media_read
+
+UNDEFINED SYMBOLS
+_ux_host_class_storage_cbw_initialize
+_ux_utility_long_put_big_endian
+_ux_utility_short_put_big_endian
+_ux_trace_event_insert
+_ux_host_class_storage_transport
+_ux_system_error_handler

@@ -1,0 +1,398 @@
+ARM GAS  /tmp/ccizeLWH.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_media_write.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_media_write.c"
+  19              		.section	.text._fx_media_write,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_media_write
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_media_write:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_write.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_write.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_write.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_write.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_write.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_write.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_media_write.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_media_write.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_write.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_write.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_write.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_write.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_write.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_write.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_media_write.c **** #include "fx_media.h"
+ARM GAS  /tmp/ccizeLWH.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_media_write.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  33:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  34:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  35:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  38:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    _fx_media_write                                     PORTABLE C      */
+  39:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                           6.1          */
+  40:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    This function writes the specified raw logical sector to the        */
+  47:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    specified media.                                                    */
+  48:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    media_ptr                             Media control block pointer   */
+  52:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    logical_sector                        Logical sector to read        */
+  53:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    buffer_ptr                            Pointer to caller's buffer    */
+  54:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  OUTPUT                                                                */
+  56:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  57:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    return status                                                       */
+  58:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  CALLS                                                                 */
+  60:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    _fx_utility_logical_sector_write      Write logical sector utility  */
+  62:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  CALLED BY                                                             */
+  64:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    Application Code                                                    */
+  66:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  RELEASE HISTORY                                                       */
+  68:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_media_write.c **** /*    DATE              NAME                      DESCRIPTION             */
+  70:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  72:Middlewares/ST/filex/common/src/fx_media_write.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  73:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/filex/common/src/fx_media_write.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_media_write.c **** /**************************************************************************/
+  76:Middlewares/ST/filex/common/src/fx_media_write.c **** UINT  _fx_media_write(FX_MEDIA *media_ptr, ULONG logical_sector, VOID *buffer_ptr)
+  77:Middlewares/ST/filex/common/src/fx_media_write.c **** {
+  29              		.loc 1 77 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 77 1 is_stmt 0 view .LVU1
+  34 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 20
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+ARM GAS  /tmp/ccizeLWH.s 			page 3
+
+
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 87B0     		sub	sp, sp, #28
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 48
+  45 0004 0446     		mov	r4, r0
+  78:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  79:Middlewares/ST/filex/common/src/fx_media_write.c **** UINT                   status;
+  46              		.loc 1 79 1 is_stmt 1 view .LVU2
+  80:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  81:Middlewares/ST/filex/common/src/fx_media_write.c **** #ifdef TX_ENABLE_EVENT_TRACE
+  82:Middlewares/ST/filex/common/src/fx_media_write.c **** TX_TRACE_BUFFER_ENTRY *trace_event;
+  47              		.loc 1 82 1 view .LVU3
+  83:Middlewares/ST/filex/common/src/fx_media_write.c **** ULONG                  trace_timestamp;
+  48              		.loc 1 83 1 view .LVU4
+  84:Middlewares/ST/filex/common/src/fx_media_write.c **** #endif
+  85:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  86:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  87:Middlewares/ST/filex/common/src/fx_media_write.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  88:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  89:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Increment the number of times this service has been called.  */
+  90:Middlewares/ST/filex/common/src/fx_media_write.c ****     media_ptr -> fx_media_writes++;
+  49              		.loc 1 90 5 view .LVU5
+  50              		.loc 1 90 15 is_stmt 0 view .LVU6
+  51 0006 D0F86401 		ldr	r0, [r0, #356]
+  52              	.LVL1:
+  53              		.loc 1 90 33 view .LVU7
+  54 000a 0130     		adds	r0, r0, #1
+  55 000c C4F86401 		str	r0, [r4, #356]
+  91:Middlewares/ST/filex/common/src/fx_media_write.c **** #endif
+  92:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  93:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Check the media to make sure it is open.  */
+  94:Middlewares/ST/filex/common/src/fx_media_write.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  56              		.loc 1 94 5 is_stmt 1 view .LVU8
+  57              		.loc 1 94 8 is_stmt 0 view .LVU9
+  58 0010 2648     		ldr	r0, .L13
+  59 0012 2368     		ldr	r3, [r4]
+  60 0014 8342     		cmp	r3, r0
+  61 0016 03D0     		beq	.L9
+  95:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+  96:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  97:Middlewares/ST/filex/common/src/fx_media_write.c ****         /* Return the media not opened error.  */
+  98:Middlewares/ST/filex/common/src/fx_media_write.c ****         return(FX_MEDIA_NOT_OPEN);
+  62              		.loc 1 98 15 view .LVU10
+  63 0018 1125     		movs	r5, #17
+  64              	.LVL2:
+  65              	.L1:
+  99:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 100:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 101:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 102:Middlewares/ST/filex/common/src/fx_media_write.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_MEDIA_WRITE, media_ptr, logical_sector, buffer_ptr, 0, FX_TRAC
+ 103:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 104:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Protect against other threads accessing the media.  */
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c ****     FX_PROTECT
+ 106:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 107:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Check for write protect at the media level (set by driver).  */
+ARM GAS  /tmp/ccizeLWH.s 			page 4
+
+
+ 108:Middlewares/ST/filex/common/src/fx_media_write.c ****     if (media_ptr -> fx_media_driver_write_protect)
+ 109:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 110:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 111:Middlewares/ST/filex/common/src/fx_media_write.c ****         /* Release media protection.  */
+ 112:Middlewares/ST/filex/common/src/fx_media_write.c ****         FX_UNPROTECT
+ 113:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 114:Middlewares/ST/filex/common/src/fx_media_write.c ****         /* Return write protect error.  */
+ 115:Middlewares/ST/filex/common/src/fx_media_write.c ****         return(FX_WRITE_PROTECT);
+ 116:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 117:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 118:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Write the logical sector.  */
+ 119:Middlewares/ST/filex/common/src/fx_media_write.c ****     status =  _fx_utility_logical_sector_write(media_ptr, (ULONG64) logical_sector, buffer_ptr, ((U
+ 120:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 121:Middlewares/ST/filex/common/src/fx_media_write.c **** #ifdef TX_ENABLE_EVENT_TRACE
+ 122:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 123:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Check for successful status.  */
+ 124:Middlewares/ST/filex/common/src/fx_media_write.c ****     if (status == FX_SUCCESS)
+ 125:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 126:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 127:Middlewares/ST/filex/common/src/fx_media_write.c ****         /* Update the trace event with the bytes written.  */
+ 128:Middlewares/ST/filex/common/src/fx_media_write.c ****         FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_WRITE, 0, 0, 0, media_pt
+ 129:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 130:Middlewares/ST/filex/common/src/fx_media_write.c **** #endif
+ 131:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 132:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Release media protection.  */
+ 133:Middlewares/ST/filex/common/src/fx_media_write.c ****     FX_UNPROTECT
+ 134:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 135:Middlewares/ST/filex/common/src/fx_media_write.c ****     /* Return status to the caller.  */
+ 136:Middlewares/ST/filex/common/src/fx_media_write.c ****     return(status);
+ 137:Middlewares/ST/filex/common/src/fx_media_write.c **** }
+  66              		.loc 1 137 1 view .LVU11
+  67 001a 2846     		mov	r0, r5
+  68 001c 07B0     		add	sp, sp, #28
+  69              	.LCFI2:
+  70              		.cfi_remember_state
+  71              		.cfi_def_cfa_offset 20
+  72              		@ sp needed
+  73 001e F0BD     		pop	{r4, r5, r6, r7, pc}
+  74              	.LVL3:
+  75              	.L9:
+  76              	.LCFI3:
+  77              		.cfi_restore_state
+  78              		.loc 1 137 1 view .LVU12
+  79 0020 0E46     		mov	r6, r1
+  80 0022 1546     		mov	r5, r2
+ 102:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  81              		.loc 1 102 5 is_stmt 1 view .LVU13
+  82 0024 04AB     		add	r3, sp, #16
+  83 0026 0393     		str	r3, [sp, #12]
+  84 0028 05AB     		add	r3, sp, #20
+  85 002a 0293     		str	r3, [sp, #8]
+  86 002c 4FF48053 		mov	r3, #4096
+  87 0030 0193     		str	r3, [sp, #4]
+  88 0032 0023     		movs	r3, #0
+  89 0034 0093     		str	r3, [sp]
+  90 0036 1346     		mov	r3, r2
+  91 0038 0A46     		mov	r2, r1
+ARM GAS  /tmp/ccizeLWH.s 			page 5
+
+
+  92              	.LVL4:
+ 102:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  93              		.loc 1 102 5 is_stmt 0 view .LVU14
+  94 003a 2146     		mov	r1, r4
+  95              	.LVL5:
+ 102:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+  96              		.loc 1 102 5 view .LVU15
+  97 003c 4FF48570 		mov	r0, #266
+  98 0040 FFF7FEFF 		bl	_fx_trace_event_insert
+  99              	.LVL6:
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 100              		.loc 1 105 5 is_stmt 1 view .LVU16
+ 101 0044 2268     		ldr	r2, [r4]
+ 102 0046 194B     		ldr	r3, .L13
+ 103 0048 9A42     		cmp	r2, r3
+ 104 004a 01D0     		beq	.L10
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 105              		.loc 1 105 5 is_stmt 0 discriminator 1 view .LVU17
+ 106 004c 1125     		movs	r5, #17
+ 107              	.LVL7:
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 108              		.loc 1 105 5 discriminator 1 view .LVU18
+ 109 004e E4E7     		b	.L1
+ 110              	.LVL8:
+ 111              	.L10:
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 112              		.loc 1 105 5 is_stmt 1 discriminator 2 view .LVU19
+ 113 0050 04F5E477 		add	r7, r4, #456
+ 114 0054 4FF0FF31 		mov	r1, #-1
+ 115 0058 3846     		mov	r0, r7
+ 116 005a FFF7FEFF 		bl	_tx_mutex_get
+ 117              	.LVL9:
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 118              		.loc 1 105 5 is_stmt 0 discriminator 1 view .LVU20
+ 119 005e 18BB     		cbnz	r0, .L7
+ 108:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 120              		.loc 1 108 5 is_stmt 1 view .LVU21
+ 108:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 121              		.loc 1 108 19 is_stmt 0 view .LVU22
+ 122 0060 D4F8A830 		ldr	r3, [r4, #168]
+ 108:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 123              		.loc 1 108 8 view .LVU23
+ 124 0064 7BB9     		cbnz	r3, .L11
+ 119:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 125              		.loc 1 119 5 is_stmt 1 view .LVU24
+ 119:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 126              		.loc 1 119 15 is_stmt 0 view .LVU25
+ 127 0066 0423     		movs	r3, #4
+ 128 0068 0293     		str	r3, [sp, #8]
+ 129 006a 0123     		movs	r3, #1
+ 130 006c 0193     		str	r3, [sp, #4]
+ 131 006e 0095     		str	r5, [sp]
+ 132 0070 3246     		mov	r2, r6
+ 133 0072 0023     		movs	r3, #0
+ 134 0074 2046     		mov	r0, r4
+ 135 0076 FFF7FEFF 		bl	_fx_utility_logical_sector_write
+ 136              	.LVL10:
+ARM GAS  /tmp/ccizeLWH.s 			page 6
+
+
+ 124:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 137              		.loc 1 124 5 is_stmt 1 view .LVU26
+ 124:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 138              		.loc 1 124 8 is_stmt 0 view .LVU27
+ 139 007a 0546     		mov	r5, r0
+ 140              	.LVL11:
+ 124:Middlewares/ST/filex/common/src/fx_media_write.c ****     {
+ 141              		.loc 1 124 8 view .LVU28
+ 142 007c 40B1     		cbz	r0, .L12
+ 143              	.LVL12:
+ 144              	.L4:
+ 133:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 145              		.loc 1 133 5 is_stmt 1 view .LVU29
+ 146 007e 3846     		mov	r0, r7
+ 147 0080 FFF7FEFF 		bl	_tx_mutex_put
+ 148              	.LVL13:
+ 136:Middlewares/ST/filex/common/src/fx_media_write.c **** }
+ 149              		.loc 1 136 5 view .LVU30
+ 136:Middlewares/ST/filex/common/src/fx_media_write.c **** }
+ 150              		.loc 1 136 11 is_stmt 0 view .LVU31
+ 151 0084 C9E7     		b	.L1
+ 152              	.LVL14:
+ 153              	.L11:
+ 112:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 154              		.loc 1 112 9 is_stmt 1 view .LVU32
+ 155 0086 3846     		mov	r0, r7
+ 156 0088 FFF7FEFF 		bl	_tx_mutex_put
+ 157              	.LVL15:
+ 115:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 158              		.loc 1 115 9 view .LVU33
+ 115:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 159              		.loc 1 115 15 is_stmt 0 view .LVU34
+ 160 008c 2325     		movs	r5, #35
+ 161              	.LVL16:
+ 115:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 162              		.loc 1 115 15 view .LVU35
+ 163 008e C4E7     		b	.L1
+ 164              	.LVL17:
+ 165              	.L12:
+ 128:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 166              		.loc 1 128 9 is_stmt 1 view .LVU36
+ 167 0090 A36A     		ldr	r3, [r4, #40]
+ 168 0092 0293     		str	r3, [sp, #8]
+ 169 0094 0023     		movs	r3, #0
+ 170 0096 0193     		str	r3, [sp, #4]
+ 171 0098 0093     		str	r3, [sp]
+ 172 009a 4FF48572 		mov	r2, #266
+ 173 009e 0499     		ldr	r1, [sp, #16]
+ 174 00a0 0598     		ldr	r0, [sp, #20]
+ 175              	.LVL18:
+ 128:Middlewares/ST/filex/common/src/fx_media_write.c ****     }
+ 176              		.loc 1 128 9 is_stmt 0 view .LVU37
+ 177 00a2 FFF7FEFF 		bl	_fx_trace_event_update
+ 178              	.LVL19:
+ 179 00a6 EAE7     		b	.L4
+ 180              	.LVL20:
+ 181              	.L7:
+ARM GAS  /tmp/ccizeLWH.s 			page 7
+
+
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 182              		.loc 1 105 5 discriminator 3 view .LVU38
+ 183 00a8 1125     		movs	r5, #17
+ 184              	.LVL21:
+ 105:Middlewares/ST/filex/common/src/fx_media_write.c **** 
+ 185              		.loc 1 105 5 discriminator 3 view .LVU39
+ 186 00aa B6E7     		b	.L1
+ 187              	.L14:
+ 188              		.align	2
+ 189              	.L13:
+ 190 00ac 4944454D 		.word	1296385097
+ 191              		.cfi_endproc
+ 192              	.LFE8:
+ 194              		.text
+ 195              	.Letext0:
+ 196              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 197              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 198              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 199              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 200              		.file 6 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  /tmp/ccizeLWH.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_write.c
+     /tmp/ccizeLWH.s:20     .text._fx_media_write:00000000 $t
+     /tmp/ccizeLWH.s:26     .text._fx_media_write:00000000 _fx_media_write
+     /tmp/ccizeLWH.s:190    .text._fx_media_write:000000ac $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_fx_utility_logical_sector_write
+_tx_mutex_put
+_fx_trace_event_update

@@ -1,0 +1,596 @@
+ARM GAS  /tmp/ccKXLeBm.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_media_boot_info_extract.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c"
+  19              		.section	.text._fx_media_boot_info_extract,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_media_boot_info_extract
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_media_boot_info_extract:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #include "fx_media.h"
+ARM GAS  /tmp/ccKXLeBm.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  33:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+  34:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+  35:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  38:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    _fx_media_boot_info_extract                         PORTABLE C      */
+  39:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                           6.1.10       */
+  40:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    This function extracts and validates the information from the boot  */
+  47:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    record found in the memory buffer.  If the boot record is invalid,  */
+  48:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    an FX_MEDIA_INVALID status is returned to the caller.               */
+  49:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    The FAT boot sector (512 bytes) that is operated on by this         */
+  51:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    function must look like the following:                              */
+  52:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*          Byte Offset         Meaning             Size                  */
+  54:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x000         Jump Instructions        3                    */
+  56:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x003         OEM Name                 8                    */
+  57:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x00B        *Bytes per Sector         2                    */
+  58:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x00D        *Sectors per Cluster      1                    */
+  59:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x00E        *Reserved Sectors         2                    */
+  60:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x010        *Number of FATs           1                    */
+  61:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x011        *Max Root Dir Entries     2                    */
+  62:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x013        *Number of Sectors        2                    */
+  63:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x015         Media Type               1                    */
+  64:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x016        *Sectors per FAT          2                    */
+  65:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x018        *Sectors per Track        2                    */
+  66:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x01A        *Number of Heads          2                    */
+  67:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x01C        *Hidden Sectors           4                    */
+  68:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x020        *Huge Sectors             4                    */
+  69:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x024         Drive Number             1                    */
+  70:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x025         Reserved                 1                    */
+  71:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x026         Boot Signature           1                    */
+  72:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x027         Volume ID                4                    */
+  73:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x02B         Volume Label             11                   */
+  74:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x036         File System Type         8                    */
+  75:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*             ...              ...                 ...                   */
+  76:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            0x1FE       **Signature (0x55aa)       2                    */
+  77:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  78:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            * Denotes which elements of the boot record                 */
+  79:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*              FileX uses.                                               */
+  80:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  81:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*            **Denotes the element is checked by the I/O                 */
+  82:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*              driver.  This eliminates the need for a minimum           */
+  83:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*              512-byte buffer for FileX.                                */
+  84:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  85:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  Note: All values above are in little endian format, i.e. the LSB is   */
+  86:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*        in the lowest address.                                          */
+  87:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ARM GAS  /tmp/ccKXLeBm.s 			page 3
+
+
+  88:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  INPUT                                                                 */
+  89:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  90:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    media_ptr                             Media control block pointer   */
+  91:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  92:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  OUTPUT                                                                */
+  93:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  94:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    return status                                                       */
+  95:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  96:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  CALLS                                                                 */
+  97:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+  98:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    _fx_utility_16_unsigned_read          Read a UINT from buffer       */
+  99:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    _fx_utility_32_unsigned_read          Read a ULONG from buffer      */
+ 100:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    _fx_utility_64_unsigned_read          Read a ULONG64 from memory    */
+ 101:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ 102:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  CALLED BY                                                             */
+ 103:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ 104:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    _fx_media_open                        Media open function           */
+ 105:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ 106:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  RELEASE HISTORY                                                       */
+ 107:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ 108:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 109:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ 110:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+ 111:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+ 112:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                            resulting in version 6.1    */
+ 113:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*  01-31-2022     Bhupendra Naphade        Modified comment(s), added    */
+ 114:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                            check for bimap cache size, */
+ 115:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                            resulting in version 6.1.10 */
+ 116:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /*                                                                        */
+ 117:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** /**************************************************************************/
+ 118:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** UINT  _fx_media_boot_info_extract(FX_MEDIA *media_ptr)
+ 119:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** {
+  29              		.loc 1 119 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 119 1 is_stmt 0 view .LVU1
+  34 0000 38B5     		push	{r3, r4, r5, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 3, -16
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  41 0002 0446     		mov	r4, r0
+ 120:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 121:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** UCHAR *boot_sector;
+  42              		.loc 1 121 1 is_stmt 1 view .LVU2
+ 122:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 123:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 124:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     /* Move the buffer pointer into a local copy.  */
+ 125:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     boot_sector =  media_ptr -> fx_media_driver_buffer;
+  43              		.loc 1 125 5 view .LVU3
+  44              		.loc 1 125 17 is_stmt 0 view .LVU4
+  45 0004 D0F89050 		ldr	r5, [r0, #144]
+  46              	.LVL1:
+ 126:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ARM GAS  /tmp/ccKXLeBm.s 			page 4
+
+
+ 127:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     /* Extract the number of bytes per sector.  */
+ 128:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     media_ptr -> fx_media_bytes_per_sector =    _fx_utility_16_unsigned_read(&boot_sector[FX_BYTES_
+  47              		.loc 1 128 5 is_stmt 1 view .LVU5
+  48              		.loc 1 128 49 is_stmt 0 view .LVU6
+  49 0008 05F10B00 		add	r0, r5, #11
+  50              	.LVL2:
+  51              		.loc 1 128 49 view .LVU7
+  52 000c FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+  53              	.LVL3:
+  54              		.loc 1 128 44 discriminator 1 view .LVU8
+  55 0010 A062     		str	r0, [r4, #40]
+ 129:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     if (media_ptr -> fx_media_bytes_per_sector == 0)
+  56              		.loc 1 129 5 is_stmt 1 view .LVU9
+  57              		.loc 1 129 8 is_stmt 0 view .LVU10
+  58 0012 0028     		cmp	r0, #0
+  59 0014 4AD0     		beq	.L5
+ 130:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #ifdef FX_ENABLE_EXFAT
+ 131:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     {
+ 132:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Treat as exFAT volume.  */
+ 133:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of bytes per sector.  */
+ 134:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_bytes_per_sector_shift = boot_sector[FX_EF_BYTE_PER_SECTOR_SHIF
+ 135:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 136:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* exFAT requires minimal value 9 (512 bytes) and maximum value 12(4096 bytes) for bytes_pe
+ 137:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if((media_ptr -> fx_media_exfat_bytes_per_sector_shift < 9) || (media_ptr -> fx_media_exfat
+ 138:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 139:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 140:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 141:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_bytes_per_sector = (UINT)(1 << media_ptr -> fx_media_exfat_bytes_per_
+ 143:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 144:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Validate bytes per sector value: no more than bitmap cache size */
+ 145:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_bytes_per_sector > sizeof(media_ptr -> fx_media_exfat_bitmap_cach
+ 146:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 147:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_NOT_ENOUGH_MEMORY);
+ 148:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 149:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 150:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_total_sectors = _fx_utility_64_unsigned_read(&boot_sector[FX_EF_VOLUM
+ 151:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_total_sectors == 0)
+ 152:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 153:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 154:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 155:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_reserved_sectors = _fx_utility_32_unsigned_read(&boot_sector[FX_EF_FA
+ 157:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_reserved_sectors == 0)
+ 158:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 159:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 160:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 161:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 162:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_sectors_per_FAT = _fx_utility_32_unsigned_read(&boot_sector[FX_EF_FAT
+ 163:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_sectors_per_FAT == 0)
+ 164:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 165:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 166:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 167:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 168:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_data_sector_start = _fx_utility_32_unsigned_read(&boot_sector[FX_EF_C
+ 169:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_data_sector_start == 0)
+ 170:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ARM GAS  /tmp/ccKXLeBm.s 			page 5
+
+
+ 171:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 172:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 173:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 174:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_total_clusters = _fx_utility_32_unsigned_read(&boot_sector[FX_EF_CLUS
+ 175:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_total_clusters == 0)
+ 176:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 177:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 178:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 179:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 180:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_sector_per_clusters_shift = boot_sector[FX_EF_SECTOR_PER_CLUSTE
+ 181:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_exfat_sector_per_clusters_shift > 25 - media_ptr -> fx_media_exfa
+ 182:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 183:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 184:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 185:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_sectors_per_cluster = (UINT)(1 << media_ptr -> fx_media_exfat_sector_
+ 186:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 187:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_number_of_FATs = boot_sector[FX_EF_NUMBER_OF_FATS];
+ 188:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_number_of_FATs == 0)
+ 189:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 190:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 191:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 192:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 193:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_root_cluster_32    = _fx_utility_32_unsigned_read(&boot_sector[FX_EF_
+ 194:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Root cluster starts from at least FX_FAT_ENTRY_START (2), or higher. */
+ 195:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_root_cluster_32 < FX_FAT_ENTRY_START)
+ 196:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 197:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 198:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 199:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 200:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Overflow check. */
+ 201:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (((ULONG64)media_ptr -> fx_media_data_sector_start +
+ 202:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****              (ULONG64)(media_ptr -> fx_media_root_cluster_32 - FX_FAT_ENTRY_START) *
+ 203:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****              media_ptr -> fx_media_sectors_per_cluster) > 0xFFFFFFFF)
+ 204:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 205:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 206:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             /* Return the invalid media error status.  */
+ 207:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 208:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 209:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 210:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Calculate logical number of root dir sector.  */
+ 211:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_root_sector_start = media_ptr -> fx_media_data_sector_start +
+ 212:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             (media_ptr -> fx_media_root_cluster_32 - FX_FAT_ENTRY_START) *
+ 213:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             media_ptr -> fx_media_sectors_per_cluster;
+ 214:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 215:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_volume_serial_number  = _fx_utility_32_unsigned_read(&boot_sect
+ 216:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 217:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_file_system_revision  = _fx_utility_16_unsigned_read(&boot_sect
+ 218:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 219:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_volume_flag          = _fx_utility_16_unsigned_read(&boot_secto
+ 220:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 221:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_number_of_FATs = boot_sector[FX_EF_NUMBER_OF_FATS];
+ 222:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 223:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (0 == media_ptr -> fx_media_number_of_FATs)
+ 224:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 225:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 226:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 227:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ARM GAS  /tmp/ccKXLeBm.s 			page 6
+
+
+ 228:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of hidden sectors.  */
+ 229:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 230:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_hidden_sectors =      _fx_utility_64_unsigned_read(&boot_sector[FX_EF
+ 231:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #else
+ 232:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_hidden_sectors =      _fx_utility_32_unsigned_read(&boot_sector[FX_EF
+ 233:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #endif
+ 234:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 235:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_drive_select       = boot_sector[FX_EF_DRIVE_SELECT];
+ 236:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_exfat_percent_in_use       = boot_sector[FX_EF_PERCENT_IN_USE];
+ 237:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 238:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_12_bit_FAT = FX_FALSE;
+ 239:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_32_bit_FAT = FX_FALSE;
+ 240:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 241:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Legacy code support:
+ 242:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****            We will use fx_media_FAT_type for determine FAT type instead of
+ 243:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****            fx_media_12_bit_FAT and fx_media_32_bit_FAT.  */
+ 244:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_12_bit_FAT = FX_FALSE;
+ 245:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_32_bit_FAT = FX_FALSE;
+ 246:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 247:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_FAT_type = FX_exFAT;
+ 248:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 249:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         return(_fx_utility_exFAT_geometry_check(media_ptr, boot_sector));
+ 250:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     }
+ 251:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     else
+ 252:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     {
+ 253:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #else
+ 254:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         return(FX_MEDIA_INVALID);
+ 255:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #endif /* FX_ENABLE_EXFAT */
+ 256:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 257:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 258:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* FAT12/16/32 volume.  */
+ 259:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of sectors per track.  */
+ 260:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_sectors_per_track =   _fx_utility_16_unsigned_read(&boot_sector[FX_SE
+  60              		.loc 1 260 9 is_stmt 1 view .LVU11
+  61              		.loc 1 260 53 is_stmt 0 view .LVU12
+  62 0016 05F11800 		add	r0, r5, #24
+  63 001a FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+  64              	.LVL4:
+  65              		.loc 1 260 49 discriminator 1 view .LVU13
+  66 001e E062     		str	r0, [r4, #44]
+ 261:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 262:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of heads.  */
+ 263:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_heads =               _fx_utility_16_unsigned_read(&boot_sector[FX_HE
+  67              		.loc 1 263 9 is_stmt 1 view .LVU14
+  68              		.loc 1 263 53 is_stmt 0 view .LVU15
+  69 0020 05F11A00 		add	r0, r5, #26
+  70 0024 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+  71              	.LVL5:
+  72              		.loc 1 263 37 discriminator 1 view .LVU16
+  73 0028 2063     		str	r0, [r4, #48]
+ 264:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 265:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the total number of sectors.  */
+ 266:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_total_sectors =       _fx_utility_16_unsigned_read(&boot_sector[FX_SE
+  74              		.loc 1 266 9 is_stmt 1 view .LVU17
+  75              		.loc 1 266 53 is_stmt 0 view .LVU18
+  76 002a 05F11300 		add	r0, r5, #19
+  77 002e FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ARM GAS  /tmp/ccKXLeBm.s 			page 7
+
+
+  78              	.LVL6:
+  79              		.loc 1 266 45 discriminator 1 view .LVU19
+  80 0032 A063     		str	r0, [r4, #56]
+  81 0034 0023     		movs	r3, #0
+  82 0036 E363     		str	r3, [r4, #60]
+ 267:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_total_sectors == 0)
+  83              		.loc 1 267 9 is_stmt 1 view .LVU20
+  84              		.loc 1 267 12 is_stmt 0 view .LVU21
+  85 0038 C8B1     		cbz	r0, .L12
+  86              	.L3:
+ 268:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 269:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             media_ptr -> fx_media_total_sectors = _fx_utility_32_unsigned_read(&boot_sector[FX_HUGE
+ 270:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 271:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 272:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_total_sectors == 0)
+  87              		.loc 1 272 9 is_stmt 1 view .LVU22
+  88              		.loc 1 272 23 is_stmt 0 view .LVU23
+  89 003a A36B     		ldr	r3, [r4, #56]
+  90 003c E26B     		ldr	r2, [r4, #60]
+  91              		.loc 1 272 12 view .LVU24
+  92 003e 1343     		orrs	r3, r3, r2
+  93 0040 36D0     		beq	.L6
+ 273:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 274:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 275:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 276:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 277:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of reserved sectors before the first FAT.  */
+ 278:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_reserved_sectors =    _fx_utility_16_unsigned_read(&boot_sector[FX_RE
+  94              		.loc 1 278 9 is_stmt 1 view .LVU25
+  95              		.loc 1 278 53 is_stmt 0 view .LVU26
+  96 0042 05F10E00 		add	r0, r5, #14
+  97 0046 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+  98              	.LVL7:
+  99              		.loc 1 278 48 discriminator 1 view .LVU27
+ 100 004a 6064     		str	r0, [r4, #68]
+ 279:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_reserved_sectors == 0)
+ 101              		.loc 1 279 9 is_stmt 1 view .LVU28
+ 102              		.loc 1 279 12 is_stmt 0 view .LVU29
+ 103 004c 90B3     		cbz	r0, .L7
+ 280:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 281:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 282:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 283:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 284:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of sectors per cluster.  */
+ 285:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_sectors_per_cluster = ((UINT)boot_sector[FX_SECTORS_CLUSTER] & 0xFF);
+ 104              		.loc 1 285 9 is_stmt 1 view .LVU30
+ 105              		.loc 1 285 71 is_stmt 0 view .LVU31
+ 106 004e 6B7B     		ldrb	r3, [r5, #13]	@ zero_extendqisi2
+ 107              		.loc 1 285 51 view .LVU32
+ 108 0050 6365     		str	r3, [r4, #84]
+ 286:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 287:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* There should always be at least one reserved sector, representing the boot record itself
+ 288:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_sectors_per_cluster == 0)
+ 109              		.loc 1 288 9 is_stmt 1 view .LVU33
+ 110              		.loc 1 288 12 is_stmt 0 view .LVU34
+ 111 0052 8BB3     		cbz	r3, .L8
+ 289:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ARM GAS  /tmp/ccKXLeBm.s 			page 8
+
+
+ 290:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 291:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 292:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 293:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of sectors per FAT.  */
+ 294:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_sectors_per_FAT =     _fx_utility_16_unsigned_read(&boot_sector[FX_SE
+ 112              		.loc 1 294 9 is_stmt 1 view .LVU35
+ 113              		.loc 1 294 53 is_stmt 0 view .LVU36
+ 114 0054 05F11600 		add	r0, r5, #22
+ 115 0058 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 116              	.LVL8:
+ 117              		.loc 1 294 47 discriminator 1 view .LVU37
+ 118 005c A065     		str	r0, [r4, #88]
+ 295:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_sectors_per_FAT == 0)
+ 119              		.loc 1 295 9 is_stmt 1 view .LVU38
+ 120              		.loc 1 295 12 is_stmt 0 view .LVU39
+ 121 005e 70B1     		cbz	r0, .L13
+ 122              	.L4:
+ 296:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 297:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             media_ptr -> fx_media_sectors_per_FAT = _fx_utility_32_unsigned_read(&boot_sector[FX_SE
+ 298:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 299:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 300:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_sectors_per_FAT == 0)
+ 123              		.loc 1 300 9 is_stmt 1 view .LVU40
+ 124              		.loc 1 300 23 is_stmt 0 view .LVU41
+ 125 0060 A36D     		ldr	r3, [r4, #88]
+ 126              		.loc 1 300 12 view .LVU42
+ 127 0062 5BB3     		cbz	r3, .L9
+ 301:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 302:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_MEDIA_INVALID);
+ 303:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 304:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 305:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of FATs.  */
+ 306:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_number_of_FATs =      ((UINT)boot_sector[FX_NUMBER_OF_FATS] & 0xFF);
+ 128              		.loc 1 306 9 is_stmt 1 view .LVU43
+ 129              		.loc 1 306 71 is_stmt 0 view .LVU44
+ 130 0064 2B7C     		ldrb	r3, [r5, #16]	@ zero_extendqisi2
+ 131              		.loc 1 306 46 view .LVU45
+ 132 0066 E365     		str	r3, [r4, #92]
+ 307:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         if (media_ptr -> fx_media_number_of_FATs == 0)
+ 133              		.loc 1 307 9 is_stmt 1 view .LVU46
+ 134              		.loc 1 307 12 is_stmt 0 view .LVU47
+ 135 0068 7BB9     		cbnz	r3, .L14
+ 308:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         {
+ 309:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****             return(FX_BOOT_ERROR);
+ 136              		.loc 1 309 19 view .LVU48
+ 137 006a 0120     		movs	r0, #1
+ 138 006c 1FE0     		b	.L1
+ 139              	.L12:
+ 269:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 140              		.loc 1 269 13 is_stmt 1 view .LVU49
+ 269:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 141              		.loc 1 269 51 is_stmt 0 view .LVU50
+ 142 006e 05F12000 		add	r0, r5, #32
+ 143 0072 FFF7FEFF 		bl	_fx_utility_32_unsigned_read
+ 144              	.LVL9:
+ 269:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 145              		.loc 1 269 49 discriminator 1 view .LVU51
+ARM GAS  /tmp/ccKXLeBm.s 			page 9
+
+
+ 146 0076 A063     		str	r0, [r4, #56]
+ 147 0078 0023     		movs	r3, #0
+ 148 007a E363     		str	r3, [r4, #60]
+ 149 007c DDE7     		b	.L3
+ 150              	.L13:
+ 297:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 151              		.loc 1 297 13 is_stmt 1 view .LVU52
+ 297:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 152              		.loc 1 297 53 is_stmt 0 view .LVU53
+ 153 007e 05F12400 		add	r0, r5, #36
+ 154 0082 FFF7FEFF 		bl	_fx_utility_32_unsigned_read
+ 155              	.LVL10:
+ 297:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 156              		.loc 1 297 51 discriminator 1 view .LVU54
+ 157 0086 A065     		str	r0, [r4, #88]
+ 158 0088 EAE7     		b	.L4
+ 159              	.L14:
+ 310:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 311:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 312:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of hidden sectors.  */
+ 313:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 314:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_hidden_sectors =      _fx_utility_64_unsigned_read(&boot_sector[FX_HI
+ 315:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #else
+ 316:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_hidden_sectors =      _fx_utility_32_unsigned_read(&boot_sector[FX_HI
+ 160              		.loc 1 316 9 is_stmt 1 view .LVU55
+ 161              		.loc 1 316 53 is_stmt 0 view .LVU56
+ 162 008a 05F11C00 		add	r0, r5, #28
+ 163 008e FFF7FEFF 		bl	_fx_utility_32_unsigned_read
+ 164              	.LVL11:
+ 165              		.loc 1 316 46 discriminator 1 view .LVU57
+ 166 0092 2067     		str	r0, [r4, #112]
+ 317:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #endif
+ 318:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract the number of root directory entries.  */
+ 319:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_root_directory_entries =  _fx_utility_16_unsigned_read(&boot_sector[F
+ 167              		.loc 1 319 9 is_stmt 1 view .LVU58
+ 168              		.loc 1 319 57 is_stmt 0 view .LVU59
+ 169 0094 05F11100 		add	r0, r5, #17
+ 170 0098 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 171              	.LVL12:
+ 172              		.loc 1 319 54 discriminator 1 view .LVU60
+ 173 009c A067     		str	r0, [r4, #120]
+ 320:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 321:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         /* Extract root directory starting cluster (32 bit only) and compute start sector */
+ 322:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         media_ptr -> fx_media_root_cluster_32 = _fx_utility_32_unsigned_read(&boot_sector[FX_ROOT_C
+ 174              		.loc 1 322 9 is_stmt 1 view .LVU61
+ 175              		.loc 1 322 49 is_stmt 0 view .LVU62
+ 176 009e 05F12C00 		add	r0, r5, #44
+ 177 00a2 FFF7FEFF 		bl	_fx_utility_32_unsigned_read
+ 178              	.LVL13:
+ 179              		.loc 1 322 47 discriminator 1 view .LVU63
+ 180 00a6 6067     		str	r0, [r4, #116]
+ 323:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 324:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #ifdef FX_ENABLE_EXFAT
+ 325:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     }
+ 326:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #endif /* FX_ENABLE_EXFAT */
+ 327:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** 
+ 328:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     /* Return a successful status.  */
+ARM GAS  /tmp/ccKXLeBm.s 			page 10
+
+
+ 329:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****     return(FX_SUCCESS);
+ 181              		.loc 1 329 5 is_stmt 1 view .LVU64
+ 182              		.loc 1 329 11 is_stmt 0 view .LVU65
+ 183 00a8 0020     		movs	r0, #0
+ 184 00aa 00E0     		b	.L1
+ 185              	.L5:
+ 254:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** #endif /* FX_ENABLE_EXFAT */
+ 186              		.loc 1 254 15 view .LVU66
+ 187 00ac 0220     		movs	r0, #2
+ 188              	.L1:
+ 330:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c **** }
+ 189              		.loc 1 330 1 view .LVU67
+ 190 00ae 38BD     		pop	{r3, r4, r5, pc}
+ 191              	.LVL14:
+ 192              	.L6:
+ 274:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 193              		.loc 1 274 19 view .LVU68
+ 194 00b0 0220     		movs	r0, #2
+ 195 00b2 FCE7     		b	.L1
+ 196              	.L7:
+ 281:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 197              		.loc 1 281 19 view .LVU69
+ 198 00b4 0220     		movs	r0, #2
+ 199 00b6 FAE7     		b	.L1
+ 200              	.L8:
+ 290:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 201              		.loc 1 290 19 view .LVU70
+ 202 00b8 0220     		movs	r0, #2
+ 203 00ba F8E7     		b	.L1
+ 204              	.L9:
+ 302:Middlewares/ST/filex/common/src/fx_media_boot_info_extract.c ****         }
+ 205              		.loc 1 302 19 view .LVU71
+ 206 00bc 0220     		movs	r0, #2
+ 207 00be F6E7     		b	.L1
+ 208              		.cfi_endproc
+ 209              	.LFE8:
+ 211              		.text
+ 212              	.Letext0:
+ 213              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 214              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 215              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 216              		.file 5 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  /tmp/ccKXLeBm.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_boot_info_extract.c
+     /tmp/ccKXLeBm.s:20     .text._fx_media_boot_info_extract:00000000 $t
+     /tmp/ccKXLeBm.s:26     .text._fx_media_boot_info_extract:00000000 _fx_media_boot_info_extract
+
+UNDEFINED SYMBOLS
+_fx_utility_16_unsigned_read
+_fx_utility_32_unsigned_read

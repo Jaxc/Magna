@@ -1,0 +1,182 @@
+ARM GAS  /tmp/ccRR1siN.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_trace_event_filter.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_trace_event_filter.c"
+  19              		.section	.text._tx_trace_event_filter,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_trace_event_filter
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_trace_event_filter:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**   Trace                                                               */
+  19:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #ifndef TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #define TX_SOURCE_CODE
+  25:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #endif
+  26:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  27:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /* Include necessary system files.  */
+  29:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  30:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #include "tx_api.h"
+ARM GAS  /tmp/ccRR1siN.s 			page 2
+
+
+  31:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #include "tx_trace.h"
+  32:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  33:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  34:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  35:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  36:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  38:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    _tx_trace_event_filter                              PORTABLE C      */
+  39:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                           6.1          */
+  40:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  42:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  44:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  46:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    This function sets up the event filter, which allows the            */
+  47:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    application to filter various trace events during run-time.         */
+  48:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  49:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  51:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    event_filter_bits                     Trace filter event bit(s)     */
+  52:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  53:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  55:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    Completion Status                                                   */
+  56:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  57:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  59:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    None                                                                */
+  60:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  61:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  CALLED BY                                                             */
+  62:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  63:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    Application Code                                                    */
+  64:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  65:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  RELEASE HISTORY                                                       */
+  66:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  67:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*    DATE              NAME                      DESCRIPTION             */
+  68:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  69:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  70:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+  71:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                            resulting in version 6.1    */
+  72:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /*                                                                        */
+  73:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** /**************************************************************************/
+  74:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** UINT  _tx_trace_event_filter(ULONG event_filter_bits)
+  75:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** {
+  29              		.loc 1 75 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  76:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  77:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #ifdef TX_ENABLE_EVENT_TRACE
+  78:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  79:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     /* Apply the specified filter by clearing the enable bits.  */
+  80:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     _tx_trace_event_enable_bits =  _tx_trace_event_enable_bits & (~event_filter_bits);
+  34              		.loc 1 80 5 view .LVU1
+  35              		.loc 1 80 64 is_stmt 0 view .LVU2
+ARM GAS  /tmp/ccRR1siN.s 			page 3
+
+
+  36 0000 034A     		ldr	r2, .L2
+  37 0002 1368     		ldr	r3, [r2]
+  38 0004 23EA0003 		bic	r3, r3, r0
+  39              		.loc 1 80 33 view .LVU3
+  40 0008 1360     		str	r3, [r2]
+  81:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  82:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     /* Return success.  */
+  83:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     return(TX_SUCCESS);
+  41              		.loc 1 83 5 is_stmt 1 view .LVU4
+  84:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  85:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #else
+  86:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  87:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** UINT        status;
+  88:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  89:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  90:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     /* Access input arguments just for the sake of lint, MISRA, etc.  */
+  91:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     if (event_filter_bits != ((ULONG) 0))
+  92:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     {
+  93:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+  94:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****         /* Trace not enabled, return an error.  */
+  95:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****         status =  TX_FEATURE_NOT_ENABLED;
+  96:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     }
+  97:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     else
+  98:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     {
+  99:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+ 100:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****         /* Trace not enabled, return an error.  */
+ 101:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 102:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     }
+ 103:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** 
+ 104:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     /* Return completion status.  */
+ 105:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c ****     return(status);
+ 106:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** #endif
+ 107:Middlewares/ST/threadx/common/src/tx_trace_event_filter.c **** }
+  42              		.loc 1 107 1 is_stmt 0 view .LVU5
+  43 000a 0020     		movs	r0, #0
+  44              	.LVL1:
+  45              		.loc 1 107 1 view .LVU6
+  46 000c 7047     		bx	lr
+  47              	.L3:
+  48 000e 00BF     		.align	2
+  49              	.L2:
+  50 0010 00000000 		.word	_tx_trace_event_enable_bits
+  51              		.cfi_endproc
+  52              	.LFE8:
+  54              		.text
+  55              	.Letext0:
+  56              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  57              		.file 3 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ARM GAS  /tmp/ccRR1siN.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_trace_event_filter.c
+     /tmp/ccRR1siN.s:20     .text._tx_trace_event_filter:00000000 $t
+     /tmp/ccRR1siN.s:26     .text._tx_trace_event_filter:00000000 _tx_trace_event_filter
+     /tmp/ccRR1siN.s:50     .text._tx_trace_event_filter:00000010 $d
+
+UNDEFINED SYMBOLS
+_tx_trace_event_enable_bits

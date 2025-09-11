@@ -1,0 +1,176 @@
+ARM GAS  /tmp/ccQC3LmU.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_memory_allocate_mulv_safe.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c"
+  19              		.section	.text._ux_utility_memory_allocate_mulv_safe,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_memory_allocate_mulv_safe
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_memory_allocate_mulv_safe:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /* Include necessary system files.  */
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** #define UX_SOURCE_CODE
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** #include "ux_api.h"
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+ARM GAS  /tmp/ccQC3LmU.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  FUNCTION                                               RELEASE        */
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    _ux_utility_memory_allocate_mulv_safe               PORTABLE C      */
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                           6.1          */
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  AUTHOR                                                                */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  DESCRIPTION                                                           */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    This function allocates a block of memory for the specified         */
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    multiplied size and alignment.                                      */
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    Note if multiplying result overflow, no memory is allocated.        */
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    Note it's assumed all factors to multiply is variables for          */
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    possible code optimization.                                         */
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    align                                 Memory alignment required     */
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    cache                                 Memory pool source            */
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    size_mul_v0                           Number of bytes variable to   */
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                          multiply                      */
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    size_mul_v1                           Number of bytes variable to   */
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                          multiply                      */
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  OUTPUT                                                                */
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    Pointer to block of memory                                          */
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  CALLS                                                                 */
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    _ux_utility_memory_allocate           Allocate block of memory      */
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  CALLED BY                                                             */
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    USBX Components                                                     */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  RELEASE HISTORY                                                       */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*    DATE              NAME                      DESCRIPTION             */
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                            resulting in version 6.1    */
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /*                                                                        */
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** /**************************************************************************/
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** VOID* _ux_utility_memory_allocate_mulv_safe(ULONG align,ULONG cache,ULONG size_mul_v0,ULONG size_mu
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** {
+  29              		.loc 1 80 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 80 1 is_stmt 0 view .LVU1
+  34 0000 9446     		mov	ip, r2
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c ****     return UX_UTILITY_MEMORY_ALLOCATE_MULV_SAFE(align, cache, size_mul_v0, size_mul_v1);
+ARM GAS  /tmp/ccQC3LmU.s 			page 3
+
+
+  35              		.loc 1 81 5 is_stmt 1 view .LVU2
+  36              		.loc 1 81 12 is_stmt 0 view .LVU3
+  37 0002 03FB02F2 		mul	r2, r3, r2
+  38              	.LVL1:
+  39              		.loc 1 81 12 view .LVU4
+  40 0006 9C45     		cmp	ip, r3
+  41 0008 28BF     		it	cs
+  42 000a 9C46     		movcs	ip, r3
+  43              	.LVL2:
+  44              		.loc 1 81 12 view .LVU5
+  45 000c 6245     		cmp	r2, ip
+  46 000e 03D3     		bcc	.L3
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c ****     return UX_UTILITY_MEMORY_ALLOCATE_MULV_SAFE(align, cache, size_mul_v0, size_mul_v1);
+  47              		.loc 1 80 1 view .LVU6
+  48 0010 08B5     		push	{r3, lr}
+  49              	.LCFI0:
+  50              		.cfi_def_cfa_offset 8
+  51              		.cfi_offset 3, -8
+  52              		.cfi_offset 14, -4
+  53              		.loc 1 81 12 discriminator 1 view .LVU7
+  54 0012 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  55              	.LVL3:
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c **** }
+  56              		.loc 1 82 1 view .LVU8
+  57 0016 08BD     		pop	{r3, pc}
+  58              	.LVL4:
+  59              	.L3:
+  60              	.LCFI1:
+  61              		.cfi_def_cfa_offset 0
+  62              		.cfi_restore 3
+  63              		.cfi_restore 14
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c ****     return UX_UTILITY_MEMORY_ALLOCATE_MULV_SAFE(align, cache, size_mul_v0, size_mul_v1);
+  64              		.loc 1 81 12 discriminator 2 view .LVU9
+  65 0018 0020     		movs	r0, #0
+  66              	.LVL5:
+  67              		.loc 1 82 1 view .LVU10
+  68 001a 7047     		bx	lr
+  69              		.cfi_endproc
+  70              	.LFE11:
+  72              		.text
+  73              	.Letext0:
+  74              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  75              		.file 3 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccQC3LmU.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_memory_allocate_mulv_safe.c
+     /tmp/ccQC3LmU.s:20     .text._ux_utility_memory_allocate_mulv_safe:00000000 $t
+     /tmp/ccQC3LmU.s:26     .text._ux_utility_memory_allocate_mulv_safe:00000000 _ux_utility_memory_allocate_mulv_safe
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate

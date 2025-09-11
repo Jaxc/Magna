@@ -1,0 +1,709 @@
+ARM GAS  /tmp/cckrPpi5.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_trace_object_register.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_trace_object_register.c"
+  19              		.section	.text._tx_trace_object_register,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_trace_object_register
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_trace_object_register:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**   Trace                                                               */
+  19:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** #include "tx_api.h"
+  29:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** #include "tx_trace.h"
+  30:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ARM GAS  /tmp/cckrPpi5.s 			page 2
+
+
+  31:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  32:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  33:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  34:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  36:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    _tx_trace_object_register                           PORTABLE C      */
+  37:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                           6.1          */
+  38:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  40:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  41:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  42:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  44:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    This function registers a ThreadX system object in the trace        */
+  45:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    registry area. This provides a mapping between the object pointers  */
+  46:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    stored in each trace event to the actual ThreadX objects.           */
+  47:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  48:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  50:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    object_type                           Type of system object         */
+  51:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    object_ptr                            Address of system object      */
+  52:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    object_name                           Name of system object         */
+  53:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    parameter_1                           Supplemental parameter 1      */
+  54:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    parameter_2                           Supplemental parameter 2      */
+  55:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  56:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  OUTPUT                                                                */
+  57:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  58:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    None                                                                */
+  59:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  60:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  CALLS                                                                 */
+  61:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  62:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    None                                                                */
+  63:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  64:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  66:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    Application Code                                                    */
+  67:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  68:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  70:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  72:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  73:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+  74:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /*                                                                        */
+  76:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** /**************************************************************************/
+  77:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** VOID  _tx_trace_object_register(UCHAR object_type, VOID *object_ptr, CHAR *object_name, ULONG param
+  78:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** {
+  29              		.loc 1 78 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 4, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 78 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 36
+  37              		.cfi_offset 4, -36
+ARM GAS  /tmp/cckrPpi5.s 			page 3
+
+
+  38              		.cfi_offset 5, -32
+  39              		.cfi_offset 6, -28
+  40              		.cfi_offset 7, -24
+  41              		.cfi_offset 8, -20
+  42              		.cfi_offset 9, -16
+  43              		.cfi_offset 10, -12
+  44              		.cfi_offset 11, -8
+  45              		.cfi_offset 14, -4
+  79:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  80:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** #ifdef TX_ENABLE_EVENT_TRACE
+  81:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  82:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** UINT                            i, entries;
+  46              		.loc 1 82 1 is_stmt 1 view .LVU2
+  83:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** UINT                            found, loop_break;
+  47              		.loc 1 83 1 view .LVU3
+  84:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** TX_THREAD                       *thread_ptr;
+  48              		.loc 1 84 1 view .LVU4
+  85:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** UCHAR                           *work_ptr;
+  49              		.loc 1 85 1 view .LVU5
+  86:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** TX_TRACE_OBJECT_ENTRY           *entry_ptr;
+  50              		.loc 1 86 1 view .LVU6
+  87:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  88:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  89:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     /* Determine if the registry area is setup.  */
+  90:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     if (_tx_trace_registry_start_ptr != TX_NULL)
+  51              		.loc 1 90 5 view .LVU7
+  52              		.loc 1 90 38 is_stmt 0 view .LVU8
+  53 0004 3F4C     		ldr	r4, .L23
+  54 0006 2468     		ldr	r4, [r4]
+  55              		.loc 1 90 8 view .LVU9
+  56 0008 002C     		cmp	r4, #0
+  57 000a 6ED0     		beq	.L1
+  58 000c 9B46     		mov	fp, r3
+  91:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     {
+  92:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  93:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         /* Trace buffer is enabled, proceed.  */
+  94:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  95:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         /* Pickup the total entries.  */
+  96:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         entries =  _tx_trace_total_registry_entries;
+  59              		.loc 1 96 9 is_stmt 1 view .LVU10
+  60              		.loc 1 96 17 is_stmt 0 view .LVU11
+  61 000e 3E4D     		ldr	r5, .L23+4
+  62 0010 2F68     		ldr	r7, [r5]
+  63              	.LVL1:
+  97:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+  98:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         /* Determine if there are available entries in the registry.  */
+  99:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         if (_tx_trace_available_registry_entries != ((ULONG) 0))
+  64              		.loc 1 99 9 is_stmt 1 view .LVU12
+  65              		.loc 1 99 50 is_stmt 0 view .LVU13
+  66 0012 3E4D     		ldr	r5, .L23+8
+  67 0014 D5F800A0 		ldr	r10, [r5]
+  68              		.loc 1 99 12 view .LVU14
+  69 0018 BAF1000F 		cmp	r10, #0
+  70 001c 65D0     		beq	.L1
+ 100:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         {
+ 101:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 102:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             /* There are more available entries, proceed.  */
+ARM GAS  /tmp/cckrPpi5.s 			page 4
+
+
+ 103:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 104:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             /* Initialize found to the max entries... indicating no space was found.  */
+ 105:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             found =       entries;
+  71              		.loc 1 105 13 is_stmt 1 view .LVU15
+  72              	.LVL2:
+ 106:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             loop_break =  TX_FALSE;
+  73              		.loc 1 106 13 view .LVU16
+ 107:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 108:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             /* Loop to find available entry.  */
+ 109:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             i =  _tx_trace_registry_search_start;
+  74              		.loc 1 109 13 view .LVU17
+  75              		.loc 1 109 15 is_stmt 0 view .LVU18
+  76 001e 3C4D     		ldr	r5, .L23+12
+  77 0020 D5F80090 		ldr	r9, [r5]
+  78              	.LVL3:
+ 105:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             loop_break =  TX_FALSE;
+  79              		.loc 1 105 19 view .LVU19
+  80 0024 B846     		mov	r8, r7
+  81              		.loc 1 109 15 view .LVU20
+  82 0026 CC46     		mov	ip, r9
+ 106:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             loop_break =  TX_FALSE;
+  83              		.loc 1 106 24 view .LVU21
+  84 0028 0025     		movs	r5, #0
+  85 002a 0DE0     		b	.L7
+  86              	.LVL4:
+  87              	.L21:
+ 110:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             do
+ 111:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             {
+ 112:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 113:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Setup the registry entry pointer.  */
+ 114:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 work_ptr =   TX_OBJECT_TO_UCHAR_POINTER_CONVERT(_tx_trace_registry_start_ptr);
+ 115:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 work_ptr =   TX_UCHAR_POINTER_ADD(work_ptr, ((sizeof(TX_TRACE_OBJECT_ENTRY))*i));
+ 116:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr =  TX_UCHAR_TO_OBJECT_POINTER_CONVERT(work_ptr);
+ 117:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 118:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Determine if this is the first pass building the registry. A NULL object value i
+ 119:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                    of the registry has never been used.  */
+ 120:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (entry_ptr -> tx_trace_object_entry_thread_pointer == (ULONG) 0)
+ 121:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 122:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 123:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Set found to this index and break out of the loop.  */
+ 124:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     found =  i;
+ 125:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     loop_break =  TX_TRUE;
+ 126:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 127:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 128:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Determine if this entry matches the object pointer... we must reuse old entries 
+ 129:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                    registry.  */
+ 130:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (entry_ptr -> tx_trace_object_entry_thread_pointer == TX_POINTER_TO_ULONG_CONVER
+ 131:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 132:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 133:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Set found to this index and break out of the loop.  */
+ 134:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     found =  i;
+ 135:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     loop_break =  TX_TRUE;
+ 136:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 137:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 138:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Determine if we should break out of the loop.  */
+ 139:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (loop_break == TX_TRUE)
+ 140:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ARM GAS  /tmp/cckrPpi5.s 			page 5
+
+
+ 141:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 142:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Yes, break out of the loop.  */
+ 143:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     break;
+ 144:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 145:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 146:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Is this entry available?  */
+ 147:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (entry_ptr -> tx_trace_object_entry_available == TX_TRUE)
+ 148:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 149:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 150:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Yes, determine if we have not already found an empty slot.  */
+ 151:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     if (found == entries)
+  88              		.loc 1 151 21 is_stmt 1 view .LVU22
+  89              		.loc 1 151 24 is_stmt 0 view .LVU23
+  90 002c B845     		cmp	r8, r7
+  91 002e 07D0     		beq	.L16
+ 152:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     {
+ 153:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         found =  i;
+ 154:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     }
+ 155:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     else
+ 156:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     {
+ 157:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 158:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         /* Setup a pointer to the found entry.  */
+ 159:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         work_ptr =   TX_OBJECT_TO_UCHAR_POINTER_CONVERT(_tx_trace_registry_start_pt
+  92              		.loc 1 159 25 is_stmt 1 view .LVU24
+  93              	.LVL5:
+ 160:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         work_ptr =   TX_UCHAR_POINTER_ADD(work_ptr, ((sizeof(TX_TRACE_OBJECT_ENTRY)
+  94              		.loc 1 160 25 view .LVU25
+  95              		.loc 1 160 38 is_stmt 0 view .LVU26
+  96 0030 08EB4806 		add	r6, r8, r8, lsl #1
+  97              		.loc 1 160 34 view .LVU27
+  98 0034 04EB0616 		add	r6, r4, r6, lsl #4
+  99              	.LVL6:
+ 161:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         entry_ptr =  TX_UCHAR_TO_OBJECT_POINTER_CONVERT(work_ptr);
+ 100              		.loc 1 161 25 is_stmt 1 view .LVU28
+ 162:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 163:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                          if (entry_ptr -> tx_trace_object_entry_type != ((UCHAR) 0))
+ 101              		.loc 1 163 26 view .LVU29
+ 102              		.loc 1 163 40 is_stmt 0 view .LVU30
+ 103 0038 7678     		ldrb	r6, [r6, #1]	@ zero_extendqisi2
+ 104              	.LVL7:
+ 105              		.loc 1 163 29 view .LVU31
+ 106 003a B6B1     		cbz	r6, .L5
+ 164:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                          {
+ 165:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                             found =  i;
+ 107              		.loc 1 165 35 view .LVU32
+ 108 003c E046     		mov	r8, ip
+ 109              	.LVL8:
+ 110              		.loc 1 165 35 view .LVU33
+ 111 003e 14E0     		b	.L5
+ 112              	.LVL9:
+ 113              	.L16:
+ 153:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     }
+ 114              		.loc 1 153 31 view .LVU34
+ 115 0040 E046     		mov	r8, ip
+ 116              	.LVL10:
+ 153:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     }
+ 117              		.loc 1 153 31 view .LVU35
+ARM GAS  /tmp/cckrPpi5.s 			page 6
+
+
+ 118 0042 12E0     		b	.L5
+ 119              	.LVL11:
+ 120              	.L6:
+ 166:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                          }
+ 167:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     }
+ 168:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 169:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 170:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Move to the next entry.  */
+ 171:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 i++;
+ 172:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 173:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Determine if we have wrapped the list.  */
+ 174:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (i >= entries)
+ 175:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 176:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 177:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Yes, wrap to the beginning of the list.  */
+ 178:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     i =  ((ULONG) 0);
+ 179:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 180:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 181:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             } while (i != _tx_trace_registry_search_start);
+ 121              		.loc 1 181 24 is_stmt 1 view .LVU36
+ 122 0044 CC45     		cmp	ip, r9
+ 123 0046 16D0     		beq	.L20
+ 124              	.LVL12:
+ 125              	.L7:
+ 110:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             {
+ 126              		.loc 1 110 13 view .LVU37
+ 114:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 work_ptr =   TX_UCHAR_POINTER_ADD(work_ptr, ((sizeof(TX_TRACE_OBJECT_ENTRY))*i));
+ 127              		.loc 1 114 17 view .LVU38
+ 115:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr =  TX_UCHAR_TO_OBJECT_POINTER_CONVERT(work_ptr);
+ 128              		.loc 1 115 17 view .LVU39
+ 115:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr =  TX_UCHAR_TO_OBJECT_POINTER_CONVERT(work_ptr);
+ 129              		.loc 1 115 30 is_stmt 0 view .LVU40
+ 130 0048 0CEB4C0E 		add	lr, ip, ip, lsl #1
+ 131 004c 4FEA0E16 		lsl	r6, lr, #4
+ 115:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr =  TX_UCHAR_TO_OBJECT_POINTER_CONVERT(work_ptr);
+ 132              		.loc 1 115 26 view .LVU41
+ 133 0050 04EB0E1E 		add	lr, r4, lr, lsl #4
+ 134              	.LVL13:
+ 116:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 135              		.loc 1 116 17 is_stmt 1 view .LVU42
+ 120:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 136              		.loc 1 120 17 view .LVU43
+ 120:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 137              		.loc 1 120 31 is_stmt 0 view .LVU44
+ 138 0054 DEF80430 		ldr	r3, [lr, #4]
+ 120:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 139              		.loc 1 120 20 view .LVU45
+ 140 0058 0BB9     		cbnz	r3, .L3
+ 124:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     loop_break =  TX_TRUE;
+ 141              		.loc 1 124 27 view .LVU46
+ 142 005a E046     		mov	r8, ip
+ 143              	.LVL14:
+ 125:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 144              		.loc 1 125 32 view .LVU47
+ 145 005c 0125     		movs	r5, #1
+ 146              	.LVL15:
+ 147              	.L3:
+ARM GAS  /tmp/cckrPpi5.s 			page 7
+
+
+ 130:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 148              		.loc 1 130 17 is_stmt 1 view .LVU48
+ 130:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 149              		.loc 1 130 20 is_stmt 0 view .LVU49
+ 150 005e 8B42     		cmp	r3, r1
+ 151 0060 0CD0     		beq	.L4
+ 139:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 152              		.loc 1 139 17 is_stmt 1 view .LVU50
+ 139:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 153              		.loc 1 139 20 is_stmt 0 view .LVU51
+ 154 0062 55B9     		cbnz	r5, .L15
+ 147:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 155              		.loc 1 147 17 is_stmt 1 view .LVU52
+ 147:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 156              		.loc 1 147 31 is_stmt 0 view .LVU53
+ 157 0064 A65D     		ldrb	r6, [r4, r6]	@ zero_extendqisi2
+ 147:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 158              		.loc 1 147 20 view .LVU54
+ 159 0066 012E     		cmp	r6, #1
+ 160 0068 E0D0     		beq	.L21
+ 161              	.LVL16:
+ 162              	.L5:
+ 171:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 163              		.loc 1 171 17 is_stmt 1 view .LVU55
+ 171:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 164              		.loc 1 171 18 is_stmt 0 view .LVU56
+ 165 006a 0CF1010C 		add	ip, ip, #1
+ 166              	.LVL17:
+ 174:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 167              		.loc 1 174 17 is_stmt 1 view .LVU57
+ 174:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 168              		.loc 1 174 20 is_stmt 0 view .LVU58
+ 169 006e 6745     		cmp	r7, ip
+ 170 0070 E8D8     		bhi	.L6
+ 178:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 171              		.loc 1 178 23 view .LVU59
+ 172 0072 AC46     		mov	ip, r5
+ 173              	.LVL18:
+ 178:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 174              		.loc 1 178 23 view .LVU60
+ 175 0074 E6E7     		b	.L6
+ 176              	.LVL19:
+ 177              	.L20:
+ 178:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 178              		.loc 1 178 23 view .LVU61
+ 179 0076 C446     		mov	ip, r8
+ 180              	.LVL20:
+ 178:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 181              		.loc 1 178 23 view .LVU62
+ 182 0078 00E0     		b	.L4
+ 183              	.LVL21:
+ 184              	.L15:
+ 178:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 185              		.loc 1 178 23 view .LVU63
+ 186 007a C446     		mov	ip, r8
+ 187              	.LVL22:
+ 188              	.L4:
+ARM GAS  /tmp/cckrPpi5.s 			page 8
+
+
+ 182:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 183:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             /* Now determine if an empty or reuse entry has been found.  */
+ 184:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             if (found < entries)
+ 189              		.loc 1 184 13 is_stmt 1 view .LVU64
+ 190              		.loc 1 184 16 is_stmt 0 view .LVU65
+ 191 007c BC45     		cmp	ip, r7
+ 192 007e 34D2     		bcs	.L1
+ 185:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             {
+ 186:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 187:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Decrement the number of available entries.  */
+ 188:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 _tx_trace_available_registry_entries--;
+ 193              		.loc 1 188 17 is_stmt 1 view .LVU66
+ 194              		.loc 1 188 53 is_stmt 0 view .LVU67
+ 195 0080 0AF1FF35 		add	r5, r10, #-1
+ 196 0084 214E     		ldr	r6, .L23+8
+ 197 0086 3560     		str	r5, [r6]
+ 189:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 190:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Adjust the search index to the next entry.  */
+ 191:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if ((found + ((ULONG) 1)) < entries)
+ 198              		.loc 1 191 17 is_stmt 1 view .LVU68
+ 199              		.loc 1 191 28 is_stmt 0 view .LVU69
+ 200 0088 0CF10105 		add	r5, ip, #1
+ 201              		.loc 1 191 20 view .LVU70
+ 202 008c BD42     		cmp	r5, r7
+ 203 008e 1ED2     		bcs	.L8
+ 192:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 193:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 194:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Start searching from the next index.  */
+ 195:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     _tx_trace_registry_search_start =  found + ((ULONG) 1);
+ 204              		.loc 1 195 21 is_stmt 1 view .LVU71
+ 205              		.loc 1 195 53 is_stmt 0 view .LVU72
+ 206 0090 1F4E     		ldr	r6, .L23+12
+ 207 0092 3560     		str	r5, [r6]
+ 208              	.L9:
+ 196:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 197:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 else
+ 198:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 199:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 200:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Reset the search to the beginning of the list. */
+ 201:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     _tx_trace_registry_search_start =  ((ULONG) 0);
+ 202:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 203:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 204:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Yes, an entry has been found...  */
+ 205:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 206:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Build a pointer to the found entry.  */
+ 207:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 work_ptr =   TX_OBJECT_TO_UCHAR_POINTER_CONVERT(_tx_trace_registry_start_ptr);
+ 209              		.loc 1 207 17 is_stmt 1 view .LVU73
+ 210              	.LVL23:
+ 208:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 work_ptr =   TX_UCHAR_POINTER_ADD(work_ptr, ((sizeof(TX_TRACE_OBJECT_ENTRY))*found)
+ 211              		.loc 1 208 17 view .LVU74
+ 212              		.loc 1 208 30 is_stmt 0 view .LVU75
+ 213 0094 0CEB4C0C 		add	ip, ip, ip, lsl #1
+ 214              	.LVL24:
+ 215              		.loc 1 208 30 view .LVU76
+ 216 0098 4FEA0C15 		lsl	r5, ip, #4
+ 217              		.loc 1 208 26 view .LVU77
+ 218 009c 04EB0C1C 		add	ip, r4, ip, lsl #4
+ARM GAS  /tmp/cckrPpi5.s 			page 9
+
+
+ 219              	.LVL25:
+ 209:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr =  TX_UCHAR_TO_OBJECT_POINTER_CONVERT(work_ptr);
+ 220              		.loc 1 209 17 is_stmt 1 view .LVU78
+ 210:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 211:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Populate the found entry!  */
+ 212:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr -> tx_trace_object_entry_available =       ((UCHAR) TX_FALSE);
+ 221              		.loc 1 212 17 view .LVU79
+ 222              		.loc 1 212 62 is_stmt 0 view .LVU80
+ 223 00a0 4FF0000E 		mov	lr, #0
+ 224 00a4 04F805E0 		strb	lr, [r4, r5]
+ 213:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr -> tx_trace_object_entry_type =            object_type;
+ 225              		.loc 1 213 17 is_stmt 1 view .LVU81
+ 226              		.loc 1 213 57 is_stmt 0 view .LVU82
+ 227 00a8 8CF80100 		strb	r0, [ip, #1]
+ 214:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr -> tx_trace_object_entry_thread_pointer =  TX_POINTER_TO_ULONG_CONVERT(ob
+ 228              		.loc 1 214 17 is_stmt 1 view .LVU83
+ 229              		.loc 1 214 67 is_stmt 0 view .LVU84
+ 230 00ac CCF80410 		str	r1, [ip, #4]
+ 215:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr -> tx_trace_object_entry_param_1 =         parameter_1;
+ 231              		.loc 1 215 17 is_stmt 1 view .LVU85
+ 232              		.loc 1 215 60 is_stmt 0 view .LVU86
+ 233 00b0 CCF808B0 		str	fp, [ip, #8]
+ 216:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr -> tx_trace_object_entry_param_2 =         parameter_2;
+ 234              		.loc 1 216 17 is_stmt 1 view .LVU87
+ 235              		.loc 1 216 60 is_stmt 0 view .LVU88
+ 236 00b4 099B     		ldr	r3, [sp, #36]
+ 237 00b6 CCF80C30 		str	r3, [ip, #12]
+ 217:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 218:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Loop to copy the object name string...  */
+ 219:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 for (i = ((ULONG) 0); i < (((ULONG) TX_TRACE_OBJECT_REGISTRY_NAME)-((ULONG) 1)); i+
+ 238              		.loc 1 219 17 is_stmt 1 view .LVU89
+ 239              	.LVL26:
+ 240              		.loc 1 219 24 is_stmt 0 view .LVU90
+ 241 00ba 7346     		mov	r3, lr
+ 242              	.LVL27:
+ 243              	.L10:
+ 244              		.loc 1 219 41 is_stmt 1 discriminator 1 view .LVU91
+ 245 00bc 1E2B     		cmp	r3, #30
+ 246 00be 0AD8     		bhi	.L11
+ 220:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 221:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 222:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Setup work pointer to the object name character.  */
+ 223:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     work_ptr =  TX_CHAR_TO_UCHAR_POINTER_CONVERT(object_name);
+ 247              		.loc 1 223 21 view .LVU92
+ 248              	.LVL28:
+ 224:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     work_ptr =  TX_UCHAR_POINTER_ADD(work_ptr, i);
+ 249              		.loc 1 224 21 view .LVU93
+ 225:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 226:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Copy a character of the name.  */
+ 227:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_name[i] =  (UCHAR) *work_ptr;
+ 250              		.loc 1 227 21 view .LVU94
+ 251              		.loc 1 227 67 is_stmt 0 view .LVU95
+ 252 00c0 D45C     		ldrb	r4, [r2, r3]	@ zero_extendqisi2
+ 253              		.loc 1 227 64 view .LVU96
+ 254 00c2 0CEB0305 		add	r5, ip, r3
+ 255 00c6 2C74     		strb	r4, [r5, #16]
+ 228:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ARM GAS  /tmp/cckrPpi5.s 			page 10
+
+
+ 229:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Determine if we are at the end.  */
+ 230:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     if (*work_ptr == ((UCHAR) 0))
+ 256              		.loc 1 230 21 is_stmt 1 view .LVU97
+ 257              		.loc 1 230 24 is_stmt 0 view .LVU98
+ 258 00c8 2CB1     		cbz	r4, .L11
+ 219:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 259              		.loc 1 219 99 is_stmt 1 discriminator 2 view .LVU99
+ 260 00ca 0133     		adds	r3, r3, #1
+ 261              	.LVL29:
+ 219:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 262              		.loc 1 219 99 is_stmt 0 discriminator 2 view .LVU100
+ 263 00cc F6E7     		b	.L10
+ 264              	.LVL30:
+ 265              	.L8:
+ 201:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 266              		.loc 1 201 21 is_stmt 1 view .LVU101
+ 201:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 267              		.loc 1 201 53 is_stmt 0 view .LVU102
+ 268 00ce 104D     		ldr	r5, .L23+12
+ 269 00d0 0026     		movs	r6, #0
+ 270 00d2 2E60     		str	r6, [r5]
+ 271 00d4 DEE7     		b	.L9
+ 272              	.LVL31:
+ 273              	.L11:
+ 231:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     {
+ 232:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         break;
+ 233:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     }
+ 234:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 235:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 236:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Null terminate the object string.  */
+ 237:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 entry_ptr -> tx_trace_object_entry_name[i] =  (UCHAR) 0;
+ 274              		.loc 1 237 17 is_stmt 1 view .LVU103
+ 275              		.loc 1 237 60 is_stmt 0 view .LVU104
+ 276 00d6 6344     		add	r3, r3, ip
+ 277              	.LVL32:
+ 278              		.loc 1 237 60 view .LVU105
+ 279 00d8 0022     		movs	r2, #0
+ 280              	.LVL33:
+ 281              		.loc 1 237 60 view .LVU106
+ 282 00da 1A74     		strb	r2, [r3, #16]
+ 238:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 239:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 /* Determine if a thread object type is present.  */
+ 240:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (object_type == TX_TRACE_OBJECT_TYPE_THREAD)
+ 283              		.loc 1 240 17 is_stmt 1 view .LVU107
+ 284              		.loc 1 240 20 is_stmt 0 view .LVU108
+ 285 00dc 0128     		cmp	r0, #1
+ 286 00de 06D0     		beq	.L22
+ 241:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 242:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 243:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Yes, a thread object is present.  */
+ 244:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 245:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Setup a pointer to the thread.  */
+ 246:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     thread_ptr =  TX_VOID_TO_THREAD_POINTER_CONVERT(object_ptr);
+ 247:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 248:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* Store the thread's priority in the reserved bits.  */
+ 249:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved1 =  ((UCHAR) 0x80) | ((UCHAR) (thre
+ 250:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved2 =  (UCHAR) (thread_ptr -> tx_threa
+ARM GAS  /tmp/cckrPpi5.s 			page 11
+
+
+ 251:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 252:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 else
+ 253:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 254:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 255:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     /* For all other objects, set the reserved bytes to 0.  */
+ 256:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved1 =  ((UCHAR) 0);
+ 287              		.loc 1 256 21 is_stmt 1 view .LVU109
+ 288              		.loc 1 256 66 is_stmt 0 view .LVU110
+ 289 00e0 0023     		movs	r3, #0
+ 290 00e2 8CF80230 		strb	r3, [ip, #2]
+ 257:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved2 =  ((UCHAR) 0);
+ 291              		.loc 1 257 21 is_stmt 1 view .LVU111
+ 292              		.loc 1 257 66 is_stmt 0 view .LVU112
+ 293 00e6 8CF80330 		strb	r3, [ip, #3]
+ 294              	.LVL34:
+ 295              	.L1:
+ 258:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 259:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             }
+ 260:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         }
+ 261:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     }
+ 262:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** #else
+ 263:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 264:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** TX_INTERRUPT_SAVE_AREA
+ 265:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 266:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 267:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     /* Access input arguments just for the sake of lint, MISRA, etc.  */
+ 268:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     if (object_type != ((UCHAR) 0))
+ 269:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     {
+ 270:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 271:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         if (object_ptr != TX_NULL)
+ 272:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         {
+ 273:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 274:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             if (object_name != TX_NULL)
+ 275:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             {
+ 276:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 277:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 if (parameter_1 != ((ULONG) 0))
+ 278:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 {
+ 279:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 280:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     if (parameter_2 != ((ULONG) 0))
+ 281:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     {
+ 282:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 283:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         /* NOP code.  */
+ 284:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         TX_DISABLE
+ 285:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                         TX_RESTORE
+ 286:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     }
+ 287:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 288:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****             }
+ 289:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****         }
+ 290:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****     }
+ 291:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** #endif
+ 292:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** }
+ 296              		.loc 1 292 1 view .LVU113
+ 297 00ea BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 298              	.LVL35:
+ 299              	.L22:
+ 246:Middlewares/ST/threadx/common/src/tx_trace_object_register.c **** 
+ 300              		.loc 1 246 21 is_stmt 1 view .LVU114
+ARM GAS  /tmp/cckrPpi5.s 			page 12
+
+
+ 249:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved2 =  (UCHAR) (thread_ptr -> tx_threa
+ 301              		.loc 1 249 21 view .LVU115
+ 249:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved2 =  (UCHAR) (thread_ptr -> tx_threa
+ 302              		.loc 1 249 87 is_stmt 0 view .LVU116
+ 303 00ee 91F82D30 		ldrb	r3, [r1, #45]	@ zero_extendqisi2
+ 249:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                     entry_ptr -> tx_trace_object_entry_reserved2 =  (UCHAR) (thread_ptr -> tx_threa
+ 304              		.loc 1 249 66 view .LVU117
+ 305 00f2 63F07F03 		orn	r3, r3, #127
+ 306 00f6 8CF80230 		strb	r3, [ip, #2]
+ 250:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 307              		.loc 1 250 21 is_stmt 1 view .LVU118
+ 250:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 308              		.loc 1 250 69 is_stmt 0 view .LVU119
+ 309 00fa 91F82C30 		ldrb	r3, [r1, #44]	@ zero_extendqisi2
+ 250:Middlewares/ST/threadx/common/src/tx_trace_object_register.c ****                 }
+ 310              		.loc 1 250 66 view .LVU120
+ 311 00fe 8CF80330 		strb	r3, [ip, #3]
+ 312 0102 F2E7     		b	.L1
+ 313              	.L24:
+ 314              		.align	2
+ 315              	.L23:
+ 316 0104 00000000 		.word	_tx_trace_registry_start_ptr
+ 317 0108 00000000 		.word	_tx_trace_total_registry_entries
+ 318 010c 00000000 		.word	_tx_trace_available_registry_entries
+ 319 0110 00000000 		.word	_tx_trace_registry_search_start
+ 320              		.cfi_endproc
+ 321              	.LFE8:
+ 323              		.text
+ 324              	.Letext0:
+ 325              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 326              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 327              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ARM GAS  /tmp/cckrPpi5.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_trace_object_register.c
+     /tmp/cckrPpi5.s:20     .text._tx_trace_object_register:00000000 $t
+     /tmp/cckrPpi5.s:26     .text._tx_trace_object_register:00000000 _tx_trace_object_register
+     /tmp/cckrPpi5.s:316    .text._tx_trace_object_register:00000104 $d
+
+UNDEFINED SYMBOLS
+_tx_trace_registry_start_ptr
+_tx_trace_total_registry_entries
+_tx_trace_available_registry_entries
+_tx_trace_registry_search_start

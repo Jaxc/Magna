@@ -1,0 +1,403 @@
+ARM GAS  /tmp/ccm9PxgX.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_audio_sample_read16.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c"
+  19              		.section	.text._ux_device_class_audio_sample_read16,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_class_audio_sample_read16
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_class_audio_sample_read16:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**                                                                       */
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /** USBX Component                                                        */
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**                                                                       */
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**   Device Audio Class                                                  */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**                                                                       */
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** #define UX_SOURCE_CODE
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /* Include necessary system files.  */
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** #include "ux_api.h"
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** #include "ux_device_class_audio.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** #include "ux_device_stack.h"
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ARM GAS  /tmp/ccm9PxgX.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    _ux_device_class_audio_sample_read16                PORTABLE C      */
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    This function reads 16-bit sample value from the Audio class.       */
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  INPUT                                                                 */
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    stream                                Address of audio stream       */
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                            instance                    */
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    buffer                                Pointer to buffer to save     */
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                            sample data                 */
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    None                                                                */
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  CALLED BY                                                             */
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    ThreadX                                                             */
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  RELEASE HISTORY                                                       */
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*    DATE              NAME                      DESCRIPTION             */
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** UINT _ux_device_class_audio_sample_read16(UX_DEVICE_CLASS_AUDIO_STREAM *stream,
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****                                           USHORT *buffer)
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** {
+  29              		.loc 1 75 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** UX_SLAVE_ENDPOINT           *endpoint;
+  34              		.loc 1 77 1 view .LVU1
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** UX_SLAVE_DEVICE             *device;
+  35              		.loc 1 78 1 view .LVU2
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** UCHAR                       *sample_ptr;
+  36              		.loc 1 79 1 view .LVU3
+ARM GAS  /tmp/ccm9PxgX.s 			page 3
+
+
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** UCHAR                       *next_frame_buffer;
+  37              		.loc 1 80 1 view .LVU4
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** ULONG                       next_frame_sample;
+  38              		.loc 1 81 1 view .LVU5
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Get the pointer to the device.  */
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     device =  &_ux_system_slave -> ux_system_slave_device;
+  39              		.loc 1 85 5 view .LVU6
+  40              		.loc 1 85 33 is_stmt 0 view .LVU7
+  41 0000 224A     		ldr	r2, .L15
+  42 0002 1268     		ldr	r2, [r2]
+  43              	.LVL1:
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* As long as the device is in the CONFIGURED state.  */
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     if (device -> ux_slave_device_state != UX_DEVICE_CONFIGURED)
+  44              		.loc 1 88 5 is_stmt 1 view .LVU8
+  45              		.loc 1 88 16 is_stmt 0 view .LVU9
+  46 0004 126A     		ldr	r2, [r2, #32]
+  47              	.LVL2:
+  48              		.loc 1 88 8 view .LVU10
+  49 0006 032A     		cmp	r2, #3
+  50 0008 38D1     		bne	.L6
+  51 000a 0346     		mov	r3, r0
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     {
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         /* Cannot proceed with command, the interface is down.  */
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         return(UX_CONFIGURATION_HANDLE_UNKNOWN);
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     }
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Check if endpoint is available.  */
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     endpoint = stream -> ux_device_class_audio_stream_endpoint;
+  52              		.loc 1 96 5 is_stmt 1 view .LVU11
+  53              		.loc 1 96 14 is_stmt 0 view .LVU12
+  54 000c 8268     		ldr	r2, [r0, #8]
+  55              	.LVL3:
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     if (endpoint == UX_NULL)
+  56              		.loc 1 97 5 is_stmt 1 view .LVU13
+  57              		.loc 1 97 8 is_stmt 0 view .LVU14
+  58 000e 002A     		cmp	r2, #0
+  59 0010 36D0     		beq	.L7
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         return(UX_ERROR);
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Check if endpoint direction is OK.  */
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     if ((endpoint -> ux_slave_endpoint_descriptor.bEndpointAddress & UX_ENDPOINT_DIRECTION) != UX_E
+  60              		.loc 1 101 5 is_stmt 1 view .LVU15
+  61              		.loc 1 101 50 is_stmt 0 view .LVU16
+  62 0012 5069     		ldr	r0, [r2, #20]
+  63              	.LVL4:
+  64              		.loc 1 101 8 view .LVU17
+  65 0014 10F08000 		ands	r0, r0, #128
+  66 0018 34D1     		bne	.L8
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+  67              		.loc 1 75 1 view .LVU18
+  68 001a 10B4     		push	{r4}
+  69              	.LCFI0:
+  70              		.cfi_def_cfa_offset 4
+ARM GAS  /tmp/ccm9PxgX.s 			page 4
+
+
+  71              		.cfi_offset 4, -4
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         return(UX_ERROR);
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Underflow!!  */
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     if (stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_length == 
+  72              		.loc 1 105 5 is_stmt 1 view .LVU19
+  73              		.loc 1 105 16 is_stmt 0 view .LVU20
+  74 001c D3F8D820 		ldr	r2, [r3, #216]
+  75              	.LVL5:
+  76              		.loc 1 105 8 view .LVU21
+  77 0020 1468     		ldr	r4, [r2]
+  78 0022 8CB3     		cbz	r4, .L9
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     {
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         return(UX_BUFFER_OVERFLOW);
+ 108:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     }
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Try to read a sample.  */
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     sample_ptr = stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_d
+  79              		.loc 1 111 5 is_stmt 1 view .LVU22
+  80              		.loc 1 111 18 is_stmt 0 view .LVU23
+  81 0024 02F1080C 		add	ip, r2, #8
+ 112:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****                     stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_fram
+  82              		.loc 1 112 71 view .LVU24
+  83 0028 5268     		ldr	r2, [r2, #4]
+  84              	.LVL6:
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     if (buffer)
+  85              		.loc 1 113 5 is_stmt 1 view .LVU25
+  86              		.loc 1 113 8 is_stmt 0 view .LVU26
+  87 002a 11B1     		cbz	r1, .L3
+ 114:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         *buffer = *(USHORT *)(sample_ptr);
+  88              		.loc 1 114 9 is_stmt 1 view .LVU27
+  89              		.loc 1 114 19 is_stmt 0 view .LVU28
+  90 002c 3CF80220 		ldrh	r2, [ip, r2]
+  91              	.LVL7:
+  92              		.loc 1 114 17 view .LVU29
+  93 0030 0A80     		strh	r2, [r1]	@ movhi
+  94              	.LVL8:
+  95              	.L3:
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 116:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Update sample read state.  */
+ 117:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     next_frame_sample = stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_
+  96              		.loc 1 117 5 is_stmt 1 view .LVU30
+  97              		.loc 1 117 32 is_stmt 0 view .LVU31
+  98 0032 D3F8D810 		ldr	r1, [r3, #216]
+  99              	.LVL9:
+ 100              		.loc 1 117 75 view .LVU32
+ 101 0036 4A68     		ldr	r2, [r1, #4]
+ 102              		.loc 1 117 23 view .LVU33
+ 103 0038 0232     		adds	r2, r2, #2
+ 104              	.LVL10:
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     if (next_frame_sample >= stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_a
+ 105              		.loc 1 118 5 is_stmt 1 view .LVU34
+ 106              		.loc 1 118 8 is_stmt 0 view .LVU35
+ 107 003a 0C68     		ldr	r4, [r1]
+ 108 003c 9442     		cmp	r4, r2
+ 109 003e 15D8     		bhi	.L4
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     {
+ARM GAS  /tmp/ccm9PxgX.s 			page 5
+
+
+ 120:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 121:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         /* Set frame length to 0 to indicate no data.  */
+ 122:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_length = 0
+ 110              		.loc 1 122 9 is_stmt 1 view .LVU36
+ 111              		.loc 1 122 97 is_stmt 0 view .LVU37
+ 112 0040 0022     		movs	r2, #0
+ 113              	.LVL11:
+ 114              		.loc 1 122 97 view .LVU38
+ 115 0042 0A60     		str	r2, [r1]
+ 123:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 124:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         /* Move to next frame buffer.  */
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         next_frame_sample = 0;
+ 116              		.loc 1 125 9 is_stmt 1 view .LVU39
+ 117              	.LVL12:
+ 126:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 127:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         /* Move frame if it's not the last one.  */
+ 128:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         if (stream -> ux_device_class_audio_stream_access_pos != stream -> ux_device_class_audio_st
+ 118              		.loc 1 128 9 view .LVU40
+ 119              		.loc 1 128 20 is_stmt 0 view .LVU41
+ 120 0044 D3F8D820 		ldr	r2, [r3, #216]
+ 121              		.loc 1 128 73 view .LVU42
+ 122 0048 D3F8D410 		ldr	r1, [r3, #212]
+ 123              		.loc 1 128 12 view .LVU43
+ 124 004c 8A42     		cmp	r2, r1
+ 125 004e 13D0     		beq	.L10
+ 129:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         {
+ 130:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****             next_frame_buffer = (UCHAR *)stream -> ux_device_class_audio_stream_access_pos;
+ 126              		.loc 1 130 13 is_stmt 1 view .LVU44
+ 127              	.LVL13:
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****             next_frame_buffer += stream -> ux_device_class_audio_stream_frame_buffer_size;
+ 128              		.loc 1 131 13 view .LVU45
+ 129              		.loc 1 131 41 is_stmt 0 view .LVU46
+ 130 0050 D3F8D010 		ldr	r1, [r3, #208]
+ 131              		.loc 1 131 31 view .LVU47
+ 132 0054 0A44     		add	r2, r2, r1
+ 133              	.LVL14:
+ 132:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****             if (next_frame_buffer >= stream -> ux_device_class_audio_stream_buffer + stream -> ux_d
+ 134              		.loc 1 132 13 is_stmt 1 view .LVU48
+ 135              		.loc 1 132 45 is_stmt 0 view .LVU49
+ 136 0056 D3F8C840 		ldr	r4, [r3, #200]
+ 137              		.loc 1 132 93 view .LVU50
+ 138 005a D3F8CC10 		ldr	r1, [r3, #204]
+ 139              		.loc 1 132 84 view .LVU51
+ 140 005e 2144     		add	r1, r1, r4
+ 141              		.loc 1 132 16 view .LVU52
+ 142 0060 9142     		cmp	r1, r2
+ 143 0062 00D9     		bls	.L5
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****             next_frame_buffer += stream -> ux_device_class_audio_stream_frame_buffer_size;
+ 144              		.loc 1 131 31 view .LVU53
+ 145 0064 1446     		mov	r4, r2
+ 146              	.L5:
+ 147              	.LVL15:
+ 133:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****                 next_frame_buffer = stream -> ux_device_class_audio_stream_buffer;
+ 134:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****             stream -> ux_device_class_audio_stream_access_pos = (UX_DEVICE_CLASS_AUDIO_FRAME *)next
+ 148              		.loc 1 134 13 is_stmt 1 view .LVU54
+ 149              		.loc 1 134 63 is_stmt 0 view .LVU55
+ 150 0066 C3F8D840 		str	r4, [r3, #216]
+ARM GAS  /tmp/ccm9PxgX.s 			page 6
+
+
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 151              		.loc 1 125 27 view .LVU56
+ 152 006a 0246     		mov	r2, r0
+ 153              	.LVL16:
+ 154              	.L4:
+ 135:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****         }
+ 136:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     }
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 138:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     /* Update next sample position.  */
+ 139:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_pos = next_fra
+ 155              		.loc 1 139 5 is_stmt 1 view .LVU57
+ 156              		.loc 1 139 12 is_stmt 0 view .LVU58
+ 157 006c D3F8D830 		ldr	r3, [r3, #216]
+ 158              	.LVL17:
+ 159              		.loc 1 139 90 view .LVU59
+ 160 0070 5A60     		str	r2, [r3, #4]
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     return(UX_SUCCESS);
+ 161              		.loc 1 141 5 is_stmt 1 view .LVU60
+ 162              	.LVL18:
+ 163              	.L1:
+ 142:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** }
+ 164              		.loc 1 142 1 is_stmt 0 view .LVU61
+ 165 0072 5DF8044B 		ldr	r4, [sp], #4
+ 166              	.LCFI1:
+ 167              		.cfi_remember_state
+ 168              		.cfi_restore 4
+ 169              		.cfi_def_cfa_offset 0
+ 170 0076 7047     		bx	lr
+ 171              	.LVL19:
+ 172              	.L10:
+ 173              	.LCFI2:
+ 174              		.cfi_restore_state
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 175              		.loc 1 125 27 view .LVU62
+ 176 0078 0246     		mov	r2, r0
+ 177 007a F7E7     		b	.L4
+ 178              	.LVL20:
+ 179              	.L6:
+ 180              	.LCFI3:
+ 181              		.cfi_def_cfa_offset 0
+ 182              		.cfi_restore 4
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     }
+ 183              		.loc 1 92 15 view .LVU63
+ 184 007c 5120     		movs	r0, #81
+ 185              	.LVL21:
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     }
+ 186              		.loc 1 92 15 view .LVU64
+ 187 007e 7047     		bx	lr
+ 188              	.LVL22:
+ 189              	.L7:
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 190              		.loc 1 98 15 view .LVU65
+ 191 0080 FF20     		movs	r0, #255
+ 192              	.LVL23:
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 193              		.loc 1 98 15 view .LVU66
+ARM GAS  /tmp/ccm9PxgX.s 			page 7
+
+
+ 194 0082 7047     		bx	lr
+ 195              	.L8:
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c **** 
+ 196              		.loc 1 102 15 view .LVU67
+ 197 0084 FF20     		movs	r0, #255
+ 198              		.loc 1 142 1 view .LVU68
+ 199 0086 7047     		bx	lr
+ 200              	.LVL24:
+ 201              	.L9:
+ 202              	.LCFI4:
+ 203              		.cfi_def_cfa_offset 4
+ 204              		.cfi_offset 4, -4
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_sample_read16.c ****     }
+ 205              		.loc 1 107 15 view .LVU69
+ 206 0088 5D20     		movs	r0, #93
+ 207 008a F2E7     		b	.L1
+ 208              	.L16:
+ 209              		.align	2
+ 210              	.L15:
+ 211 008c 00000000 		.word	_ux_system_slave
+ 212              		.cfi_endproc
+ 213              	.LFE11:
+ 215              		.text
+ 216              	.Letext0:
+ 217              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 218              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 219              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 220              		.file 5 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_audio.h"
+ 221              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccm9PxgX.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_audio_sample_read16.c
+     /tmp/ccm9PxgX.s:20     .text._ux_device_class_audio_sample_read16:00000000 $t
+     /tmp/ccm9PxgX.s:26     .text._ux_device_class_audio_sample_read16:00000000 _ux_device_class_audio_sample_read16
+     /tmp/ccm9PxgX.s:211    .text._ux_device_class_audio_sample_read16:0000008c $d
+
+UNDEFINED SYMBOLS
+_ux_system_slave

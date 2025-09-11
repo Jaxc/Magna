@@ -1,0 +1,730 @@
+ARM GAS  /tmp/cc6mm7fj.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_thread_initialize.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_thread_initialize.c"
+  19              		.section	.text._tx_thread_initialize,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_thread_initialize
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_thread_initialize:
+  27              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**   Thread                                                              */
+  19:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifndef TX_MISRA_ENABLE
+  27:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #define TX_THREAD_INIT
+  28:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+  29:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  30:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  31:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Include necessary system files.  */
+ARM GAS  /tmp/cc6mm7fj.s 			page 2
+
+
+  32:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  33:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #include "tx_api.h"
+  34:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #include "tx_initialize.h"
+  35:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #include "tx_thread.h"
+  36:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  37:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  38:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the pointer that contains the system stack pointer.  This is
+  39:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    utilized when control returns from a thread to the system to reset the
+  40:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    current stack.  This is setup in the low-level initialization function. */
+  41:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  42:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** VOID *          _tx_thread_system_stack_ptr;
+  43:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  44:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  45:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the current thread pointer.  This variable points to the currently
+  46:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    executing thread.  If this variable is NULL, no thread is executing.  */
+  47:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  48:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** TX_THREAD *     _tx_thread_current_ptr;
+  49:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  50:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  51:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the variable that holds the next thread to execute.  It is important
+  52:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    to remember that this is not necessarily equal to the current thread 
+  53:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    pointer.  */
+  54:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  55:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** TX_THREAD *     _tx_thread_execute_ptr;
+  56:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  57:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  58:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the head pointer of the created thread list.  */
+  59:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  60:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** TX_THREAD *     _tx_thread_created_ptr;
+  61:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  62:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  63:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the variable that holds the number of created threads. */
+  64:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  65:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_created_count;
+  66:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  67:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  68:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the current state variable.  When this value is 0, a thread
+  69:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    is executing or the system is idle.  Other values indicate that 
+  70:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    interrupt or initialization processing is active.  This variable is
+  71:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    initialized to TX_INITIALIZE_IN_PROGRESS to indicate initialization is
+  72:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    active.  */
+  73:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  74:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** volatile ULONG  _tx_thread_system_state =  TX_INITIALIZE_IN_PROGRESS;
+  75:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  76:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  77:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the 32-bit priority bit-maps. There is one priority bit map for each
+  78:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    32 priority levels supported. If only 32 priorities are supported there is 
+  79:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    only one bit map. Each bit within a priority bit map represents that one 
+  80:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    or more threads at the associated thread priority are ready.  */
+  81:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  82:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_priority_maps[TX_MAX_PRIORITIES/32];
+  83:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  84:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  85:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the priority map active bit map that specifies which of the previously 
+  86:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    defined priority maps have something set. This is only necessary if more than 
+  87:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    32 priorities are supported.  */
+  88:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ARM GAS  /tmp/cc6mm7fj.s 			page 3
+
+
+  89:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #if TX_MAX_PRIORITIES > 32
+  90:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_priority_map_active;
+  91:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+  92:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  93:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  94:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifndef TX_DISABLE_PREEMPTION_THRESHOLD
+  95:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+  96:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the 32-bit preempt priority bit maps.  There is one preempt bit map 
+  97:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    for each 32 priority levels supported. If only 32 priorities are supported 
+  98:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    there is only one bit map. Each set set bit corresponds to a preempted priority 
+  99:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    level that had preemption-threshold active to protect against preemption of a 
+ 100:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    range of relatively higher priority threads.  */
+ 101:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 102:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_preempted_maps[TX_MAX_PRIORITIES/32];
+ 103:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 104:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 105:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the preempt map active bit map that specifies which of the previously 
+ 106:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    defined preempt maps have something set. This is only necessary if more than 
+ 107:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    32 priorities are supported.  */
+ 108:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 109:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #if TX_MAX_PRIORITIES > 32
+ 110:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_preempted_map_active;
+ 111:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 112:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 113:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 114:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the variable that holds the highest priority group ready for 
+ 115:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    execution.  It is important to note that this is not necessarily the same
+ 116:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    as the priority of the thread pointed to by _tx_execute_thread.  */
+ 117:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 118:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** UINT            _tx_thread_highest_priority;
+ 119:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 120:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 121:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the array of thread pointers.  Each entry represents the threads that
+ 122:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    are ready at that priority group.  For example, index 10 in this array
+ 123:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    represents the first thread ready at priority 10.  If this entry is NULL,
+ 124:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    no threads are ready at that priority.  */
+ 125:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 126:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** TX_THREAD *     _tx_thread_priority_list[TX_MAX_PRIORITIES];
+ 127:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 128:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 129:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the global preempt disable variable.  If this is non-zero, preemption is
+ 130:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    disabled.  It is used internally by ThreadX to prevent preemption of a thread in 
+ 131:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    the middle of a service that is resuming or suspending another thread.  */
+ 132:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 133:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** volatile UINT   _tx_thread_preempt_disable;
+ 134:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 135:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 136:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the global function pointer for mutex cleanup on thread completion or 
+ 137:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    termination. This pointer is setup during mutex initialization.  */
+ 138:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 139:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** VOID            (*_tx_thread_mutex_release)(TX_THREAD *thread_ptr);
+ 140:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 141:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 142:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the global build options variable.  This contains a bit map representing
+ 143:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    how the ThreadX library was built. The following are the bit field definitions:
+ 144:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 145:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     Bit(s)                   Meaning
+ARM GAS  /tmp/cc6mm7fj.s 			page 4
+
+
+ 146:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 147:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     31                  TX_NOT_INTERRUPTABLE defined
+ 148:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     30                  TX_INLINE_THREAD_RESUME_SUSPEND define
+ 149:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     29-24               Priority groups 1  -> 32 priorities
+ 150:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                                                         2  -> 64 priorities
+ 151:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                                                         3  -> 96 priorities
+ 152:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 153:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                                                         ...
+ 154:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 155:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                                                         32 -> 1024 priorities
+ 156:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     23                  TX_TIMER_PROCESS_IN_ISR defined
+ 157:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     22                  TX_REACTIVATE_INLINE defined
+ 158:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     21                  TX_DISABLE_STACK_FILLING defined
+ 159:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     20                  TX_ENABLE_STACK_CHECKING defined
+ 160:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     19                  TX_DISABLE_PREEMPTION_THRESHOLD defined
+ 161:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     18                  TX_DISABLE_REDUNDANT_CLEARING defined
+ 162:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     17                  TX_DISABLE_NOTIFY_CALLBACKS defined
+ 163:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     16                  TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO defined
+ 164:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     15                  TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO defined
+ 165:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     14                  TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO defined
+ 166:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     13                  TX_MUTEX_ENABLE_PERFORMANCE_INFO defined
+ 167:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     12                  TX_QUEUE_ENABLE_PERFORMANCE_INFO defined
+ 168:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     11                  TX_SEMAPHORE_ENABLE_PERFORMANCE_INFO defined
+ 169:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     10                  TX_THREAD_ENABLE_PERFORMANCE_INFO defined
+ 170:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     9                   TX_TIMER_ENABLE_PERFORMANCE_INFO defined
+ 171:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     8                   TX_ENABLE_EVENT_TRACE defined
+ 172:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     7                   TX_ENABLE_EXECUTION_CHANGE_NOTIFY defined
+ 173:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                     6-0                 Port Specific   */
+ 174:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 175:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_build_options;
+ 176:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 177:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 178:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #if defined(TX_ENABLE_STACK_CHECKING) || defined(TX_PORT_THREAD_STACK_ERROR_HANDLING)
+ 179:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 180:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the global function pointer for stack error handling. If a stack error is 
+ 181:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    detected and the application has registered a stack error handler, it will be 
+ 182:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    called via this function pointer.  */
+ 183:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 184:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** VOID            (*_tx_thread_application_stack_error_handler)(TX_THREAD *thread_ptr);
+ 185:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 186:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 187:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 188:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_THREAD_ENABLE_PERFORMANCE_INFO
+ 189:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 190:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of thread resumptions. Each time a thread enters the
+ 191:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    ready state this variable is incremented.  */
+ 192:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 193:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_resume_count;
+ 194:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 195:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 196:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of thread suspensions. Each time a thread enters a 
+ 197:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    suspended state this variable is incremented.  */
+ 198:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 199:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_suspend_count;
+ 200:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 201:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 202:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of solicited thread preemptions. Each time a thread is 
+ARM GAS  /tmp/cc6mm7fj.s 			page 5
+
+
+ 203:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    preempted by directly calling a ThreadX service, this variable is incremented.  */
+ 204:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 205:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_solicited_preemption_count;
+ 206:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 207:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 208:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of interrupt thread preemptions. Each time a thread is 
+ 209:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    preempted as a result of an ISR calling a ThreadX service, this variable is 
+ 210:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    incremented.  */
+ 211:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 212:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_interrupt_preemption_count;
+ 213:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 214:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 215:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of priority inversions. Each time a thread is blocked by
+ 216:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    a mutex owned by a lower-priority thread, this variable is incremented.  */
+ 217:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 218:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_priority_inversion_count;
+ 219:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 220:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 221:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of time-slices.  Each time a time-slice operation is 
+ 222:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    actually performed (another thread is setup for running) this variable is 
+ 223:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    incremented.  */
+ 224:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 225:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_time_slice_count;
+ 226:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 227:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 228:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of thread relinquish operations.  Each time a thread 
+ 229:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    relinquish operation is actually performed (another thread is setup for running)
+ 230:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    this variable is incremented.  */
+ 231:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 232:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_relinquish_count;
+ 233:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 234:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 235:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of thread timeouts. Each time a thread has a 
+ 236:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    timeout this variable is incremented.  */
+ 237:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 238:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_timeout_count;
+ 239:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 240:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 241:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of thread wait aborts. Each time a thread's suspension 
+ 242:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    is lifted by the tx_thread_wait_abort call this variable is incremented.  */
+ 243:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 244:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_wait_abort_count;
+ 245:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 246:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 247:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of idle system thread returns. Each time a thread returns to 
+ 248:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    an idle system (no other thread is ready to run) this variable is incremented.  */
+ 249:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 250:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_idle_return_count;
+ 251:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 252:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 253:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the total number of non-idle system thread returns. Each time a thread returns to 
+ 254:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    a non-idle system (another thread is ready to run) this variable is incremented.  */
+ 255:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 256:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance_non_idle_return_count;
+ 257:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 258:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 259:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define the last TX_THREAD_EXECUTE_LOG_SIZE threads scheduled in ThreadX. This 
+ARM GAS  /tmp/cc6mm7fj.s 			page 6
+
+
+ 260:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****    is a circular list, where the index points to the oldest entry.  */
+ 261:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 262:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** ULONG           _tx_thread_performance__execute_log_index;
+ 263:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** TX_THREAD *     _tx_thread_performance_execute_log[TX_THREAD_EXECUTE_LOG_SIZE];
+ 264:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 265:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 266:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 267:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /* Define special string.  */
+ 268:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 269:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifndef TX_MISRA_ENABLE
+ 270:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** const CHAR _tx_thread_special_string[] = 
+ 271:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****   "G-ML-EL-ML-BL-DL-BL-GB-GL-M-D-DL-GZ-KH-EL-CM-NH-HA-GF-DD-JC-YZ-CT-AT-DW-USA-CA-SD-SDSU";
+ 272:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 273:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 274:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 275:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+ 276:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 277:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  FUNCTION                                               RELEASE        */
+ 278:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 279:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    _tx_thread_initialize                               PORTABLE C      */
+ 280:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                           6.1.9        */
+ 281:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  AUTHOR                                                                */
+ 282:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 283:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    William E. Lamie, Microsoft Corporation                             */
+ 284:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 285:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  DESCRIPTION                                                           */
+ 286:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 287:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    This function initializes the various control data structures for   */
+ 288:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    the thread control component.                                       */
+ 289:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 290:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  INPUT                                                                 */
+ 291:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 292:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    None                                                                */
+ 293:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 294:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  OUTPUT                                                                */
+ 295:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 296:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    None                                                                */
+ 297:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 298:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  CALLS                                                                 */
+ 299:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 300:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    None                                                                */
+ 301:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 302:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  CALLED BY                                                             */
+ 303:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 304:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    _tx_initialize_high_level         High level initialization         */
+ 305:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 306:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  RELEASE HISTORY                                                       */
+ 307:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 308:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 309:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 310:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+ 311:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+ 312:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                            resulting in version 6.1    */
+ 313:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  06-02-2021     Yuxin Zhou               Modified comment(s), added    */
+ 314:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                            Execution Profile support,  */
+ 315:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                            resulting in version 6.1.7  */
+ 316:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*  10-15-2021     Yuxin Zhou               Modified comment(s), improved */
+ARM GAS  /tmp/cc6mm7fj.s 			page 7
+
+
+ 317:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                            stack check error handling, */
+ 318:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                            resulting in version 6.1.9  */   
+ 319:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /*                                                                        */
+ 320:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** /**************************************************************************/
+ 321:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** VOID  _tx_thread_initialize(VOID)
+ 322:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** {
+  28              		.loc 1 322 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+ 323:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 324:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Note: the system stack pointer and the system state variables are 
+ 325:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****        initialized by the low and high-level initialization functions,
+ 326:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****        respectively.  */
+ 327:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 328:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifndef TX_DISABLE_REDUNDANT_CLEARING
+ 329:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 330:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Set current thread pointer to NULL.  */
+ 331:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     TX_THREAD_SET_CURRENT(TX_NULL)
+  37              		.loc 1 331 5 view .LVU1
+  38 0002 0024     		movs	r4, #0
+  39 0004 0D4B     		ldr	r3, .L3
+  40 0006 1C60     		str	r4, [r3]
+ 332:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 333:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Initialize the execute thread pointer to NULL.  */
+ 334:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_execute_ptr =  TX_NULL;
+  41              		.loc 1 334 5 view .LVU2
+  42              		.loc 1 334 28 is_stmt 0 view .LVU3
+  43 0008 0D4B     		ldr	r3, .L3+4
+  44 000a 1C60     		str	r4, [r3]
+ 335:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 336:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Initialize the priority information.  */
+ 337:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     TX_MEMSET(&_tx_thread_priority_maps[0], 0, (sizeof(_tx_thread_priority_maps)));
+  45              		.loc 1 337 5 is_stmt 1 view .LVU4
+  46 000c 0D4B     		ldr	r3, .L3+8
+  47 000e 1C60     		str	r4, [r3]
+ 338:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 339:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifndef TX_DISABLE_PREEMPTION_THRESHOLD
+ 340:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     TX_MEMSET(&_tx_thread_preempted_maps[0], 0, (sizeof(_tx_thread_preempted_maps)));
+ 341:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 342:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 343:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 344:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Setup the highest priority variable to the max, indicating no thread is currently
+ 345:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****        ready.  */
+ 346:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_highest_priority =  ((UINT) TX_MAX_PRIORITIES);
+  48              		.loc 1 346 5 view .LVU5
+  49              		.loc 1 346 33 is_stmt 0 view .LVU6
+  50 0010 0D4B     		ldr	r3, .L3+12
+  51 0012 2022     		movs	r2, #32
+  52 0014 1A60     		str	r2, [r3]
+ 347:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 348:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ARM GAS  /tmp/cc6mm7fj.s 			page 8
+
+
+ 349:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifndef TX_DISABLE_REDUNDANT_CLEARING
+ 350:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 351:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Initialize the array of priority head pointers.  */
+ 352:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     TX_MEMSET(&_tx_thread_priority_list[0], 0, (sizeof(_tx_thread_priority_list)));
+  53              		.loc 1 352 5 is_stmt 1 view .LVU7
+  54 0016 8022     		movs	r2, #128
+  55 0018 2146     		mov	r1, r4
+  56 001a 0C48     		ldr	r0, .L3+16
+  57 001c FFF7FEFF 		bl	memset
+  58              	.LVL0:
+ 353:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 354:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Initialize the head pointer of the created threads list and the
+ 355:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****        number of threads created.  */
+ 356:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_created_ptr =        TX_NULL;
+  59              		.loc 1 356 5 view .LVU8
+  60              		.loc 1 356 28 is_stmt 0 view .LVU9
+  61 0020 0B4B     		ldr	r3, .L3+20
+  62 0022 1C60     		str	r4, [r3]
+ 357:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_created_count =      TX_EMPTY;
+  63              		.loc 1 357 5 is_stmt 1 view .LVU10
+  64              		.loc 1 357 30 is_stmt 0 view .LVU11
+  65 0024 0B4B     		ldr	r3, .L3+24
+  66 0026 1C60     		str	r4, [r3]
+ 358:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 359:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Clear the global preempt disable variable.  */
+ 360:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_preempt_disable =    ((UINT) 0);
+  67              		.loc 1 360 5 is_stmt 1 view .LVU12
+  68              		.loc 1 360 32 is_stmt 0 view .LVU13
+  69 0028 0B4B     		ldr	r3, .L3+28
+  70 002a 1C60     		str	r4, [r3]
+ 361:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 362:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Initialize the thread mutex release function pointer.  */
+ 363:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_mutex_release =      TX_NULL;
+  71              		.loc 1 363 5 is_stmt 1 view .LVU14
+  72              		.loc 1 363 30 is_stmt 0 view .LVU15
+  73 002c 0B4B     		ldr	r3, .L3+32
+  74 002e 1C60     		str	r4, [r3]
+ 364:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 365:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_ENABLE_STACK_CHECKING
+ 366:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 367:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Clear application registered stack error handler.  */
+ 368:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_application_stack_error_handler =  TX_NULL;
+ 369:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 370:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 371:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_THREAD_ENABLE_PERFORMANCE_INFO
+ 372:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 373:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Clear performance counters.  */
+ 374:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_resume_count =                ((ULONG) 0);
+ 375:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_suspend_count =               ((ULONG) 0);
+ 376:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_solicited_preemption_count =  ((ULONG) 0);
+ 377:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_interrupt_preemption_count =  ((ULONG) 0);
+ 378:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_priority_inversion_count =    ((ULONG) 0);
+ 379:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_time_slice_count =            ((ULONG) 0);
+ 380:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_relinquish_count =            ((ULONG) 0);
+ 381:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_timeout_count =               ((ULONG) 0);
+ 382:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_wait_abort_count =            ((ULONG) 0);
+ 383:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_idle_return_count =           ((ULONG) 0);
+ARM GAS  /tmp/cc6mm7fj.s 			page 9
+
+
+ 384:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_thread_performance_non_idle_return_count =       ((ULONG) 0);
+ 385:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 386:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Initialize the execute thread log.  */
+ 387:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     TX_MEMSET(&_tx_thread_performance_execute_log[0], 0, (sizeof(_tx_thread_performance_execute_log
+ 388:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 389:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 390:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** 
+ 391:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     /* Setup the build options flag. This is used to identify how the ThreadX library was construct
+ 392:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****     _tx_build_options =  _tx_build_options 
+  75              		.loc 1 392 5 is_stmt 1 view .LVU16
+ 393:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) (TX_MAX_PRIORITIES/32)) << 24) 
+ 394:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_NOT_INTERRUPTABLE
+ 395:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 31)
+ 396:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 397:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_INLINE_THREAD_RESUME_SUSPEND
+ 398:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 30)
+ 399:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 400:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_TIMER_PROCESS_IN_ISR
+ 401:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 23)
+ 402:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 403:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_REACTIVATE_INLINE
+ 404:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 22)
+ 405:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 406:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_DISABLE_STACK_FILLING
+ 407:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 21)
+ 408:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 409:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_ENABLE_STACK_CHECKING
+ 410:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 20)
+ 411:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 412:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_DISABLE_PREEMPTION_THRESHOLD
+ 413:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 19)
+ 414:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 415:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_DISABLE_REDUNDANT_CLEARING
+ 416:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 18)
+ 417:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 418:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_DISABLE_NOTIFY_CALLBACKS
+ 419:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 17)
+ 420:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 421:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO
+ 422:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 16)
+ 423:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 424:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO
+ 425:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 15)
+ 426:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 427:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO
+ 428:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 14)
+ 429:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 430:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_MUTEX_ENABLE_PERFORMANCE_INFO
+ 431:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 13)
+ 432:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 433:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_QUEUE_ENABLE_PERFORMANCE_INFO
+ 434:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 12)
+ 435:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 436:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_SEMAPHORE_ENABLE_PERFORMANCE_INFO
+ 437:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 11)
+ 438:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 439:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_THREAD_ENABLE_PERFORMANCE_INFO
+ARM GAS  /tmp/cc6mm7fj.s 			page 10
+
+
+ 440:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 10)
+ 441:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 442:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_TIMER_ENABLE_PERFORMANCE_INFO
+ 443:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 9)
+ 444:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 445:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #ifdef TX_ENABLE_EVENT_TRACE
+ 446:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 8)
+  76              		.loc 1 446 29 is_stmt 0 view .LVU17
+  77 0030 0B4A     		ldr	r2, .L3+36
+  78 0032 1168     		ldr	r1, [r2]
+  79 0034 0B4B     		ldr	r3, .L3+40
+  80 0036 0B43     		orrs	r3, r3, r1
+ 392:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) (TX_MAX_PRIORITIES/32)) << 24) 
+  81              		.loc 1 392 23 view .LVU18
+  82 0038 1360     		str	r3, [r2]
+ 447:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 448:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #if defined(TX_ENABLE_EXECUTION_CHANGE_NOTIFY) || defined(TX_EXECUTION_PROFILE_ENABLE)
+ 449:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | (((ULONG) 1) << 7)
+ 450:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 451:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #if TX_PORT_SPECIFIC_BUILD_OPTIONS != 0
+ 452:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             | TX_PORT_SPECIFIC_BUILD_OPTIONS
+ 453:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** #endif
+ 454:Middlewares/ST/threadx/common/src/tx_thread_initialize.c ****                             ;
+ 455:Middlewares/ST/threadx/common/src/tx_thread_initialize.c **** }
+  83              		.loc 1 455 1 view .LVU19
+  84 003a 10BD     		pop	{r4, pc}
+  85              	.L4:
+  86              		.align	2
+  87              	.L3:
+  88 003c 00000000 		.word	_tx_thread_current_ptr
+  89 0040 00000000 		.word	_tx_thread_execute_ptr
+  90 0044 00000000 		.word	_tx_thread_priority_maps
+  91 0048 00000000 		.word	_tx_thread_highest_priority
+  92 004c 00000000 		.word	_tx_thread_priority_list
+  93 0050 00000000 		.word	_tx_thread_created_ptr
+  94 0054 00000000 		.word	_tx_thread_created_count
+  95 0058 00000000 		.word	_tx_thread_preempt_disable
+  96 005c 00000000 		.word	_tx_thread_mutex_release
+  97 0060 00000000 		.word	_tx_build_options
+  98 0064 00010A01 		.word	17432832
+  99              		.cfi_endproc
+ 100              	.LFE8:
+ 102              		.global	_tx_thread_special_string
+ 103              		.section	.rodata._tx_thread_special_string,"a"
+ 104              		.align	2
+ 107              	_tx_thread_special_string:
+ 108 0000 472D4D4C 		.ascii	"G-ML-EL-ML-BL-DL-BL-GB-GL-M-D-DL-GZ-KH-EL-CM-NH-HA-"
+ 108      2D454C2D 
+ 108      4D4C2D42 
+ 108      4C2D444C 
+ 108      2D424C2D 
+ 109 0033 47462D44 		.ascii	"GF-DD-JC-YZ-CT-AT-DW-USA-CA-SD-SDSU\000"
+ 109      442D4A43 
+ 109      2D595A2D 
+ 109      43542D41 
+ 109      542D4457 
+ 110              		.global	_tx_build_options
+ARM GAS  /tmp/cc6mm7fj.s 			page 11
+
+
+ 111              		.section	.bss._tx_build_options,"aw",%nobits
+ 112              		.align	2
+ 115              	_tx_build_options:
+ 116 0000 00000000 		.space	4
+ 117              		.global	_tx_thread_mutex_release
+ 118              		.section	.bss._tx_thread_mutex_release,"aw",%nobits
+ 119              		.align	2
+ 122              	_tx_thread_mutex_release:
+ 123 0000 00000000 		.space	4
+ 124              		.global	_tx_thread_preempt_disable
+ 125              		.section	.bss._tx_thread_preempt_disable,"aw",%nobits
+ 126              		.align	2
+ 129              	_tx_thread_preempt_disable:
+ 130 0000 00000000 		.space	4
+ 131              		.global	_tx_thread_priority_list
+ 132              		.section	.bss._tx_thread_priority_list,"aw",%nobits
+ 133              		.align	2
+ 136              	_tx_thread_priority_list:
+ 137 0000 00000000 		.space	128
+ 137      00000000 
+ 137      00000000 
+ 137      00000000 
+ 137      00000000 
+ 138              		.global	_tx_thread_highest_priority
+ 139              		.section	.bss._tx_thread_highest_priority,"aw",%nobits
+ 140              		.align	2
+ 143              	_tx_thread_highest_priority:
+ 144 0000 00000000 		.space	4
+ 145              		.global	_tx_thread_priority_maps
+ 146              		.section	.bss._tx_thread_priority_maps,"aw",%nobits
+ 147              		.align	2
+ 150              	_tx_thread_priority_maps:
+ 151 0000 00000000 		.space	4
+ 152              		.global	_tx_thread_system_state
+ 153              		.section	.data._tx_thread_system_state,"aw"
+ 154              		.align	2
+ 157              	_tx_thread_system_state:
+ 158 0000 F0F0F0F0 		.word	-252645136
+ 159              		.global	_tx_thread_created_count
+ 160              		.section	.bss._tx_thread_created_count,"aw",%nobits
+ 161              		.align	2
+ 164              	_tx_thread_created_count:
+ 165 0000 00000000 		.space	4
+ 166              		.global	_tx_thread_created_ptr
+ 167              		.section	.bss._tx_thread_created_ptr,"aw",%nobits
+ 168              		.align	2
+ 171              	_tx_thread_created_ptr:
+ 172 0000 00000000 		.space	4
+ 173              		.global	_tx_thread_execute_ptr
+ 174              		.section	.bss._tx_thread_execute_ptr,"aw",%nobits
+ 175              		.align	2
+ 178              	_tx_thread_execute_ptr:
+ 179 0000 00000000 		.space	4
+ 180              		.global	_tx_thread_current_ptr
+ 181              		.section	.bss._tx_thread_current_ptr,"aw",%nobits
+ 182              		.align	2
+ 185              	_tx_thread_current_ptr:
+ARM GAS  /tmp/cc6mm7fj.s 			page 12
+
+
+ 186 0000 00000000 		.space	4
+ 187              		.global	_tx_thread_system_stack_ptr
+ 188              		.section	.bss._tx_thread_system_stack_ptr,"aw",%nobits
+ 189              		.align	2
+ 192              	_tx_thread_system_stack_ptr:
+ 193 0000 00000000 		.space	4
+ 194              		.global	_tx_version_id
+ 195              		.section	.data._tx_version_id,"aw"
+ 196              		.align	2
+ 199              	_tx_version_id:
+ 200 0000 436F7079 		.ascii	"Copyright (c) Microsoft Corporation. All rights res"
+ 200      72696768 
+ 200      74202863 
+ 200      29204D69 
+ 200      63726F73 
+ 201 0033 65727665 		.ascii	"erved.  *  ThreadX Cortex-M7/GNU Version 6.1.9 *\000"
+ 201      642E2020 
+ 201      2A202054 
+ 201      68726561 
+ 201      64582043 
+ 202              		.text
+ 203              	.Letext0:
+ 204              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h"
+ 205              		.file 3 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 206              		.file 4 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 207              		.file 5 "Middlewares/ST/threadx/common/inc/tx_thread.h"
+ 208              		.file 6 "/usr/include/newlib/string.h"
+ 209              		.file 7 "<built-in>"
+ARM GAS  /tmp/cc6mm7fj.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_thread_initialize.c
+     /tmp/cc6mm7fj.s:20     .text._tx_thread_initialize:00000000 $t
+     /tmp/cc6mm7fj.s:26     .text._tx_thread_initialize:00000000 _tx_thread_initialize
+     /tmp/cc6mm7fj.s:88     .text._tx_thread_initialize:0000003c $d
+     /tmp/cc6mm7fj.s:185    .bss._tx_thread_current_ptr:00000000 _tx_thread_current_ptr
+     /tmp/cc6mm7fj.s:178    .bss._tx_thread_execute_ptr:00000000 _tx_thread_execute_ptr
+     /tmp/cc6mm7fj.s:150    .bss._tx_thread_priority_maps:00000000 _tx_thread_priority_maps
+     /tmp/cc6mm7fj.s:143    .bss._tx_thread_highest_priority:00000000 _tx_thread_highest_priority
+     /tmp/cc6mm7fj.s:136    .bss._tx_thread_priority_list:00000000 _tx_thread_priority_list
+     /tmp/cc6mm7fj.s:171    .bss._tx_thread_created_ptr:00000000 _tx_thread_created_ptr
+     /tmp/cc6mm7fj.s:164    .bss._tx_thread_created_count:00000000 _tx_thread_created_count
+     /tmp/cc6mm7fj.s:129    .bss._tx_thread_preempt_disable:00000000 _tx_thread_preempt_disable
+     /tmp/cc6mm7fj.s:122    .bss._tx_thread_mutex_release:00000000 _tx_thread_mutex_release
+     /tmp/cc6mm7fj.s:115    .bss._tx_build_options:00000000 _tx_build_options
+     /tmp/cc6mm7fj.s:107    .rodata._tx_thread_special_string:00000000 _tx_thread_special_string
+     /tmp/cc6mm7fj.s:104    .rodata._tx_thread_special_string:00000000 $d
+     /tmp/cc6mm7fj.s:112    .bss._tx_build_options:00000000 $d
+     /tmp/cc6mm7fj.s:119    .bss._tx_thread_mutex_release:00000000 $d
+     /tmp/cc6mm7fj.s:126    .bss._tx_thread_preempt_disable:00000000 $d
+     /tmp/cc6mm7fj.s:133    .bss._tx_thread_priority_list:00000000 $d
+     /tmp/cc6mm7fj.s:140    .bss._tx_thread_highest_priority:00000000 $d
+     /tmp/cc6mm7fj.s:147    .bss._tx_thread_priority_maps:00000000 $d
+     /tmp/cc6mm7fj.s:157    .data._tx_thread_system_state:00000000 _tx_thread_system_state
+     /tmp/cc6mm7fj.s:154    .data._tx_thread_system_state:00000000 $d
+     /tmp/cc6mm7fj.s:161    .bss._tx_thread_created_count:00000000 $d
+     /tmp/cc6mm7fj.s:168    .bss._tx_thread_created_ptr:00000000 $d
+     /tmp/cc6mm7fj.s:175    .bss._tx_thread_execute_ptr:00000000 $d
+     /tmp/cc6mm7fj.s:182    .bss._tx_thread_current_ptr:00000000 $d
+     /tmp/cc6mm7fj.s:192    .bss._tx_thread_system_stack_ptr:00000000 _tx_thread_system_stack_ptr
+     /tmp/cc6mm7fj.s:189    .bss._tx_thread_system_stack_ptr:00000000 $d
+     /tmp/cc6mm7fj.s:199    .data._tx_version_id:00000000 _tx_version_id
+     /tmp/cc6mm7fj.s:196    .data._tx_version_id:00000000 $d
+
+UNDEFINED SYMBOLS
+memset

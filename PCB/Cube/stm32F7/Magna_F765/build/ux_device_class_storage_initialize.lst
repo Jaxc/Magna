@@ -1,0 +1,692 @@
+ARM GAS  /tmp/cc38Rzxn.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_storage_initialize.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c"
+  19              		.section	.rodata._ux_device_class_storage_initialize.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 75785F73 		.ascii	"ux_slave_storage_thread\000"
+  22      6C617665 
+  22      5F73746F 
+  22      72616765 
+  22      5F746872 
+  23              		.section	.text._ux_device_class_storage_initialize,"ax",%progbits
+  24              		.align	1
+  25              		.global	_ux_device_class_storage_initialize
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	_ux_device_class_storage_initialize:
+  31              	.LVL0:
+  32              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**   Device Storage Class                                                */
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ARM GAS  /tmp/cc38Rzxn.s 			page 2
+
+
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #define UX_SOURCE_CODE
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #include "ux_device_class_storage.h"
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #include "ux_device_stack.h"
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /* Define the Slave Storage Class Inquiry data : DO NOT CHANGE THE LENGTH OF THESE ITEMS */
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UCHAR _ux_system_slave_class_storage_vendor_id[] =                          "AzureRTO";
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UCHAR _ux_system_slave_class_storage_product_id[] =                         "USBX storage dev";
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UCHAR _ux_system_slave_class_storage_product_rev[] =                        "2000";
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UCHAR _ux_system_slave_class_storage_product_serial[] =                     "12345678901234567890";
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  FUNCTION                                               RELEASE        */
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    _ux_device_class_storage_initialize                 PORTABLE C      */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                           6.1.10       */
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  AUTHOR                                                                */
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  DESCRIPTION                                                           */
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    This function initializes the USB storage device.                   */
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  INPUT                                                                 */
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    command                               Pointer to storage command    */
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  OUTPUT                                                                */
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    Completion Status                                                   */
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  CALLS                                                                 */
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    _ux_utility_memory_allocate           Allocate memory               */
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    _ux_utility_memory_free               Free memory                   */
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    _ux_device_thread_create              Create thread                 */
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    _ux_device_thread_delete              Delete thread                 */
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  CALLED BY                                                             */
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    Device Storage Class                                                */
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  RELEASE HISTORY                                                       */
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*    DATE              NAME                      DESCRIPTION             */
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                            used UX prefix to refer to  */
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                            TX symbols instead of using */
+ARM GAS  /tmp/cc38Rzxn.s 			page 3
+
+
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                            them directly,              */
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                            resulting in version 6.1    */
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                            added standalone support,   */
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                            resulting in version 6.1.10 */
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /*                                                                        */
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** /**************************************************************************/
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UINT  _ux_device_class_storage_initialize(UX_SLAVE_CLASS_COMMAND *command)
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** {
+  33              		.loc 1 88 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37              		.loc 1 88 1 is_stmt 0 view .LVU1
+  38 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 24
+  41              		.cfi_offset 4, -24
+  42              		.cfi_offset 5, -20
+  43              		.cfi_offset 6, -16
+  44              		.cfi_offset 7, -12
+  45              		.cfi_offset 8, -8
+  46              		.cfi_offset 14, -4
+  47 0004 86B0     		sub	sp, sp, #24
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 48
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UINT                                    status = UX_SUCCESS;
+  50              		.loc 1 90 1 is_stmt 1 view .LVU2
+  51              	.LVL1:
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UX_SLAVE_CLASS_STORAGE                  *storage;
+  52              		.loc 1 91 1 view .LVU3
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UX_SLAVE_CLASS_STORAGE_PARAMETER        *storage_parameter;
+  53              		.loc 1 92 1 view .LVU4
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** UX_SLAVE_CLASS                          *class_inst;
+  54              		.loc 1 93 1 view .LVU5
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** ULONG                                   lun_index;
+  55              		.loc 1 94 1 view .LVU6
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Get the pointer to the application parameters for the storage class.  */
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     storage_parameter =  command -> ux_slave_class_command_parameter;
+  56              		.loc 1 98 5 view .LVU7
+  57              		.loc 1 98 23 is_stmt 0 view .LVU8
+  58 0006 446A     		ldr	r4, [r0, #36]
+  59              	.LVL2:
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Ensure the number of LUN declared by the caller does not exceed the
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****        max number allowed for LUN storage.  */
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     if (storage_parameter -> ux_slave_class_storage_parameter_number_lun > UX_MAX_SLAVE_LUN)
+  60              		.loc 1 102 5 is_stmt 1 view .LVU9
+  61              		.loc 1 102 27 is_stmt 0 view .LVU10
+  62 0008 A368     		ldr	r3, [r4, #8]
+  63              		.loc 1 102 8 view .LVU11
+  64 000a 012B     		cmp	r3, #1
+  65 000c 00F29380 		bhi	.L17
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         return UX_ERROR;
+ARM GAS  /tmp/cc38Rzxn.s 			page 4
+
+
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Get the class container.  */
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     class_inst =  command -> ux_slave_class_command_class_ptr;
+  66              		.loc 1 106 5 is_stmt 1 view .LVU12
+  67              		.loc 1 106 16 is_stmt 0 view .LVU13
+  68 0010 076A     		ldr	r7, [r0, #32]
+  69              	.LVL3:
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Create an instance of the device storage class.  */
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     storage =  _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR_MEMORY, sizeof(UX_SLAVE_CLASS_ST
+  70              		.loc 1 109 5 is_stmt 1 view .LVU14
+  71              		.loc 1 109 16 is_stmt 0 view .LVU15
+  72 0012 6C22     		movs	r2, #108
+  73 0014 0021     		movs	r1, #0
+  74 0016 0846     		mov	r0, r1
+  75              	.LVL4:
+  76              		.loc 1 109 16 view .LVU16
+  77 0018 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  78              	.LVL5:
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Check for successful allocation.  */
+ 112:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     if (storage == UX_NULL)
+  79              		.loc 1 112 5 is_stmt 1 view .LVU17
+  80              		.loc 1 112 8 is_stmt 0 view .LVU18
+  81 001c 0546     		mov	r5, r0
+  82 001e 0028     		cmp	r0, #0
+  83 0020 00F08E80 		beq	.L18
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         return(UX_MEMORY_INSUFFICIENT);
+ 114:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #if !defined(UX_DEVICE_STANDALONE)
+ 116:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Allocate some memory for the thread stack. */
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     class_inst -> ux_slave_class_thread_stack = _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR
+  84              		.loc 1 118 5 is_stmt 1 view .LVU19
+  85              		.loc 1 118 49 is_stmt 0 view .LVU20
+  86 0024 4FF48062 		mov	r2, #1024
+  87 0028 0021     		movs	r1, #0
+  88 002a 0846     		mov	r0, r1
+  89              	.LVL6:
+  90              		.loc 1 118 49 view .LVU21
+  91 002c FFF7FEFF 		bl	_ux_utility_memory_allocate
+  92              	.LVL7:
+  93              		.loc 1 118 47 discriminator 1 view .LVU22
+  94 0030 C7F80001 		str	r0, [r7, #256]
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 120:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* If it's OK, create thread.  */
+ 121:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     if (class_inst -> ux_slave_class_thread_stack != UX_NULL)
+  95              		.loc 1 121 5 is_stmt 1 view .LVU23
+  96              		.loc 1 121 8 is_stmt 0 view .LVU24
+  97 0034 0028     		cmp	r0, #0
+  98 0036 72D0     		beq	.L19
+ 122:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 123:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         /* This instance needs to be running in a different thread. So start
+ 124:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****            a new thread. We pass a pointer to the class to the new thread.  This thread
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****            does not start until we have a instance of the class. */
+ 126:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         status =  _ux_device_thread_create(&class_inst -> ux_slave_class_thread, "ux_slave_storage_
+  99              		.loc 1 126 9 is_stmt 1 view .LVU25
+ARM GAS  /tmp/cc38Rzxn.s 			page 5
+
+
+ 100              		.loc 1 126 19 is_stmt 0 view .LVU26
+ 101 0038 07F15008 		add	r8, r7, #80
+ 102 003c 0023     		movs	r3, #0
+ 103 003e 0593     		str	r3, [sp, #20]
+ 104 0040 0493     		str	r3, [sp, #16]
+ 105 0042 1423     		movs	r3, #20
+ 106 0044 0393     		str	r3, [sp, #12]
+ 107 0046 0293     		str	r3, [sp, #8]
+ 108 0048 4FF48063 		mov	r3, #1024
+ 109 004c 0193     		str	r3, [sp, #4]
+ 110 004e 0090     		str	r0, [sp]
+ 111 0050 3B46     		mov	r3, r7
+ 112 0052 3C4A     		ldr	r2, .L22
+ 113 0054 3C49     		ldr	r1, .L22+4
+ 114 0056 4046     		mov	r0, r8
+ 115 0058 FFF7FEFF 		bl	_ux_utility_thread_create
+ 116              	.LVL8:
+ 127:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                     _ux_device_class_storage_thread,
+ 128:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                     (ULONG) (ALIGN_TYPE) class_inst, (VOID *) class_inst -> ux_slave_class_thread_s
+ 129:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                     UX_THREAD_STACK_SIZE, UX_THREAD_PRIORITY_CLASS,
+ 130:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                     UX_THREAD_PRIORITY_CLASS, UX_NO_TIME_SLICE, UX_DONT_START);
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     else
+ 132:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         status = UX_MEMORY_INSUFFICIENT;
+ 133:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #else
+ 134:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 135:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Save tasks run entry.  */
+ 136:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     class_inst -> ux_slave_class_task_function = _ux_device_class_storage_tasks_run;
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 138:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     status = UX_SUCCESS;
+ 139:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #endif
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* If thread resources allocated, go on.  */
+ 142:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     if (status == UX_SUCCESS)
+ 117              		.loc 1 142 5 is_stmt 1 view .LVU27
+ 118              		.loc 1 142 8 is_stmt 0 view .LVU28
+ 119 005c 0646     		mov	r6, r0
+ 120 005e 0028     		cmp	r0, #0
+ 121 0060 5ED1     		bne	.L3
+ 143:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     {
+ 144:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 145:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         UX_THREAD_EXTENSION_PTR_SET(&(class_inst -> ux_slave_class_thread), class_inst)
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 147:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         /* Store the number of LUN declared.  */
+ 148:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         storage -> ux_slave_class_storage_number_lun = storage_parameter -> ux_slave_class_storage_
+ 122              		.loc 1 148 9 is_stmt 1 view .LVU29
+ 123              		.loc 1 148 74 is_stmt 0 view .LVU30
+ 124 0062 D4F808C0 		ldr	ip, [r4, #8]
+ 125              		.loc 1 148 54 view .LVU31
+ 126 0066 C5F804C0 		str	ip, [r5, #4]
+ 149:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 150:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         /* Copy each individual LUN parameters.  */
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         for (lun_index = 0; lun_index < storage -> ux_slave_class_storage_number_lun; lun_index++)
+ 127              		.loc 1 151 9 is_stmt 1 view .LVU32
+ 128              	.LVL9:
+ 129              		.loc 1 151 24 is_stmt 0 view .LVU33
+ 130 006a 0346     		mov	r3, r0
+ 131              	.LVL10:
+ARM GAS  /tmp/cc38Rzxn.s 			page 6
+
+
+ 132              	.L4:
+ 133              		.loc 1 151 39 is_stmt 1 discriminator 1 view .LVU34
+ 134 006c 9C45     		cmp	ip, r3
+ 135 006e 33D9     		bls	.L5
+ 152:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         {
+ 153:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 154:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             /* Check block length size. */
+ 155:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             if (storage_parameter -> ux_slave_class_storage_parameter_lun[lun_index].ux_slave_class
+ 136              		.loc 1 155 13 view .LVU35
+ 137              		.loc 1 155 85 is_stmt 0 view .LVU36
+ 138 0070 C3EBC302 		rsb	r2, r3, r3, lsl #3
+ 139 0074 04EBC202 		add	r2, r4, r2, lsl #3
+ 140 0078 1269     		ldr	r2, [r2, #16]
+ 141              		.loc 1 155 16 view .LVU37
+ 142 007a B2F5006F 		cmp	r2, #2048
+ 143 007e 2AD8     		bhi	.L20
+ 156:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             {
+ 157:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 /* Cannot proceed.  */
+ 158:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 status = (UX_MEMORY_INSUFFICIENT);
+ 159:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 break;
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             }
+ 161:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             /* Store all the application parameter information about the media.  */
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_last_lba 
+ 144              		.loc 1 163 13 is_stmt 1 view .LVU38
+ 145              		.loc 1 163 176 is_stmt 0 view .LVU39
+ 146 0080 C3EBC301 		rsb	r1, r3, r3, lsl #3
+ 147 0084 04EBC101 		add	r1, r4, r1, lsl #3
+ 148              		.loc 1 163 106 view .LVU40
+ 149 0088 C3EBC302 		rsb	r2, r3, r3, lsl #3
+ 150 008c 05EBC202 		add	r2, r5, r2, lsl #3
+ 151 0090 C868     		ldr	r0, [r1, #12]
+ 152 0092 9060     		str	r0, [r2, #8]
+ 164:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_block_len
+ 153              		.loc 1 164 13 is_stmt 1 view .LVU41
+ 154              		.loc 1 164 106 is_stmt 0 view .LVU42
+ 155 0094 0869     		ldr	r0, [r1, #16]
+ 156 0096 D060     		str	r0, [r2, #12]
+ 165:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_type     
+ 157              		.loc 1 165 13 is_stmt 1 view .LVU43
+ 158              		.loc 1 165 106 is_stmt 0 view .LVU44
+ 159 0098 4869     		ldr	r0, [r1, #20]
+ 160 009a 1061     		str	r0, [r2, #16]
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_removable
+ 161              		.loc 1 166 13 is_stmt 1 view .LVU45
+ 162              		.loc 1 166 106 is_stmt 0 view .LVU46
+ 163 009c 8869     		ldr	r0, [r1, #24]
+ 164 009e 5061     		str	r0, [r2, #20]
+ 167:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_read_only
+ 165              		.loc 1 167 13 is_stmt 1 view .LVU47
+ 166              		.loc 1 167 106 is_stmt 0 view .LVU48
+ 167 00a0 C869     		ldr	r0, [r1, #28]
+ 168 00a2 9061     		str	r0, [r2, #24]
+ 168:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_read     
+ 169              		.loc 1 168 13 is_stmt 1 view .LVU49
+ 170              		.loc 1 168 106 is_stmt 0 view .LVU50
+ 171 00a4 086B     		ldr	r0, [r1, #48]
+ARM GAS  /tmp/cc38Rzxn.s 			page 7
+
+
+ 172 00a6 D062     		str	r0, [r2, #44]
+ 169:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_flush    
+ 173              		.loc 1 169 13 is_stmt 1 view .LVU51
+ 174              		.loc 1 169 106 is_stmt 0 view .LVU52
+ 175 00a8 886B     		ldr	r0, [r1, #56]
+ 176 00aa 5063     		str	r0, [r2, #52]
+ 170:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_write    
+ 177              		.loc 1 170 13 is_stmt 1 view .LVU53
+ 178              		.loc 1 170 176 is_stmt 0 view .LVU54
+ 179 00ac 496B     		ldr	r1, [r1, #52]
+ 180              		.loc 1 170 106 view .LVU55
+ 181 00ae 1163     		str	r1, [r2, #48]
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_status   
+ 182              		.loc 1 171 13 is_stmt 1 view .LVU56
+ 183              		.loc 1 171 176 is_stmt 0 view .LVU57
+ 184 00b0 0133     		adds	r3, r3, #1
+ 185              	.LVL11:
+ 186              		.loc 1 171 176 view .LVU58
+ 187 00b2 C3EBC302 		rsb	r2, r3, r3, lsl #3
+ 188 00b6 04EBC202 		add	r2, r4, r2, lsl #3
+ 189 00ba 5168     		ldr	r1, [r2, #4]
+ 190              		.loc 1 171 106 view .LVU59
+ 191 00bc C3EBC302 		rsb	r2, r3, r3, lsl #3
+ 192 00c0 45F83210 		str	r1, [r5, r2, lsl #3]
+ 172:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_lun[lun_index].ux_slave_class_storage_media_notificat
+ 193              		.loc 1 172 13 is_stmt 1 view .LVU60
+ 194              		.loc 1 172 176 is_stmt 0 view .LVU61
+ 195 00c4 04EBC202 		add	r2, r4, r2, lsl #3
+ 196 00c8 9168     		ldr	r1, [r2, #8]
+ 197              		.loc 1 172 106 view .LVU62
+ 198 00ca C3EBC302 		rsb	r2, r3, r3, lsl #3
+ 199 00ce 05EBC202 		add	r2, r5, r2, lsl #3
+ 200 00d2 5160     		str	r1, [r2, #4]
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         {
+ 201              		.loc 1 151 96 is_stmt 1 discriminator 2 view .LVU63
+ 202              	.LVL12:
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         {
+ 203              		.loc 1 151 96 is_stmt 0 discriminator 2 view .LVU64
+ 204 00d4 CAE7     		b	.L4
+ 205              	.L20:
+ 158:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 break;
+ 206              		.loc 1 158 24 view .LVU65
+ 207 00d6 1226     		movs	r6, #18
+ 208              	.LVL13:
+ 209              	.L5:
+ 173:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         }
+ 174:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 175:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         /* If it's OK, complete it.  */
+ 176:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         if (status == UX_SUCCESS)
+ 210              		.loc 1 176 9 is_stmt 1 view .LVU66
+ 211              		.loc 1 176 12 is_stmt 0 view .LVU67
+ 212 00d8 EEB9     		cbnz	r6, .L7
+ 177:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         {
+ 178:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 179:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             /* Store the start and stop signals if needed by the application.  */
+ 180:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_instance_activate = storage_parameter -> ux_slave_cla
+ 213              		.loc 1 180 13 is_stmt 1 view .LVU68
+ARM GAS  /tmp/cc38Rzxn.s 			page 8
+
+
+ 214              		.loc 1 180 85 is_stmt 0 view .LVU69
+ 215 00da 2368     		ldr	r3, [r4]
+ 216              	.LVL14:
+ 217              		.loc 1 180 65 view .LVU70
+ 218 00dc 6B65     		str	r3, [r5, #84]
+ 181:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             storage -> ux_slave_class_storage_instance_deactivate = storage_parameter -> ux_slave_c
+ 219              		.loc 1 181 13 is_stmt 1 view .LVU71
+ 220              		.loc 1 181 87 is_stmt 0 view .LVU72
+ 221 00de 6368     		ldr	r3, [r4, #4]
+ 222              		.loc 1 181 67 view .LVU73
+ 223 00e0 AB65     		str	r3, [r5, #88]
+ 182:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 183:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             /* Store the vendor id, product id, product revision and product serial.  */
+ 184:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             if (storage_parameter -> ux_slave_class_storage_parameter_vendor_id)
+ 224              		.loc 1 184 13 is_stmt 1 view .LVU74
+ 225              		.loc 1 184 35 is_stmt 0 view .LVU75
+ 226 00e2 636C     		ldr	r3, [r4, #68]
+ 227              		.loc 1 184 16 view .LVU76
+ 228 00e4 5BB1     		cbz	r3, .L8
+ 185:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_vendor_id = storage_parameter -> ux_slave_class_s
+ 229              		.loc 1 185 17 is_stmt 1 view .LVU77
+ 230              		.loc 1 185 61 is_stmt 0 view .LVU78
+ 231 00e6 EB65     		str	r3, [r5, #92]
+ 232              	.L9:
+ 186:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             else
+ 187:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_vendor_id = _ux_system_slave_class_storage_vendor
+ 188:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 189:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             if (storage_parameter -> ux_slave_class_storage_parameter_product_id)
+ 233              		.loc 1 189 13 is_stmt 1 view .LVU79
+ 234              		.loc 1 189 35 is_stmt 0 view .LVU80
+ 235 00e8 A36C     		ldr	r3, [r4, #72]
+ 236              		.loc 1 189 16 view .LVU81
+ 237 00ea 5BB1     		cbz	r3, .L10
+ 190:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_product_id = storage_parameter -> ux_slave_class_
+ 238              		.loc 1 190 17 is_stmt 1 view .LVU82
+ 239              		.loc 1 190 62 is_stmt 0 view .LVU83
+ 240 00ec 2B66     		str	r3, [r5, #96]
+ 241              	.L11:
+ 191:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             else
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_product_id = _ux_system_slave_class_storage_produ
+ 193:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 194:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             if (storage_parameter -> ux_slave_class_storage_parameter_product_rev)
+ 242              		.loc 1 194 13 is_stmt 1 view .LVU84
+ 243              		.loc 1 194 35 is_stmt 0 view .LVU85
+ 244 00ee E36C     		ldr	r3, [r4, #76]
+ 245              		.loc 1 194 16 view .LVU86
+ 246 00f0 5BB1     		cbz	r3, .L12
+ 195:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_product_rev = storage_parameter -> ux_slave_class
+ 247              		.loc 1 195 17 is_stmt 1 view .LVU87
+ 248              		.loc 1 195 63 is_stmt 0 view .LVU88
+ 249 00f2 6B66     		str	r3, [r5, #100]
+ 250              	.L13:
+ 196:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             else
+ 197:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_product_rev = _ux_system_slave_class_storage_prod
+ 198:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 199:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             if (storage_parameter -> ux_slave_class_storage_parameter_product_serial)
+ 251              		.loc 1 199 13 is_stmt 1 view .LVU89
+ARM GAS  /tmp/cc38Rzxn.s 			page 9
+
+
+ 252              		.loc 1 199 35 is_stmt 0 view .LVU90
+ 253 00f4 236D     		ldr	r3, [r4, #80]
+ 254              		.loc 1 199 16 view .LVU91
+ 255 00f6 5BB1     		cbz	r3, .L14
+ 200:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_product_serial = storage_parameter -> ux_slave_cl
+ 256              		.loc 1 200 17 is_stmt 1 view .LVU92
+ 257              		.loc 1 200 66 is_stmt 0 view .LVU93
+ 258 00f8 AB66     		str	r3, [r5, #104]
+ 259              	.L15:
+ 201:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             else
+ 202:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****                 storage -> ux_slave_class_storage_product_serial = _ux_system_slave_class_storage_p
+ 203:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 204:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             /* Save the address of the STORAGE instance inside the STORAGE container.  */
+ 205:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             class_inst -> ux_slave_class_instance = (VOID *) storage;
+ 260              		.loc 1 205 13 is_stmt 1 view .LVU94
+ 261              		.loc 1 205 51 is_stmt 0 view .LVU95
+ 262 00fa BD64     		str	r5, [r7, #72]
+ 206:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 207:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****             return(UX_SUCCESS);
+ 263              		.loc 1 207 13 is_stmt 1 view .LVU96
+ 264              		.loc 1 207 19 is_stmt 0 view .LVU97
+ 265 00fc 1CE0     		b	.L1
+ 266              	.L8:
+ 187:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 267              		.loc 1 187 17 is_stmt 1 view .LVU98
+ 187:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 268              		.loc 1 187 61 is_stmt 0 view .LVU99
+ 269 00fe 134B     		ldr	r3, .L22+8
+ 270 0100 EB65     		str	r3, [r5, #92]
+ 271 0102 F1E7     		b	.L9
+ 272              	.L10:
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 273              		.loc 1 192 17 is_stmt 1 view .LVU100
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 274              		.loc 1 192 62 is_stmt 0 view .LVU101
+ 275 0104 124B     		ldr	r3, .L22+12
+ 276 0106 2B66     		str	r3, [r5, #96]
+ 277 0108 F1E7     		b	.L11
+ 278              	.L12:
+ 197:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 279              		.loc 1 197 17 is_stmt 1 view .LVU102
+ 197:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 280              		.loc 1 197 63 is_stmt 0 view .LVU103
+ 281 010a 124B     		ldr	r3, .L22+16
+ 282 010c 6B66     		str	r3, [r5, #100]
+ 283 010e F1E7     		b	.L13
+ 284              	.L14:
+ 202:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 285              		.loc 1 202 17 is_stmt 1 view .LVU104
+ 202:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 286              		.loc 1 202 66 is_stmt 0 view .LVU105
+ 287 0110 114B     		ldr	r3, .L22+20
+ 288 0112 AB66     		str	r3, [r5, #104]
+ 289 0114 F1E7     		b	.L15
+ 290              	.LVL15:
+ 291              	.L7:
+ 208:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         }
+ARM GAS  /tmp/cc38Rzxn.s 			page 10
+
+
+ 209:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 210:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         /* Free thread resources.  */
+ 211:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         _ux_device_thread_delete(&class_inst -> ux_slave_class_thread);
+ 292              		.loc 1 211 9 is_stmt 1 view .LVU106
+ 293 0116 4046     		mov	r0, r8
+ 294 0118 FFF7FEFF 		bl	_ux_utility_thread_delete
+ 295              	.LVL16:
+ 296              		.loc 1 211 9 is_stmt 0 view .LVU107
+ 297 011c 00E0     		b	.L3
+ 298              	.LVL17:
+ 299              	.L19:
+ 132:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #else
+ 300              		.loc 1 132 16 view .LVU108
+ 301 011e 1226     		movs	r6, #18
+ 302              	.LVL18:
+ 303              	.L3:
+ 212:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     }
+ 213:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 214:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #if !defined(UX_DEVICE_STANDALONE)
+ 215:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     if (class_inst -> ux_slave_class_thread_stack != UX_NULL)
+ 304              		.loc 1 215 5 is_stmt 1 view .LVU109
+ 305              		.loc 1 215 20 is_stmt 0 view .LVU110
+ 306 0120 D7F80031 		ldr	r3, [r7, #256]
+ 307              		.loc 1 215 8 view .LVU111
+ 308 0124 1BB1     		cbz	r3, .L16
+ 216:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****         _ux_utility_memory_free(&class_inst -> ux_slave_class_thread_stack);
+ 309              		.loc 1 216 9 is_stmt 1 view .LVU112
+ 310 0126 07F58070 		add	r0, r7, #256
+ 311 012a FFF7FEFF 		bl	_ux_utility_memory_free
+ 312              	.LVL19:
+ 313              	.L16:
+ 217:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** #endif
+ 218:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 219:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Free instance.  */
+ 220:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     _ux_utility_memory_free(storage);
+ 314              		.loc 1 220 5 view .LVU113
+ 315 012e 2846     		mov	r0, r5
+ 316 0130 FFF7FEFF 		bl	_ux_utility_memory_free
+ 317              	.LVL20:
+ 221:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 222:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     /* Return completion status.  */
+ 223:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c ****     return(status);
+ 318              		.loc 1 223 5 view .LVU114
+ 319              		.loc 1 223 11 is_stmt 0 view .LVU115
+ 320 0134 00E0     		b	.L1
+ 321              	.LVL21:
+ 322              	.L17:
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 323              		.loc 1 103 16 view .LVU116
+ 324 0136 FF26     		movs	r6, #255
+ 325              	.LVL22:
+ 326              	.L1:
+ 224:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** }
+ 327              		.loc 1 224 1 view .LVU117
+ 328 0138 3046     		mov	r0, r6
+ 329 013a 06B0     		add	sp, sp, #24
+ 330              	.LCFI2:
+ARM GAS  /tmp/cc38Rzxn.s 			page 11
+
+
+ 331              		.cfi_remember_state
+ 332              		.cfi_def_cfa_offset 24
+ 333              		@ sp needed
+ 334 013c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 335              	.LVL23:
+ 336              	.L18:
+ 337              	.LCFI3:
+ 338              		.cfi_restore_state
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_initialize.c **** 
+ 339              		.loc 1 113 15 view .LVU118
+ 340 0140 1226     		movs	r6, #18
+ 341 0142 F9E7     		b	.L1
+ 342              	.L23:
+ 343              		.align	2
+ 344              	.L22:
+ 345 0144 00000000 		.word	_ux_device_class_storage_thread
+ 346 0148 00000000 		.word	.LC0
+ 347 014c 00000000 		.word	_ux_system_slave_class_storage_vendor_id
+ 348 0150 00000000 		.word	_ux_system_slave_class_storage_product_id
+ 349 0154 00000000 		.word	_ux_system_slave_class_storage_product_rev
+ 350 0158 00000000 		.word	_ux_system_slave_class_storage_product_serial
+ 351              		.cfi_endproc
+ 352              	.LFE11:
+ 354              		.global	_ux_system_slave_class_storage_product_serial
+ 355              		.section	.data._ux_system_slave_class_storage_product_serial,"aw"
+ 356              		.align	2
+ 359              	_ux_system_slave_class_storage_product_serial:
+ 360 0000 31323334 		.ascii	"12345678901234567890\000"
+ 360      35363738 
+ 360      39303132 
+ 360      33343536 
+ 360      37383930 
+ 361              		.global	_ux_system_slave_class_storage_product_rev
+ 362              		.section	.data._ux_system_slave_class_storage_product_rev,"aw"
+ 363              		.align	2
+ 366              	_ux_system_slave_class_storage_product_rev:
+ 367 0000 32303030 		.ascii	"2000\000"
+ 367      00
+ 368              		.global	_ux_system_slave_class_storage_product_id
+ 369              		.section	.data._ux_system_slave_class_storage_product_id,"aw"
+ 370              		.align	2
+ 373              	_ux_system_slave_class_storage_product_id:
+ 374 0000 55534258 		.ascii	"USBX storage dev\000"
+ 374      2073746F 
+ 374      72616765 
+ 374      20646576 
+ 374      00
+ 375              		.global	_ux_system_slave_class_storage_vendor_id
+ 376              		.section	.data._ux_system_slave_class_storage_vendor_id,"aw"
+ 377              		.align	2
+ 380              	_ux_system_slave_class_storage_vendor_id:
+ 381 0000 417A7572 		.ascii	"AzureRTO\000"
+ 381      6552544F 
+ 381      00
+ 382              		.text
+ 383              	.Letext0:
+ 384              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/cc38Rzxn.s 			page 12
+
+
+ 385              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 386              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 387              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 388              		.file 6 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_storage.h"
+ 389              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/cc38Rzxn.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_storage_initialize.c
+     /tmp/cc38Rzxn.s:20     .rodata._ux_device_class_storage_initialize.str1.4:00000000 $d
+     /tmp/cc38Rzxn.s:24     .text._ux_device_class_storage_initialize:00000000 $t
+     /tmp/cc38Rzxn.s:30     .text._ux_device_class_storage_initialize:00000000 _ux_device_class_storage_initialize
+     /tmp/cc38Rzxn.s:345    .text._ux_device_class_storage_initialize:00000144 $d
+     /tmp/cc38Rzxn.s:380    .data._ux_system_slave_class_storage_vendor_id:00000000 _ux_system_slave_class_storage_vendor_id
+     /tmp/cc38Rzxn.s:373    .data._ux_system_slave_class_storage_product_id:00000000 _ux_system_slave_class_storage_product_id
+     /tmp/cc38Rzxn.s:366    .data._ux_system_slave_class_storage_product_rev:00000000 _ux_system_slave_class_storage_product_rev
+     /tmp/cc38Rzxn.s:359    .data._ux_system_slave_class_storage_product_serial:00000000 _ux_system_slave_class_storage_product_serial
+     /tmp/cc38Rzxn.s:356    .data._ux_system_slave_class_storage_product_serial:00000000 $d
+     /tmp/cc38Rzxn.s:363    .data._ux_system_slave_class_storage_product_rev:00000000 $d
+     /tmp/cc38Rzxn.s:370    .data._ux_system_slave_class_storage_product_id:00000000 $d
+     /tmp/cc38Rzxn.s:377    .data._ux_system_slave_class_storage_vendor_id:00000000 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_utility_thread_create
+_ux_utility_thread_delete
+_ux_utility_memory_free
+_ux_device_class_storage_thread

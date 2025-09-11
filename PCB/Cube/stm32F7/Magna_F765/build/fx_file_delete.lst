@@ -1,0 +1,1116 @@
+ARM GAS  /tmp/ccDj7LMs.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_file_delete.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_file_delete.c"
+  19              		.section	.text._fx_file_delete,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_file_delete
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_file_delete:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  12:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  13:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_file_delete.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**   File                                                                */
+  19:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  23:Middlewares/ST/filex/common/src/fx_file_delete.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  25:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  26:Middlewares/ST/filex/common/src/fx_file_delete.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  28:Middlewares/ST/filex/common/src/fx_file_delete.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_file_delete.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_file_delete.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccDj7LMs.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_file_delete.c **** #include "fx_file.h"
+  32:Middlewares/ST/filex/common/src/fx_file_delete.c **** #include "fx_utility.h"
+  33:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+  34:Middlewares/ST/filex/common/src/fx_file_delete.c **** #include "fx_fault_tolerant.h"
+  35:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+  36:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  37:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  38:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  39:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  FUNCTION                                               RELEASE        */
+  41:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_file_delete                                     PORTABLE C      */
+  43:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                           6.1          */
+  44:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  AUTHOR                                                                */
+  45:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  47:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  DESCRIPTION                                                           */
+  49:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    This function first attempts to find the specified file.  If found, */
+  51:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    the delete request is valid and all of its clusters will be         */
+  52:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    released and its directory entry will be marked as available.       */
+  53:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    Otherwise, if the file is not found, the appropriate error code is  */
+  54:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    returned to the caller.                                             */
+  55:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  INPUT                                                                 */
+  57:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    media_ptr                             Media control block pointer   */
+  59:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    file_name                             File name pointer             */
+  60:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  OUTPUT                                                                */
+  62:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    return status                                                       */
+  64:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  CALLS                                                                 */
+  66:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_directory_entry_write             Write the new directory entry */
+  68:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_directory_search                  Search for the file name in   */
+  69:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                          the directory structure       */
+  70:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_utility_exFAT_cluster_state_set   Set cluster state             */
+  71:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_utility_FAT_entry_read            Read a FAT entry              */
+  72:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_utility_FAT_entry_write           Write a FAT entry             */
+  73:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_utility_FAT_flush                 Flush written FAT entries     */
+  74:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_fault_tolerant_transaction_start  Start fault tolerant          */
+  75:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                            transaction                 */
+  76:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_fault_tolerant_transaction_end    End fault tolerant transaction*/
+  77:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_fault_tolerant_recover            Recover FAT chain             */
+  78:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_fault_tolerant_reset_log_file     Reset the log file            */
+  79:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    _fx_fault_tolerant_set_FAT_chain      Set data of FAT chain         */
+  80:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  81:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  CALLED BY                                                             */
+  82:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  83:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    Application Code                                                    */
+  84:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  85:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  RELEASE HISTORY                                                       */
+  86:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  87:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*    DATE              NAME                      DESCRIPTION             */
+ARM GAS  /tmp/ccDj7LMs.s 			page 3
+
+
+  88:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  89:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  90:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  91:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                            resulting in version 6.1    */
+  92:Middlewares/ST/filex/common/src/fx_file_delete.c **** /*                                                                        */
+  93:Middlewares/ST/filex/common/src/fx_file_delete.c **** /**************************************************************************/
+  94:Middlewares/ST/filex/common/src/fx_file_delete.c **** UINT  _fx_file_delete(FX_MEDIA *media_ptr, CHAR *file_name)
+  95:Middlewares/ST/filex/common/src/fx_file_delete.c **** {
+  29              		.loc 1 95 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 120
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 95 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+  43 0004 A2B0     		sub	sp, sp, #136
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 160
+  96:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+  97:Middlewares/ST/filex/common/src/fx_file_delete.c **** UINT         status;
+  46              		.loc 1 97 1 is_stmt 1 view .LVU2
+  98:Middlewares/ST/filex/common/src/fx_file_delete.c **** ULONG        cluster;
+  47              		.loc 1 98 1 view .LVU3
+  99:Middlewares/ST/filex/common/src/fx_file_delete.c **** ULONG        contents;
+  48              		.loc 1 99 1 view .LVU4
+ 100:Middlewares/ST/filex/common/src/fx_file_delete.c **** ULONG        open_count;
+  49              		.loc 1 100 1 view .LVU5
+ 101:Middlewares/ST/filex/common/src/fx_file_delete.c **** FX_FILE     *search_ptr;
+  50              		.loc 1 101 1 view .LVU6
+ 102:Middlewares/ST/filex/common/src/fx_file_delete.c **** ULONG        cluster_count;
+  51              		.loc 1 102 1 view .LVU7
+ 103:Middlewares/ST/filex/common/src/fx_file_delete.c **** FX_DIR_ENTRY dir_entry;
+  52              		.loc 1 103 1 view .LVU8
+ 104:Middlewares/ST/filex/common/src/fx_file_delete.c **** UCHAR        not_a_file_attr;
+  53              		.loc 1 104 1 view .LVU9
+ 105:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 106:Middlewares/ST/filex/common/src/fx_file_delete.c **** ULONG        bytes_per_cluster;
+ 107:Middlewares/ST/filex/common/src/fx_file_delete.c **** ULONG        clusters_count;
+ 108:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 109:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 111:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Increment the number of times this service has been called.  */
+ 113:Middlewares/ST/filex/common/src/fx_file_delete.c ****     media_ptr -> fx_media_file_deletes++;
+  54              		.loc 1 113 5 view .LVU10
+  55              		.loc 1 113 15 is_stmt 0 view .LVU11
+  56 0006 D0F83431 		ldr	r3, [r0, #308]
+  57              		.loc 1 113 39 view .LVU12
+  58 000a 0133     		adds	r3, r3, #1
+  59 000c C0F83431 		str	r3, [r0, #308]
+ARM GAS  /tmp/ccDj7LMs.s 			page 4
+
+
+ 114:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif
+ 115:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 116:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Setup pointer to media name buffer.  */
+ 117:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+  60              		.loc 1 117 5 is_stmt 1 view .LVU13
+  61              		.loc 1 117 70 is_stmt 0 view .LVU14
+  62 0010 00F69C13 		addw	r3, r0, #2460
+  63              		.loc 1 117 33 view .LVU15
+  64 0014 0493     		str	r3, [sp, #16]
+ 118:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 119:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Clear the short name string.  */
+ 120:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_short_name[0] =  0;
+  65              		.loc 1 120 5 is_stmt 1 view .LVU16
+  66              		.loc 1 120 42 is_stmt 0 view .LVU17
+  67 0016 0023     		movs	r3, #0
+  68 0018 8DF81430 		strb	r3, [sp, #20]
+ 121:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Check the media to make sure it is open.  */
+ 123:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  69              		.loc 1 123 5 is_stmt 1 view .LVU18
+  70              		.loc 1 123 19 is_stmt 0 view .LVU19
+  71 001c 0268     		ldr	r2, [r0]
+  72              		.loc 1 123 8 view .LVU20
+  73 001e 594B     		ldr	r3, .L32
+  74 0020 9A42     		cmp	r2, r3
+  75 0022 04D0     		beq	.L22
+ 124:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 125:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 126:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Return the media not opened error.  */
+ 127:Middlewares/ST/filex/common/src/fx_file_delete.c ****         return(FX_MEDIA_NOT_OPEN);
+  76              		.loc 1 127 15 view .LVU21
+  77 0024 1125     		movs	r5, #17
+  78              	.LVL1:
+  79              	.L1:
+ 128:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 129:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 130:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 131:Middlewares/ST/filex/common/src/fx_file_delete.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_FILE_DELETE, media_ptr, file_name, 0, 0, FX_TRACE_FILE_EVENTS,
+ 132:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Protect against other threads accessing the media.  */
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c ****     FX_PROTECT
+ 135:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 136:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 137:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Start transaction. */
+ 138:Middlewares/ST/filex/common/src/fx_file_delete.c ****     _fx_fault_tolerant_transaction_start(media_ptr);
+ 139:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 140:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 141:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Check for write protect at the media level (set by driver).  */
+ 142:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (media_ptr -> fx_media_driver_write_protect)
+ 143:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 144:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 145:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 146:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 147:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 148:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 149:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Release media protection.  */
+ 150:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_UNPROTECT
+ARM GAS  /tmp/ccDj7LMs.s 			page 5
+
+
+ 151:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 152:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Return write protect error.  */
+ 153:Middlewares/ST/filex/common/src/fx_file_delete.c ****         return(FX_WRITE_PROTECT);
+ 154:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 155:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Search the system for the supplied file name.  */
+ 157:Middlewares/ST/filex/common/src/fx_file_delete.c ****     status =  _fx_directory_search(media_ptr, file_name, &dir_entry, FX_NULL, FX_NULL);
+ 158:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Determine if the search was successful.  */
+ 160:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (status != FX_SUCCESS)
+ 161:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 162:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 163:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 164:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 165:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 166:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 167:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Release media protection.  */
+ 168:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_UNPROTECT
+ 169:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 170:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Return the error code.  */
+ 171:Middlewares/ST/filex/common/src/fx_file_delete.c ****         return(status);
+ 172:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 173:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 174:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 175:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 176:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 177:Middlewares/ST/filex/common/src/fx_file_delete.c ****         not_a_file_attr = FX_DIRECTORY;
+ 178:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 179:Middlewares/ST/filex/common/src/fx_file_delete.c ****     else
+ 180:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 181:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 182:Middlewares/ST/filex/common/src/fx_file_delete.c ****         not_a_file_attr = FX_DIRECTORY | FX_VOLUME;
+ 183:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 184:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 185:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 186:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 187:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Check to make sure the found entry is a file.  */
+ 188:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (dir_entry.fx_dir_entry_attributes & not_a_file_attr)
+ 189:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 190:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 191:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 192:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 193:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 194:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 195:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Release media protection.  */
+ 196:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_UNPROTECT
+ 197:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 198:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Return the not a file error code.  */
+ 199:Middlewares/ST/filex/common/src/fx_file_delete.c ****         return(FX_NOT_A_FILE);
+ 200:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 201:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 202:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Check if the entry is read only */
+ 203:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (dir_entry.fx_dir_entry_attributes & (UCHAR)(FX_READ_ONLY))
+ 204:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 205:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 206:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 207:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ARM GAS  /tmp/ccDj7LMs.s 			page 6
+
+
+ 208:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 209:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Release media protection.  */
+ 210:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_UNPROTECT
+ 211:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 212:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Return the not a directory error code.  */
+ 213:Middlewares/ST/filex/common/src/fx_file_delete.c ****         return(FX_WRITE_PROTECT);
+ 214:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 215:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 216:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Search the opened files to see if this file is currently
+ 217:Middlewares/ST/filex/common/src/fx_file_delete.c ****        opened.  */
+ 218:Middlewares/ST/filex/common/src/fx_file_delete.c ****     open_count =  media_ptr -> fx_media_opened_file_count;
+ 219:Middlewares/ST/filex/common/src/fx_file_delete.c ****     search_ptr =  media_ptr -> fx_media_opened_file_list;
+ 220:Middlewares/ST/filex/common/src/fx_file_delete.c ****     while (open_count)
+ 221:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 222:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 223:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Look at each opened file to see if the same file is opened.  */
+ 224:Middlewares/ST/filex/common/src/fx_file_delete.c ****         if ((search_ptr -> fx_file_dir_entry.fx_dir_entry_log_sector == dir_entry.fx_dir_entry_log_
+ 225:Middlewares/ST/filex/common/src/fx_file_delete.c ****             (search_ptr -> fx_file_dir_entry.fx_dir_entry_byte_offset == dir_entry.fx_dir_entry_byt
+ 226:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 227:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 228:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 229:Middlewares/ST/filex/common/src/fx_file_delete.c ****             FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 230:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 231:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 232:Middlewares/ST/filex/common/src/fx_file_delete.c ****             /* Release media protection.  */
+ 233:Middlewares/ST/filex/common/src/fx_file_delete.c ****             FX_UNPROTECT
+ 234:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 235:Middlewares/ST/filex/common/src/fx_file_delete.c ****             /* The file is currently open.  */
+ 236:Middlewares/ST/filex/common/src/fx_file_delete.c ****             return(FX_ACCESS_ERROR);
+ 237:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 238:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 239:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Adjust the pointer and decrement the search count.  */
+ 240:Middlewares/ST/filex/common/src/fx_file_delete.c ****         search_ptr =  search_ptr -> fx_file_opened_next;
+ 241:Middlewares/ST/filex/common/src/fx_file_delete.c ****         open_count--;
+ 242:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 243:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 244:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Pickup the starting cluster of the file.  */
+ 245:Middlewares/ST/filex/common/src/fx_file_delete.c ****     cluster =           dir_entry.fx_dir_entry_cluster;
+ 246:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 247:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* At this point, make the directory entry invalid in order to delete the file.  */
+ 248:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 249:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifndef FX_MEDIA_DISABLE_SEARCH_CACHE
+ 250:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 251:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Invalidate the directory search saved information.  */
+ 252:Middlewares/ST/filex/common/src/fx_file_delete.c ****     media_ptr -> fx_media_last_found_name[0] =  FX_NULL;
+ 253:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif
+ 254:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 255:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Mark the directory entry as available, while leaving the other
+ 256:Middlewares/ST/filex/common/src/fx_file_delete.c ****        information for the sake of posterity.  */
+ 257:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_name[0] =        (CHAR)FX_DIR_ENTRY_FREE;
+ 258:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 259:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 260:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Now write out the directory entry.  */
+ 261:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 262:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 263:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 264:Middlewares/ST/filex/common/src/fx_file_delete.c ****         status = _fx_directory_exFAT_entry_write(media_ptr, &dir_entry, UPDATE_DELETE);
+ARM GAS  /tmp/ccDj7LMs.s 			page 7
+
+
+ 265:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 266:Middlewares/ST/filex/common/src/fx_file_delete.c ****     else
+ 267:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 268:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 269:Middlewares/ST/filex/common/src/fx_file_delete.c ****         status = _fx_directory_entry_write(media_ptr, &dir_entry);
+ 270:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 271:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 272:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 273:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 274:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Determine if the write was successful.  */
+ 275:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (status != FX_SUCCESS)
+ 276:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 277:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 278:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 279:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 280:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 281:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 282:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Release media protection.  */
+ 283:Middlewares/ST/filex/common/src/fx_file_delete.c ****         FX_UNPROTECT
+ 284:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 285:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Return the error code.  */
+ 286:Middlewares/ST/filex/common/src/fx_file_delete.c ****         return(status);
+ 287:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 288:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 289:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Now that the directory entry is no longer valid and pointing at the chain of clusters,
+ 290:Middlewares/ST/filex/common/src/fx_file_delete.c ****        walk the chain of allocated FAT entries and mark each of them as free.  */
+ 291:Middlewares/ST/filex/common/src/fx_file_delete.c ****     cluster_count =     0;
+ 292:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 293:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 294:Middlewares/ST/filex/common/src/fx_file_delete.c ****     bytes_per_cluster =  ((ULONG)media_ptr -> fx_media_bytes_per_sector) *
+ 295:Middlewares/ST/filex/common/src/fx_file_delete.c ****         ((ULONG)media_ptr -> fx_media_sectors_per_cluster);
+ 296:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 297:Middlewares/ST/filex/common/src/fx_file_delete.c ****     clusters_count =
+ 298:Middlewares/ST/filex/common/src/fx_file_delete.c ****         (ULONG)((dir_entry.fx_dir_entry_file_size + bytes_per_cluster - 1) / bytes_per_cluster - 1)
+ 299:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 300:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 301:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 302:Middlewares/ST/filex/common/src/fx_file_delete.c ****     if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 303:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 304:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 305:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Note:  Directory entries are already written to log files. FAT chain is updated as the l
+ 306:Middlewares/ST/filex/common/src/fx_file_delete.c ****            Since there are no others FAT entries written to the log.  Therefore there is no need to
+ 307:Middlewares/ST/filex/common/src/fx_file_delete.c ****            the flag FX_FRAULT_TOLERANT_STATE_SET_FAT_CHAIN here. */
+ 308:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 309:Middlewares/ST/filex/common/src/fx_file_delete.c ****         if (dir_entry.fx_dir_entry_dont_use_fat & 1)
+ 310:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 311:Middlewares/ST/filex/common/src/fx_file_delete.c ****             status = _fx_fault_tolerant_set_FAT_chain(media_ptr, FX_TRUE, 0,
+ 312:Middlewares/ST/filex/common/src/fx_file_delete.c ****                                                       media_ptr -> fx_media_fat_last, cluster, clus
+ 313:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 314:Middlewares/ST/filex/common/src/fx_file_delete.c ****         else
+ 315:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 316:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 317:Middlewares/ST/filex/common/src/fx_file_delete.c ****             status = _fx_fault_tolerant_set_FAT_chain(media_ptr, FX_FALSE, 0,
+ 318:Middlewares/ST/filex/common/src/fx_file_delete.c ****                                                       media_ptr -> fx_media_fat_last, cluster, medi
+ 319:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 320:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 321:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ARM GAS  /tmp/ccDj7LMs.s 			page 8
+
+
+ 322:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 323:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Determine if the write was successful.  */
+ 324:Middlewares/ST/filex/common/src/fx_file_delete.c ****         if (status != FX_SUCCESS)
+ 325:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 326:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 327:Middlewares/ST/filex/common/src/fx_file_delete.c ****             FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 328:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 329:Middlewares/ST/filex/common/src/fx_file_delete.c ****             /* Release media protection.  */
+ 330:Middlewares/ST/filex/common/src/fx_file_delete.c ****             FX_UNPROTECT
+ 331:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 332:Middlewares/ST/filex/common/src/fx_file_delete.c ****             /* Return the error code.  */
+ 333:Middlewares/ST/filex/common/src/fx_file_delete.c ****             return(status);
+ 334:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 335:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 336:Middlewares/ST/filex/common/src/fx_file_delete.c ****     else
+ 337:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 338:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 339:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 340:Middlewares/ST/filex/common/src/fx_file_delete.c ****         /* Follow the link of FAT entries.  */
+ 341:Middlewares/ST/filex/common/src/fx_file_delete.c ****         while ((cluster >= FX_FAT_ENTRY_START) && (cluster < media_ptr -> fx_media_fat_reserved))
+ 342:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 343:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 344:Middlewares/ST/filex/common/src/fx_file_delete.c ****             /* Increment the number of clusters.  */
+ 345:Middlewares/ST/filex/common/src/fx_file_delete.c ****             cluster_count++;
+ 346:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 347:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 348:Middlewares/ST/filex/common/src/fx_file_delete.c ****             if (dir_entry.fx_dir_entry_dont_use_fat & 1)
+ 349:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 350:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 351:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Check for file size range.  */
+ 352:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 if (cluster_count - 1 >= clusters_count)
+ 353:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 354:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     contents = FX_LAST_CLUSTER_exFAT;
+ 355:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 356:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 else
+ 357:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 358:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     contents = cluster + 1;
+ 359:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 360:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 361:Middlewares/ST/filex/common/src/fx_file_delete.c ****             else
+ 362:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 363:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 364:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 365:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Read the current cluster entry from the FAT.  */
+ 366:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 status =  _fx_utility_FAT_entry_read(media_ptr, cluster, &contents);
+ 367:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 368:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Check the return value.  */
+ 369:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 if (status != FX_SUCCESS)
+ 370:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 371:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 372:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 373:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 374:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 375:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 376:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     /* Release media protection.  */
+ 377:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     FX_UNPROTECT
+ 378:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ARM GAS  /tmp/ccDj7LMs.s 			page 9
+
+
+ 379:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     /* Return the error status.  */
+ 380:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     return(status);
+ 381:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 382:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 383:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 384:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 385:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 386:Middlewares/ST/filex/common/src/fx_file_delete.c ****             if ((cluster == contents) || (cluster_count > media_ptr -> fx_media_total_clusters))
+ 387:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 388:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 389:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 390:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 391:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 392:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 393:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Release media protection.  */
+ 394:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 FX_UNPROTECT
+ 395:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 396:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Return the bad status.  */
+ 397:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 return(FX_FAT_READ_ERROR);
+ 398:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 399:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 400:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 401:Middlewares/ST/filex/common/src/fx_file_delete.c ****             if (!(dir_entry.fx_dir_entry_dont_use_fat & 1))
+ 402:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 403:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 404:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Make the current cluster available.  */
+ 406:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 status =  _fx_utility_FAT_entry_write(media_ptr, cluster, FX_FREE_CLUSTER);
+ 407:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 408:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Check the return value.  */
+ 409:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 if (status != FX_SUCCESS)
+ 410:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 411:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 412:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 413:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 414:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 415:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 416:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     /* Release media protection.  */
+ 417:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     FX_UNPROTECT
+ 418:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 419:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     /* Return the error status.  */
+ 420:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     return(status);
+ 421:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 422:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 423:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 424:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 425:Middlewares/ST/filex/common/src/fx_file_delete.c ****             if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 426:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 427:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 428:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Mark the cluster as free.  */
+ 429:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 status = _fx_utility_exFAT_cluster_state_set(media_ptr, cluster, FX_EXFAT_BITMAP_CL
+ 430:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 431:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 /* Check the return status.  */
+ 432:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 if (status != FX_SUCCESS)
+ 433:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 434:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 435:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ARM GAS  /tmp/ccDj7LMs.s 			page 10
+
+
+ 436:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 437:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 438:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 439:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     /* Release media protection.  */
+ 440:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     FX_UNPROTECT
+ 441:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 442:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     /* Return the bad status.  */
+ 443:Middlewares/ST/filex/common/src/fx_file_delete.c ****                     return(status);
+ 444:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 445:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 446:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_EXFAT */
+ 447:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 448:Middlewares/ST/filex/common/src/fx_file_delete.c ****             /* Setup for the next cluster.  */
+ 449:Middlewares/ST/filex/common/src/fx_file_delete.c ****             cluster =  contents;
+ 450:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 451:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 452:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 453:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 454:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 455:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Update the free clusters in the media control block.  */
+ 456:Middlewares/ST/filex/common/src/fx_file_delete.c ****     media_ptr -> fx_media_available_clusters =
+ 457:Middlewares/ST/filex/common/src/fx_file_delete.c ****         media_ptr -> fx_media_available_clusters + cluster_count;
+ 458:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 459:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_FAULT_TOLERANT
+ 460:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 461:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Flush the cached individual FAT entries */
+ 462:Middlewares/ST/filex/common/src/fx_file_delete.c ****     _fx_utility_FAT_flush(media_ptr);
+ 463:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif
+ 464:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 465:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 466:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 467:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* End transaction. */
+ 468:Middlewares/ST/filex/common/src/fx_file_delete.c ****     status = _fx_fault_tolerant_transaction_end(media_ptr);
+ 469:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 470:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 471:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* Release media protection.  */
+ 472:Middlewares/ST/filex/common/src/fx_file_delete.c ****     FX_UNPROTECT
+ 473:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 474:Middlewares/ST/filex/common/src/fx_file_delete.c ****     /* File delete is complete, return status.  */
+ 475:Middlewares/ST/filex/common/src/fx_file_delete.c ****     return(status);
+ 476:Middlewares/ST/filex/common/src/fx_file_delete.c **** }
+  80              		.loc 1 476 1 view .LVU22
+  81 0026 2846     		mov	r0, r5
+  82 0028 22B0     		add	sp, sp, #136
+  83              	.LCFI2:
+  84              		.cfi_remember_state
+  85              		.cfi_def_cfa_offset 24
+  86              		@ sp needed
+  87 002a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  88              	.LVL2:
+  89              	.L22:
+  90              	.LCFI3:
+  91              		.cfi_restore_state
+  92              		.loc 1 476 1 view .LVU23
+  93 002e 0446     		mov	r4, r0
+  94 0030 0D46     		mov	r5, r1
+ 131:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ARM GAS  /tmp/ccDj7LMs.s 			page 11
+
+
+  95              		.loc 1 131 5 is_stmt 1 view .LVU24
+  96 0032 0023     		movs	r3, #0
+  97 0034 0393     		str	r3, [sp, #12]
+  98 0036 0293     		str	r3, [sp, #8]
+  99 0038 4FF48042 		mov	r2, #16384
+ 100 003c 0192     		str	r2, [sp, #4]
+ 101 003e 0093     		str	r3, [sp]
+ 102 0040 0A46     		mov	r2, r1
+ 103 0042 0146     		mov	r1, r0
+ 104              	.LVL3:
+ 131:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 105              		.loc 1 131 5 is_stmt 0 view .LVU25
+ 106 0044 F620     		movs	r0, #246
+ 107              	.LVL4:
+ 131:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 108              		.loc 1 131 5 view .LVU26
+ 109 0046 FFF7FEFF 		bl	_fx_trace_event_insert
+ 110              	.LVL5:
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 111              		.loc 1 134 5 is_stmt 1 view .LVU27
+ 112 004a 2268     		ldr	r2, [r4]
+ 113 004c 4D4B     		ldr	r3, .L32
+ 114 004e 9A42     		cmp	r2, r3
+ 115 0050 01D0     		beq	.L23
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 116              		.loc 1 134 5 is_stmt 0 discriminator 1 view .LVU28
+ 117 0052 1125     		movs	r5, #17
+ 118              	.LVL6:
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 119              		.loc 1 134 5 discriminator 1 view .LVU29
+ 120 0054 E7E7     		b	.L1
+ 121              	.LVL7:
+ 122              	.L23:
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 123              		.loc 1 134 5 is_stmt 1 discriminator 2 view .LVU30
+ 124 0056 04F5E477 		add	r7, r4, #456
+ 125 005a 4FF0FF31 		mov	r1, #-1
+ 126 005e 3846     		mov	r0, r7
+ 127 0060 FFF7FEFF 		bl	_tx_mutex_get
+ 128              	.LVL8:
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 129              		.loc 1 134 5 is_stmt 0 discriminator 1 view .LVU31
+ 130 0064 0028     		cmp	r0, #0
+ 131 0066 40F08B80 		bne	.L19
+ 142:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 132              		.loc 1 142 5 is_stmt 1 view .LVU32
+ 142:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 133              		.loc 1 142 19 is_stmt 0 view .LVU33
+ 134 006a D4F8A830 		ldr	r3, [r4, #168]
+ 142:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 135              		.loc 1 142 8 view .LVU34
+ 136 006e ABB9     		cbnz	r3, .L24
+ 157:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 137              		.loc 1 157 5 is_stmt 1 view .LVU35
+ 157:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 138              		.loc 1 157 15 is_stmt 0 view .LVU36
+ 139 0070 0023     		movs	r3, #0
+ARM GAS  /tmp/ccDj7LMs.s 			page 12
+
+
+ 140 0072 0093     		str	r3, [sp]
+ 141 0074 04AA     		add	r2, sp, #16
+ 142 0076 2946     		mov	r1, r5
+ 143 0078 2046     		mov	r0, r4
+ 144 007a FFF7FEFF 		bl	_fx_directory_search
+ 145              	.LVL9:
+ 160:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 146              		.loc 1 160 5 is_stmt 1 view .LVU37
+ 160:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 147              		.loc 1 160 8 is_stmt 0 view .LVU38
+ 148 007e 0546     		mov	r5, r0
+ 149              	.LVL10:
+ 160:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 150              		.loc 1 160 8 view .LVU39
+ 151 0080 88B9     		cbnz	r0, .L25
+ 182:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 152              		.loc 1 182 9 is_stmt 1 view .LVU40
+ 153              	.LVL11:
+ 188:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 154              		.loc 1 188 5 view .LVU41
+ 188:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 155              		.loc 1 188 18 is_stmt 0 view .LVU42
+ 156 0082 9DF82C30 		ldrb	r3, [sp, #44]	@ zero_extendqisi2
+ 188:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 157              		.loc 1 188 8 view .LVU43
+ 158 0086 13F0180F 		tst	r3, #24
+ 159 008a 10D1     		bne	.L26
+ 203:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 160              		.loc 1 203 5 is_stmt 1 view .LVU44
+ 203:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 161              		.loc 1 203 8 is_stmt 0 view .LVU45
+ 162 008c 13F0010F 		tst	r3, #1
+ 163 0090 12D1     		bne	.L27
+ 218:Middlewares/ST/filex/common/src/fx_file_delete.c ****     search_ptr =  media_ptr -> fx_media_opened_file_list;
+ 164              		.loc 1 218 5 is_stmt 1 view .LVU46
+ 218:Middlewares/ST/filex/common/src/fx_file_delete.c ****     search_ptr =  media_ptr -> fx_media_opened_file_list;
+ 165              		.loc 1 218 16 is_stmt 0 view .LVU47
+ 166 0092 D4F8CC20 		ldr	r2, [r4, #204]
+ 167              	.LVL12:
+ 219:Middlewares/ST/filex/common/src/fx_file_delete.c ****     while (open_count)
+ 168              		.loc 1 219 5 is_stmt 1 view .LVU48
+ 219:Middlewares/ST/filex/common/src/fx_file_delete.c ****     while (open_count)
+ 169              		.loc 1 219 16 is_stmt 0 view .LVU49
+ 170 0096 D4F8C830 		ldr	r3, [r4, #200]
+ 171              	.LVL13:
+ 220:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 172              		.loc 1 220 5 is_stmt 1 view .LVU50
+ 220:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 173              		.loc 1 220 11 is_stmt 0 view .LVU51
+ 174 009a 14E0     		b	.L7
+ 175              	.LVL14:
+ 176              	.L24:
+ 150:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 177              		.loc 1 150 9 is_stmt 1 view .LVU52
+ 178 009c 3846     		mov	r0, r7
+ 179 009e FFF7FEFF 		bl	_tx_mutex_put
+ 180              	.LVL15:
+ARM GAS  /tmp/ccDj7LMs.s 			page 13
+
+
+ 153:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 181              		.loc 1 153 9 view .LVU53
+ 153:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 182              		.loc 1 153 15 is_stmt 0 view .LVU54
+ 183 00a2 2325     		movs	r5, #35
+ 184              	.LVL16:
+ 153:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 185              		.loc 1 153 15 view .LVU55
+ 186 00a4 BFE7     		b	.L1
+ 187              	.LVL17:
+ 188              	.L25:
+ 168:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 189              		.loc 1 168 9 is_stmt 1 view .LVU56
+ 190 00a6 3846     		mov	r0, r7
+ 191              	.LVL18:
+ 168:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 192              		.loc 1 168 9 is_stmt 0 view .LVU57
+ 193 00a8 FFF7FEFF 		bl	_tx_mutex_put
+ 194              	.LVL19:
+ 171:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 195              		.loc 1 171 9 is_stmt 1 view .LVU58
+ 171:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 196              		.loc 1 171 15 is_stmt 0 view .LVU59
+ 197 00ac BBE7     		b	.L1
+ 198              	.LVL20:
+ 199              	.L26:
+ 196:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 200              		.loc 1 196 9 is_stmt 1 view .LVU60
+ 201 00ae 3846     		mov	r0, r7
+ 202              	.LVL21:
+ 196:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 203              		.loc 1 196 9 is_stmt 0 view .LVU61
+ 204 00b0 FFF7FEFF 		bl	_tx_mutex_put
+ 205              	.LVL22:
+ 199:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 206              		.loc 1 199 9 is_stmt 1 view .LVU62
+ 199:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 207              		.loc 1 199 15 is_stmt 0 view .LVU63
+ 208 00b4 0525     		movs	r5, #5
+ 209              	.LVL23:
+ 199:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 210              		.loc 1 199 15 view .LVU64
+ 211 00b6 B6E7     		b	.L1
+ 212              	.LVL24:
+ 213              	.L27:
+ 210:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 214              		.loc 1 210 9 is_stmt 1 view .LVU65
+ 215 00b8 3846     		mov	r0, r7
+ 216              	.LVL25:
+ 210:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 217              		.loc 1 210 9 is_stmt 0 view .LVU66
+ 218 00ba FFF7FEFF 		bl	_tx_mutex_put
+ 219              	.LVL26:
+ 213:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 220              		.loc 1 213 9 is_stmt 1 view .LVU67
+ 213:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 221              		.loc 1 213 15 is_stmt 0 view .LVU68
+ARM GAS  /tmp/ccDj7LMs.s 			page 14
+
+
+ 222 00be 2325     		movs	r5, #35
+ 223              	.LVL27:
+ 213:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 224              		.loc 1 213 15 view .LVU69
+ 225 00c0 B1E7     		b	.L1
+ 226              	.LVL28:
+ 227              	.L8:
+ 240:Middlewares/ST/filex/common/src/fx_file_delete.c ****         open_count--;
+ 228              		.loc 1 240 9 is_stmt 1 view .LVU70
+ 240:Middlewares/ST/filex/common/src/fx_file_delete.c ****         open_count--;
+ 229              		.loc 1 240 20 is_stmt 0 view .LVU71
+ 230 00c2 DB6D     		ldr	r3, [r3, #92]
+ 231              	.LVL29:
+ 241:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 232              		.loc 1 241 9 is_stmt 1 view .LVU72
+ 241:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 233              		.loc 1 241 19 is_stmt 0 view .LVU73
+ 234 00c4 013A     		subs	r2, r2, #1
+ 235              	.LVL30:
+ 236              	.L7:
+ 220:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 237              		.loc 1 220 12 is_stmt 1 view .LVU74
+ 238 00c6 9AB1     		cbz	r2, .L28
+ 224:Middlewares/ST/filex/common/src/fx_file_delete.c ****             (search_ptr -> fx_file_dir_entry.fx_dir_entry_byte_offset == dir_entry.fx_dir_entry_byt
+ 239              		.loc 1 224 9 view .LVU75
+ 224:Middlewares/ST/filex/common/src/fx_file_delete.c ****             (search_ptr -> fx_file_dir_entry.fx_dir_entry_byte_offset == dir_entry.fx_dir_entry_byt
+ 240              		.loc 1 224 45 is_stmt 0 view .LVU76
+ 241 00c8 D3F8A860 		ldr	r6, [r3, #168]
+ 242 00cc D3F8AC00 		ldr	r0, [r3, #172]
+ 224:Middlewares/ST/filex/common/src/fx_file_delete.c ****             (search_ptr -> fx_file_dir_entry.fx_dir_entry_byte_offset == dir_entry.fx_dir_entry_byt
+ 243              		.loc 1 224 12 view .LVU77
+ 244 00d0 149D     		ldr	r5, [sp, #80]
+ 245 00d2 1599     		ldr	r1, [sp, #84]
+ 246 00d4 8842     		cmp	r0, r1
+ 247 00d6 08BF     		it	eq
+ 248 00d8 AE42     		cmpeq	r6, r5
+ 249 00da F2D1     		bne	.L8
+ 225:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 250              		.loc 1 225 45 view .LVU78
+ 251 00dc D3F8B000 		ldr	r0, [r3, #176]
+ 225:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 252              		.loc 1 225 83 view .LVU79
+ 253 00e0 1699     		ldr	r1, [sp, #88]
+ 224:Middlewares/ST/filex/common/src/fx_file_delete.c ****             (search_ptr -> fx_file_dir_entry.fx_dir_entry_byte_offset == dir_entry.fx_dir_entry_byt
+ 254              		.loc 1 224 108 discriminator 1 view .LVU80
+ 255 00e2 8842     		cmp	r0, r1
+ 256 00e4 EDD1     		bne	.L8
+ 233:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 257              		.loc 1 233 13 is_stmt 1 view .LVU81
+ 258 00e6 3846     		mov	r0, r7
+ 259 00e8 FFF7FEFF 		bl	_tx_mutex_put
+ 260              	.LVL31:
+ 236:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 261              		.loc 1 236 13 view .LVU82
+ 236:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 262              		.loc 1 236 19 is_stmt 0 view .LVU83
+ 263 00ec 0625     		movs	r5, #6
+ARM GAS  /tmp/ccDj7LMs.s 			page 15
+
+
+ 264 00ee 9AE7     		b	.L1
+ 265              	.LVL32:
+ 266              	.L28:
+ 245:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 267              		.loc 1 245 5 is_stmt 1 view .LVU84
+ 245:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 268              		.loc 1 245 13 is_stmt 0 view .LVU85
+ 269 00f0 119E     		ldr	r6, [sp, #68]
+ 270              	.LVL33:
+ 252:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif
+ 271              		.loc 1 252 5 is_stmt 1 view .LVU86
+ 252:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif
+ 272              		.loc 1 252 46 is_stmt 0 view .LVU87
+ 273 00f2 0023     		movs	r3, #0
+ 274              	.LVL34:
+ 252:Middlewares/ST/filex/common/src/fx_file_delete.c **** #endif
+ 275              		.loc 1 252 46 view .LVU88
+ 276 00f4 84F8E033 		strb	r3, [r4, #992]
+ 257:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 277              		.loc 1 257 5 is_stmt 1 view .LVU89
+ 257:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 278              		.loc 1 257 36 is_stmt 0 view .LVU90
+ 279 00f8 E523     		movs	r3, #229
+ 280 00fa 049A     		ldr	r2, [sp, #16]
+ 281              	.LVL35:
+ 257:Middlewares/ST/filex/common/src/fx_file_delete.c ****     dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 282              		.loc 1 257 36 view .LVU91
+ 283 00fc 1370     		strb	r3, [r2]
+ 258:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 284              		.loc 1 258 5 is_stmt 1 view .LVU92
+ 258:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 285              		.loc 1 258 42 is_stmt 0 view .LVU93
+ 286 00fe 8DF81430 		strb	r3, [sp, #20]
+ 269:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 287              		.loc 1 269 9 is_stmt 1 view .LVU94
+ 269:Middlewares/ST/filex/common/src/fx_file_delete.c **** #ifdef FX_ENABLE_EXFAT
+ 288              		.loc 1 269 18 is_stmt 0 view .LVU95
+ 289 0102 04A9     		add	r1, sp, #16
+ 290 0104 2046     		mov	r0, r4
+ 291 0106 FFF7FEFF 		bl	_fx_directory_entry_write
+ 292              	.LVL36:
+ 275:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 293              		.loc 1 275 5 is_stmt 1 view .LVU96
+ 275:Middlewares/ST/filex/common/src/fx_file_delete.c ****     {
+ 294              		.loc 1 275 8 is_stmt 0 view .LVU97
+ 295 010a 0546     		mov	r5, r0
+ 296 010c 00BB     		cbnz	r0, .L29
+ 291:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 297              		.loc 1 291 19 view .LVU98
+ 298 010e 8046     		mov	r8, r0
+ 299              	.L10:
+ 300              	.LVL37:
+ 341:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 301              		.loc 1 341 48 is_stmt 1 view .LVU99
+ 302 0110 012E     		cmp	r6, #1
+ 303 0112 2ED9     		bls	.L15
+ 341:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ARM GAS  /tmp/ccDj7LMs.s 			page 16
+
+
+ 304              		.loc 1 341 72 is_stmt 0 discriminator 1 view .LVU100
+ 305 0114 04F50053 		add	r3, r4, #8192
+ 306 0118 D3F8A834 		ldr	r3, [r3, #1192]
+ 341:Middlewares/ST/filex/common/src/fx_file_delete.c ****         {
+ 307              		.loc 1 341 48 discriminator 1 view .LVU101
+ 308 011c B342     		cmp	r3, r6
+ 309 011e 28D9     		bls	.L15
+ 345:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 310              		.loc 1 345 13 is_stmt 1 view .LVU102
+ 345:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 311              		.loc 1 345 26 is_stmt 0 view .LVU103
+ 312 0120 08F10108 		add	r8, r8, #1
+ 313              	.LVL38:
+ 366:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 314              		.loc 1 366 17 is_stmt 1 view .LVU104
+ 366:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 315              		.loc 1 366 27 is_stmt 0 view .LVU105
+ 316 0124 21AA     		add	r2, sp, #132
+ 317 0126 3146     		mov	r1, r6
+ 318 0128 2046     		mov	r0, r4
+ 319              	.LVL39:
+ 366:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 320              		.loc 1 366 27 view .LVU106
+ 321 012a FFF7FEFF 		bl	_fx_utility_FAT_entry_read
+ 322              	.LVL40:
+ 369:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 323              		.loc 1 369 17 is_stmt 1 view .LVU107
+ 369:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 324              		.loc 1 369 20 is_stmt 0 view .LVU108
+ 325 012e 0546     		mov	r5, r0
+ 326 0130 90B9     		cbnz	r0, .L30
+ 386:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 327              		.loc 1 386 13 is_stmt 1 view .LVU109
+ 386:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 328              		.loc 1 386 26 is_stmt 0 view .LVU110
+ 329 0132 219B     		ldr	r3, [sp, #132]
+ 386:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 330              		.loc 1 386 16 view .LVU111
+ 331 0134 B342     		cmp	r3, r6
+ 332 0136 13D0     		beq	.L12
+ 386:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 333              		.loc 1 386 69 discriminator 1 view .LVU112
+ 334 0138 236C     		ldr	r3, [r4, #64]
+ 386:Middlewares/ST/filex/common/src/fx_file_delete.c ****             {
+ 335              		.loc 1 386 39 discriminator 1 view .LVU113
+ 336 013a 4345     		cmp	r3, r8
+ 337 013c 10D3     		bcc	.L12
+ 406:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 338              		.loc 1 406 17 is_stmt 1 view .LVU114
+ 406:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 339              		.loc 1 406 27 is_stmt 0 view .LVU115
+ 340 013e 0022     		movs	r2, #0
+ 341 0140 3146     		mov	r1, r6
+ 342 0142 2046     		mov	r0, r4
+ 343              	.LVL41:
+ 406:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 344              		.loc 1 406 27 view .LVU116
+ARM GAS  /tmp/ccDj7LMs.s 			page 17
+
+
+ 345 0144 FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 346              	.LVL42:
+ 409:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 347              		.loc 1 409 17 is_stmt 1 view .LVU117
+ 409:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 {
+ 348              		.loc 1 409 20 is_stmt 0 view .LVU118
+ 349 0148 0546     		mov	r5, r0
+ 350 014a 70B9     		cbnz	r0, .L31
+ 449:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 351              		.loc 1 449 13 is_stmt 1 view .LVU119
+ 449:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 352              		.loc 1 449 21 is_stmt 0 view .LVU120
+ 353 014c 219E     		ldr	r6, [sp, #132]
+ 354              	.LVL43:
+ 449:Middlewares/ST/filex/common/src/fx_file_delete.c ****         }
+ 355              		.loc 1 449 21 view .LVU121
+ 356 014e DFE7     		b	.L10
+ 357              	.LVL44:
+ 358              	.L29:
+ 283:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 359              		.loc 1 283 9 is_stmt 1 view .LVU122
+ 360 0150 3846     		mov	r0, r7
+ 361              	.LVL45:
+ 283:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 362              		.loc 1 283 9 is_stmt 0 view .LVU123
+ 363 0152 FFF7FEFF 		bl	_tx_mutex_put
+ 364              	.LVL46:
+ 286:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 365              		.loc 1 286 9 is_stmt 1 view .LVU124
+ 286:Middlewares/ST/filex/common/src/fx_file_delete.c ****     }
+ 366              		.loc 1 286 15 is_stmt 0 view .LVU125
+ 367 0156 66E7     		b	.L1
+ 368              	.LVL47:
+ 369              	.L30:
+ 377:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 370              		.loc 1 377 21 is_stmt 1 view .LVU126
+ 371 0158 3846     		mov	r0, r7
+ 372              	.LVL48:
+ 377:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 373              		.loc 1 377 21 is_stmt 0 view .LVU127
+ 374 015a FFF7FEFF 		bl	_tx_mutex_put
+ 375              	.LVL49:
+ 380:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 376              		.loc 1 380 21 is_stmt 1 view .LVU128
+ 380:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 377              		.loc 1 380 27 is_stmt 0 view .LVU129
+ 378 015e 62E7     		b	.L1
+ 379              	.LVL50:
+ 380              	.L12:
+ 394:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 381              		.loc 1 394 17 is_stmt 1 view .LVU130
+ 382 0160 3846     		mov	r0, r7
+ 383              	.LVL51:
+ 394:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 384              		.loc 1 394 17 is_stmt 0 view .LVU131
+ 385 0162 FFF7FEFF 		bl	_tx_mutex_put
+ 386              	.LVL52:
+ARM GAS  /tmp/ccDj7LMs.s 			page 18
+
+
+ 397:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 387              		.loc 1 397 17 is_stmt 1 view .LVU132
+ 397:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 388              		.loc 1 397 23 is_stmt 0 view .LVU133
+ 389 0166 0325     		movs	r5, #3
+ 390              	.LVL53:
+ 397:Middlewares/ST/filex/common/src/fx_file_delete.c ****             }
+ 391              		.loc 1 397 23 view .LVU134
+ 392 0168 5DE7     		b	.L1
+ 393              	.LVL54:
+ 394              	.L31:
+ 417:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 395              		.loc 1 417 21 is_stmt 1 view .LVU135
+ 396 016a 3846     		mov	r0, r7
+ 397              	.LVL55:
+ 417:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 398              		.loc 1 417 21 is_stmt 0 view .LVU136
+ 399 016c FFF7FEFF 		bl	_tx_mutex_put
+ 400              	.LVL56:
+ 420:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 401              		.loc 1 420 21 is_stmt 1 view .LVU137
+ 420:Middlewares/ST/filex/common/src/fx_file_delete.c ****                 }
+ 402              		.loc 1 420 27 is_stmt 0 view .LVU138
+ 403 0170 59E7     		b	.L1
+ 404              	.LVL57:
+ 405              	.L15:
+ 456:Middlewares/ST/filex/common/src/fx_file_delete.c ****         media_ptr -> fx_media_available_clusters + cluster_count;
+ 406              		.loc 1 456 5 is_stmt 1 view .LVU139
+ 457:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 407              		.loc 1 457 19 is_stmt 0 view .LVU140
+ 408 0172 E36F     		ldr	r3, [r4, #124]
+ 457:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 409              		.loc 1 457 50 view .LVU141
+ 410 0174 4344     		add	r3, r3, r8
+ 456:Middlewares/ST/filex/common/src/fx_file_delete.c ****         media_ptr -> fx_media_available_clusters + cluster_count;
+ 411              		.loc 1 456 46 view .LVU142
+ 412 0176 E367     		str	r3, [r4, #124]
+ 472:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 413              		.loc 1 472 5 is_stmt 1 view .LVU143
+ 414 0178 3846     		mov	r0, r7
+ 415              	.LVL58:
+ 472:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 416              		.loc 1 472 5 is_stmt 0 view .LVU144
+ 417 017a FFF7FEFF 		bl	_tx_mutex_put
+ 418              	.LVL59:
+ 475:Middlewares/ST/filex/common/src/fx_file_delete.c **** }
+ 419              		.loc 1 475 5 is_stmt 1 view .LVU145
+ 475:Middlewares/ST/filex/common/src/fx_file_delete.c **** }
+ 420              		.loc 1 475 11 is_stmt 0 view .LVU146
+ 421 017e 52E7     		b	.L1
+ 422              	.LVL60:
+ 423              	.L19:
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ 424              		.loc 1 134 5 discriminator 3 view .LVU147
+ 425 0180 1125     		movs	r5, #17
+ 426              	.LVL61:
+ 134:Middlewares/ST/filex/common/src/fx_file_delete.c **** 
+ARM GAS  /tmp/ccDj7LMs.s 			page 19
+
+
+ 427              		.loc 1 134 5 discriminator 3 view .LVU148
+ 428 0182 50E7     		b	.L1
+ 429              	.L33:
+ 430              		.align	2
+ 431              	.L32:
+ 432 0184 4944454D 		.word	1296385097
+ 433              		.cfi_endproc
+ 434              	.LFE8:
+ 436              		.text
+ 437              	.Letext0:
+ 438              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 439              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 440              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 441              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 442              		.file 6 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ 443              		.file 7 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ARM GAS  /tmp/ccDj7LMs.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_file_delete.c
+     /tmp/ccDj7LMs.s:20     .text._fx_file_delete:00000000 $t
+     /tmp/ccDj7LMs.s:26     .text._fx_file_delete:00000000 _fx_file_delete
+     /tmp/ccDj7LMs.s:432    .text._fx_file_delete:00000184 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_fx_directory_search
+_tx_mutex_put
+_fx_directory_entry_write
+_fx_utility_FAT_entry_read
+_fx_utility_FAT_entry_write

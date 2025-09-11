@@ -1,0 +1,201 @@
+ARM GAS  /tmp/ccqctSil.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_audio_ioctl.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c"
+  19              		.section	.text._ux_device_class_audio_ioctl,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_class_audio_ioctl
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_class_audio_ioctl:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**                                                                       */
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /** USBX Component                                                        */
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**                                                                       */
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**   Device Audio Class                                                  */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**                                                                       */
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** #define UX_SOURCE_CODE
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /* Include necessary system files.  */
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** #include "ux_api.h"
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** #include "ux_device_class_audio.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** #include "ux_device_stack.h"
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+ARM GAS  /tmp/ccqctSil.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    _ux_device_class_audio_ioctl                        PORTABLE C      */
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    This function performs certain functions on the audio instance      */
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  INPUT                                                                 */
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    audio                                   Address of audio class      */
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                instance                */
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    ioctl_function                          IOCTL function code         */
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    parameter                               Parameter for function      */
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    Status                                                              */
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  CALLED BY                                                             */
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    ThreadX                                                             */
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  RELEASE HISTORY                                                       */
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*    DATE              NAME                      DESCRIPTION             */
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** UINT _ux_device_class_audio_ioctl(UX_DEVICE_CLASS_AUDIO *audio, ULONG ioctl_function,
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****                                     VOID *parameter)
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** {
+  29              		.loc 1 75 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** UINT                                                status;
+  34              		.loc 1 77 1 view .LVU1
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** VOID                                                **pptr_parameter;
+  35              		.loc 1 78 1 view .LVU2
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+ARM GAS  /tmp/ccqctSil.s 			page 3
+
+
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     /* Let's be optimist ! */
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     status = UX_SUCCESS;
+  36              		.loc 1 82 5 view .LVU3
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     /* The command request will tell us what we need to do here.  */
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     switch (ioctl_function)
+  37              		.loc 1 85 5 view .LVU4
+  38 0000 0129     		cmp	r1, #1
+  39 0002 01D0     		beq	.L4
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     {
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****         case UX_DEVICE_CLASS_AUDIO_IOCTL_GET_ARG:
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             /* Properly cast the parameter pointer.  */
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             pptr_parameter = (VOID **) parameter;
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             /* Save argument.  */
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             *pptr_parameter = audio -> ux_device_class_audio_callbacks.ux_device_class_audio_arg;
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             break;
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****         default:
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             /* Function not supported. Return an error.  */
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****             status =  UX_FUNCTION_NOT_SUPPORTED;
+  40              		.loc 1 101 20 is_stmt 0 view .LVU5
+  41 0004 5420     		movs	r0, #84
+  42              	.LVL1:
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     }
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     /* Return status to caller.  */
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c ****     return(status);
+  43              		.loc 1 105 5 is_stmt 1 view .LVU6
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** }
+  44              		.loc 1 107 1 is_stmt 0 view .LVU7
+  45 0006 7047     		bx	lr
+  46              	.LVL2:
+  47              	.L4:
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  48              		.loc 1 91 13 is_stmt 1 view .LVU8
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  49              		.loc 1 94 13 view .LVU9
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  50              		.loc 1 94 71 is_stmt 0 view .LVU10
+  51 0008 8369     		ldr	r3, [r0, #24]
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  52              		.loc 1 94 29 view .LVU11
+  53 000a 1360     		str	r3, [r2]
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  54              		.loc 1 96 13 is_stmt 1 view .LVU12
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  55              		.loc 1 82 12 is_stmt 0 view .LVU13
+  56 000c 0020     		movs	r0, #0
+  57              	.LVL3:
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_ioctl.c **** 
+  58              		.loc 1 96 13 view .LVU14
+ARM GAS  /tmp/ccqctSil.s 			page 4
+
+
+  59 000e 7047     		bx	lr
+  60              		.cfi_endproc
+  61              	.LFE11:
+  63              		.text
+  64              	.Letext0:
+  65              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  66              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  67              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+  68              		.file 5 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_audio.h"
+ARM GAS  /tmp/ccqctSil.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_audio_ioctl.c
+     /tmp/ccqctSil.s:20     .text._ux_device_class_audio_ioctl:00000000 $t
+     /tmp/ccqctSil.s:26     .text._ux_device_class_audio_ioctl:00000000 _ux_device_class_audio_ioctl
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,375 @@
+ARM GAS  /tmp/cclto2zR.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_class_audio_write.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c"
+  19              		.section	.text._ux_host_class_audio_write,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_class_audio_write
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_class_audio_write:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**   Audio Class                                                         */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** #include "ux_host_class_audio.h"
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** #include "ux_host_stack.h"
+ARM GAS  /tmp/cclto2zR.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    _ux_host_class_audio_write                          PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                           6.1.10       */
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    This function writes to the audio streaming interface.              */ 
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  INPUT                                                                 */ 
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    audio                                 Pointer to audio class        */ 
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    audio_transfer_request                Pointer to transfer request   */ 
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  OUTPUT                                                                */ 
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    Completion Status                                                   */ 
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  CALLS                                                                 */ 
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    _ux_host_class_audio_transfer_request Start audio transfer request  */ 
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    _ux_host_stack_class_instance_verify  Verify instance is valid      */ 
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    _ux_host_semaphore_get                Get semaphore                 */ 
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    _ux_host_semaphore_put                Put semaphore                 */ 
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  CALLED BY                                                             */ 
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    Application                                                         */ 
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    Audio Class                                                         */ 
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  RELEASE HISTORY                                                       */ 
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                            refined macros names,       */
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                            resulting in version 6.1.10 */
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /*                                                                        */
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** /**************************************************************************/
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** UINT  _ux_host_class_audio_write(UX_HOST_CLASS_AUDIO *audio, UX_HOST_CLASS_AUDIO_TRANSFER_REQUEST *
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** {
+  29              		.loc 1 81 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 81 1 is_stmt 0 view .LVU1
+  34 0000 70B5     		push	{r4, r5, r6, lr}
+ARM GAS  /tmp/cclto2zR.s 			page 3
+
+
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 4, -16
+  38              		.cfi_offset 5, -12
+  39              		.cfi_offset 6, -8
+  40              		.cfi_offset 14, -4
+  41 0002 84B0     		sub	sp, sp, #16
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0004 0446     		mov	r4, r0
+  45 0006 0D46     		mov	r5, r1
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** UINT        status;
+  46              		.loc 1 83 1 is_stmt 1 view .LVU2
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_CLASS_AUDIO_WRITE, audio, audio_transfer_request -> ux_ho
+  47              		.loc 1 86 5 view .LVU3
+  48 0008 0023     		movs	r3, #0
+  49 000a 0393     		str	r3, [sp, #12]
+  50 000c 0293     		str	r3, [sp, #8]
+  51 000e 4FF00052 		mov	r2, #536870912
+  52 0012 0192     		str	r2, [sp, #4]
+  53 0014 0093     		str	r3, [sp]
+  54 0016 8B68     		ldr	r3, [r1, #8]
+  55 0018 4A68     		ldr	r2, [r1, #4]
+  56 001a 0146     		mov	r1, r0
+  57              	.LVL1:
+  58              		.loc 1 86 5 is_stmt 0 view .LVU4
+  59 001c 40F29B20 		movw	r0, #667
+  60              	.LVL2:
+  61              		.loc 1 86 5 view .LVU5
+  62 0020 FFF7FEFF 		bl	_ux_trace_event_insert
+  63              	.LVL3:
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****                             audio_transfer_request -> ux_host_class_audio_transfer_request_requeste
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Ensure the instance is valid.  */
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     if (_ux_host_stack_class_instance_verify(_ux_system_host_class_audio_name, (VOID *) audio) != U
+  64              		.loc 1 90 5 is_stmt 1 view .LVU6
+  65              		.loc 1 90 9 is_stmt 0 view .LVU7
+  66 0024 2146     		mov	r1, r4
+  67 0026 1E48     		ldr	r0, .L10
+  68 0028 FFF7FEFF 		bl	_ux_host_stack_class_instance_verify
+  69              	.LVL4:
+  70              		.loc 1 90 8 discriminator 1 view .LVU8
+  71 002c C0B9     		cbnz	r0, .L7
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     {        
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         /* Error trap. */
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_HOST_CLASS_INS
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_HOST_CLASS_INSTANCE_UNKNOWN, audio, 0, 0, UX_TRA
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         return(UX_HOST_CLASS_INSTANCE_UNKNOWN);
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     }
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ARM GAS  /tmp/cclto2zR.s 			page 4
+
+
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Protect thread reentry to this instance.  */
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     status =  _ux_host_semaphore_get(&audio -> ux_host_class_audio_semaphore, UX_WAIT_FOREVER);
+  72              		.loc 1 103 5 is_stmt 1 view .LVU9
+  73              		.loc 1 103 15 is_stmt 0 view .LVU10
+  74 002e 04F19C06 		add	r6, r4, #156
+  75 0032 4FF0FF31 		mov	r1, #-1
+  76 0036 3046     		mov	r0, r6
+  77 0038 FFF7FEFF 		bl	_ux_utility_semaphore_get
+  78              	.LVL5:
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     if (status != UX_SUCCESS)
+  79              		.loc 1 104 5 is_stmt 1 view .LVU11
+  80              		.loc 1 104 8 is_stmt 0 view .LVU12
+  81 003c 70B9     		cbnz	r0, .L1
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         return(status);
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* By default the transmission will be successful.  */
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     status =  UX_SUCCESS;
+  82              		.loc 1 108 5 is_stmt 1 view .LVU13
+  83              	.LVL6:
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Ensure we have a selected interface that allows isoch transmission.  */
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     if (audio -> ux_host_class_audio_isochronous_endpoint -> ux_endpoint_descriptor.wMaxPacketSize 
+  84              		.loc 1 111 5 view .LVU14
+  85              		.loc 1 111 15 is_stmt 0 view .LVU15
+  86 003e 6369     		ldr	r3, [r4, #20]
+  87              		.loc 1 111 84 view .LVU16
+  88 0040 DB69     		ldr	r3, [r3, #28]
+  89              		.loc 1 111 8 view .LVU17
+  90 0042 0BB3     		cbz	r3, .L8
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     {
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         /* Unprotect thread reentry to this instance.  */
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         status =  _ux_host_semaphore_put(&audio -> ux_host_class_audio_semaphore);
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         /* Error trap. */
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_HOST_CLASS_AUD
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         /* Return error status.  */
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         return(UX_HOST_CLASS_AUDIO_WRONG_INTERFACE);
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     }
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Hook the audio transfer request to the chain of transfer requests in the audio instance.
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****        We hook the transfer request to the tail transfer request.  */
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     audio_transfer_request -> ux_host_class_audio_transfer_request_next_audio_transfer_request =  a
+  91              		.loc 1 126 5 is_stmt 1 view .LVU18
+  92              		.loc 1 126 105 is_stmt 0 view .LVU19
+  93 0044 E369     		ldr	r3, [r4, #28]
+  94              		.loc 1 126 96 view .LVU20
+  95 0046 AB63     		str	r3, [r5, #56]
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     audio -> ux_host_class_audio_tail_transfer_request =  audio_transfer_request;
+  96              		.loc 1 127 5 is_stmt 1 view .LVU21
+  97              		.loc 1 127 56 is_stmt 0 view .LVU22
+  98 0048 E561     		str	r5, [r4, #28]
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Check if this is the first time we have a transfer request, if so update the head as well.  
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     if (audio -> ux_host_class_audio_head_transfer_request == UX_NULL)
+  99              		.loc 1 130 5 is_stmt 1 view .LVU23
+ARM GAS  /tmp/cclto2zR.s 			page 5
+
+
+ 100              		.loc 1 130 15 is_stmt 0 view .LVU24
+ 101 004a A369     		ldr	r3, [r4, #24]
+ 102              		.loc 1 130 8 view .LVU25
+ 103 004c 33B3     		cbz	r3, .L9
+ 104              	.L5:
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****         audio -> ux_host_class_audio_head_transfer_request =  audio_transfer_request;
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Ask the stack to hook this transfer request to the iso ED.  */
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     status =  _ux_host_class_audio_transfer_request(audio, audio_transfer_request);
+ 105              		.loc 1 134 5 is_stmt 1 view .LVU26
+ 106              		.loc 1 134 15 is_stmt 0 view .LVU27
+ 107 004e 2946     		mov	r1, r5
+ 108 0050 2046     		mov	r0, r4
+ 109 0052 FFF7FEFF 		bl	_ux_host_class_audio_transfer_request
+ 110              	.LVL7:
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Unprotect thread reentry to this instance.  */
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     status =  _ux_host_semaphore_put(&audio -> ux_host_class_audio_semaphore);
+ 111              		.loc 1 137 5 is_stmt 1 view .LVU28
+ 112              		.loc 1 137 15 is_stmt 0 view .LVU29
+ 113 0056 3046     		mov	r0, r6
+ 114 0058 FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 115              	.LVL8:
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     /* Return completion status.  */
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     return(status);
+ 116              		.loc 1 140 5 is_stmt 1 view .LVU30
+ 117              	.L1:
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** }
+ 118              		.loc 1 141 1 is_stmt 0 view .LVU31
+ 119 005c 04B0     		add	sp, sp, #16
+ 120              	.LCFI2:
+ 121              		.cfi_remember_state
+ 122              		.cfi_def_cfa_offset 16
+ 123              		@ sp needed
+ 124 005e 70BD     		pop	{r4, r5, r6, pc}
+ 125              	.LVL9:
+ 126              	.L7:
+ 127              	.LCFI3:
+ 128              		.cfi_restore_state
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 129              		.loc 1 94 9 is_stmt 1 view .LVU32
+ 130 0060 5B22     		movs	r2, #91
+ 131 0062 0721     		movs	r1, #7
+ 132 0064 0220     		movs	r0, #2
+ 133 0066 FFF7FEFF 		bl	_ux_system_error_handler
+ 134              	.LVL10:
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 135              		.loc 1 97 9 view .LVU33
+ 136 006a 0023     		movs	r3, #0
+ 137 006c 0393     		str	r3, [sp, #12]
+ 138 006e 0293     		str	r3, [sp, #8]
+ 139 0070 4FF08072 		mov	r2, #16777216
+ 140 0074 0192     		str	r2, [sp, #4]
+ 141 0076 0093     		str	r3, [sp]
+ 142 0078 2246     		mov	r2, r4
+ 143 007a 5B21     		movs	r1, #91
+ARM GAS  /tmp/cclto2zR.s 			page 6
+
+
+ 144 007c 40F2E730 		movw	r0, #999
+ 145 0080 FFF7FEFF 		bl	_ux_trace_event_insert
+ 146              	.LVL11:
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     }
+ 147              		.loc 1 99 9 view .LVU34
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     }
+ 148              		.loc 1 99 15 is_stmt 0 view .LVU35
+ 149 0084 5B20     		movs	r0, #91
+ 150 0086 E9E7     		b	.L1
+ 151              	.LVL12:
+ 152              	.L8:
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 153              		.loc 1 115 9 is_stmt 1 view .LVU36
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 154              		.loc 1 115 19 is_stmt 0 view .LVU37
+ 155 0088 3046     		mov	r0, r6
+ 156 008a FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 157              	.LVL13:
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 158              		.loc 1 118 9 is_stmt 1 view .LVU38
+ 159 008e 8122     		movs	r2, #129
+ 160 0090 0721     		movs	r1, #7
+ 161 0092 0220     		movs	r0, #2
+ 162 0094 FFF7FEFF 		bl	_ux_system_error_handler
+ 163              	.LVL14:
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     }
+ 164              		.loc 1 121 9 view .LVU39
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c ****     }
+ 165              		.loc 1 121 15 is_stmt 0 view .LVU40
+ 166 0098 8120     		movs	r0, #129
+ 167 009a DFE7     		b	.L1
+ 168              	.LVL15:
+ 169              	.L9:
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 170              		.loc 1 131 9 is_stmt 1 view .LVU41
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_write.c **** 
+ 171              		.loc 1 131 60 is_stmt 0 view .LVU42
+ 172 009c A561     		str	r5, [r4, #24]
+ 173 009e D6E7     		b	.L5
+ 174              	.L11:
+ 175              		.align	2
+ 176              	.L10:
+ 177 00a0 00000000 		.word	_ux_system_host_class_audio_name
+ 178              		.cfi_endproc
+ 179              	.LFE11:
+ 181              		.text
+ 182              	.Letext0:
+ 183              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 184              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 185              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 186              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 187              		.file 6 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_audio.h"
+ 188              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 189              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 190              		.file 9 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/cclto2zR.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_audio_write.c
+     /tmp/cclto2zR.s:20     .text._ux_host_class_audio_write:00000000 $t
+     /tmp/cclto2zR.s:26     .text._ux_host_class_audio_write:00000000 _ux_host_class_audio_write
+     /tmp/cclto2zR.s:177    .text._ux_host_class_audio_write:000000a0 $d
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_host_stack_class_instance_verify
+_ux_utility_semaphore_get
+_ux_host_class_audio_transfer_request
+_ux_utility_semaphore_put
+_ux_system_error_handler
+_ux_system_host_class_audio_name

@@ -1,0 +1,544 @@
+ARM GAS  /tmp/cct3uz59.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_directory_short_name_get_extended.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c"
+  19              		.section	.text._fx_directory_short_name_get_extended,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_short_name_get_extended
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_short_name_get_extended:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** #include "fx_directory.h"
+  30:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ARM GAS  /tmp/cct3uz59.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  32:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  33:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  34:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    _fx_directory_short_name_get_extended               PORTABLE C      */
+  37:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                           6.1          */
+  38:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  41:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    This function gets the short file name via the supplied long file   */
+  45:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    name. If the long file name is really a short file name, the short  */
+  46:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    file name will be returned.                                         */
+  47:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    media_ptr                             Media control block pointer   */
+  51:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    long_file_name                        Pointer to long (max 255) name*/
+  52:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    short_file_name                       Pointer to short (8.3) name   */
+  53:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    short_file_name_length                Buffer length for short name  */
+  54:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  OUTPUT                                                                */
+  56:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  57:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    return status                                                       */
+  58:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  CALLS                                                                 */
+  60:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    _fx_directory_search                  Search for the file name in   */
+  62:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  CALLED BY                                                             */
+  64:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    Application Code                                                    */
+  66:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  RELEASE HISTORY                                                       */
+  68:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*    DATE              NAME                      DESCRIPTION             */
+  70:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  72:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  73:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** /**************************************************************************/
+  76:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** UINT  _fx_directory_short_name_get_extended(FX_MEDIA *media_ptr, CHAR *long_file_name, CHAR *short_
+  77:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** {
+  29              		.loc 1 77 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 112
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 77 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+ARM GAS  /tmp/cct3uz59.s 			page 3
+
+
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+  43 0004 A0B0     		sub	sp, sp, #128
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 152
+  46 0006 0446     		mov	r4, r0
+  47 0008 0F46     		mov	r7, r1
+  48 000a 1546     		mov	r5, r2
+  49 000c 1E46     		mov	r6, r3
+  78:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  79:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** UINT         status;
+  50              		.loc 1 79 1 is_stmt 1 view .LVU2
+  80:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** UINT         i;
+  51              		.loc 1 80 1 view .LVU3
+  81:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** FX_DIR_ENTRY dir_entry;
+  52              		.loc 1 81 1 view .LVU4
+  82:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  83:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  84:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Setup pointer to media name buffer.  */
+  85:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     dir_entry.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+  53              		.loc 1 85 5 view .LVU5
+  54              		.loc 1 85 70 is_stmt 0 view .LVU6
+  55 000e 00F69C13 		addw	r3, r0, #2460
+  56              	.LVL1:
+  57              		.loc 1 85 33 view .LVU7
+  58 0012 0493     		str	r3, [sp, #16]
+  86:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  87:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Clear the short name string.  */
+  88:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     dir_entry.fx_dir_entry_short_name[0] =  0;
+  59              		.loc 1 88 5 is_stmt 1 view .LVU8
+  60              		.loc 1 88 42 is_stmt 0 view .LVU9
+  61 0014 0023     		movs	r3, #0
+  62 0016 8DF81430 		strb	r3, [sp, #20]
+  89:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  90:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  91:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_DIRECTORY_SHORT_NAME_GET, media_ptr, long_file_name, short_fil
+  63              		.loc 1 91 5 is_stmt 1 view .LVU10
+  64 001a 0393     		str	r3, [sp, #12]
+  65 001c 0293     		str	r3, [sp, #8]
+  66 001e 4FF40052 		mov	r2, #8192
+  67              	.LVL2:
+  68              		.loc 1 91 5 is_stmt 0 view .LVU11
+  69 0022 0192     		str	r2, [sp, #4]
+  70 0024 0093     		str	r3, [sp]
+  71 0026 2B46     		mov	r3, r5
+  72 0028 0A46     		mov	r2, r1
+  73 002a 0146     		mov	r1, r0
+  74              	.LVL3:
+  75              		.loc 1 91 5 view .LVU12
+  76 002c EE20     		movs	r0, #238
+  77              	.LVL4:
+  78              		.loc 1 91 5 view .LVU13
+  79 002e FFF7FEFF 		bl	_fx_trace_event_insert
+  80              	.LVL5:
+  92:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ARM GAS  /tmp/cct3uz59.s 			page 4
+
+
+  93:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Protect against other threads accessing the media.  */
+  94:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     FX_PROTECT
+  81              		.loc 1 94 5 is_stmt 1 view .LVU14
+  82 0032 2268     		ldr	r2, [r4]
+  83 0034 2C4B     		ldr	r3, .L20
+  84 0036 9A42     		cmp	r2, r3
+  85 0038 04D0     		beq	.L17
+  86              		.loc 1 94 5 is_stmt 0 discriminator 1 view .LVU15
+  87 003a 1124     		movs	r4, #17
+  88              	.LVL6:
+  89              	.L1:
+  95:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  96:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Search the system for the supplied short directory name.  */
+  97:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     status =  _fx_directory_search(media_ptr, long_file_name, &dir_entry, FX_NULL, FX_NULL);
+  98:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+  99:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Determine if the search was successful.  */
+ 100:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     if (status != FX_SUCCESS)
+ 101:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 102:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 103:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Release media protection.  */
+ 104:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         FX_UNPROTECT
+ 105:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 106:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Return the error code.  */
+ 107:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         return(status);
+ 108:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     }
+ 109:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Determine if there is a short name.  */
+ 111:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     if (dir_entry.fx_dir_entry_short_name[0])
+ 112:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 113:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 114:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Yes, there is a short name. Copy the short file name portion into the destination string
+ 115:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         i =  0;
+ 116:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         while ((i < (FX_MAX_SHORT_NAME_LEN - 1)) && (dir_entry.fx_dir_entry_short_name[i]) && (i < 
+ 117:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 118:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 119:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             /* Copy a character of the long file name into the destination name.  */
+ 120:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             short_file_name[i] =   dir_entry.fx_dir_entry_short_name[i];
+ 121:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             /* Move to next character.  */
+ 123:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             i++;
+ 124:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 125:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 126:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Ensure the short file name is NULL terminated.  */
+ 127:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         short_file_name[i] =  FX_NULL;
+ 128:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         
+ 129:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Check if the buffer is too short for the name.  */
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         if ((i == (short_file_name_length - 1)) && (dir_entry.fx_dir_entry_short_name[i]))
+ 131:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 132:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             /* Buffer too short, return error.  */
+ 134:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             status =  FX_BUFFER_ERROR;
+ 135:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 136:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     }
+ 137:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     else
+ 138:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 139:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 140:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* There is no long file name, simply copy the long file name into the short file name dest
+ARM GAS  /tmp/cct3uz59.s 			page 5
+
+
+ 141:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         i =  0;
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         while ((i < (FX_MAX_SHORT_NAME_LEN - 1)) && (dir_entry.fx_dir_entry_name[i]) && (i < (short
+ 143:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 144:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 145:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             /* Copy a character of the file name into the destination name.  */
+ 146:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             short_file_name[i] =   dir_entry.fx_dir_entry_name[i];
+ 147:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 148:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             /* Move to next character.  */
+ 149:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             i++;
+ 150:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 151:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 152:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Ensure the short file name is NULL terminated.  */
+ 153:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         short_file_name[i] =  FX_NULL;
+ 154:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 155:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         /* Check if the buffer is too short for the name.  */
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         if ((i == (short_file_name_length - 1)) && (dir_entry.fx_dir_entry_name[i]))
+ 157:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 158:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             /* Buffer too short, return error.  */
+ 160:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****             status =  FX_BUFFER_ERROR;
+ 161:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 162:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     }
+ 163:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 164:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Release media protection.  */
+ 165:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     FX_UNPROTECT
+ 166:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 167:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     /* Return the completion status.  */
+ 168:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     return(status);
+ 169:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** }
+  90              		.loc 1 169 1 view .LVU16
+  91 003c 2046     		mov	r0, r4
+  92 003e 20B0     		add	sp, sp, #128
+  93              	.LCFI2:
+  94              		.cfi_remember_state
+  95              		.cfi_def_cfa_offset 24
+  96              		@ sp needed
+  97 0040 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  98              	.LVL7:
+  99              	.L17:
+ 100              	.LCFI3:
+ 101              		.cfi_restore_state
+  94:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 102              		.loc 1 94 5 is_stmt 1 discriminator 2 view .LVU17
+ 103 0044 04F5E478 		add	r8, r4, #456
+ 104 0048 4FF0FF31 		mov	r1, #-1
+ 105 004c 4046     		mov	r0, r8
+ 106 004e FFF7FEFF 		bl	_tx_mutex_get
+ 107              	.LVL8:
+  94:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 108              		.loc 1 94 5 is_stmt 0 discriminator 1 view .LVU18
+ 109 0052 0028     		cmp	r0, #0
+ 110 0054 46D1     		bne	.L12
+  97:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 111              		.loc 1 97 5 is_stmt 1 view .LVU19
+  97:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 112              		.loc 1 97 15 is_stmt 0 view .LVU20
+ 113 0056 0023     		movs	r3, #0
+ARM GAS  /tmp/cct3uz59.s 			page 6
+
+
+ 114 0058 0093     		str	r3, [sp]
+ 115 005a 04AA     		add	r2, sp, #16
+ 116 005c 3946     		mov	r1, r7
+ 117 005e 2046     		mov	r0, r4
+ 118 0060 FFF7FEFF 		bl	_fx_directory_search
+ 119              	.LVL9:
+ 100:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 120              		.loc 1 100 5 is_stmt 1 view .LVU21
+ 100:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 121              		.loc 1 100 8 is_stmt 0 view .LVU22
+ 122 0064 0446     		mov	r4, r0
+ 123              	.LVL10:
+ 100:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 124              		.loc 1 100 8 view .LVU23
+ 125 0066 20B9     		cbnz	r0, .L18
+ 111:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 126              		.loc 1 111 5 is_stmt 1 view .LVU24
+ 111:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 127              		.loc 1 111 42 is_stmt 0 view .LVU25
+ 128 0068 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
+ 111:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     {
+ 129              		.loc 1 111 8 view .LVU26
+ 130 006c DBB9     		cbnz	r3, .L13
+ 141:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         while ((i < (FX_MAX_SHORT_NAME_LEN - 1)) && (dir_entry.fx_dir_entry_name[i]) && (i < (short
+ 131              		.loc 1 141 11 view .LVU27
+ 132 006e 0346     		mov	r3, r0
+ 133 0070 25E0     		b	.L5
+ 134              	.L18:
+ 104:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 135              		.loc 1 104 9 is_stmt 1 view .LVU28
+ 136 0072 4046     		mov	r0, r8
+ 137              	.LVL11:
+ 104:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 138              		.loc 1 104 9 is_stmt 0 view .LVU29
+ 139 0074 FFF7FEFF 		bl	_tx_mutex_put
+ 140              	.LVL12:
+ 107:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     }
+ 141              		.loc 1 107 9 is_stmt 1 view .LVU30
+ 107:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****     }
+ 142              		.loc 1 107 15 is_stmt 0 view .LVU31
+ 143 0078 E0E7     		b	.L1
+ 144              	.LVL13:
+ 145              	.L7:
+ 120:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 146              		.loc 1 120 13 is_stmt 1 view .LVU32
+ 120:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 147              		.loc 1 120 32 is_stmt 0 view .LVU33
+ 148 007a EA54     		strb	r2, [r5, r3]
+ 123:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 149              		.loc 1 123 13 is_stmt 1 view .LVU34
+ 123:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 150              		.loc 1 123 14 is_stmt 0 view .LVU35
+ 151 007c 0133     		adds	r3, r3, #1
+ 152              	.LVL14:
+ 153              	.L4:
+ 116:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 154              		.loc 1 116 92 is_stmt 1 view .LVU36
+ARM GAS  /tmp/cct3uz59.s 			page 7
+
+
+ 155 007e 0B2B     		cmp	r3, #11
+ 156 0080 08D8     		bhi	.L6
+ 116:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 157              		.loc 1 116 87 is_stmt 0 discriminator 1 view .LVU37
+ 158 0082 03F18002 		add	r2, r3, #128
+ 159 0086 6A44     		add	r2, sp, r2
+ 160 0088 12F86C2C 		ldrb	r2, [r2, #-108]	@ zero_extendqisi2
+ 116:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 161              		.loc 1 116 50 discriminator 1 view .LVU38
+ 162 008c 12B1     		cbz	r2, .L6
+ 116:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 163              		.loc 1 116 124 discriminator 2 view .LVU39
+ 164 008e 711E     		subs	r1, r6, #1
+ 116:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 165              		.loc 1 116 92 discriminator 2 view .LVU40
+ 166 0090 9942     		cmp	r1, r3
+ 167 0092 F2D8     		bhi	.L7
+ 168              	.L6:
+ 127:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         
+ 169              		.loc 1 127 9 is_stmt 1 view .LVU41
+ 127:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         
+ 170              		.loc 1 127 28 is_stmt 0 view .LVU42
+ 171 0094 0022     		movs	r2, #0
+ 172 0096 EA54     		strb	r2, [r5, r3]
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 173              		.loc 1 130 9 is_stmt 1 view .LVU43
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 174              		.loc 1 130 43 is_stmt 0 view .LVU44
+ 175 0098 013E     		subs	r6, r6, #1
+ 176              	.LVL15:
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 177              		.loc 1 130 12 view .LVU45
+ 178 009a 9E42     		cmp	r6, r3
+ 179 009c 05D0     		beq	.L19
+ 180              	.LVL16:
+ 181              	.L8:
+ 165:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 182              		.loc 1 165 5 is_stmt 1 view .LVU46
+ 183 009e 4046     		mov	r0, r8
+ 184 00a0 FFF7FEFF 		bl	_tx_mutex_put
+ 185              	.LVL17:
+ 168:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** }
+ 186              		.loc 1 168 5 view .LVU47
+ 168:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** }
+ 187              		.loc 1 168 11 is_stmt 0 view .LVU48
+ 188 00a4 CAE7     		b	.L1
+ 189              	.LVL18:
+ 190              	.L13:
+ 115:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         while ((i < (FX_MAX_SHORT_NAME_LEN - 1)) && (dir_entry.fx_dir_entry_short_name[i]) && (i < 
+ 191              		.loc 1 115 11 view .LVU49
+ 192 00a6 0346     		mov	r3, r0
+ 193 00a8 E9E7     		b	.L4
+ 194              	.LVL19:
+ 195              	.L19:
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 196              		.loc 1 130 86 discriminator 1 view .LVU50
+ 197 00aa 8033     		adds	r3, r3, #128
+ARM GAS  /tmp/cct3uz59.s 			page 8
+
+
+ 198              	.LVL20:
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 199              		.loc 1 130 86 discriminator 1 view .LVU51
+ 200 00ac 6B44     		add	r3, sp, r3
+ 201              	.LVL21:
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 202              		.loc 1 130 86 discriminator 1 view .LVU52
+ 203 00ae 13F86C3C 		ldrb	r3, [r3, #-108]	@ zero_extendqisi2
+ 130:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 204              		.loc 1 130 49 discriminator 1 view .LVU53
+ 205 00b2 002B     		cmp	r3, #0
+ 206 00b4 F3D0     		beq	.L8
+ 134:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 207              		.loc 1 134 20 view .LVU54
+ 208 00b6 2124     		movs	r4, #33
+ 209 00b8 F1E7     		b	.L8
+ 210              	.LVL22:
+ 211              	.L10:
+ 146:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 212              		.loc 1 146 13 is_stmt 1 view .LVU55
+ 146:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 213              		.loc 1 146 32 is_stmt 0 view .LVU56
+ 214 00ba EA54     		strb	r2, [r5, r3]
+ 149:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 215              		.loc 1 149 13 is_stmt 1 view .LVU57
+ 149:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 216              		.loc 1 149 14 is_stmt 0 view .LVU58
+ 217 00bc 0133     		adds	r3, r3, #1
+ 218              	.LVL23:
+ 219              	.L5:
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 220              		.loc 1 142 86 is_stmt 1 view .LVU59
+ 221 00be 0B2B     		cmp	r3, #11
+ 222 00c0 05D8     		bhi	.L9
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 223              		.loc 1 142 63 is_stmt 0 discriminator 1 view .LVU60
+ 224 00c2 049A     		ldr	r2, [sp, #16]
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 225              		.loc 1 142 81 discriminator 1 view .LVU61
+ 226 00c4 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 227              		.loc 1 142 50 discriminator 1 view .LVU62
+ 228 00c6 12B1     		cbz	r2, .L9
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 229              		.loc 1 142 118 discriminator 2 view .LVU63
+ 230 00c8 711E     		subs	r1, r6, #1
+ 142:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 231              		.loc 1 142 86 discriminator 2 view .LVU64
+ 232 00ca 9942     		cmp	r1, r3
+ 233 00cc F5D8     		bhi	.L10
+ 234              	.L9:
+ 153:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 235              		.loc 1 153 9 is_stmt 1 view .LVU65
+ 153:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 236              		.loc 1 153 28 is_stmt 0 view .LVU66
+ 237 00ce 0022     		movs	r2, #0
+ 238 00d0 EA54     		strb	r2, [r5, r3]
+ARM GAS  /tmp/cct3uz59.s 			page 9
+
+
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 239              		.loc 1 156 9 is_stmt 1 view .LVU67
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 240              		.loc 1 156 43 is_stmt 0 view .LVU68
+ 241 00d2 013E     		subs	r6, r6, #1
+ 242              	.LVL24:
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 243              		.loc 1 156 12 view .LVU69
+ 244 00d4 9E42     		cmp	r6, r3
+ 245 00d6 E2D1     		bne	.L8
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 246              		.loc 1 156 62 discriminator 1 view .LVU70
+ 247 00d8 049A     		ldr	r2, [sp, #16]
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 248              		.loc 1 156 80 discriminator 1 view .LVU71
+ 249 00da D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 250              	.LVL25:
+ 156:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         {
+ 251              		.loc 1 156 49 discriminator 1 view .LVU72
+ 252 00dc 002B     		cmp	r3, #0
+ 253 00de DED0     		beq	.L8
+ 160:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c ****         }
+ 254              		.loc 1 160 20 view .LVU73
+ 255 00e0 2124     		movs	r4, #33
+ 256 00e2 DCE7     		b	.L8
+ 257              	.LVL26:
+ 258              	.L12:
+  94:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 259              		.loc 1 94 5 discriminator 3 view .LVU74
+ 260 00e4 1124     		movs	r4, #17
+ 261              	.LVL27:
+  94:Middlewares/ST/filex/common/src/fx_directory_short_name_get_extended.c **** 
+ 262              		.loc 1 94 5 discriminator 3 view .LVU75
+ 263 00e6 A9E7     		b	.L1
+ 264              	.L21:
+ 265              		.align	2
+ 266              	.L20:
+ 267 00e8 4944454D 		.word	1296385097
+ 268              		.cfi_endproc
+ 269              	.LFE8:
+ 271              		.text
+ 272              	.Letext0:
+ 273              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 274              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 275              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 276              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 277              		.file 6 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ARM GAS  /tmp/cct3uz59.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_short_name_get_extended.c
+     /tmp/cct3uz59.s:20     .text._fx_directory_short_name_get_extended:00000000 $t
+     /tmp/cct3uz59.s:26     .text._fx_directory_short_name_get_extended:00000000 _fx_directory_short_name_get_extended
+     /tmp/cct3uz59.s:267    .text._fx_directory_short_name_get_extended:000000e8 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_fx_directory_search
+_tx_mutex_put

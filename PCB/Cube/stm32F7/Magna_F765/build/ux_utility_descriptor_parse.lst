@@ -1,0 +1,279 @@
+ARM GAS  /tmp/ccbeYPl3.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_descriptor_parse.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c"
+  19              		.section	.text._ux_utility_descriptor_parse,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_descriptor_parse
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_descriptor_parse:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+ARM GAS  /tmp/ccbeYPl3.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/ 
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  FUNCTION                                               RELEASE        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    _ux_utility_descriptor_parse                        PORTABLE C      */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                           6.1          */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    This function will unpack a USB descriptor from the bus into a      */
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    memory aligned structure.                                           */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    raw_descriptor                        Pointer to packed descriptor  */
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    descriptor_structure                  Components of the descriptor  */
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    descriptor_entries                    Number of entries in the      */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                            descriptor                  */
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    descriptor                            Pointer to the unpacked       */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                            descriptor                  */
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  OUTPUT                                                                */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    None                                                                */
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  CALLS                                                                 */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    _ux_utility_long_get                  Get 32-bit value              */
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    _ux_utility_short_get                 Get 16-bit value              */
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  CALLED BY                                                             */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    USBX Components                                                     */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  RELEASE HISTORY                                                       */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** /**************************************************************************/
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** VOID  _ux_utility_descriptor_parse(UCHAR * raw_descriptor, UCHAR * descriptor_structure,
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****                         UINT descriptor_entries, UCHAR * descriptor)
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** {
+  29              		.loc 1 79 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 79 1 is_stmt 0 view .LVU1
+  34 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+ARM GAS  /tmp/ccbeYPl3.s 			page 3
+
+
+  37              		.cfi_offset 3, -24
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 0646     		mov	r6, r0
+  44 0004 0C46     		mov	r4, r1
+  45 0006 1D46     		mov	r5, r3
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     /* Loop on all the entries in this descriptor.  */
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     while(descriptor_entries--)
+  46              		.loc 1 82 5 is_stmt 1 view .LVU2
+  47              		.loc 1 82 10 is_stmt 0 view .LVU3
+  48 0008 06E0     		b	.L2
+  49              	.LVL1:
+  50              	.L9:
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     {
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         /* Get the length of that component.  */
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         switch(*descriptor_structure++)
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         {
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         /* Check the size then build the component from the source and
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****            insert it into the target descriptor.  */
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         case 4:
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  93:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             *((ULONG *) descriptor) =  _ux_utility_long_get(raw_descriptor);
+  51              		.loc 1 93 13 is_stmt 1 view .LVU4
+  52              		.loc 1 93 40 is_stmt 0 view .LVU5
+  53 000a 3046     		mov	r0, r6
+  54 000c FFF7FEFF 		bl	_ux_utility_long_get
+  55              	.LVL2:
+  56              		.loc 1 93 37 discriminator 1 view .LVU6
+  57 0010 2860     		str	r0, [r5]
+  94:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor +=  4;
+  58              		.loc 1 94 13 is_stmt 1 view .LVU7
+  59              		.loc 1 94 28 is_stmt 0 view .LVU8
+  60 0012 0436     		adds	r6, r6, #4
+  61              	.LVL3:
+  95:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             break;                   
+  62              		.loc 1 95 13 is_stmt 1 view .LVU9
+  63              	.L5:
+  96:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  97:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         case 2:
+  98:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             *((ULONG *) descriptor) = (ULONG) _ux_utility_short_get(raw_descriptor);
+ 100:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor += 2;
+ 101:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             break;                   
+ 102:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+ 103:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         default:
+ 104:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             *((ULONG *) descriptor) =  (ULONG) *raw_descriptor;
+ 106:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor++;
+ 107:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         }
+ 108:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+ 109:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         /* Add the size of the component to the destination.  */
+ARM GAS  /tmp/ccbeYPl3.s 			page 4
+
+
+ 110:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         descriptor +=  4;
+  64              		.loc 1 110 9 view .LVU10
+  65              		.loc 1 110 20 is_stmt 0 view .LVU11
+  66 0014 0435     		adds	r5, r5, #4
+  67              	.LVL4:
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     {
+  68              		.loc 1 82 29 view .LVU12
+  69 0016 3A46     		mov	r2, r7
+  70              	.LVL5:
+  71              	.L2:
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     {
+  72              		.loc 1 82 11 is_stmt 1 view .LVU13
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     {
+  73              		.loc 1 82 29 is_stmt 0 view .LVU14
+  74 0018 571E     		subs	r7, r2, #1
+  75              	.LVL6:
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     {
+  76              		.loc 1 82 11 view .LVU15
+  77 001a 7AB1     		cbz	r2, .L8
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         {
+  78              		.loc 1 86 9 is_stmt 1 view .LVU16
+  79              	.LVL7:
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         {
+  80              		.loc 1 86 16 is_stmt 0 view .LVU17
+  81 001c 14F8013B 		ldrb	r3, [r4], #1	@ zero_extendqisi2
+  82              	.LVL8:
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         {
+  83              		.loc 1 86 9 view .LVU18
+  84 0020 022B     		cmp	r3, #2
+  85 0022 05D0     		beq	.L3
+  86 0024 042B     		cmp	r3, #4
+  87 0026 F0D0     		beq	.L9
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor++;
+  88              		.loc 1 105 13 is_stmt 1 view .LVU19
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor++;
+  89              		.loc 1 105 48 is_stmt 0 view .LVU20
+  90 0028 16F8013B 		ldrb	r3, [r6], #1	@ zero_extendqisi2
+  91              	.LVL9:
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor++;
+  92              		.loc 1 105 37 view .LVU21
+  93 002c 2B60     		str	r3, [r5]
+ 106:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         }
+  94              		.loc 1 106 13 is_stmt 1 view .LVU22
+  95              	.LVL10:
+ 106:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****         }
+  96              		.loc 1 106 13 is_stmt 0 view .LVU23
+  97 002e F1E7     		b	.L5
+  98              	.L3:
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor += 2;
+  99              		.loc 1 99 13 is_stmt 1 view .LVU24
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor += 2;
+ 100              		.loc 1 99 47 is_stmt 0 view .LVU25
+ 101 0030 3046     		mov	r0, r6
+ 102 0032 FFF7FEFF 		bl	_ux_utility_short_get
+ 103              	.LVL11:
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             raw_descriptor += 2;
+ 104              		.loc 1 99 37 discriminator 1 view .LVU26
+ARM GAS  /tmp/ccbeYPl3.s 			page 5
+
+
+ 105 0036 2860     		str	r0, [r5]
+ 100:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             break;                   
+ 106              		.loc 1 100 13 is_stmt 1 view .LVU27
+ 100:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****             break;                   
+ 107              		.loc 1 100 28 is_stmt 0 view .LVU28
+ 108 0038 0236     		adds	r6, r6, #2
+ 109              	.LVL12:
+ 101:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+ 110              		.loc 1 101 13 is_stmt 1 view .LVU29
+ 111 003a EBE7     		b	.L5
+ 112              	.L8:
+ 111:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     }
+ 112:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** 
+ 113:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     /* Return to caller.  */
+ 114:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c ****     return;
+ 115:Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c **** }
+ 113              		.loc 1 115 1 is_stmt 0 view .LVU30
+ 114 003c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 115              		.loc 1 115 1 view .LVU31
+ 116              		.cfi_endproc
+ 117              	.LFE11:
+ 119              		.text
+ 120              	.Letext0:
+ 121              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 122              		.file 3 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccbeYPl3.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_descriptor_parse.c
+     /tmp/ccbeYPl3.s:20     .text._ux_utility_descriptor_parse:00000000 $t
+     /tmp/ccbeYPl3.s:26     .text._ux_utility_descriptor_parse:00000000 _ux_utility_descriptor_parse
+
+UNDEFINED SYMBOLS
+_ux_utility_long_get
+_ux_utility_short_get

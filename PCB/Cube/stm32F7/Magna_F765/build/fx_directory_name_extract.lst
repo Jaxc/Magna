@@ -1,0 +1,341 @@
+ARM GAS  /tmp/ccRYBGbx.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_directory_name_extract.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_name_extract.c"
+  19              		.section	.text._fx_directory_name_extract,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_name_extract
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_name_extract:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccRYBGbx.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  33:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  34:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  35:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  38:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    _fx_directory_name_extract                          PORTABLE C      */
+  39:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                           6.1          */
+  40:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    This function extracts the file name from the supplied input        */
+  47:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    string.  If there is nothing left after the extracted name, a NULL  */
+  48:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    is returned to the caller.  Otherwise, if something is left, a      */
+  49:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    pointer to it is returned.                                          */
+  50:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  INPUT                                                                 */
+  52:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    source_ptr                           Source string pointer          */
+  54:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    dest_ptr                             Destination string pointer     */
+  55:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  OUTPUT                                                                */
+  57:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    Pointer to Next Name                 (if multiple directories)      */
+  59:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  CALLS                                                                 */
+  61:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    None                                                                */
+  63:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    FileX System Functions                                              */
+  67:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  73:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  74:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /*                                                                        */
+  76:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** /**************************************************************************/
+  77:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** CHAR  *_fx_directory_name_extract(CHAR *source_ptr, CHAR *dest_ptr)
+  78:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** {
+  29              		.loc 1 78 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  79:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  80:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** UINT i;
+  34              		.loc 1 80 1 view .LVU1
+  81:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ARM GAS  /tmp/ccRYBGbx.s 			page 3
+
+
+  82:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  83:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Set the destination string to NULL.  */
+  84:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     dest_ptr[0] = 0;
+  35              		.loc 1 84 5 view .LVU2
+  36              		.loc 1 84 17 is_stmt 0 view .LVU3
+  37 0000 0023     		movs	r3, #0
+  38 0002 0B70     		strb	r3, [r1]
+  85:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  86:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Is a backslash present?  */
+  87:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     if ((*source_ptr == '\\') || (*source_ptr == '/'))
+  39              		.loc 1 87 5 is_stmt 1 view .LVU4
+  40              		.loc 1 87 10 is_stmt 0 view .LVU5
+  41 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  42              		.loc 1 87 8 view .LVU6
+  43 0006 2F2B     		cmp	r3, #47
+  44 0008 18BF     		it	ne
+  45 000a 5C2B     		cmpne	r3, #92
+  46 000c 02D1     		bne	.L3
+  88:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+  89:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  90:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Advance the string pointer.  */
+  91:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         source_ptr++;
+  47              		.loc 1 91 9 is_stmt 1 view .LVU7
+  48              		.loc 1 91 19 is_stmt 0 view .LVU8
+  49 000e 0130     		adds	r0, r0, #1
+  50              	.LVL1:
+  51              		.loc 1 91 19 view .LVU9
+  52 0010 00E0     		b	.L3
+  53              	.L4:
+  92:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+  93:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  94:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Loop to remove any leading spaces.  */
+  95:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     while (*source_ptr == ' ')
+  96:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+  97:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+  98:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Position past leading space.  */
+  99:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         source_ptr++;
+  54              		.loc 1 99 9 is_stmt 1 view .LVU10
+  55              		.loc 1 99 19 is_stmt 0 view .LVU11
+  56 0012 0130     		adds	r0, r0, #1
+  57              	.LVL2:
+  58              	.L3:
+  95:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+  59              		.loc 1 95 24 is_stmt 1 view .LVU12
+  95:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+  60              		.loc 1 95 12 is_stmt 0 view .LVU13
+  61 0014 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  95:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+  62              		.loc 1 95 24 view .LVU14
+  63 0016 202B     		cmp	r3, #32
+  64 0018 FBD0     		beq	.L4
+ 100:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+ 101:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 102:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Loop to extract the name.  */
+ 103:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     i = 0;
+  65              		.loc 1 103 7 view .LVU15
+  66 001a 0023     		movs	r3, #0
+ARM GAS  /tmp/ccRYBGbx.s 			page 4
+
+
+  67              	.L5:
+  68              	.LVL3:
+ 104:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     while (*source_ptr)
+  69              		.loc 1 104 12 is_stmt 1 view .LVU16
+  70 001c 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+  71 001e 4AB1     		cbz	r2, .L6
+ 105:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 106:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 107:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* If another backslash is present, break the loop.  */
+ 108:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         if ((*source_ptr == '\\') || (*source_ptr == '/'))
+  72              		.loc 1 108 9 view .LVU17
+  73              		.loc 1 108 12 is_stmt 0 view .LVU18
+  74 0020 2F2A     		cmp	r2, #47
+  75 0022 18BF     		it	ne
+  76 0024 5C2A     		cmpne	r2, #92
+  77 0026 05D0     		beq	.L6
+ 109:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         {
+ 110:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****             break;
+ 111:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         }
+ 112:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 113:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Long name can be at most 255 characters, but are further limited by the
+ 114:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****            FX_MAX_LONG_NAME_LEN define.  */
+ 115:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         if (i == FX_MAX_LONG_NAME_LEN - 1)
+  78              		.loc 1 115 9 is_stmt 1 view .LVU19
+  79              		.loc 1 115 12 is_stmt 0 view .LVU20
+  80 0028 FF2B     		cmp	r3, #255
+  81 002a 03D0     		beq	.L6
+ 116:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         {
+ 117:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****             break;
+ 118:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         }
+ 119:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 120:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Store the character.  */
+ 121:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         dest_ptr[i] =  *source_ptr++;
+  82              		.loc 1 121 9 is_stmt 1 view .LVU21
+  83              		.loc 1 121 35 is_stmt 0 view .LVU22
+  84 002c 0130     		adds	r0, r0, #1
+  85              	.LVL4:
+  86              		.loc 1 121 21 view .LVU23
+  87 002e CA54     		strb	r2, [r1, r3]
+ 122:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 123:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Increment the character counter.  */
+ 124:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         i++;
+  88              		.loc 1 124 9 is_stmt 1 view .LVU24
+  89              		.loc 1 124 10 is_stmt 0 view .LVU25
+  90 0030 0133     		adds	r3, r3, #1
+  91              	.LVL5:
+  92              		.loc 1 124 10 view .LVU26
+  93 0032 F3E7     		b	.L5
+  94              	.L6:
+ 125:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+ 126:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 127:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* NULL-terminate the string.  */
+ 128:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     dest_ptr[i] =  0;
+  95              		.loc 1 128 5 is_stmt 1 view .LVU27
+  96              		.loc 1 128 17 is_stmt 0 view .LVU28
+  97 0034 0022     		movs	r2, #0
+  98 0036 CA54     		strb	r2, [r1, r3]
+ARM GAS  /tmp/ccRYBGbx.s 			page 5
+
+
+ 129:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 130:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Determine if we can backup to the previous character.  */
+ 131:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     if (i)
+  99              		.loc 1 131 5 is_stmt 1 view .LVU29
+ 100              		.loc 1 131 8 is_stmt 0 view .LVU30
+ 101 0038 23B1     		cbz	r3, .L9
+ 132:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 133:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 134:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Yes, we can move backwards.  */
+ 135:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         i--;
+ 102              		.loc 1 135 9 is_stmt 1 view .LVU31
+ 103              		.loc 1 135 10 is_stmt 0 view .LVU32
+ 104 003a 013B     		subs	r3, r3, #1
+ 105              	.LVL6:
+ 106              		.loc 1 135 10 view .LVU33
+ 107 003c 02E0     		b	.L9
+ 108              	.L10:
+ 136:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+ 137:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 138:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Get rid of trailing blanks in the destination string.  */
+ 139:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     while (dest_ptr[i] == ' ')
+ 140:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 141:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Set this entry to NULL.  */
+ 143:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         dest_ptr[i] =  0;
+ 109              		.loc 1 143 9 is_stmt 1 view .LVU34
+ 110              		.loc 1 143 21 is_stmt 0 view .LVU35
+ 111 003e 0022     		movs	r2, #0
+ 112 0040 CA54     		strb	r2, [r1, r3]
+ 144:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 145:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Backup to the next character. Since leading spaces have been removed,
+ 146:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****            we know that the index is always greater than 1.  */
+ 147:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         i--;
+ 113              		.loc 1 147 9 is_stmt 1 view .LVU36
+ 114              		.loc 1 147 10 is_stmt 0 view .LVU37
+ 115 0042 013B     		subs	r3, r3, #1
+ 116              	.LVL7:
+ 117              	.L9:
+ 139:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 118              		.loc 1 139 24 is_stmt 1 view .LVU38
+ 139:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 119              		.loc 1 139 20 is_stmt 0 view .LVU39
+ 120 0044 CA5C     		ldrb	r2, [r1, r3]	@ zero_extendqisi2
+ 139:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 121              		.loc 1 139 24 view .LVU40
+ 122 0046 202A     		cmp	r2, #32
+ 123 0048 F9D0     		beq	.L10
+ 148:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+ 149:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 150:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Determine if the source string is now at the end.  */
+ 151:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     if (*source_ptr == 0)
+ 124              		.loc 1 151 5 is_stmt 1 view .LVU41
+ 125              		.loc 1 151 9 is_stmt 0 view .LVU42
+ 126 004a 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 127              	.LVL8:
+ 128              		.loc 1 151 8 view .LVU43
+ 129 004c 03B1     		cbz	r3, .L13
+ARM GAS  /tmp/ccRYBGbx.s 			page 6
+
+
+ 130              	.LVL9:
+ 131              	.L1:
+ 152:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     {
+ 153:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 154:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         /* Yes, return a NULL pointer.  */
+ 155:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****         source_ptr = FX_NULL;
+ 156:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+ 157:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** 
+ 158:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     /* Return the last pointer position in the source.  */
+ 159:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     return(source_ptr);
+ 160:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** }
+ 132              		.loc 1 160 1 view .LVU44
+ 133 004e 7047     		bx	lr
+ 134              	.LVL10:
+ 135              	.L13:
+ 155:Middlewares/ST/filex/common/src/fx_directory_name_extract.c ****     }
+ 136              		.loc 1 155 20 view .LVU45
+ 137 0050 0020     		movs	r0, #0
+ 138              	.LVL11:
+ 159:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** }
+ 139              		.loc 1 159 5 is_stmt 1 view .LVU46
+ 159:Middlewares/ST/filex/common/src/fx_directory_name_extract.c **** }
+ 140              		.loc 1 159 11 is_stmt 0 view .LVU47
+ 141 0052 FCE7     		b	.L1
+ 142              		.cfi_endproc
+ 143              	.LFE8:
+ 145              		.text
+ 146              	.Letext0:
+ 147              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/ccRYBGbx.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_name_extract.c
+     /tmp/ccRYBGbx.s:20     .text._fx_directory_name_extract:00000000 $t
+     /tmp/ccRYBGbx.s:26     .text._fx_directory_name_extract:00000000 _fx_directory_name_extract
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,534 @@
+ARM GAS  /tmp/ccmKsoAP.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_storage_read_toc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c"
+  19              		.section	.text._ux_device_class_storage_read_toc,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_class_storage_read_toc
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_class_storage_read_toc:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**   Device Storage Class                                                */
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #define UX_SOURCE_CODE
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #include "ux_device_class_storage.h"
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #include "ux_device_stack.h"
+ARM GAS  /tmp/ccmKsoAP.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #if UX_SLAVE_CLASS_STORAGE_BUFFER_SIZE < 20
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #error UX_SLAVE_CLASS_STORAGE_BUFFER_SIZE too small, please check
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #endif
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/ 
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  FUNCTION                                               RELEASE        */ 
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    _ux_device_class_storage_read_toc                   PORTABLE C      */ 
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                           6.1.10       */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  AUTHOR                                                                */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  DESCRIPTION                                                           */
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    This function performs a READ_TOC SCSI command. This is only for    */ 
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    supporting CD-ROM emulation and is hardwired to what Windows wants. */ 
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  INPUT                                                                 */ 
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    storage                               Pointer to storage class      */ 
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    endpoint_in                           Pointer to IN endpoint        */
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    endpoint_out                          Pointer to OUT endpoint       */
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    cbwcb                                 Pointer to CBWCB              */ 
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  OUTPUT                                                                */ 
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    Completion Status                                                   */ 
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  CALLS                                                                 */ 
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    _ux_device_stack_transfer_request     Transfer request              */ 
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    _ux_device_class_storage_csw_send     Send CSW                      */ 
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    _ux_utility_memory_set                Set memory                    */
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    _ux_utility_memory_copy               Copy memory                   */
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    _ux_utility_short_get_big_endian      Get 16-bit big endian         */
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  CALLED BY                                                             */ 
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    Device Storage Class                                                */
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  RELEASE HISTORY                                                       */ 
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */ 
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                            optimized command logic,    */
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                            verified memset and memcpy  */
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                            cases,                      */
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                            resulting in version 6.1    */
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                            added standalone support,   */
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                            resulting in version 6.1.10 */
+ARM GAS  /tmp/ccmKsoAP.s 			page 3
+
+
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /*                                                                        */
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** /**************************************************************************/
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** UINT  _ux_device_class_storage_read_toc(UX_SLAVE_CLASS_STORAGE *storage, ULONG lun, 
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****                                             UX_SLAVE_ENDPOINT *endpoint_in,
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****                                             UX_SLAVE_ENDPOINT *endpoint_out, UCHAR * cbwcb)
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** {
+  29              		.loc 1 93 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 4, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 93 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+  43 0004 84B0     		sub	sp, sp, #16
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 40
+  46 0006 0646     		mov	r6, r0
+  47 0008 1446     		mov	r4, r2
+  48 000a DDF82880 		ldr	r8, [sp, #40]
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** UINT                    status;
+  49              		.loc 1 95 1 is_stmt 1 view .LVU2
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** UX_SLAVE_TRANSFER       *transfer_request;
+  50              		.loc 1 96 1 view .LVU3
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** ULONG                   allocation_length;
+  51              		.loc 1 97 1 view .LVU4
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** ULONG                   toc_length;
+  52              		.loc 1 98 1 view .LVU5
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** UCHAR                   *toc_buffer;
+  53              		.loc 1 99 1 view .LVU6
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     UX_PARAMETER_NOT_USED(lun);
+  54              		.loc 1 102 5 view .LVU7
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     UX_PARAMETER_NOT_USED(endpoint_out);
+  55              		.loc 1 103 5 view .LVU8
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_DEVICE_CLASS_STORAGE_READ_TOC, storage, lun, 0, 0, UX_TRACE_DE
+  56              		.loc 1 106 5 view .LVU9
+  57 000e 0025     		movs	r5, #0
+  58 0010 0395     		str	r5, [sp, #12]
+  59 0012 0295     		str	r5, [sp, #8]
+  60 0014 4FF08043 		mov	r3, #1073741824
+  61              	.LVL1:
+  62              		.loc 1 106 5 is_stmt 0 view .LVU10
+  63 0018 0193     		str	r3, [sp, #4]
+  64 001a 0095     		str	r5, [sp]
+  65 001c 2B46     		mov	r3, r5
+  66 001e 0A46     		mov	r2, r1
+ARM GAS  /tmp/ccmKsoAP.s 			page 4
+
+
+  67              	.LVL2:
+  68              		.loc 1 106 5 view .LVU11
+  69 0020 0146     		mov	r1, r0
+  70              	.LVL3:
+  71              		.loc 1 106 5 view .LVU12
+  72 0022 4FF47570 		mov	r0, #980
+  73              	.LVL4:
+  74              		.loc 1 106 5 view .LVU13
+  75 0026 FFF7FEFF 		bl	_ux_trace_event_insert
+  76              	.LVL5:
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Obtain the pointer to the transfer request.  */
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     transfer_request =  &endpoint_in -> ux_slave_endpoint_transfer_request;
+  77              		.loc 1 109 5 is_stmt 1 view .LVU14
+  78              		.loc 1 109 22 is_stmt 0 view .LVU15
+  79 002a 04F13007 		add	r7, r4, #48
+  80              	.LVL6:
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Obtain TOC buffer.  */
+ 112:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     toc_buffer = transfer_request -> ux_slave_transfer_request_data_pointer;
+  81              		.loc 1 112 5 is_stmt 1 view .LVU16
+  82              		.loc 1 112 16 is_stmt 0 view .LVU17
+  83 002e E46B     		ldr	r4, [r4, #60]
+  84              	.LVL7:
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 114:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Reset this buffer.  */
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     _ux_utility_memory_set(toc_buffer,0,20); /* Use case of memset is verified. */
+  85              		.loc 1 115 5 is_stmt 1 view .LVU18
+  86 0030 1422     		movs	r2, #20
+  87 0032 2946     		mov	r1, r5
+  88 0034 2046     		mov	r0, r4
+  89 0036 FFF7FEFF 		bl	_ux_utility_memory_set
+  90              	.LVL8:
+ 116:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Get the allocation length.  */
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     allocation_length =  _ux_utility_short_get_big_endian(cbwcb + UX_SLAVE_CLASS_STORAGE_READ_TOC_A
+  91              		.loc 1 118 5 view .LVU19
+  92              		.loc 1 118 26 is_stmt 0 view .LVU20
+  93 003a 08F10700 		add	r0, r8, #7
+  94 003e FFF7FEFF 		bl	_ux_utility_short_get_big_endian
+  95              	.LVL9:
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 120:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Insert the fist and last tack number.  */
+ 121:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     toc_buffer[2] =  0x01;
+  96              		.loc 1 121 5 is_stmt 1 view .LVU21
+  97              		.loc 1 121 19 is_stmt 0 view .LVU22
+  98 0042 0123     		movs	r3, #1
+  99 0044 A370     		strb	r3, [r4, #2]
+ 122:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     toc_buffer[3] =  0x01;
+ 100              		.loc 1 122 5 is_stmt 1 view .LVU23
+ 101              		.loc 1 122 19 is_stmt 0 view .LVU24
+ 102 0046 E370     		strb	r3, [r4, #3]
+ 123:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 124:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Set TOC length by default.  */
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     toc_length = 20;
+ 103              		.loc 1 125 5 is_stmt 1 view .LVU25
+ 104              	.LVL10:
+ARM GAS  /tmp/ccmKsoAP.s 			page 5
+
+
+ 126:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 127:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Insert the ADR and control values.  */
+ 128:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     toc_buffer[5] =  0x14;
+ 105              		.loc 1 128 5 view .LVU26
+ 106              		.loc 1 128 19 is_stmt 0 view .LVU27
+ 107 0048 1422     		movs	r2, #20
+ 108 004a 6271     		strb	r2, [r4, #5]
+ 129:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 130:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Insert the TOC tack number.  */
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     toc_buffer[6] =  0x01;
+ 109              		.loc 1 131 5 is_stmt 1 view .LVU28
+ 110              		.loc 1 131 19 is_stmt 0 view .LVU29
+ 111 004c A371     		strb	r3, [r4, #6]
+ 132:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 133:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Check if the request is for the TOC or time stamp.  */
+ 134:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     switch (*(cbwcb + UX_SLAVE_CLASS_STORAGE_READ_TOC_FORMAT))
+ 112              		.loc 1 134 5 is_stmt 1 view .LVU30
+ 113              		.loc 1 134 13 is_stmt 0 view .LVU31
+ 114 004e 98F80230 		ldrb	r3, [r8, #2]	@ zero_extendqisi2
+ 115              		.loc 1 134 5 view .LVU32
+ 116 0052 012B     		cmp	r3, #1
+ 117 0054 1DD0     		beq	.L2
+ 118 0056 022B     		cmp	r3, #2
+ 119 0058 02D0     		beq	.L3
+ 120 005a 23B3     		cbz	r3, .L4
+ 121 005c 1146     		mov	r1, r2
+ 122 005e 0CE0     		b	.L5
+ 123              	.L3:
+ 135:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     {
+ 136:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         case  0x02 :
+ 138:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 139:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Set the toc buffer length.  */
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_length  = 20;
+ 124              		.loc 1 140 13 is_stmt 1 view .LVU33
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 142:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Insert the TOC buffer length.  */
+ 143:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[1] =  0x12;
+ 125              		.loc 1 143 13 view .LVU34
+ 126              		.loc 1 143 27 is_stmt 0 view .LVU35
+ 127 0060 1223     		movs	r3, #18
+ 128 0062 6370     		strb	r3, [r4, #1]
+ 144:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 145:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Insert some time values.  */
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[10] =  0x02;
+ 129              		.loc 1 146 13 is_stmt 1 view .LVU36
+ 130              		.loc 1 146 28 is_stmt 0 view .LVU37
+ 131 0064 0223     		movs	r3, #2
+ 132 0066 A372     		strb	r3, [r4, #10]
+ 147:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[13] =  0x17;
+ 133              		.loc 1 147 13 is_stmt 1 view .LVU38
+ 134              		.loc 1 147 28 is_stmt 0 view .LVU39
+ 135 0068 1723     		movs	r3, #23
+ 136 006a 6373     		strb	r3, [r4, #13]
+ 148:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 137              		.loc 1 148 13 is_stmt 1 view .LVU40
+ 138              		.loc 1 148 28 is_stmt 0 view .LVU41
+ARM GAS  /tmp/ccmKsoAP.s 			page 6
+
+
+ 139 006c AA23     		movs	r3, #170
+ 140 006e A373     		strb	r3, [r4, #14]
+ 149:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[18] =  0x04;
+ 141              		.loc 1 149 13 is_stmt 1 view .LVU42
+ 142              		.loc 1 149 28 is_stmt 0 view .LVU43
+ 143 0070 0423     		movs	r3, #4
+ 144 0072 A374     		strb	r3, [r4, #18]
+ 150:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0x1a;
+ 145              		.loc 1 150 13 is_stmt 1 view .LVU44
+ 146              		.loc 1 150 28 is_stmt 0 view .LVU45
+ 147 0074 1A23     		movs	r3, #26
+ 148 0076 E374     		strb	r3, [r4, #19]
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 152:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             break;
+ 149              		.loc 1 152 13 is_stmt 1 view .LVU46
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 150              		.loc 1 140 25 is_stmt 0 view .LVU47
+ 151 0078 1421     		movs	r1, #20
+ 152              	.LVL11:
+ 153              	.L5:
+ 153:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 154:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         case 0x01 :
+ 155:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 156:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Set the toc buffer length.  */
+ 157:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_length  = 19;
+ 158:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 159:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Insert the TOC buffer length.  */
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[1] =  0x12;
+ 161:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[13] =  0x17;
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 164:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0xb0;
+ 165:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             break;
+ 167:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 168:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         case 0x00 :
+ 169:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 170:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Set the toc buffer length.  */
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_length  = 20;
+ 172:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 173:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Insert the TOC buffer length.  */
+ 174:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[1] =  0x12;
+ 175:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 176:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             /* Insert some time values.  */
+ 177:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[10] =  0x02;
+ 178:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[13] =  0x17;
+ 179:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 180:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[18] =  0x04;
+ 181:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0x1a;
+ 182:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 183:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             break;
+ 184:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     }
+ 185:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 186:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Check how much we can send back.  */
+ 187:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     if (allocation_length > toc_length)
+ 154              		.loc 1 187 5 is_stmt 1 view .LVU48
+ 155              		.loc 1 187 8 is_stmt 0 view .LVU49
+ARM GAS  /tmp/ccmKsoAP.s 			page 7
+
+
+ 156 007a 8142     		cmp	r1, r0
+ 157 007c 00D3     		bcc	.L6
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 158              		.loc 1 118 26 view .LVU50
+ 159 007e 0146     		mov	r1, r0
+ 160              	.LVL12:
+ 161              	.L6:
+ 188:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 189:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         /* We return less than demanded.  */
+ 190:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         allocation_length = toc_length;
+ 191:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #if defined(UX_DEVICE_STANDALONE)
+ 193:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 194:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Next: Transfer (DATA).  */
+ 195:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_device_class_storage_state = UX_DEVICE_CLASS_STORAGE_STATE_TRANS_START;
+ 196:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_device_class_storage_cmd_state = UX_DEVICE_CLASS_STORAGE_CMD_READ;
+ 197:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 198:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_device_class_storage_transfer = transfer_request;
+ 199:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_device_class_storage_device_length = allocation_length;
+ 200:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_device_class_storage_data_length = allocation_length;
+ 201:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_device_class_storage_data_count = 0;
+ 202:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 203:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #else
+ 204:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 205:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Send a data payload with the TOC response buffer.  */
+ 206:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     _ux_device_stack_transfer_request(transfer_request, allocation_length, allocation_length);
+ 162              		.loc 1 206 5 is_stmt 1 view .LVU51
+ 163 0080 0A46     		mov	r2, r1
+ 164 0082 3846     		mov	r0, r7
+ 165 0084 FFF7FEFF 		bl	_ux_device_stack_transfer_request
+ 166              	.LVL13:
+ 207:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** #endif
+ 208:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 209:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Now we set the CSW with success.  */
+ 210:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     storage -> ux_slave_class_storage_csw_status = UX_SLAVE_CLASS_STORAGE_CSW_PASSED;
+ 167              		.loc 1 210 5 view .LVU52
+ 168              		.loc 1 210 50 is_stmt 0 view .LVU53
+ 169 0088 0020     		movs	r0, #0
+ 170 008a 3065     		str	r0, [r6, #80]
+ 211:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     status = UX_SUCCESS;
+ 171              		.loc 1 211 5 is_stmt 1 view .LVU54
+ 172              	.LVL14:
+ 212:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 213:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     /* Return completion status.  */
+ 214:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     return(status);
+ 173              		.loc 1 214 5 view .LVU55
+ 215:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     
+ 216:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** }
+ 174              		.loc 1 216 1 is_stmt 0 view .LVU56
+ 175 008c 04B0     		add	sp, sp, #16
+ 176              	.LCFI2:
+ 177              		.cfi_remember_state
+ 178              		.cfi_def_cfa_offset 24
+ 179              		@ sp needed
+ 180 008e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 181              	.LVL15:
+ 182              	.L2:
+ARM GAS  /tmp/ccmKsoAP.s 			page 8
+
+
+ 183              	.LCFI3:
+ 184              		.cfi_restore_state
+ 157:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 185              		.loc 1 157 13 is_stmt 1 view .LVU57
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 186              		.loc 1 160 13 view .LVU58
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 187              		.loc 1 160 27 is_stmt 0 view .LVU59
+ 188 0092 1223     		movs	r3, #18
+ 189 0094 6370     		strb	r3, [r4, #1]
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 190              		.loc 1 162 13 is_stmt 1 view .LVU60
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 191              		.loc 1 162 28 is_stmt 0 view .LVU61
+ 192 0096 1723     		movs	r3, #23
+ 193 0098 6373     		strb	r3, [r4, #13]
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0xb0;
+ 194              		.loc 1 163 13 is_stmt 1 view .LVU62
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0xb0;
+ 195              		.loc 1 163 28 is_stmt 0 view .LVU63
+ 196 009a AA23     		movs	r3, #170
+ 197 009c A373     		strb	r3, [r4, #14]
+ 164:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 198              		.loc 1 164 13 is_stmt 1 view .LVU64
+ 164:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 199              		.loc 1 164 28 is_stmt 0 view .LVU65
+ 200 009e B023     		movs	r3, #176
+ 201 00a0 E374     		strb	r3, [r4, #19]
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 202              		.loc 1 166 13 is_stmt 1 view .LVU66
+ 157:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 203              		.loc 1 157 25 is_stmt 0 view .LVU67
+ 204 00a2 1321     		movs	r1, #19
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 205              		.loc 1 166 13 view .LVU68
+ 206 00a4 E9E7     		b	.L5
+ 207              	.LVL16:
+ 208              	.L4:
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 209              		.loc 1 171 13 is_stmt 1 view .LVU69
+ 174:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 210              		.loc 1 174 13 view .LVU70
+ 174:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             
+ 211              		.loc 1 174 27 is_stmt 0 view .LVU71
+ 212 00a6 1223     		movs	r3, #18
+ 213 00a8 6370     		strb	r3, [r4, #1]
+ 177:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[13] =  0x17;
+ 214              		.loc 1 177 13 is_stmt 1 view .LVU72
+ 177:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[13] =  0x17;
+ 215              		.loc 1 177 28 is_stmt 0 view .LVU73
+ 216 00aa 0223     		movs	r3, #2
+ 217 00ac A372     		strb	r3, [r4, #10]
+ 178:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 218              		.loc 1 178 13 is_stmt 1 view .LVU74
+ 178:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[14] =  0xAA;
+ 219              		.loc 1 178 28 is_stmt 0 view .LVU75
+ 220 00ae 1723     		movs	r3, #23
+ARM GAS  /tmp/ccmKsoAP.s 			page 9
+
+
+ 221 00b0 6373     		strb	r3, [r4, #13]
+ 179:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[18] =  0x04;
+ 222              		.loc 1 179 13 is_stmt 1 view .LVU76
+ 179:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[18] =  0x04;
+ 223              		.loc 1 179 28 is_stmt 0 view .LVU77
+ 224 00b2 AA23     		movs	r3, #170
+ 225 00b4 A373     		strb	r3, [r4, #14]
+ 180:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0x1a;
+ 226              		.loc 1 180 13 is_stmt 1 view .LVU78
+ 180:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****             toc_buffer[19] =  0x1a;
+ 227              		.loc 1 180 28 is_stmt 0 view .LVU79
+ 228 00b6 0423     		movs	r3, #4
+ 229 00b8 A374     		strb	r3, [r4, #18]
+ 181:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 230              		.loc 1 181 13 is_stmt 1 view .LVU80
+ 181:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c **** 
+ 231              		.loc 1 181 28 is_stmt 0 view .LVU81
+ 232 00ba 1A23     		movs	r3, #26
+ 233 00bc E374     		strb	r3, [r4, #19]
+ 183:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     }
+ 234              		.loc 1 183 13 is_stmt 1 view .LVU82
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****         
+ 235              		.loc 1 171 25 is_stmt 0 view .LVU83
+ 236 00be 1421     		movs	r1, #20
+ 183:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_read_toc.c ****     }
+ 237              		.loc 1 183 13 view .LVU84
+ 238 00c0 DBE7     		b	.L5
+ 239              		.cfi_endproc
+ 240              	.LFE11:
+ 242              		.text
+ 243              	.Letext0:
+ 244              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 245              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 246              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 247              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 248              		.file 6 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_storage.h"
+ 249              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_device_stack.h"
+ 250              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccmKsoAP.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_storage_read_toc.c
+     /tmp/ccmKsoAP.s:20     .text._ux_device_class_storage_read_toc:00000000 $t
+     /tmp/ccmKsoAP.s:26     .text._ux_device_class_storage_read_toc:00000000 _ux_device_class_storage_read_toc
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_utility_memory_set
+_ux_utility_short_get_big_endian
+_ux_device_stack_transfer_request

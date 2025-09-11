@@ -1,0 +1,499 @@
+ARM GAS  /tmp/cc1DTevP.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_storage_get_status_notification.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_not
+  19              		.section	.text._ux_device_class_storage_get_status_notification,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_class_storage_get_status_notification
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_class_storage_get_status_notification:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**   Device Storage Class                                                */
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #define UX_SOURCE_CODE
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #include "ux_device_class_storage.h"
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #include "ux_device_stack.h"
+ARM GAS  /tmp/cc1DTevP.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    _ux_device_class_storage_get_status_notification    PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                           6.1.10       */
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    This function performs a GET_STATUS_NOTIFICATION command.           */ 
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  INPUT                                                                 */ 
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    storage                               Pointer to storage class      */ 
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    endpoint_in                           Pointer to IN endpoint        */
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    endpoint_out                          Pointer to OUT endpoint       */
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    cbwcb                                 Pointer to CBWCB              */ 
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  OUTPUT                                                                */ 
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    Completion Status                                                   */ 
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  CALLS                                                                 */ 
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    _ux_device_class_storage_csw_send     Send CSW                      */ 
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    _ux_device_stack_transfer_request     Transfer request              */ 
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    _ux_device_stack_endpoint_stall       Stall endpoint                */
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    _ux_utility_short_put_big_endian      Put 16-bit big endian         */
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    _ux_utility_memory_copy               Copy memory                   */ 
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  CALLED BY                                                             */ 
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    Device Storage Class                                                */ 
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  RELEASE HISTORY                                                       */ 
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */ 
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                            optimized command logic,    */
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                            verified memset and memcpy  */
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                            cases,                      */
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                            resulting in version 6.1    */
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                            added standalone support,   */
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                            resulting in version 6.1.10 */
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /*                                                                        */
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** /**************************************************************************/
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** UINT  _ux_device_class_storage_get_status_notification(UX_SLAVE_CLASS_STORAGE *storage, ULONG lun,
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             UX_SLAVE_ENDPOINT *endpoint_in,
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             UX_SLAVE_ENDPOINT *endpoint_out, UCHAR * cbwcb)
+ARM GAS  /tmp/cc1DTevP.s 			page 3
+
+
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** {
+  29              		.loc 1 88 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 4, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 88 1 is_stmt 0 view .LVU1
+  34 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 20
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 87B0     		sub	sp, sp, #28
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 48
+  45 0004 0546     		mov	r5, r0
+  46 0006 0C46     		mov	r4, r1
+  47 0008 1646     		mov	r6, r2
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** UINT                    status;
+  48              		.loc 1 90 1 is_stmt 1 view .LVU2
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** UX_SLAVE_TRANSFER       *transfer_request;
+  49              		.loc 1 91 1 view .LVU3
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** UCHAR                   *media_notification;
+  50              		.loc 1 92 1 view .LVU4
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** ULONG                   media_notification_length;
+  51              		.loc 1 93 1 view .LVU5
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** ULONG                   notification_class;
+  52              		.loc 1 94 1 view .LVU6
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     UX_PARAMETER_NOT_USED(endpoint_out);
+  53              		.loc 1 96 5 view .LVU7
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_DEVICE_CLASS_STORAGE_READ_CAPACITY, storage, lun, 0, 0, UX_TRA
+  54              		.loc 1 99 5 view .LVU8
+  55 000a 0023     		movs	r3, #0
+  56              	.LVL1:
+  57              		.loc 1 99 5 is_stmt 0 view .LVU9
+  58 000c 0393     		str	r3, [sp, #12]
+  59 000e 0293     		str	r3, [sp, #8]
+  60 0010 4FF08042 		mov	r2, #1073741824
+  61              	.LVL2:
+  62              		.loc 1 99 5 view .LVU10
+  63 0014 0192     		str	r2, [sp, #4]
+  64 0016 0093     		str	r3, [sp]
+  65 0018 0A46     		mov	r2, r1
+  66 001a 0146     		mov	r1, r0
+  67              	.LVL3:
+  68              		.loc 1 99 5 view .LVU11
+  69 001c 40F2D230 		movw	r0, #978
+  70              	.LVL4:
+  71              		.loc 1 99 5 view .LVU12
+  72 0020 FFF7FEFF 		bl	_ux_trace_event_insert
+  73              	.LVL5:
+ARM GAS  /tmp/cc1DTevP.s 			page 4
+
+
+  74              		.loc 1 99 129 is_stmt 1 discriminator 1 view .LVU13
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Default CSW to failed.  */
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     storage -> ux_slave_class_storage_csw_status = UX_SLAVE_CLASS_STORAGE_CSW_FAILED;
+  75              		.loc 1 102 5 view .LVU14
+  76              		.loc 1 102 50 is_stmt 0 view .LVU15
+  77 0024 0123     		movs	r3, #1
+  78 0026 2B65     		str	r3, [r5, #80]
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Ensure the callback has been initialized.  */
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     if (storage -> ux_slave_class_storage_lun[lun].ux_slave_class_storage_media_notification == UX_
+  79              		.loc 1 105 5 is_stmt 1 view .LVU16
+  80              		.loc 1 105 51 is_stmt 0 view .LVU17
+  81 0028 E318     		adds	r3, r4, r3
+  82 002a C3EBC303 		rsb	r3, r3, r3, lsl #3
+  83 002e 05EBC303 		add	r3, r5, r3, lsl #3
+  84 0032 5F68     		ldr	r7, [r3, #4]
+  85              		.loc 1 105 8 view .LVU18
+  86 0034 D7B1     		cbz	r7, .L8
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     {
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #if !defined(UX_DEVICE_STANDALONE)
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* We need to STALL the IN endpoint.  The endpoint will be reset by the host.  */
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         _ux_device_stack_endpoint_stall(endpoint_in);
+ 112:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #endif
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 114:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* And update the REQUEST_SENSE codes.  */
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_slave_class_storage_lun[lun].ux_slave_class_storage_request_sense_status =
+ 116:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                                UX_DEVICE_CLASS_STORAGE_SENSE_STATUS(0x05,0x26,0x01)
+ 117:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Return error.  */
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         return(UX_FUNCTION_NOT_SUPPORTED);
+ 120:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 121:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 122:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Extract the notification from the cbwcb.  */
+ 123:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     notification_class = (ULONG) *(cbwcb + UX_SLAVE_CLASS_STORAGE_EVENT_NOTIFICATION_CLASS_REQUEST)
+  87              		.loc 1 123 5 is_stmt 1 view .LVU19
+  88              	.LVL6:
+ 124:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Obtain the notification of the device.  */
+ 126:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     status =  storage -> ux_slave_class_storage_lun[lun].ux_slave_class_storage_media_notification(
+  89              		.loc 1 126 5 view .LVU20
+  90              		.loc 1 126 15 is_stmt 0 view .LVU21
+  91 0036 C4EBC403 		rsb	r3, r4, r4, lsl #3
+  92 003a 05EBC303 		add	r3, r5, r3, lsl #3
+  93 003e DA69     		ldr	r2, [r3, #28]
+  94 0040 04AB     		add	r3, sp, #16
+  95 0042 0193     		str	r3, [sp, #4]
+  96              	.LVL7:
+  97              		.loc 1 126 15 view .LVU22
+  98 0044 05AB     		add	r3, sp, #20
+  99 0046 0093     		str	r3, [sp]
+ 100 0048 0C9B     		ldr	r3, [sp, #48]
+ 101 004a 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 102 004c 2146     		mov	r1, r4
+ 103 004e 2846     		mov	r0, r5
+ARM GAS  /tmp/cc1DTevP.s 			page 5
+
+
+ 104 0050 B847     		blx	r7
+ 105              	.LVL8:
+ 106 0052 0446     		mov	r4, r0
+ 107              	.LVL9:
+ 127:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                 storage -> ux_slave_class_storage_lun[lun].ux_slave_class_storage_m
+ 128:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                 notification_class, 
+ 129:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                 &media_notification, 
+ 130:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                 &media_notification_length);
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 132:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Check the notification length.  */
+ 133:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     if (media_notification_length > UX_SLAVE_REQUEST_DATA_MAX_LENGTH - sizeof(USHORT))
+ 108              		.loc 1 133 5 is_stmt 1 view .LVU23
+ 109              		.loc 1 133 35 is_stmt 0 view .LVU24
+ 110 0054 0499     		ldr	r1, [sp, #16]
+ 111              		.loc 1 133 8 view .LVU25
+ 112 0056 40F2FE73 		movw	r3, #2046
+ 113 005a 9942     		cmp	r1, r3
+ 114 005c 11D8     		bhi	.L9
+ 134:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     {
+ 135:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 136:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_MEMORY_INSUFFICIENT, 0, 0, 0, UX_TRACE_ERRORS, 0
+ 138:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 139:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Error callback.  */
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_MEMORY_INSUFFI
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 142:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Set status code.  */
+ 143:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         status = UX_MEMORY_INSUFFICIENT;
+ 144:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 145:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Check the status for error.  */
+ 147:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     if (status != UX_SUCCESS)
+ 115              		.loc 1 147 5 is_stmt 1 view .LVU26
+ 116              		.loc 1 147 8 is_stmt 0 view .LVU27
+ 117 005e 20B3     		cbz	r0, .L6
+ 118              	.LVL10:
+ 119              	.L5:
+ 148:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     {
+ 149:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         
+ 150:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #if !defined(UX_DEVICE_STANDALONE)
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 152:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* We need to STALL the IN endpoint.  The endpoint will be reset by the host.  */
+ 153:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         _ux_device_stack_endpoint_stall(endpoint_in);
+ 120              		.loc 1 153 9 is_stmt 1 view .LVU28
+ 121 0060 3046     		mov	r0, r6
+ 122 0062 FFF7FEFF 		bl	_ux_device_stack_endpoint_stall
+ 123              	.LVL11:
+ 124              	.L1:
+ 154:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #endif
+ 155:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }    
+ 156:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     else
+ 157:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     {
+ 158:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 159:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Obtain the pointer to the transfer request.  */
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         transfer_request =  &endpoint_in -> ux_slave_endpoint_transfer_request;
+ 161:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Put the length of the notification length in the buffer.  */
+ARM GAS  /tmp/cc1DTevP.s 			page 6
+
+
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         _ux_utility_short_put_big_endian(transfer_request -> ux_slave_transfer_request_data_pointer
+ 164:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 165:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Copy the CSW into the transfer request memory.  */
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         _ux_utility_memory_copy(transfer_request -> ux_slave_transfer_request_data_pointer + sizeof
+ 167:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             media_notification, 
+ 168:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             media_notification_length); /* Use case of memcpy is ve
+ 169:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         
+ 170:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Update the notification length. */
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         media_notification_length += (ULONG)sizeof (USHORT);
+ 172:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 173:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #if !defined(UX_DEVICE_STANDALONE)
+ 174:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Send a data payload with the notification buffer.  */
+ 175:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         _ux_device_stack_transfer_request(transfer_request, 
+ 176:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                   media_notification_length,
+ 177:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                   media_notification_length);
+ 178:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #else
+ 179:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Next: Transfer (DATA).  */
+ 180:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_device_class_storage_state = UX_DEVICE_CLASS_STORAGE_STATE_TRANS_START;
+ 181:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_device_class_storage_cmd_state = UX_DEVICE_CLASS_STORAGE_CMD_READ;
+ 182:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 183:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_device_class_storage_transfer = transfer_request;
+ 184:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_device_class_storage_device_length = media_notification_length;
+ 185:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_device_class_storage_data_length = media_notification_length;
+ 186:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_device_class_storage_data_count = 0;
+ 187:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         UX_SLAVE_TRANSFER_STATE_RESET(storage -> ux_device_class_storage_transfer);
+ 188:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #endif
+ 189:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 190:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         /* Now we set the CSW with success.  */
+ 191:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         storage -> ux_slave_class_storage_csw_status = UX_SLAVE_CLASS_STORAGE_CSW_PASSED;
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         status = UX_SUCCESS;
+ 193:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 194:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         
+ 195:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     /* Return completion status.  */
+ 196:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     return(status);
+ 197:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** }
+ 125              		.loc 1 197 1 is_stmt 0 view .LVU29
+ 126 0066 2046     		mov	r0, r4
+ 127 0068 07B0     		add	sp, sp, #28
+ 128              	.LCFI2:
+ 129              		.cfi_remember_state
+ 130              		.cfi_def_cfa_offset 20
+ 131              		@ sp needed
+ 132 006a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 133              	.LVL12:
+ 134              	.L8:
+ 135              	.LCFI3:
+ 136              		.cfi_restore_state
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** #endif
+ 137              		.loc 1 111 9 is_stmt 1 view .LVU30
+ 138 006c 3046     		mov	r0, r6
+ 139 006e FFF7FEFF 		bl	_ux_device_stack_endpoint_stall
+ 140              	.LVL13:
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                                UX_DEVICE_CLASS_STORAGE_SENSE_STATUS(0x05,0x26,0x01)
+ 141              		.loc 1 115 9 view .LVU31
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                                UX_DEVICE_CLASS_STORAGE_SENSE_STATUS(0x05,0x26,0x01)
+ 142              		.loc 1 115 96 is_stmt 0 view .LVU32
+ 143 0072 C4EBC404 		rsb	r4, r4, r4, lsl #3
+ARM GAS  /tmp/cc1DTevP.s 			page 7
+
+
+ 144              	.LVL14:
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                                UX_DEVICE_CLASS_STORAGE_SENSE_STATUS(0x05,0x26,0x01)
+ 145              		.loc 1 115 96 view .LVU33
+ 146 0076 05EBC404 		add	r4, r5, r4, lsl #3
+ 147 007a 174B     		ldr	r3, .L10
+ 148 007c 2362     		str	r3, [r4, #32]
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 149              		.loc 1 119 9 is_stmt 1 view .LVU34
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 150              		.loc 1 119 15 is_stmt 0 view .LVU35
+ 151 007e 5424     		movs	r4, #84
+ 152 0080 F1E7     		b	.L1
+ 153              	.LVL15:
+ 154              	.L9:
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 155              		.loc 1 137 9 is_stmt 1 view .LVU36
+ 156 0082 0022     		movs	r2, #0
+ 157 0084 0392     		str	r2, [sp, #12]
+ 158 0086 0292     		str	r2, [sp, #8]
+ 159 0088 4FF08073 		mov	r3, #16777216
+ 160 008c 0193     		str	r3, [sp, #4]
+ 161 008e 0092     		str	r2, [sp]
+ 162 0090 1346     		mov	r3, r2
+ 163 0092 1221     		movs	r1, #18
+ 164 0094 40F2E730 		movw	r0, #999
+ 165              	.LVL16:
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 166              		.loc 1 137 9 is_stmt 0 view .LVU37
+ 167 0098 FFF7FEFF 		bl	_ux_trace_event_insert
+ 168              	.LVL17:
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 169              		.loc 1 140 9 is_stmt 1 view .LVU38
+ 170 009c 1222     		movs	r2, #18
+ 171 009e 0721     		movs	r1, #7
+ 172 00a0 0220     		movs	r0, #2
+ 173 00a2 FFF7FEFF 		bl	_ux_system_error_handler
+ 174              	.LVL18:
+ 143:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 175              		.loc 1 143 9 view .LVU39
+ 147:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     {
+ 176              		.loc 1 147 5 view .LVU40
+ 143:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 177              		.loc 1 143 16 is_stmt 0 view .LVU41
+ 178 00a6 1224     		movs	r4, #18
+ 179 00a8 DAE7     		b	.L5
+ 180              	.LVL19:
+ 181              	.L6:
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         
+ 182              		.loc 1 160 9 is_stmt 1 view .LVU42
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         
+ 183              		.loc 1 160 26 is_stmt 0 view .LVU43
+ 184 00aa 06F13007 		add	r7, r6, #48
+ 185              	.LVL20:
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 186              		.loc 1 163 9 is_stmt 1 view .LVU44
+ 187 00ae 89B2     		uxth	r1, r1
+ 188 00b0 F06B     		ldr	r0, [r6, #60]
+ARM GAS  /tmp/cc1DTevP.s 			page 8
+
+
+ 189              	.LVL21:
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 190              		.loc 1 163 9 is_stmt 0 view .LVU45
+ 191 00b2 FFF7FEFF 		bl	_ux_utility_short_put_big_endian
+ 192              	.LVL22:
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             media_notification, 
+ 193              		.loc 1 166 9 is_stmt 1 view .LVU46
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             media_notification, 
+ 194              		.loc 1 166 50 is_stmt 0 view .LVU47
+ 195 00b6 F06B     		ldr	r0, [r6, #60]
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                             media_notification, 
+ 196              		.loc 1 166 9 view .LVU48
+ 197 00b8 049A     		ldr	r2, [sp, #16]
+ 198 00ba 0599     		ldr	r1, [sp, #20]
+ 199 00bc 0230     		adds	r0, r0, #2
+ 200 00be FFF7FEFF 		bl	_ux_utility_memory_copy
+ 201              	.LVL23:
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 202              		.loc 1 171 9 is_stmt 1 view .LVU49
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c **** 
+ 203              		.loc 1 171 35 is_stmt 0 view .LVU50
+ 204 00c2 0499     		ldr	r1, [sp, #16]
+ 205 00c4 0231     		adds	r1, r1, #2
+ 206 00c6 0491     		str	r1, [sp, #16]
+ 175:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****                                   media_notification_length,
+ 207              		.loc 1 175 9 is_stmt 1 view .LVU51
+ 208 00c8 0A46     		mov	r2, r1
+ 209 00ca 3846     		mov	r0, r7
+ 210 00cc FFF7FEFF 		bl	_ux_device_stack_transfer_request
+ 211              	.LVL24:
+ 191:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         status = UX_SUCCESS;
+ 212              		.loc 1 191 9 view .LVU52
+ 191:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****         status = UX_SUCCESS;
+ 213              		.loc 1 191 54 is_stmt 0 view .LVU53
+ 214 00d0 0023     		movs	r3, #0
+ 215 00d2 2B65     		str	r3, [r5, #80]
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 216              		.loc 1 192 9 is_stmt 1 view .LVU54
+ 217              	.LVL25:
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_storage_get_status_notification.c ****     }
+ 218              		.loc 1 192 9 is_stmt 0 view .LVU55
+ 219 00d4 C7E7     		b	.L1
+ 220              	.L11:
+ 221 00d6 00BF     		.align	2
+ 222              	.L10:
+ 223 00d8 05260100 		.word	75269
+ 224              		.cfi_endproc
+ 225              	.LFE11:
+ 227              		.text
+ 228              	.Letext0:
+ 229              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 230              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 231              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 232              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 233              		.file 6 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_storage.h"
+ 234              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 235              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_device_stack.h"
+ARM GAS  /tmp/cc1DTevP.s 			page 9
+
+
+ARM GAS  /tmp/cc1DTevP.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_storage_get_status_notification.c
+     /tmp/cc1DTevP.s:20     .text._ux_device_class_storage_get_status_notification:00000000 $t
+     /tmp/cc1DTevP.s:26     .text._ux_device_class_storage_get_status_notification:00000000 _ux_device_class_storage_get_status_notification
+     /tmp/cc1DTevP.s:223    .text._ux_device_class_storage_get_status_notification:000000d8 $d
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_device_stack_endpoint_stall
+_ux_system_error_handler
+_ux_utility_short_put_big_endian
+_ux_utility_memory_copy
+_ux_device_stack_transfer_request

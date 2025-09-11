@@ -1,0 +1,2320 @@
+ARM GAS  /tmp/ccAL3YfA.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_media_check.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_media_check.c"
+  19              		.section	.text._fx_media_check,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_media_check
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_media_check:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_check.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_check.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_check.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_check.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_check.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_check.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_media_check.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_media_check.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_check.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_check.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_check.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_check.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_check.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_check.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_media_check.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccAL3YfA.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_media_check.c **** #include "fx_media.h"
+  32:Middlewares/ST/filex/common/src/fx_media_check.c **** #include "fx_utility.h"
+  33:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+  34:Middlewares/ST/filex/common/src/fx_media_check.c **** #include "fx_directory_exFAT.h"
+  35:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+  36:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  37:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  38:Middlewares/ST/filex/common/src/fx_media_check.c **** /* Define parameters for FileX media check utility.  */
+  39:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  40:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifndef FX_MAX_DIRECTORY_NESTING
+  41:Middlewares/ST/filex/common/src/fx_media_check.c **** #define FX_MAX_DIRECTORY_NESTING 20
+  42:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif
+  43:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  44:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  45:Middlewares/ST/filex/common/src/fx_media_check.c **** /* Define data structures local to the FileX media check utility.  */
+  46:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  47:Middlewares/ST/filex/common/src/fx_media_check.c **** typedef struct CURRENT_DIRECTORY_ENTRY_STRUCT
+  48:Middlewares/ST/filex/common/src/fx_media_check.c **** {
+  49:Middlewares/ST/filex/common/src/fx_media_check.c ****     ULONG current_directory_entry;
+  50:Middlewares/ST/filex/common/src/fx_media_check.c ****     ULONG current_total_entries;
+  51:Middlewares/ST/filex/common/src/fx_media_check.c ****     ULONG current_start_cluster;
+  52:Middlewares/ST/filex/common/src/fx_media_check.c **** } CURRENT_DIRECTORY_ENTRY;
+  53:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  54:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  55:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+  56:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  57:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  FUNCTION                                               RELEASE        */
+  58:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_media_check                                     PORTABLE C      */
+  60:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                           6.1          */
+  61:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  AUTHOR                                                                */
+  62:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  64:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  DESCRIPTION                                                           */
+  66:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    This function checks the specified media for basic structural       */
+  68:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    errors, including cross linking, invalid FAT chains, and lost       */
+  69:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    clusters. The function also provides the capability to correct      */
+  70:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    errors.                                                             */
+  71:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    The algorithm is to follow all sub-directories immediately and      */
+  73:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    check their contents. The maximum depth of sub-directories is       */
+  74:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    determined by the constant FX_MAX_DIRECTORY_NESTING.                */
+  75:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    By default, this is set at 20. Basically, the FAT chain of every    */
+  76:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    file and sub-directory is traversed. If valid, clusters are marked  */
+  77:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    in a logical FAT bit map to signal they are already in-use. The     */
+  78:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    algorithm should detect any broken or cross linked FAT condition.   */
+  79:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  80:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    As for memory usage, the scratch memory supplied to the media check */
+  81:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    function is used to hold several directory entries, a data          */
+  82:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    structure to "stack" the current directory entry position before    */
+  83:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    diving into the sub-directory, and finally the logical FAT bit map. */
+  84:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    The basic data structures take from 512-1024 bytes and the logical  */
+  85:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    FAT bit map requires as many bits as there are clusters in your     */
+  86:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    device. For example, a device with 8000 clusters would require      */
+  87:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    1000 bytes to represent.                                            */
+ARM GAS  /tmp/ccAL3YfA.s 			page 3
+
+
+  88:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  89:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    On the performance end of things, the traversal is reasonably fast  */
+  90:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    and is basically linear with the number of files and their sizes.   */
+  91:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    The lost cluster checking at the end of media check is a bit more   */
+  92:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    performance comprehensive. It basically checks that each unused     */
+  93:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    cluster is actually marked as free. You might decide to bypass this */
+  94:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    step if no other errors are found... or there might be ways to      */
+  95:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    optimize the search by reading whole FAT sectors. You probably just */
+  96:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    need to see how it behaves in your system.                          */
+  97:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+  98:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  INPUT                                                                 */
+  99:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 100:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    media_ptr                             Pointer to a previously       */
+ 101:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            opened media                */
+ 102:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    scratch_memory_ptr                    Pointer to memory area for    */
+ 103:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            media check to use (as      */
+ 104:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            mentioned above)            */
+ 105:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    scratch_memory_size                   Size of the scratch memory    */
+ 106:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    error_correction_option               Specifies which - if any -    */
+ 107:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            errors are corrected by     */
+ 108:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            the media check function.   */
+ 109:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            Setting the following bit   */
+ 110:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            causes that error to be     */
+ 111:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            corrected:                  */
+ 112:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 113:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            0x01 -> Fix FAT Chain Errors*/
+ 114:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            0x02 -> Fix Directory Entry */
+ 115:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                      Errors            */
+ 116:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            0x04 -> Fix Lost Clusters   */
+ 117:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 118:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    errors_detected                       Specifies the destination     */
+ 119:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            ULONG to place the error    */
+ 120:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            report from media check.    */
+ 121:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            This has a similar bit map  */
+ 122:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            as before:                  */
+ 123:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 124:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            0x01 -> FAT Chain Error(s)  */
+ 125:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            0x02 -> Directory Entry     */
+ 126:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                      Error(s)          */
+ 127:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            0x04 -> Lost Cluster(s)     */
+ 128:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 129:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  OUTPUT                                                                */
+ 130:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 131:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    FX_SUCCESS                            Media check performed its     */
+ 132:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            operation successfully.     */
+ 133:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            This does not mean that     */
+ 134:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            there were no errors. The   */
+ 135:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            errors_detected variable    */
+ 136:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            needs to be examined.       */
+ 137:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    FX_MEDIA_NOT_OPEN                     The media was not open.       */
+ 138:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    FX_NOT_ENOUGH_MEMORY                  The scratch memory was not    */
+ 139:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            large enough or the nesting */
+ 140:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            depth was greater than the  */
+ 141:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            maximum specified.          */
+ 142:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    FX_IO_ERROR                           I/O Error reading/writing to  */
+ 143:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            the media.                  */
+ 144:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    FX_ERROR_NOT_FIXED                    Fundamental problem with      */
+ARM GAS  /tmp/ccAL3YfA.s 			page 4
+
+
+ 145:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            media that couldn't be fixed*/
+ 146:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 147:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  CALLS                                                                 */
+ 148:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 149:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_media_cache_invalidate            Invalidate the cache          */
+ 150:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_media_check_FAT_chain_check       Walk the supplied FAT chain   */
+ 151:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_media_check_lost_cluster_check    Check for lost clusters       */
+ 152:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_directory_entry_read              Directory entry read          */
+ 153:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_directory_entry_write             Directory entry write         */
+ 154:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_media_flush                       Flush changes to the media    */
+ 155:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    _fx_utility_FAT_entry_write           Write value to FAT entry      */
+ 156:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 157:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  CALLED BY                                                             */
+ 158:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 159:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    Application Code                                                    */
+ 160:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 161:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  RELEASE HISTORY                                                       */
+ 162:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 163:Middlewares/ST/filex/common/src/fx_media_check.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 164:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 165:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+ 166:Middlewares/ST/filex/common/src/fx_media_check.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+ 167:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                            resulting in version 6.1    */
+ 168:Middlewares/ST/filex/common/src/fx_media_check.c **** /*                                                                        */
+ 169:Middlewares/ST/filex/common/src/fx_media_check.c **** /**************************************************************************/
+ 170:Middlewares/ST/filex/common/src/fx_media_check.c **** UINT  _fx_media_check(FX_MEDIA *media_ptr, UCHAR *scratch_memory_ptr, ULONG scratch_memory_size, UL
+ 171:Middlewares/ST/filex/common/src/fx_media_check.c **** {
+  29              		.loc 1 171 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 4, pretend = 0, frame = 48
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 171 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 36
+  37              		.cfi_offset 4, -36
+  38              		.cfi_offset 5, -32
+  39              		.cfi_offset 6, -28
+  40              		.cfi_offset 7, -24
+  41              		.cfi_offset 8, -20
+  42              		.cfi_offset 9, -16
+  43              		.cfi_offset 10, -12
+  44              		.cfi_offset 11, -8
+  45              		.cfi_offset 14, -4
+  46 0004 91B0     		sub	sp, sp, #68
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 104
+  49 0006 9346     		mov	fp, r2
+  50 0008 0593     		str	r3, [sp, #20]
+  51 000a DDF86880 		ldr	r8, [sp, #104]
+ 172:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 173:Middlewares/ST/filex/common/src/fx_media_check.c **** CURRENT_DIRECTORY_ENTRY *current_directory;
+  52              		.loc 1 173 1 is_stmt 1 view .LVU2
+ 174:Middlewares/ST/filex/common/src/fx_media_check.c **** ULONG                    total_entries, last_cluster, valid_clusters;
+  53              		.loc 1 174 1 view .LVU3
+ 175:Middlewares/ST/filex/common/src/fx_media_check.c **** ULONG                    bytes_per_cluster, i, current_errors;
+  54              		.loc 1 175 1 view .LVU4
+ARM GAS  /tmp/ccAL3YfA.s 			page 5
+
+
+ 176:Middlewares/ST/filex/common/src/fx_media_check.c **** UINT                     status, long_name_size;
+  55              		.loc 1 176 1 view .LVU5
+ 177:Middlewares/ST/filex/common/src/fx_media_check.c **** UINT                     current_directory_index;
+  56              		.loc 1 177 1 view .LVU6
+ 178:Middlewares/ST/filex/common/src/fx_media_check.c **** UCHAR                   *logical_fat, *working_ptr;
+  57              		.loc 1 178 1 view .LVU7
+ 179:Middlewares/ST/filex/common/src/fx_media_check.c **** ALIGN_TYPE               address_mask;
+  58              		.loc 1 179 1 view .LVU8
+ 180:Middlewares/ST/filex/common/src/fx_media_check.c **** FX_DIR_ENTRY            *temp_dir_ptr, *source_dir_ptr, *dir_entry_ptr;
+  59              		.loc 1 180 1 view .LVU9
+ 181:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 182:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef TX_ENABLE_EVENT_TRACE
+ 183:Middlewares/ST/filex/common/src/fx_media_check.c **** TX_TRACE_BUFFER_ENTRY   *trace_event;
+  60              		.loc 1 183 1 view .LVU10
+ 184:Middlewares/ST/filex/common/src/fx_media_check.c **** ULONG                    trace_timestamp;
+  61              		.loc 1 184 1 view .LVU11
+ 185:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif
+ 186:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 187:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 188:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_errors = 0;
+ 189:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif
+ 190:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 191:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Check the media to make sure it is open.  */
+ 192:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  62              		.loc 1 192 5 view .LVU12
+  63              		.loc 1 192 19 is_stmt 0 view .LVU13
+  64 000e 0268     		ldr	r2, [r0]
+  65              	.LVL1:
+  66              		.loc 1 192 8 view .LVU14
+  67 0010 9F4B     		ldr	r3, .L57
+  68              	.LVL2:
+  69              		.loc 1 192 8 view .LVU15
+  70 0012 9A42     		cmp	r2, r3
+  71 0014 04D0     		beq	.L37
+ 193:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 194:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 195:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Return the media not opened error.  */
+ 196:Middlewares/ST/filex/common/src/fx_media_check.c ****         return(FX_MEDIA_NOT_OPEN);
+  72              		.loc 1 196 15 view .LVU16
+  73 0016 1127     		movs	r7, #17
+  74              	.LVL3:
+  75              	.L1:
+ 197:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 198:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 199:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 200:Middlewares/ST/filex/common/src/fx_media_check.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_MEDIA_CHECK, media_ptr, scratch_memory_ptr, scratch_memory_siz
+ 201:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 202:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Protect against other threads accessing the media.  */
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c ****     FX_PROTECT
+ 204:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 205:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Determine if there are any opened files.  */
+ 206:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (media_ptr -> fx_media_opened_file_count)
+ 207:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 208:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 209:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* There are opened files... this is an error!  */
+ 210:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 211:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Release protection.  */
+ARM GAS  /tmp/ccAL3YfA.s 			page 6
+
+
+ 212:Middlewares/ST/filex/common/src/fx_media_check.c ****         FX_UNPROTECT
+ 213:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 214:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Return an error.  */
+ 215:Middlewares/ST/filex/common/src/fx_media_check.c ****         return(FX_ACCESS_ERROR);
+ 216:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 217:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 218:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Invalidate the cache.  */
+ 219:Middlewares/ST/filex/common/src/fx_media_check.c ****     _fx_media_cache_invalidate(media_ptr);
+ 220:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 221:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Initialize the reported error flag.  */
+ 222:Middlewares/ST/filex/common/src/fx_media_check.c ****     *errors_detected =  0;
+ 223:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 224:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Calculate the long name size, rounded up to something that is evenly divisible by 4.  */
+ 225:Middlewares/ST/filex/common/src/fx_media_check.c ****     long_name_size =  (((FX_MAX_LONG_NAME_LEN + 3) >> 2) << 2);
+ 226:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 227:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Calculate the number of bytes per cluster.  */
+ 228:Middlewares/ST/filex/common/src/fx_media_check.c ****     bytes_per_cluster =  media_ptr -> fx_media_sectors_per_cluster * media_ptr -> fx_media_bytes_pe
+ 229:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 230:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup address mask.  */
+ 231:Middlewares/ST/filex/common/src/fx_media_check.c ****     address_mask =  sizeof(ULONG) - 1;
+ 232:Middlewares/ST/filex/common/src/fx_media_check.c ****     address_mask =  ~address_mask;
+ 233:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 234:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup working pointer.  */
+ 235:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  scratch_memory_ptr + (sizeof(ULONG) - 1);
+ 236:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 237:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 238:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Memory is set aside for two FX_DIR_ENTRY structures */
+ 239:Middlewares/ST/filex/common/src/fx_media_check.c ****     dir_entry_ptr =  (FX_DIR_ENTRY *)working_ptr;
+ 240:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 241:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Adjust the scratch memory pointer forward.  */
+ 242:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  &working_ptr[sizeof(FX_DIR_ENTRY)];
+ 243:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 244:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup the name buffer for the first directory entry.  */
+ 245:Middlewares/ST/filex/common/src/fx_media_check.c ****     dir_entry_ptr -> fx_dir_entry_name =  (CHAR *)working_ptr;
+ 246:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 247:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Adjust the scratch memory pointer forward.  */
+ 248:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  working_ptr + long_name_size + (sizeof(ULONG) - 1);
+ 249:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 250:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 251:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup the source directory entry.  */
+ 252:Middlewares/ST/filex/common/src/fx_media_check.c ****     source_dir_ptr =  (FX_DIR_ENTRY *)working_ptr;
+ 253:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 254:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Adjust the scratch memory pointer forward.  */
+ 255:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  &working_ptr[sizeof(FX_DIR_ENTRY)];
+ 256:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 257:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup the name buffer for the source directory entry.  */
+ 258:Middlewares/ST/filex/common/src/fx_media_check.c ****     source_dir_ptr -> fx_dir_entry_name =  (CHAR *)working_ptr;
+ 259:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 260:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Adjust the scratch memory pointer forward.  */
+ 261:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  working_ptr + long_name_size + (sizeof(ULONG) - 1);
+ 262:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 263:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 264:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup the current directory stack memory.  */
+ 265:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory =  (CURRENT_DIRECTORY_ENTRY *)working_ptr;
+ 266:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 267:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Allocate space for the size of the directory entry stack.  This basically
+ 268:Middlewares/ST/filex/common/src/fx_media_check.c ****        defines the maximum level of sub-directories supported.  */
+ARM GAS  /tmp/ccAL3YfA.s 			page 7
+
+
+ 269:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  &working_ptr[(FX_MAX_DIRECTORY_NESTING * sizeof(CURRENT_DIRECTORY_ENTRY))];
+ 270:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 271:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Setup the initial current directory entry.  */
+ 272:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory_index =  0;
+ 273:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 274:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Adjust the size to account for the header information.  */
+ 275:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (scratch_memory_size < (ULONG)((working_ptr - scratch_memory_ptr)))
+ 276:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 277:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 278:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Release media protection.  */
+ 279:Middlewares/ST/filex/common/src/fx_media_check.c ****         FX_UNPROTECT
+ 280:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 281:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Return the not enough memory error.  */
+ 282:Middlewares/ST/filex/common/src/fx_media_check.c ****         return(FX_NOT_ENOUGH_MEMORY);
+ 283:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 284:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 285:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Adjust the scratch memory size.  */
+ 286:Middlewares/ST/filex/common/src/fx_media_check.c ****     scratch_memory_size =  scratch_memory_size - (ULONG)(working_ptr - scratch_memory_ptr);
+ 287:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 288:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Memory is set aside for logical FAT - one bit per cluster */
+ 289:Middlewares/ST/filex/common/src/fx_media_check.c ****     logical_fat =  (UCHAR *)working_ptr;
+ 290:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 291:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Determine if there is enough memory.  */
+ 292:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (scratch_memory_size < ((media_ptr -> fx_media_total_clusters >> 3) + 1))
+ 293:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 294:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 295:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Release media protection.  */
+ 296:Middlewares/ST/filex/common/src/fx_media_check.c ****         FX_UNPROTECT
+ 297:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 298:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Return the not enough memory error.  */
+ 299:Middlewares/ST/filex/common/src/fx_media_check.c ****         return(FX_NOT_ENOUGH_MEMORY);
+ 300:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 301:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 302:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Initialize the logical FAT table. */
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     for (i = 0; i < ((media_ptr -> fx_media_total_clusters >> 3) + 1); i++)
+ 304:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 305:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Clear the logical FAT entry, which actually represents eight clusters.  */
+ 306:Middlewares/ST/filex/common/src/fx_media_check.c ****         logical_fat[i] =  0;
+ 307:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 308:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 309:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 310:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 311:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Mark the clusters occupied by Allocation Bitmap table, Up-cast table and the first cluster o
+ 312:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 313:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 314:Middlewares/ST/filex/common/src/fx_media_check.c ****     ULONG offset = 0;
+ 315:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 316:Middlewares/ST/filex/common/src/fx_media_check.c ****         for (i = ((media_ptr -> fx_media_root_cluster_32 - FX_FAT_ENTRY_START) >> 3); i; i--)
+ 317:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 318:Middlewares/ST/filex/common/src/fx_media_check.c ****             logical_fat[offset++] = 0xff;
+ 319:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 320:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 321:Middlewares/ST/filex/common/src/fx_media_check.c ****         for (i = ((media_ptr -> fx_media_root_cluster_32 - FX_FAT_ENTRY_START) & 7); i; i--)
+ 322:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 323:Middlewares/ST/filex/common/src/fx_media_check.c ****             logical_fat[offset] = (UCHAR)((logical_fat[offset] << 1) | 0x1);
+ 324:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 325:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ARM GAS  /tmp/ccAL3YfA.s 			page 8
+
+
+ 326:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 327:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 328:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 329:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 330:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 331:Middlewares/ST/filex/common/src/fx_media_check.c ****     ULONG cluster, cluster_number;
+ 332:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 333:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Mark the cluster used by fault tolerant as valid. */
+ 334:Middlewares/ST/filex/common/src/fx_media_check.c ****         for (cluster = media_ptr -> fx_media_fault_tolerant_start_cluster;
+ 335:Middlewares/ST/filex/common/src/fx_media_check.c ****              cluster < media_ptr -> fx_media_fault_tolerant_start_cluster + media_ptr -> fx_media_f
+ 336:Middlewares/ST/filex/common/src/fx_media_check.c ****              cluster++)
+ 337:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 338:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 339:Middlewares/ST/filex/common/src/fx_media_check.c ****             cluster_number = cluster;
+ 340:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 341:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 342:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 343:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* For the index of the first cluster in exFAT is 2, adjust the number of clusters to f
+ 344:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* We will compare logical_fat with Aollcation Bitmap table later to find out lost clus
+ 345:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 346:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 347:Middlewares/ST/filex/common/src/fx_media_check.c ****                 cluster_number = cluster - FX_FAT_ENTRY_START;
+ 348:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 349:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 350:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 351:Middlewares/ST/filex/common/src/fx_media_check.c ****             logical_fat[cluster_number >> 3] = (UCHAR)(logical_fat[cluster_number >> 3] | (1 << (cl
+ 352:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 353:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 354:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 355:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 356:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* If FAT32 is present, determine if the root directory is coherent.  */
+ 357:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 358:Middlewares/ST/filex/common/src/fx_media_check.c ****     if ((media_ptr -> fx_media_FAT_type == FX_FAT32) ||
+ 359:Middlewares/ST/filex/common/src/fx_media_check.c ****         (media_ptr -> fx_media_FAT_type == FX_exFAT))
+ 360:Middlewares/ST/filex/common/src/fx_media_check.c **** #else
+ 361:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (media_ptr -> fx_media_32_bit_FAT)
+ 362:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 363:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 364:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 365:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* A 32-bit FAT is present. We need to walk the clusters of the root directory to determine
+ 366:Middlewares/ST/filex/common/src/fx_media_check.c ****            it is intact. */
+ 367:Middlewares/ST/filex/common/src/fx_media_check.c ****         current_errors =  _fx_media_check_FAT_chain_check(media_ptr, media_ptr -> fx_media_root_clu
+ 368:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                           &last_cluster, &valid_clusters, logical_f
+ 369:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 370:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Make them part of the errors reported to the caller.  */
+ 371:Middlewares/ST/filex/common/src/fx_media_check.c ****         *errors_detected =  *errors_detected | current_errors;
+ 372:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 373:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Update the trace event with the errors detected.  */
+ 374:Middlewares/ST/filex/common/src/fx_media_check.c ****         FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_CHECK, 0, 0, 0, *errors_
+ 375:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 376:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Determine if the I/O error is set.  */
+ 377:Middlewares/ST/filex/common/src/fx_media_check.c ****         if (current_errors & FX_IO_ERROR)
+ 378:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 379:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 380:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Release media protection.  */
+ 381:Middlewares/ST/filex/common/src/fx_media_check.c ****             FX_UNPROTECT
+ 382:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ARM GAS  /tmp/ccAL3YfA.s 			page 9
+
+
+ 383:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* File I/O Error.  */
+ 384:Middlewares/ST/filex/common/src/fx_media_check.c ****             return(FX_IO_ERROR);
+ 385:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 386:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 387:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Check the status.  */
+ 388:Middlewares/ST/filex/common/src/fx_media_check.c ****         if (*errors_detected)
+ 389:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 390:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 391:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine if we can fix the FAT32 root directory error.  */
+ 392:Middlewares/ST/filex/common/src/fx_media_check.c ****             if ((valid_clusters) && (error_correction_option & FX_FAT_CHAIN_ERROR))
+ 393:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 394:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 395:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Make the chain end at the last cluster. */
+ 396:Middlewares/ST/filex/common/src/fx_media_check.c ****                 status = _fx_utility_FAT_entry_write(media_ptr, last_cluster, media_ptr -> fx_media
+ 397:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 398:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Determine if the write was successful.  */
+ 399:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (status)
+ 400:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 401:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 402:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Release media protection.  */
+ 403:Middlewares/ST/filex/common/src/fx_media_check.c ****                     FX_UNPROTECT
+ 404:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Return the error code.  */
+ 406:Middlewares/ST/filex/common/src/fx_media_check.c ****                     return(status);
+ 407:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 408:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 409:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Adjust the total entries in the root directory.  */
+ 410:Middlewares/ST/filex/common/src/fx_media_check.c ****                 media_ptr -> fx_media_root_directory_entries =  (valid_clusters * bytes_per_cluster
+ 411:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 412:Middlewares/ST/filex/common/src/fx_media_check.c ****             else
+ 413:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 414:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 415:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Release media protection.  */
+ 416:Middlewares/ST/filex/common/src/fx_media_check.c ****                 FX_UNPROTECT
+ 417:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 418:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Return an error.  */
+ 419:Middlewares/ST/filex/common/src/fx_media_check.c ****                 return(FX_ERROR_NOT_FIXED);
+ 420:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 421:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 422:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 423:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 424:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Pickup total entries in the root directory.  */
+ 425:Middlewares/ST/filex/common/src/fx_media_check.c ****     total_entries =  media_ptr -> fx_media_root_directory_entries;
+ 426:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 427:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Set temp directory pointer to NULL.  */
+ 428:Middlewares/ST/filex/common/src/fx_media_check.c ****     temp_dir_ptr =  FX_NULL;
+ 429:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 430:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Put the root directory information in the entry stack */
+ 431:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_total_entries =    total_entries;
+ 432:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_start_cluster =    media_ptr -> fx_media_fat
+ 433:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_directory_entry =  0;
+ 434:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 435:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Now we shall do the checking in depth first manner. */
+ 436:Middlewares/ST/filex/common/src/fx_media_check.c ****     do
+ 437:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 438:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 439:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Pickup the directory index.  */
+ARM GAS  /tmp/ccAL3YfA.s 			page 10
+
+
+ 440:Middlewares/ST/filex/common/src/fx_media_check.c ****         i =  current_directory[current_directory_index].current_directory_entry;
+ 441:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 442:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Loop to process remaining directory entries.  */
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         while (i < current_directory[current_directory_index].current_total_entries)
+ 444:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 445:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 446:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Read a directory entry.  */
+ 447:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 448:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Hash value of the file name is not cared. */
+ 449:Middlewares/ST/filex/common/src/fx_media_check.c ****             status =  _fx_directory_entry_read_ex(media_ptr, temp_dir_ptr, &i, dir_entry_ptr, 0);
+ 450:Middlewares/ST/filex/common/src/fx_media_check.c **** #else
+ 451:Middlewares/ST/filex/common/src/fx_media_check.c ****             status =  _fx_directory_entry_read(media_ptr, temp_dir_ptr, &i, dir_entry_ptr);
+ 452:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 453:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 454:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine if the read was successful.  */
+ 455:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (status)
+ 456:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 457:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 458:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Release media protection.  */
+ 459:Middlewares/ST/filex/common/src/fx_media_check.c ****                 FX_UNPROTECT
+ 460:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 461:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Return the error code.  */
+ 462:Middlewares/ST/filex/common/src/fx_media_check.c ****                 return(status);
+ 463:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 464:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 465:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Check for the last entry.  */
+ 466:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 467:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (dir_entry_ptr -> fx_dir_entry_type == FX_EXFAT_DIR_ENTRY_TYPE_END_MARKER)
+ 468:Middlewares/ST/filex/common/src/fx_media_check.c **** #else
+ 469:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (dir_entry_ptr -> fx_dir_entry_name[0] == (CHAR)FX_DIR_ENTRY_DONE)
+ 470:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 471:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 472:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 473:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Last entry in this directory - no need to check further.  */
+ 474:Middlewares/ST/filex/common/src/fx_media_check.c ****                 break;
+ 475:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 476:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 477:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Is the entry free?  */
+ 478:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 479:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (dir_entry_ptr -> fx_dir_entry_type != FX_EXFAT_DIR_ENTRY_TYPE_FILE_DIRECTORY)
+ 480:Middlewares/ST/filex/common/src/fx_media_check.c **** #else
+ 481:Middlewares/ST/filex/common/src/fx_media_check.c ****             if ((dir_entry_ptr -> fx_dir_entry_name[0] == (CHAR)FX_DIR_ENTRY_FREE) && (dir_entry_pt
+ 482:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 483:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 484:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 485:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* A deleted entry */
+ 486:Middlewares/ST/filex/common/src/fx_media_check.c ****                 i++;
+ 487:Middlewares/ST/filex/common/src/fx_media_check.c ****                 continue;
+ 488:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 489:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 490:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 491:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 492:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine whether FAT chain is used. */
+ 493:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (dir_entry_ptr -> fx_dir_entry_dont_use_fat & 1)
+ 494:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 495:Middlewares/ST/filex/common/src/fx_media_check.c ****             ULONG64 remaining_size = dir_entry_ptr -> fx_dir_entry_file_size;
+ 496:Middlewares/ST/filex/common/src/fx_media_check.c ****             ULONG   cluster = dir_entry_ptr -> fx_dir_entry_cluster, cluster_number;
+ARM GAS  /tmp/ccAL3YfA.s 			page 11
+
+
+ 497:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 498:Middlewares/ST/filex/common/src/fx_media_check.c ****                 valid_clusters = 0;
+ 499:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 500:Middlewares/ST/filex/common/src/fx_media_check.c ****                 while (remaining_size)
+ 501:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 502:Middlewares/ST/filex/common/src/fx_media_check.c ****                     if (remaining_size >= bytes_per_cluster)
+ 503:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 504:Middlewares/ST/filex/common/src/fx_media_check.c ****                         remaining_size -= bytes_per_cluster;
+ 505:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 506:Middlewares/ST/filex/common/src/fx_media_check.c ****                     else
+ 507:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 508:Middlewares/ST/filex/common/src/fx_media_check.c ****                         remaining_size = 0;
+ 509:Middlewares/ST/filex/common/src/fx_media_check.c ****                         last_cluster = cluster;
+ 510:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 511:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 512:Middlewares/ST/filex/common/src/fx_media_check.c ****                     cluster_number = cluster - FX_FAT_ENTRY_START;
+ 513:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 514:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Is the current cluster already marked? */
+ 515:Middlewares/ST/filex/common/src/fx_media_check.c ****                     if ((logical_fat[cluster_number / 8] >> (cluster_number % 8)) & 0x01)
+ 516:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 517:Middlewares/ST/filex/common/src/fx_media_check.c ****                         current_errors = FX_FILE_SIZE_ERROR;
+ 518:Middlewares/ST/filex/common/src/fx_media_check.c ****                         last_cluster = dir_entry_ptr -> fx_dir_entry_cluster + valid_clusters;
+ 519:Middlewares/ST/filex/common/src/fx_media_check.c ****                         break;
+ 520:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 521:Middlewares/ST/filex/common/src/fx_media_check.c ****                     
+ 522:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Mark the current cluster. */
+ 523:Middlewares/ST/filex/common/src/fx_media_check.c ****                     logical_fat[cluster_number >> 3] = (UCHAR)(logical_fat[cluster_number >> 3] | (
+ 524:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 525:Middlewares/ST/filex/common/src/fx_media_check.c ****                     valid_clusters++;
+ 526:Middlewares/ST/filex/common/src/fx_media_check.c ****                     cluster++;
+ 527:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 528:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 529:Middlewares/ST/filex/common/src/fx_media_check.c ****             else
+ 530:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 531:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 532:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 533:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Look for any cross links or errors in the FAT chain of current directory entry. 
+ 534:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_errors =  _fx_media_check_FAT_chain_check(media_ptr, dir_entry_ptr -> fx_di
+ 535:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                                   &last_cluster, &valid_clusters, l
+ 536:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 537:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 538:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 539:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 540:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Make them part of the errors reported to the caller.  */
+ 541:Middlewares/ST/filex/common/src/fx_media_check.c ****             *errors_detected =  *errors_detected | current_errors;
+ 542:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 543:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Update the trace event with the errors detected.  */
+ 544:Middlewares/ST/filex/common/src/fx_media_check.c ****             FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_CHECK, 0, 0, 0, *err
+ 545:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 546:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine if the I/O error is set.  */
+ 547:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (current_errors & FX_IO_ERROR)
+ 548:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 549:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 550:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Release media protection.  */
+ 551:Middlewares/ST/filex/common/src/fx_media_check.c ****                 FX_UNPROTECT
+ 552:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 553:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* File I/O Error.  */
+ARM GAS  /tmp/ccAL3YfA.s 			page 12
+
+
+ 554:Middlewares/ST/filex/common/src/fx_media_check.c ****                 return(FX_IO_ERROR);
+ 555:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 556:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 557:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Check for errors.  */
+ 558:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (*errors_detected)
+ 559:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 560:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 561:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Determine if we can fix the FAT chain.  */
+ 562:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (error_correction_option & FX_FAT_CHAIN_ERROR)
+ 563:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 564:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 565:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Determine if there is a valid cluster to write the EOF to.  */
+ 566:Middlewares/ST/filex/common/src/fx_media_check.c ****                     if (valid_clusters)
+ 567:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 568:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 569:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Write EOF in the last FAT entry.  */
+ 570:Middlewares/ST/filex/common/src/fx_media_check.c ****                         status =  _fx_utility_FAT_entry_write(media_ptr, last_cluster, media_ptr ->
+ 571:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 572:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Determine if the write was successful.  */
+ 573:Middlewares/ST/filex/common/src/fx_media_check.c ****                         if (status)
+ 574:Middlewares/ST/filex/common/src/fx_media_check.c ****                         {
+ 575:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 576:Middlewares/ST/filex/common/src/fx_media_check.c ****                             /* Release media protection.  */
+ 577:Middlewares/ST/filex/common/src/fx_media_check.c ****                             FX_UNPROTECT
+ 578:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 579:Middlewares/ST/filex/common/src/fx_media_check.c ****                             /* Return the error code.  */
+ 580:Middlewares/ST/filex/common/src/fx_media_check.c ****                             return(status);
+ 581:Middlewares/ST/filex/common/src/fx_media_check.c ****                         }
+ 582:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 583:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 584:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 585:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 586:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine if we need to update the size of the directory entry.  */
+ 587:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (dir_entry_ptr -> fx_dir_entry_file_size > (valid_clusters * bytes_per_cluster))
+ 588:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 589:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 590:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Yes, update the directory entry's size.  */
+ 591:Middlewares/ST/filex/common/src/fx_media_check.c ****                 dir_entry_ptr -> fx_dir_entry_file_size =  valid_clusters * bytes_per_cluster;
+ 592:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 593:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Determine if the new file size is zero. */
+ 594:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (dir_entry_ptr -> fx_dir_entry_file_size == 0)
+ 595:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 596:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 597:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Consider this a directory error.  */
+ 598:Middlewares/ST/filex/common/src/fx_media_check.c ****                     *errors_detected =  *errors_detected | FX_DIRECTORY_ERROR;
+ 599:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 600:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Update the trace event with the errors detected.  */
+ 601:Middlewares/ST/filex/common/src/fx_media_check.c ****                     FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_CHECK, 0, 0,
+ 602:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 603:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Clear the starting cluster number of this directory entry.  */
+ 604:Middlewares/ST/filex/common/src/fx_media_check.c ****                     dir_entry_ptr -> fx_dir_entry_cluster =  0;
+ 605:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 606:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* If directory fixing is required, delete this directory entry as well.  */
+ 607:Middlewares/ST/filex/common/src/fx_media_check.c ****                     if (error_correction_option & FX_DIRECTORY_ERROR)
+ 608:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 609:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 610:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Mark the entry as deleted.  */
+ARM GAS  /tmp/ccAL3YfA.s 			page 13
+
+
+ 611:Middlewares/ST/filex/common/src/fx_media_check.c ****                         dir_entry_ptr -> fx_dir_entry_name[0] =        (CHAR)FX_DIR_ENTRY_FREE;
+ 612:Middlewares/ST/filex/common/src/fx_media_check.c ****                         dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 613:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 614:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 615:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 616:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Only update the directory if the FAT chain was actually updated.  */
+ 617:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (error_correction_option & FX_FAT_CHAIN_ERROR)
+ 618:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 619:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 620:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Update the directory entry.  */
+ 621:Middlewares/ST/filex/common/src/fx_media_check.c ****                     status =  _fx_directory_entry_write(media_ptr, dir_entry_ptr);
+ 622:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 623:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Determine if the write was successful.  */
+ 624:Middlewares/ST/filex/common/src/fx_media_check.c ****                     if (status)
+ 625:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 626:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 627:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Release media protection.  */
+ 628:Middlewares/ST/filex/common/src/fx_media_check.c ****                         FX_UNPROTECT
+ 629:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 630:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Return the error code.  */
+ 631:Middlewares/ST/filex/common/src/fx_media_check.c ****                         return(status);
+ 632:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 633:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 634:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 635:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 636:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine if the entry is a sub-directory.  */
+ 637:Middlewares/ST/filex/common/src/fx_media_check.c ****             if ((dir_entry_ptr -> fx_dir_entry_attributes & FX_DIRECTORY)
+ 638:Middlewares/ST/filex/common/src/fx_media_check.c ****                  && (valid_clusters == 0))
+ 639:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 640:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 641:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Consider this a directory error.  */
+ 642:Middlewares/ST/filex/common/src/fx_media_check.c ****                 *errors_detected =  *errors_detected | FX_DIRECTORY_ERROR;
+ 643:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 644:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Update the trace event with the errors detected.  */
+ 645:Middlewares/ST/filex/common/src/fx_media_check.c ****                 FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_CHECK, 0, 0, 0, 
+ 646:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 647:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Determine if we can fix the error.  */
+ 648:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (error_correction_option & FX_DIRECTORY_ERROR)
+ 649:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 650:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 651:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Yes, make the directory entry free.  */
+ 652:Middlewares/ST/filex/common/src/fx_media_check.c ****                     dir_entry_ptr -> fx_dir_entry_name[0] =        (CHAR)FX_DIR_ENTRY_FREE;
+ 653:Middlewares/ST/filex/common/src/fx_media_check.c ****                     dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 654:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 655:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Delete the sub-directory entry.  */
+ 656:Middlewares/ST/filex/common/src/fx_media_check.c ****                     status =  _fx_directory_entry_write(media_ptr, dir_entry_ptr);
+ 657:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 658:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Determine if the write was successful.  */
+ 659:Middlewares/ST/filex/common/src/fx_media_check.c ****                     if (status)
+ 660:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 661:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 662:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Release media protection.  */
+ 663:Middlewares/ST/filex/common/src/fx_media_check.c ****                         FX_UNPROTECT
+ 664:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 665:Middlewares/ST/filex/common/src/fx_media_check.c ****                         /* Return the error code.  */
+ 666:Middlewares/ST/filex/common/src/fx_media_check.c ****                         return(status);
+ 667:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ARM GAS  /tmp/ccAL3YfA.s 			page 14
+
+
+ 668:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 669:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Move to next entry.  */
+ 670:Middlewares/ST/filex/common/src/fx_media_check.c ****                     i++;
+ 671:Middlewares/ST/filex/common/src/fx_media_check.c ****                     continue;
+ 672:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 673:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 674:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 675:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Determine if the entry is a directory.  */
+ 676:Middlewares/ST/filex/common/src/fx_media_check.c ****             if (dir_entry_ptr -> fx_dir_entry_attributes & FX_DIRECTORY)
+ 677:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 678:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 679:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Current entry is a directory. The algorithm is designed to follow all
+ 680:Middlewares/ST/filex/common/src/fx_media_check.c ****                    sub-directories immediately, i.e., a depth first search.  */
+ 681:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 682:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* First, save the next entry position. */
+ 683:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_directory_entry =  i + 1;
+ 684:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 685:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Push the current directory entry on the stack.  */
+ 686:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory_index++;
+ 687:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 688:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Check for current directory stack overflow.  */
+ 689:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (current_directory_index >= FX_MAX_DIRECTORY_NESTING)
+ 690:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 691:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 692:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Release media protection.  */
+ 693:Middlewares/ST/filex/common/src/fx_media_check.c ****                     FX_UNPROTECT
+ 694:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 695:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Current directory stack overflow.  Return error.  */
+ 696:Middlewares/ST/filex/common/src/fx_media_check.c ****                     return(FX_NOT_ENOUGH_MEMORY);
+ 697:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 698:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 699:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Otherwise, setup the new directory entry.  */
+ 700:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_total_entries =      (valid_clus
+ 701:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_start_cluster =      dir_entry_p
+ 702:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_directory_entry =    2;
+ 703:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 704:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Setup new source directory.  */
+ 705:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_cluster =              dir_entry_ptr -> fx_dir_entry
+ 706:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_dir
+ 707:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 708:Middlewares/ST/filex/common/src/fx_media_check.c ****                 temp_dir_ptr =                                        source_dir_ptr;
+ 709:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 710:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Skip the first two entries of sub-directories.  */
+ 711:Middlewares/ST/filex/common/src/fx_media_check.c ****                 i =  2;
+ 712:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 713:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 714:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 715:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* For exFAT, there is no dir-entries for ".." and ".". */
+ 716:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 717:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 718:Middlewares/ST/filex/common/src/fx_media_check.c ****                     current_directory[current_directory_index].current_directory_entry = 0;
+ 719:Middlewares/ST/filex/common/src/fx_media_check.c ****                     i =  0;
+ 720:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 721:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 722:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 723:Middlewares/ST/filex/common/src/fx_media_check.c ****             else
+ 724:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ARM GAS  /tmp/ccAL3YfA.s 			page 15
+
+
+ 725:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 726:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Regular file entry.  */
+ 727:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 728:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Check for an invalid file size.  */
+ 729:Middlewares/ST/filex/common/src/fx_media_check.c ****                 if (((valid_clusters * bytes_per_cluster) - dir_entry_ptr -> fx_dir_entry_file_size
+ 730:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 731:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 732:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* There are more clusters allocated than needed for the file's size.  Indicate
+ 733:Middlewares/ST/filex/common/src/fx_media_check.c ****                        is present.  */
+ 734:Middlewares/ST/filex/common/src/fx_media_check.c ****                     *errors_detected =  *errors_detected | FX_FILE_SIZE_ERROR;
+ 735:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 736:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* Update the trace event with the errors detected.  */
+ 737:Middlewares/ST/filex/common/src/fx_media_check.c ****                     FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_CHECK, 0, 0,
+ 738:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 739:Middlewares/ST/filex/common/src/fx_media_check.c ****                     /* For now, don't shorten the cluster chain.  */
+ 740:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 741:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 742:Middlewares/ST/filex/common/src/fx_media_check.c ****                 /* Look into the next entry in the current directory.  */
+ 743:Middlewares/ST/filex/common/src/fx_media_check.c ****                 i++;
+ 744:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 745:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 746:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 747:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Once we get here, we have exhausted the current directory and need to return to the prev
+ 748:Middlewares/ST/filex/common/src/fx_media_check.c ****            directory.  */
+ 749:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 750:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Check for being at the root directory.  */
+ 751:Middlewares/ST/filex/common/src/fx_media_check.c ****         if (current_directory_index == 0)
+ 752:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 753:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 754:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Yes, we have now exhausted searching the root directory so we are done!  */
+ 755:Middlewares/ST/filex/common/src/fx_media_check.c ****             break;
+ 756:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 757:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 758:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Backup to the place we left off in the previous directory.  */
+ 759:Middlewares/ST/filex/common/src/fx_media_check.c ****         current_directory_index--;
+ 760:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 761:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Determine if we are now back at the root directory.  */
+ 762:Middlewares/ST/filex/common/src/fx_media_check.c ****         if (current_directory[current_directory_index].current_start_cluster == media_ptr -> fx_med
+ 763:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 764:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 765:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* The search directory should be NULL since it is the root directory.  */
+ 766:Middlewares/ST/filex/common/src/fx_media_check.c ****             temp_dir_ptr =  FX_NULL;
+ 767:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 768:Middlewares/ST/filex/common/src/fx_media_check.c ****         else
+ 769:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 770:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 771:Middlewares/ST/filex/common/src/fx_media_check.c ****             /* Otherwise, we are returning to a sub-directory.  Setup the search directory
+ 772:Middlewares/ST/filex/common/src/fx_media_check.c ****                appropriately.  */
+ 773:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_cluster =              current_directory[current_directo
+ 774:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_directo
+ 775:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 776:Middlewares/ST/filex/common/src/fx_media_check.c ****             temp_dir_ptr =                                        source_dir_ptr;
+ 777:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 778:Middlewares/ST/filex/common/src/fx_media_check.c ****     } while (1);
+ 779:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 780:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 781:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ARM GAS  /tmp/ccAL3YfA.s 			page 16
+
+
+ 782:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 783:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 784:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* If exFAT is in use, compare the logical_fat with Allocation Bitmap Table directly. */
+ 785:Middlewares/ST/filex/common/src/fx_media_check.c ****         current_errors =  _fx_media_check_exFAT_lost_cluster_check(media_ptr, logical_fat, media_pt
+ 786:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 787:Middlewares/ST/filex/common/src/fx_media_check.c ****     else
+ 788:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 789:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 790:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 791:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* At this point, all the files and sub-directories have been examined.  We now need to che
+ 792:Middlewares/ST/filex/common/src/fx_media_check.c ****            lost clusters in the logical FAT.  A lost cluster is basically anything that is not repo
+ 793:Middlewares/ST/filex/common/src/fx_media_check.c ****            the logical FAT that has a non-zero value in the real FAT.  */
+ 794:Middlewares/ST/filex/common/src/fx_media_check.c ****         current_errors =  _fx_media_check_lost_cluster_check(media_ptr, logical_fat, media_ptr -> f
+ 795:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 796:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 797:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 798:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 799:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Incorporate the error returned by the lost FAT check.  */
+ 800:Middlewares/ST/filex/common/src/fx_media_check.c ****     *errors_detected =  *errors_detected | current_errors;
+ 801:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 802:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Update the trace event with the errors detected.  */
+ 803:Middlewares/ST/filex/common/src/fx_media_check.c ****     FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_CHECK, 0, 0, 0, *errors_dete
+ 804:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 805:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Determine if the I/O error is set.  */
+ 806:Middlewares/ST/filex/common/src/fx_media_check.c ****     if (current_errors & FX_IO_ERROR)
+ 807:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 808:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 809:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Release media protection.  */
+ 810:Middlewares/ST/filex/common/src/fx_media_check.c ****         FX_UNPROTECT
+ 811:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 812:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* File I/O Error.  */
+ 813:Middlewares/ST/filex/common/src/fx_media_check.c ****         return(FX_IO_ERROR);
+ 814:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 815:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 816:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Determine if there was any error and update was selected.  */
+ 817:Middlewares/ST/filex/common/src/fx_media_check.c ****     if ((*errors_detected) && (error_correction_option))
+ 818:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 819:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 820:Middlewares/ST/filex/common/src/fx_media_check.c ****         /* Flush any unwritten items to the media.  */
+ 821:Middlewares/ST/filex/common/src/fx_media_check.c ****         _fx_media_flush(media_ptr);
+ 822:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 823:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 824:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* Release media protection.  */
+ 825:Middlewares/ST/filex/common/src/fx_media_check.c ****     FX_UNPROTECT
+ 826:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 827:Middlewares/ST/filex/common/src/fx_media_check.c ****     /* At this point, we have completed the diagnostic of the media, return success!  */
+ 828:Middlewares/ST/filex/common/src/fx_media_check.c ****     return(FX_SUCCESS);
+ 829:Middlewares/ST/filex/common/src/fx_media_check.c **** }
+  76              		.loc 1 829 1 view .LVU17
+  77 0018 3846     		mov	r0, r7
+  78 001a 11B0     		add	sp, sp, #68
+  79              	.LCFI2:
+  80              		.cfi_remember_state
+  81              		.cfi_def_cfa_offset 36
+  82              		@ sp needed
+  83 001c BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+  84              	.LVL4:
+ARM GAS  /tmp/ccAL3YfA.s 			page 17
+
+
+  85              	.L37:
+  86              	.LCFI3:
+  87              		.cfi_restore_state
+  88              		.loc 1 829 1 view .LVU18
+  89 0020 0546     		mov	r5, r0
+  90 0022 0F46     		mov	r7, r1
+ 200:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+  91              		.loc 1 200 5 is_stmt 1 view .LVU19
+  92 0024 0BAB     		add	r3, sp, #44
+  93 0026 0393     		str	r3, [sp, #12]
+  94 0028 0CAB     		add	r3, sp, #48
+  95 002a 0293     		str	r3, [sp, #8]
+  96 002c 4FF48053 		mov	r3, #4096
+  97 0030 0193     		str	r3, [sp, #4]
+  98 0032 0023     		movs	r3, #0
+  99 0034 0093     		str	r3, [sp]
+ 100 0036 5B46     		mov	r3, fp
+ 101 0038 0A46     		mov	r2, r1
+ 102 003a 0146     		mov	r1, r0
+ 103              	.LVL5:
+ 200:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 104              		.loc 1 200 5 is_stmt 0 view .LVU20
+ 105 003c 40F20110 		movw	r0, #257
+ 106              	.LVL6:
+ 200:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 107              		.loc 1 200 5 view .LVU21
+ 108 0040 FFF7FEFF 		bl	_fx_trace_event_insert
+ 109              	.LVL7:
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 110              		.loc 1 203 5 is_stmt 1 view .LVU22
+ 111 0044 2A68     		ldr	r2, [r5]
+ 112 0046 924B     		ldr	r3, .L57
+ 113 0048 9A42     		cmp	r2, r3
+ 114 004a 01D0     		beq	.L38
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 115              		.loc 1 203 5 is_stmt 0 discriminator 1 view .LVU23
+ 116 004c 1127     		movs	r7, #17
+ 117              	.LVL8:
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 118              		.loc 1 203 5 discriminator 1 view .LVU24
+ 119 004e E3E7     		b	.L1
+ 120              	.LVL9:
+ 121              	.L38:
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 122              		.loc 1 203 5 is_stmt 1 discriminator 2 view .LVU25
+ 123 0050 05F5E473 		add	r3, r5, #456
+ 124 0054 0993     		str	r3, [sp, #36]
+ 125 0056 4FF0FF31 		mov	r1, #-1
+ 126 005a 1846     		mov	r0, r3
+ 127 005c FFF7FEFF 		bl	_tx_mutex_get
+ 128              	.LVL10:
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 129              		.loc 1 203 5 is_stmt 0 discriminator 1 view .LVU26
+ 130 0060 0028     		cmp	r0, #0
+ 131 0062 40F00C82 		bne	.L34
+ 206:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 132              		.loc 1 206 5 is_stmt 1 view .LVU27
+ARM GAS  /tmp/ccAL3YfA.s 			page 18
+
+
+ 206:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 133              		.loc 1 206 19 is_stmt 0 view .LVU28
+ 134 0066 D5F8CC60 		ldr	r6, [r5, #204]
+ 206:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 135              		.loc 1 206 8 view .LVU29
+ 136 006a 4EBB     		cbnz	r6, .L39
+ 219:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 137              		.loc 1 219 5 is_stmt 1 view .LVU30
+ 138 006c 2846     		mov	r0, r5
+ 139 006e FFF7FEFF 		bl	_fx_media_cache_invalidate
+ 140              	.LVL11:
+ 222:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 141              		.loc 1 222 5 view .LVU31
+ 222:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 142              		.loc 1 222 22 is_stmt 0 view .LVU32
+ 143 0072 0023     		movs	r3, #0
+ 144 0074 C8F80030 		str	r3, [r8]
+ 225:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 145              		.loc 1 225 5 is_stmt 1 view .LVU33
+ 146              	.LVL12:
+ 228:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 147              		.loc 1 228 5 view .LVU34
+ 228:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 148              		.loc 1 228 36 is_stmt 0 view .LVU35
+ 149 0078 6B6D     		ldr	r3, [r5, #84]
+ 228:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 150              		.loc 1 228 80 view .LVU36
+ 151 007a AA6A     		ldr	r2, [r5, #40]
+ 228:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 152              		.loc 1 228 23 view .LVU37
+ 153 007c 02FB03FA 		mul	r10, r2, r3
+ 154              	.LVL13:
+ 231:Middlewares/ST/filex/common/src/fx_media_check.c ****     address_mask =  ~address_mask;
+ 155              		.loc 1 231 5 is_stmt 1 view .LVU38
+ 232:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 156              		.loc 1 232 5 view .LVU39
+ 235:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 157              		.loc 1 235 5 view .LVU40
+ 235:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 158              		.loc 1 235 17 is_stmt 0 view .LVU41
+ 159 0080 FC1C     		adds	r4, r7, #3
+ 160              	.LVL14:
+ 236:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 161              		.loc 1 236 5 is_stmt 1 view .LVU42
+ 236:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 162              		.loc 1 236 56 is_stmt 0 view .LVU43
+ 163 0082 24F00304 		bic	r4, r4, #3
+ 164              	.LVL15:
+ 239:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 165              		.loc 1 239 5 is_stmt 1 view .LVU44
+ 242:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 166              		.loc 1 242 5 view .LVU45
+ 242:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 167              		.loc 1 242 17 is_stmt 0 view .LVU46
+ 168 0086 04F17003 		add	r3, r4, #112
+ 169              	.LVL16:
+ 245:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ARM GAS  /tmp/ccAL3YfA.s 			page 19
+
+
+ 170              		.loc 1 245 5 is_stmt 1 view .LVU47
+ 245:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 171              		.loc 1 245 40 is_stmt 0 view .LVU48
+ 172 008a 2360     		str	r3, [r4]
+ 248:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 173              		.loc 1 248 5 is_stmt 1 view .LVU49
+ 174              	.LVL17:
+ 249:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 175              		.loc 1 249 5 view .LVU50
+ 249:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 176              		.loc 1 249 56 is_stmt 0 view .LVU51
+ 177 008c 04F5B873 		add	r3, r4, #368
+ 178 0090 1A46     		mov	r2, r3
+ 179 0092 0793     		str	r3, [sp, #28]
+ 180              	.LVL18:
+ 252:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 181              		.loc 1 252 5 is_stmt 1 view .LVU52
+ 255:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 182              		.loc 1 255 5 view .LVU53
+ 255:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 183              		.loc 1 255 17 is_stmt 0 view .LVU54
+ 184 0094 04F5F073 		add	r3, r4, #480
+ 185              	.LVL19:
+ 258:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 186              		.loc 1 258 5 is_stmt 1 view .LVU55
+ 258:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 187              		.loc 1 258 41 is_stmt 0 view .LVU56
+ 188 0098 1360     		str	r3, [r2]
+ 261:Middlewares/ST/filex/common/src/fx_media_check.c ****     working_ptr =  (UCHAR *)(((ALIGN_TYPE)working_ptr) & address_mask);
+ 189              		.loc 1 261 5 is_stmt 1 view .LVU57
+ 190              	.LVL20:
+ 262:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 191              		.loc 1 262 5 view .LVU58
+ 262:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 192              		.loc 1 262 56 is_stmt 0 view .LVU59
+ 193 009a 02F5B879 		add	r9, r2, #368
+ 194              	.LVL21:
+ 265:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 195              		.loc 1 265 5 is_stmt 1 view .LVU60
+ 269:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 196              		.loc 1 269 5 view .LVU61
+ 269:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 197              		.loc 1 269 17 is_stmt 0 view .LVU62
+ 198 009e 02F51873 		add	r3, r2, #608
+ 199 00a2 0893     		str	r3, [sp, #32]
+ 200              	.LVL22:
+ 272:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 201              		.loc 1 272 5 is_stmt 1 view .LVU63
+ 275:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 202              		.loc 1 275 5 view .LVU64
+ 275:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 203              		.loc 1 275 52 is_stmt 0 view .LVU65
+ 204 00a4 DF1B     		subs	r7, r3, r7
+ 205              	.LVL23:
+ 275:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 206              		.loc 1 275 8 view .LVU66
+ 207 00a6 5F45     		cmp	r7, fp
+ARM GAS  /tmp/ccAL3YfA.s 			page 20
+
+
+ 208 00a8 0FD8     		bhi	.L40
+ 286:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 209              		.loc 1 286 5 is_stmt 1 view .LVU67
+ 286:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 210              		.loc 1 286 25 is_stmt 0 view .LVU68
+ 211 00aa ABEB070B 		sub	fp, fp, r7
+ 212              	.LVL24:
+ 289:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 213              		.loc 1 289 5 is_stmt 1 view .LVU69
+ 292:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 214              		.loc 1 292 5 view .LVU70
+ 292:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 215              		.loc 1 292 43 is_stmt 0 view .LVU71
+ 216 00ae 2B6C     		ldr	r3, [r5, #64]
+ 217              	.LVL25:
+ 292:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 218              		.loc 1 292 70 view .LVU72
+ 219 00b0 DB08     		lsrs	r3, r3, #3
+ 292:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 220              		.loc 1 292 76 view .LVU73
+ 221 00b2 0133     		adds	r3, r3, #1
+ 292:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 222              		.loc 1 292 8 view .LVU74
+ 223 00b4 5B45     		cmp	r3, fp
+ 224 00b6 0DD8     		bhi	.L41
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 225              		.loc 1 303 5 is_stmt 1 view .LVU75
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 226              		.loc 1 303 12 is_stmt 0 view .LVU76
+ 227 00b8 0023     		movs	r3, #0
+ 228 00ba 0D93     		str	r3, [sp, #52]
+ 229 00bc 0899     		ldr	r1, [sp, #32]
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 230              		.loc 1 303 5 view .LVU77
+ 231 00be 13E0     		b	.L6
+ 232              	.LVL26:
+ 233              	.L39:
+ 212:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 234              		.loc 1 212 9 is_stmt 1 view .LVU78
+ 235 00c0 0998     		ldr	r0, [sp, #36]
+ 236 00c2 FFF7FEFF 		bl	_tx_mutex_put
+ 237              	.LVL27:
+ 215:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 238              		.loc 1 215 9 view .LVU79
+ 215:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 239              		.loc 1 215 15 is_stmt 0 view .LVU80
+ 240 00c6 0627     		movs	r7, #6
+ 241              	.LVL28:
+ 215:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 242              		.loc 1 215 15 view .LVU81
+ 243 00c8 A6E7     		b	.L1
+ 244              	.LVL29:
+ 245              	.L40:
+ 279:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 246              		.loc 1 279 9 is_stmt 1 view .LVU82
+ 247 00ca 0998     		ldr	r0, [sp, #36]
+ 248 00cc FFF7FEFF 		bl	_tx_mutex_put
+ARM GAS  /tmp/ccAL3YfA.s 			page 21
+
+
+ 249              	.LVL30:
+ 282:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 250              		.loc 1 282 9 view .LVU83
+ 282:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 251              		.loc 1 282 15 is_stmt 0 view .LVU84
+ 252 00d0 9127     		movs	r7, #145
+ 253 00d2 A1E7     		b	.L1
+ 254              	.LVL31:
+ 255              	.L41:
+ 296:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 256              		.loc 1 296 9 is_stmt 1 view .LVU85
+ 257 00d4 0998     		ldr	r0, [sp, #36]
+ 258 00d6 FFF7FEFF 		bl	_tx_mutex_put
+ 259              	.LVL32:
+ 299:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 260              		.loc 1 299 9 view .LVU86
+ 299:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 261              		.loc 1 299 15 is_stmt 0 view .LVU87
+ 262 00da 9127     		movs	r7, #145
+ 263 00dc 9CE7     		b	.L1
+ 264              	.LVL33:
+ 265              	.L7:
+ 306:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 266              		.loc 1 306 9 is_stmt 1 view .LVU88
+ 306:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 267              		.loc 1 306 24 is_stmt 0 view .LVU89
+ 268 00de 0023     		movs	r3, #0
+ 269 00e0 8B54     		strb	r3, [r1, r2]
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 270              		.loc 1 303 73 is_stmt 1 discriminator 3 view .LVU90
+ 271 00e2 0D9B     		ldr	r3, [sp, #52]
+ 272 00e4 0133     		adds	r3, r3, #1
+ 273 00e6 0D93     		str	r3, [sp, #52]
+ 274              	.L6:
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 275              		.loc 1 303 19 discriminator 1 view .LVU91
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 276              		.loc 1 303 33 is_stmt 0 discriminator 1 view .LVU92
+ 277 00e8 2B6C     		ldr	r3, [r5, #64]
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 278              		.loc 1 303 60 discriminator 1 view .LVU93
+ 279 00ea DB08     		lsrs	r3, r3, #3
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 280              		.loc 1 303 66 discriminator 1 view .LVU94
+ 281 00ec 0133     		adds	r3, r3, #1
+ 303:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 282              		.loc 1 303 19 discriminator 1 view .LVU95
+ 283 00ee 0D9A     		ldr	r2, [sp, #52]
+ 284 00f0 9342     		cmp	r3, r2
+ 285 00f2 F4D8     		bhi	.L7
+ 361:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 286              		.loc 1 361 5 is_stmt 1 view .LVU96
+ 361:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 287              		.loc 1 361 19 is_stmt 0 view .LVU97
+ 288 00f4 6B6E     		ldr	r3, [r5, #100]
+ 361:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 289              		.loc 1 361 8 view .LVU98
+ARM GAS  /tmp/ccAL3YfA.s 			page 22
+
+
+ 290 00f6 A3B9     		cbnz	r3, .L42
+ 291              	.LVL34:
+ 292              	.L8:
+ 425:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 293              		.loc 1 425 5 is_stmt 1 view .LVU99
+ 425:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 294              		.loc 1 425 19 is_stmt 0 view .LVU100
+ 295 00f8 AB6F     		ldr	r3, [r5, #120]
+ 296              	.LVL35:
+ 428:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 297              		.loc 1 428 5 is_stmt 1 view .LVU101
+ 431:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_start_cluster =    media_ptr -> fx_media_fat
+ 298              		.loc 1 431 5 view .LVU102
+ 431:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_start_cluster =    media_ptr -> fx_media_fat
+ 299              		.loc 1 431 70 is_stmt 0 view .LVU103
+ 300 00fa C9F80430 		str	r3, [r9, #4]
+ 432:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_directory_entry =  0;
+ 301              		.loc 1 432 5 is_stmt 1 view .LVU104
+ 432:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_directory_entry =  0;
+ 302              		.loc 1 432 85 is_stmt 0 view .LVU105
+ 303 00fe 05F50053 		add	r3, r5, #8192
+ 304              	.LVL36:
+ 432:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_directory_entry =  0;
+ 305              		.loc 1 432 85 view .LVU106
+ 306 0102 D3F8AC34 		ldr	r3, [r3, #1196]
+ 432:Middlewares/ST/filex/common/src/fx_media_check.c ****     current_directory[current_directory_index].current_directory_entry =  0;
+ 307              		.loc 1 432 70 view .LVU107
+ 308 0106 C9F80830 		str	r3, [r9, #8]
+ 433:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 309              		.loc 1 433 5 is_stmt 1 view .LVU108
+ 433:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 310              		.loc 1 433 72 is_stmt 0 view .LVU109
+ 311 010a 0023     		movs	r3, #0
+ 312 010c C9F80030 		str	r3, [r9]
+ 428:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 313              		.loc 1 428 18 view .LVU110
+ 314 0110 0693     		str	r3, [sp, #24]
+ 315 0112 DDF81CB0 		ldr	fp, [sp, #28]
+ 316              	.LVL37:
+ 317              	.L12:
+ 436:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 318              		.loc 1 436 5 is_stmt 1 view .LVU111
+ 440:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 319              		.loc 1 440 9 view .LVU112
+ 440:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 320              		.loc 1 440 31 is_stmt 0 view .LVU113
+ 321 0116 06EB4603 		add	r3, r6, r6, lsl #1
+ 440:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 322              		.loc 1 440 56 view .LVU114
+ 323 011a 59F82330 		ldr	r3, [r9, r3, lsl #2]
+ 440:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 324              		.loc 1 440 11 view .LVU115
+ 325 011e 0D93     		str	r3, [sp, #52]
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 326              		.loc 1 443 9 is_stmt 1 view .LVU116
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 327              		.loc 1 443 15 is_stmt 0 view .LVU117
+ARM GAS  /tmp/ccAL3YfA.s 			page 23
+
+
+ 328 0120 C9E0     		b	.L13
+ 329              	.LVL38:
+ 330              	.L42:
+ 367:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                           &last_cluster, &valid_clusters, logical_f
+ 331              		.loc 1 367 9 is_stmt 1 view .LVU118
+ 367:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                           &last_cluster, &valid_clusters, logical_f
+ 332              		.loc 1 367 27 is_stmt 0 view .LVU119
+ 333 0122 089B     		ldr	r3, [sp, #32]
+ 334 0124 0093     		str	r3, [sp]
+ 335 0126 0EAB     		add	r3, sp, #56
+ 336 0128 0FAA     		add	r2, sp, #60
+ 337 012a 696F     		ldr	r1, [r5, #116]
+ 338              	.LVL39:
+ 367:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                           &last_cluster, &valid_clusters, logical_f
+ 339              		.loc 1 367 27 view .LVU120
+ 340 012c 2846     		mov	r0, r5
+ 341 012e FFF7FEFF 		bl	_fx_media_check_FAT_chain_check
+ 342              	.LVL40:
+ 343 0132 0746     		mov	r7, r0
+ 344              	.LVL41:
+ 371:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 345              		.loc 1 371 9 is_stmt 1 view .LVU121
+ 371:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 346              		.loc 1 371 29 is_stmt 0 view .LVU122
+ 347 0134 D8F80030 		ldr	r3, [r8]
+ 371:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 348              		.loc 1 371 46 view .LVU123
+ 349 0138 0343     		orrs	r3, r3, r0
+ 371:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 350              		.loc 1 371 26 view .LVU124
+ 351 013a C8F80030 		str	r3, [r8]
+ 374:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 352              		.loc 1 374 9 is_stmt 1 view .LVU125
+ 353 013e 0293     		str	r3, [sp, #8]
+ 354 0140 0023     		movs	r3, #0
+ 355 0142 0193     		str	r3, [sp, #4]
+ 356 0144 0093     		str	r3, [sp]
+ 357 0146 40F20112 		movw	r2, #257
+ 358 014a 0B99     		ldr	r1, [sp, #44]
+ 359 014c 0C98     		ldr	r0, [sp, #48]
+ 360              	.LVL42:
+ 374:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 361              		.loc 1 374 9 is_stmt 0 view .LVU126
+ 362 014e FFF7FEFF 		bl	_fx_trace_event_update
+ 363              	.LVL43:
+ 377:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 364              		.loc 1 377 9 is_stmt 1 view .LVU127
+ 377:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 365              		.loc 1 377 12 is_stmt 0 view .LVU128
+ 366 0152 17F0900F 		tst	r7, #144
+ 367 0156 19D1     		bne	.L43
+ 388:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 368              		.loc 1 388 9 is_stmt 1 view .LVU129
+ 388:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 369              		.loc 1 388 13 is_stmt 0 view .LVU130
+ 370 0158 D8F80030 		ldr	r3, [r8]
+ 388:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ARM GAS  /tmp/ccAL3YfA.s 			page 24
+
+
+ 371              		.loc 1 388 12 view .LVU131
+ 372 015c 002B     		cmp	r3, #0
+ 373 015e CBD0     		beq	.L8
+ 392:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 374              		.loc 1 392 13 is_stmt 1 view .LVU132
+ 392:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 375              		.loc 1 392 17 is_stmt 0 view .LVU133
+ 376 0160 0E9B     		ldr	r3, [sp, #56]
+ 392:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 377              		.loc 1 392 16 view .LVU134
+ 378 0162 E3B1     		cbz	r3, .L10
+ 392:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 379              		.loc 1 392 34 discriminator 1 view .LVU135
+ 380 0164 059B     		ldr	r3, [sp, #20]
+ 381 0166 13F0010F 		tst	r3, #1
+ 382 016a 18D0     		beq	.L10
+ 396:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 383              		.loc 1 396 17 is_stmt 1 view .LVU136
+ 396:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 384              		.loc 1 396 26 is_stmt 0 view .LVU137
+ 385 016c 05F50053 		add	r3, r5, #8192
+ 386 0170 D3F8AC24 		ldr	r2, [r3, #1196]
+ 387 0174 0F99     		ldr	r1, [sp, #60]
+ 388 0176 2846     		mov	r0, r5
+ 389 0178 FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 390              	.LVL44:
+ 399:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 391              		.loc 1 399 17 is_stmt 1 view .LVU138
+ 399:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 392              		.loc 1 399 20 is_stmt 0 view .LVU139
+ 393 017c 0746     		mov	r7, r0
+ 394              	.LVL45:
+ 399:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 395              		.loc 1 399 20 view .LVU140
+ 396 017e 50B9     		cbnz	r0, .L44
+ 410:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 397              		.loc 1 410 17 is_stmt 1 view .LVU141
+ 410:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 398              		.loc 1 410 81 is_stmt 0 view .LVU142
+ 399 0180 0E9B     		ldr	r3, [sp, #56]
+ 400 0182 03FB0AF3 		mul	r3, r3, r10
+ 410:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 401              		.loc 1 410 102 view .LVU143
+ 402 0186 5B09     		lsrs	r3, r3, #5
+ 410:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 403              		.loc 1 410 62 view .LVU144
+ 404 0188 AB67     		str	r3, [r5, #120]
+ 405 018a B5E7     		b	.L8
+ 406              	.LVL46:
+ 407              	.L43:
+ 381:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 408              		.loc 1 381 13 is_stmt 1 view .LVU145
+ 409 018c 0998     		ldr	r0, [sp, #36]
+ 410 018e FFF7FEFF 		bl	_tx_mutex_put
+ 411              	.LVL47:
+ 384:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 412              		.loc 1 384 13 view .LVU146
+ARM GAS  /tmp/ccAL3YfA.s 			page 25
+
+
+ 384:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 413              		.loc 1 384 19 is_stmt 0 view .LVU147
+ 414 0192 9027     		movs	r7, #144
+ 415              	.LVL48:
+ 384:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 416              		.loc 1 384 19 view .LVU148
+ 417 0194 40E7     		b	.L1
+ 418              	.LVL49:
+ 419              	.L44:
+ 403:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 420              		.loc 1 403 21 is_stmt 1 view .LVU149
+ 421 0196 0998     		ldr	r0, [sp, #36]
+ 422              	.LVL50:
+ 403:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 423              		.loc 1 403 21 is_stmt 0 view .LVU150
+ 424 0198 FFF7FEFF 		bl	_tx_mutex_put
+ 425              	.LVL51:
+ 406:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 426              		.loc 1 406 21 is_stmt 1 view .LVU151
+ 406:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 427              		.loc 1 406 27 is_stmt 0 view .LVU152
+ 428 019c 3CE7     		b	.L1
+ 429              	.LVL52:
+ 430              	.L10:
+ 416:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 431              		.loc 1 416 17 is_stmt 1 view .LVU153
+ 432 019e 0998     		ldr	r0, [sp, #36]
+ 433 01a0 FFF7FEFF 		bl	_tx_mutex_put
+ 434              	.LVL53:
+ 419:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 435              		.loc 1 419 17 view .LVU154
+ 419:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 436              		.loc 1 419 23 is_stmt 0 view .LVU155
+ 437 01a4 9327     		movs	r7, #147
+ 438              	.LVL54:
+ 419:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 439              		.loc 1 419 23 view .LVU156
+ 440 01a6 37E7     		b	.L1
+ 441              	.LVL55:
+ 442              	.L35:
+ 766:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 443              		.loc 1 766 26 view .LVU157
+ 444 01a8 0023     		movs	r3, #0
+ 445 01aa 0693     		str	r3, [sp, #24]
+ 446              	.LVL56:
+ 766:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 447              		.loc 1 766 26 view .LVU158
+ 448 01ac B3E7     		b	.L12
+ 449              	.LVL57:
+ 450              	.L47:
+ 459:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 451              		.loc 1 459 17 is_stmt 1 view .LVU159
+ 452 01ae 0998     		ldr	r0, [sp, #36]
+ 453              	.LVL58:
+ 459:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 454              		.loc 1 459 17 is_stmt 0 view .LVU160
+ 455 01b0 FFF7FEFF 		bl	_tx_mutex_put
+ARM GAS  /tmp/ccAL3YfA.s 			page 26
+
+
+ 456              	.LVL59:
+ 462:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 457              		.loc 1 462 17 is_stmt 1 view .LVU161
+ 462:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 458              		.loc 1 462 23 is_stmt 0 view .LVU162
+ 459 01b4 30E7     		b	.L1
+ 460              	.LVL60:
+ 461              	.L48:
+ 486:Middlewares/ST/filex/common/src/fx_media_check.c ****                 continue;
+ 462              		.loc 1 486 17 is_stmt 1 view .LVU163
+ 486:Middlewares/ST/filex/common/src/fx_media_check.c ****                 continue;
+ 463              		.loc 1 486 18 is_stmt 0 view .LVU164
+ 464 01b6 0D9B     		ldr	r3, [sp, #52]
+ 465 01b8 0133     		adds	r3, r3, #1
+ 466 01ba 0D93     		str	r3, [sp, #52]
+ 487:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 467              		.loc 1 487 17 is_stmt 1 view .LVU165
+ 468 01bc 7BE0     		b	.L13
+ 469              	.LVL61:
+ 470              	.L49:
+ 551:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 471              		.loc 1 551 17 view .LVU166
+ 472 01be 0998     		ldr	r0, [sp, #36]
+ 473 01c0 FFF7FEFF 		bl	_tx_mutex_put
+ 474              	.LVL62:
+ 554:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 475              		.loc 1 554 17 view .LVU167
+ 554:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 476              		.loc 1 554 23 is_stmt 0 view .LVU168
+ 477 01c4 9027     		movs	r7, #144
+ 478              	.LVL63:
+ 554:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 479              		.loc 1 554 23 view .LVU169
+ 480 01c6 27E7     		b	.L1
+ 481              	.LVL64:
+ 482              	.L50:
+ 570:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 483              		.loc 1 570 25 is_stmt 1 view .LVU170
+ 570:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 484              		.loc 1 570 35 is_stmt 0 view .LVU171
+ 485 01c8 05F50053 		add	r3, r5, #8192
+ 486 01cc D3F8AC24 		ldr	r2, [r3, #1196]
+ 487 01d0 0F99     		ldr	r1, [sp, #60]
+ 488 01d2 2846     		mov	r0, r5
+ 489 01d4 FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 490              	.LVL65:
+ 573:Middlewares/ST/filex/common/src/fx_media_check.c ****                         {
+ 491              		.loc 1 573 25 is_stmt 1 view .LVU172
+ 573:Middlewares/ST/filex/common/src/fx_media_check.c ****                         {
+ 492              		.loc 1 573 28 is_stmt 0 view .LVU173
+ 493 01d8 0746     		mov	r7, r0
+ 494              	.LVL66:
+ 573:Middlewares/ST/filex/common/src/fx_media_check.c ****                         {
+ 495              		.loc 1 573 28 view .LVU174
+ 496 01da 0028     		cmp	r0, #0
+ 497 01dc 00F0B280 		beq	.L19
+ 577:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ARM GAS  /tmp/ccAL3YfA.s 			page 27
+
+
+ 498              		.loc 1 577 29 is_stmt 1 view .LVU175
+ 499 01e0 0998     		ldr	r0, [sp, #36]
+ 500              	.LVL67:
+ 577:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 501              		.loc 1 577 29 is_stmt 0 view .LVU176
+ 502 01e2 FFF7FEFF 		bl	_tx_mutex_put
+ 503              	.LVL68:
+ 580:Middlewares/ST/filex/common/src/fx_media_check.c ****                         }
+ 504              		.loc 1 580 29 is_stmt 1 view .LVU177
+ 580:Middlewares/ST/filex/common/src/fx_media_check.c ****                         }
+ 505              		.loc 1 580 35 is_stmt 0 view .LVU178
+ 506 01e6 17E7     		b	.L1
+ 507              	.LVL69:
+ 508              	.L51:
+ 598:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 509              		.loc 1 598 21 is_stmt 1 view .LVU179
+ 598:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 510              		.loc 1 598 41 is_stmt 0 view .LVU180
+ 511 01e8 D8F80030 		ldr	r3, [r8]
+ 598:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 512              		.loc 1 598 58 view .LVU181
+ 513 01ec 43F00203 		orr	r3, r3, #2
+ 598:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 514              		.loc 1 598 38 view .LVU182
+ 515 01f0 C8F80030 		str	r3, [r8]
+ 601:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 516              		.loc 1 601 21 is_stmt 1 view .LVU183
+ 517 01f4 0293     		str	r3, [sp, #8]
+ 518 01f6 0746     		mov	r7, r0
+ 519 01f8 0190     		str	r0, [sp, #4]
+ 520 01fa 0090     		str	r0, [sp]
+ 521 01fc 0346     		mov	r3, r0
+ 522 01fe 40F20112 		movw	r2, #257
+ 523 0202 0B99     		ldr	r1, [sp, #44]
+ 524 0204 0C98     		ldr	r0, [sp, #48]
+ 525 0206 FFF7FEFF 		bl	_fx_trace_event_update
+ 526              	.LVL70:
+ 604:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 527              		.loc 1 604 21 view .LVU184
+ 604:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 528              		.loc 1 604 59 is_stmt 0 view .LVU185
+ 529 020a 6763     		str	r7, [r4, #52]
+ 607:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 530              		.loc 1 607 21 is_stmt 1 view .LVU186
+ 607:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 531              		.loc 1 607 24 is_stmt 0 view .LVU187
+ 532 020c 059B     		ldr	r3, [sp, #20]
+ 533 020e 13F0020F 		tst	r3, #2
+ 534 0212 00F0A680 		beq	.L21
+ 611:Middlewares/ST/filex/common/src/fx_media_check.c ****                         dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 535              		.loc 1 611 25 is_stmt 1 view .LVU188
+ 611:Middlewares/ST/filex/common/src/fx_media_check.c ****                         dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 536              		.loc 1 611 39 is_stmt 0 view .LVU189
+ 537 0216 2268     		ldr	r2, [r4]
+ 611:Middlewares/ST/filex/common/src/fx_media_check.c ****                         dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 538              		.loc 1 611 63 view .LVU190
+ 539 0218 E523     		movs	r3, #229
+ARM GAS  /tmp/ccAL3YfA.s 			page 28
+
+
+ 540 021a 1370     		strb	r3, [r2]
+ 612:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 541              		.loc 1 612 25 is_stmt 1 view .LVU191
+ 612:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 542              		.loc 1 612 69 is_stmt 0 view .LVU192
+ 543 021c 2371     		strb	r3, [r4, #4]
+ 544 021e A0E0     		b	.L21
+ 545              	.L52:
+ 621:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 546              		.loc 1 621 21 is_stmt 1 view .LVU193
+ 621:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 547              		.loc 1 621 31 is_stmt 0 view .LVU194
+ 548 0220 2146     		mov	r1, r4
+ 549 0222 2846     		mov	r0, r5
+ 550 0224 FFF7FEFF 		bl	_fx_directory_entry_write
+ 551              	.LVL71:
+ 624:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 552              		.loc 1 624 21 is_stmt 1 view .LVU195
+ 624:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 553              		.loc 1 624 24 is_stmt 0 view .LVU196
+ 554 0228 0746     		mov	r7, r0
+ 555 022a 0028     		cmp	r0, #0
+ 556 022c 00F09E80 		beq	.L20
+ 628:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 557              		.loc 1 628 25 is_stmt 1 view .LVU197
+ 558 0230 0998     		ldr	r0, [sp, #36]
+ 559              	.LVL72:
+ 628:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 560              		.loc 1 628 25 is_stmt 0 view .LVU198
+ 561 0232 FFF7FEFF 		bl	_tx_mutex_put
+ 562              	.LVL73:
+ 631:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 563              		.loc 1 631 25 is_stmt 1 view .LVU199
+ 631:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 564              		.loc 1 631 31 is_stmt 0 view .LVU200
+ 565 0236 EFE6     		b	.L1
+ 566              	.LVL74:
+ 567              	.L53:
+ 642:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 568              		.loc 1 642 17 is_stmt 1 view .LVU201
+ 642:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 569              		.loc 1 642 37 is_stmt 0 view .LVU202
+ 570 0238 D8F80030 		ldr	r3, [r8]
+ 642:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 571              		.loc 1 642 54 view .LVU203
+ 572 023c 43F00203 		orr	r3, r3, #2
+ 642:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 573              		.loc 1 642 34 view .LVU204
+ 574 0240 C8F80030 		str	r3, [r8]
+ 645:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 575              		.loc 1 645 17 is_stmt 1 view .LVU205
+ 576 0244 0293     		str	r3, [sp, #8]
+ 577 0246 0023     		movs	r3, #0
+ 578 0248 0193     		str	r3, [sp, #4]
+ 579 024a 0093     		str	r3, [sp]
+ 580 024c 40F20112 		movw	r2, #257
+ 581 0250 0B99     		ldr	r1, [sp, #44]
+ARM GAS  /tmp/ccAL3YfA.s 			page 29
+
+
+ 582 0252 0C98     		ldr	r0, [sp, #48]
+ 583 0254 FFF7FEFF 		bl	_fx_trace_event_update
+ 584              	.LVL75:
+ 648:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 585              		.loc 1 648 17 view .LVU206
+ 648:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 586              		.loc 1 648 20 is_stmt 0 view .LVU207
+ 587 0258 059B     		ldr	r3, [sp, #20]
+ 588 025a 13F0020F 		tst	r3, #2
+ 589 025e 00F08D80 		beq	.L22
+ 652:Middlewares/ST/filex/common/src/fx_media_check.c ****                     dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 590              		.loc 1 652 21 is_stmt 1 view .LVU208
+ 652:Middlewares/ST/filex/common/src/fx_media_check.c ****                     dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 591              		.loc 1 652 35 is_stmt 0 view .LVU209
+ 592 0262 2268     		ldr	r2, [r4]
+ 652:Middlewares/ST/filex/common/src/fx_media_check.c ****                     dir_entry_ptr -> fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 593              		.loc 1 652 59 view .LVU210
+ 594 0264 E523     		movs	r3, #229
+ 595 0266 1370     		strb	r3, [r2]
+ 653:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 596              		.loc 1 653 21 is_stmt 1 view .LVU211
+ 653:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 597              		.loc 1 653 65 is_stmt 0 view .LVU212
+ 598 0268 2371     		strb	r3, [r4, #4]
+ 656:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 599              		.loc 1 656 21 is_stmt 1 view .LVU213
+ 656:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 600              		.loc 1 656 31 is_stmt 0 view .LVU214
+ 601 026a 2146     		mov	r1, r4
+ 602 026c 2846     		mov	r0, r5
+ 603 026e FFF7FEFF 		bl	_fx_directory_entry_write
+ 604              	.LVL76:
+ 659:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 605              		.loc 1 659 21 is_stmt 1 view .LVU215
+ 659:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 606              		.loc 1 659 24 is_stmt 0 view .LVU216
+ 607 0272 0746     		mov	r7, r0
+ 608 0274 18B9     		cbnz	r0, .L45
+ 670:Middlewares/ST/filex/common/src/fx_media_check.c ****                     continue;
+ 609              		.loc 1 670 21 is_stmt 1 view .LVU217
+ 670:Middlewares/ST/filex/common/src/fx_media_check.c ****                     continue;
+ 610              		.loc 1 670 22 is_stmt 0 view .LVU218
+ 611 0276 0D9B     		ldr	r3, [sp, #52]
+ 612 0278 0133     		adds	r3, r3, #1
+ 613 027a 0D93     		str	r3, [sp, #52]
+ 671:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 614              		.loc 1 671 21 is_stmt 1 view .LVU219
+ 615 027c 1BE0     		b	.L13
+ 616              	.L45:
+ 663:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 617              		.loc 1 663 25 view .LVU220
+ 618 027e 0998     		ldr	r0, [sp, #36]
+ 619              	.LVL77:
+ 663:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 620              		.loc 1 663 25 is_stmt 0 view .LVU221
+ 621 0280 FFF7FEFF 		bl	_tx_mutex_put
+ 622              	.LVL78:
+ARM GAS  /tmp/ccAL3YfA.s 			page 30
+
+
+ 666:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 623              		.loc 1 666 25 is_stmt 1 view .LVU222
+ 666:Middlewares/ST/filex/common/src/fx_media_check.c ****                     }
+ 624              		.loc 1 666 31 is_stmt 0 view .LVU223
+ 625 0284 C8E6     		b	.L1
+ 626              	.LVL79:
+ 627              	.L54:
+ 693:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 628              		.loc 1 693 21 is_stmt 1 view .LVU224
+ 629 0286 0998     		ldr	r0, [sp, #36]
+ 630 0288 FFF7FEFF 		bl	_tx_mutex_put
+ 631              	.LVL80:
+ 696:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 632              		.loc 1 696 21 view .LVU225
+ 696:Middlewares/ST/filex/common/src/fx_media_check.c ****                 }
+ 633              		.loc 1 696 27 is_stmt 0 view .LVU226
+ 634 028c 9127     		movs	r7, #145
+ 635 028e C3E6     		b	.L1
+ 636              	.L58:
+ 637              		.align	2
+ 638              	.L57:
+ 639 0290 4944454D 		.word	1296385097
+ 640              	.L24:
+ 729:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 641              		.loc 1 729 17 is_stmt 1 view .LVU227
+ 729:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 642              		.loc 1 729 38 is_stmt 0 view .LVU228
+ 643 0294 0E9B     		ldr	r3, [sp, #56]
+ 644 0296 03FB0AF3 		mul	r3, r3, r10
+ 729:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 645              		.loc 1 729 75 view .LVU229
+ 646 029a A16B     		ldr	r1, [r4, #56]
+ 647 029c E26B     		ldr	r2, [r4, #60]
+ 729:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 648              		.loc 1 729 59 view .LVU230
+ 649 029e 5B1A     		subs	r3, r3, r1
+ 650 02a0 62EB4202 		sbc	r2, r2, r2, lsl #1
+ 729:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 651              		.loc 1 729 20 view .LVU231
+ 652 02a4 9A45     		cmp	r10, r3
+ 653 02a6 4FF00003 		mov	r3, #0
+ 654 02aa 9341     		sbcs	r3, r3, r2
+ 655 02ac C0F09080 		bcc	.L46
+ 656              	.L26:
+ 743:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 657              		.loc 1 743 17 is_stmt 1 view .LVU232
+ 743:Middlewares/ST/filex/common/src/fx_media_check.c ****             }
+ 658              		.loc 1 743 18 is_stmt 0 view .LVU233
+ 659 02b0 0D9B     		ldr	r3, [sp, #52]
+ 660 02b2 0133     		adds	r3, r3, #1
+ 661 02b4 0D93     		str	r3, [sp, #52]
+ 662              	.LVL81:
+ 663              	.L13:
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 664              		.loc 1 443 18 is_stmt 1 view .LVU234
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 665              		.loc 1 443 37 is_stmt 0 view .LVU235
+ARM GAS  /tmp/ccAL3YfA.s 			page 31
+
+
+ 666 02b6 06EB4603 		add	r3, r6, r6, lsl #1
+ 667 02ba 9A00     		lsls	r2, r3, #2
+ 668 02bc 0792     		str	r2, [sp, #28]
+ 669 02be 09EB8303 		add	r3, r9, r3, lsl #2
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 670              		.loc 1 443 62 view .LVU236
+ 671 02c2 5A68     		ldr	r2, [r3, #4]
+ 443:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 672              		.loc 1 443 18 view .LVU237
+ 673 02c4 0D9B     		ldr	r3, [sp, #52]
+ 674 02c6 9A42     		cmp	r2, r3
+ 675 02c8 40F29380 		bls	.L15
+ 451:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 676              		.loc 1 451 13 is_stmt 1 view .LVU238
+ 451:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 677              		.loc 1 451 23 is_stmt 0 view .LVU239
+ 678 02cc 2346     		mov	r3, r4
+ 679 02ce 0DAA     		add	r2, sp, #52
+ 680 02d0 0699     		ldr	r1, [sp, #24]
+ 681 02d2 2846     		mov	r0, r5
+ 682 02d4 FFF7FEFF 		bl	_fx_directory_entry_read
+ 683              	.LVL82:
+ 455:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 684              		.loc 1 455 13 is_stmt 1 view .LVU240
+ 455:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 685              		.loc 1 455 16 is_stmt 0 view .LVU241
+ 686 02d8 0746     		mov	r7, r0
+ 687 02da 0028     		cmp	r0, #0
+ 688 02dc 7FF467AF 		bne	.L47
+ 469:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 689              		.loc 1 469 13 is_stmt 1 view .LVU242
+ 469:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 690              		.loc 1 469 31 is_stmt 0 view .LVU243
+ 691 02e0 2368     		ldr	r3, [r4]
+ 469:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 692              		.loc 1 469 51 view .LVU244
+ 693 02e2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 469:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 694              		.loc 1 469 16 view .LVU245
+ 695 02e4 002B     		cmp	r3, #0
+ 696 02e6 00F08480 		beq	.L15
+ 481:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 697              		.loc 1 481 13 is_stmt 1 view .LVU246
+ 481:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 698              		.loc 1 481 16 is_stmt 0 view .LVU247
+ 699 02ea E52B     		cmp	r3, #229
+ 700 02ec 03D1     		bne	.L16
+ 481:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 701              		.loc 1 481 128 discriminator 1 view .LVU248
+ 702 02ee 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 481:Middlewares/ST/filex/common/src/fx_media_check.c **** #endif /* FX_ENABLE_EXFAT */
+ 703              		.loc 1 481 84 discriminator 1 view .LVU249
+ 704 02f0 002B     		cmp	r3, #0
+ 705 02f2 3FF460AF 		beq	.L48
+ 706              	.L16:
+ 534:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                                   &last_cluster, &valid_clusters, l
+ 707              		.loc 1 534 17 is_stmt 1 view .LVU250
+ARM GAS  /tmp/ccAL3YfA.s 			page 32
+
+
+ 534:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                                   &last_cluster, &valid_clusters, l
+ 708              		.loc 1 534 35 is_stmt 0 view .LVU251
+ 709 02f6 089B     		ldr	r3, [sp, #32]
+ 710 02f8 0093     		str	r3, [sp]
+ 711 02fa 0EAB     		add	r3, sp, #56
+ 712 02fc 0FAA     		add	r2, sp, #60
+ 713 02fe 616B     		ldr	r1, [r4, #52]
+ 714 0300 2846     		mov	r0, r5
+ 715              	.LVL83:
+ 534:Middlewares/ST/filex/common/src/fx_media_check.c ****                                                                   &last_cluster, &valid_clusters, l
+ 716              		.loc 1 534 35 view .LVU252
+ 717 0302 FFF7FEFF 		bl	_fx_media_check_FAT_chain_check
+ 718              	.LVL84:
+ 719 0306 0746     		mov	r7, r0
+ 720              	.LVL85:
+ 541:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 721              		.loc 1 541 13 is_stmt 1 view .LVU253
+ 541:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 722              		.loc 1 541 33 is_stmt 0 view .LVU254
+ 723 0308 D8F80030 		ldr	r3, [r8]
+ 541:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 724              		.loc 1 541 50 view .LVU255
+ 725 030c 0343     		orrs	r3, r3, r0
+ 541:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 726              		.loc 1 541 30 view .LVU256
+ 727 030e C8F80030 		str	r3, [r8]
+ 544:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 728              		.loc 1 544 13 is_stmt 1 view .LVU257
+ 729 0312 0293     		str	r3, [sp, #8]
+ 730 0314 0023     		movs	r3, #0
+ 731 0316 0193     		str	r3, [sp, #4]
+ 732 0318 0093     		str	r3, [sp]
+ 733 031a 40F20112 		movw	r2, #257
+ 734 031e 0B99     		ldr	r1, [sp, #44]
+ 735 0320 0C98     		ldr	r0, [sp, #48]
+ 736              	.LVL86:
+ 544:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 737              		.loc 1 544 13 is_stmt 0 view .LVU258
+ 738 0322 FFF7FEFF 		bl	_fx_trace_event_update
+ 739              	.LVL87:
+ 547:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 740              		.loc 1 547 13 is_stmt 1 view .LVU259
+ 547:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 741              		.loc 1 547 16 is_stmt 0 view .LVU260
+ 742 0326 17F0900F 		tst	r7, #144
+ 743 032a 7FF448AF 		bne	.L49
+ 558:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 744              		.loc 1 558 13 is_stmt 1 view .LVU261
+ 558:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 745              		.loc 1 558 17 is_stmt 0 view .LVU262
+ 746 032e D8F80030 		ldr	r3, [r8]
+ 558:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 747              		.loc 1 558 16 view .LVU263
+ 748 0332 3BB1     		cbz	r3, .L19
+ 562:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 749              		.loc 1 562 17 is_stmt 1 view .LVU264
+ 562:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ARM GAS  /tmp/ccAL3YfA.s 			page 33
+
+
+ 750              		.loc 1 562 20 is_stmt 0 view .LVU265
+ 751 0334 059B     		ldr	r3, [sp, #20]
+ 752 0336 13F0010F 		tst	r3, #1
+ 753 033a 03D0     		beq	.L19
+ 566:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 754              		.loc 1 566 21 is_stmt 1 view .LVU266
+ 566:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 755              		.loc 1 566 25 is_stmt 0 view .LVU267
+ 756 033c 0E9B     		ldr	r3, [sp, #56]
+ 566:Middlewares/ST/filex/common/src/fx_media_check.c ****                     {
+ 757              		.loc 1 566 24 view .LVU268
+ 758 033e 002B     		cmp	r3, #0
+ 759 0340 7FF442AF 		bne	.L50
+ 760              	.LVL88:
+ 761              	.L19:
+ 587:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 762              		.loc 1 587 13 is_stmt 1 view .LVU269
+ 587:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 763              		.loc 1 587 31 is_stmt 0 view .LVU270
+ 764 0344 A16B     		ldr	r1, [r4, #56]
+ 765 0346 E26B     		ldr	r2, [r4, #60]
+ 587:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 766              		.loc 1 587 75 view .LVU271
+ 767 0348 0E9B     		ldr	r3, [sp, #56]
+ 768 034a 03FB0AF3 		mul	r3, r3, r10
+ 769 034e 0020     		movs	r0, #0
+ 587:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 770              		.loc 1 587 16 view .LVU272
+ 771 0350 8B42     		cmp	r3, r1
+ 772 0352 70EB0202 		sbcs	r2, r0, r2
+ 773 0356 09D2     		bcs	.L20
+ 591:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 774              		.loc 1 591 17 is_stmt 1 view .LVU273
+ 591:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 775              		.loc 1 591 57 is_stmt 0 view .LVU274
+ 776 0358 A363     		str	r3, [r4, #56]
+ 777 035a E063     		str	r0, [r4, #60]
+ 594:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 778              		.loc 1 594 17 is_stmt 1 view .LVU275
+ 594:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 779              		.loc 1 594 20 is_stmt 0 view .LVU276
+ 780 035c 002B     		cmp	r3, #0
+ 781 035e 3FF443AF 		beq	.L51
+ 782              	.L21:
+ 617:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 783              		.loc 1 617 17 is_stmt 1 view .LVU277
+ 617:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 784              		.loc 1 617 20 is_stmt 0 view .LVU278
+ 785 0362 059B     		ldr	r3, [sp, #20]
+ 786 0364 13F0010F 		tst	r3, #1
+ 787 0368 7FF45AAF 		bne	.L52
+ 788              	.L20:
+ 637:Middlewares/ST/filex/common/src/fx_media_check.c ****                  && (valid_clusters == 0))
+ 789              		.loc 1 637 13 is_stmt 1 view .LVU279
+ 637:Middlewares/ST/filex/common/src/fx_media_check.c ****                  && (valid_clusters == 0))
+ 790              		.loc 1 637 32 is_stmt 0 view .LVU280
+ 791 036c 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ARM GAS  /tmp/ccAL3YfA.s 			page 34
+
+
+ 637:Middlewares/ST/filex/common/src/fx_media_check.c ****                  && (valid_clusters == 0))
+ 792              		.loc 1 637 16 view .LVU281
+ 793 036e 13F0100F 		tst	r3, #16
+ 794 0372 03D0     		beq	.L22
+ 638:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 795              		.loc 1 638 37 view .LVU282
+ 796 0374 0E9B     		ldr	r3, [sp, #56]
+ 638:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 797              		.loc 1 638 18 view .LVU283
+ 798 0376 002B     		cmp	r3, #0
+ 799 0378 3FF45EAF 		beq	.L53
+ 800              	.L22:
+ 676:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 801              		.loc 1 676 13 is_stmt 1 view .LVU284
+ 676:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 802              		.loc 1 676 31 is_stmt 0 view .LVU285
+ 803 037c 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 676:Middlewares/ST/filex/common/src/fx_media_check.c ****             {
+ 804              		.loc 1 676 16 view .LVU286
+ 805 037e 13F0100F 		tst	r3, #16
+ 806 0382 87D0     		beq	.L24
+ 683:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 807              		.loc 1 683 17 is_stmt 1 view .LVU287
+ 683:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 808              		.loc 1 683 89 is_stmt 0 view .LVU288
+ 809 0384 0D9B     		ldr	r3, [sp, #52]
+ 810 0386 0133     		adds	r3, r3, #1
+ 683:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 811              		.loc 1 683 84 view .LVU289
+ 812 0388 079A     		ldr	r2, [sp, #28]
+ 813 038a 49F80230 		str	r3, [r9, r2]
+ 686:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 814              		.loc 1 686 17 is_stmt 1 view .LVU290
+ 686:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 815              		.loc 1 686 40 is_stmt 0 view .LVU291
+ 816 038e 0136     		adds	r6, r6, #1
+ 817              	.LVL89:
+ 689:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 818              		.loc 1 689 17 is_stmt 1 view .LVU292
+ 689:Middlewares/ST/filex/common/src/fx_media_check.c ****                 {
+ 819              		.loc 1 689 20 is_stmt 0 view .LVU293
+ 820 0390 132E     		cmp	r6, #19
+ 821 0392 3FF678AF 		bhi	.L54
+ 700:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_start_cluster =      dir_entry_p
+ 822              		.loc 1 700 17 is_stmt 1 view .LVU294
+ 700:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_start_cluster =      dir_entry_p
+ 823              		.loc 1 700 105 is_stmt 0 view .LVU295
+ 824 0396 0E9B     		ldr	r3, [sp, #56]
+ 825 0398 03FB0AF3 		mul	r3, r3, r10
+ 700:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_start_cluster =      dir_entry_p
+ 826              		.loc 1 700 34 view .LVU296
+ 827 039c 06EB4601 		add	r1, r6, r6, lsl #1
+ 828 03a0 09EB8102 		add	r2, r9, r1, lsl #2
+ 700:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_start_cluster =      dir_entry_p
+ 829              		.loc 1 700 126 view .LVU297
+ 830 03a4 5B09     		lsrs	r3, r3, #5
+ 700:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_start_cluster =      dir_entry_p
+ARM GAS  /tmp/ccAL3YfA.s 			page 35
+
+
+ 831              		.loc 1 700 82 view .LVU298
+ 832 03a6 5360     		str	r3, [r2, #4]
+ 701:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_directory_entry =    2;
+ 833              		.loc 1 701 17 is_stmt 1 view .LVU299
+ 701:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_directory_entry =    2;
+ 834              		.loc 1 701 103 is_stmt 0 view .LVU300
+ 835 03a8 636B     		ldr	r3, [r4, #52]
+ 701:Middlewares/ST/filex/common/src/fx_media_check.c ****                 current_directory[current_directory_index].current_directory_entry =    2;
+ 836              		.loc 1 701 82 view .LVU301
+ 837 03aa 9360     		str	r3, [r2, #8]
+ 702:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 838              		.loc 1 702 17 is_stmt 1 view .LVU302
+ 702:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 839              		.loc 1 702 84 is_stmt 0 view .LVU303
+ 840 03ac 0223     		movs	r3, #2
+ 841 03ae 49F82130 		str	r3, [r9, r1, lsl #2]
+ 705:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_dir
+ 842              		.loc 1 705 17 is_stmt 1 view .LVU304
+ 705:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_dir
+ 843              		.loc 1 705 85 is_stmt 0 view .LVU305
+ 844 03b2 616B     		ldr	r1, [r4, #52]
+ 705:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_dir
+ 845              		.loc 1 705 56 view .LVU306
+ 846 03b4 CBF83410 		str	r1, [fp, #52]
+ 706:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 847              		.loc 1 706 17 is_stmt 1 view .LVU307
+ 706:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 848              		.loc 1 706 113 is_stmt 0 view .LVU308
+ 849 03b8 5168     		ldr	r1, [r2, #4]
+ 850 03ba 0022     		movs	r2, #0
+ 706:Middlewares/ST/filex/common/src/fx_media_check.c ****                 source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 851              		.loc 1 706 58 view .LVU309
+ 852 03bc CBF83810 		str	r1, [fp, #56]
+ 853 03c0 CBF83C20 		str	r2, [fp, #60]
+ 707:Middlewares/ST/filex/common/src/fx_media_check.c ****                 temp_dir_ptr =                                        source_dir_ptr;
+ 854              		.loc 1 707 17 is_stmt 1 view .LVU310
+ 707:Middlewares/ST/filex/common/src/fx_media_check.c ****                 temp_dir_ptr =                                        source_dir_ptr;
+ 855              		.loc 1 707 68 is_stmt 0 view .LVU311
+ 856 03c4 CBF85020 		str	r2, [fp, #80]
+ 708:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 857              		.loc 1 708 17 is_stmt 1 view .LVU312
+ 858              	.LVL90:
+ 711:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 859              		.loc 1 711 17 view .LVU313
+ 711:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 860              		.loc 1 711 19 is_stmt 0 view .LVU314
+ 861 03c8 0D93     		str	r3, [sp, #52]
+ 708:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 862              		.loc 1 708 30 view .LVU315
+ 863 03ca CDF818B0 		str	fp, [sp, #24]
+ 864 03ce 72E7     		b	.L13
+ 865              	.LVL91:
+ 866              	.L46:
+ 734:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 867              		.loc 1 734 21 is_stmt 1 view .LVU316
+ 734:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 868              		.loc 1 734 41 is_stmt 0 view .LVU317
+ARM GAS  /tmp/ccAL3YfA.s 			page 36
+
+
+ 869 03d0 D8F80030 		ldr	r3, [r8]
+ 734:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 870              		.loc 1 734 58 view .LVU318
+ 871 03d4 43F00803 		orr	r3, r3, #8
+ 734:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 872              		.loc 1 734 38 view .LVU319
+ 873 03d8 C8F80030 		str	r3, [r8]
+ 737:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 874              		.loc 1 737 21 is_stmt 1 view .LVU320
+ 875 03dc 0293     		str	r3, [sp, #8]
+ 876 03de 0023     		movs	r3, #0
+ 877 03e0 0193     		str	r3, [sp, #4]
+ 878 03e2 0093     		str	r3, [sp]
+ 879 03e4 40F20112 		movw	r2, #257
+ 880 03e8 0B99     		ldr	r1, [sp, #44]
+ 881 03ea 0C98     		ldr	r0, [sp, #48]
+ 882 03ec FFF7FEFF 		bl	_fx_trace_event_update
+ 883              	.LVL92:
+ 884 03f0 5EE7     		b	.L26
+ 885              	.LVL93:
+ 886              	.L15:
+ 751:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 887              		.loc 1 751 9 view .LVU321
+ 751:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 888              		.loc 1 751 12 is_stmt 0 view .LVU322
+ 889 03f2 CEB1     		cbz	r6, .L28
+ 759:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 890              		.loc 1 759 9 is_stmt 1 view .LVU323
+ 759:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 891              		.loc 1 759 32 is_stmt 0 view .LVU324
+ 892 03f4 013E     		subs	r6, r6, #1
+ 893              	.LVL94:
+ 762:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 894              		.loc 1 762 9 is_stmt 1 view .LVU325
+ 762:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 895              		.loc 1 762 30 is_stmt 0 view .LVU326
+ 896 03f6 06EB4603 		add	r3, r6, r6, lsl #1
+ 897 03fa 09EB8303 		add	r3, r9, r3, lsl #2
+ 762:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 898              		.loc 1 762 55 view .LVU327
+ 899 03fe 9A68     		ldr	r2, [r3, #8]
+ 762:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 900              		.loc 1 762 91 view .LVU328
+ 901 0400 05F50051 		add	r1, r5, #8192
+ 902 0404 D1F8AC14 		ldr	r1, [r1, #1196]
+ 762:Middlewares/ST/filex/common/src/fx_media_check.c ****         {
+ 903              		.loc 1 762 12 view .LVU329
+ 904 0408 8A42     		cmp	r2, r1
+ 905 040a 3FF4CDAE 		beq	.L35
+ 773:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_directo
+ 906              		.loc 1 773 13 is_stmt 1 view .LVU330
+ 773:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_file_size =            current_directory[current_directo
+ 907              		.loc 1 773 52 is_stmt 0 view .LVU331
+ 908 040e CBF83420 		str	r2, [fp, #52]
+ 774:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 909              		.loc 1 774 13 is_stmt 1 view .LVU332
+ 774:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ARM GAS  /tmp/ccAL3YfA.s 			page 37
+
+
+ 910              		.loc 1 774 109 is_stmt 0 view .LVU333
+ 911 0412 5A68     		ldr	r2, [r3, #4]
+ 912 0414 0023     		movs	r3, #0
+ 774:Middlewares/ST/filex/common/src/fx_media_check.c ****             source_dir_ptr -> fx_dir_entry_last_search_cluster =  0;
+ 913              		.loc 1 774 54 view .LVU334
+ 914 0416 CBF83820 		str	r2, [fp, #56]
+ 915 041a CBF83C30 		str	r3, [fp, #60]
+ 775:Middlewares/ST/filex/common/src/fx_media_check.c ****             temp_dir_ptr =                                        source_dir_ptr;
+ 916              		.loc 1 775 13 is_stmt 1 view .LVU335
+ 775:Middlewares/ST/filex/common/src/fx_media_check.c ****             temp_dir_ptr =                                        source_dir_ptr;
+ 917              		.loc 1 775 64 is_stmt 0 view .LVU336
+ 918 041e CBF85030 		str	r3, [fp, #80]
+ 776:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 919              		.loc 1 776 13 is_stmt 1 view .LVU337
+ 920              	.LVL95:
+ 776:Middlewares/ST/filex/common/src/fx_media_check.c ****         }
+ 921              		.loc 1 776 26 is_stmt 0 view .LVU338
+ 922 0422 CDF818B0 		str	fp, [sp, #24]
+ 923 0426 76E6     		b	.L12
+ 924              	.LVL96:
+ 925              	.L28:
+ 794:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 926              		.loc 1 794 9 is_stmt 1 view .LVU339
+ 794:Middlewares/ST/filex/common/src/fx_media_check.c **** #ifdef FX_ENABLE_EXFAT
+ 927              		.loc 1 794 27 is_stmt 0 view .LVU340
+ 928 0428 059B     		ldr	r3, [sp, #20]
+ 929 042a 2A6C     		ldr	r2, [r5, #64]
+ 930 042c 0899     		ldr	r1, [sp, #32]
+ 931 042e 2846     		mov	r0, r5
+ 932 0430 FFF7FEFF 		bl	_fx_media_check_lost_cluster_check
+ 933              	.LVL97:
+ 934 0434 0746     		mov	r7, r0
+ 935              	.LVL98:
+ 800:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 936              		.loc 1 800 5 is_stmt 1 view .LVU341
+ 800:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 937              		.loc 1 800 25 is_stmt 0 view .LVU342
+ 938 0436 D8F80030 		ldr	r3, [r8]
+ 800:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 939              		.loc 1 800 42 view .LVU343
+ 940 043a 0343     		orrs	r3, r3, r0
+ 800:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 941              		.loc 1 800 22 view .LVU344
+ 942 043c C8F80030 		str	r3, [r8]
+ 803:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 943              		.loc 1 803 5 is_stmt 1 view .LVU345
+ 944 0440 0293     		str	r3, [sp, #8]
+ 945 0442 0023     		movs	r3, #0
+ 946 0444 0193     		str	r3, [sp, #4]
+ 947 0446 0093     		str	r3, [sp]
+ 948 0448 40F20112 		movw	r2, #257
+ 949 044c 0B99     		ldr	r1, [sp, #44]
+ 950 044e 0C98     		ldr	r0, [sp, #48]
+ 951              	.LVL99:
+ 803:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 952              		.loc 1 803 5 is_stmt 0 view .LVU346
+ 953 0450 FFF7FEFF 		bl	_fx_trace_event_update
+ARM GAS  /tmp/ccAL3YfA.s 			page 38
+
+
+ 954              	.LVL100:
+ 806:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 955              		.loc 1 806 5 is_stmt 1 view .LVU347
+ 806:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 956              		.loc 1 806 8 is_stmt 0 view .LVU348
+ 957 0454 17F09007 		ands	r7, r7, #144
+ 958              	.LVL101:
+ 806:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 959              		.loc 1 806 8 view .LVU349
+ 960 0458 08D1     		bne	.L55
+ 817:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 961              		.loc 1 817 5 is_stmt 1 view .LVU350
+ 817:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 962              		.loc 1 817 10 is_stmt 0 view .LVU351
+ 963 045a D8F80030 		ldr	r3, [r8]
+ 817:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 964              		.loc 1 817 8 view .LVU352
+ 965 045e 0BB1     		cbz	r3, .L31
+ 817:Middlewares/ST/filex/common/src/fx_media_check.c ****     {
+ 966              		.loc 1 817 28 discriminator 1 view .LVU353
+ 967 0460 059B     		ldr	r3, [sp, #20]
+ 968 0462 43B9     		cbnz	r3, .L56
+ 969              	.L31:
+ 825:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 970              		.loc 1 825 5 is_stmt 1 view .LVU354
+ 971 0464 0998     		ldr	r0, [sp, #36]
+ 972 0466 FFF7FEFF 		bl	_tx_mutex_put
+ 973              	.LVL102:
+ 828:Middlewares/ST/filex/common/src/fx_media_check.c **** }
+ 974              		.loc 1 828 5 view .LVU355
+ 828:Middlewares/ST/filex/common/src/fx_media_check.c **** }
+ 975              		.loc 1 828 11 is_stmt 0 view .LVU356
+ 976 046a D5E5     		b	.L1
+ 977              	.L55:
+ 810:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 978              		.loc 1 810 9 is_stmt 1 view .LVU357
+ 979 046c 0998     		ldr	r0, [sp, #36]
+ 980 046e FFF7FEFF 		bl	_tx_mutex_put
+ 981              	.LVL103:
+ 813:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 982              		.loc 1 813 9 view .LVU358
+ 813:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 983              		.loc 1 813 15 is_stmt 0 view .LVU359
+ 984 0472 9027     		movs	r7, #144
+ 985 0474 D0E5     		b	.L1
+ 986              	.L56:
+ 821:Middlewares/ST/filex/common/src/fx_media_check.c ****     }
+ 987              		.loc 1 821 9 is_stmt 1 view .LVU360
+ 988 0476 2846     		mov	r0, r5
+ 989 0478 FFF7FEFF 		bl	_fx_media_flush
+ 990              	.LVL104:
+ 991 047c F2E7     		b	.L31
+ 992              	.LVL105:
+ 993              	.L34:
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 994              		.loc 1 203 5 is_stmt 0 discriminator 3 view .LVU361
+ 995 047e 1127     		movs	r7, #17
+ARM GAS  /tmp/ccAL3YfA.s 			page 39
+
+
+ 996              	.LVL106:
+ 203:Middlewares/ST/filex/common/src/fx_media_check.c **** 
+ 997              		.loc 1 203 5 discriminator 3 view .LVU362
+ 998 0480 CAE5     		b	.L1
+ 999              		.cfi_endproc
+ 1000              	.LFE8:
+ 1002 0482 00BF     		.text
+ 1003              	.Letext0:
+ 1004              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 1005              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 1006              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 1007              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 1008              		.file 6 "Middlewares/ST/filex/common/inc/fx_media.h"
+ 1009              		.file 7 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ 1010              		.file 8 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  /tmp/ccAL3YfA.s 			page 40
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_check.c
+     /tmp/ccAL3YfA.s:20     .text._fx_media_check:00000000 $t
+     /tmp/ccAL3YfA.s:26     .text._fx_media_check:00000000 _fx_media_check
+     /tmp/ccAL3YfA.s:639    .text._fx_media_check:00000290 $d
+     /tmp/ccAL3YfA.s:643    .text._fx_media_check:00000294 $t
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_fx_media_cache_invalidate
+_tx_mutex_put
+_fx_media_check_FAT_chain_check
+_fx_trace_event_update
+_fx_utility_FAT_entry_write
+_fx_directory_entry_write
+_fx_directory_entry_read
+_fx_media_check_lost_cluster_check
+_fx_media_flush

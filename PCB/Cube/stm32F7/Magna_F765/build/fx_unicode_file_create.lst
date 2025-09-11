@@ -1,0 +1,805 @@
+ARM GAS  /tmp/cc8fytPN.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_unicode_file_create.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_unicode_file_create.c"
+  19              		.section	.text._fx_unicode_file_create,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_unicode_file_create
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_unicode_file_create:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  12:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  13:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**   Unicode                                                             */
+  19:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  23:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  25:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  26:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  28:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #include "fx_unicode.h"
+  30:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #include "fx_directory.h"
+ARM GAS  /tmp/cc8fytPN.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #include "fx_file.h"
+  32:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #include "fx_utility.h"
+  33:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+  34:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #include "fx_fault_tolerant.h"
+  35:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+  36:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  37:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  38:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+  39:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  FUNCTION                                               RELEASE        */
+  41:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_unicode_file_create                             PORTABLE C      */
+  43:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                           6.1          */
+  44:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  AUTHOR                                                                */
+  45:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  47:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  DESCRIPTION                                                           */
+  49:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    This function creates the specified unicode name.                   */
+  51:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  52:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  INPUT                                                                 */
+  53:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    media_ptr                             Pointer to media              */
+  55:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    source_unicode_name                   Pointer to source unicode name*/
+  56:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    source_unicode_length                 Unicode name length           */
+  57:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    short_name                            Designated short name         */
+  58:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  OUTPUT                                                                */
+  60:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    Completion Status                                                   */
+  62:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  CALLS                                                                 */
+  64:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_directory_search                  Search directory              */
+  66:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_unicode_directory_entry_change    Change unicode file name      */
+  67:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_unicode_directory_search          Search for unicode name       */
+  68:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_file_create                       Create a file                 */
+  69:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_fault_tolerant_transaction_start  Start fault tolerant          */
+  70:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                            transaction                 */
+  71:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_fault_tolerant_transaction_end    End fault tolerant transaction*/
+  72:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_fault_tolerant_recover            Recover FAT chain             */
+  73:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    _fx_fault_tolerant_reset_log_file     Reset the log file            */
+  74:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  CALLED BY                                                             */
+  76:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  77:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    Application Code                                                    */
+  78:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  79:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  RELEASE HISTORY                                                       */
+  80:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  81:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*    DATE              NAME                      DESCRIPTION             */
+  82:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  83:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  84:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  85:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                            resulting in version 6.1    */
+  86:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /*                                                                        */
+  87:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** /**************************************************************************/
+ARM GAS  /tmp/cc8fytPN.s 			page 3
+
+
+  88:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** UINT  _fx_unicode_file_create(FX_MEDIA *media_ptr, UCHAR *source_unicode_name, ULONG source_unicode
+  89:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** {
+  29              		.loc 1 89 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 136
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 89 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 32
+  37              		.cfi_offset 4, -32
+  38              		.cfi_offset 5, -28
+  39              		.cfi_offset 6, -24
+  40              		.cfi_offset 7, -20
+  41              		.cfi_offset 8, -16
+  42              		.cfi_offset 9, -12
+  43              		.cfi_offset 10, -8
+  44              		.cfi_offset 14, -4
+  45 0004 A6B0     		sub	sp, sp, #152
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 184
+  48 0006 1546     		mov	r5, r2
+  49 0008 1E46     		mov	r6, r3
+  90:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  91:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** FX_DIR_ENTRY dir_entry;
+  50              		.loc 1 91 1 is_stmt 1 view .LVU2
+  92:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** UINT         i, status;
+  51              		.loc 1 92 1 view .LVU3
+  93:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** ULONG        temp_length;
+  52              		.loc 1 93 1 view .LVU4
+  94:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** UCHAR        destination_shortname[13];
+  53              		.loc 1 94 1 view .LVU5
+  95:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  96:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  97:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Setup pointer to media name buffer.  */
+  98:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     dir_entry.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+  54              		.loc 1 98 5 view .LVU6
+  55              		.loc 1 98 70 is_stmt 0 view .LVU7
+  56 000a 00F69C18 		addw	r8, r0, #2460
+  57              		.loc 1 98 33 view .LVU8
+  58 000e CDF82880 		str	r8, [sp, #40]
+  99:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 100:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Clear the short name string.  */
+ 101:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     dir_entry.fx_dir_entry_short_name[0] =  FX_NULL;
+  59              		.loc 1 101 5 is_stmt 1 view .LVU9
+  60              		.loc 1 101 42 is_stmt 0 view .LVU10
+  61 0012 0023     		movs	r3, #0
+  62              	.LVL1:
+  63              		.loc 1 101 42 view .LVU11
+  64 0014 8DF82C30 		strb	r3, [sp, #44]
+ 102:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 103:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Set destination shortname to null.  */
+ 104:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     destination_shortname[0] =  FX_NULL;
+  65              		.loc 1 104 5 is_stmt 1 view .LVU12
+  66              		.loc 1 104 30 is_stmt 0 view .LVU13
+  67 0018 8DF81430 		strb	r3, [sp, #20]
+ 105:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ARM GAS  /tmp/cc8fytPN.s 			page 4
+
+
+ 106:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Clear the return short name.  */
+ 107:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     short_name[0] =  FX_NULL;
+  68              		.loc 1 107 5 is_stmt 1 view .LVU14
+  69              		.loc 1 107 19 is_stmt 0 view .LVU15
+  70 001c 3370     		strb	r3, [r6]
+ 108:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 109:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Check the media to make sure it is open.  */
+ 110:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  71              		.loc 1 110 5 is_stmt 1 view .LVU16
+  72              		.loc 1 110 19 is_stmt 0 view .LVU17
+  73 001e 0268     		ldr	r2, [r0]
+  74              	.LVL2:
+  75              		.loc 1 110 8 view .LVU18
+  76 0020 524B     		ldr	r3, .L27
+  77 0022 9A42     		cmp	r2, r3
+  78 0024 05D0     		beq	.L20
+ 111:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 112:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 113:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return the media not opened error.  */
+ 114:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(FX_MEDIA_NOT_OPEN);
+  79              		.loc 1 114 15 view .LVU19
+  80 0026 4FF0110A 		mov	r10, #17
+  81              	.LVL3:
+  82              	.L1:
+ 115:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 116:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 117:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_EXFAT
+ 118:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Check if media format is exFAT.  */
+ 119:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 120:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 121:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return the not implemented error.  */
+ 123:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(FX_NOT_IMPLEMENTED);
+ 124:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 125:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif
+ 126:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 127:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 128:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_UNICODE_FILE_CREATE, media_ptr, source_unicode_name, source_un
+ 129:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 130:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Protect media.  */
+ 131:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     FX_PROTECT
+ 132:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 134:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Start transaction. */
+ 135:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     _fx_fault_tolerant_transaction_start(media_ptr);
+ 136:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 137:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 138:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Check for write protect at the media level (set by driver).  */
+ 139:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (media_ptr -> fx_media_driver_write_protect)
+ 140:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 141:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 142:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 143:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 144:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 145:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Release media protection.  */
+ 146:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_UNPROTECT
+ 147:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ARM GAS  /tmp/cc8fytPN.s 			page 5
+
+
+ 148:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return write protect error.  */
+ 149:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(FX_WRITE_PROTECT);
+ 150:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 151:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 152:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Setup temporary length.  */
+ 153:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     temp_length =  source_unicode_length;
+ 154:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 155:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Determine if the destination file is already present.  */
+ 156:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     status =  _fx_unicode_directory_search(media_ptr, &dir_entry, destination_shortname, sizeof(des
+ 157:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 158:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Determine if the search was successful.  */
+ 159:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (status == FX_SUCCESS)
+ 160:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 161:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 162:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 163:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 164:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 165:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Release media protection.  */
+ 166:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_UNPROTECT
+ 167:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 168:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return the error code.  */
+ 169:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(FX_ALREADY_CREATED);
+ 170:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 171:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 172:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Okay, at this point we need to create a new long file name that has enough space for the
+ 173:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****        eventual unicode file name.  */
+ 174:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 175:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Copy the characters from the unicode file name and make sure they are
+ 176:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****        within the ASCII range.  */
+ 177:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     _fx_unicode_temp_long_file_name[0] =  'z';
+ 178:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     for (i = 1; i < source_unicode_length; i++)
+ 179:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 180:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 181:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Build temporary long file name.  */
+ 182:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         _fx_unicode_temp_long_file_name[i] =  (UCHAR)((UINT)'0' + (i % 9));
+ 183:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 184:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     _fx_unicode_temp_long_file_name[i] =  FX_NULL;
+ 185:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 186:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Loop to try different temp long file names... if necessary.  */
+ 187:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     do
+ 188:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 189:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 190:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Create a new file with the temp long file name.  */
+ 191:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         status =  _fx_file_create(media_ptr, (CHAR *)_fx_unicode_temp_long_file_name);
+ 192:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 193:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Determine if there was an error.  */
+ 194:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         if (status == FX_ALREADY_CREATED)
+ 195:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 196:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 197:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             /* Adjust the name slightly and try again!  */
+ 198:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             _fx_unicode_temp_long_file_name[0]--;
+ 199:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 200:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             /* Determine if it is outside the lower case boundary.  */
+ 201:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             if (_fx_unicode_temp_long_file_name[0] < 0x61)
+ 202:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             {
+ 203:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****                 break;
+ 204:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             }
+ARM GAS  /tmp/cc8fytPN.s 			page 6
+
+
+ 205:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         }
+ 206:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     } while (status == FX_ALREADY_CREATED);
+ 207:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 208:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Determine if there was an error.  */
+ 209:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (status)
+ 210:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 211:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 212:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 213:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 214:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 215:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Release media protection.  */
+ 216:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_UNPROTECT
+ 217:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 218:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return error.  */
+ 219:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(status);
+ 220:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 221:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 222:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Setup pointer to media name buffer.  */
+ 223:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     dir_entry.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+ 224:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 225:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Clear the short name string.  */
+ 226:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     dir_entry.fx_dir_entry_short_name[0] =  0;
+ 227:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 228:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Search the system for the supplied file name.  */
+ 229:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     status =  _fx_directory_search(media_ptr, (CHAR *)_fx_unicode_temp_long_file_name, &dir_entry, 
+ 230:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 231:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Determine if the search was successful.  */
+ 232:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (status != FX_SUCCESS)
+ 233:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 234:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 235:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 236:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 237:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 238:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Release media protection.  */
+ 239:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_UNPROTECT
+ 240:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 241:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return the error status.  */
+ 242:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(status);
+ 243:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 244:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 245:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* We can now change the temporary long file name with the destination unicode name.  */
+ 246:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     status =  _fx_unicode_directory_entry_change(media_ptr, &dir_entry,  source_unicode_name, sourc
+ 247:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 248:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Was this successful?  */
+ 249:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (status == FX_SUCCESS)
+ 250:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 251:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 252:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Yes, copy the short file name to the destination.  */
+ 253:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* The new short name only have 8 characters, since we didn't include a dot in temp_long_fi
+ 254:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         for (i = 0; i < FX_DIR_NAME_SIZE; i++)
+ 255:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 256:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 257:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             /* Copy a character.  */
+ 258:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             short_name[i] =  dir_entry.fx_dir_entry_short_name[i];
+ 259:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 260:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             /* Are we done?  */
+ 261:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             if (short_name[i] == FX_NULL)
+ARM GAS  /tmp/cc8fytPN.s 			page 7
+
+
+ 262:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             {
+ 263:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****                 break;
+ 264:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             }
+ 265:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         }
+ 266:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 267:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 268:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 269:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Check for a bad status.  */
+ 270:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     if (status != FX_SUCCESS)
+ 271:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 272:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 273:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 274:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 275:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Release media protection.  */
+ 276:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         FX_UNPROTECT
+ 277:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 278:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         /* Return the bad status.  */
+ 279:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         return(status);
+ 280:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 281:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 282:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* End transaction. */
+ 283:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     status = _fx_fault_tolerant_transaction_end(media_ptr);
+ 284:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 285:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 286:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Release the protection.  */
+ 287:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     FX_UNPROTECT
+ 288:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 289:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     /* Return completion status.  */
+ 290:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     return(status);
+ 291:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** }
+  83              		.loc 1 291 1 view .LVU20
+  84 002a 5046     		mov	r0, r10
+  85 002c 26B0     		add	sp, sp, #152
+  86              	.LCFI2:
+  87              		.cfi_remember_state
+  88              		.cfi_def_cfa_offset 32
+  89              		@ sp needed
+  90 002e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+  91              	.LVL4:
+  92              	.L20:
+  93              	.LCFI3:
+  94              		.cfi_restore_state
+  95              		.loc 1 291 1 view .LVU21
+  96 0032 0446     		mov	r4, r0
+  97 0034 0F46     		mov	r7, r1
+ 128:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+  98              		.loc 1 128 5 is_stmt 1 view .LVU22
+  99 0036 0023     		movs	r3, #0
+ 100 0038 0393     		str	r3, [sp, #12]
+ 101 003a 0293     		str	r3, [sp, #8]
+ 102 003c 4FF48043 		mov	r3, #16384
+ 103 0040 0193     		str	r3, [sp, #4]
+ 104 0042 0096     		str	r6, [sp]
+ 105 0044 2B46     		mov	r3, r5
+ 106 0046 0A46     		mov	r2, r1
+ 107 0048 0146     		mov	r1, r0
+ 108              	.LVL5:
+ARM GAS  /tmp/cc8fytPN.s 			page 8
+
+
+ 128:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 109              		.loc 1 128 5 is_stmt 0 view .LVU23
+ 110 004a 4FF48970 		mov	r0, #274
+ 111              	.LVL6:
+ 128:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 112              		.loc 1 128 5 view .LVU24
+ 113 004e FFF7FEFF 		bl	_fx_trace_event_insert
+ 114              	.LVL7:
+ 131:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 115              		.loc 1 131 5 is_stmt 1 view .LVU25
+ 116 0052 2268     		ldr	r2, [r4]
+ 117 0054 454B     		ldr	r3, .L27
+ 118 0056 9A42     		cmp	r2, r3
+ 119 0058 02D0     		beq	.L21
+ 131:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 120              		.loc 1 131 5 is_stmt 0 discriminator 1 view .LVU26
+ 121 005a 4FF0110A 		mov	r10, #17
+ 122 005e E4E7     		b	.L1
+ 123              	.L21:
+ 131:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 124              		.loc 1 131 5 is_stmt 1 discriminator 2 view .LVU27
+ 125 0060 04F5E479 		add	r9, r4, #456
+ 126 0064 4FF0FF31 		mov	r1, #-1
+ 127 0068 4846     		mov	r0, r9
+ 128 006a FFF7FEFF 		bl	_tx_mutex_get
+ 129              	.LVL8:
+ 131:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 130              		.loc 1 131 5 is_stmt 0 discriminator 1 view .LVU28
+ 131 006e 0028     		cmp	r0, #0
+ 132 0070 78D1     		bne	.L17
+ 139:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 133              		.loc 1 139 5 is_stmt 1 view .LVU29
+ 139:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 134              		.loc 1 139 19 is_stmt 0 view .LVU30
+ 135 0072 D4F8A830 		ldr	r3, [r4, #168]
+ 139:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 136              		.loc 1 139 8 view .LVU31
+ 137 0076 8BB9     		cbnz	r3, .L22
+ 153:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 138              		.loc 1 153 5 is_stmt 1 view .LVU32
+ 153:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 139              		.loc 1 153 17 is_stmt 0 view .LVU33
+ 140 0078 0995     		str	r5, [sp, #36]
+ 156:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 141              		.loc 1 156 5 is_stmt 1 view .LVU34
+ 156:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 142              		.loc 1 156 15 is_stmt 0 view .LVU35
+ 143 007a 0023     		movs	r3, #0
+ 144 007c 0293     		str	r3, [sp, #8]
+ 145 007e 09AB     		add	r3, sp, #36
+ 146 0080 0193     		str	r3, [sp, #4]
+ 147 0082 0097     		str	r7, [sp]
+ 148 0084 0D23     		movs	r3, #13
+ 149 0086 05AA     		add	r2, sp, #20
+ 150 0088 0AA9     		add	r1, sp, #40
+ 151 008a 2046     		mov	r0, r4
+ 152 008c FFF7FEFF 		bl	_fx_unicode_directory_search
+ARM GAS  /tmp/cc8fytPN.s 			page 9
+
+
+ 153              	.LVL9:
+ 159:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 154              		.loc 1 159 5 is_stmt 1 view .LVU36
+ 159:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 155              		.loc 1 159 8 is_stmt 0 view .LVU37
+ 156 0090 50B1     		cbz	r0, .L23
+ 177:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     for (i = 1; i < source_unicode_length; i++)
+ 157              		.loc 1 177 5 is_stmt 1 view .LVU38
+ 177:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     for (i = 1; i < source_unicode_length; i++)
+ 158              		.loc 1 177 40 is_stmt 0 view .LVU39
+ 159 0092 374B     		ldr	r3, .L27+4
+ 160 0094 7A22     		movs	r2, #122
+ 161 0096 1A70     		strb	r2, [r3]
+ 178:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 162              		.loc 1 178 5 is_stmt 1 view .LVU40
+ 163              	.LVL10:
+ 178:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 164              		.loc 1 178 12 is_stmt 0 view .LVU41
+ 165 0098 0122     		movs	r2, #1
+ 178:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 166              		.loc 1 178 5 view .LVU42
+ 167 009a 1AE0     		b	.L5
+ 168              	.LVL11:
+ 169              	.L22:
+ 146:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 170              		.loc 1 146 9 is_stmt 1 view .LVU43
+ 171 009c 4846     		mov	r0, r9
+ 172 009e FFF7FEFF 		bl	_tx_mutex_put
+ 173              	.LVL12:
+ 149:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 174              		.loc 1 149 9 view .LVU44
+ 149:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 175              		.loc 1 149 15 is_stmt 0 view .LVU45
+ 176 00a2 4FF0230A 		mov	r10, #35
+ 177 00a6 C0E7     		b	.L1
+ 178              	.LVL13:
+ 179              	.L23:
+ 166:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 180              		.loc 1 166 9 is_stmt 1 view .LVU46
+ 181 00a8 4846     		mov	r0, r9
+ 182              	.LVL14:
+ 166:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 183              		.loc 1 166 9 is_stmt 0 view .LVU47
+ 184 00aa FFF7FEFF 		bl	_tx_mutex_put
+ 185              	.LVL15:
+ 169:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 186              		.loc 1 169 9 is_stmt 1 view .LVU48
+ 169:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 187              		.loc 1 169 15 is_stmt 0 view .LVU49
+ 188 00ae 4FF00B0A 		mov	r10, #11
+ 189 00b2 BAE7     		b	.L1
+ 190              	.LVL16:
+ 191              	.L6:
+ 182:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 192              		.loc 1 182 9 is_stmt 1 view .LVU50
+ 182:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 193              		.loc 1 182 70 is_stmt 0 view .LVU51
+ARM GAS  /tmp/cc8fytPN.s 			page 10
+
+
+ 194 00b4 2F4B     		ldr	r3, .L27+8
+ 195 00b6 A3FB023C 		umull	r3, ip, r3, r2
+ 196 00ba 4FEA5C0C 		lsr	ip, ip, #1
+ 197 00be 0CEBCC0C 		add	ip, ip, ip, lsl #3
+ 198 00c2 A2EB0C0C 		sub	ip, r2, ip
+ 182:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 199              		.loc 1 182 47 view .LVU52
+ 200 00c6 0CF1300C 		add	ip, ip, #48
+ 182:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 201              		.loc 1 182 44 view .LVU53
+ 202 00ca 294B     		ldr	r3, .L27+4
+ 203 00cc 03F802C0 		strb	ip, [r3, r2]
+ 178:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 204              		.loc 1 178 45 is_stmt 1 discriminator 3 view .LVU54
+ 205 00d0 0132     		adds	r2, r2, #1
+ 206              	.LVL17:
+ 207              	.L5:
+ 178:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 208              		.loc 1 178 19 discriminator 1 view .LVU55
+ 209 00d2 AA42     		cmp	r2, r5
+ 210 00d4 EED3     		bcc	.L6
+ 184:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 211              		.loc 1 184 5 view .LVU56
+ 184:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 212              		.loc 1 184 40 is_stmt 0 view .LVU57
+ 213 00d6 264B     		ldr	r3, .L27+4
+ 214 00d8 0021     		movs	r1, #0
+ 215 00da 9954     		strb	r1, [r3, r2]
+ 216 00dc 02E0     		b	.L9
+ 217              	.LVL18:
+ 218              	.L7:
+ 206:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 219              		.loc 1 206 21 is_stmt 1 view .LVU58
+ 220 00de BAF10B0F 		cmp	r10, #11
+ 221 00e2 0DD1     		bne	.L8
+ 222              	.L9:
+ 187:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 223              		.loc 1 187 5 view .LVU59
+ 191:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 224              		.loc 1 191 9 view .LVU60
+ 191:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 225              		.loc 1 191 19 is_stmt 0 view .LVU61
+ 226 00e4 2249     		ldr	r1, .L27+4
+ 227 00e6 2046     		mov	r0, r4
+ 228              	.LVL19:
+ 191:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 229              		.loc 1 191 19 view .LVU62
+ 230 00e8 FFF7FEFF 		bl	_fx_file_create
+ 231              	.LVL20:
+ 232 00ec 8246     		mov	r10, r0
+ 233              	.LVL21:
+ 194:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 234              		.loc 1 194 9 is_stmt 1 view .LVU63
+ 194:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 235              		.loc 1 194 12 is_stmt 0 view .LVU64
+ 236 00ee 0B28     		cmp	r0, #11
+ 237 00f0 F5D1     		bne	.L7
+ARM GAS  /tmp/cc8fytPN.s 			page 11
+
+
+ 198:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 238              		.loc 1 198 13 is_stmt 1 view .LVU65
+ 198:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 239              		.loc 1 198 44 is_stmt 0 view .LVU66
+ 240 00f2 1F4A     		ldr	r2, .L27+4
+ 241 00f4 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 198:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 242              		.loc 1 198 47 view .LVU67
+ 243 00f6 013B     		subs	r3, r3, #1
+ 244 00f8 DBB2     		uxtb	r3, r3
+ 245 00fa 1370     		strb	r3, [r2]
+ 201:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             {
+ 246              		.loc 1 201 13 is_stmt 1 view .LVU68
+ 201:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             {
+ 247              		.loc 1 201 16 is_stmt 0 view .LVU69
+ 248 00fc 602B     		cmp	r3, #96
+ 249 00fe EED8     		bhi	.L7
+ 250              	.L8:
+ 209:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 251              		.loc 1 209 5 is_stmt 1 view .LVU70
+ 209:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 252              		.loc 1 209 8 is_stmt 0 view .LVU71
+ 253 0100 BAF1000F 		cmp	r10, #0
+ 254 0104 18D1     		bne	.L24
+ 223:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 255              		.loc 1 223 5 is_stmt 1 view .LVU72
+ 223:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 256              		.loc 1 223 33 is_stmt 0 view .LVU73
+ 257 0106 CDF82880 		str	r8, [sp, #40]
+ 226:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 258              		.loc 1 226 5 is_stmt 1 view .LVU74
+ 226:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 259              		.loc 1 226 42 is_stmt 0 view .LVU75
+ 260 010a 0023     		movs	r3, #0
+ 261 010c 8DF82C30 		strb	r3, [sp, #44]
+ 229:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 262              		.loc 1 229 5 is_stmt 1 view .LVU76
+ 229:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 263              		.loc 1 229 15 is_stmt 0 view .LVU77
+ 264 0110 0093     		str	r3, [sp]
+ 265 0112 0AAA     		add	r2, sp, #40
+ 266 0114 1649     		ldr	r1, .L27+4
+ 267 0116 2046     		mov	r0, r4
+ 268              	.LVL22:
+ 229:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 269              		.loc 1 229 15 view .LVU78
+ 270 0118 FFF7FEFF 		bl	_fx_directory_search
+ 271              	.LVL23:
+ 232:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 272              		.loc 1 232 5 is_stmt 1 view .LVU79
+ 232:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 273              		.loc 1 232 8 is_stmt 0 view .LVU80
+ 274 011c 8246     		mov	r10, r0
+ 275 011e 78B9     		cbnz	r0, .L25
+ 246:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 276              		.loc 1 246 5 is_stmt 1 view .LVU81
+ 246:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ARM GAS  /tmp/cc8fytPN.s 			page 12
+
+
+ 277              		.loc 1 246 15 is_stmt 0 view .LVU82
+ 278 0120 2B46     		mov	r3, r5
+ 279 0122 3A46     		mov	r2, r7
+ 280 0124 0AA9     		add	r1, sp, #40
+ 281 0126 2046     		mov	r0, r4
+ 282              	.LVL24:
+ 246:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 283              		.loc 1 246 15 view .LVU83
+ 284 0128 FFF7FEFF 		bl	_fx_unicode_directory_entry_change
+ 285              	.LVL25:
+ 249:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 286              		.loc 1 249 5 is_stmt 1 view .LVU84
+ 249:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     {
+ 287              		.loc 1 249 8 is_stmt 0 view .LVU85
+ 288 012c 8246     		mov	r10, r0
+ 289 012e B8B1     		cbz	r0, .L18
+ 290              	.LVL26:
+ 291              	.L13:
+ 287:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 292              		.loc 1 287 5 is_stmt 1 view .LVU86
+ 293 0130 4846     		mov	r0, r9
+ 294              	.LVL27:
+ 287:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 295              		.loc 1 287 5 is_stmt 0 view .LVU87
+ 296 0132 FFF7FEFF 		bl	_tx_mutex_put
+ 297              	.LVL28:
+ 290:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** }
+ 298              		.loc 1 290 5 is_stmt 1 view .LVU88
+ 290:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** }
+ 299              		.loc 1 290 11 is_stmt 0 view .LVU89
+ 300 0136 78E7     		b	.L1
+ 301              	.LVL29:
+ 302              	.L24:
+ 216:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 303              		.loc 1 216 9 is_stmt 1 view .LVU90
+ 304 0138 4846     		mov	r0, r9
+ 305              	.LVL30:
+ 216:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 306              		.loc 1 216 9 is_stmt 0 view .LVU91
+ 307 013a FFF7FEFF 		bl	_tx_mutex_put
+ 308              	.LVL31:
+ 219:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 309              		.loc 1 219 9 is_stmt 1 view .LVU92
+ 219:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 310              		.loc 1 219 15 is_stmt 0 view .LVU93
+ 311 013e 74E7     		b	.L1
+ 312              	.LVL32:
+ 313              	.L25:
+ 239:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 314              		.loc 1 239 9 is_stmt 1 view .LVU94
+ 315 0140 4846     		mov	r0, r9
+ 316              	.LVL33:
+ 239:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 317              		.loc 1 239 9 is_stmt 0 view .LVU95
+ 318 0142 FFF7FEFF 		bl	_tx_mutex_put
+ 319              	.LVL34:
+ 242:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ARM GAS  /tmp/cc8fytPN.s 			page 13
+
+
+ 320              		.loc 1 242 9 is_stmt 1 view .LVU96
+ 242:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****     }
+ 321              		.loc 1 242 15 is_stmt 0 view .LVU97
+ 322 0146 70E7     		b	.L1
+ 323              	.LVL35:
+ 324              	.L26:
+ 254:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 325              		.loc 1 254 44 is_stmt 1 discriminator 2 view .LVU98
+ 326 0148 0133     		adds	r3, r3, #1
+ 327              	.LVL36:
+ 328              	.L12:
+ 254:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 329              		.loc 1 254 23 discriminator 1 view .LVU99
+ 330 014a 072B     		cmp	r3, #7
+ 331 014c F0D8     		bhi	.L13
+ 258:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 332              		.loc 1 258 13 view .LVU100
+ 258:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 333              		.loc 1 258 63 is_stmt 0 view .LVU101
+ 334 014e 03F19802 		add	r2, r3, #152
+ 335 0152 6A44     		add	r2, sp, r2
+ 336 0154 12F86C2C 		ldrb	r2, [r2, #-108]	@ zero_extendqisi2
+ 258:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 337              		.loc 1 258 27 view .LVU102
+ 338 0158 F254     		strb	r2, [r6, r3]
+ 261:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             {
+ 339              		.loc 1 261 13 is_stmt 1 view .LVU103
+ 261:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****             {
+ 340              		.loc 1 261 16 is_stmt 0 view .LVU104
+ 341 015a 002A     		cmp	r2, #0
+ 342 015c F4D1     		bne	.L26
+ 343 015e E7E7     		b	.L13
+ 344              	.LVL37:
+ 345              	.L18:
+ 254:Middlewares/ST/filex/common/src/fx_unicode_file_create.c ****         {
+ 346              		.loc 1 254 16 view .LVU105
+ 347 0160 0346     		mov	r3, r0
+ 348 0162 F2E7     		b	.L12
+ 349              	.LVL38:
+ 350              	.L17:
+ 131:Middlewares/ST/filex/common/src/fx_unicode_file_create.c **** 
+ 351              		.loc 1 131 5 discriminator 3 view .LVU106
+ 352 0164 4FF0110A 		mov	r10, #17
+ 353 0168 5FE7     		b	.L1
+ 354              	.L28:
+ 355 016a 00BF     		.align	2
+ 356              	.L27:
+ 357 016c 4944454D 		.word	1296385097
+ 358 0170 00000000 		.word	_fx_unicode_temp_long_file_name
+ 359 0174 398EE338 		.word	954437177
+ 360              		.cfi_endproc
+ 361              	.LFE8:
+ 363              		.text
+ 364              	.Letext0:
+ 365              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 366              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 367              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ARM GAS  /tmp/cc8fytPN.s 			page 14
+
+
+ 368              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 369              		.file 6 "Middlewares/ST/filex/common/inc/fx_unicode.h"
+ 370              		.file 7 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ 371              		.file 8 "Middlewares/ST/filex/common/inc/fx_file.h"
+ARM GAS  /tmp/cc8fytPN.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_unicode_file_create.c
+     /tmp/cc8fytPN.s:20     .text._fx_unicode_file_create:00000000 $t
+     /tmp/cc8fytPN.s:26     .text._fx_unicode_file_create:00000000 _fx_unicode_file_create
+     /tmp/cc8fytPN.s:357    .text._fx_unicode_file_create:0000016c $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_fx_unicode_directory_search
+_tx_mutex_put
+_fx_file_create
+_fx_directory_search
+_fx_unicode_directory_entry_change
+_fx_unicode_temp_long_file_name

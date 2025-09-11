@@ -1,0 +1,183 @@
+ARM GAS  /tmp/ccaGcwhq.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"app_threadx.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Core/Src/app_threadx.c"
+  19              		.section	.text.App_ThreadX_Init,"ax",%progbits
+  20              		.align	1
+  21              		.global	App_ThreadX_Init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	App_ThreadX_Init:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Core/Src/app_threadx.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/app_threadx.c **** /**
+   3:Core/Src/app_threadx.c ****   ******************************************************************************
+   4:Core/Src/app_threadx.c ****   * @file    app_threadx.c
+   5:Core/Src/app_threadx.c ****   * @author  MCD Application Team
+   6:Core/Src/app_threadx.c ****   * @brief   ThreadX applicative file
+   7:Core/Src/app_threadx.c ****   ******************************************************************************
+   8:Core/Src/app_threadx.c ****   * @attention
+   9:Core/Src/app_threadx.c ****   *
+  10:Core/Src/app_threadx.c ****   * Copyright (c) 2021 STMicroelectronics.
+  11:Core/Src/app_threadx.c ****   * All rights reserved.
+  12:Core/Src/app_threadx.c ****   *
+  13:Core/Src/app_threadx.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:Core/Src/app_threadx.c ****   * in the root directory of this software component.
+  15:Core/Src/app_threadx.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:Core/Src/app_threadx.c ****   *
+  17:Core/Src/app_threadx.c ****   ******************************************************************************
+  18:Core/Src/app_threadx.c ****   */
+  19:Core/Src/app_threadx.c **** /* USER CODE END Header */
+  20:Core/Src/app_threadx.c **** 
+  21:Core/Src/app_threadx.c **** /* Includes ------------------------------------------------------------------*/
+  22:Core/Src/app_threadx.c **** #include "app_threadx.h"
+  23:Core/Src/app_threadx.c **** 
+  24:Core/Src/app_threadx.c **** /* Private includes ----------------------------------------------------------*/
+  25:Core/Src/app_threadx.c **** /* USER CODE BEGIN Includes */
+  26:Core/Src/app_threadx.c **** 
+  27:Core/Src/app_threadx.c **** /* USER CODE END Includes */
+  28:Core/Src/app_threadx.c **** 
+  29:Core/Src/app_threadx.c **** /* Private typedef -----------------------------------------------------------*/
+  30:Core/Src/app_threadx.c **** /* USER CODE BEGIN PTD */
+ARM GAS  /tmp/ccaGcwhq.s 			page 2
+
+
+  31:Core/Src/app_threadx.c **** 
+  32:Core/Src/app_threadx.c **** /* USER CODE END PTD */
+  33:Core/Src/app_threadx.c **** 
+  34:Core/Src/app_threadx.c **** /* Private define ------------------------------------------------------------*/
+  35:Core/Src/app_threadx.c **** /* USER CODE BEGIN PD */
+  36:Core/Src/app_threadx.c **** 
+  37:Core/Src/app_threadx.c **** /* USER CODE END PD */
+  38:Core/Src/app_threadx.c **** 
+  39:Core/Src/app_threadx.c **** /* Private macro -------------------------------------------------------------*/
+  40:Core/Src/app_threadx.c **** /* USER CODE BEGIN PM */
+  41:Core/Src/app_threadx.c **** 
+  42:Core/Src/app_threadx.c **** /* USER CODE END PM */
+  43:Core/Src/app_threadx.c **** 
+  44:Core/Src/app_threadx.c **** /* Private variables ---------------------------------------------------------*/
+  45:Core/Src/app_threadx.c **** /* USER CODE BEGIN PV */
+  46:Core/Src/app_threadx.c **** 
+  47:Core/Src/app_threadx.c **** /* USER CODE END PV */
+  48:Core/Src/app_threadx.c **** 
+  49:Core/Src/app_threadx.c **** /* Private function prototypes -----------------------------------------------*/
+  50:Core/Src/app_threadx.c **** /* USER CODE BEGIN PFP */
+  51:Core/Src/app_threadx.c **** 
+  52:Core/Src/app_threadx.c **** /* USER CODE END PFP */
+  53:Core/Src/app_threadx.c **** 
+  54:Core/Src/app_threadx.c **** /**
+  55:Core/Src/app_threadx.c ****   * @brief  Application ThreadX Initialization.
+  56:Core/Src/app_threadx.c ****   * @param memory_ptr: memory pointer
+  57:Core/Src/app_threadx.c ****   * @retval int
+  58:Core/Src/app_threadx.c ****   */
+  59:Core/Src/app_threadx.c **** UINT App_ThreadX_Init(VOID *memory_ptr)
+  60:Core/Src/app_threadx.c **** {
+  29              		.loc 1 60 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  61:Core/Src/app_threadx.c ****   UINT ret = TX_SUCCESS;
+  34              		.loc 1 61 3 view .LVU1
+  62:Core/Src/app_threadx.c ****   TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
+  35              		.loc 1 62 3 view .LVU2
+  63:Core/Src/app_threadx.c **** 
+  64:Core/Src/app_threadx.c ****   /* USER CODE BEGIN App_ThreadX_MEM_POOL */
+  65:Core/Src/app_threadx.c ****   (void)byte_pool;
+  36              		.loc 1 65 3 view .LVU3
+  66:Core/Src/app_threadx.c ****   /* USER CODE END App_ThreadX_MEM_POOL */
+  67:Core/Src/app_threadx.c **** 
+  68:Core/Src/app_threadx.c ****   /* USER CODE BEGIN App_ThreadX_Init */
+  69:Core/Src/app_threadx.c **** 
+  70:Core/Src/app_threadx.c ****   /* USER CODE END App_ThreadX_Init */
+  71:Core/Src/app_threadx.c **** 
+  72:Core/Src/app_threadx.c ****   return ret;
+  37              		.loc 1 72 3 view .LVU4
+  73:Core/Src/app_threadx.c **** }
+  38              		.loc 1 73 1 is_stmt 0 view .LVU5
+  39 0000 0020     		movs	r0, #0
+  40              	.LVL1:
+  41              		.loc 1 73 1 view .LVU6
+  42 0002 7047     		bx	lr
+ARM GAS  /tmp/ccaGcwhq.s 			page 3
+
+
+  43              		.cfi_endproc
+  44              	.LFE8:
+  46              		.section	.text.MX_ThreadX_Init,"ax",%progbits
+  47              		.align	1
+  48              		.global	MX_ThreadX_Init
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  53              	MX_ThreadX_Init:
+  54              	.LFB9:
+  74:Core/Src/app_threadx.c **** 
+  75:Core/Src/app_threadx.c **** /**
+  76:Core/Src/app_threadx.c ****   * @brief  MX_ThreadX_Init
+  77:Core/Src/app_threadx.c ****   * @param  None
+  78:Core/Src/app_threadx.c ****   * @retval None
+  79:Core/Src/app_threadx.c ****   */
+  80:Core/Src/app_threadx.c **** void MX_ThreadX_Init(void)
+  81:Core/Src/app_threadx.c **** {
+  55              		.loc 1 81 1 is_stmt 1 view -0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 08B5     		push	{r3, lr}
+  60              	.LCFI0:
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+  82:Core/Src/app_threadx.c ****   /* USER CODE BEGIN  Before_Kernel_Start */
+  83:Core/Src/app_threadx.c **** 
+  84:Core/Src/app_threadx.c ****   /* USER CODE END  Before_Kernel_Start */
+  85:Core/Src/app_threadx.c **** 
+  86:Core/Src/app_threadx.c ****   tx_kernel_enter();
+  64              		.loc 1 86 3 view .LVU8
+  65 0002 FFF7FEFF 		bl	_tx_initialize_kernel_enter
+  66              	.LVL2:
+  87:Core/Src/app_threadx.c **** 
+  88:Core/Src/app_threadx.c ****   /* USER CODE BEGIN  Kernel_Start_Error */
+  89:Core/Src/app_threadx.c **** 
+  90:Core/Src/app_threadx.c ****   /* USER CODE END  Kernel_Start_Error */
+  91:Core/Src/app_threadx.c **** }
+  67              		.loc 1 91 1 is_stmt 0 view .LVU9
+  68 0006 08BD     		pop	{r3, pc}
+  69              		.cfi_endproc
+  70              	.LFE9:
+  72              		.text
+  73              	.Letext0:
+  74              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  75              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ARM GAS  /tmp/ccaGcwhq.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app_threadx.c
+     /tmp/ccaGcwhq.s:20     .text.App_ThreadX_Init:00000000 $t
+     /tmp/ccaGcwhq.s:26     .text.App_ThreadX_Init:00000000 App_ThreadX_Init
+     /tmp/ccaGcwhq.s:47     .text.MX_ThreadX_Init:00000000 $t
+     /tmp/ccaGcwhq.s:53     .text.MX_ThreadX_Init:00000000 MX_ThreadX_Init
+
+UNDEFINED SYMBOLS
+_tx_initialize_kernel_enter

@@ -1,0 +1,1323 @@
+ARM GAS  /tmp/cctjp2n0.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_directory_local_path_set.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_local_path_set.c"
+  19              		.section	.text._fx_directory_local_path_set,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_local_path_set
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_local_path_set:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #include "fx_file.h"
+ARM GAS  /tmp/cctjp2n0.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #include "fx_directory.h"
+  33:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  34:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #ifndef FX_NO_LOCAL_PATH
+  35:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** FX_LOCAL_PATH_SETUP
+  36:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #endif
+  37:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  38:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  39:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  FUNCTION                                               RELEASE        */
+  41:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    _fx_directory_local_path_set                        PORTABLE C      */
+  43:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                           6.1.5        */
+  44:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  AUTHOR                                                                */
+  45:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  47:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  DESCRIPTION                                                           */
+  49:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    This function sets the local default directory of the media to the  */
+  51:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    path specified by the caller.  If this path is not found, an error  */
+  52:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    code is returned.                                                   */
+  53:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  INPUT                                                                 */
+  55:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    media_ptr                             Media control block pointer   */
+  57:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    local_path                            Local path control block ptr  */
+  58:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    new_path_name                         New path to set current local */
+  59:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                            working directory to        */
+  60:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  OUTPUT                                                                */
+  62:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    return status                                                       */
+  64:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  CALLS                                                                 */
+  66:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    _fx_directory_search                  Search for the directory name */
+  68:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                          in the directory structure    */
+  69:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  CALLED BY                                                             */
+  71:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    Application Code                                                    */
+  73:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  74:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  RELEASE HISTORY                                                       */
+  75:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  76:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*    DATE              NAME                      DESCRIPTION             */
+  77:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  78:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  79:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  80:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                            resulting in version 6.1    */
+  81:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*  03-02-2021     William E. Lamie         Modified comment(s),          */
+  82:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                            resulting in version 6.1.5  */
+  83:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /*                                                                        */
+  84:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** /**************************************************************************/
+  85:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** UINT  _fx_directory_local_path_set(FX_MEDIA *media_ptr, FX_LOCAL_PATH *local_path_ptr, CHAR *new_pa
+  86:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** {
+  29              		.loc 1 86 1 view -0
+ARM GAS  /tmp/cctjp2n0.s 			page 3
+
+
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 112
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 86 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 32
+  37              		.cfi_offset 4, -32
+  38              		.cfi_offset 5, -28
+  39              		.cfi_offset 6, -24
+  40              		.cfi_offset 7, -20
+  41              		.cfi_offset 8, -16
+  42              		.cfi_offset 9, -12
+  43              		.cfi_offset 10, -8
+  44              		.cfi_offset 14, -4
+  45 0004 A0B0     		sub	sp, sp, #128
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 160
+  48 0006 9146     		mov	r9, r2
+  87:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  88:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #ifndef FX_NO_LOCAL_PATH
+  89:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** UINT         status;
+  49              		.loc 1 89 1 is_stmt 1 view .LVU2
+  90:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** CHAR        *path_string_ptr;
+  50              		.loc 1 90 1 view .LVU3
+  91:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** UINT         path_string_capacity;
+  51              		.loc 1 91 1 view .LVU4
+  92:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** FX_PATH     *path_ptr;
+  52              		.loc 1 92 1 view .LVU5
+  93:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** UINT         i, j;
+  53              		.loc 1 93 1 view .LVU6
+  94:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #endif
+  95:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** FX_DIR_ENTRY dir_entry;
+  54              		.loc 1 95 1 view .LVU7
+  96:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  97:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+  98:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  99:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 100:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Increment the number of times this service has been called.  */
+ 101:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     media_ptr -> fx_media_directory_local_path_sets++;
+  55              		.loc 1 101 5 view .LVU8
+  56              		.loc 1 101 15 is_stmt 0 view .LVU9
+  57 0008 D0F80831 		ldr	r3, [r0, #264]
+  58              		.loc 1 101 52 view .LVU10
+  59 000c 0133     		adds	r3, r3, #1
+  60 000e C0F80831 		str	r3, [r0, #264]
+ 102:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #endif
+ 103:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 104:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Setup pointer to a name buffer.  */
+ 105:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     dir_entry.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+  61              		.loc 1 105 5 is_stmt 1 view .LVU11
+  62              		.loc 1 105 70 is_stmt 0 view .LVU12
+  63 0012 00F69C13 		addw	r3, r0, #2460
+  64              		.loc 1 105 33 view .LVU13
+  65 0016 0493     		str	r3, [sp, #16]
+ 106:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 107:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Setup the local path name buffer pointer.  */
+ARM GAS  /tmp/cctjp2n0.s 			page 4
+
+
+ 108:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     local_path_ptr -> fx_path_directory.fx_dir_entry_name =  local_path_ptr -> fx_path_name_buffer;
+  66              		.loc 1 108 5 is_stmt 1 view .LVU14
+  67              		.loc 1 108 62 is_stmt 0 view .LVU15
+  68 0018 01F5B87A 		add	r10, r1, #368
+  69              		.loc 1 108 59 view .LVU16
+  70 001c C1F800A0 		str	r10, [r1]
+ 109:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Clear the short name string.  */
+ 111:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     dir_entry.fx_dir_entry_short_name[0] =  (CHAR)0;
+  71              		.loc 1 111 5 is_stmt 1 view .LVU17
+  72              		.loc 1 111 42 is_stmt 0 view .LVU18
+  73 0020 0023     		movs	r3, #0
+  74 0022 8DF81430 		strb	r3, [sp, #20]
+ 112:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 113:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Clear the long name string.  */
+ 114:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     dir_entry.fx_dir_entry_name[0] =  (CHAR)0;
+  75              		.loc 1 114 5 is_stmt 1 view .LVU19
+  76              		.loc 1 114 36 is_stmt 0 view .LVU20
+  77 0026 80F89C39 		strb	r3, [r0, #2460]
+ 115:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 116:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Check the media to make sure it is open.  */
+ 117:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  78              		.loc 1 117 5 is_stmt 1 view .LVU21
+  79              		.loc 1 117 19 is_stmt 0 view .LVU22
+  80 002a 0268     		ldr	r2, [r0]
+  81              	.LVL1:
+  82              		.loc 1 117 8 view .LVU23
+  83 002c 814B     		ldr	r3, .L46
+  84 002e 9A42     		cmp	r2, r3
+  85 0030 04D0     		beq	.L41
+ 118:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 119:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 120:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Return the media not opened error.  */
+ 121:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         return(FX_MEDIA_NOT_OPEN);
+  86              		.loc 1 121 15 view .LVU24
+  87 0032 1127     		movs	r7, #17
+  88              	.LVL2:
+  89              	.L1:
+ 122:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 123:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 124:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #ifdef FX_NO_LOCAL_PATH
+ 125:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 126:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     FX_PARAMETER_NOT_USED(new_path_name);
+ 127:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 128:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Error, return to caller.  */
+ 129:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     return(FX_NOT_IMPLEMENTED);
+ 130:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #else
+ 131:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 132:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 133:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_DIRECTORY_LOCAL_PATH_SET, media_ptr, local_path_ptr, new_path_
+ 134:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 135:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Protect against other threads accessing the media.  */
+ 136:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     FX_PROTECT
+ 137:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 138:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Look for a root directory selection.  */
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     if ((!new_path_name) || (((new_path_name[0] == '\\') || (new_path_name[0] == '/')) && (new_path
+ 140:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ARM GAS  /tmp/cctjp2n0.s 			page 5
+
+
+ 141:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Set the default local directory to the root.  */
+ 143:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_directory.fx_dir_entry_name[0] =  (CHAR)0;
+ 144:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[0] =                       (CHAR)0;
+ 145:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] =       (CHAR)0;
+ 146:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 147:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Setup thread control block to use this local path pointer.  */
+ 148:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         _tx_thread_current_ptr -> tx_thread_filex_ptr =  (VOID *)local_path_ptr;
+ 149:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 150:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     else
+ 151:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 152:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 153:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Search the system for the supplied path and directory name.  */
+ 154:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         status =  _fx_directory_search(media_ptr, new_path_name, &dir_entry, FX_NULL, FX_NULL);
+ 155:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Determine if the search failed or if the entry found is not a
+ 157:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****            directory.  */
+ 158:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         if ((status != FX_SUCCESS) || (!(dir_entry.fx_dir_entry_attributes & FX_DIRECTORY)))
+ 159:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 160:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 161:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Release media protection.  */
+ 162:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             FX_UNPROTECT
+ 163:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 164:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Invalid Path - Return the error code.  */
+ 165:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             return(FX_INVALID_PATH);
+ 166:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 167:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 168:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Now update the current path string.  */
+ 169:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 170:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Setup the path string pointer to the start of the current path.  */
+ 171:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         path_string_ptr =  &(local_path_ptr -> fx_path_string[0]);
+ 172:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 173:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Setup the path string's capacity.  */
+ 174:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         path_string_capacity =  FX_MAXIMUM_PATH - 1;
+ 175:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 176:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Determine if the new path is relative from the current path.  */
+ 177:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         if ((new_path_name[0] != '\\') && (new_path_name[0] != '/'))
+ 178:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 179:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 180:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Yes, a relative path was found.  */
+ 181:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 182:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Setup the default path pointer to the local path.  */
+ 183:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             path_ptr =  local_path_ptr;
+ 184:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 185:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Determine if the local path is different than the current local path.  */
+ 186:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             if (local_path_ptr !=  (FX_LOCAL_PATH *)_tx_thread_current_ptr -> tx_thread_filex_ptr)
+ 187:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 188:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 189:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Yes, there is a difference.  */
+ 190:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 191:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Should we copy from the default media path or from the previous default
+ 192:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                    path.  */
+ 193:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 if (_tx_thread_current_ptr -> tx_thread_filex_ptr)
+ 194:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 195:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 196:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* There is a local path so copy the relative path info from it.  */
+ 197:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     i =  0;
+ARM GAS  /tmp/cctjp2n0.s 			page 6
+
+
+ 198:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     do
+ 199:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 200:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 201:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Copy from previous local to new local path.  */
+ 202:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         local_path_ptr -> fx_path_string[i] =
+ 203:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             ((FX_LOCAL_PATH *)_tx_thread_current_ptr -> tx_thread_filex_ptr) -> fx_
+ 204:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 205:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Determine if we are done.  */
+ 206:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         if (local_path_ptr -> fx_path_string[i] == 0)
+ 207:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         {
+ 208:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         
+ 209:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             /* Are we not at the end of the string?  */
+ 210:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             if (i < (FX_MAXIMUM_PATH - 1))
+ 211:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             {
+ 212:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 213:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                                 /* Yes, break the loop.  */
+ 214:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                                 break;
+ 215:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             }
+ 216:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         }
+ 217:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         
+ 218:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Move to the next character.  */
+ 219:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         i++;
+ 220:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         
+ 221:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     } while (i < FX_MAXIMUM_PATH);
+ 222:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 223:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 else
+ 224:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 225:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 226:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* No local path, so copy the relative path information from the media
+ 227:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                        default.  */
+ 228:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     i =  0;
+ 229:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     do
+ 230:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 231:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 232:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Copy from the media default to new local path.  */
+ 233:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         local_path_ptr -> fx_path_string[i] =
+ 234:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             media_ptr -> fx_media_default_path.fx_path_string[i];
+ 235:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 236:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Determine if we are done.  */
+ 237:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         if (local_path_ptr -> fx_path_string[i] == 0)
+ 238:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         {
+ 239:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         
+ 240:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             /* Are we not at the end of the string?  */
+ 241:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             if (i < (FX_MAXIMUM_PATH - 1))
+ 242:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             {
+ 243:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 244:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                                 /* Yes, break the loop.  */
+ 245:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                                 break;
+ 246:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             }
+ 247:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         }
+ 248:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 249:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Move to the next character.  */
+ 250:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         i++;
+ 251:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 252:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     } while (i < FX_MAXIMUM_PATH);
+ 253:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 254:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ARM GAS  /tmp/cctjp2n0.s 			page 7
+
+
+ 255:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 256:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* First, check the current path for string overflow.  If this is set,
+ 257:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                don't attempt to update the current path with relative information.
+ 258:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                The path won't be valid again until a complete path is given.  */
+ 259:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             if (path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] == '*')
+ 260:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 261:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 262:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Yes, don't update the string, just finish the path set processing.  */
+ 263:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 264:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Determine if we are at the root directory.  */
+ 265:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 if (!dir_entry.fx_dir_entry_cluster)
+ 266:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 267:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Set the current directory back to the root directory.  */
+ 268:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     dir_entry.fx_dir_entry_name[0] =  (CHAR)0;
+ 269:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 270:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Clear the current path string.  */
+ 271:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_ptr -> fx_path_string[0] =  (CHAR)0;
+ 272:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 273:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Clear the overflow flag in the current path string... just in
+ 274:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                        case! */
+ 275:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] =  (CHAR)0;
+ 276:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 277:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 278:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Copy the new directory entry into the media control block.  */
+ 279:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_ptr -> fx_path_directory =  dir_entry;
+ 280:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 281:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Reset the local path name buffer pointer, since it was clobbered earlier.  */
+ 282:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 local_path_ptr -> fx_path_directory.fx_dir_entry_name =  local_path_ptr -> fx_path_
+ 283:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 284:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Copy the directory name entry to the local path name area.  */
+ 285:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 for (j = 0; j < FX_MAX_LONG_NAME_LEN; j++)
+ 286:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 287:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 288:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Copy the name buffer.  */
+ 289:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     local_path_ptr -> fx_path_directory.fx_dir_entry_name[j] =  dir_entry.fx_dir_en
+ 290:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 291:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 292:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Setup thread control block to use this local path pointer.  */
+ 293:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 _tx_thread_current_ptr -> tx_thread_filex_ptr =  (VOID *)local_path_ptr;
+ 294:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 295:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Release media protection.  */
+ 296:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 FX_UNPROTECT
+ 297:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 298:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Default directory set is complete, return status.  */
+ 299:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 return(FX_SUCCESS);
+ 300:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 301:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 302:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Move the current path starting pointer to the end of the current
+ 303:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                path string.  */
+ 304:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             while ((path_string_capacity) && (*path_string_ptr != FX_NULL))
+ 305:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 306:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_ptr++;
+ 307:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity--;
+ 308:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 309:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 310:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* If room, place the \ character in the path string.  */
+ 311:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             if (path_string_capacity)
+ARM GAS  /tmp/cctjp2n0.s 			page 8
+
+
+ 312:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 313:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 314:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* There is room, place the directory marker in the string.  */
+ 315:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 *path_string_ptr++ =  '\\';
+ 316:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity--;
+ 317:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 318:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 319:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         else
+ 320:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 321:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 322:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Setup the default path pointer.  */
+ 323:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 324:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Setup the default path pointer to the local path.  */
+ 325:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             path_ptr =  local_path_ptr;
+ 326:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 327:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Complete path name given.  Check to see if we need to clear an
+ 328:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                overflow character from a previous current path string update.  */
+ 329:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             if (path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] == '*')
+ 330:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 331:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] = (CHAR)0;
+ 332:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 333:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 334:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 335:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Copy what we can into the current path.  */
+ 336:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         while (*new_path_name)
+ 337:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 338:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 339:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Determine if there is a ".." character sequence that specifies the
+ 340:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                previous path.  */
+ 341:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             if ((*new_path_name == '.') && (*(new_path_name + 1) == '.'))
+ 342:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 343:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 344:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Yes, a backward path is found.  The current path pointer
+ 345:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                    must be moved back to just after the previous \ character.  */
+ 346:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 347:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Skip the current \0 that is at the end of the current path.  */
+ 348:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity =  path_string_capacity + 2;
+ 349:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_ptr =       path_string_ptr - 2;
+ 350:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 351:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 while (path_string_capacity <= (FX_MAXIMUM_PATH - 1))
+ 352:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 353:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 354:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Move the current path pointer backwards until
+ 355:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                        a \ character is found.  */
+ 356:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 357:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     if ((*path_string_ptr == '\\') || (*path_string_ptr == '/'))
+ 358:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 359:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 360:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         /* Yes, we have successfully backed up one directory.  */
+ 361:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         break;
+ 362:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     }
+ 363:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 364:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Backup another character.  */
+ 365:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_string_capacity++;
+ 366:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_string_ptr--;
+ 367:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 368:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ARM GAS  /tmp/cctjp2n0.s 			page 9
+
+
+ 369:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Adjust the new directory pointer past the .. characters  */
+ 370:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 new_path_name =  new_path_name + 2;
+ 371:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 372:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             else
+ 373:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 374:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 375:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* Normal characters that need to be copied into the current path.  */
+ 376:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 377:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 if (path_string_capacity)
+ 378:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 379:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 380:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* Copy character from the new path into the current path string.  */
+ 381:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     *path_string_ptr++ =  *new_path_name++;
+ 382:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 383:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_string_capacity--;
+ 384:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 385:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 else
+ 386:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 387:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 388:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     /* No more room in the current path string!  */
+ 389:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     break;
+ 390:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 391:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 392:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 393:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 394:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Determine if there is still room in the current path string.  */
+ 395:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         if (path_string_capacity)
+ 396:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 397:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 398:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Yes, there is still room, place a NULL character at the
+ 399:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                end of the path.  */
+ 400:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             *path_string_ptr =  (CHAR)FX_NULL;
+ 401:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 402:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         else
+ 403:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 404:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* No more room.  Determine if the entire path was successfully
+ 406:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                copied into the current path.  */
+ 407:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             if (*new_path_name)
+ 408:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 409:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 410:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 /* No, we couldn't fit the entire path.  Place a "*" character
+ 411:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                    at the end to indicate that we had overflow.  Note that
+ 412:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                    the path is kept just the the directory default get call, so
+ 413:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                    the new default path is valid.  */
+ 414:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] =  '*';
+ 415:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 416:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 417:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 418:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Determine if we are at the root directory.  */
+ 419:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         if (!dir_entry.fx_dir_entry_cluster)
+ 420:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 421:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Set the current directory back to the root directory.  */
+ 422:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             dir_entry.fx_dir_entry_name[0] =            (CHAR)0;
+ 423:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             local_path_ptr -> fx_path_name_buffer[0] =  (CHAR)0;
+ 424:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 425:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ARM GAS  /tmp/cctjp2n0.s 			page 10
+
+
+ 426:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Copy the new directory entry into the media control block.  */
+ 427:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         path_ptr -> fx_path_directory =  dir_entry;
+ 428:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 429:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Reset the local path name buffer pointer, since it was clobbered earlier.  */
+ 430:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_directory.fx_dir_entry_name =  local_path_ptr -> fx_path_name_buf
+ 431:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 432:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Copy the directory name entry to the local path name area.  */
+ 433:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         for (j = 0; j < FX_MAX_LONG_NAME_LEN; j++)
+ 434:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 435:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 436:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             /* Copy the name buffer.  */
+ 437:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             local_path_ptr -> fx_path_directory.fx_dir_entry_name[j] =  dir_entry.fx_dir_entry_name
+ 438:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 439:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 440:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         /* Setup thread control block to use this local path pointer.  */
+ 441:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         _tx_thread_current_ptr -> tx_thread_filex_ptr =  (VOID *)local_path_ptr;
+ 442:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 443:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 444:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Release media protection.  */
+ 445:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     FX_UNPROTECT
+ 446:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 447:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     /* Default directory set is complete, return status.  */
+ 448:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     return(FX_SUCCESS);
+ 449:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #endif
+ 450:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** }
+  90              		.loc 1 450 1 view .LVU25
+  91 0034 3846     		mov	r0, r7
+  92 0036 20B0     		add	sp, sp, #128
+  93              	.LCFI2:
+  94              		.cfi_remember_state
+  95              		.cfi_def_cfa_offset 32
+  96              		@ sp needed
+  97 0038 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+  98              	.LVL3:
+  99              	.L41:
+ 100              	.LCFI3:
+ 101              		.cfi_restore_state
+ 102              		.loc 1 450 1 view .LVU26
+ 103 003c 0646     		mov	r6, r0
+ 104 003e 0D46     		mov	r5, r1
+ 133:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 105              		.loc 1 133 5 is_stmt 1 view .LVU27
+ 106 0040 0023     		movs	r3, #0
+ 107 0042 0393     		str	r3, [sp, #12]
+ 108 0044 0293     		str	r3, [sp, #8]
+ 109 0046 4FF40052 		mov	r2, #8192
+ 110 004a 0192     		str	r2, [sp, #4]
+ 111 004c 0093     		str	r3, [sp]
+ 112 004e 4B46     		mov	r3, r9
+ 113 0050 0A46     		mov	r2, r1
+ 114 0052 0146     		mov	r1, r0
+ 115              	.LVL4:
+ 133:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 116              		.loc 1 133 5 is_stmt 0 view .LVU28
+ 117 0054 E820     		movs	r0, #232
+ 118              	.LVL5:
+ 133:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ARM GAS  /tmp/cctjp2n0.s 			page 11
+
+
+ 119              		.loc 1 133 5 view .LVU29
+ 120 0056 FFF7FEFF 		bl	_fx_trace_event_insert
+ 121              	.LVL6:
+ 136:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 122              		.loc 1 136 5 is_stmt 1 view .LVU30
+ 123 005a 3268     		ldr	r2, [r6]
+ 124 005c 754B     		ldr	r3, .L46
+ 125 005e 9A42     		cmp	r2, r3
+ 126 0060 01D0     		beq	.L42
+ 136:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 127              		.loc 1 136 5 is_stmt 0 discriminator 1 view .LVU31
+ 128 0062 1127     		movs	r7, #17
+ 129 0064 E6E7     		b	.L1
+ 130              	.L42:
+ 136:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 131              		.loc 1 136 5 is_stmt 1 discriminator 2 view .LVU32
+ 132 0066 06F5E478 		add	r8, r6, #456
+ 133 006a 4FF0FF31 		mov	r1, #-1
+ 134 006e 4046     		mov	r0, r8
+ 135 0070 FFF7FEFF 		bl	_tx_mutex_get
+ 136              	.LVL7:
+ 136:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 137              		.loc 1 136 5 is_stmt 0 discriminator 1 view .LVU33
+ 138 0074 0746     		mov	r7, r0
+ 139 0076 0028     		cmp	r0, #0
+ 140 0078 40F0DA80 		bne	.L36
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 141              		.loc 1 139 5 is_stmt 1 view .LVU34
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 142              		.loc 1 139 8 is_stmt 0 view .LVU35
+ 143 007c B9F1000F 		cmp	r9, #0
+ 144 0080 08D0     		beq	.L3
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 145              		.loc 1 139 45 discriminator 1 view .LVU36
+ 146 0082 99F80030 		ldrb	r3, [r9]	@ zero_extendqisi2
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 147              		.loc 1 139 26 discriminator 1 view .LVU37
+ 148 0086 2F2B     		cmp	r3, #47
+ 149 0088 18BF     		it	ne
+ 150 008a 5C2B     		cmpne	r3, #92
+ 151 008c 11D1     		bne	.L4
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 152              		.loc 1 139 105 discriminator 2 view .LVU38
+ 153 008e 99F80130 		ldrb	r3, [r9, #1]	@ zero_extendqisi2
+ 139:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     {
+ 154              		.loc 1 139 88 discriminator 2 view .LVU39
+ 155 0092 73B9     		cbnz	r3, .L4
+ 156              	.L3:
+ 143:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[0] =                       (CHAR)0;
+ 157              		.loc 1 143 9 is_stmt 1 view .LVU40
+ 143:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[0] =                       (CHAR)0;
+ 158              		.loc 1 143 44 is_stmt 0 view .LVU41
+ 159 0094 2A68     		ldr	r2, [r5]
+ 143:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[0] =                       (CHAR)0;
+ 160              		.loc 1 143 66 view .LVU42
+ 161 0096 0023     		movs	r3, #0
+ 162 0098 1370     		strb	r3, [r2]
+ARM GAS  /tmp/cctjp2n0.s 			page 12
+
+
+ 144:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] =       (CHAR)0;
+ 163              		.loc 1 144 9 is_stmt 1 view .LVU43
+ 144:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         local_path_ptr -> fx_path_string[FX_MAXIMUM_PATH - 2] =       (CHAR)0;
+ 164              		.loc 1 144 45 is_stmt 0 view .LVU44
+ 165 009a 85F87030 		strb	r3, [r5, #112]
+ 145:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 166              		.loc 1 145 9 is_stmt 1 view .LVU45
+ 145:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 167              		.loc 1 145 63 is_stmt 0 view .LVU46
+ 168 009e 85F86E31 		strb	r3, [r5, #366]
+ 148:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 169              		.loc 1 148 9 is_stmt 1 view .LVU47
+ 148:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 170              		.loc 1 148 32 is_stmt 0 view .LVU48
+ 171 00a2 654B     		ldr	r3, .L46+4
+ 172 00a4 1B68     		ldr	r3, [r3]
+ 148:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 173              		.loc 1 148 55 view .LVU49
+ 174 00a6 C3F89050 		str	r5, [r3, #144]
+ 175              	.LVL8:
+ 176              	.L5:
+ 445:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 177              		.loc 1 445 5 is_stmt 1 view .LVU50
+ 178 00aa 4046     		mov	r0, r8
+ 179 00ac FFF7FEFF 		bl	_tx_mutex_put
+ 180              	.LVL9:
+ 448:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #endif
+ 181              		.loc 1 448 5 view .LVU51
+ 448:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** #endif
+ 182              		.loc 1 448 11 is_stmt 0 view .LVU52
+ 183 00b0 C0E7     		b	.L1
+ 184              	.LVL10:
+ 185              	.L4:
+ 154:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 186              		.loc 1 154 9 is_stmt 1 view .LVU53
+ 154:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 187              		.loc 1 154 19 is_stmt 0 view .LVU54
+ 188 00b2 0023     		movs	r3, #0
+ 189 00b4 0093     		str	r3, [sp]
+ 190 00b6 04AA     		add	r2, sp, #16
+ 191 00b8 4946     		mov	r1, r9
+ 192 00ba 3046     		mov	r0, r6
+ 193 00bc FFF7FEFF 		bl	_fx_directory_search
+ 194              	.LVL11:
+ 158:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 195              		.loc 1 158 9 is_stmt 1 view .LVU55
+ 158:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 196              		.loc 1 158 12 is_stmt 0 view .LVU56
+ 197 00c0 0446     		mov	r4, r0
+ 198 00c2 28BB     		cbnz	r0, .L6
+ 158:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 199              		.loc 1 158 51 discriminator 1 view .LVU57
+ 200 00c4 9DF82C30 		ldrb	r3, [sp, #44]	@ zero_extendqisi2
+ 158:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 201              		.loc 1 158 36 discriminator 1 view .LVU58
+ 202 00c8 13F0100F 		tst	r3, #16
+ 203 00cc 20D0     		beq	.L6
+ARM GAS  /tmp/cctjp2n0.s 			page 13
+
+
+ 171:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 204              		.loc 1 171 9 is_stmt 1 view .LVU59
+ 171:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 205              		.loc 1 171 25 is_stmt 0 view .LVU60
+ 206 00ce 05F17003 		add	r3, r5, #112
+ 207              	.LVL12:
+ 174:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 208              		.loc 1 174 9 is_stmt 1 view .LVU61
+ 177:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 209              		.loc 1 177 9 view .LVU62
+ 177:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 210              		.loc 1 177 27 is_stmt 0 view .LVU63
+ 211 00d2 99F80020 		ldrb	r2, [r9]	@ zero_extendqisi2
+ 177:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 212              		.loc 1 177 12 view .LVU64
+ 213 00d6 5C2A     		cmp	r2, #92
+ 214 00d8 18BF     		it	ne
+ 215 00da 2F2A     		cmpne	r2, #47
+ 216 00dc 5CD0     		beq	.L8
+ 183:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 217              		.loc 1 183 13 is_stmt 1 view .LVU65
+ 218              	.LVL13:
+ 186:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 219              		.loc 1 186 13 view .LVU66
+ 186:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 220              		.loc 1 186 76 is_stmt 0 view .LVU67
+ 221 00de 564A     		ldr	r2, .L46+4
+ 222 00e0 1068     		ldr	r0, [r2]
+ 223              	.LVL14:
+ 186:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 224              		.loc 1 186 76 view .LVU68
+ 225 00e2 D0F89020 		ldr	r2, [r0, #144]
+ 186:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 226              		.loc 1 186 16 view .LVU69
+ 227 00e6 AA42     		cmp	r2, r5
+ 228 00e8 0CD0     		beq	.L9
+ 193:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 229              		.loc 1 193 17 is_stmt 1 view .LVU70
+ 193:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 230              		.loc 1 193 20 is_stmt 0 view .LVU71
+ 231 00ea D2B1     		cbz	r2, .L37
+ 197:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     do
+ 232              		.loc 1 197 23 view .LVU72
+ 233 00ec 2246     		mov	r2, r4
+ 234              	.LVL15:
+ 235              	.L12:
+ 198:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 236              		.loc 1 198 21 is_stmt 1 view .LVU73
+ 202:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             ((FX_LOCAL_PATH *)_tx_thread_current_ptr -> tx_thread_filex_ptr) -> fx_
+ 237              		.loc 1 202 25 view .LVU74
+ 203:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 238              		.loc 1 203 70 is_stmt 0 view .LVU75
+ 239 00ee D0F89010 		ldr	r1, [r0, #144]
+ 203:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 240              		.loc 1 203 111 view .LVU76
+ 241 00f2 1144     		add	r1, r1, r2
+ 242 00f4 91F87010 		ldrb	r1, [r1, #112]	@ zero_extendqisi2
+ARM GAS  /tmp/cctjp2n0.s 			page 14
+
+
+ 202:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             ((FX_LOCAL_PATH *)_tx_thread_current_ptr -> tx_thread_filex_ptr) -> fx_
+ 243              		.loc 1 202 61 view .LVU77
+ 244 00f8 AE18     		adds	r6, r5, r2
+ 245 00fa 86F87010 		strb	r1, [r6, #112]
+ 206:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         {
+ 246              		.loc 1 206 25 is_stmt 1 view .LVU78
+ 206:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         {
+ 247              		.loc 1 206 28 is_stmt 0 view .LVU79
+ 248 00fe 61B9     		cbnz	r1, .L11
+ 210:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             {
+ 249              		.loc 1 210 29 is_stmt 1 view .LVU80
+ 210:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             {
+ 250              		.loc 1 210 32 is_stmt 0 view .LVU81
+ 251 0100 FE2A     		cmp	r2, #254
+ 252 0102 0AD8     		bhi	.L11
+ 253              	.LVL16:
+ 254              	.L9:
+ 259:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 255              		.loc 1 259 13 is_stmt 1 view .LVU82
+ 259:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 256              		.loc 1 259 43 is_stmt 0 view .LVU83
+ 257 0104 95F86E21 		ldrb	r2, [r5, #366]	@ zero_extendqisi2
+ 259:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 258              		.loc 1 259 16 view .LVU84
+ 259 0108 2A2A     		cmp	r2, #42
+ 260 010a 18D0     		beq	.L43
+ 174:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 261              		.loc 1 174 30 view .LVU85
+ 262 010c FF22     		movs	r2, #255
+ 263 010e 39E0     		b	.L14
+ 264              	.LVL17:
+ 265              	.L6:
+ 162:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 266              		.loc 1 162 13 is_stmt 1 view .LVU86
+ 267 0110 4046     		mov	r0, r8
+ 268              	.LVL18:
+ 162:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 269              		.loc 1 162 13 is_stmt 0 view .LVU87
+ 270 0112 FFF7FEFF 		bl	_tx_mutex_put
+ 271              	.LVL19:
+ 165:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 272              		.loc 1 165 13 is_stmt 1 view .LVU88
+ 165:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 273              		.loc 1 165 19 is_stmt 0 view .LVU89
+ 274 0116 0D27     		movs	r7, #13
+ 275 0118 8CE7     		b	.L1
+ 276              	.LVL20:
+ 277              	.L11:
+ 219:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         
+ 278              		.loc 1 219 25 is_stmt 1 view .LVU90
+ 219:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         
+ 279              		.loc 1 219 26 is_stmt 0 view .LVU91
+ 280 011a 0132     		adds	r2, r2, #1
+ 281              	.LVL21:
+ 221:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 282              		.loc 1 221 32 is_stmt 1 view .LVU92
+ 283 011c FF2A     		cmp	r2, #255
+ARM GAS  /tmp/cctjp2n0.s 			page 15
+
+
+ 284 011e E6D9     		bls	.L12
+ 285 0120 F0E7     		b	.L9
+ 286              	.LVL22:
+ 287              	.L37:
+ 228:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     do
+ 288              		.loc 1 228 23 is_stmt 0 view .LVU93
+ 289 0122 2246     		mov	r2, r4
+ 290              	.L10:
+ 291              	.LVL23:
+ 229:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 292              		.loc 1 229 21 is_stmt 1 view .LVU94
+ 233:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             media_ptr -> fx_media_default_path.fx_path_string[i];
+ 293              		.loc 1 233 25 view .LVU95
+ 234:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             
+ 294              		.loc 1 234 78 is_stmt 0 view .LVU96
+ 295 0124 B118     		adds	r1, r6, r2
+ 296 0126 91F85015 		ldrb	r1, [r1, #1360]	@ zero_extendqisi2
+ 233:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             media_ptr -> fx_media_default_path.fx_path_string[i];
+ 297              		.loc 1 233 61 view .LVU97
+ 298 012a A818     		adds	r0, r5, r2
+ 299 012c 80F87010 		strb	r1, [r0, #112]
+ 237:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         {
+ 300              		.loc 1 237 25 is_stmt 1 view .LVU98
+ 237:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                         {
+ 301              		.loc 1 237 28 is_stmt 0 view .LVU99
+ 302 0130 09B9     		cbnz	r1, .L13
+ 241:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             {
+ 303              		.loc 1 241 29 is_stmt 1 view .LVU100
+ 241:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                             {
+ 304              		.loc 1 241 32 is_stmt 0 view .LVU101
+ 305 0132 FE2A     		cmp	r2, #254
+ 306 0134 E6D9     		bls	.L9
+ 307              	.L13:
+ 250:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 308              		.loc 1 250 25 is_stmt 1 view .LVU102
+ 250:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 309              		.loc 1 250 26 is_stmt 0 view .LVU103
+ 310 0136 0132     		adds	r2, r2, #1
+ 311              	.LVL24:
+ 252:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 312              		.loc 1 252 32 is_stmt 1 view .LVU104
+ 313 0138 FF2A     		cmp	r2, #255
+ 314 013a F3D9     		bls	.L10
+ 315 013c E2E7     		b	.L9
+ 316              	.LVL25:
+ 317              	.L43:
+ 265:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 318              		.loc 1 265 17 view .LVU105
+ 265:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 319              		.loc 1 265 31 is_stmt 0 view .LVU106
+ 320 013e 119B     		ldr	r3, [sp, #68]
+ 321              	.LVL26:
+ 265:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 322              		.loc 1 265 20 view .LVU107
+ 323 0140 2BB9     		cbnz	r3, .L15
+ 268:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 324              		.loc 1 268 21 is_stmt 1 view .LVU108
+ARM GAS  /tmp/cctjp2n0.s 			page 16
+
+
+ 268:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 325              		.loc 1 268 52 is_stmt 0 view .LVU109
+ 326 0142 049A     		ldr	r2, [sp, #16]
+ 327 0144 1370     		strb	r3, [r2]
+ 271:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 328              		.loc 1 271 21 is_stmt 1 view .LVU110
+ 271:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 329              		.loc 1 271 51 is_stmt 0 view .LVU111
+ 330 0146 85F87030 		strb	r3, [r5, #112]
+ 275:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 331              		.loc 1 275 21 is_stmt 1 view .LVU112
+ 275:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 332              		.loc 1 275 69 is_stmt 0 view .LVU113
+ 333 014a 85F86E31 		strb	r3, [r5, #366]
+ 334              	.L15:
+ 279:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 335              		.loc 1 279 17 is_stmt 1 view .LVU114
+ 279:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 336              		.loc 1 279 47 is_stmt 0 view .LVU115
+ 337 014e 7022     		movs	r2, #112
+ 338 0150 04A9     		add	r1, sp, #16
+ 339 0152 2846     		mov	r0, r5
+ 340 0154 FFF7FEFF 		bl	memcpy
+ 341              	.LVL27:
+ 282:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 342              		.loc 1 282 17 is_stmt 1 view .LVU116
+ 282:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 343              		.loc 1 282 71 is_stmt 0 view .LVU117
+ 344 0158 C5F800A0 		str	r10, [r5]
+ 285:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 345              		.loc 1 285 17 is_stmt 1 view .LVU118
+ 346              	.LVL28:
+ 285:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 347              		.loc 1 285 24 is_stmt 0 view .LVU119
+ 348 015c 2346     		mov	r3, r4
+ 349              	.LVL29:
+ 350              	.L16:
+ 285:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 351              		.loc 1 285 31 is_stmt 1 discriminator 1 view .LVU120
+ 352 015e FF2B     		cmp	r3, #255
+ 353 0160 05D8     		bhi	.L44
+ 289:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 354              		.loc 1 289 21 view .LVU121
+ 289:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 355              		.loc 1 289 56 is_stmt 0 view .LVU122
+ 356 0162 2A68     		ldr	r2, [r5]
+ 289:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 357              		.loc 1 289 108 view .LVU123
+ 358 0164 0499     		ldr	r1, [sp, #16]
+ 359 0166 C95C     		ldrb	r1, [r1, r3]	@ zero_extendqisi2
+ 289:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 360              		.loc 1 289 78 view .LVU124
+ 361 0168 D154     		strb	r1, [r2, r3]
+ 285:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 362              		.loc 1 285 56 is_stmt 1 discriminator 3 view .LVU125
+ 363 016a 0133     		adds	r3, r3, #1
+ 364              	.LVL30:
+ARM GAS  /tmp/cctjp2n0.s 			page 17
+
+
+ 285:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 365              		.loc 1 285 56 is_stmt 0 discriminator 3 view .LVU126
+ 366 016c F7E7     		b	.L16
+ 367              	.L44:
+ 293:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 368              		.loc 1 293 17 is_stmt 1 view .LVU127
+ 293:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 369              		.loc 1 293 40 is_stmt 0 view .LVU128
+ 370 016e 324B     		ldr	r3, .L46+4
+ 371              	.LVL31:
+ 293:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 372              		.loc 1 293 40 view .LVU129
+ 373 0170 1B68     		ldr	r3, [r3]
+ 293:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 374              		.loc 1 293 63 view .LVU130
+ 375 0172 C3F89050 		str	r5, [r3, #144]
+ 296:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 376              		.loc 1 296 17 is_stmt 1 view .LVU131
+ 377 0176 4046     		mov	r0, r8
+ 378 0178 FFF7FEFF 		bl	_tx_mutex_put
+ 379              	.LVL32:
+ 299:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 380              		.loc 1 299 17 view .LVU132
+ 299:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 381              		.loc 1 299 23 is_stmt 0 view .LVU133
+ 382 017c 2746     		mov	r7, r4
+ 383 017e 59E7     		b	.L1
+ 384              	.LVL33:
+ 385              	.L19:
+ 306:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity--;
+ 386              		.loc 1 306 17 is_stmt 1 view .LVU134
+ 306:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity--;
+ 387              		.loc 1 306 32 is_stmt 0 view .LVU135
+ 388 0180 0133     		adds	r3, r3, #1
+ 389              	.LVL34:
+ 307:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 390              		.loc 1 307 17 is_stmt 1 view .LVU136
+ 307:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 391              		.loc 1 307 37 is_stmt 0 view .LVU137
+ 392 0182 013A     		subs	r2, r2, #1
+ 393              	.LVL35:
+ 394              	.L14:
+ 304:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 395              		.loc 1 304 43 is_stmt 1 view .LVU138
+ 396 0184 12B1     		cbz	r2, .L18
+ 304:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 397              		.loc 1 304 47 is_stmt 0 discriminator 1 view .LVU139
+ 398 0186 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 304:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 399              		.loc 1 304 43 discriminator 1 view .LVU140
+ 400 0188 0029     		cmp	r1, #0
+ 401 018a F9D1     		bne	.L19
+ 402              	.L18:
+ 311:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 403              		.loc 1 311 13 is_stmt 1 view .LVU141
+ 311:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 404              		.loc 1 311 16 is_stmt 0 view .LVU142
+ARM GAS  /tmp/cctjp2n0.s 			page 18
+
+
+ 405 018c C2B1     		cbz	r2, .L27
+ 315:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity--;
+ 406              		.loc 1 315 17 is_stmt 1 view .LVU143
+ 407              	.LVL36:
+ 315:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_capacity--;
+ 408              		.loc 1 315 36 is_stmt 0 view .LVU144
+ 409 018e 5C21     		movs	r1, #92
+ 410 0190 03F8011B 		strb	r1, [r3], #1
+ 411              	.LVL37:
+ 316:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 412              		.loc 1 316 17 is_stmt 1 view .LVU145
+ 316:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 413              		.loc 1 316 37 is_stmt 0 view .LVU146
+ 414 0194 013A     		subs	r2, r2, #1
+ 415              	.LVL38:
+ 316:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 416              		.loc 1 316 37 view .LVU147
+ 417 0196 13E0     		b	.L27
+ 418              	.LVL39:
+ 419              	.L8:
+ 325:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 420              		.loc 1 325 13 is_stmt 1 view .LVU148
+ 329:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 421              		.loc 1 329 13 view .LVU149
+ 329:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 422              		.loc 1 329 43 is_stmt 0 view .LVU150
+ 423 0198 95F86E21 		ldrb	r2, [r5, #366]	@ zero_extendqisi2
+ 329:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 424              		.loc 1 329 16 view .LVU151
+ 425 019c 2A2A     		cmp	r2, #42
+ 426 019e 01D0     		beq	.L45
+ 174:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 427              		.loc 1 174 30 view .LVU152
+ 428 01a0 FF22     		movs	r2, #255
+ 429 01a2 0DE0     		b	.L27
+ 430              	.L45:
+ 331:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 431              		.loc 1 331 17 is_stmt 1 view .LVU153
+ 331:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 432              		.loc 1 331 65 is_stmt 0 view .LVU154
+ 433 01a4 0022     		movs	r2, #0
+ 434 01a6 85F86E21 		strb	r2, [r5, #366]
+ 174:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 435              		.loc 1 174 30 view .LVU155
+ 436 01aa FF22     		movs	r2, #255
+ 437 01ac 08E0     		b	.L27
+ 438              	.LVL40:
+ 439              	.L23:
+ 370:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 440              		.loc 1 370 17 is_stmt 1 view .LVU156
+ 370:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 441              		.loc 1 370 31 is_stmt 0 view .LVU157
+ 442 01ae 09F10209 		add	r9, r9, #2
+ 443              	.LVL41:
+ 370:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 444              		.loc 1 370 31 view .LVU158
+ 445 01b2 05E0     		b	.L27
+ARM GAS  /tmp/cctjp2n0.s 			page 19
+
+
+ 446              	.L21:
+ 377:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 447              		.loc 1 377 17 is_stmt 1 view .LVU159
+ 377:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 448              		.loc 1 377 20 is_stmt 0 view .LVU160
+ 449 01b4 CAB1     		cbz	r2, .L26
+ 381:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 450              		.loc 1 381 21 is_stmt 1 view .LVU161
+ 381:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 451              		.loc 1 381 57 is_stmt 0 view .LVU162
+ 452 01b6 09F10109 		add	r9, r9, #1
+ 453              	.LVL42:
+ 381:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 454              		.loc 1 381 40 view .LVU163
+ 455 01ba 03F8011B 		strb	r1, [r3], #1
+ 456              	.LVL43:
+ 383:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 457              		.loc 1 383 21 is_stmt 1 view .LVU164
+ 383:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 458              		.loc 1 383 41 is_stmt 0 view .LVU165
+ 459 01be 013A     		subs	r2, r2, #1
+ 460              	.LVL44:
+ 461              	.L27:
+ 336:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 462              		.loc 1 336 16 is_stmt 1 view .LVU166
+ 463 01c0 99F80010 		ldrb	r1, [r9]	@ zero_extendqisi2
+ 464 01c4 89B1     		cbz	r1, .L26
+ 341:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 465              		.loc 1 341 13 view .LVU167
+ 341:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 466              		.loc 1 341 16 is_stmt 0 view .LVU168
+ 467 01c6 2E29     		cmp	r1, #46
+ 468 01c8 F4D1     		bne	.L21
+ 341:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 469              		.loc 1 341 45 discriminator 1 view .LVU169
+ 470 01ca 99F80100 		ldrb	r0, [r9, #1]	@ zero_extendqisi2
+ 341:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 471              		.loc 1 341 41 discriminator 1 view .LVU170
+ 472 01ce 2E28     		cmp	r0, #46
+ 473 01d0 F0D1     		bne	.L21
+ 348:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_ptr =       path_string_ptr - 2;
+ 474              		.loc 1 348 17 is_stmt 1 view .LVU171
+ 348:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 path_string_ptr =       path_string_ptr - 2;
+ 475              		.loc 1 348 38 is_stmt 0 view .LVU172
+ 476 01d2 0232     		adds	r2, r2, #2
+ 477              	.LVL45:
+ 349:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 478              		.loc 1 349 17 is_stmt 1 view .LVU173
+ 349:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 479              		.loc 1 349 33 is_stmt 0 view .LVU174
+ 480 01d4 023B     		subs	r3, r3, #2
+ 481              	.LVL46:
+ 351:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 482              		.loc 1 351 17 is_stmt 1 view .LVU175
+ 483              	.L22:
+ 351:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 {
+ 484              		.loc 1 351 45 view .LVU176
+ARM GAS  /tmp/cctjp2n0.s 			page 20
+
+
+ 485 01d6 FF2A     		cmp	r2, #255
+ 486 01d8 E9D8     		bhi	.L23
+ 357:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 487              		.loc 1 357 21 view .LVU177
+ 357:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 488              		.loc 1 357 26 is_stmt 0 view .LVU178
+ 489 01da 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 357:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     {
+ 490              		.loc 1 357 24 view .LVU179
+ 491 01dc 2F29     		cmp	r1, #47
+ 492 01de 18BF     		it	ne
+ 493 01e0 5C29     		cmpne	r1, #92
+ 494 01e2 E4D0     		beq	.L23
+ 365:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_string_ptr--;
+ 495              		.loc 1 365 21 is_stmt 1 view .LVU180
+ 365:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                     path_string_ptr--;
+ 496              		.loc 1 365 41 is_stmt 0 view .LVU181
+ 497 01e4 0132     		adds	r2, r2, #1
+ 498              	.LVL47:
+ 366:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 499              		.loc 1 366 21 is_stmt 1 view .LVU182
+ 366:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 500              		.loc 1 366 36 is_stmt 0 view .LVU183
+ 501 01e6 013B     		subs	r3, r3, #1
+ 502              	.LVL48:
+ 366:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****                 }
+ 503              		.loc 1 366 36 view .LVU184
+ 504 01e8 F5E7     		b	.L22
+ 505              	.L26:
+ 395:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 506              		.loc 1 395 9 is_stmt 1 view .LVU185
+ 395:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 507              		.loc 1 395 12 is_stmt 0 view .LVU186
+ 508 01ea 7AB1     		cbz	r2, .L29
+ 400:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 509              		.loc 1 400 13 is_stmt 1 view .LVU187
+ 400:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 510              		.loc 1 400 30 is_stmt 0 view .LVU188
+ 511 01ec 0022     		movs	r2, #0
+ 512              	.LVL49:
+ 400:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 513              		.loc 1 400 30 view .LVU189
+ 514 01ee 1A70     		strb	r2, [r3]
+ 515              	.LVL50:
+ 516              	.L30:
+ 419:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 517              		.loc 1 419 9 is_stmt 1 view .LVU190
+ 419:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 518              		.loc 1 419 23 is_stmt 0 view .LVU191
+ 519 01f0 119B     		ldr	r3, [sp, #68]
+ 419:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 520              		.loc 1 419 12 view .LVU192
+ 521 01f2 1BB9     		cbnz	r3, .L31
+ 422:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             local_path_ptr -> fx_path_name_buffer[0] =  (CHAR)0;
+ 522              		.loc 1 422 13 is_stmt 1 view .LVU193
+ 422:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             local_path_ptr -> fx_path_name_buffer[0] =  (CHAR)0;
+ 523              		.loc 1 422 44 is_stmt 0 view .LVU194
+ARM GAS  /tmp/cctjp2n0.s 			page 21
+
+
+ 524 01f4 049A     		ldr	r2, [sp, #16]
+ 525 01f6 1370     		strb	r3, [r2]
+ 423:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 526              		.loc 1 423 13 is_stmt 1 view .LVU195
+ 423:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 527              		.loc 1 423 54 is_stmt 0 view .LVU196
+ 528 01f8 85F87031 		strb	r3, [r5, #368]
+ 529              	.L31:
+ 427:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 530              		.loc 1 427 9 is_stmt 1 view .LVU197
+ 427:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 531              		.loc 1 427 39 is_stmt 0 view .LVU198
+ 532 01fc 7022     		movs	r2, #112
+ 533 01fe 04A9     		add	r1, sp, #16
+ 534 0200 2846     		mov	r0, r5
+ 535 0202 FFF7FEFF 		bl	memcpy
+ 536              	.LVL51:
+ 430:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 537              		.loc 1 430 9 is_stmt 1 view .LVU199
+ 430:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 538              		.loc 1 430 63 is_stmt 0 view .LVU200
+ 539 0206 C5F800A0 		str	r10, [r5]
+ 433:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 540              		.loc 1 433 9 is_stmt 1 view .LVU201
+ 541              	.LVL52:
+ 433:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 542              		.loc 1 433 9 is_stmt 0 view .LVU202
+ 543 020a 0AE0     		b	.L32
+ 544              	.LVL53:
+ 545              	.L29:
+ 407:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 546              		.loc 1 407 13 is_stmt 1 view .LVU203
+ 407:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             {
+ 547              		.loc 1 407 16 is_stmt 0 view .LVU204
+ 548 020c 0029     		cmp	r1, #0
+ 549 020e EFD0     		beq	.L30
+ 414:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 550              		.loc 1 414 17 is_stmt 1 view .LVU205
+ 414:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 551              		.loc 1 414 65 is_stmt 0 view .LVU206
+ 552 0210 2A23     		movs	r3, #42
+ 553              	.LVL54:
+ 414:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****             }
+ 554              		.loc 1 414 65 view .LVU207
+ 555 0212 85F86E31 		strb	r3, [r5, #366]
+ 556 0216 EBE7     		b	.L30
+ 557              	.LVL55:
+ 558              	.L33:
+ 437:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 559              		.loc 1 437 13 is_stmt 1 view .LVU208
+ 437:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 560              		.loc 1 437 48 is_stmt 0 view .LVU209
+ 561 0218 2B68     		ldr	r3, [r5]
+ 437:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 562              		.loc 1 437 100 view .LVU210
+ 563 021a 049A     		ldr	r2, [sp, #16]
+ 564 021c 125D     		ldrb	r2, [r2, r4]	@ zero_extendqisi2
+ARM GAS  /tmp/cctjp2n0.s 			page 22
+
+
+ 437:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         }
+ 565              		.loc 1 437 70 view .LVU211
+ 566 021e 1A55     		strb	r2, [r3, r4]
+ 433:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 567              		.loc 1 433 48 is_stmt 1 discriminator 3 view .LVU212
+ 568 0220 0134     		adds	r4, r4, #1
+ 569              	.LVL56:
+ 570              	.L32:
+ 433:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****         {
+ 571              		.loc 1 433 23 discriminator 1 view .LVU213
+ 572 0222 FF2C     		cmp	r4, #255
+ 573 0224 F8D9     		bls	.L33
+ 441:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 574              		.loc 1 441 9 view .LVU214
+ 441:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 575              		.loc 1 441 32 is_stmt 0 view .LVU215
+ 576 0226 044B     		ldr	r3, .L46+4
+ 577 0228 1B68     		ldr	r3, [r3]
+ 441:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c ****     }
+ 578              		.loc 1 441 55 view .LVU216
+ 579 022a C3F89050 		str	r5, [r3, #144]
+ 580 022e 3CE7     		b	.L5
+ 581              	.LVL57:
+ 582              	.L36:
+ 136:Middlewares/ST/filex/common/src/fx_directory_local_path_set.c **** 
+ 583              		.loc 1 136 5 discriminator 3 view .LVU217
+ 584 0230 1127     		movs	r7, #17
+ 585 0232 FFE6     		b	.L1
+ 586              	.L47:
+ 587              		.align	2
+ 588              	.L46:
+ 589 0234 4944454D 		.word	1296385097
+ 590 0238 00000000 		.word	_tx_thread_current_ptr
+ 591              		.cfi_endproc
+ 592              	.LFE8:
+ 594              		.text
+ 595              	.Letext0:
+ 596              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 597              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 598              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 599              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 600              		.file 6 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ 601              		.file 7 "Middlewares/ST/threadx/common/inc/tx_thread.h"
+ 602              		.file 8 "<built-in>"
+ARM GAS  /tmp/cctjp2n0.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_local_path_set.c
+     /tmp/cctjp2n0.s:20     .text._fx_directory_local_path_set:00000000 $t
+     /tmp/cctjp2n0.s:26     .text._fx_directory_local_path_set:00000000 _fx_directory_local_path_set
+     /tmp/cctjp2n0.s:589    .text._fx_directory_local_path_set:00000234 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_tx_mutex_put
+_fx_directory_search
+memcpy
+_tx_thread_current_ptr

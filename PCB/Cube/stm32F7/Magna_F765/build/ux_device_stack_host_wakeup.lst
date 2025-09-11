@@ -1,0 +1,220 @@
+ARM GAS  /tmp/cce7j9Ng.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_stack_host_wakeup.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c"
+  19              		.section	.text._ux_device_stack_host_wakeup,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_stack_host_wakeup
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_stack_host_wakeup:
+  27              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**   Device Stack                                                        */
+  19:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** #define UX_SOURCE_CODE
+  24:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  25:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** #include "ux_device_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+ARM GAS  /tmp/cce7j9Ng.s 			page 2
+
+
+  32:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    _ux_device_stack_host_wakeup                        PORTABLE C      */
+  37:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    This function is called when the device wants to wake up the host.  */
+  45:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    This command is only valid when the device is in suspend mode.      */
+  46:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  INPUT                                                                 */
+  48:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    None                                                                */
+  50:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  OUTPUT                                                                */
+  52:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    Completion Status                                                   */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  CALLS                                                                 */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    (ux_slave_dcd_function)               DCD dispatch function         */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  CALLED BY                                                             */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    Application                                                         */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  RELEASE HISTORY                                                       */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  68:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  69:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                            resulting in version 6.1    */
+  70:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** /**************************************************************************/
+  72:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** UINT  _ux_device_stack_host_wakeup(VOID)
+  73:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** {
+  28              		.loc 1 73 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 00B5     		push	{lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 14, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  74:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  75:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** UX_SLAVE_DCD        *dcd;
+  39              		.loc 1 75 1 view .LVU1
+  76:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** UINT                status = UX_FUNCTION_NOT_SUPPORTED;
+ARM GAS  /tmp/cce7j9Ng.s 			page 3
+
+
+  40              		.loc 1 76 1 view .LVU2
+  41              	.LVL0:
+  77:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****                     
+  78:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  79:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_DEVICE_STACK_HOST_WAKEUP, 0, 0, 0, 0, UX_TRACE_DEVICE_STACK_EV
+  42              		.loc 1 79 5 view .LVU3
+  43 0004 0021     		movs	r1, #0
+  44 0006 0391     		str	r1, [sp, #12]
+  45 0008 0291     		str	r1, [sp, #8]
+  46 000a 4FF08063 		mov	r3, #67108864
+  47 000e 0193     		str	r3, [sp, #4]
+  48 0010 0091     		str	r1, [sp]
+  49 0012 0B46     		mov	r3, r1
+  50 0014 0A46     		mov	r2, r1
+  51 0016 40F25E30 		movw	r0, #862
+  52 001a FFF7FEFF 		bl	_ux_trace_event_insert
+  53              	.LVL1:
+  80:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****                         
+  81:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     /* Get the pointer to the DCD.  */
+  82:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     dcd =  &_ux_system_slave -> ux_system_slave_dcd;
+  54              		.loc 1 82 5 view .LVU4
+  55              		.loc 1 82 30 is_stmt 0 view .LVU5
+  56 001e 074B     		ldr	r3, .L5
+  57 0020 1868     		ldr	r0, [r3]
+  58              	.LVL2:
+  83:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  84:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     /* Check if DEVICE_REMOTE_WAKEUP feature is enabled. */
+  85:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     if (_ux_system_slave -> ux_system_slave_remote_wakeup_enabled)
+  59              		.loc 1 85 5 is_stmt 1 view .LVU6
+  60              		.loc 1 85 26 is_stmt 0 view .LVU7
+  61 0022 D0F8A831 		ldr	r3, [r0, #424]
+  62              		.loc 1 85 8 view .LVU8
+  63 0026 33B1     		cbz	r3, .L3
+  86:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  87:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****         /* Send the change signal to the controller driver.  */
+  88:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****         status =  dcd -> ux_slave_dcd_function(dcd, UX_DCD_CHANGE_STATE, (VOID *) UX_DEVICE_REMOTE_
+  64              		.loc 1 88 9 is_stmt 1 view .LVU9
+  65              		.loc 1 88 23 is_stmt 0 view .LVU10
+  66 0028 8369     		ldr	r3, [r0, #24]
+  67              		.loc 1 88 19 view .LVU11
+  68 002a 0822     		movs	r2, #8
+  69 002c 1321     		movs	r1, #19
+  70 002e 9847     		blx	r3
+  71              	.LVL3:
+  72              	.L1:
+  89:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** 
+  90:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     /* Return the status to the caller.  */
+  91:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****     return(status);
+  92:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** }
+  73              		.loc 1 92 1 view .LVU12
+  74 0030 05B0     		add	sp, sp, #20
+  75              	.LCFI2:
+  76              		.cfi_remember_state
+  77              		.cfi_def_cfa_offset 4
+  78              		@ sp needed
+  79 0032 5DF804FB 		ldr	pc, [sp], #4
+  80              	.LVL4:
+ARM GAS  /tmp/cce7j9Ng.s 			page 4
+
+
+  81              	.L3:
+  82              	.LCFI3:
+  83              		.cfi_restore_state
+  76:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c ****                     
+  84              		.loc 1 76 21 view .LVU13
+  85 0036 5420     		movs	r0, #84
+  86              	.LVL5:
+  91:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** }
+  87              		.loc 1 91 5 is_stmt 1 view .LVU14
+  91:Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c **** }
+  88              		.loc 1 91 11 is_stmt 0 view .LVU15
+  89 0038 FAE7     		b	.L1
+  90              	.L6:
+  91 003a 00BF     		.align	2
+  92              	.L5:
+  93 003c 00000000 		.word	_ux_system_slave
+  94              		.cfi_endproc
+  95              	.LFE11:
+  97              		.text
+  98              	.Letext0:
+  99              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 100              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 101              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 102              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 103              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/cce7j9Ng.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_stack_host_wakeup.c
+     /tmp/cce7j9Ng.s:20     .text._ux_device_stack_host_wakeup:00000000 $t
+     /tmp/cce7j9Ng.s:26     .text._ux_device_stack_host_wakeup:00000000 _ux_device_stack_host_wakeup
+     /tmp/cce7j9Ng.s:93     .text._ux_device_stack_host_wakeup:0000003c $d
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_system_slave

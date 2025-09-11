@@ -1,0 +1,174 @@
+ARM GAS  /tmp/ccnpUdUr.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_thread_entry_exit_notify.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c"
+  19              		.section	.text._tx_thread_entry_exit_notify,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_thread_entry_exit_notify
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_thread_entry_exit_notify:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**   Thread                                                              */
+  19:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #include "tx_api.h"
+  29:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #include "tx_trace.h"
+  30:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #include "tx_thread.h"
+ARM GAS  /tmp/ccnpUdUr.s 			page 2
+
+
+  31:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  32:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  33:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  34:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  35:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  FUNCTION                                               RELEASE        */
+  36:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  37:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    _tx_thread_entry_exit_notify                        PORTABLE C      */
+  38:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                           6.1          */
+  39:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  41:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  42:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  43:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  45:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    This function registers an application entry/exit notification      */
+  46:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    callback routine for the application. Once registered, the callback */
+  47:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    routine is called when the thread is initially entered and called   */
+  48:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    again when the thread completes or is terminated.                   */
+  49:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  50:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  INPUT                                                                 */
+  51:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  52:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    thread_ptr                            Pointer to thread             */
+  53:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    thread_entry_exit_notify              Pointer to notify callback    */
+  54:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                            function, TX_NULL to disable*/
+  55:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  56:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  OUTPUT                                                                */
+  57:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  58:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    status                                Service return status         */
+  59:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  60:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  CALLS                                                                 */
+  61:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  62:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    None                                                                */
+  63:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  64:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  66:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    Application Code                                                    */
+  67:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  68:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  70:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  72:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  73:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+  74:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /*                                                                        */
+  76:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** /**************************************************************************/
+  77:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** UINT  _tx_thread_entry_exit_notify(TX_THREAD *thread_ptr, VOID (*thread_entry_exit_notify)(TX_THREA
+  78:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** {
+  29              		.loc 1 78 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  79:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  80:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #ifdef TX_DISABLE_NOTIFY_CALLBACKS
+  81:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  82:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     TX_THREAD_NOT_USED(thread_ptr);
+ARM GAS  /tmp/ccnpUdUr.s 			page 3
+
+
+  34              		.loc 1 82 5 view .LVU1
+  83:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     TX_THREAD_ENTRY_EXIT_NOTIFY_NOT_USED(thread_entry_exit_notify);
+  35              		.loc 1 83 5 view .LVU2
+  84:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  85:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Feature is not enabled, return error.  */
+  86:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     return(TX_FEATURE_NOT_ENABLED);
+  36              		.loc 1 86 5 view .LVU3
+  87:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #else
+  88:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  89:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** TX_INTERRUPT_SAVE_AREA
+  90:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  91:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  92:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Disable interrupts.  */
+  93:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     TX_DISABLE
+  94:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  95:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Make entry in event log.  */
+  96:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     TX_TRACE_IN_LINE_INSERT(TX_TRACE_THREAD_ENTRY_EXIT_NOTIFY, thread_ptr, thread_ptr -> tx_thread_
+  97:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+  98:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Make entry in event log.  */
+  99:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     TX_EL_THREAD_ENTRY_EXIT_NOTIFY_INSERT
+ 100:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+ 101:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Setup thread entry/exit notification callback function.  */
+ 102:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     thread_ptr -> tx_thread_entry_exit_notify =  thread_entry_exit_notify;
+ 103:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+ 104:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Restore interrupts.  */
+ 105:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     TX_RESTORE
+ 106:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** 
+ 107:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     /* Return success to caller.  */
+ 108:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c ****     return(TX_SUCCESS);
+ 109:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** #endif
+ 110:Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c **** }
+  37              		.loc 1 110 1 is_stmt 0 view .LVU4
+  38 0000 FF20     		movs	r0, #255
+  39              	.LVL1:
+  40              		.loc 1 110 1 view .LVU5
+  41 0002 7047     		bx	lr
+  42              		.cfi_endproc
+  43              	.LFE8:
+  45              		.text
+  46              	.Letext0:
+  47              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  48              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ARM GAS  /tmp/ccnpUdUr.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_thread_entry_exit_notify.c
+     /tmp/ccnpUdUr.s:20     .text._tx_thread_entry_exit_notify:00000000 $t
+     /tmp/ccnpUdUr.s:26     .text._tx_thread_entry_exit_notify:00000000 _tx_thread_entry_exit_notify
+
+NO UNDEFINED SYMBOLS

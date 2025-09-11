@@ -1,0 +1,335 @@
+ARM GAS  /tmp/cceqladk.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_stack_configuration_descriptor_parse.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c"
+  19              		.section	.text._ux_host_stack_configuration_descriptor_parse,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_configuration_descriptor_parse
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_configuration_descriptor_parse:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ARM GAS  /tmp/cceqladk.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    _ux_host_stack_configuration_descriptor_parse       PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    This function reads the entire configuration descriptor and         */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    enumerates the interfaces, binds the interface to a class driver... */
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    if the device has multiple configurations, we read all the          */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    configurations but do not instantiate any configuration. Rather we  */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    let a class driver do the work.                                     */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  INPUT                                                                 */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    device                                Pointer to device             */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    configuration                         Pointer to configuration      */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    configuration_index                   Index of configuration        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  OUTPUT                                                                */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    Completion Status                                                   */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  CALLS                                                                 */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    _ux_host_stack_interfaces_scan        Scan host interfaces          */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    _ux_host_stack_transfer_request       Process transfer request      */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    _ux_utility_memory_allocate           Allocate block of memory      */
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    _ux_utility_memory_free               Free block of memory          */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  CALLED BY                                                             */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    USBX Components                                                     */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  RELEASE HISTORY                                                       */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                            resulting in version 6.1    */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /*                                                                        */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** /**************************************************************************/
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** UINT  _ux_host_stack_configuration_descriptor_parse(UX_DEVICE *device, UX_CONFIGURATION *configurat
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****                                                                         UINT configuration_index)
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** {
+  29              		.loc 1 82 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 82 1 is_stmt 0 view .LVU1
+ARM GAS  /tmp/cceqladk.s 			page 3
+
+
+  34 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 32
+  37              		.cfi_offset 3, -32
+  38              		.cfi_offset 4, -28
+  39              		.cfi_offset 5, -24
+  40              		.cfi_offset 6, -20
+  41              		.cfi_offset 7, -16
+  42              		.cfi_offset 8, -12
+  43              		.cfi_offset 9, -8
+  44              		.cfi_offset 14, -4
+  45 0004 0446     		mov	r4, r0
+  46 0006 0E46     		mov	r6, r1
+  47 0008 1546     		mov	r5, r2
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** UX_TRANSFER     *transfer_request;
+  48              		.loc 1 84 1 is_stmt 1 view .LVU2
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** UINT            status;
+  49              		.loc 1 85 1 view .LVU3
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** UCHAR           *descriptor;
+  50              		.loc 1 86 1 view .LVU4
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** UX_ENDPOINT     *control_endpoint;
+  51              		.loc 1 87 1 view .LVU5
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** ULONG           total_configuration_length;
+  52              		.loc 1 88 1 view .LVU6
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     /* Retrieve the pointer to the control endpoint and its transfer_request.  */
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     control_endpoint =  &device -> ux_device_control_endpoint;
+  53              		.loc 1 92 5 view .LVU7
+  54              	.LVL1:
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     transfer_request =  &control_endpoint -> ux_endpoint_transfer_request;
+  55              		.loc 1 93 5 view .LVU8
+  56              		.loc 1 93 22 is_stmt 0 view .LVU9
+  57 000a 00F1AC09 		add	r9, r0, #172
+  58              	.LVL2:
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     /* Retrieve the size of all the configuration descriptor.  */
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     total_configuration_length =  configuration -> ux_configuration_descriptor.wTotalLength;
+  59              		.loc 1 96 5 is_stmt 1 view .LVU10
+  60              		.loc 1 96 32 is_stmt 0 view .LVU11
+  61 000e D1F81480 		ldr	r8, [r1, #20]
+  62              	.LVL3:
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     /* Allocate enough memory to read all descriptors attached to this configuration.  */
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     descriptor =  _ux_utility_memory_allocate(UX_SAFE_ALIGN, UX_CACHE_SAFE_MEMORY, total_configurat
+  63              		.loc 1 99 5 is_stmt 1 view .LVU12
+  64              		.loc 1 99 19 is_stmt 0 view .LVU13
+  65 0012 4246     		mov	r2, r8
+  66              	.LVL4:
+  67              		.loc 1 99 19 view .LVU14
+  68 0014 0121     		movs	r1, #1
+  69              	.LVL5:
+  70              		.loc 1 99 19 view .LVU15
+  71 0016 4FF0FF30 		mov	r0, #-1
+  72              	.LVL6:
+  73              		.loc 1 99 19 view .LVU16
+ARM GAS  /tmp/cceqladk.s 			page 4
+
+
+  74 001a FFF7FEFF 		bl	_ux_utility_memory_allocate
+  75              	.LVL7:
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     /* Determine if the memory was allocated.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     if (descriptor == UX_NULL)
+  76              		.loc 1 102 5 is_stmt 1 view .LVU17
+  77              		.loc 1 102 8 is_stmt 0 view .LVU18
+  78 001e 30B3     		cbz	r0, .L4
+  79 0020 0746     		mov	r7, r0
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     {
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         /* No, return an error.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         return(UX_MEMORY_INSUFFICIENT);
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     }
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     else
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     {
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         /* Create a transfer_request for the GET_DESCRIPTOR request.  */
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         transfer_request -> ux_transfer_request_data_pointer =      descriptor;
+  80              		.loc 1 112 9 is_stmt 1 view .LVU19
+  81              		.loc 1 112 62 is_stmt 0 view .LVU20
+  82 0022 C4F8B400 		str	r0, [r4, #180]
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         transfer_request -> ux_transfer_request_requested_length =  total_configuration_length;
+  83              		.loc 1 113 9 is_stmt 1 view .LVU21
+  84              		.loc 1 113 66 is_stmt 0 view .LVU22
+  85 0026 C4F8B880 		str	r8, [r4, #184]
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         transfer_request -> ux_transfer_request_function =          UX_GET_DESCRIPTOR;
+  86              		.loc 1 114 9 is_stmt 1 view .LVU23
+  87              		.loc 1 114 58 is_stmt 0 view .LVU24
+  88 002a 0623     		movs	r3, #6
+  89 002c C4F8C430 		str	r3, [r4, #196]
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         transfer_request -> ux_transfer_request_type =              UX_REQUEST_IN | UX_REQUEST_TYPE
+  90              		.loc 1 115 9 is_stmt 1 view .LVU25
+  91              		.loc 1 115 54 is_stmt 0 view .LVU26
+  92 0030 8023     		movs	r3, #128
+  93 0032 C4F8C030 		str	r3, [r4, #192]
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         transfer_request -> ux_transfer_request_value =             configuration_index | (UINT)(UX
+  94              		.loc 1 116 9 is_stmt 1 view .LVU27
+  95              		.loc 1 116 89 is_stmt 0 view .LVU28
+  96 0036 45F40075 		orr	r5, r5, #512
+  97              	.LVL8:
+  98              		.loc 1 116 55 view .LVU29
+  99 003a C4F8C850 		str	r5, [r4, #200]
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         transfer_request -> ux_transfer_request_index =             0;
+ 100              		.loc 1 117 9 is_stmt 1 view .LVU30
+ 101              		.loc 1 117 55 is_stmt 0 view .LVU31
+ 102 003e 0023     		movs	r3, #0
+ 103 0040 C4F8CC30 		str	r3, [r4, #204]
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         /* Send request to HCD layer.  */
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         status =  _ux_host_stack_transfer_request(transfer_request);
+ 104              		.loc 1 120 9 is_stmt 1 view .LVU32
+ 105              		.loc 1 120 19 is_stmt 0 view .LVU33
+ 106 0044 4846     		mov	r0, r9
+ 107              	.LVL9:
+ 108              		.loc 1 120 19 view .LVU34
+ 109 0046 FFF7FEFF 		bl	_ux_host_stack_transfer_request
+ARM GAS  /tmp/cceqladk.s 			page 5
+
+
+ 110              	.LVL10:
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         /* Check for correct transfer and entire descriptor returned.  */
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         if((status == UX_SUCCESS) && (transfer_request -> ux_transfer_request_actual_length == tota
+ 111              		.loc 1 123 9 is_stmt 1 view .LVU35
+ 112              		.loc 1 123 11 is_stmt 0 view .LVU36
+ 113 004a 0546     		mov	r5, r0
+ 114 004c 18B9     		cbnz	r0, .L3
+ 115              		.loc 1 123 56 discriminator 1 view .LVU37
+ 116 004e D4F8BC30 		ldr	r3, [r4, #188]
+ 117              		.loc 1 123 35 discriminator 1 view .LVU38
+ 118 0052 4345     		cmp	r3, r8
+ 119 0054 05D0     		beq	.L6
+ 120              	.L3:
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         {
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****             /* The entire descriptor now contains the configuration descriptor,
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****                the interface(s) descriptors, all alternate settings, endpoints
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****                and descriptor specific to the class. The descriptor is parsed for all interfaces.  
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****             status =  _ux_host_stack_interfaces_scan(configuration, descriptor);
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         }
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     }
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     /* Free all used resources.  */
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     _ux_utility_memory_free(descriptor);
+ 121              		.loc 1 134 5 is_stmt 1 view .LVU39
+ 122 0056 3846     		mov	r0, r7
+ 123              	.LVL11:
+ 124              		.loc 1 134 5 is_stmt 0 view .LVU40
+ 125 0058 FFF7FEFF 		bl	_ux_utility_memory_free
+ 126              	.LVL12:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** 
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     /* Return completion status.  */
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     return(status);
+ 127              		.loc 1 137 5 is_stmt 1 view .LVU41
+ 128              	.L1:
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c **** }
+ 129              		.loc 1 138 1 is_stmt 0 view .LVU42
+ 130 005c 2846     		mov	r0, r5
+ 131 005e BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 132              	.LVL13:
+ 133              	.L6:
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         }
+ 134              		.loc 1 129 13 is_stmt 1 view .LVU43
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         }
+ 135              		.loc 1 129 23 is_stmt 0 view .LVU44
+ 136 0062 3946     		mov	r1, r7
+ 137 0064 3046     		mov	r0, r6
+ 138              	.LVL14:
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         }
+ 139              		.loc 1 129 23 view .LVU45
+ 140 0066 FFF7FEFF 		bl	_ux_host_stack_interfaces_scan
+ 141              	.LVL15:
+ 142 006a 0546     		mov	r5, r0
+ 143              	.LVL16:
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****         }
+ 144              		.loc 1 129 23 view .LVU46
+ARM GAS  /tmp/cceqladk.s 			page 6
+
+
+ 145 006c F3E7     		b	.L3
+ 146              	.LVL17:
+ 147              	.L4:
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     }
+ 148              		.loc 1 106 15 view .LVU47
+ 149 006e 1225     		movs	r5, #18
+ 150              	.LVL18:
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_descriptor_parse.c ****     }
+ 151              		.loc 1 106 15 view .LVU48
+ 152 0070 F4E7     		b	.L1
+ 153              		.cfi_endproc
+ 154              	.LFE11:
+ 156              		.text
+ 157              	.Letext0:
+ 158              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 159              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 160              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 161              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 162              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/cceqladk.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_configuration_descriptor_parse.c
+     /tmp/cceqladk.s:20     .text._ux_host_stack_configuration_descriptor_parse:00000000 $t
+     /tmp/cceqladk.s:26     .text._ux_host_stack_configuration_descriptor_parse:00000000 _ux_host_stack_configuration_descriptor_parse
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_host_stack_transfer_request
+_ux_utility_memory_free
+_ux_host_stack_interfaces_scan

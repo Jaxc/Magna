@@ -1,0 +1,154 @@
+ARM GAS  /tmp/ccXoirQa.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_file_seek.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_file_seek.c"
+  19              		.section	.text._fx_file_seek,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_file_seek
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_file_seek:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  12:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  13:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_file_seek.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**   File                                                                */
+  19:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  23:Middlewares/ST/filex/common/src/fx_file_seek.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  25:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  26:Middlewares/ST/filex/common/src/fx_file_seek.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  28:Middlewares/ST/filex/common/src/fx_file_seek.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_file_seek.c **** #include "fx_file.h"
+  30:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+ARM GAS  /tmp/ccXoirQa.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  32:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  33:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  34:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    _fx_file_seek                                       PORTABLE C      */
+  37:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                           6.1          */
+  38:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  41:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    This function positions the internal file pointers to the specified */
+  45:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    byte offset such that the next read or write operation will be      */
+  46:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    performed there.  If the byte offset is greater than the size, the  */
+  47:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    file pointers will be positioned to the end of the file.            */
+  48:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    file_ptr                              File control block pointer    */
+  52:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    byte_offset                           Byte offset into the file     */
+  53:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  OUTPUT                                                                */
+  55:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    return status                                                       */
+  57:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  CALLS                                                                 */
+  59:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    _fx_file_extended_seek                Seek to specified position    */
+  61:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  CALLED BY                                                             */
+  63:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    Application Code                                                    */
+  65:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  RELEASE HISTORY                                                       */
+  67:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*    DATE              NAME                      DESCRIPTION             */
+  69:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  71:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*  09-30-2020     William E. Lamie         Modified comment(s), and      */
+  72:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                            Added conditional to        */
+  73:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                            disable one line function,  */
+  74:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/filex/common/src/fx_file_seek.c **** /*                                                                        */
+  76:Middlewares/ST/filex/common/src/fx_file_seek.c **** /**************************************************************************/
+  77:Middlewares/ST/filex/common/src/fx_file_seek.c **** #ifndef FX_DISABLE_ONE_LINE_FUNCTION
+  78:Middlewares/ST/filex/common/src/fx_file_seek.c **** UINT  _fx_file_seek(FX_FILE *file_ptr, ULONG byte_offset)
+  79:Middlewares/ST/filex/common/src/fx_file_seek.c **** {
+  29              		.loc 1 79 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 79 1 is_stmt 0 view .LVU1
+  34 0000 08B5     		push	{r3, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccXoirQa.s 			page 3
+
+
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+  39 0002 0A46     		mov	r2, r1
+  80:Middlewares/ST/filex/common/src/fx_file_seek.c **** 
+  81:Middlewares/ST/filex/common/src/fx_file_seek.c ****     return(_fx_file_extended_seek(file_ptr, (ULONG64) byte_offset));
+  40              		.loc 1 81 5 is_stmt 1 view .LVU2
+  41              		.loc 1 81 12 is_stmt 0 view .LVU3
+  42 0004 0023     		movs	r3, #0
+  43 0006 FFF7FEFF 		bl	_fx_file_extended_seek
+  44              	.LVL1:
+  82:Middlewares/ST/filex/common/src/fx_file_seek.c **** }
+  45              		.loc 1 82 1 view .LVU4
+  46 000a 08BD     		pop	{r3, pc}
+  47              		.cfi_endproc
+  48              	.LFE8:
+  50              		.text
+  51              	.Letext0:
+  52              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  53              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  54              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+  55              		.file 5 "Middlewares/ST/filex/common/inc/fx_file.h"
+ARM GAS  /tmp/ccXoirQa.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_file_seek.c
+     /tmp/ccXoirQa.s:20     .text._fx_file_seek:00000000 $t
+     /tmp/ccXoirQa.s:26     .text._fx_file_seek:00000000 _fx_file_seek
+
+UNDEFINED SYMBOLS
+_fx_file_extended_seek

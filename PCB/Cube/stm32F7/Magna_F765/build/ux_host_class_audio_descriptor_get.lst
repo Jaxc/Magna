@@ -1,0 +1,448 @@
+ARM GAS  /tmp/cczLZbu9.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_class_audio_descriptor_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c"
+  19              		.section	.text._ux_host_class_audio_descriptor_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_class_audio_descriptor_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_class_audio_descriptor_get:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**   Audio Class                                                         */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** #include "ux_host_class_audio.h"
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** #include "ux_host_stack.h"
+ARM GAS  /tmp/cczLZbu9.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    _ux_host_class_audio_descriptor_get                 PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                           6.1          */
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    This function obtains the entire audio configuration descriptors.   */ 
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    This is needed because the audio class has many class specific      */ 
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    descriptors which describe the alternate settings that can be used. */ 
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  INPUT                                                                 */ 
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    audio                                 Pointer to audio class        */ 
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  OUTPUT                                                                */ 
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    Completion Status                                                   */ 
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  CALLS                                                                 */ 
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    _ux_host_stack_transfer_request       Process transfer request      */ 
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    _ux_utility_descriptor_parse          Parse descriptor              */ 
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    _ux_utility_memory_allocate           Allocate memory block         */ 
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    _ux_utility_memory_free               Release memory block          */ 
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  CALLED BY                                                             */ 
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    Audio Class                                                         */ 
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  RELEASE HISTORY                                                       */ 
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** /**************************************************************************/
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** UINT  _ux_host_class_audio_descriptor_get(UX_HOST_CLASS_AUDIO *audio)
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** {
+  29              		.loc 1 78 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 72
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 78 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 28
+  37              		.cfi_offset 4, -28
+ARM GAS  /tmp/cczLZbu9.s 			page 3
+
+
+  38              		.cfi_offset 5, -24
+  39              		.cfi_offset 6, -20
+  40              		.cfi_offset 7, -16
+  41              		.cfi_offset 8, -12
+  42              		.cfi_offset 9, -8
+  43              		.cfi_offset 14, -4
+  44 0004 93B0     		sub	sp, sp, #76
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 104
+  47 0006 0546     		mov	r5, r0
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** UCHAR *                 descriptor;
+  48              		.loc 1 80 1 is_stmt 1 view .LVU2
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** UX_ENDPOINT             *control_endpoint;
+  49              		.loc 1 81 1 view .LVU3
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** UX_TRANSFER             *transfer_request;
+  50              		.loc 1 82 1 view .LVU4
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** UX_CONFIGURATION        configuration;
+  51              		.loc 1 83 1 view .LVU5
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** UINT                    status;
+  52              		.loc 1 84 1 view .LVU6
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** ULONG                   total_configuration_length;
+  53              		.loc 1 85 1 view .LVU7
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* We need to get the default control endpoint transfer request pointer.  */
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     control_endpoint =  &audio -> ux_host_class_audio_device -> ux_device_control_endpoint;
+  54              		.loc 1 89 5 view .LVU8
+  55              		.loc 1 89 32 is_stmt 0 view .LVU9
+  56 0008 8468     		ldr	r4, [r0, #8]
+  57              	.LVL1:
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request =  &control_endpoint -> ux_endpoint_transfer_request;
+  58              		.loc 1 90 5 is_stmt 1 view .LVU10
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* Need to allocate memory for the descriptor.  */
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     descriptor =  _ux_utility_memory_allocate(UX_SAFE_ALIGN, UX_CACHE_SAFE_MEMORY, UX_CONFIGURATION
+  59              		.loc 1 93 5 view .LVU11
+  60              		.loc 1 93 19 is_stmt 0 view .LVU12
+  61 000a 0922     		movs	r2, #9
+  62 000c 0121     		movs	r1, #1
+  63 000e 4FF0FF30 		mov	r0, #-1
+  64              	.LVL2:
+  65              		.loc 1 93 19 view .LVU13
+  66 0012 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  67              	.LVL3:
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     if (descriptor == UX_NULL)
+  68              		.loc 1 94 5 is_stmt 1 view .LVU14
+  69              		.loc 1 94 8 is_stmt 0 view .LVU15
+  70 0016 0028     		cmp	r0, #0
+  71 0018 49D0     		beq	.L4
+  72 001a 04F1AC08 		add	r8, r4, #172
+  73              	.LVL4:
+  74              		.loc 1 94 8 view .LVU16
+  75 001e 0646     		mov	r6, r0
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         return(UX_MEMORY_INSUFFICIENT);
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* Create a transfer request for the GET_DESCRIPTOR request.  */
+ARM GAS  /tmp/cczLZbu9.s 			page 4
+
+
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request -> ux_transfer_request_data_pointer =      descriptor;
+  76              		.loc 1 98 5 is_stmt 1 view .LVU17
+  77              		.loc 1 98 58 is_stmt 0 view .LVU18
+  78 0020 C4F8B400 		str	r0, [r4, #180]
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request -> ux_transfer_request_requested_length =  UX_CONFIGURATION_DESCRIPTOR_LENGTH;
+  79              		.loc 1 99 5 is_stmt 1 view .LVU19
+  80              		.loc 1 99 62 is_stmt 0 view .LVU20
+  81 0024 0923     		movs	r3, #9
+  82 0026 C4F8B830 		str	r3, [r4, #184]
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request -> ux_transfer_request_function =          UX_GET_DESCRIPTOR;
+  83              		.loc 1 100 5 is_stmt 1 view .LVU21
+  84              		.loc 1 100 54 is_stmt 0 view .LVU22
+  85 002a 0623     		movs	r3, #6
+  86 002c C4F8C430 		str	r3, [r4, #196]
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request -> ux_transfer_request_type =              UX_REQUEST_IN | UX_REQUEST_TYPE_STA
+  87              		.loc 1 101 5 is_stmt 1 view .LVU23
+  88              		.loc 1 101 50 is_stmt 0 view .LVU24
+  89 0030 8023     		movs	r3, #128
+  90 0032 C4F8C030 		str	r3, [r4, #192]
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request -> ux_transfer_request_value =             UX_CONFIGURATION_DESCRIPTOR_ITEM <<
+  91              		.loc 1 102 5 is_stmt 1 view .LVU25
+  92              		.loc 1 102 51 is_stmt 0 view .LVU26
+  93 0036 4FF40073 		mov	r3, #512
+  94 003a C4F8C830 		str	r3, [r4, #200]
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     transfer_request -> ux_transfer_request_index =             0;
+  95              		.loc 1 103 5 is_stmt 1 view .LVU27
+  96              		.loc 1 103 51 is_stmt 0 view .LVU28
+  97 003e 0023     		movs	r3, #0
+  98 0040 C4F8CC30 		str	r3, [r4, #204]
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* Send request to HCD layer.  */
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     status =  _ux_host_stack_transfer_request(transfer_request);
+  99              		.loc 1 106 5 is_stmt 1 view .LVU29
+ 100              		.loc 1 106 15 is_stmt 0 view .LVU30
+ 101 0044 4046     		mov	r0, r8
+ 102              	.LVL5:
+ 103              		.loc 1 106 15 view .LVU31
+ 104 0046 FFF7FEFF 		bl	_ux_host_stack_transfer_request
+ 105              	.LVL6:
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* Check for correct transfer and entire descriptor returned.  */
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     if ((status == UX_SUCCESS) && (transfer_request -> ux_transfer_request_actual_length == UX_CONF
+ 106              		.loc 1 109 5 is_stmt 1 view .LVU32
+ 107              		.loc 1 109 8 is_stmt 0 view .LVU33
+ 108 004a 0746     		mov	r7, r0
+ 109 004c 18B9     		cbnz	r0, .L3
+ 110              		.loc 1 109 53 discriminator 1 view .LVU34
+ 111 004e D4F8BC30 		ldr	r3, [r4, #188]
+ 112              		.loc 1 109 32 discriminator 1 view .LVU35
+ 113 0052 092B     		cmp	r3, #9
+ 114 0054 06D0     		beq	.L7
+ 115              	.L3:
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     {
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* The descriptor is in a packed format, parse it locally.  */      
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         _ux_utility_descriptor_parse(descriptor, _ux_system_configuration_descriptor_structure,
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****                                     UX_CONFIGURATION_DESCRIPTOR_ENTRIES, (UCHAR *) &configuration.u
+ARM GAS  /tmp/cczLZbu9.s 			page 5
+
+
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****            
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* Now we have the configuration descriptor which will tell us how many 
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****            bytes there are in the entire descriptor.  */
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         total_configuration_length =  configuration.ux_configuration_descriptor.wTotalLength;
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* Free the previous descriptor.  */
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         _ux_utility_memory_free(descriptor);
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* Allocate enough memory to read all descriptors attached
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****           to this configuration.  */
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         descriptor =  _ux_utility_memory_allocate(UX_SAFE_ALIGN, UX_CACHE_SAFE_MEMORY, total_config
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         if (descriptor == UX_NULL)
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             return(UX_MEMORY_INSUFFICIENT);
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* Set the length we need to retrieve.  */
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         transfer_request -> ux_transfer_request_requested_length =  total_configuration_length;
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* And reprogram the descriptor buffer address.  */
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         transfer_request -> ux_transfer_request_data_pointer =  descriptor;
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* Send request to HCD layer.  */
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         status =  _ux_host_stack_transfer_request(transfer_request);
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         /* Check for correct transfer and entire descriptor returned.  */
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         if ((status == UX_SUCCESS) && (transfer_request -> ux_transfer_request_actual_length == tot
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         {           
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 142:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             /* Save the address of the entire configuration descriptor of the audio device.  */    
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             audio -> ux_host_class_audio_configuration_descriptor =  descriptor;
+ 144:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 145:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             /* Save the length of the entire descriptor too.  */            
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             audio -> ux_host_class_audio_configuration_descriptor_length =  total_configuration_len
+ 147:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             /* We do not free the resource for the descriptor until the device is
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****                plugged out.  */
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             return(UX_SUCCESS);
+ 151:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         }
+ 152:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     }
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 154:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* Free all used resources.  */
+ 155:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     _ux_utility_memory_free(descriptor);
+ 116              		.loc 1 155 5 is_stmt 1 view .LVU36
+ 117 0056 3046     		mov	r0, r6
+ 118              	.LVL7:
+ 119              		.loc 1 155 5 is_stmt 0 view .LVU37
+ 120 0058 FFF7FEFF 		bl	_ux_utility_memory_free
+ 121              	.LVL8:
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 157:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     /* Return completion status.  */
+ 158:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****     return(status);
+ 122              		.loc 1 158 5 is_stmt 1 view .LVU38
+ 123              	.L1:
+ 159:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** }
+ 124              		.loc 1 159 1 is_stmt 0 view .LVU39
+ 125 005c 3846     		mov	r0, r7
+ 126 005e 13B0     		add	sp, sp, #76
+ 127              	.LCFI2:
+ARM GAS  /tmp/cczLZbu9.s 			page 6
+
+
+ 128              		.cfi_remember_state
+ 129              		.cfi_def_cfa_offset 28
+ 130              		@ sp needed
+ 131 0060 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 132              	.LVL9:
+ 133              	.L7:
+ 134              	.LCFI3:
+ 135              		.cfi_restore_state
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****                                     UX_CONFIGURATION_DESCRIPTOR_ENTRIES, (UCHAR *) &configuration.u
+ 136              		.loc 1 113 9 is_stmt 1 view .LVU40
+ 137 0064 04AB     		add	r3, sp, #16
+ 138 0066 0822     		movs	r2, #8
+ 139 0068 1349     		ldr	r1, .L8
+ 140 006a 3046     		mov	r0, r6
+ 141              	.LVL10:
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****                                     UX_CONFIGURATION_DESCRIPTOR_ENTRIES, (UCHAR *) &configuration.u
+ 142              		.loc 1 113 9 is_stmt 0 view .LVU41
+ 143 006c FFF7FEFF 		bl	_ux_utility_descriptor_parse
+ 144              	.LVL11:
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 145              		.loc 1 118 9 is_stmt 1 view .LVU42
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 146              		.loc 1 118 36 is_stmt 0 view .LVU43
+ 147 0070 DDF81890 		ldr	r9, [sp, #24]
+ 148              	.LVL12:
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 149              		.loc 1 121 9 is_stmt 1 view .LVU44
+ 150 0074 3046     		mov	r0, r6
+ 151 0076 FFF7FEFF 		bl	_ux_utility_memory_free
+ 152              	.LVL13:
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         if (descriptor == UX_NULL)
+ 153              		.loc 1 125 9 view .LVU45
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         if (descriptor == UX_NULL)
+ 154              		.loc 1 125 23 is_stmt 0 view .LVU46
+ 155 007a 4A46     		mov	r2, r9
+ 156 007c 0121     		movs	r1, #1
+ 157 007e 4FF0FF30 		mov	r0, #-1
+ 158 0082 FFF7FEFF 		bl	_ux_utility_memory_allocate
+ 159              	.LVL14:
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             return(UX_MEMORY_INSUFFICIENT);
+ 160              		.loc 1 126 9 is_stmt 1 view .LVU47
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****             return(UX_MEMORY_INSUFFICIENT);
+ 161              		.loc 1 126 12 is_stmt 0 view .LVU48
+ 162 0086 0646     		mov	r6, r0
+ 163 0088 98B1     		cbz	r0, .L5
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 164              		.loc 1 130 9 is_stmt 1 view .LVU49
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 165              		.loc 1 130 66 is_stmt 0 view .LVU50
+ 166 008a C4F8B890 		str	r9, [r4, #184]
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 167              		.loc 1 133 9 is_stmt 1 view .LVU51
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 168              		.loc 1 133 62 is_stmt 0 view .LVU52
+ 169 008e C4F8B400 		str	r0, [r4, #180]
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 170              		.loc 1 136 9 is_stmt 1 view .LVU53
+ARM GAS  /tmp/cczLZbu9.s 			page 7
+
+
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 171              		.loc 1 136 19 is_stmt 0 view .LVU54
+ 172 0092 4046     		mov	r0, r8
+ 173              	.LVL15:
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 174              		.loc 1 136 19 view .LVU55
+ 175 0094 FFF7FEFF 		bl	_ux_host_stack_transfer_request
+ 176              	.LVL16:
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         {           
+ 177              		.loc 1 139 9 is_stmt 1 view .LVU56
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         {           
+ 178              		.loc 1 139 12 is_stmt 0 view .LVU57
+ 179 0098 0746     		mov	r7, r0
+ 180 009a 0028     		cmp	r0, #0
+ 181 009c DBD1     		bne	.L3
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         {           
+ 182              		.loc 1 139 57 discriminator 1 view .LVU58
+ 183 009e D4F8BC30 		ldr	r3, [r4, #188]
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         {           
+ 184              		.loc 1 139 36 discriminator 1 view .LVU59
+ 185 00a2 4B45     		cmp	r3, r9
+ 186 00a4 D7D1     		bne	.L3
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 187              		.loc 1 143 13 is_stmt 1 view .LVU60
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 188              		.loc 1 143 67 is_stmt 0 view .LVU61
+ 189 00a6 EE62     		str	r6, [r5, #44]
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 190              		.loc 1 146 13 is_stmt 1 view .LVU62
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 191              		.loc 1 146 74 is_stmt 0 view .LVU63
+ 192 00a8 C5F83090 		str	r9, [r5, #48]
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         }
+ 193              		.loc 1 150 13 is_stmt 1 view .LVU64
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c ****         }
+ 194              		.loc 1 150 19 is_stmt 0 view .LVU65
+ 195 00ac D6E7     		b	.L1
+ 196              	.LVL17:
+ 197              	.L4:
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 198              		.loc 1 95 15 view .LVU66
+ 199 00ae 1227     		movs	r7, #18
+ 200 00b0 D4E7     		b	.L1
+ 201              	.LVL18:
+ 202              	.L5:
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 203              		.loc 1 127 19 view .LVU67
+ 204 00b2 1227     		movs	r7, #18
+ 205              	.LVL19:
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_descriptor_get.c **** 
+ 206              		.loc 1 127 19 view .LVU68
+ 207 00b4 D2E7     		b	.L1
+ 208              	.L9:
+ 209 00b6 00BF     		.align	2
+ 210              	.L8:
+ 211 00b8 00000000 		.word	_ux_system_configuration_descriptor_structure
+ 212              		.cfi_endproc
+ARM GAS  /tmp/cczLZbu9.s 			page 8
+
+
+ 213              	.LFE11:
+ 215              		.text
+ 216              	.Letext0:
+ 217              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 218              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 219              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 220              		.file 5 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_audio.h"
+ 221              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 222              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 223              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/cczLZbu9.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_audio_descriptor_get.c
+     /tmp/cczLZbu9.s:20     .text._ux_host_class_audio_descriptor_get:00000000 $t
+     /tmp/cczLZbu9.s:26     .text._ux_host_class_audio_descriptor_get:00000000 _ux_host_class_audio_descriptor_get
+     /tmp/cczLZbu9.s:211    .text._ux_host_class_audio_descriptor_get:000000b8 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_host_stack_transfer_request
+_ux_utility_memory_free
+_ux_utility_descriptor_parse
+_ux_system_configuration_descriptor_structure

@@ -1,0 +1,238 @@
+ARM GAS  /tmp/ccmXTYON.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_utility_FAT_sector_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c"
+  19              		.section	.text._fx_utility_FAT_sector_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_utility_FAT_sector_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_utility_FAT_sector_get:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  12:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  13:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**   Utility                                                             */
+  19:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  23:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  25:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  26:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  28:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #include "fx_utility.h"
+  30:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+ARM GAS  /tmp/ccmXTYON.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  32:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  33:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  34:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    _fx_utility_FAT_sector_get                          PORTABLE C      */
+  37:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                           6.1          */
+  38:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  41:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    This function gets the sector of supplied FAT entry.                */
+  45:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  INPUT                                                                 */
+  47:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    media_ptr                             Media control block pointer   */
+  49:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    cluster                               Cluster entry number          */
+  50:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  OUTPUT                                                                */
+  52:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    return sector of FAT entry                                          */
+  54:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  CALLS                                                                 */
+  56:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  57:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  CALLED BY                                                             */
+  59:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    FileX System Functions                                              */
+  61:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  RELEASE HISTORY                                                       */
+  63:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  65:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  67:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  68:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                            resulting in version 6.1    */
+  69:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** /**************************************************************************/
+  71:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** ULONG  _fx_utility_FAT_sector_get(FX_MEDIA *media_ptr, ULONG cluster)
+  72:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** {
+  29              		.loc 1 72 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  73:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  74:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** ULONG  FAT_sector;
+  34              		.loc 1 74 1 view .LVU1
+  75:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** ULONG  byte_offset;
+  35              		.loc 1 75 1 view .LVU2
+  76:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  77:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     /* Determine which type of FAT is present.  */
+  78:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #ifdef FX_ENABLE_EXFAT
+  79:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     if (media_ptr -> fx_media_FAT_type == FX_FAT12)
+  80:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #else
+ARM GAS  /tmp/ccmXTYON.s 			page 3
+
+
+  81:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     if (media_ptr -> fx_media_12_bit_FAT)
+  36              		.loc 1 81 5 view .LVU3
+  37              		.loc 1 81 19 is_stmt 0 view .LVU4
+  38 0000 036E     		ldr	r3, [r0, #96]
+  39              		.loc 1 81 8 view .LVU5
+  40 0002 43B1     		cbz	r3, .L2
+  82:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #endif /* FX_ENABLE_EXFAT */
+  83:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     {
+  84:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  85:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         /* 12-bit FAT is present.  */
+  86:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  87:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         /* Calculate the byte offset to the cluster entry.  */
+  88:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         byte_offset =  (((ULONG)cluster << 1) + cluster) >> 1;
+  41              		.loc 1 88 9 is_stmt 1 view .LVU6
+  42              		.loc 1 88 21 is_stmt 0 view .LVU7
+  43 0004 01EB4101 		add	r1, r1, r1, lsl #1
+  44              	.LVL1:
+  45              		.loc 1 88 21 view .LVU8
+  46 0008 4908     		lsrs	r1, r1, #1
+  47              	.LVL2:
+  48              	.L3:
+  89:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  90:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  91:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #ifdef FX_ENABLE_EXFAT
+  92:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     else if (media_ptr -> fx_media_FAT_type == FX_FAT16)
+  93:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #else
+  94:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     else if (!media_ptr -> fx_media_32_bit_FAT)
+  95:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #endif /* FX_ENABLE_EXFAT */
+  96:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     {
+  97:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+  98:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         /* 16-bit FAT is present.  */
+  99:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+ 100:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         /* Calculate the byte offset to the cluster entry.  */
+ 101:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         byte_offset =  (((ULONG)cluster) << 1);
+ 102:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+ 103:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     else
+ 104:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     {
+ 105:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+ 106:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         /* 32-bit FAT or exFAT are present.  */
+ 107:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+ 108:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         /* Calculate the byte offset to the cluster entry.  */
+ 109:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         byte_offset =  (((ULONG)cluster) * 4);
+ 110:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+ 111:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     /* Calculate the FAT sector the requested FAT entry resides in.  */
+ 113:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     FAT_sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+  49              		.loc 1 113 5 is_stmt 1 view .LVU9
+  50              		.loc 1 113 44 is_stmt 0 view .LVU10
+  51 000a 836A     		ldr	r3, [r0, #40]
+  52              		.loc 1 113 32 view .LVU11
+  53 000c B1FBF3F1 		udiv	r1, r1, r3
+  54              	.LVL3:
+ 114:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****         (ULONG)media_ptr -> fx_media_reserved_sectors;
+  55              		.loc 1 114 26 view .LVU12
+  56 0010 406C     		ldr	r0, [r0, #68]
+  57              	.LVL4:
+ 115:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** 
+ARM GAS  /tmp/ccmXTYON.s 			page 4
+
+
+ 116:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     /* Return successful status.  */
+ 117:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     return(FAT_sector);
+  58              		.loc 1 117 5 is_stmt 1 view .LVU13
+ 118:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** }
+  59              		.loc 1 118 1 is_stmt 0 view .LVU14
+  60 0012 0844     		add	r0, r0, r1
+  61              	.LVL5:
+  62              		.loc 1 118 1 view .LVU15
+  63 0014 7047     		bx	lr
+  64              	.LVL6:
+  65              	.L2:
+  94:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #endif /* FX_ENABLE_EXFAT */
+  66              		.loc 1 94 10 is_stmt 1 view .LVU16
+  94:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #endif /* FX_ENABLE_EXFAT */
+  67              		.loc 1 94 25 is_stmt 0 view .LVU17
+  68 0016 436E     		ldr	r3, [r0, #100]
+  94:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c **** #endif /* FX_ENABLE_EXFAT */
+  69              		.loc 1 94 13 view .LVU18
+  70 0018 0BB9     		cbnz	r3, .L4
+ 101:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  71              		.loc 1 101 9 is_stmt 1 view .LVU19
+ 101:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  72              		.loc 1 101 21 is_stmt 0 view .LVU20
+  73 001a 4900     		lsls	r1, r1, #1
+  74              	.LVL7:
+ 101:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  75              		.loc 1 101 21 view .LVU21
+  76 001c F5E7     		b	.L3
+  77              	.LVL8:
+  78              	.L4:
+ 109:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  79              		.loc 1 109 9 is_stmt 1 view .LVU22
+ 109:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  80              		.loc 1 109 21 is_stmt 0 view .LVU23
+  81 001e 8900     		lsls	r1, r1, #2
+  82              	.LVL9:
+ 109:Middlewares/ST/filex/common/src/fx_utility_FAT_sector_get.c ****     }
+  83              		.loc 1 109 21 view .LVU24
+  84 0020 F3E7     		b	.L3
+  85              		.cfi_endproc
+  86              	.LFE8:
+  88              		.text
+  89              	.Letext0:
+  90              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  91              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  92              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ARM GAS  /tmp/ccmXTYON.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_utility_FAT_sector_get.c
+     /tmp/ccmXTYON.s:20     .text._fx_utility_FAT_sector_get:00000000 $t
+     /tmp/ccmXTYON.s:26     .text._fx_utility_FAT_sector_get:00000000 _fx_utility_FAT_sector_get
+
+NO UNDEFINED SYMBOLS

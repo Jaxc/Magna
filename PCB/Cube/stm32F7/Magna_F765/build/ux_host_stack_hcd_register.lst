@@ -1,0 +1,356 @@
+ARM GAS  /tmp/ccAxWKCK.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_stack_hcd_register.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c"
+  19              		.section	.text._ux_host_stack_hcd_register,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_hcd_register
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_hcd_register:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ARM GAS  /tmp/ccAxWKCK.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    _ux_host_stack_hcd_register                         PORTABLE C      */
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    This function registers a USB controller driver with the USBX stack */
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    and invokes the HCD driver's initialization function.               */
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    Note: The C string of hcd_name must be NULL-terminated and the      */
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    length of it (without the NULL-terminator itself) must be no larger */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    than UX_MAX_HCD_NAME_LENGTH.                                        */
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  INPUT                                                                 */
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    hcd_name                              Name of HCD to register       */
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    hcd_entry_function                    Entry function of HCD driver  */
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    hcd_param1                            Parameter 1 of HCD            */
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    hcd_param2                            Parameter 2 of HCD            */
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  OUTPUT                                                                */
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    Completion Status                                                   */
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  CALLS                                                                 */
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    _ux_utility_string_length_check       Check and return C string     */
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                          length if no error            */
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    _ux_utility_memory_copy               Copy name into HCD structure  */
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    (hcd_init_function)                   Init function of HCD driver   */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  CALLED BY                                                             */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    Application                                                         */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  RELEASE HISTORY                                                       */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*    DATE              NAME                      DESCRIPTION             */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                            optimized based on compile  */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                            definitions, verified       */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                            memset and memcpy cases,    */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                            resulting in version 6.1    */
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** /**************************************************************************/
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** UINT  _ux_host_stack_hcd_register(UCHAR *hcd_name,
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****                                     UINT (*hcd_init_function)(struct UX_HCD_STRUCT *), ULONG hcd_pa
+ARM GAS  /tmp/ccAxWKCK.s 			page 3
+
+
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** {
+  29              		.loc 1 88 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 88 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+  43 0004 86B0     		sub	sp, sp, #24
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 48
+  46 0006 0446     		mov	r4, r0
+  47 0008 0D46     		mov	r5, r1
+  48 000a 1746     		mov	r7, r2
+  49 000c 1E46     		mov	r6, r3
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** UX_HCD      *hcd;
+  50              		.loc 1 90 1 is_stmt 1 view .LVU2
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** UINT        status;
+  51              		.loc 1 91 1 view .LVU3
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #if !defined(UX_NAME_REFERENCED_BY_POINTER)
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** UINT        hcd_name_length =  0;
+  52              		.loc 1 93 1 view .LVU4
+  53              		.loc 1 93 13 is_stmt 0 view .LVU5
+  54 000e 0020     		movs	r0, #0
+  55              	.LVL1:
+  56              		.loc 1 93 13 view .LVU6
+  57 0010 0590     		str	r0, [sp, #20]
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #if UX_MAX_HCD > 1
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** ULONG       hcd_index;
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_HCD_REGISTER, hcd_name, hcd_param1, hcd_param2, 0, 
+  58              		.loc 1 102 5 is_stmt 1 view .LVU7
+  59 0012 0390     		str	r0, [sp, #12]
+  60 0014 0290     		str	r0, [sp, #8]
+  61 0016 4FF00071 		mov	r1, #33554432
+  62              	.LVL2:
+  63              		.loc 1 102 5 is_stmt 0 view .LVU8
+  64 001a 0191     		str	r1, [sp, #4]
+  65 001c 0090     		str	r0, [sp]
+  66 001e 2146     		mov	r1, r4
+  67 0020 40F26B20 		movw	r0, #619
+  68 0024 FFF7FEFF 		bl	_ux_trace_event_insert
+  69              	.LVL3:
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ARM GAS  /tmp/ccAxWKCK.s 			page 4
+
+
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #if !defined(UX_NAME_REFERENCED_BY_POINTER)
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     /* Get the length of the class name (exclude null-terminator).  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     status =  _ux_utility_string_length_check(hcd_name, &hcd_name_length, UX_MAX_HCD_NAME_LENGTH);
+  70              		.loc 1 106 5 is_stmt 1 view .LVU9
+  71              		.loc 1 106 15 is_stmt 0 view .LVU10
+  72 0028 3F22     		movs	r2, #63
+  73 002a 05A9     		add	r1, sp, #20
+  74 002c 2046     		mov	r0, r4
+  75 002e FFF7FEFF 		bl	_ux_utility_string_length_check
+  76              	.LVL4:
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     if (status)
+  77              		.loc 1 107 5 is_stmt 1 view .LVU11
+  78              		.loc 1 107 8 is_stmt 0 view .LVU12
+  79 0032 38B9     		cbnz	r0, .L1
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         return(status);
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     /* Get HCD.  */
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     hcd =  _ux_system_host -> ux_system_host_hcd_array;
+  80              		.loc 1 112 5 is_stmt 1 view .LVU13
+  81              		.loc 1 112 28 is_stmt 0 view .LVU14
+  82 0034 0F4B     		ldr	r3, .L6
+  83 0036 1B68     		ldr	r3, [r3]
+  84              		.loc 1 112 9 view .LVU15
+  85 0038 D3F80C80 		ldr	r8, [r3, #12]
+  86              	.LVL5:
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #if UX_MAX_HCD > 1
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     /* We need to parse the controller driver table to find an empty spot.  */
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     for(hcd_index = 0; hcd_index < _ux_system_host -> ux_system_host_max_hcd; hcd_index++)
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     {
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         /* Is this slot available?  */
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         if(hcd -> ux_hcd_status == UX_UNUSED)
+  87              		.loc 1 121 9 is_stmt 1 view .LVU16
+  88              		.loc 1 121 16 is_stmt 0 view .LVU17
+  89 003c D8F84030 		ldr	r3, [r8, #64]
+  90              		.loc 1 121 11 view .LVU18
+  91 0040 1BB1     		cbz	r3, .L5
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         {
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* Yes, setup the new HCD entry.  */
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #if defined(UX_NAME_REFERENCED_BY_POINTER)
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             hcd -> ux_hcd_name = (const UCHAR *)hcd_name;
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #else
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* Initialize the array of the new controller with its name (include null-terminator). 
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             _ux_utility_memory_copy(hcd -> ux_hcd_name, hcd_name, hcd_name_length + 1); /* Use case
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* Store the hardware resources of the controller */
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             hcd -> ux_hcd_io =   hcd_param1;
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             hcd -> ux_hcd_irq =  hcd_param2;
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* This controller is now used */
+ARM GAS  /tmp/ccAxWKCK.s 			page 5
+
+
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             hcd -> ux_hcd_status =  UX_USED;
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* And we have one new controller registered.  */
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             _ux_system_host -> ux_system_host_registered_hcd++;
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* We are now calling the HCD driver initialization.  */
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             status =  hcd_init_function(hcd);
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             /* Return the completion status to the caller.  */
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             return(status);
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         }
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #if UX_MAX_HCD > 1
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         /* Try the next HCD structure */
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         hcd++;
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     }
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     /* We have exhausted the array of the HCDs, return an error.  */
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****     return(UX_MEMORY_INSUFFICIENT);
+  92              		.loc 1 157 11 view .LVU19
+  93 0042 1220     		movs	r0, #18
+  94              	.LVL6:
+  95              	.L1:
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** }
+  96              		.loc 1 158 1 view .LVU20
+  97 0044 06B0     		add	sp, sp, #24
+  98              	.LCFI2:
+  99              		.cfi_remember_state
+ 100              		.cfi_def_cfa_offset 24
+ 101              		@ sp needed
+ 102 0046 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 103              	.LVL7:
+ 104              	.L5:
+ 105              	.LCFI3:
+ 106              		.cfi_restore_state
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** #endif
+ 107              		.loc 1 131 13 is_stmt 1 view .LVU21
+ 108 004a 059A     		ldr	r2, [sp, #20]
+ 109 004c 0132     		adds	r2, r2, #1
+ 110 004e 2146     		mov	r1, r4
+ 111 0050 4046     		mov	r0, r8
+ 112 0052 FFF7FEFF 		bl	_ux_utility_memory_copy
+ 113              	.LVL8:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             hcd -> ux_hcd_irq =  hcd_param2;
+ 114              		.loc 1 135 13 view .LVU22
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****             hcd -> ux_hcd_irq =  hcd_param2;
+ 115              		.loc 1 135 30 is_stmt 0 view .LVU23
+ 116 0056 C8F86C70 		str	r7, [r8, #108]
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 117              		.loc 1 136 13 is_stmt 1 view .LVU24
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 118              		.loc 1 136 31 is_stmt 0 view .LVU25
+ 119 005a C8F84860 		str	r6, [r8, #72]
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 120              		.loc 1 139 13 is_stmt 1 view .LVU26
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 121              		.loc 1 139 34 is_stmt 0 view .LVU27
+ARM GAS  /tmp/ccAxWKCK.s 			page 6
+
+
+ 122 005e 0123     		movs	r3, #1
+ 123 0060 C8F84030 		str	r3, [r8, #64]
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 124              		.loc 1 142 13 is_stmt 1 view .LVU28
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 125              		.loc 1 142 29 is_stmt 0 view .LVU29
+ 126 0064 034B     		ldr	r3, .L6
+ 127 0066 1A68     		ldr	r2, [r3]
+ 128 0068 9368     		ldr	r3, [r2, #8]
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 129              		.loc 1 142 61 view .LVU30
+ 130 006a 0133     		adds	r3, r3, #1
+ 131 006c 9360     		str	r3, [r2, #8]
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 132              		.loc 1 145 13 is_stmt 1 view .LVU31
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c **** 
+ 133              		.loc 1 145 23 is_stmt 0 view .LVU32
+ 134 006e 4046     		mov	r0, r8
+ 135 0070 A847     		blx	r5
+ 136              	.LVL9:
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         }
+ 137              		.loc 1 148 13 is_stmt 1 view .LVU33
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c ****         }
+ 138              		.loc 1 148 19 is_stmt 0 view .LVU34
+ 139 0072 E7E7     		b	.L1
+ 140              	.L7:
+ 141              		.align	2
+ 142              	.L6:
+ 143 0074 00000000 		.word	_ux_system_host
+ 144              		.cfi_endproc
+ 145              	.LFE11:
+ 147              		.text
+ 148              	.Letext0:
+ 149              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 150              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 151              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 152              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 153              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 154              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccAxWKCK.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_hcd_register.c
+     /tmp/ccAxWKCK.s:20     .text._ux_host_stack_hcd_register:00000000 $t
+     /tmp/ccAxWKCK.s:26     .text._ux_host_stack_hcd_register:00000000 _ux_host_stack_hcd_register
+     /tmp/ccAxWKCK.s:143    .text._ux_host_stack_hcd_register:00000074 $d
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_utility_string_length_check
+_ux_utility_memory_copy
+_ux_system_host

@@ -1,0 +1,497 @@
+ARM GAS  /tmp/ccnTuVh9.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_class_storage_activate.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c"
+  19              		.section	.rodata._ux_host_class_storage_activate.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 75785F68 		.ascii	"ux_host_class_storage_semaphore\000"
+  22      6F73745F 
+  22      636C6173 
+  22      735F7374 
+  22      6F726167 
+  23              		.section	.text._ux_host_class_storage_activate,"ax",%progbits
+  24              		.align	1
+  25              		.global	_ux_host_class_storage_activate
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	_ux_host_class_storage_activate:
+  31              	.LVL0:
+  32              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**   Storage Class                                                       */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ARM GAS  /tmp/ccnTuVh9.s 			page 2
+
+
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #include "ux_host_class_storage.h"
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #include "ux_host_stack.h"
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  FUNCTION                                               RELEASE        */
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_host_class_storage_activate                     PORTABLE C      */
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                           6.1.10       */
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    This function activates an instance of the storage class.           */
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  INPUT                                                                 */
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    command                               Pointer to class command      */
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  OUTPUT                                                                */
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    Completion Status                                                   */
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  CALLS                                                                 */
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_host_class_storage_configure      Configure storage device      */
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_host_class_storage_device_initialize                            */
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                          Initialize storage device     */
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_host_stack_class_instance_create  Create class instance         */
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_host_stack_class_instance_destroy Destroy class instance        */
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_utility_memory_allocate           Allocate memory block         */
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_utility_memory_free               Free memory block             */
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    _ux_host_semaphore_create             Create semaphore              */
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  CALLED BY                                                             */
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    Storage Class                                                       */
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  RELEASE HISTORY                                                       */
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*    DATE              NAME                      DESCRIPTION             */
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                            resulting in version 6.1    */
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                            added standalone support.   */
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                            resulting in version 6.1.10 */
+ARM GAS  /tmp/ccnTuVh9.s 			page 3
+
+
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /*                                                                        */
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** /**************************************************************************/
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** UINT  _ux_host_class_storage_activate(UX_HOST_CLASS_COMMAND *command)
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** {
+  33              		.loc 1 83 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37              		.loc 1 83 1 is_stmt 0 view .LVU1
+  38 0000 70B5     		push	{r4, r5, r6, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 16
+  41              		.cfi_offset 4, -16
+  42              		.cfi_offset 5, -12
+  43              		.cfi_offset 6, -8
+  44              		.cfi_offset 14, -4
+  45 0002 84B0     		sub	sp, sp, #16
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 32
+  48 0004 0546     		mov	r5, r0
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** UX_INTERFACE            *interface;
+  49              		.loc 1 85 1 is_stmt 1 view .LVU2
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** UX_HOST_CLASS_STORAGE   *storage;
+  50              		.loc 1 86 1 view .LVU3
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** UINT                    status;
+  51              		.loc 1 87 1 view .LVU4
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* The storage is always activated by the interface descriptor and not the
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****        device descriptor.  */
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     interface =  (UX_INTERFACE *) command -> ux_host_class_command_container;
+  52              		.loc 1 92 5 view .LVU5
+  53              		.loc 1 92 15 is_stmt 0 view .LVU6
+  54 0006 4668     		ldr	r6, [r0, #4]
+  55              	.LVL1:
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Obtain memory for this class instance.  The memory used MUST BE allocated from a CACHE SAFE 
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****        since the buffer for the CSW is an array contained within each storage instance. */
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage =  _ux_utility_memory_allocate(UX_SAFE_ALIGN, UX_CACHE_SAFE_MEMORY, sizeof(UX_HOST_CLAS
+  56              		.loc 1 96 5 is_stmt 1 view .LVU7
+  57              		.loc 1 96 16 is_stmt 0 view .LVU8
+  58 0008 B822     		movs	r2, #184
+  59 000a 0121     		movs	r1, #1
+  60 000c 4FF0FF30 		mov	r0, #-1
+  61              	.LVL2:
+  62              		.loc 1 96 16 view .LVU9
+  63 0010 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  64              	.LVL3:
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     if (storage == UX_NULL)
+  65              		.loc 1 97 5 is_stmt 1 view .LVU10
+  66              		.loc 1 97 8 is_stmt 0 view .LVU11
+  67 0014 0028     		cmp	r0, #0
+  68 0016 4BD0     		beq	.L6
+  69 0018 0446     		mov	r4, r0
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         return(UX_MEMORY_INSUFFICIENT);
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ARM GAS  /tmp/ccnTuVh9.s 			page 4
+
+
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Store the class container into this instance */
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_class =  command -> ux_host_class_command_class_ptr;
+  70              		.loc 1 101 5 is_stmt 1 view .LVU12
+  71              		.loc 1 101 55 is_stmt 0 view .LVU13
+  72 001a 2B6B     		ldr	r3, [r5, #48]
+  73              		.loc 1 101 44 view .LVU14
+  74 001c 4360     		str	r3, [r0, #4]
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Store the interface container into the storage class instance.  */
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_interface =  interface;
+  75              		.loc 1 104 5 is_stmt 1 view .LVU15
+  76              		.loc 1 104 48 is_stmt 0 view .LVU16
+  77 001e C660     		str	r6, [r0, #12]
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Store the device container into the storage class instance.  */
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_device =  interface -> ux_interface_configuration -> ux_config
+  78              		.loc 1 107 5 is_stmt 1 view .LVU17
+  79              		.loc 1 107 58 is_stmt 0 view .LVU18
+  80 0020 336C     		ldr	r3, [r6, #64]
+  81              		.loc 1 107 88 view .LVU19
+  82 0022 5B6B     		ldr	r3, [r3, #52]
+  83              		.loc 1 107 45 view .LVU20
+  84 0024 8360     		str	r3, [r0, #8]
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Create this class instance.  */
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     _ux_host_stack_class_instance_create(command -> ux_host_class_command_class_ptr, (VOID *) stora
+  85              		.loc 1 110 5 is_stmt 1 view .LVU21
+  86 0026 0146     		mov	r1, r0
+  87 0028 286B     		ldr	r0, [r5, #48]
+  88              	.LVL4:
+  89              		.loc 1 110 5 is_stmt 0 view .LVU22
+  90 002a FFF7FEFF 		bl	_ux_host_stack_class_instance_create
+  91              	.LVL5:
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* This instance of the device must also be stored in the interface container.  */
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     interface -> ux_interface_class_instance =  (VOID *) storage;
+  92              		.loc 1 113 5 is_stmt 1 view .LVU23
+  93              		.loc 1 113 46 is_stmt 0 view .LVU24
+  94 002e 7463     		str	r4, [r6, #52]
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #if defined(UX_HOST_STANDALONE)
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Check class,sub class, protocol.  */
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     status =  _ux_host_class_storage_device_support_check(storage);
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     if (status != UX_SUCCESS)
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         _ux_utility_memory_free(storage);
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         return(status);
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     }
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Search all the endpoints for the storage interface (Bulk Out, Bulk in,
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****        and optional Interrupt endpoint).  */
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     status =  _ux_host_class_storage_endpoints_get(storage);
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     if (status != UX_SUCCESS)
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         _ux_utility_memory_free(storage);
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         return(status);
+ARM GAS  /tmp/ccnTuVh9.s 			page 5
+
+
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     }
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Activate storage class task function.  */
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_class -> ux_host_class_task_function = _ux_host_class_storage_
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Mark the storage as live now (media mounts in task).  */
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_state = UX_HOST_CLASS_INSTANCE_MOUNTING;
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Keep storage locked before it's initialized.  */
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_flags |= UX_HOST_CLASS_STORAGE_FLAG_LOCK;
+ 142:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #else
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 144:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Configure the USB storage device.  */
+ 145:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     status =  _ux_host_class_storage_configure(storage);
+  95              		.loc 1 145 5 is_stmt 1 view .LVU25
+  96              		.loc 1 145 15 is_stmt 0 view .LVU26
+  97 0030 2046     		mov	r0, r4
+  98 0032 FFF7FEFF 		bl	_ux_host_class_storage_configure
+  99              	.LVL6:
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 147:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Create the semaphore to protect multiple threads from accessing the same storage instance.  
+ 148:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     if (status == UX_SUCCESS)
+ 100              		.loc 1 148 5 is_stmt 1 view .LVU27
+ 101              		.loc 1 148 8 is_stmt 0 view .LVU28
+ 102 0036 0546     		mov	r5, r0
+ 103              	.LVL7:
+ 104              		.loc 1 148 8 view .LVU29
+ 105 0038 40B9     		cbnz	r0, .L3
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         status = _ux_host_semaphore_create(&storage -> ux_host_class_storage_semaphore, "ux_host_cl
+ 106              		.loc 1 150 9 is_stmt 1 view .LVU30
+ 107              		.loc 1 150 18 is_stmt 0 view .LVU31
+ 108 003a 0122     		movs	r2, #1
+ 109 003c 1D49     		ldr	r1, .L10
+ 110 003e 04F19C00 		add	r0, r4, #156
+ 111              	.LVL8:
+ 112              		.loc 1 150 18 view .LVU32
+ 113 0042 FFF7FEFF 		bl	_ux_utility_semaphore_create
+ 114              	.LVL9:
+ 151:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         if (status != UX_SUCCESS)
+ 115              		.loc 1 151 9 is_stmt 1 view .LVU33
+ 116              		.loc 1 151 12 is_stmt 0 view .LVU34
+ 117 0046 0546     		mov	r5, r0
+ 118 0048 60B1     		cbz	r0, .L9
+ 152:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****             status = UX_SEMAPHORE_ERROR;
+ 119              		.loc 1 152 20 view .LVU35
+ 120 004a 1525     		movs	r5, #21
+ 121              	.L3:
+ 122              	.LVL10:
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     }
+ 154:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 155:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Error case, free resources.  */
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     if (status != UX_SUCCESS)
+ 157:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 158:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 159:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         /* Last one, semaphore not created or created error, no need to free.  */
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ARM GAS  /tmp/ccnTuVh9.s 			page 6
+
+
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         /* Error, destroy the class and return an error.  */
+ 162:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         _ux_host_stack_class_instance_destroy(storage -> ux_host_class_storage_class, (VOID *) stor
+ 123              		.loc 1 162 9 is_stmt 1 view .LVU36
+ 124 004c 2146     		mov	r1, r4
+ 125 004e 6068     		ldr	r0, [r4, #4]
+ 126 0050 FFF7FEFF 		bl	_ux_host_stack_class_instance_destroy
+ 127              	.LVL11:
+ 163:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         /* This instance of the device must also be removed in the interface container.  */
+ 165:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         interface -> ux_interface_class_instance =  (VOID *) UX_NULL;
+ 128              		.loc 1 165 9 view .LVU37
+ 129              		.loc 1 165 50 is_stmt 0 view .LVU38
+ 130 0054 0023     		movs	r3, #0
+ 131 0056 7363     		str	r3, [r6, #52]
+ 166:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         /* Free memory for class instance.  */
+ 168:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         _ux_utility_memory_free(storage);
+ 132              		.loc 1 168 9 is_stmt 1 view .LVU39
+ 133 0058 2046     		mov	r0, r4
+ 134 005a FFF7FEFF 		bl	_ux_utility_memory_free
+ 135              	.LVL12:
+ 169:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         return(status);
+ 136              		.loc 1 170 9 view .LVU40
+ 137              	.L1:
+ 171:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     }
+ 172:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Mark the storage as mounting now.  */
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_state =  UX_HOST_CLASS_INSTANCE_MOUNTING;
+ 175:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 176:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Initialize the USB storage device.  We do not check the status at this stage. We let the ins
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****        class live even if there was a failure. Because the storage class has many media instance, w
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****        disconnection signal clean the instance at a later stage.  */
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     _ux_host_class_storage_device_initialize(storage);
+ 180:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 181:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Mark the storage as live now.  */
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     storage -> ux_host_class_storage_state =  UX_HOST_CLASS_INSTANCE_LIVE;
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 184:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** #endif
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 186:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* If all is fine and the device is mounted, we may need to inform the application
+ 187:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****        if a function has been programmed in the system structure.  */
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     if (_ux_system_host -> ux_system_host_change_function != UX_NULL)
+ 189:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 190:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         /* Call system change function.  */
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****         _ux_system_host ->  ux_system_host_change_function(UX_DEVICE_INSERTION, storage -> ux_host_
+ 193:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     }
+ 194:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 195:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_CLASS_STORAGE_ACTIVATE, storage, 0, 0, 0, UX_TRACE_HOST_C
+ 197:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 198:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* If trace is enabled, register this object.  */
+ 199:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     UX_TRACE_OBJECT_REGISTER(UX_TRACE_HOST_OBJECT_TYPE_INTERFACE, storage, 0, 0, 0)
+ 200:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     /* Return completion status. Force it to success. */
+ 202:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     return(UX_SUCCESS);
+ARM GAS  /tmp/ccnTuVh9.s 			page 7
+
+
+ 203:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** }
+ 138              		.loc 1 203 1 is_stmt 0 view .LVU41
+ 139 005e 2846     		mov	r0, r5
+ 140 0060 04B0     		add	sp, sp, #16
+ 141              	.LCFI2:
+ 142              		.cfi_remember_state
+ 143              		.cfi_def_cfa_offset 16
+ 144              		@ sp needed
+ 145 0062 70BD     		pop	{r4, r5, r6, pc}
+ 146              	.LVL13:
+ 147              	.L9:
+ 148              	.LCFI3:
+ 149              		.cfi_restore_state
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 150              		.loc 1 156 5 is_stmt 1 view .LVU42
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 151              		.loc 1 174 5 view .LVU43
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 152              		.loc 1 174 44 is_stmt 0 view .LVU44
+ 153 0064 0323     		movs	r3, #3
+ 154 0066 E366     		str	r3, [r4, #108]
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 155              		.loc 1 179 5 is_stmt 1 view .LVU45
+ 156 0068 2046     		mov	r0, r4
+ 157              	.LVL14:
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 158              		.loc 1 179 5 is_stmt 0 view .LVU46
+ 159 006a FFF7FEFF 		bl	_ux_host_class_storage_device_initialize
+ 160              	.LVL15:
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 161              		.loc 1 182 5 is_stmt 1 view .LVU47
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 162              		.loc 1 182 44 is_stmt 0 view .LVU48
+ 163 006e 0123     		movs	r3, #1
+ 164 0070 E366     		str	r3, [r4, #108]
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 165              		.loc 1 188 5 is_stmt 1 view .LVU49
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 166              		.loc 1 188 25 is_stmt 0 view .LVU50
+ 167 0072 114B     		ldr	r3, .L10+4
+ 168 0074 1B68     		ldr	r3, [r3]
+ 169 0076 D3F8C831 		ldr	r3, [r3, #456]
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     {
+ 170              		.loc 1 188 8 view .LVU51
+ 171 007a 1BB1     		cbz	r3, .L5
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c ****     }
+ 172              		.loc 1 192 9 is_stmt 1 view .LVU52
+ 173 007c 2246     		mov	r2, r4
+ 174 007e 6168     		ldr	r1, [r4, #4]
+ 175 0080 0120     		movs	r0, #1
+ 176 0082 9847     		blx	r3
+ 177              	.LVL16:
+ 178              	.L5:
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 179              		.loc 1 196 5 view .LVU53
+ 180 0084 0026     		movs	r6, #0
+ 181              	.LVL17:
+ARM GAS  /tmp/ccnTuVh9.s 			page 8
+
+
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 182              		.loc 1 196 5 is_stmt 0 view .LVU54
+ 183 0086 0396     		str	r6, [sp, #12]
+ 184 0088 0296     		str	r6, [sp, #8]
+ 185 008a 4FF00053 		mov	r3, #536870912
+ 186 008e 0193     		str	r3, [sp, #4]
+ 187 0090 0096     		str	r6, [sp]
+ 188 0092 3346     		mov	r3, r6
+ 189 0094 3246     		mov	r2, r6
+ 190 0096 2146     		mov	r1, r4
+ 191 0098 4FF44370 		mov	r0, #780
+ 192 009c FFF7FEFF 		bl	_ux_trace_event_insert
+ 193              	.LVL18:
+ 199:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 194              		.loc 1 199 5 is_stmt 1 view .LVU55
+ 195 00a0 0096     		str	r6, [sp]
+ 196 00a2 3346     		mov	r3, r6
+ 197 00a4 3246     		mov	r2, r6
+ 198 00a6 2146     		mov	r1, r4
+ 199 00a8 1620     		movs	r0, #22
+ 200 00aa FFF7FEFF 		bl	_ux_trace_object_register
+ 201              	.LVL19:
+ 202:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** }
+ 202              		.loc 1 202 5 view .LVU56
+ 202:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** }
+ 203              		.loc 1 202 11 is_stmt 0 view .LVU57
+ 204 00ae D6E7     		b	.L1
+ 205              	.LVL20:
+ 206              	.L6:
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 207              		.loc 1 98 15 view .LVU58
+ 208 00b0 1225     		movs	r5, #18
+ 209              	.LVL21:
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_activate.c **** 
+ 210              		.loc 1 98 15 view .LVU59
+ 211 00b2 D4E7     		b	.L1
+ 212              	.L11:
+ 213              		.align	2
+ 214              	.L10:
+ 215 00b4 00000000 		.word	.LC0
+ 216 00b8 00000000 		.word	_ux_system_host
+ 217              		.cfi_endproc
+ 218              	.LFE11:
+ 220              		.text
+ 221              	.Letext0:
+ 222              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 223              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 224              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 225              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 226              		.file 6 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_storage.h"
+ 227              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 228              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 229              		.file 9 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccnTuVh9.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_storage_activate.c
+     /tmp/ccnTuVh9.s:20     .rodata._ux_host_class_storage_activate.str1.4:00000000 $d
+     /tmp/ccnTuVh9.s:24     .text._ux_host_class_storage_activate:00000000 $t
+     /tmp/ccnTuVh9.s:30     .text._ux_host_class_storage_activate:00000000 _ux_host_class_storage_activate
+     /tmp/ccnTuVh9.s:215    .text._ux_host_class_storage_activate:000000b4 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_host_stack_class_instance_create
+_ux_host_class_storage_configure
+_ux_utility_semaphore_create
+_ux_host_stack_class_instance_destroy
+_ux_utility_memory_free
+_ux_host_class_storage_device_initialize
+_ux_trace_event_insert
+_ux_trace_object_register
+_ux_system_host

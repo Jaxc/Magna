@@ -1,0 +1,608 @@
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_class_audio_device_type_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c"
+  19              		.section	.text._ux_host_class_audio_device_type_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_class_audio_device_type_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_class_audio_device_type_get:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**   Audio Class                                                         */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** #include "ux_host_class_audio.h"
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** #include "ux_host_stack.h"
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    _ux_host_class_audio_device_type_get                PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                           6.1          */
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    This function obtains the device type.                              */ 
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  INPUT                                                                 */ 
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    audio                                 Pointer to audio class        */ 
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  OUTPUT                                                                */ 
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    Completion Status                                                   */ 
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  CALLS                                                                 */ 
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    _ux_utility_descriptor_parse          Parse descriptor              */ 
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  CALLED BY                                                             */ 
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    Audio Class                                                         */ 
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  RELEASE HISTORY                                                       */ 
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                            resulting in version 6.1    */
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** /**************************************************************************/
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** UINT  _ux_host_class_audio_device_type_get(UX_HOST_CLASS_AUDIO *audio)
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** {
+  29              		.loc 1 73 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 112
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 73 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 3
+
+
+  43 0004 A0B0     		sub	sp, sp, #128
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 152
+  46 0006 8046     		mov	r8, r0
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** UCHAR *                                         descriptor;
+  47              		.loc 1 75 1 is_stmt 1 view .LVU2
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** UX_INTERFACE_DESCRIPTOR                         interface_descriptor;
+  48              		.loc 1 76 1 view .LVU3
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** UX_HOST_CLASS_AUDIO_OUTPUT_TERMINAL_DESCRIPTOR  output_interface_descriptor;
+  49              		.loc 1 77 1 view .LVU4
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** UX_HOST_CLASS_AUDIO_INPUT_TERMINAL_DESCRIPTOR   input_interface_descriptor;
+  50              		.loc 1 78 1 view .LVU5
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** ULONG                                           total_descriptor_length;
+  51              		.loc 1 79 1 view .LVU6
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** ULONG                                           descriptor_length;
+  52              		.loc 1 80 1 view .LVU7
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** ULONG                                           descriptor_type;
+  53              		.loc 1 81 1 view .LVU8
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** ULONG                                           descriptor_subtype;
+  54              		.loc 1 82 1 view .LVU9
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** ULONG                                           descriptor_found;
+  55              		.loc 1 83 1 view .LVU10
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     /* Get the descriptor to the entire configuration.  */
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     descriptor =               audio -> ux_host_class_audio_configuration_descriptor;
+  56              		.loc 1 87 5 view .LVU11
+  57              		.loc 1 87 16 is_stmt 0 view .LVU12
+  58 0008 C46A     		ldr	r4, [r0, #44]
+  59              	.LVL1:
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     total_descriptor_length =  audio -> ux_host_class_audio_configuration_descriptor_length;
+  60              		.loc 1 88 5 is_stmt 1 view .LVU13
+  61              		.loc 1 88 29 is_stmt 0 view .LVU14
+  62 000a 066B     		ldr	r6, [r0, #48]
+  63              	.LVL2:
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     /* Default is Interface descriptor not yet found.  */    
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     descriptor_found =  UX_FALSE;
+  64              		.loc 1 91 5 is_stmt 1 view .LVU15
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     /* Scan the descriptor for the Audio Streaming interface.  */
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     while (total_descriptor_length)
+  65              		.loc 1 94 5 view .LVU16
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     
+  66              		.loc 1 91 22 is_stmt 0 view .LVU17
+  67 000c 0027     		movs	r7, #0
+  68              		.loc 1 94 11 view .LVU18
+  69 000e 21E0     		b	.L2
+  70              	.LVL3:
+  71              	.L18:
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     {
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         /* Gather the length, type and subtype of the descriptor.  */
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_length =   *descriptor;
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_type =     *(descriptor + 1);
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_subtype =  *(descriptor + 2);
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 4
+
+
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         /* Make sure this descriptor has at least the minimum length.  */
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         if (descriptor_length < 3)
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         {
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* Error trap. */
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_DESCRIPTOR
+  72              		.loc 1 107 13 is_stmt 1 view .LVU19
+  73 0010 4222     		movs	r2, #66
+  74              	.LVL4:
+  75              		.loc 1 107 13 is_stmt 0 view .LVU20
+  76 0012 0721     		movs	r1, #7
+  77 0014 0220     		movs	r0, #2
+  78 0016 FFF7FEFF 		bl	_ux_system_error_handler
+  79              	.LVL5:
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DESCRIPTOR_CORRUPTED, descriptor, 0, 0, UX_T
+  80              		.loc 1 110 13 is_stmt 1 view .LVU21
+  81 001a 0023     		movs	r3, #0
+  82 001c 0393     		str	r3, [sp, #12]
+  83 001e 0293     		str	r3, [sp, #8]
+  84 0020 4FF08072 		mov	r2, #16777216
+  85 0024 0192     		str	r2, [sp, #4]
+  86 0026 0093     		str	r3, [sp]
+  87 0028 2246     		mov	r2, r4
+  88 002a 4221     		movs	r1, #66
+  89 002c 40F2E730 		movw	r0, #999
+  90 0030 FFF7FEFF 		bl	_ux_trace_event_insert
+  91              	.LVL6:
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+  92              		.loc 1 112 13 view .LVU22
+  93              		.loc 1 112 19 is_stmt 0 view .LVU23
+  94 0034 4220     		movs	r0, #66
+  95 0036 63E0     		b	.L1
+  96              	.LVL7:
+  97              	.L5:
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         }
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         /* Process relative to the descriptor type.  */
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         switch (descriptor_type)
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         {
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         case UX_INTERFACE_DESCRIPTOR_ITEM:
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* Parse the interface descriptor and make it machine independent.  */
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             _ux_utility_descriptor_parse(descriptor, _ux_system_interface_descriptor_structure,
+  98              		.loc 1 123 13 is_stmt 1 view .LVU24
+  99 0038 17AB     		add	r3, sp, #92
+ 100              	.LVL8:
+ 101              		.loc 1 123 13 is_stmt 0 view .LVU25
+ 102 003a 0922     		movs	r2, #9
+ 103              	.LVL9:
+ 104              		.loc 1 123 13 view .LVU26
+ 105 003c 3249     		ldr	r1, .L20
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 5
+
+
+ 106 003e 2046     		mov	r0, r4
+ 107 0040 FFF7FEFF 		bl	_ux_utility_descriptor_parse
+ 108              	.LVL10:
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_INTERFACE_DESCRIPTOR_ENTRIES, (UCHAR *) &interface_d
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* Ensure we have the correct interface for Audio Control.  */
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             if ((interface_descriptor.bInterfaceClass == UX_HOST_CLASS_AUDIO_CLASS) &&
+ 109              		.loc 1 127 13 is_stmt 1 view .LVU27
+ 110              		.loc 1 127 38 is_stmt 0 view .LVU28
+ 111 0044 1C9B     		ldr	r3, [sp, #112]
+ 112              		.loc 1 127 16 view .LVU29
+ 113 0046 012B     		cmp	r3, #1
+ 114 0048 26D0     		beq	.L15
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 (interface_descriptor.bInterfaceSubClass == UX_HOST_CLASS_AUDIO_SUBCLASS_CONTROL))
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             {
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 /* Mark we have found it.  */
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 descriptor_found =  UX_TRUE;
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 /* Get the interface number of this descriptor and save it in the audio 
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                    instance. This will be useful to program the audio controls.  */
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 audio -> ux_host_class_audio_control_interface_number =  interface_descriptor.bInte
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             else
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             {
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 descriptor_found =  UX_FALSE;
+ 115              		.loc 1 141 34 view .LVU30
+ 116 004a 0027     		movs	r7, #0
+ 117              	.LVL11:
+ 118              	.L7:
+ 142:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             break;
+ 144:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 
+ 145:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         case UX_HOST_CLASS_AUDIO_CS_INTERFACE:
+ 147:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* First make sure we have found the correct generic interface descriptor.  */
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             if (descriptor_found == UX_TRUE)
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             {
+ 151:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 152:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 /* Check the sub type.  */
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 switch (descriptor_subtype)
+ 154:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 {
+ 155:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 157:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 case UX_HOST_CLASS_AUDIO_CS_INPUT_TERMINAL:
+ 158:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                         
+ 159:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     /* Make the descriptor machine independent.  */
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     _ux_utility_descriptor_parse(descriptor, _ux_system_class_audio_input_terminal_
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_INPUT_TERMINAL_DESCRIPTOR_ENTRIES, 
+ 162:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                                         
+ 163:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     /* Make sure we have the right terminal link.  */
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     if (input_interface_descriptor.bTerminalID == audio -> ux_host_class_audio_term
+ 165:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 166:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                         audio -> ux_host_class_audio_type =  UX_HOST_CLASS_AUDIO_OUTPUT;
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 6
+
+
+ 168:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 169:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                         /* Return successful completion.  */
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                         return(UX_SUCCESS);
+ 171:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     }
+ 172:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     break;
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 175:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 case UX_HOST_CLASS_AUDIO_CS_OUTPUT_TERMINAL:
+ 176:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     /* Make the descriptor machine independent.  */
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     _ux_utility_descriptor_parse(descriptor, _ux_system_class_audio_output_terminal
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_OUTPUT_TERMINAL_DESCRIPTOR_ENTRIES,
+ 180:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                                         
+ 181:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     /* Make sure we have the right terminal link.  */
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     if (output_interface_descriptor.bTerminalID == audio -> ux_host_class_audio_ter
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 184:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                         audio -> ux_host_class_audio_type =  UX_HOST_CLASS_AUDIO_INPUT;
+ 186:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 187:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                         /* Return successful completion.  */
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                         return(UX_SUCCESS);
+ 189:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     }
+ 190:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 }
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             break;
+ 193:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         }       
+ 194:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 195:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         /* Verify if the descriptor is still valid.  */
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         if (descriptor_length > total_descriptor_length)
+ 119              		.loc 1 196 9 is_stmt 1 view .LVU31
+ 120              		.loc 1 196 12 is_stmt 0 view .LVU32
+ 121 004c AE42     		cmp	r6, r5
+ 122 004e 3DD3     		bcc	.L16
+ 197:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         {
+ 198:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 199:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* Error trap. */
+ 200:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_DESCRIPTOR
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 202:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 203:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DESCRIPTOR_CORRUPTED, descriptor, 0, 0, UX_T
+ 204:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 205:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 206:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         }            
+ 207:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 208:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         /* Jump to the next descriptor if we have not reached the end.  */
+ 209:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor +=  descriptor_length;
+ 123              		.loc 1 209 9 is_stmt 1 view .LVU33
+ 124              		.loc 1 209 20 is_stmt 0 view .LVU34
+ 125 0050 2C44     		add	r4, r4, r5
+ 126              	.LVL12:
+ 210:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 211:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         /* And adjust the length left to parse in the descriptor.  */
+ 212:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         total_descriptor_length -=  descriptor_length;
+ 127              		.loc 1 212 9 is_stmt 1 view .LVU35
+ 128              		.loc 1 212 33 is_stmt 0 view .LVU36
+ 129 0052 761B     		subs	r6, r6, r5
+ 130              	.LVL13:
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 7
+
+
+ 131              	.L2:
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     {
+ 132              		.loc 1 94 12 is_stmt 1 view .LVU37
+ 133 0054 002E     		cmp	r6, #0
+ 134 0056 4DD0     		beq	.L17
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_type =     *(descriptor + 1);
+ 135              		.loc 1 98 9 view .LVU38
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_type =     *(descriptor + 1);
+ 136              		.loc 1 98 31 is_stmt 0 view .LVU39
+ 137 0058 2578     		ldrb	r5, [r4]	@ zero_extendqisi2
+ 138              	.LVL14:
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_subtype =  *(descriptor + 2);
+ 139              		.loc 1 99 9 is_stmt 1 view .LVU40
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         descriptor_subtype =  *(descriptor + 2);
+ 140              		.loc 1 99 31 is_stmt 0 view .LVU41
+ 141 005a 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 142              	.LVL15:
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 143              		.loc 1 100 9 is_stmt 1 view .LVU42
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 144              		.loc 1 100 31 is_stmt 0 view .LVU43
+ 145 005c A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
+ 146              	.LVL16:
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         {
+ 147              		.loc 1 103 9 is_stmt 1 view .LVU44
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         {
+ 148              		.loc 1 103 12 is_stmt 0 view .LVU45
+ 149 005e 022D     		cmp	r5, #2
+ 150 0060 D6D9     		bls	.L18
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         {
+ 151              		.loc 1 116 9 is_stmt 1 view .LVU46
+ 152 0062 042B     		cmp	r3, #4
+ 153 0064 E8D0     		beq	.L5
+ 154 0066 242B     		cmp	r3, #36
+ 155 0068 F0D1     		bne	.L7
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             {
+ 156              		.loc 1 149 13 view .LVU47
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             {
+ 157              		.loc 1 149 16 is_stmt 0 view .LVU48
+ 158 006a 012F     		cmp	r7, #1
+ 159 006c EED1     		bne	.L7
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 {
+ 160              		.loc 1 153 17 is_stmt 1 view .LVU49
+ 161 006e 022A     		cmp	r2, #2
+ 162 0070 1BD0     		beq	.L8
+ 163 0072 032A     		cmp	r2, #3
+ 164 0074 EAD1     		bne	.L7
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_OUTPUT_TERMINAL_DESCRIPTOR_ENTRIES,
+ 165              		.loc 1 178 21 view .LVU50
+ 166 0076 0FAB     		add	r3, sp, #60
+ 167              	.LVL17:
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_OUTPUT_TERMINAL_DESCRIPTOR_ENTRIES,
+ 168              		.loc 1 178 21 is_stmt 0 view .LVU51
+ 169 0078 0822     		movs	r2, #8
+ 170              	.LVL18:
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_OUTPUT_TERMINAL_DESCRIPTOR_ENTRIES,
+ 171              		.loc 1 178 21 view .LVU52
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 8
+
+
+ 172 007a 2449     		ldr	r1, .L20+4
+ 173 007c 2046     		mov	r0, r4
+ 174 007e FFF7FEFF 		bl	_ux_utility_descriptor_parse
+ 175              	.LVL19:
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 176              		.loc 1 182 21 is_stmt 1 view .LVU53
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 177              		.loc 1 182 74 is_stmt 0 view .LVU54
+ 178 0082 D8F82430 		ldr	r3, [r8, #36]
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 179              		.loc 1 182 24 view .LVU55
+ 180 0086 129A     		ldr	r2, [sp, #72]
+ 181 0088 9A42     		cmp	r2, r3
+ 182 008a DFD1     		bne	.L7
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 183              		.loc 1 185 25 is_stmt 1 view .LVU56
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 184              		.loc 1 185 59 is_stmt 0 view .LVU57
+ 185 008c 4FF40073 		mov	r3, #512
+ 186 0090 C8F82830 		str	r3, [r8, #40]
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     }
+ 187              		.loc 1 188 25 is_stmt 1 view .LVU58
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     }
+ 188              		.loc 1 188 31 is_stmt 0 view .LVU59
+ 189 0094 0020     		movs	r0, #0
+ 190 0096 33E0     		b	.L1
+ 191              	.L15:
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             {
+ 192              		.loc 1 128 38 view .LVU60
+ 193 0098 1D9F     		ldr	r7, [sp, #116]
+ 194              	.LVL20:
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                 (interface_descriptor.bInterfaceSubClass == UX_HOST_CLASS_AUDIO_SUBCLASS_CONTROL))
+ 195              		.loc 1 127 85 discriminator 1 view .LVU61
+ 196 009a 012F     		cmp	r7, #1
+ 197 009c 01D0     		beq	.L19
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 198              		.loc 1 141 34 view .LVU62
+ 199 009e 0027     		movs	r7, #0
+ 200 00a0 D4E7     		b	.L7
+ 201              	.L19:
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 202              		.loc 1 132 17 is_stmt 1 view .LVU63
+ 203              	.LVL21:
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 204              		.loc 1 136 17 view .LVU64
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 205              		.loc 1 136 94 is_stmt 0 view .LVU65
+ 206 00a2 199B     		ldr	r3, [sp, #100]
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****             }
+ 207              		.loc 1 136 71 view .LVU66
+ 208 00a4 C8F81030 		str	r3, [r8, #16]
+ 209 00a8 D0E7     		b	.L7
+ 210              	.LVL22:
+ 211              	.L8:
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_INPUT_TERMINAL_DESCRIPTOR_ENTRIES, 
+ 212              		.loc 1 160 21 is_stmt 1 view .LVU67
+ 213 00aa 05AB     		add	r3, sp, #20
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 9
+
+
+ 214              	.LVL23:
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_INPUT_TERMINAL_DESCRIPTOR_ENTRIES, 
+ 215              		.loc 1 160 21 is_stmt 0 view .LVU68
+ 216 00ac 0A22     		movs	r2, #10
+ 217              	.LVL24:
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                                             UX_HOST_CLASS_AUDIO_INPUT_TERMINAL_DESCRIPTOR_ENTRIES, 
+ 218              		.loc 1 160 21 view .LVU69
+ 219 00ae 1849     		ldr	r1, .L20+8
+ 220 00b0 2046     		mov	r0, r4
+ 221 00b2 FFF7FEFF 		bl	_ux_utility_descriptor_parse
+ 222              	.LVL25:
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 223              		.loc 1 164 21 is_stmt 1 view .LVU70
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 224              		.loc 1 164 73 is_stmt 0 view .LVU71
+ 225 00b6 D8F82430 		ldr	r3, [r8, #36]
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     {
+ 226              		.loc 1 164 24 view .LVU72
+ 227 00ba 089A     		ldr	r2, [sp, #32]
+ 228 00bc 9A42     		cmp	r2, r3
+ 229 00be C5D1     		bne	.L7
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 230              		.loc 1 167 25 is_stmt 1 view .LVU73
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 231              		.loc 1 167 59 is_stmt 0 view .LVU74
+ 232 00c0 4FF44073 		mov	r3, #768
+ 233 00c4 C8F82830 		str	r3, [r8, #40]
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     }
+ 234              		.loc 1 170 25 is_stmt 1 view .LVU75
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****                     }
+ 235              		.loc 1 170 31 is_stmt 0 view .LVU76
+ 236 00c8 0020     		movs	r0, #0
+ 237 00ca 19E0     		b	.L1
+ 238              	.L16:
+ 200:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 239              		.loc 1 200 13 is_stmt 1 view .LVU77
+ 240 00cc 4222     		movs	r2, #66
+ 241 00ce 0721     		movs	r1, #7
+ 242 00d0 0220     		movs	r0, #2
+ 243 00d2 FFF7FEFF 		bl	_ux_system_error_handler
+ 244              	.LVL26:
+ 203:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 245              		.loc 1 203 13 view .LVU78
+ 246 00d6 0023     		movs	r3, #0
+ 247 00d8 0393     		str	r3, [sp, #12]
+ 248 00da 0293     		str	r3, [sp, #8]
+ 249 00dc 4FF08072 		mov	r2, #16777216
+ 250 00e0 0192     		str	r2, [sp, #4]
+ 251 00e2 0093     		str	r3, [sp]
+ 252 00e4 2246     		mov	r2, r4
+ 253 00e6 4221     		movs	r1, #66
+ 254 00e8 40F2E730 		movw	r0, #999
+ 255 00ec FFF7FEFF 		bl	_ux_trace_event_insert
+ 256              	.LVL27:
+ 205:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         }            
+ 257              		.loc 1 205 13 view .LVU79
+ 205:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****         }            
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 10
+
+
+ 258              		.loc 1 205 19 is_stmt 0 view .LVU80
+ 259 00f0 4220     		movs	r0, #66
+ 260 00f2 05E0     		b	.L1
+ 261              	.LVL28:
+ 262              	.L17:
+ 213:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     }
+ 214:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 215:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     /* Error trap. */
+ 216:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_HOST_CLASS_AUDIO_W
+ 263              		.loc 1 216 5 is_stmt 1 view .LVU81
+ 264 00f4 8022     		movs	r2, #128
+ 265 00f6 0721     		movs	r1, #7
+ 266 00f8 0220     		movs	r0, #2
+ 267 00fa FFF7FEFF 		bl	_ux_system_error_handler
+ 268              	.LVL29:
+ 217:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** 
+ 218:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     /* We get here when either the report descriptor has a problem or we could
+ 219:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****        not find the right audio device.  */
+ 220:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c ****     return(UX_HOST_CLASS_AUDIO_WRONG_TYPE);
+ 269              		.loc 1 220 5 view .LVU82
+ 270              		.loc 1 220 11 is_stmt 0 view .LVU83
+ 271 00fe 8020     		movs	r0, #128
+ 272              	.L1:
+ 221:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_audio_device_type_get.c **** }
+ 273              		.loc 1 221 1 view .LVU84
+ 274 0100 20B0     		add	sp, sp, #128
+ 275              	.LCFI2:
+ 276              		.cfi_def_cfa_offset 24
+ 277              		@ sp needed
+ 278 0102 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 279              	.LVL30:
+ 280              	.L21:
+ 281              		.loc 1 221 1 view .LVU85
+ 282 0106 00BF     		.align	2
+ 283              	.L20:
+ 284 0108 00000000 		.word	_ux_system_interface_descriptor_structure
+ 285 010c 00000000 		.word	_ux_system_class_audio_output_terminal_descriptor_structure
+ 286 0110 00000000 		.word	_ux_system_class_audio_input_terminal_descriptor_structure
+ 287              		.cfi_endproc
+ 288              	.LFE11:
+ 290              		.text
+ 291              	.Letext0:
+ 292              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 293              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 294              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 295              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 296              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 297              		.file 7 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_audio.h"
+ 298              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccRMQ3Cj.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_audio_device_type_get.c
+     /tmp/ccRMQ3Cj.s:20     .text._ux_host_class_audio_device_type_get:00000000 $t
+     /tmp/ccRMQ3Cj.s:26     .text._ux_host_class_audio_device_type_get:00000000 _ux_host_class_audio_device_type_get
+     /tmp/ccRMQ3Cj.s:284    .text._ux_host_class_audio_device_type_get:00000108 $d
+
+UNDEFINED SYMBOLS
+_ux_system_error_handler
+_ux_trace_event_insert
+_ux_utility_descriptor_parse
+_ux_system_interface_descriptor_structure
+_ux_system_class_audio_output_terminal_descriptor_structure
+_ux_system_class_audio_input_terminal_descriptor_structure

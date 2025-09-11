@@ -1,0 +1,298 @@
+ARM GAS  /tmp/ccM0qEav.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_byte_pool_performance_system_info_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c"
+  19              		.section	.text._tx_byte_pool_performance_system_info_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_byte_pool_performance_system_info_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_byte_pool_performance_system_info_get:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**   Byte Memory                                                         */
+  19:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #include "tx_api.h"
+  29:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #include "tx_byte_pool.h"
+  30:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #ifdef TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO
+ARM GAS  /tmp/ccM0qEav.s 			page 2
+
+
+  31:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #include "tx_trace.h"
+  32:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #endif
+  33:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  34:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+  35:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  36:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  38:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    _tx_byte_pool_performance_system_info_get           PORTABLE C      */
+  39:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                           6.1          */
+  40:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  42:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  44:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  46:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    This function retrieves byte pool performance information.          */
+  47:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  48:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  50:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    allocates                         Destination for total number of   */
+  51:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        allocates                       */
+  52:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    releases                          Destination for total number of   */
+  53:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        releases                        */
+  54:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    fragments_searched                Destination for total number of   */
+  55:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        fragments searched during       */
+  56:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        allocation                      */
+  57:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    merges                            Destination for total number of   */
+  58:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        adjacent free fragments merged  */
+  59:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    splits                            Destination for total number of   */
+  60:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        fragments split during          */
+  61:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        allocation                      */
+  62:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    suspensions                       Destination for total number of   */
+  63:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        suspensions                     */
+  64:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    timeouts                          Destination for total number of   */
+  65:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                        timeouts                        */
+  66:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  67:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  OUTPUT                                                                */
+  68:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  69:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    status                            Completion status                 */
+  70:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  71:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  CALLS                                                                 */
+  72:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  73:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    None                                                                */
+  74:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  75:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  CALLED BY                                                             */
+  76:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  77:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    Application Code                                                    */
+  78:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  79:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  RELEASE HISTORY                                                       */
+  80:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  81:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  82:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  83:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  84:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+  85:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                            resulting in version 6.1    */
+  86:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /*                                                                        */
+  87:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** /**************************************************************************/
+ARM GAS  /tmp/ccM0qEav.s 			page 3
+
+
+  88:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** UINT  _tx_byte_pool_performance_system_info_get(ULONG *allocates, ULONG *releases,
+  89:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****                     ULONG *fragments_searched, ULONG *merges, ULONG *splits, ULONG *suspensions, UL
+  90:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** {
+  29              		.loc 1 90 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 12, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  91:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  92:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #ifdef TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO
+  93:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  94:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** TX_INTERRUPT_SAVE_AREA
+  95:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  96:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+  97:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Disable interrupts.  */
+  98:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     TX_DISABLE
+  99:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 100:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 101:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     TX_TRACE_IN_LINE_INSERT(TX_TRACE_BYTE_POOL__PERFORMANCE_SYSTEM_INFO_GET, 0, 0, 0, 0, TX_TRACE_B
+ 102:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 103:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Log this kernel call.  */
+ 104:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     TX_EL_BYTE_POOL_PERFORMANCE_SYSTEM_INFO_GET_INSERT
+ 105:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 106:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve all the pertinent information and return it in the supplied
+ 107:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****        destinations.  */
+ 108:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 109:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool allocates.  */
+ 110:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (allocates != TX_NULL)
+ 111:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 112:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 113:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *allocates =  _tx_byte_pool_performance_allocate_count;
+ 114:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 115:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 116:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool releases.  */
+ 117:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (releases != TX_NULL)
+ 118:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 119:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 120:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *releases =  _tx_byte_pool_performance_release_count;
+ 121:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 122:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 123:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool fragments searched.  */
+ 124:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (fragments_searched != TX_NULL)
+ 125:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 126:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 127:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *fragments_searched =  _tx_byte_pool_performance_search_count;
+ 128:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 129:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 130:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool fragments merged.  */
+ 131:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (merges != TX_NULL)
+ 132:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 133:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 134:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *merges =  _tx_byte_pool_performance_merge_count;
+ 135:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 136:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 137:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool fragment splits.  */
+ 138:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (splits != TX_NULL)
+ 139:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ARM GAS  /tmp/ccM0qEav.s 			page 4
+
+
+ 140:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 141:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *splits =  _tx_byte_pool_performance_split_count;
+ 142:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 143:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 144:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool suspensions.  */
+ 145:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (suspensions != TX_NULL)
+ 146:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 147:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 148:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *suspensions =  _tx_byte_pool_performance_suspension_count;
+ 149:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 150:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 151:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Retrieve the total number of byte pool timeouts.  */
+ 152:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (timeouts != TX_NULL)
+ 153:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 154:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 155:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         *timeouts =  _tx_byte_pool_performance_timeout_count;
+ 156:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 157:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 158:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Restore interrupts.  */
+ 159:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     TX_RESTORE
+ 160:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 161:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Return completion status.  */
+ 162:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     return(TX_SUCCESS);
+ 163:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 164:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #else
+ 165:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 166:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** UINT        status;
+  34              		.loc 1 166 1 view .LVU1
+ 167:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 168:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 169:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Access input arguments just for the sake of lint, MISRA, etc.  */
+ 170:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     if (allocates != TX_NULL)
+  35              		.loc 1 170 5 view .LVU2
+ 171:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 172:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 173:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 174:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 175:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 176:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else if (releases != TX_NULL)
+  36              		.loc 1 176 10 view .LVU3
+ 177:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 178:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 179:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 180:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 181:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 182:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else if (fragments_searched != TX_NULL)
+  37              		.loc 1 182 10 view .LVU4
+ 183:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 184:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 185:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 186:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 187:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 188:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else if (merges != TX_NULL)
+  38              		.loc 1 188 10 view .LVU5
+ 189:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 190:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 191:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ARM GAS  /tmp/ccM0qEav.s 			page 5
+
+
+ 192:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 193:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 194:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else if (splits != TX_NULL)
+  39              		.loc 1 194 10 view .LVU6
+ 195:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 196:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 197:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 198:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 199:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 200:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else if (suspensions != TX_NULL)
+  40              		.loc 1 200 10 view .LVU7
+ 201:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 202:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 203:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 204:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 205:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 206:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else if (timeouts != TX_NULL)
+  41              		.loc 1 206 10 view .LVU8
+ 207:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 208:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 209:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 210:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 211:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 212:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     else
+ 213:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     {
+ 214:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 215:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 216:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+  42              		.loc 1 216 9 view .LVU9
+ 217:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     }
+ 218:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** 
+ 219:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     /* Return completion status.  */
+ 220:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c ****     return(status);
+  43              		.loc 1 220 5 view .LVU10
+ 221:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** #endif
+ 222:Middlewares/ST/threadx/common/src/tx_byte_pool_performance_system_info_get.c **** }
+  44              		.loc 1 222 1 is_stmt 0 view .LVU11
+  45 0000 FF20     		movs	r0, #255
+  46              	.LVL1:
+  47              		.loc 1 222 1 view .LVU12
+  48 0002 7047     		bx	lr
+  49              		.cfi_endproc
+  50              	.LFE8:
+  52              		.text
+  53              	.Letext0:
+  54              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/ccM0qEav.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_byte_pool_performance_system_info_get.c
+     /tmp/ccM0qEav.s:20     .text._tx_byte_pool_performance_system_info_get:00000000 $t
+     /tmp/ccM0qEav.s:26     .text._tx_byte_pool_performance_system_info_get:00000000 _tx_byte_pool_performance_system_info_get
+
+NO UNDEFINED SYMBOLS

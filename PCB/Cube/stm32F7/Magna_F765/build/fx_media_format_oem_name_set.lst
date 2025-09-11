@@ -1,0 +1,186 @@
+ARM GAS  /tmp/ccL2UXOh.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_media_format_oem_name_set.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c"
+  19              		.section	.text.fx_media_format_oem_name_set,"ax",%progbits
+  20              		.align	1
+  21              		.global	fx_media_format_oem_name_set
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	fx_media_format_oem_name_set:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**                                                                       */ 
+  16:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /** FileX Component                                                       */ 
+  17:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** #include "fx_media.h"
+  30:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+ARM GAS  /tmp/ccL2UXOh.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  32:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /* Define external reference to OEM name string.  */
+  33:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  34:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** extern UCHAR   _fx_media_format_oem_name[8];
+  35:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** UINT  fx_media_format_oem_name_set(UCHAR new_oem_name[8]);
+  36:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  37:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/ 
+  38:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  39:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  FUNCTION                                               RELEASE        */ 
+  40:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  41:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    _fx_media_format_oem_name_set                       PORTABLE C      */ 
+  42:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                           6.1.5        */
+  43:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  AUTHOR                                                                */
+  44:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  46:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+  47:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  DESCRIPTION                                                           */
+  48:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  49:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    This function modifies the default OEM name for all formatting. The */ 
+  50:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    new OEM name must be 8 characters long - blank padded if necessary. */ 
+  51:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  52:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  53:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  INPUT                                                                 */ 
+  54:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  55:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    new_oem_name                          Pointer to new OEM name       */ 
+  56:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  57:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  OUTPUT                                                                */ 
+  58:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  59:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    Completion Status                                                   */ 
+  60:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  61:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  CALLS                                                                 */ 
+  62:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  63:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    None                                                                */ 
+  64:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  65:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  CALLED BY                                                             */ 
+  66:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  67:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    Application Code                                                    */ 
+  68:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  69:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  RELEASE HISTORY                                                       */ 
+  70:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */ 
+  71:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*    DATE              NAME                      DESCRIPTION             */
+  72:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+  73:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  74:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  75:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                            resulting in version 6.1    */
+  76:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*  03-02-2021     William E. Lamie         Modified comment(s),          */
+  77:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                            resulting in version 6.1.5  */
+  78:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /*                                                                        */
+  79:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** /**************************************************************************/
+  80:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** UINT  fx_media_format_oem_name_set(UCHAR new_oem_name[8])
+  81:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** {
+  29              		.loc 1 81 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  82:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+ARM GAS  /tmp/ccL2UXOh.s 			page 3
+
+
+  83:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** UINT    i;
+  34              		.loc 1 83 1 view .LVU1
+  84:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  85:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  86:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     /* Simply copy the new OEM name into the default location.  */
+  87:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     for (i = 0; i < 8; i++)
+  35              		.loc 1 87 5 view .LVU2
+  36              		.loc 1 87 12 is_stmt 0 view .LVU3
+  37 0000 0023     		movs	r3, #0
+  38              		.loc 1 87 5 view .LVU4
+  39 0002 03E0     		b	.L2
+  40              	.LVL1:
+  41              	.L3:
+  88:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     {
+  89:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  90:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****         /* Copy one character of the new OEM name.  */
+  91:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****         _fx_media_format_oem_name[i] =  new_oem_name[i];
+  42              		.loc 1 91 9 is_stmt 1 view .LVU5
+  43              		.loc 1 91 53 is_stmt 0 view .LVU6
+  44 0004 C15C     		ldrb	r1, [r0, r3]	@ zero_extendqisi2
+  45              		.loc 1 91 38 view .LVU7
+  46 0006 034A     		ldr	r2, .L4
+  47 0008 D154     		strb	r1, [r2, r3]
+  87:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     {
+  48              		.loc 1 87 25 is_stmt 1 discriminator 3 view .LVU8
+  49 000a 0133     		adds	r3, r3, #1
+  50              	.LVL2:
+  51              	.L2:
+  87:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     {
+  52              		.loc 1 87 19 discriminator 1 view .LVU9
+  53 000c 072B     		cmp	r3, #7
+  54 000e F9D9     		bls	.L3
+  92:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     }
+  93:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** 
+  94:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     /* Return success.  */
+  95:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c ****     return(FX_SUCCESS);
+  55              		.loc 1 95 5 view .LVU10
+  96:Middlewares/ST/filex/common/src/fx_media_format_oem_name_set.c **** }
+  56              		.loc 1 96 1 is_stmt 0 view .LVU11
+  57 0010 0020     		movs	r0, #0
+  58              	.LVL3:
+  59              		.loc 1 96 1 view .LVU12
+  60 0012 7047     		bx	lr
+  61              	.L5:
+  62              		.align	2
+  63              	.L4:
+  64 0014 00000000 		.word	_fx_media_format_oem_name
+  65              		.cfi_endproc
+  66              	.LFE8:
+  68              		.text
+  69              	.Letext0:
+  70              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/ccL2UXOh.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_format_oem_name_set.c
+     /tmp/ccL2UXOh.s:20     .text.fx_media_format_oem_name_set:00000000 $t
+     /tmp/ccL2UXOh.s:26     .text.fx_media_format_oem_name_set:00000000 fx_media_format_oem_name_set
+     /tmp/ccL2UXOh.s:64     .text.fx_media_format_oem_name_set:00000014 $d
+
+UNDEFINED SYMBOLS
+_fx_media_format_oem_name

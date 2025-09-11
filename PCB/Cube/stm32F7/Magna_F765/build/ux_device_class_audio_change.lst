@@ -1,0 +1,623 @@
+ARM GAS  /tmp/cc88e4O2.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_audio_change.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c"
+  19              		.section	.text._ux_device_class_audio_change,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_class_audio_change
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_class_audio_change:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**                                                                       */
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /** USBX Component                                                        */
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**   Device Audio Class                                                  */
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #define UX_SOURCE_CODE
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #include "ux_api.h"
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #include "ux_device_class_audio.h"
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #include "ux_device_stack.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ARM GAS  /tmp/cc88e4O2.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  FUNCTION                                               RELEASE        */
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    _ux_device_class_audio_change                       PORTABLE C      */
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                           6.1.10       */
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    This function changes the interface of the Audio device             */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  INPUT                                                                 */
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    command                           Pointer to audio command          */
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  OUTPUT                                                                */
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    Completion Status                                                   */
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  CALLS                                                                 */
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    _ux_system_error_handler          System error trap                 */
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  CALLED BY                                                             */
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    Device Audio Class                                                  */
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  RELEASE HISTORY                                                       */
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*    DATE              NAME                      DESCRIPTION             */
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                            resulting in version 6.1    */
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  10-15-2021     Chaoqiong Xiao           Modified comment(s),          */
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                            replaced wMaxPacketSize by  */
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                            calculated payload size,    */
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                            resulting in version 6.1.9  */
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                            added feedback support,     */
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                            resulting in version 6.1.10 */
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** /**************************************************************************/
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UINT  _ux_device_class_audio_change(UX_SLAVE_CLASS_COMMAND *command)
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** {
+  29              		.loc 1 78 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 78 1 is_stmt 0 view .LVU1
+  34 0000 38B5     		push	{r3, r4, r5, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 3, -16
+ARM GAS  /tmp/cc88e4O2.s 			page 3
+
+
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UX_DEVICE_CLASS_AUDIO                   *audio;
+  41              		.loc 1 80 1 is_stmt 1 view .LVU2
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UX_DEVICE_CLASS_AUDIO_STREAM            *stream;
+  42              		.loc 1 81 1 view .LVU3
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UX_SLAVE_CLASS                          *class;
+  43              		.loc 1 82 1 view .LVU4
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UX_SLAVE_INTERFACE                      *interface;
+  44              		.loc 1 83 1 view .LVU5
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UX_SLAVE_ENDPOINT                       *endpoint;
+  45              		.loc 1 84 1 view .LVU6
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** UCHAR                                   *frame_buffer;
+  46              		.loc 1 85 1 view .LVU7
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** ULONG                                    stream_index;
+  47              		.loc 1 86 1 view .LVU8
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** ULONG                                    endpoint_dir;
+  48              		.loc 1 87 1 view .LVU9
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Get the class container.  */
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     class =  command -> ux_slave_class_command_class_ptr;
+  49              		.loc 1 91 5 view .LVU10
+  50              		.loc 1 91 11 is_stmt 0 view .LVU11
+  51 0002 036A     		ldr	r3, [r0, #32]
+  52              	.LVL1:
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Get the class instance in the container.  */
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     audio = (UX_DEVICE_CLASS_AUDIO *) class -> ux_slave_class_instance;
+  53              		.loc 1 94 5 is_stmt 1 view .LVU12
+  54              		.loc 1 94 11 is_stmt 0 view .LVU13
+  55 0004 9A6C     		ldr	r2, [r3, #72]
+  56              	.LVL2:
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Get the interface that owns this instance.  */
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     interface =  (UX_SLAVE_INTERFACE  *) command -> ux_slave_class_command_interface;
+  57              		.loc 1 97 5 is_stmt 1 view .LVU14
+  58              		.loc 1 97 15 is_stmt 0 view .LVU15
+  59 0006 8468     		ldr	r4, [r0, #8]
+  60              	.LVL3:
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Get the interface number (base 0).  */
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     if (audio -> ux_device_class_audio_interface)
+  61              		.loc 1 100 5 is_stmt 1 view .LVU16
+  62              		.loc 1 100 15 is_stmt 0 view .LVU17
+  63 0008 9168     		ldr	r1, [r2, #8]
+  64              		.loc 1 100 8 view .LVU18
+  65 000a A1B1     		cbz	r1, .L15
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     {
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* If IAD used, calculate stream index based on interface number.  */
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream_index  = interface -> ux_slave_interface_descriptor.bInterfaceNumber;
+  66              		.loc 1 104 9 is_stmt 1 view .LVU19
+  67              		.loc 1 104 23 is_stmt 0 view .LVU20
+  68 000c 6369     		ldr	r3, [r4, #20]
+ARM GAS  /tmp/cc88e4O2.s 			page 4
+
+
+  69              	.LVL4:
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream_index -= audio -> ux_device_class_audio_interface -> ux_slave_interface_descriptor.b
+  70              		.loc 1 105 9 is_stmt 1 view .LVU21
+  71              		.loc 1 105 98 is_stmt 0 view .LVU22
+  72 000e 4969     		ldr	r1, [r1, #20]
+  73              		.loc 1 105 22 view .LVU23
+  74 0010 5B1A     		subs	r3, r3, r1
+  75              	.LVL5:
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream_index --;
+  76              		.loc 1 106 9 is_stmt 1 view .LVU24
+  77              		.loc 1 106 22 is_stmt 0 view .LVU25
+  78 0012 013B     		subs	r3, r3, #1
+  79              	.LVL6:
+  80              	.L2:
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     }
+ 108:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     else
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* One stream for one driver!  */
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream_index  = 0;
+ 112:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Get the stream instance.  */
+ 114:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     stream = &audio -> ux_device_class_audio_streams[stream_index];
+  81              		.loc 1 114 5 is_stmt 1 view .LVU26
+  82              		.loc 1 114 21 is_stmt 0 view .LVU27
+  83 0014 106A     		ldr	r0, [r2, #32]
+  84              	.LVL7:
+  85              		.loc 1 114 12 view .LVU28
+  86 0016 DC22     		movs	r2, #220
+  87              	.LVL8:
+  88              		.loc 1 114 12 view .LVU29
+  89 0018 02FB0300 		mla	r0, r2, r3, r0
+  90              	.LVL9:
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 116:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Update the interface.  */
+ 117:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     stream -> ux_device_class_audio_stream_interface = interface;
+  91              		.loc 1 117 5 is_stmt 1 view .LVU30
+  92              		.loc 1 117 54 is_stmt 0 view .LVU31
+  93 001c 4460     		str	r4, [r0, #4]
+  94              	.LVL10:
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* If the interface to mount has a non zero alternate setting, the class is really active with
+ 120:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****        the endpoints active.  If the interface reverts to alternate setting 0, it needs to have
+ 121:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****        the pending transactions terminated.  */
+ 122:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     if (interface -> ux_slave_interface_descriptor.bAlternateSetting != 0)
+  95              		.loc 1 122 5 is_stmt 1 view .LVU32
+  96              		.loc 1 122 51 is_stmt 0 view .LVU33
+  97 001e A369     		ldr	r3, [r4, #24]
+  98              	.LVL11:
+  99              		.loc 1 122 8 view .LVU34
+ 100 0020 002B     		cmp	r3, #0
+ 101 0022 47D0     		beq	.L3
+ 123:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     {
+ 124:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* Locate the endpoints.  ISO IN(write)/OUT(read) for Streaming Interface.  */
+ 126:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         endpoint = interface -> ux_slave_interface_first_endpoint;
+ 102              		.loc 1 126 9 is_stmt 1 view .LVU35
+ 103              		.loc 1 126 18 is_stmt 0 view .LVU36
+ARM GAS  /tmp/cc88e4O2.s 			page 5
+
+
+ 104 0024 636B     		ldr	r3, [r4, #52]
+ 105              	.LVL12:
+ 127:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 128:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* Parse all endpoints.  */
+ 129:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         endpoint_dir = (stream -> ux_device_class_audio_stream_thread.tx_thread_entry ==
+ 106              		.loc 1 129 9 is_stmt 1 view .LVU37
+ 107              		.loc 1 129 70 is_stmt 0 view .LVU38
+ 108 0026 C16D     		ldr	r1, [r0, #92]
+ 130:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         _ux_device_class_audio_read_thread_entry) ?
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         UX_ENDPOINT_OUT : UX_ENDPOINT_IN;
+ 109              		.loc 1 131 41 view .LVU39
+ 110 0028 274A     		ldr	r2, .L23
+ 111 002a 9142     		cmp	r1, r2
+ 112 002c 05D0     		beq	.L19
+ 113              		.loc 1 131 41 discriminator 2 view .LVU40
+ 114 002e 8021     		movs	r1, #128
+ 115              	.L4:
+ 116              	.LVL13:
+ 132:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_endpoint = UX_NULL;
+ 117              		.loc 1 132 9 is_stmt 1 view .LVU41
+ 118              		.loc 1 132 57 is_stmt 0 view .LVU42
+ 119 0030 0022     		movs	r2, #0
+ 120 0032 8260     		str	r2, [r0, #8]
+ 133:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 134:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #if defined(UX_DEVICE_CLASS_AUDIO_FEEDBACK_SUPPORT)
+ 135:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_feedback = UX_NULL;
+ 136:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #endif
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         while(endpoint != UX_NULL)
+ 121              		.loc 1 137 9 is_stmt 1 view .LVU43
+ 122              		.loc 1 137 14 is_stmt 0 view .LVU44
+ 123 0034 0DE0     		b	.L5
+ 124              	.LVL14:
+ 125              	.L15:
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 126              		.loc 1 111 23 view .LVU45
+ 127 0036 0023     		movs	r3, #0
+ 128              	.LVL15:
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 129              		.loc 1 111 23 view .LVU46
+ 130 0038 ECE7     		b	.L2
+ 131              	.LVL16:
+ 132              	.L19:
+ 131:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_endpoint = UX_NULL;
+ 133              		.loc 1 131 41 discriminator 1 view .LVU47
+ 134 003a 0021     		movs	r1, #0
+ 135 003c F8E7     		b	.L4
+ 136              	.LVL17:
+ 137              	.L20:
+ 138:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         {
+ 139:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 140:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Check the endpoint attributes.  */
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             if((endpoint -> ux_slave_endpoint_descriptor.bmAttributes &
+ 142:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 UX_DEVICE_CLASS_AUDIO_EP_TRANSFER_TYPE_MASK) == UX_ISOCHRONOUS_ENDPOINT)
+ 143:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             {
+ 144:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 145:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 /* Check the endpoint direction.  */
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 if ((endpoint->ux_slave_endpoint_descriptor.bEndpointAddress &
+ARM GAS  /tmp/cc88e4O2.s 			page 6
+
+
+ 147:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                      UX_ENDPOINT_DIRECTION) == endpoint_dir)
+ 148:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 {
+ 149:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 150:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     /* We found the data endpoint, check its size.  */
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     if (endpoint -> ux_slave_endpoint_transfer_request.ux_slave_transfer_request_tr
+ 152:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     {
+ 153:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 154:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         /* Error trap!  */
+ 155:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, U
+ 138              		.loc 1 155 25 is_stmt 1 view .LVU48
+ 139 003e 1222     		movs	r2, #18
+ 140 0040 0721     		movs	r1, #7
+ 141              	.LVL18:
+ 142              		.loc 1 155 25 is_stmt 0 view .LVU49
+ 143 0042 0220     		movs	r0, #2
+ 144              	.LVL19:
+ 145              		.loc 1 155 25 view .LVU50
+ 146 0044 FFF7FEFF 		bl	_ux_system_error_handler
+ 147              	.LVL20:
+ 156:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 157:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         /* Frame buffer too small for endpoints.  */
+ 158:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         return(UX_MEMORY_INSUFFICIENT);
+ 148              		.loc 1 158 25 is_stmt 1 view .LVU51
+ 149              		.loc 1 158 31 is_stmt 0 view .LVU52
+ 150 0048 1220     		movs	r0, #18
+ 151 004a 3AE0     		b	.L1
+ 152              	.LVL21:
+ 153              	.L6:
+ 159:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     }
+ 160:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 161:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     /* Save it.  */
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     stream -> ux_device_class_audio_stream_endpoint = endpoint;
+ 163:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 }
+ 164:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #if defined(UX_DEVICE_CLASS_AUDIO_FEEDBACK_SUPPORT)
+ 165:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 else
+ 166:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 {
+ 167:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 168:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     /* We found the feedback endpoint, check its size.  */
+ 169:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     if (endpoint -> ux_slave_endpoint_transfer_request.ux_slave_transfer_request_tr
+ 170:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         (_ux_system_slave->ux_system_slave_speed == UX_HIGH_SPEED_DEVICE ? 4 : 3))
+ 171:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     {
+ 172:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 173:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         /* Error trap!  */
+ 174:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, U
+ 175:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 176:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         /* Frame buffer too small for endpoints.  */
+ 177:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         return(UX_MEMORY_INSUFFICIENT);
+ 178:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     }
+ 179:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 180:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     /* Set request length.  */
+ 181:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     endpoint -> ux_slave_endpoint_transfer_request.ux_slave_transfer_request_reques
+ 182:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                         (_ux_system_slave -> ux_system_slave_speed == UX_HIGH_SPEED_DEVICE) ? 4 : 3
+ 183:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 184:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     /* Save it.  */
+ 185:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     stream -> ux_device_class_audio_stream_feedback = endpoint;
+ 186:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 }
+ 187:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #endif
+ARM GAS  /tmp/cc88e4O2.s 			page 7
+
+
+ 188:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             }
+ 189:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 190:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Check if done.  */
+ 191:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             if (stream -> ux_device_class_audio_stream_endpoint
+ 154              		.loc 1 191 13 is_stmt 1 view .LVU53
+ 155              		.loc 1 191 24 is_stmt 0 view .LVU54
+ 156 004c 8268     		ldr	r2, [r0, #8]
+ 157              		.loc 1 191 16 view .LVU55
+ 158 004e 9AB9     		cbnz	r2, .L9
+ 192:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #if defined(UX_DEVICE_CLASS_AUDIO_FEEDBACK_SUPPORT)
+ 193:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 && stream -> ux_device_class_audio_stream_feedback
+ 194:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #endif
+ 195:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 )
+ 196:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 break;
+ 197:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 198:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Next endpoint.  */
+ 199:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             endpoint =  endpoint -> ux_slave_endpoint_next_endpoint;
+ 159              		.loc 1 199 13 is_stmt 1 view .LVU56
+ 160              		.loc 1 199 22 is_stmt 0 view .LVU57
+ 161 0050 5B6A     		ldr	r3, [r3, #36]
+ 162              	.LVL22:
+ 163              	.L5:
+ 137:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         {
+ 164              		.loc 1 137 24 is_stmt 1 view .LVU58
+ 165 0052 8BB1     		cbz	r3, .L9
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 UX_DEVICE_CLASS_AUDIO_EP_TRANSFER_TYPE_MASK) == UX_ISOCHRONOUS_ENDPOINT)
+ 166              		.loc 1 141 13 view .LVU59
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 UX_DEVICE_CLASS_AUDIO_EP_TRANSFER_TYPE_MASK) == UX_ISOCHRONOUS_ENDPOINT)
+ 167              		.loc 1 141 57 is_stmt 0 view .LVU60
+ 168 0054 9A69     		ldr	r2, [r3, #24]
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 UX_DEVICE_CLASS_AUDIO_EP_TRANSFER_TYPE_MASK) == UX_ISOCHRONOUS_ENDPOINT)
+ 169              		.loc 1 141 71 view .LVU61
+ 170 0056 02F00302 		and	r2, r2, #3
+ 141:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 UX_DEVICE_CLASS_AUDIO_EP_TRANSFER_TYPE_MASK) == UX_ISOCHRONOUS_ENDPOINT)
+ 171              		.loc 1 141 15 view .LVU62
+ 172 005a 012A     		cmp	r2, #1
+ 173 005c F6D1     		bne	.L6
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                      UX_ENDPOINT_DIRECTION) == endpoint_dir)
+ 174              		.loc 1 146 17 is_stmt 1 view .LVU63
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                      UX_ENDPOINT_DIRECTION) == endpoint_dir)
+ 175              		.loc 1 146 60 is_stmt 0 view .LVU64
+ 176 005e 5A69     		ldr	r2, [r3, #20]
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                      UX_ENDPOINT_DIRECTION) == endpoint_dir)
+ 177              		.loc 1 146 78 view .LVU65
+ 178 0060 02F08002 		and	r2, r2, #128
+ 146:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                      UX_ENDPOINT_DIRECTION) == endpoint_dir)
+ 179              		.loc 1 146 20 view .LVU66
+ 180 0064 8A42     		cmp	r2, r1
+ 181 0066 F1D1     		bne	.L6
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     {
+ 182              		.loc 1 151 21 is_stmt 1 view .LVU67
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     {
+ 183              		.loc 1 151 123 is_stmt 0 view .LVU68
+ 184 0068 D0F8D020 		ldr	r2, [r0, #208]
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     {
+ 185              		.loc 1 151 173 view .LVU69
+ 186 006c 083A     		subs	r2, r2, #8
+ARM GAS  /tmp/cc88e4O2.s 			page 8
+
+
+ 151:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                     {
+ 187              		.loc 1 151 24 view .LVU70
+ 188 006e 1D6D     		ldr	r5, [r3, #80]
+ 189 0070 9542     		cmp	r5, r2
+ 190 0072 E4D8     		bhi	.L20
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 }
+ 191              		.loc 1 162 21 is_stmt 1 view .LVU71
+ 162:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****                 }
+ 192              		.loc 1 162 69 is_stmt 0 view .LVU72
+ 193 0074 8360     		str	r3, [r0, #8]
+ 194 0076 E9E7     		b	.L6
+ 195              	.L9:
+ 200:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         }
+ 201:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 202:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* Now check if all endpoints have been found.  */
+ 203:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         if (stream -> ux_device_class_audio_stream_endpoint == UX_NULL)
+ 196              		.loc 1 203 9 is_stmt 1 view .LVU73
+ 197              		.loc 1 203 20 is_stmt 0 view .LVU74
+ 198 0078 8368     		ldr	r3, [r0, #8]
+ 199              	.LVL23:
+ 200              		.loc 1 203 12 view .LVU75
+ 201 007a 7BB1     		cbz	r3, .L21
+ 204:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         {
+ 205:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 206:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Error trap!  */
+ 207:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_DESCRIPTOR
+ 208:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 209:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Not all endpoints have been found. Major error, do not proceed.  */
+ 210:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 211:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         }
+ 212:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 213:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* Now reset frame buffers.  */
+ 214:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         frame_buffer = stream -> ux_device_class_audio_stream_buffer;
+ 202              		.loc 1 214 9 is_stmt 1 view .LVU76
+ 203              		.loc 1 214 22 is_stmt 0 view .LVU77
+ 204 007c D0F8C830 		ldr	r3, [r0, #200]
+ 205              	.LVL24:
+ 215:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         while(frame_buffer < stream -> ux_device_class_audio_stream_buffer + stream -> ux_device_cl
+ 206              		.loc 1 215 9 is_stmt 1 view .LVU78
+ 207              	.L12:
+ 208              		.loc 1 215 28 view .LVU79
+ 209              		.loc 1 215 37 is_stmt 0 view .LVU80
+ 210 0080 D0F8C820 		ldr	r2, [r0, #200]
+ 211              		.loc 1 215 85 view .LVU81
+ 212 0084 D0F8CC10 		ldr	r1, [r0, #204]
+ 213              		.loc 1 215 76 view .LVU82
+ 214 0088 0A44     		add	r2, r2, r1
+ 215              		.loc 1 215 28 view .LVU83
+ 216 008a 9A42     		cmp	r2, r3
+ 217 008c 0DD9     		bls	.L22
+ 216:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         {
+ 217:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 218:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Reset header information.  */
+ 219:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             *((ULONG *) frame_buffer     ) = 0;
+ 218              		.loc 1 219 13 is_stmt 1 view .LVU84
+ 219              		.loc 1 219 44 is_stmt 0 view .LVU85
+ 220 008e 0022     		movs	r2, #0
+ARM GAS  /tmp/cc88e4O2.s 			page 9
+
+
+ 221 0090 1A60     		str	r2, [r3]
+ 220:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             *((ULONG *)(frame_buffer + 4)) = 0;
+ 222              		.loc 1 220 13 is_stmt 1 view .LVU86
+ 223              		.loc 1 220 44 is_stmt 0 view .LVU87
+ 224 0092 5A60     		str	r2, [r3, #4]
+ 221:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 222:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             /* Next.  */
+ 223:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             frame_buffer += stream -> ux_device_class_audio_stream_frame_buffer_size;
+ 225              		.loc 1 223 13 is_stmt 1 view .LVU88
+ 226              		.loc 1 223 36 is_stmt 0 view .LVU89
+ 227 0094 D0F8D020 		ldr	r2, [r0, #208]
+ 228              		.loc 1 223 26 view .LVU90
+ 229 0098 1344     		add	r3, r3, r2
+ 230              	.LVL25:
+ 231              		.loc 1 223 26 view .LVU91
+ 232 009a F1E7     		b	.L12
+ 233              	.LVL26:
+ 234              	.L21:
+ 207:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 235              		.loc 1 207 13 is_stmt 1 view .LVU92
+ 236 009c 4222     		movs	r2, #66
+ 237 009e 0721     		movs	r1, #7
+ 238              	.LVL27:
+ 207:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 239              		.loc 1 207 13 is_stmt 0 view .LVU93
+ 240 00a0 0220     		movs	r0, #2
+ 241              	.LVL28:
+ 207:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 242              		.loc 1 207 13 view .LVU94
+ 243 00a2 FFF7FEFF 		bl	_ux_system_error_handler
+ 244              	.LVL29:
+ 210:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         }
+ 245              		.loc 1 210 13 is_stmt 1 view .LVU95
+ 210:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         }
+ 246              		.loc 1 210 19 is_stmt 0 view .LVU96
+ 247 00a6 4220     		movs	r0, #66
+ 248 00a8 0BE0     		b	.L1
+ 249              	.LVL30:
+ 250              	.L22:
+ 224:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         }
+ 225:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_transfer_pos = stream -> ux_device_class_audio_strea
+ 251              		.loc 1 225 9 is_stmt 1 view .LVU97
+ 252              		.loc 1 225 70 is_stmt 0 view .LVU98
+ 253 00aa D0F8D830 		ldr	r3, [r0, #216]
+ 254              	.LVL31:
+ 255              		.loc 1 225 61 view .LVU99
+ 256 00ae C0F8D430 		str	r3, [r0, #212]
+ 257 00b2 01E0     		b	.L14
+ 258              	.LVL32:
+ 259              	.L3:
+ 226:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 227:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #if defined(UX_DEVICE_CLASS_AUDIO_FEEDBACK_SUPPORT)
+ 228:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 229:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* If feedback supported, resume the thread.  */
+ 230:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         if (stream -> ux_device_class_audio_stream_feedback_thread_stack)
+ 231:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****             _ux_utility_thread_resume(&stream -> ux_device_class_audio_stream_feedback_thread);
+ 232:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #endif
+ARM GAS  /tmp/cc88e4O2.s 			page 10
+
+
+ 233:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     }
+ 234:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     else
+ 235:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     {
+ 236:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 237:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* There is no data endpoint.  */
+ 238:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_endpoint = UX_NULL;
+ 260              		.loc 1 238 9 is_stmt 1 view .LVU100
+ 261              		.loc 1 238 57 is_stmt 0 view .LVU101
+ 262 00b4 0023     		movs	r3, #0
+ 263 00b6 8360     		str	r3, [r0, #8]
+ 264              	.L14:
+ 239:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #if defined(UX_DEVICE_CLASS_AUDIO_FEEDBACK_SUPPORT)
+ 240:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_feedback = UX_NULL;
+ 241:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** #endif
+ 242:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 243:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* In this case, we are reverting to the Alternate Setting 0.  We need to terminate the pen
+ 244:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /* Endpoints actually aborted and destroyed before change command.  */
+ 245:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         /*
+ 246:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         _ux_device_stack_transfer_all_request_abort(stream -> ux_device_class_audio_stream_endpoint
+ 247:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****          */
+ 248:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     }
+ 249:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 250:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Invoke stream change callback.  */
+ 251:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     if (stream -> ux_device_class_audio_stream_callbacks.ux_device_class_audio_stream_change)
+ 265              		.loc 1 251 5 is_stmt 1 view .LVU102
+ 266              		.loc 1 251 57 is_stmt 0 view .LVU103
+ 267 00b8 C368     		ldr	r3, [r0, #12]
+ 268              		.loc 1 251 8 view .LVU104
+ 269 00ba 1BB1     		cbz	r3, .L17
+ 252:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****         stream -> ux_device_class_audio_stream_callbacks.ux_device_class_audio_stream_change(stream
+ 270              		.loc 1 252 9 is_stmt 1 view .LVU105
+ 271 00bc A169     		ldr	r1, [r4, #24]
+ 272 00be 9847     		blx	r3
+ 273              	.LVL33:
+ 253:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** 
+ 254:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     /* Return completion status.  */
+ 255:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c ****     return(UX_SUCCESS);
+ 274              		.loc 1 255 11 is_stmt 0 view .LVU106
+ 275 00c0 0020     		movs	r0, #0
+ 276              	.L1:
+ 256:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** }
+ 277              		.loc 1 256 1 view .LVU107
+ 278 00c2 38BD     		pop	{r3, r4, r5, pc}
+ 279              	.LVL34:
+ 280              	.L17:
+ 255:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** }
+ 281              		.loc 1 255 11 view .LVU108
+ 282 00c4 0020     		movs	r0, #0
+ 283              	.LVL35:
+ 255:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_change.c **** }
+ 284              		.loc 1 255 11 view .LVU109
+ 285 00c6 FCE7     		b	.L1
+ 286              	.L24:
+ 287              		.align	2
+ 288              	.L23:
+ 289 00c8 00000000 		.word	_ux_device_class_audio_read_thread_entry
+ 290              		.cfi_endproc
+ARM GAS  /tmp/cc88e4O2.s 			page 11
+
+
+ 291              	.LFE11:
+ 293              		.text
+ 294              	.Letext0:
+ 295              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 296              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 297              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 298              		.file 5 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_audio.h"
+ 299              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/cc88e4O2.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_audio_change.c
+     /tmp/cc88e4O2.s:20     .text._ux_device_class_audio_change:00000000 $t
+     /tmp/cc88e4O2.s:26     .text._ux_device_class_audio_change:00000000 _ux_device_class_audio_change
+     /tmp/cc88e4O2.s:289    .text._ux_device_class_audio_change:000000c8 $d
+
+UNDEFINED SYMBOLS
+_ux_system_error_handler
+_ux_device_class_audio_read_thread_entry

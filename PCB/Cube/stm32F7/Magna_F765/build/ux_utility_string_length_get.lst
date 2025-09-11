@@ -1,0 +1,178 @@
+ARM GAS  /tmp/ccZ9vGDW.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_string_length_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c"
+  19              		.section	.text._ux_utility_string_length_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_string_length_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_string_length_get:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+ARM GAS  /tmp/ccZ9vGDW.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/ 
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  FUNCTION                                               RELEASE        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    _ux_utility_string_length_get                       PORTABLE C      */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                           6.1          */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    This function derives the length of a NULL-terminated string.       */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    This function is deprecated, for the possible issue of operating on */
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    a buffer that is not NULL-terminated. As a replacement,             */
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    _ux_utility_string_length_check should be used, where the length of */
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    the buffer is introduced to validate the string by checking for the */
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    NULL-terminator within the buffer length.                           */
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  INPUT                                                                 */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    string                                Pointer to string             */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  OUTPUT                                                                */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    length of string                                                    */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  CALLS                                                                 */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    None                                                                */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  CALLED BY                                                             */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    USBX Components                                                     */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  RELEASE HISTORY                                                       */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /*                                                                        */
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** /**************************************************************************/
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** ULONG  _ux_utility_string_length_get(UCHAR *string)
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** {
+  29              		.loc 1 77 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34              		.loc 1 77 1 is_stmt 0 view .LVU1
+  35 0000 0246     		mov	r2, r0
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** ULONG       length =  0;
+  36              		.loc 1 79 1 is_stmt 1 view .LVU2
+ARM GAS  /tmp/ccZ9vGDW.s 			page 3
+
+
+  37              	.LVL1:
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     /* Loop to find the length of the string.  */
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     length =  0;
+  38              		.loc 1 82 5 view .LVU3
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     while (string[length])
+  39              		.loc 1 83 5 view .LVU4
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     while (string[length])
+  40              		.loc 1 82 12 is_stmt 0 view .LVU5
+  41 0002 0020     		movs	r0, #0
+  42              	.LVL2:
+  43              		.loc 1 83 11 view .LVU6
+  44 0004 00E0     		b	.L2
+  45              	.LVL3:
+  46              	.L3:
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     {
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****         /* Move to next position.  */
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****         length++;
+  47              		.loc 1 87 9 is_stmt 1 view .LVU7
+  48              		.loc 1 87 15 is_stmt 0 view .LVU8
+  49 0006 0130     		adds	r0, r0, #1
+  50              	.LVL4:
+  51              	.L2:
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     {
+  52              		.loc 1 83 12 is_stmt 1 view .LVU9
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     {
+  53              		.loc 1 83 18 is_stmt 0 view .LVU10
+  54 0008 135C     		ldrb	r3, [r2, r0]	@ zero_extendqisi2
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     {
+  55              		.loc 1 83 12 view .LVU11
+  56 000a 002B     		cmp	r3, #0
+  57 000c FBD1     		bne	.L3
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     }
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** 
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     /* Return length to caller.  */
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c ****     return(length); 
+  58              		.loc 1 91 5 is_stmt 1 view .LVU12
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c **** }
+  59              		.loc 1 92 1 is_stmt 0 view .LVU13
+  60 000e 7047     		bx	lr
+  61              		.cfi_endproc
+  62              	.LFE11:
+  64              		.text
+  65              	.Letext0:
+  66              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/ccZ9vGDW.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_string_length_get.c
+     /tmp/ccZ9vGDW.s:20     .text._ux_utility_string_length_get:00000000 $t
+     /tmp/ccZ9vGDW.s:26     .text._ux_utility_string_length_get:00000000 _ux_utility_string_length_get
+
+NO UNDEFINED SYMBOLS

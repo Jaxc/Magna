@@ -1,0 +1,245 @@
+ARM GAS  /tmp/ccB76KRy.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_stack_interface_set.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c"
+  19              		.section	.text._ux_host_stack_interface_set,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_interface_set
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_interface_set:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+ARM GAS  /tmp/ccB76KRy.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    _ux_host_stack_interface_set                        PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                           6.1.10       */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    This function performs a setting of an alternate setting for a      */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    specific interface.                                                 */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  INPUT                                                                 */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    interface                             Pointer to interface          */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  OUTPUT                                                                */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    Completion Status                                                   */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  CALLS                                                                 */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    _ux_host_stack_hcd_transfer_request   HCD transfer request          */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  CALLED BY                                                             */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    USBX Components                                                     */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  RELEASE HISTORY                                                       */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                            resulting in version 6.1    */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                            added standalone support,   */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                            resulting in version 6.1.10 */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** /**************************************************************************/
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** UINT  _ux_host_stack_interface_set(UX_INTERFACE *interface)
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** {
+  29              		.loc 1 76 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 76 1 is_stmt 0 view .LVU1
+  34 0000 30B5     		push	{r4, r5, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 12
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccB76KRy.s 			page 3
+
+
+  40 0002 85B0     		sub	sp, sp, #20
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 32
+  43 0004 0446     		mov	r4, r0
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** UX_DEVICE               *device;
+  44              		.loc 1 78 1 is_stmt 1 view .LVU2
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** UX_CONFIGURATION        *configuration;
+  45              		.loc 1 79 1 view .LVU3
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** UX_TRANSFER             *transfer_request;
+  46              		.loc 1 80 1 view .LVU4
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** UINT                    status;
+  47              		.loc 1 81 1 view .LVU5
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** UX_ENDPOINT             *control_endpoint;
+  48              		.loc 1 82 1 view .LVU6
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_INTERFACE_SET, interface, 0, 0, 0, UX_TRACE_HOST_ST
+  49              		.loc 1 85 5 view .LVU7
+  50 0006 0025     		movs	r5, #0
+  51 0008 0395     		str	r5, [sp, #12]
+  52 000a 0295     		str	r5, [sp, #8]
+  53 000c 4FF00073 		mov	r3, #33554432
+  54 0010 0193     		str	r3, [sp, #4]
+  55 0012 0095     		str	r5, [sp]
+  56 0014 2B46     		mov	r3, r5
+  57 0016 2A46     		mov	r2, r5
+  58 0018 0146     		mov	r1, r0
+  59 001a 4FF41C70 		mov	r0, #624
+  60              	.LVL1:
+  61              		.loc 1 85 5 is_stmt 0 view .LVU8
+  62 001e FFF7FEFF 		bl	_ux_trace_event_insert
+  63              	.LVL2:
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     /* Retrieve the pointer to the control endpoint and its transfer_request.
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****        From the interface we go back to the configuration, then the device.
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****        The device contains the default control endpoint container.  */
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     configuration =     interface -> ux_interface_configuration;
+  64              		.loc 1 90 5 is_stmt 1 view .LVU9
+  65              		.loc 1 90 19 is_stmt 0 view .LVU10
+  66 0022 236C     		ldr	r3, [r4, #64]
+  67              	.LVL3:
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     device =            configuration -> ux_configuration_device;
+  68              		.loc 1 91 5 is_stmt 1 view .LVU11
+  69              		.loc 1 91 12 is_stmt 0 view .LVU12
+  70 0024 586B     		ldr	r0, [r3, #52]
+  71              	.LVL4:
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     control_endpoint =  &device -> ux_device_control_endpoint;
+  72              		.loc 1 92 5 is_stmt 1 view .LVU13
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     transfer_request =  &control_endpoint -> ux_endpoint_transfer_request;
+  73              		.loc 1 93 5 view .LVU14
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     /* Create a transfer_request for the SET_INTERFACE request. No data for this request */
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     transfer_request -> ux_transfer_request_requested_length =  0;
+  74              		.loc 1 96 5 view .LVU15
+  75              		.loc 1 96 62 is_stmt 0 view .LVU16
+  76 0026 C0F8B850 		str	r5, [r0, #184]
+ARM GAS  /tmp/ccB76KRy.s 			page 4
+
+
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     transfer_request -> ux_transfer_request_function =          UX_SET_INTERFACE;
+  77              		.loc 1 97 5 is_stmt 1 view .LVU17
+  78              		.loc 1 97 54 is_stmt 0 view .LVU18
+  79 002a 0B22     		movs	r2, #11
+  80 002c C0F8C420 		str	r2, [r0, #196]
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     transfer_request -> ux_transfer_request_type =              UX_REQUEST_OUT | UX_REQUEST_TYPE_ST
+  81              		.loc 1 98 5 is_stmt 1 view .LVU19
+  82              		.loc 1 98 50 is_stmt 0 view .LVU20
+  83 0030 0122     		movs	r2, #1
+  84 0032 C0F8C020 		str	r2, [r0, #192]
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     transfer_request -> ux_transfer_request_index =             (USHORT) interface -> ux_interface_
+  85              		.loc 1 99 5 is_stmt 1 view .LVU21
+  86              		.loc 1 99 51 is_stmt 0 view .LVU22
+  87 0036 A28A     		ldrh	r2, [r4, #20]
+  88 0038 C0F8CC20 		str	r2, [r0, #204]
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     transfer_request -> ux_transfer_request_value =             (USHORT) interface -> ux_interface_
+  89              		.loc 1 100 5 is_stmt 1 view .LVU23
+  90              		.loc 1 100 51 is_stmt 0 view .LVU24
+  91 003c 228B     		ldrh	r2, [r4, #24]
+  92 003e C0F8C820 		str	r2, [r0, #200]
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     /* Send request.  */
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     status = _ux_host_stack_transfer_request(transfer_request);
+  93              		.loc 1 103 5 is_stmt 1 view .LVU25
+  94              		.loc 1 103 14 is_stmt 0 view .LVU26
+  95 0042 AC30     		adds	r0, r0, #172
+  96              	.LVL5:
+  97              		.loc 1 103 14 view .LVU27
+  98 0044 FFF7FEFF 		bl	_ux_host_stack_transfer_request
+  99              	.LVL6:
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     /* Return status completion.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c ****     return(status);
+ 100              		.loc 1 106 5 is_stmt 1 view .LVU28
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_interface_set.c **** }
+ 101              		.loc 1 107 1 is_stmt 0 view .LVU29
+ 102 0048 05B0     		add	sp, sp, #20
+ 103              	.LCFI2:
+ 104              		.cfi_def_cfa_offset 12
+ 105              		@ sp needed
+ 106 004a 30BD     		pop	{r4, r5, pc}
+ 107              		.loc 1 107 1 view .LVU30
+ 108              		.cfi_endproc
+ 109              	.LFE11:
+ 111              		.text
+ 112              	.Letext0:
+ 113              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 114              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 115              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 116              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 117              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ARM GAS  /tmp/ccB76KRy.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_interface_set.c
+     /tmp/ccB76KRy.s:20     .text._ux_host_stack_interface_set:00000000 $t
+     /tmp/ccB76KRy.s:26     .text._ux_host_stack_interface_set:00000000 _ux_host_stack_interface_set
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_host_stack_transfer_request

@@ -1,0 +1,1437 @@
+ARM GAS  /tmp/cce9zK1x.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_timer_info_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_timer_info_get.c"
+  19              		.section	.text._tx_timer_info_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_timer_info_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_timer_info_get:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**   Timer                                                               */
+  19:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** #include "tx_api.h"
+  29:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** #include "tx_trace.h"
+  30:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** #include "tx_timer.h"
+ARM GAS  /tmp/cce9zK1x.s 			page 2
+
+
+  31:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  32:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  33:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  34:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  35:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  FUNCTION                                               RELEASE        */
+  36:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  37:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    _tx_timer_info_get                                  PORTABLE C      */
+  38:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                           6.1          */
+  39:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  41:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  42:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  43:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  45:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    This function retrieves information from the specified timer.       */
+  46:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  47:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  INPUT                                                                 */
+  48:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  49:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    timer_ptr                         Pointer to timer control block    */
+  50:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    name                              Destination for the timer name    */
+  51:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    active                            Destination for active flag       */
+  52:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    remaining_ticks                   Destination for remaining ticks   */
+  53:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                        before expiration               */
+  54:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    reschedule_ticks                  Destination for reschedule ticks  */
+  55:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    next_timer                        Destination for next timer on the */
+  56:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                        created list                    */
+  57:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  58:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  OUTPUT                                                                */
+  59:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  60:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    status                            Completion status                 */
+  61:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  62:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  CALLS                                                                 */
+  63:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  64:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    None                                                                */
+  65:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  66:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  CALLED BY                                                             */
+  67:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  68:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    Application Code                                                    */
+  69:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  70:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  RELEASE HISTORY                                                       */
+  71:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  72:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  73:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  74:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  75:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+  76:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                            resulting in version 6.1    */
+  77:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /*                                                                        */
+  78:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** /**************************************************************************/
+  79:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** UINT  _tx_timer_info_get(TX_TIMER *timer_ptr, CHAR **name, UINT *active, ULONG *remaining_ticks,
+  80:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 ULONG *reschedule_ticks, TX_TIMER **next_timer)
+  81:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** {
+  29              		.loc 1 81 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 8, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 81 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ARM GAS  /tmp/cce9zK1x.s 			page 3
+
+
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 32
+  37              		.cfi_offset 4, -32
+  38              		.cfi_offset 5, -28
+  39              		.cfi_offset 6, -24
+  40              		.cfi_offset 7, -20
+  41              		.cfi_offset 8, -16
+  42              		.cfi_offset 9, -12
+  43              		.cfi_offset 10, -8
+  44              		.cfi_offset 14, -4
+  45 0004 82B0     		sub	sp, sp, #8
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 40
+  48 0006 0446     		mov	r4, r0
+  49 0008 0F46     		mov	r7, r1
+  50 000a 1646     		mov	r6, r2
+  51 000c 1D46     		mov	r5, r3
+  52 000e DDF82890 		ldr	r9, [sp, #40]
+  53 0012 DDF82C80 		ldr	r8, [sp, #44]
+  82:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  83:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** TX_INTERRUPT_SAVE_AREA
+  54              		.loc 1 83 1 is_stmt 1 view .LVU2
+  84:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  85:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** TX_TIMER_INTERNAL   *internal_ptr;
+  55              		.loc 1 85 1 view .LVU3
+  86:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** TX_TIMER_INTERNAL   **list_head;
+  56              		.loc 1 86 1 view .LVU4
+  87:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** ULONG               ticks_left;
+  57              		.loc 1 87 1 view .LVU5
+  88:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** UINT                timer_active;
+  58              		.loc 1 88 1 view .LVU6
+  89:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** UINT                active_timer_list;
+  59              		.loc 1 89 1 view .LVU7
+  90:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  91:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  92:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Disable interrupts.  */
+  93:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     TX_DISABLE
+  60              		.loc 1 93 5 view .LVU8
+  61              	.LBB13:
+  62              	.LBI13:
+  63              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+   1:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+   2:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+   3:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+   5:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  10:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  11:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  12:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  13:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  14:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  15:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**                                                                       */
+  16:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /** ThreadX Component                                                     */
+ARM GAS  /tmp/cce9zK1x.s 			page 4
+
+
+  17:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**                                                                       */
+  18:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**   Port Specific                                                       */
+  19:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**                                                                       */
+  20:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  21:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  22:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  23:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  24:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  25:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  26:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*  PORT SPECIFIC C INFORMATION                            RELEASE        */
+  27:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  28:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    tx_port.h                                         Cortex-M7/GNU     */
+  29:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                           6.1.10       */
+  30:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  31:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*  AUTHOR                                                                */
+  32:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  33:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    Scott Larson, Microsoft Corporation                                 */
+  34:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  35:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*  DESCRIPTION                                                           */
+  36:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  37:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    This file contains data type definitions that make the ThreadX      */
+  38:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    real-time kernel function identically on a variety of different     */
+  39:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    processor architectures.  For example, the size or number of bits   */
+  40:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    in an "int" data type vary between microprocessor architectures and */
+  41:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    even C compilers for the same microprocessor.  ThreadX does not     */
+  42:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    directly use native C data types.  Instead, ThreadX creates its     */
+  43:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    own special types that can be mapped to actual data types by this   */
+  44:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    file to guarantee consistency in the interface and functionality.   */
+  45:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  46:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    This file replaces the previous Cortex-M3/M4/M7 files. It unifies   */
+  47:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    the ARMv7-M architecture and compilers into one common file.        */
+  48:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  49:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*  RELEASE HISTORY                                                       */
+  50:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  51:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*    DATE              NAME                      DESCRIPTION             */
+  52:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  53:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*  06-02-2021      Scott Larson            Initial Version 6.1.7         */
+  54:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*  01-31-2022      Scott Larson            Modified comments, updated    */
+  55:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                            typedef to fix misra        */
+  56:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                            violation,                  */
+  57:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                            fixed predefined macro,     */
+  58:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                            resulting in version 6.1.10 */
+  59:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*                                                                        */
+  60:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /**************************************************************************/
+  61:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  62:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_PORT_H
+  63:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_PORT_H
+  64:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  65:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  66:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Determine if the optional ThreadX user define file should be used.  */
+  67:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  68:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_INCLUDE_USER_DEFINE_FILE
+  69:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  70:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Yes, include the user defines in tx_user.h. The defines in this file may
+  71:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    alternately be defined on the command line.  */
+  72:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  73:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include "tx_user.h"
+ARM GAS  /tmp/cce9zK1x.s 			page 5
+
+
+  74:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+  75:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  76:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  77:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define compiler library include files.  */
+  78:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  79:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include <stdlib.h>
+  80:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include <string.h>
+  81:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  82:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef __ICCARM__
+  83:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include <intrinsics.h>                     /* IAR Intrinsics */
+  84:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define __asm__ __asm                       /* Define to make all inline asm look similar */
+  85:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef  TX_ENABLE_IAR_LIBRARY_SUPPORT
+  86:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include <yvals.h>
+  87:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+  88:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif /* __ICCARM__ */
+  89:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  90:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef __ghs__
+  91:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include <arm_ghs.h>
+  92:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #include "tx_ghs.h"
+  93:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* __ghs__ */
+  94:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  95:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+  96:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #if !defined(__GNUC__) && !defined(__CC_ARM)
+  97:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define __get_control_value __get_CONTROL
+  98:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define __set_control_value __set_CONTROL
+  99:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 100:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 101:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef __GNUC__
+ 102:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define __get_ipsr_value __get_IPSR
+ 103:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 104:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 105:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define ThreadX basic types for this port.  */
+ 106:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 107:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define VOID                                    void
+ 108:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef char                                    CHAR;
+ 109:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef unsigned char                           UCHAR;
+ 110:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef int                                     INT;
+ 111:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef unsigned int                            UINT;
+ 112:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef long                                    LONG;
+ 113:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef unsigned long                           ULONG;
+ 114:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef unsigned long long                      ULONG64;
+ 115:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef short                                   SHORT;
+ 116:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** typedef unsigned short                          USHORT;
+ 117:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define ULONG64_DEFINED
+ 118:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 119:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the priority levels for ThreadX.  Legal values range
+ 120:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    from 32 to 1024 and MUST be evenly divisible by 32.  */
+ 121:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 122:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MAX_PRIORITIES
+ 123:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_MAX_PRIORITIES                       32
+ 124:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 125:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 126:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 127:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the minimum stack for a ThreadX thread on this processor. If the size supplied during
+ 128:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    thread creation is less than this value, the thread create call will return an error.  */
+ 129:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 130:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MINIMUM_STACK
+ARM GAS  /tmp/cce9zK1x.s 			page 6
+
+
+ 131:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_MINIMUM_STACK                        200         /* Minimum stack size for this port  */
+ 132:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 133:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 134:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 135:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the system timer thread's default stack size and priority.  These are only applicable
+ 136:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    if TX_TIMER_PROCESS_IN_ISR is not defined.  */
+ 137:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 138:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_TIMER_THREAD_STACK_SIZE
+ 139:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TIMER_THREAD_STACK_SIZE              1024        /* Default timer thread stack size  */
+ 140:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 141:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 142:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_TIMER_THREAD_PRIORITY
+ 143:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TIMER_THREAD_PRIORITY                0           /* Default timer thread priority    */
+ 144:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 145:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 146:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 147:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define various constants for the ThreadX Cortex-M port.  */
+ 148:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 149:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_INT_DISABLE                          1           /* Disable interrupts               */
+ 150:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_INT_ENABLE                           0           /* Enable interrupts                */
+ 151:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 152:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 153:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the clock source for trace event entry time stamp. The following two item are port specif
+ 154:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    For example, if the time source is at the address 0x0a800024 and is 16-bits in size, the clock
+ 155:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    source constants would be:
+ 156:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 157:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_SOURCE                    *((ULONG *) 0x0a800024)
+ 158:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_MASK                      0x0000FFFFUL
+ 159:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 160:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** */
+ 161:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 162:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 163:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_TRACE_TIME_SOURCE
+ 164:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_SOURCE                    *((ULONG *) 0xE0001004)
+ 165:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 166:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 167:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** ULONG   _tx_misra_time_stamp_get(VOID);
+ 168:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_SOURCE                    _tx_misra_time_stamp_get()
+ 169:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 170:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 171:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_TRACE_TIME_MASK
+ 172:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_MASK                      0xFFFFFFFFUL
+ 173:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 174:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 175:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef __ghs__
+ 176:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define constants for Green Hills EventAnalyzer.  */
+ 177:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 178:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the number of ticks per second. This informs the EventAnalyzer what the timestamps
+ 179:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    represent.  By default, this is set to 1,000,000 i.e., one tick every microsecond. */
+ 180:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 181:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_EL_TICKS_PER_SECOND                  1000000
+ 182:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 183:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the method of how to get the upper and lower 32-bits of the time stamp. By default, simpl
+ 184:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    simulate the time-stamp source with a counter.  */
+ 185:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 186:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define read_tbu()                              _tx_el_time_base_upper
+ 187:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define read_tbl()                              ++_tx_el_time_base_lower
+ARM GAS  /tmp/cce9zK1x.s 			page 7
+
+
+ 188:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* __ghs__ */
+ 189:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 190:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the port specific options for the _tx_build_options variable. This variable indicates
+ 191:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    how the ThreadX library was built.  */
+ 192:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 193:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_BUILD_OPTIONS          (0)
+ 194:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 195:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 196:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the in-line initialization constant so that modules with in-line
+ 197:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    initialization capabilities can prevent their initialization from being
+ 198:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    a function call.  */
+ 199:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 200:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_MISRA_ENABLE
+ 201:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_DISABLE_INLINE
+ 202:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 203:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_INLINE_INITIALIZATION
+ 204:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 205:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 206:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 207:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Determine whether or not stack checking is enabled. By default, ThreadX stack checking is
+ 208:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    disabled. When the following is defined, ThreadX thread stack checking is enabled.  If stack
+ 209:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    checking is enabled (TX_ENABLE_STACK_CHECKING is defined), the TX_DISABLE_STACK_FILLING
+ 210:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    define is negated, thereby forcing the stack fill which is necessary for the stack checking
+ 211:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    logic.  */
+ 212:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 213:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 214:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_ENABLE_STACK_CHECKING
+ 215:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #undef TX_DISABLE_STACK_FILLING
+ 216:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 217:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 218:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 219:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 220:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the TX_THREAD control block extensions for this port. The main reason
+ 221:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    for the multiple macros is so that backward compatibility can be maintained with
+ 222:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    existing ThreadX kernel awareness modules.  */
+ 223:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 224:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_0
+ 225:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_1
+ 226:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef  TX_ENABLE_IAR_LIBRARY_SUPPORT
+ 227:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_2           VOID    *tx_thread_iar_tls_pointer;
+ 228:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__ghs__)
+ 229:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_2           VOID *  tx_thread_eh_globals;                           \
+ 230:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                         int     Errno;             /* errno.  */                \
+ 231:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                         char *  strtok_saved_pos;  /* strtok() position.  */
+ 232:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 233:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_2
+ 234:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 235:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 236:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 237:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_3
+ 238:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 239:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 240:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 241:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the port extensions of the remaining ThreadX objects.  */
+ 242:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 243:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_BLOCK_POOL_EXTENSION
+ 244:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_BYTE_POOL_EXTENSION
+ARM GAS  /tmp/cce9zK1x.s 			page 8
+
+
+ 245:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_EVENT_FLAGS_GROUP_EXTENSION
+ 246:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_MUTEX_EXTENSION
+ 247:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_QUEUE_EXTENSION
+ 248:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_SEMAPHORE_EXTENSION
+ 249:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TIMER_EXTENSION
+ 250:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 251:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 252:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the user extension field of the thread control block.  Nothing
+ 253:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    additional is needed for this port so it is defined as white space.  */
+ 254:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 255:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_THREAD_USER_EXTENSION
+ 256:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_USER_EXTENSION
+ 257:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 258:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 259:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 260:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the macros for processing extensions in tx_thread_create, tx_thread_delete,
+ 261:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    tx_thread_shell_entry, and tx_thread_terminate.  */
+ 262:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 263:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 264:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef  TX_ENABLE_IAR_LIBRARY_SUPPORT
+ 265:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #if (__VER__ < 8000000)
+ 266:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_CREATE_EXTENSION(thread_ptr)                      thread_ptr -> tx_thread_iar_tls
+ 267:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_DELETE_EXTENSION(thread_ptr)                      __iar_dlib_perthread_deallocate
+ 268:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     thread_ptr -> tx_thread_iar_tls
+ 269:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_PRE_SCHEDULER_INITIALIZATION               __iar_dlib_perthread_access(0);
+ 270:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 271:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** void    *_tx_iar_create_per_thread_tls_area(void);
+ 272:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** void    _tx_iar_destroy_per_thread_tls_area(void *tls_ptr);
+ 273:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** void    __iar_Initlocks(void);
+ 274:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 275:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_CREATE_EXTENSION(thread_ptr)                      thread_ptr -> tx_thread_iar_tls
+ 276:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_DELETE_EXTENSION(thread_ptr)                      do {_tx_iar_destroy_per_thread_
+ 277:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                         thread_ptr -> tx_thread_iar
+ 278:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_PRE_SCHEDULER_INITIALIZATION               do {__iar_Initlocks();} while(0
+ 279:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 280:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 281:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_CREATE_EXTENSION(thread_ptr)
+ 282:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_DELETE_EXTENSION(thread_ptr)
+ 283:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 284:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 285:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #if defined(__ARMVFP__) || defined(__ARM_PCS_VFP) || defined(__ARM_FP) || defined(__TARGET_FPU_VFP)
+ 286:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 287:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_MISRA_ENABLE
+ 288:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 289:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** ULONG  _tx_misra_control_get(void);
+ 290:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** void   _tx_misra_control_set(ULONG value);
+ 291:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** ULONG  _tx_misra_fpccr_get(void);
+ 292:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** void   _tx_misra_vfp_touch(void);
+ 293:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 294:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else   /* TX_MISRA_ENABLE not defined */
+ 295:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 296:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define some helper functions (these are intrinsics in some compilers). */
+ 297:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef __GNUC__ /* GCC and ARM Compiler 6 */
+ 298:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 299:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline ULONG __get_control_value(void)
+ 300:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 301:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** ULONG  control_value;
+ARM GAS  /tmp/cce9zK1x.s 			page 9
+
+
+ 302:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 303:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile (" MRS  %0,CONTROL ": "=r" (control_value) );
+ 304:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     return(control_value);
+ 305:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 306:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 307:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __set_control_value(ULONG control_value)
+ 308:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 309:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile (" MSR  CONTROL,%0": : "r" (control_value): "memory" );
+ 310:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 311:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 312:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_VFP_TOUCH()  __asm__ volatile ("VMOV.F32 s0, s0");
+ 313:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 314:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__CC_ARM) /* ARM Compiler 5 */
+ 315:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 316:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) ULONG __get_control_value(void)
+ 317:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 318:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** ULONG  control_value;
+ 319:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 320:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm volatile ("MRS control_value,CONTROL");
+ 321:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     return(control_value);
+ 322:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 323:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 324:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) void __set_control_value(ULONG control_value)
+ 325:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 326:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("MSR CONTROL,control_value");
+ 327:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 328:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Can't access VFP registers with inline asm, so define this in tx_thread_schedule.  */
+ 329:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** void _tx_vfp_access(void);
+ 330:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_VFP_TOUCH()  _tx_vfp_access();
+ 331:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 332:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__ICCARM__)  /* IAR */
+ 333:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_VFP_TOUCH()  __asm__ volatile ("VMOV.F32 s0, s0");
+ 334:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* Helper functions for different compilers */
+ 335:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 336:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* TX_MISRA_ENABLE */
+ 337:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 338:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 339:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* A completed thread falls into _thread_shell_entry and we can simply deactivate the FPU via CONTR
+ 340:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    in order to ensure no lazy stacking will occur. */
+ 341:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 342:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 343:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 344:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_COMPLETED_EXTENSION(thread_ptr)   {                                              
+ 345:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     ULONG  _tx_vfp_state;                          
+ 346:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  __get_control_value();    
+ 347:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  _tx_vfp_state & ~((ULONG) 
+ 348:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         __set_control_value(_tx_vfp_state);        
+ 349:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     }
+ 350:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 351:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 352:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_COMPLETED_EXTENSION(thread_ptr)   {                                              
+ 353:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     ULONG  _tx_vfp_state;                          
+ 354:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  _tx_misra_control_get();  
+ 355:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  _tx_vfp_state & ~((ULONG) 
+ 356:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_misra_control_set(_tx_vfp_state);      
+ 357:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     }
+ 358:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ARM GAS  /tmp/cce9zK1x.s 			page 10
+
+
+ 359:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 360:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 361:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* A thread can be terminated by another thread, so we first check if it's self-terminating and not
+ 362:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    If so, deactivate the FPU via CONTROL.FPCA. Otherwise we are in an interrupt or another thread i
+ 363:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    this one, so if the FPCCR.LSPACT bit is set, we need to save the CONTROL.FPCA state, touch the F
+ 364:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    the lazy FPU save, then restore the CONTROL.FPCA state. */
+ 365:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 366:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 367:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 368:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_TERMINATED_EXTENSION(thread_ptr)  {                                              
+ 369:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     ULONG  _tx_system_state;                       
+ 370:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_system_state =  TX_THREAD_GET_SYSTEM_ST
+ 371:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         if ((_tx_system_state == ((ULONG) 0)) && ((
+ 372:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         {                                          
+ 373:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         ULONG  _tx_vfp_state;                      
+ 374:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  __get_control_value();
+ 375:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  _tx_vfp_state & ~((ULO
+ 376:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             __set_control_value(_tx_vfp_state);    
+ 377:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         }                                          
+ 378:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         else                                       
+ 379:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         {                                          
+ 380:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         ULONG  _tx_fpccr;                          
+ 381:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  *((ULONG *) 0xE000EF34);  
+ 382:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  _tx_fpccr & ((ULONG) 0x01)
+ 383:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             if (_tx_fpccr == ((ULONG) 0x01))       
+ 384:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             {                                      
+ 385:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             ULONG _tx_vfp_state;                   
+ 386:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state = __get_control_value
+ 387:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state =  _tx_vfp_state & ((
+ 388:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 TX_VFP_TOUCH();                    
+ 389:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 if (_tx_vfp_state == ((ULONG) 0))  
+ 390:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 {                                  
+ 391:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  __get_control_
+ 392:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  _tx_vfp_state 
+ 393:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     __set_control_value(_tx_vfp_sta
+ 394:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 }                                  
+ 395:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             }                                      
+ 396:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         }                                          
+ 397:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     }
+ 398:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 399:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 400:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_TERMINATED_EXTENSION(thread_ptr)  {                                              
+ 401:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     ULONG  _tx_system_state;                       
+ 402:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         _tx_system_state =  TX_THREAD_GET_SYSTEM_ST
+ 403:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         if ((_tx_system_state == ((ULONG) 0)) && ((
+ 404:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         {                                          
+ 405:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         ULONG  _tx_vfp_state;                      
+ 406:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  _tx_misra_control_get(
+ 407:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  _tx_vfp_state & ~((ULO
+ 408:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_misra_control_set(_tx_vfp_state);  
+ 409:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         }                                          
+ 410:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         else                                       
+ 411:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         {                                          
+ 412:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         ULONG  _tx_fpccr;                          
+ 413:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  _tx_misra_fpccr_get();    
+ 414:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  _tx_fpccr & ((ULONG) 0x01)
+ 415:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             if (_tx_fpccr == ((ULONG) 0x01))       
+ARM GAS  /tmp/cce9zK1x.s 			page 11
+
+
+ 416:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             {                                      
+ 417:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             ULONG _tx_vfp_state;                   
+ 418:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state = _tx_misra_control_g
+ 419:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state =  _tx_vfp_state & ((
+ 420:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 _tx_misra_vfp_touch();             
+ 421:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 if (_tx_vfp_state == ((ULONG) 0))  
+ 422:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 {                                  
+ 423:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  _tx_misra_cont
+ 424:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  _tx_vfp_state 
+ 425:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                     _tx_misra_control_set(_tx_vfp_s
+ 426:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                                 }                                  
+ 427:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                             }                                      
+ 428:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                         }                                          
+ 429:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                     }
+ 430:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 431:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 432:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else   /* No VFP in use */
+ 433:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 434:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_COMPLETED_EXTENSION(thread_ptr)
+ 435:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_TERMINATED_EXTENSION(thread_ptr)
+ 436:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 437:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* defined(__ARMVFP__) || defined(__ARM_PCS_VFP) || defined(__ARM_FP) || defined(__TARGET_F
+ 438:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 439:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 440:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the ThreadX object creation extensions for the remaining objects.  */
+ 441:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 442:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_BLOCK_POOL_CREATE_EXTENSION(pool_ptr)
+ 443:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_BYTE_POOL_CREATE_EXTENSION(pool_ptr)
+ 444:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_EVENT_FLAGS_GROUP_CREATE_EXTENSION(group_ptr)
+ 445:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_MUTEX_CREATE_EXTENSION(mutex_ptr)
+ 446:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_QUEUE_CREATE_EXTENSION(queue_ptr)
+ 447:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_SEMAPHORE_CREATE_EXTENSION(semaphore_ptr)
+ 448:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TIMER_CREATE_EXTENSION(timer_ptr)
+ 449:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 450:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 451:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the ThreadX object deletion extensions for the remaining objects.  */
+ 452:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 453:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_BLOCK_POOL_DELETE_EXTENSION(pool_ptr)
+ 454:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_BYTE_POOL_DELETE_EXTENSION(pool_ptr)
+ 455:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_EVENT_FLAGS_GROUP_DELETE_EXTENSION(group_ptr)
+ 456:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_MUTEX_DELETE_EXTENSION(mutex_ptr)
+ 457:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_QUEUE_DELETE_EXTENSION(queue_ptr)
+ 458:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_SEMAPHORE_DELETE_EXTENSION(semaphore_ptr)
+ 459:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_TIMER_DELETE_EXTENSION(timer_ptr)
+ 460:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 461:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 462:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the get system state macro.  */
+ 463:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 464:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_THREAD_GET_SYSTEM_STATE
+ 465:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 466:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 467:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef __CC_ARM /* ARM Compiler 5 */
+ 468:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 469:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** register unsigned int _ipsr __asm("ipsr");
+ 470:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | _ipsr)
+ 471:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 472:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__GNUC__) /* GCC and ARM Compiler 6 */
+ARM GAS  /tmp/cce9zK1x.s 			page 12
+
+
+ 473:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 474:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline unsigned int __get_ipsr_value(void)
+ 475:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 476:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** unsigned int  ipsr_value;
+ 477:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile (" MRS  %0,IPSR ": "=r" (ipsr_value) );
+ 478:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     return(ipsr_value);
+ 479:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 480:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 481:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | __get_ipsr_value())
+ 482:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 483:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__ICCARM__)   /* IAR */
+ 484:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 485:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | __get_IPSR())
+ 486:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 487:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* TX_THREAD_GET_SYSTEM_STATE for different compilers */
+ 488:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 489:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else   /* TX_MISRA_ENABLE is defined, use MISRA function. */
+ 490:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** ULONG   _tx_misra_ipsr_get(VOID);
+ 491:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | _tx_misra_ipsr_get())
+ 492:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* TX_MISRA_ENABLE */
+ 493:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif  /* TX_THREAD_GET_SYSTEM_STATE */
+ 494:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 495:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 496:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the check for whether or not to call the _tx_thread_system_return function.  A non-zero v
+ 497:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    indicates that _tx_thread_system_return should not be called. This overrides the definition in t
+ 498:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    for Cortex-M since so we don't waste time checking the _tx_thread_system_state variable that is 
+ 499:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    zero after initialization for Cortex-M ports. */
+ 500:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 501:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_THREAD_SYSTEM_RETURN_CHECK
+ 502:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_THREAD_SYSTEM_RETURN_CHECK(c)    (c) = ((ULONG) _tx_thread_preempt_disable);
+ 503:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 504:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 505:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the macro to ensure _tx_thread_preempt_disable is set early in initialization in order to
+ 506:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****    prevent early scheduling on Cortex-M parts.  */
+ 507:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 508:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_POST_INITIALIZATION    _tx_thread_preempt_disable++;
+ 509:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 510:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 511:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 512:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 513:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifndef TX_DISABLE_INLINE
+ 514:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 515:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the TX_LOWEST_SET_BIT_CALCULATE macro for each compiler. */
+ 516:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef __ICCARM__       /* IAR Compiler */
+ 517:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_LOWEST_SET_BIT_CALCULATE(m, b)       (b) = (UINT) __CLZ(__RBIT((m)));
+ 518:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__CC_ARM) /* AC5 Compiler */
+ 519:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_LOWEST_SET_BIT_CALCULATE(m, b)       (b) = (UINT) __clz(__rbit((m)));
+ 520:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #elif defined(__GNUC__) /* GCC and AC6 Compiler */
+ 521:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #define TX_LOWEST_SET_BIT_CALCULATE(m, b)       __asm__ volatile (" RBIT %0,%1 ": "=r" (m) : "r" (m
+ 522:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****                                                 __asm__ volatile (" CLZ  %0,%1 ": "=r" (b) : "r" (m
+ 523:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 524:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 525:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 526:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 527:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /* Define the interrupt disable/restore macros for each compiler. */
+ 528:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 529:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #if defined(__GNUC__) || defined(__ICCARM__)
+ARM GAS  /tmp/cce9zK1x.s 			page 13
+
+
+ 530:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 531:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** /*** GCC/AC6 and IAR ***/
+ 532:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 533:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline unsigned int __get_interrupt_posture(void)
+ 534:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 535:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** unsigned int posture;
+ 536:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 537:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("MRS  %0, BASEPRI ": "=r" (posture));
+ 538:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 539:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("MRS  %0, PRIMASK ": "=r" (posture));
+ 540:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 541:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     return(posture);
+ 542:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 543:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 544:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 545:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __set_basepri_value(unsigned int basepri_valu
+ 546:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 547:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("MSR  BASEPRI,%0 ": : "r" (basepri_value));
+ 548:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 549:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 550:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __enable_interrupts(void)
+ 551:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 552:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("CPSIE  i": : : "memory");
+ 553:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 554:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 555:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 556:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __restore_interrupt(unsigned int int_posture)
+ 557:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 558:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 559:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __set_basepri_value(int_posture);
+ 560:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     //__asm__ volatile ("MSR  BASEPRI,%0": : "r" (int_posture): "memory");
+ 561:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 562:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("MSR  PRIMASK,%0": : "r" (int_posture): "memory");
+ 563:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 564:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 565:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 566:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline unsigned int __disable_interrupts(void)
+  64              		.loc 2 566 63 view .LVU9
+  65              	.LBB14:
+ 567:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 568:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** unsigned int int_posture;
+  66              		.loc 2 568 1 view .LVU10
+ 569:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 570:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     int_posture = __get_interrupt_posture();
+  67              		.loc 2 570 5 view .LVU11
+  68              	.LBB15:
+  69              	.LBI15:
+ 533:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+  70              		.loc 2 533 63 view .LVU12
+  71              	.LBB16:
+ 535:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+  72              		.loc 2 535 1 view .LVU13
+ 539:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+  73              		.loc 2 539 5 view .LVU14
+  74              		.syntax unified
+  75              	@ 539 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h" 1
+  76 0016 EFF3108A 		MRS  r10, PRIMASK 
+ARM GAS  /tmp/cce9zK1x.s 			page 14
+
+
+  77              	@ 0 "" 2
+  78              	.LVL1:
+ 541:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+  79              		.loc 2 541 5 view .LVU15
+ 541:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+  80              		.loc 2 541 5 is_stmt 0 view .LVU16
+  81              		.thumb
+  82              		.syntax unified
+  83              	.LBE16:
+  84              	.LBE15:
+ 571:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** 
+ 572:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 573:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __set_basepri_value(TX_PORT_BASEPRI);
+ 574:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #else
+ 575:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile ("CPSID i" : : : "memory");
+  85              		.loc 2 575 5 is_stmt 1 view .LVU17
+  86              		.syntax unified
+  87              	@ 575 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h" 1
+  88 001a 72B6     		CPSID i
+  89              	@ 0 "" 2
+ 576:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 577:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     return(int_posture);
+  90              		.loc 2 577 5 view .LVU18
+  91              	.LVL2:
+  92              		.loc 2 577 5 is_stmt 0 view .LVU19
+  93              		.thumb
+  94              		.syntax unified
+  95              	.LBE14:
+  96              	.LBE13:
+  97              	.LBB17:
+  94:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  95:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  96:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     TX_TRACE_IN_LINE_INSERT(TX_TRACE_TIMER_INFO_GET, timer_ptr, TX_POINTER_TO_ULONG_CONVERT(&ticks_
+  98              		.loc 1 96 5 is_stmt 1 view .LVU20
+  99              		.loc 1 96 5 view .LVU21
+ 100              		.loc 1 96 5 view .LVU22
+ 101              		.loc 1 96 5 view .LVU23
+ 102              		.loc 1 96 5 view .LVU24
+ 103 001c 4D4B     		ldr	r3, .L22
+ 104              	.LVL3:
+ 105              		.loc 1 96 5 is_stmt 0 view .LVU25
+ 106 001e 1868     		ldr	r0, [r3]
+ 107              	.LVL4:
+ 108              		.loc 1 96 5 is_stmt 1 view .LVU26
+ 109 0020 0028     		cmp	r0, #0
+ 110 0022 40D0     		beq	.L2
+ 111              		.loc 1 96 5 is_stmt 0 discriminator 1 view .LVU27
+ 112 0024 4C4B     		ldr	r3, .L22+4
+ 113 0026 1B68     		ldr	r3, [r3]
+ 114 0028 13F4806F 		tst	r3, #1024
+ 115 002c 3BD0     		beq	.L2
+ 116              		.loc 1 96 5 is_stmt 1 discriminator 2 view .LVU28
+ 117              	.LBB18:
+ 118              	.LBI18:
+ 474:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 119              		.loc 2 474 63 view .LVU29
+ 120              	.LBB19:
+ARM GAS  /tmp/cce9zK1x.s 			page 15
+
+
+ 476:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     __asm__ volatile (" MRS  %0,IPSR ": "=r" (ipsr_value) );
+ 121              		.loc 2 476 1 view .LVU30
+ 477:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h ****     return(ipsr_value);
+ 122              		.loc 2 477 5 view .LVU31
+ 123              		.syntax unified
+ 124              	@ 477 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h" 1
+ 125 002e EFF30581 		 MRS  r1,IPSR 
+ 126              	@ 0 "" 2
+ 127              	.LVL5:
+ 478:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 128              		.loc 2 478 5 view .LVU32
+ 478:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** }
+ 129              		.loc 2 478 5 is_stmt 0 view .LVU33
+ 130              		.thumb
+ 131              		.syntax unified
+ 132              	.LBE19:
+ 133              	.LBE18:
+ 134              		.loc 1 96 5 discriminator 1 view .LVU34
+ 135 0032 4A4B     		ldr	r3, .L22+8
+ 136 0034 1B68     		ldr	r3, [r3]
+ 137              	.LVL6:
+ 138              		.loc 1 96 5 is_stmt 1 discriminator 1 view .LVU35
+ 139 0036 4A4A     		ldr	r2, .L22+12
+ 140              	.LVL7:
+ 141              		.loc 1 96 5 is_stmt 0 discriminator 1 view .LVU36
+ 142 0038 1268     		ldr	r2, [r2]
+ 143              	.LVL8:
+ 144              		.loc 1 96 5 is_stmt 1 discriminator 1 view .LVU37
+ 145 003a 0B43     		orrs	r3, r3, r1
+ 146              	.LVL9:
+ 147              		.loc 1 96 5 is_stmt 0 discriminator 1 view .LVU38
+ 148 003c 23D1     		bne	.L3
+ 149              		.loc 1 96 5 is_stmt 1 discriminator 3 view .LVU39
+ 150 003e D36A     		ldr	r3, [r2, #44]
+ 151              	.LVL10:
+ 152              		.loc 1 96 5 discriminator 3 view .LVU40
+ 153 0040 D16B     		ldr	r1, [r2, #60]
+ 154 0042 43EA0143 		orr	r3, r3, r1, lsl #16
+ 155              	.LVL11:
+ 156              		.loc 1 96 5 is_stmt 0 discriminator 3 view .LVU41
+ 157 0046 43F00043 		orr	r3, r3, #-2147483648
+ 158              	.LVL12:
+ 159              	.L4:
+ 160              		.loc 1 96 5 is_stmt 1 discriminator 9 view .LVU42
+ 161 004a 0260     		str	r2, [r0]
+ 162              		.loc 1 96 5 discriminator 9 view .LVU43
+ 163 004c 4360     		str	r3, [r0, #4]
+ 164              		.loc 1 96 5 discriminator 9 view .LVU44
+ 165 004e 7F23     		movs	r3, #127
+ 166              	.LVL13:
+ 167              		.loc 1 96 5 is_stmt 0 discriminator 9 view .LVU45
+ 168 0050 8360     		str	r3, [r0, #8]
+ 169              		.loc 1 96 5 is_stmt 1 discriminator 9 view .LVU46
+ 170 0052 444B     		ldr	r3, .L22+16
+ 171 0054 5B68     		ldr	r3, [r3, #4]
+ 172 0056 C360     		str	r3, [r0, #12]
+ 173              		.loc 1 96 5 discriminator 9 view .LVU47
+ARM GAS  /tmp/cce9zK1x.s 			page 16
+
+
+ 174 0058 0461     		str	r4, [r0, #16]
+ 175              		.loc 1 96 5 discriminator 9 view .LVU48
+ 176 005a 01AB     		add	r3, sp, #4
+ 177 005c 4361     		str	r3, [r0, #20]
+ 178              		.loc 1 96 5 discriminator 9 view .LVU49
+ 179 005e 0023     		movs	r3, #0
+ 180 0060 8361     		str	r3, [r0, #24]
+ 181              		.loc 1 96 5 discriminator 9 view .LVU50
+ 182 0062 C361     		str	r3, [r0, #28]
+ 183              		.loc 1 96 5 discriminator 9 view .LVU51
+ 184 0064 2030     		adds	r0, r0, #32
+ 185              	.LVL14:
+ 186              		.loc 1 96 5 discriminator 9 view .LVU52
+ 187 0066 404B     		ldr	r3, .L22+20
+ 188 0068 1B68     		ldr	r3, [r3]
+ 189 006a 8342     		cmp	r3, r0
+ 190 006c 16D8     		bhi	.L5
+ 191              		.loc 1 96 5 discriminator 10 view .LVU53
+ 192 006e 3F4B     		ldr	r3, .L22+24
+ 193 0070 1B68     		ldr	r3, [r3]
+ 194              	.LVL15:
+ 195              		.loc 1 96 5 discriminator 10 view .LVU54
+ 196 0072 384A     		ldr	r2, .L22
+ 197              	.LVL16:
+ 198              		.loc 1 96 5 is_stmt 0 discriminator 10 view .LVU55
+ 199 0074 1360     		str	r3, [r2]
+ 200              	.LVL17:
+ 201              		.loc 1 96 5 is_stmt 1 discriminator 10 view .LVU56
+ 202 0076 3E4A     		ldr	r2, .L22+28
+ 203 0078 1068     		ldr	r0, [r2]
+ 204              	.LVL18:
+ 205              		.loc 1 96 5 is_stmt 0 discriminator 10 view .LVU57
+ 206 007a 0362     		str	r3, [r0, #32]
+ 207              		.loc 1 96 5 is_stmt 1 discriminator 10 view .LVU58
+ 208 007c 3D4B     		ldr	r3, .L22+32
+ 209              	.LVL19:
+ 210              		.loc 1 96 5 is_stmt 0 discriminator 10 view .LVU59
+ 211 007e 1B68     		ldr	r3, [r3]
+ 212 0080 8BB1     		cbz	r3, .L2
+ 213              		.loc 1 96 5 is_stmt 1 discriminator 12 view .LVU60
+ 214 0082 9847     		blx	r3
+ 215              	.LVL20:
+ 216              		.loc 1 96 5 is_stmt 0 discriminator 12 view .LVU61
+ 217 0084 0FE0     		b	.L2
+ 218              	.LVL21:
+ 219              	.L3:
+ 220              		.loc 1 96 5 is_stmt 1 discriminator 4 view .LVU62
+ 221 0086 B3F1F03F 		cmp	r3, #-252645136
+ 222 008a 03D2     		bcs	.L17
+ 223              		.loc 1 96 5 discriminator 6 view .LVU63
+ 224 008c 1346     		mov	r3, r2
+ 225              	.LVL22:
+ 226              		.loc 1 96 5 discriminator 6 view .LVU64
+ 227              		.loc 1 96 5 is_stmt 0 discriminator 6 view .LVU65
+ 228 008e 4FF0FF32 		mov	r2, #-1
+ 229 0092 DAE7     		b	.L4
+ 230              	.LVL23:
+ARM GAS  /tmp/cce9zK1x.s 			page 17
+
+
+ 231              	.L17:
+ 232              		.loc 1 96 5 discriminator 7 view .LVU66
+ 233 0094 4FF0F032 		mov	r2, #-252645136
+ 234              	.LVL24:
+ 235              		.loc 1 96 5 discriminator 7 view .LVU67
+ 236 0098 0023     		movs	r3, #0
+ 237              	.LVL25:
+ 238              		.loc 1 96 5 discriminator 7 view .LVU68
+ 239 009a D6E7     		b	.L4
+ 240              	.LVL26:
+ 241              	.L5:
+ 242              		.loc 1 96 5 is_stmt 1 discriminator 11 view .LVU69
+ 243 009c 2D4B     		ldr	r3, .L22
+ 244 009e 1860     		str	r0, [r3]
+ 245              		.loc 1 96 5 discriminator 11 view .LVU70
+ 246 00a0 334B     		ldr	r3, .L22+28
+ 247 00a2 1B68     		ldr	r3, [r3]
+ 248 00a4 1862     		str	r0, [r3, #32]
+ 249              	.LVL27:
+ 250              	.L2:
+ 251              		.loc 1 96 5 is_stmt 0 discriminator 11 view .LVU71
+ 252              	.LBE17:
+  97:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+  98:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Log this kernel call.  */
+  99:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     TX_EL_TIMER_INFO_GET_INSERT
+ 100:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 101:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Retrieve the name of the timer.  */
+ 102:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     if (name != TX_NULL)
+ 253              		.loc 1 102 5 is_stmt 1 view .LVU72
+ 254              		.loc 1 102 8 is_stmt 0 view .LVU73
+ 255 00a6 0FB1     		cbz	r7, .L6
+ 103:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     {
+ 104:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 105:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         *name =  timer_ptr -> tx_timer_name;
+ 256              		.loc 1 105 9 is_stmt 1 view .LVU74
+ 257              		.loc 1 105 28 is_stmt 0 view .LVU75
+ 258 00a8 6368     		ldr	r3, [r4, #4]
+ 259              		.loc 1 105 15 view .LVU76
+ 260 00aa 3B60     		str	r3, [r7]
+ 261              	.L6:
+ 106:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     }
+ 107:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 108:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Pickup address of internal timer structure.  */
+ 109:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     internal_ptr =  &(timer_ptr -> tx_timer_internal);
+ 262              		.loc 1 109 5 is_stmt 1 view .LVU77
+ 263              		.loc 1 109 18 is_stmt 0 view .LVU78
+ 264 00ac 04F10801 		add	r1, r4, #8
+ 265              	.LVL28:
+ 110:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 111:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Retrieve all the pertinent information and return it in the supplied
+ 112:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****        destinations.  */
+ 113:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 114:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Default active to false.  */
+ 115:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     timer_active =  TX_FALSE;
+ 266              		.loc 1 115 5 is_stmt 1 view .LVU79
+ 116:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 117:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Default the ticks left to the remaining ticks.  */
+ARM GAS  /tmp/cce9zK1x.s 			page 18
+
+
+ 118:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     ticks_left =  internal_ptr -> tx_timer_internal_remaining_ticks;
+ 267              		.loc 1 118 5 view .LVU80
+ 268              		.loc 1 118 32 is_stmt 0 view .LVU81
+ 269 00b0 A268     		ldr	r2, [r4, #8]
+ 270              		.loc 1 118 16 view .LVU82
+ 271 00b2 0192     		str	r2, [sp, #4]
+ 119:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 120:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Determine if the timer is still active.  */
+ 121:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     if (internal_ptr -> tx_timer_internal_list_head != TX_NULL)
+ 272              		.loc 1 121 5 is_stmt 1 view .LVU83
+ 273              		.loc 1 121 22 is_stmt 0 view .LVU84
+ 274 00b4 236A     		ldr	r3, [r4, #32]
+ 275              		.loc 1 121 8 view .LVU85
+ 276 00b6 002B     		cmp	r3, #0
+ 277 00b8 32D0     		beq	.L18
+ 122:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     {
+ 123:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 124:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         /* Indicate this timer is active.  */
+ 125:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         timer_active =  TX_TRUE;
+ 278              		.loc 1 125 9 is_stmt 1 view .LVU86
+ 279              	.LVL29:
+ 126:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 127:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         /* Default the active timer list flag to false.  */
+ 128:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         active_timer_list =  TX_FALSE;
+ 280              		.loc 1 128 9 view .LVU87
+ 129:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 130:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         /* Determine if the timer is still active.  */
+ 131:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         if (internal_ptr -> tx_timer_internal_list_head >= _tx_timer_list_start)
+ 281              		.loc 1 131 9 view .LVU88
+ 282              		.loc 1 131 57 is_stmt 0 view .LVU89
+ 283 00ba 2F48     		ldr	r0, .L22+36
+ 284 00bc 0068     		ldr	r0, [r0]
+ 285              		.loc 1 131 12 view .LVU90
+ 286 00be 8342     		cmp	r3, r0
+ 287 00c0 1CD3     		bcc	.L8
+ 132:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         {
+ 133:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 134:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* Determine if the list head is before the end of the list.  */
+ 135:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             if (internal_ptr -> tx_timer_internal_list_head < _tx_timer_list_end)
+ 288              		.loc 1 135 13 is_stmt 1 view .LVU91
+ 289              		.loc 1 135 61 is_stmt 0 view .LVU92
+ 290 00c2 2E4F     		ldr	r7, .L22+40
+ 291              	.LVL30:
+ 292              		.loc 1 135 61 view .LVU93
+ 293 00c4 3F68     		ldr	r7, [r7]
+ 294              		.loc 1 135 16 view .LVU94
+ 295 00c6 BB42     		cmp	r3, r7
+ 296 00c8 18D2     		bcs	.L8
+ 136:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             {
+ 137:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 138:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* This timer is active and has not yet expired.  */
+ 139:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 active_timer_list =  TX_TRUE;
+ 297              		.loc 1 139 17 is_stmt 1 view .LVU95
+ 298              	.LVL31:
+ 140:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 141:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         }
+ 142:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ARM GAS  /tmp/cce9zK1x.s 			page 19
+
+
+ 143:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         /* Determine if the timer is on the active timer list.  */
+ 144:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         if (active_timer_list == TX_TRUE)
+ 299              		.loc 1 144 9 view .LVU96
+ 145:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         {
+ 146:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 147:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* Calculate the amount of time that has elapsed since the timer
+ 148:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                was activated.  */
+ 149:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 150:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* Setup the list head pointer.  */
+ 151:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             list_head =  internal_ptr -> tx_timer_internal_list_head;
+ 300              		.loc 1 151 13 view .LVU97
+ 152:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 153:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* Is this timer's entry after the current timer pointer?  */
+ 154:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             if (internal_ptr -> tx_timer_internal_list_head >= _tx_timer_current_ptr)
+ 301              		.loc 1 154 13 view .LVU98
+ 302              		.loc 1 154 61 is_stmt 0 view .LVU99
+ 303 00ca 2D49     		ldr	r1, .L22+44
+ 304              	.LVL32:
+ 305              		.loc 1 154 61 view .LVU100
+ 306 00cc 0968     		ldr	r1, [r1]
+ 307              		.loc 1 154 16 view .LVU101
+ 308 00ce 8B42     		cmp	r3, r1
+ 309 00d0 0BD3     		bcc	.L9
+ 155:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             {
+ 156:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 157:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* Calculate ticks left to expiration - just the difference between this
+ 158:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                    timer's entry and the current timer pointer.  */
+ 159:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 ticks_left =  ((TX_TIMER_POINTER_DIF(list_head, _tx_timer_current_ptr)) + ((ULONG) 
+ 310              		.loc 1 159 17 is_stmt 1 view .LVU102
+ 311              		.loc 1 159 33 is_stmt 0 view .LVU103
+ 312 00d2 591A     		subs	r1, r3, r1
+ 313 00d4 8910     		asrs	r1, r1, #2
+ 314              		.loc 1 159 89 view .LVU104
+ 315 00d6 0131     		adds	r1, r1, #1
+ 316              		.loc 1 159 28 view .LVU105
+ 317 00d8 0191     		str	r1, [sp, #4]
+ 318              	.LVL33:
+ 319              	.L10:
+ 160:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 161:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             else
+ 162:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             {
+ 163:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 164:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* Calculate the ticks left with a wrapped list condition.  */
+ 165:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 ticks_left =  ((TX_TIMER_POINTER_DIF(list_head, _tx_timer_list_start)));
+ 166:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 167:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 ticks_left =  ticks_left + ((TX_TIMER_POINTER_DIF(_tx_timer_list_end, _tx_timer_cur
+ 168:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 169:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 170:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* Adjust the remaining ticks accordingly.  */
+ 171:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             if (internal_ptr -> tx_timer_internal_remaining_ticks > TX_TIMER_ENTRIES)
+ 320              		.loc 1 171 13 is_stmt 1 view .LVU106
+ 321              		.loc 1 171 16 is_stmt 0 view .LVU107
+ 322 00da 202A     		cmp	r2, #32
+ 323 00dc 38D9     		bls	.L19
+ 172:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             {
+ 173:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 174:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* Subtract off the last full pass through the timer list and add the
+ARM GAS  /tmp/cce9zK1x.s 			page 20
+
+
+ 175:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                    time left.  */
+ 176:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 ticks_left =  (internal_ptr -> tx_timer_internal_remaining_ticks - TX_TIMER_ENTRIES
+ 324              		.loc 1 176 17 is_stmt 1 view .LVU108
+ 325              		.loc 1 176 102 is_stmt 0 view .LVU109
+ 326 00de 019B     		ldr	r3, [sp, #4]
+ 327 00e0 1344     		add	r3, r3, r2
+ 328 00e2 203B     		subs	r3, r3, #32
+ 329              		.loc 1 176 28 view .LVU110
+ 330 00e4 0193     		str	r3, [sp, #4]
+ 125:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 331              		.loc 1 125 22 view .LVU111
+ 332 00e6 0123     		movs	r3, #1
+ 333 00e8 1BE0     		b	.L7
+ 334              	.LVL34:
+ 335              	.L9:
+ 165:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 336              		.loc 1 165 17 is_stmt 1 view .LVU112
+ 165:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 337              		.loc 1 165 33 is_stmt 0 view .LVU113
+ 338 00ea 1B1A     		subs	r3, r3, r0
+ 339              	.LVL35:
+ 165:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 340              		.loc 1 165 33 view .LVU114
+ 341 00ec 9B10     		asrs	r3, r3, #2
+ 165:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 342              		.loc 1 165 28 view .LVU115
+ 343 00ee 0193     		str	r3, [sp, #4]
+ 167:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 344              		.loc 1 167 17 is_stmt 1 view .LVU116
+ 167:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 345              		.loc 1 167 46 is_stmt 0 view .LVU117
+ 346 00f0 7F1A     		subs	r7, r7, r1
+ 167:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 347              		.loc 1 167 42 view .LVU118
+ 348 00f2 03EBA703 		add	r3, r3, r7, asr #2
+ 349 00f6 0133     		adds	r3, r3, #1
+ 167:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 350              		.loc 1 167 28 view .LVU119
+ 351 00f8 0193     		str	r3, [sp, #4]
+ 352 00fa EEE7     		b	.L10
+ 353              	.LVL36:
+ 354              	.L8:
+ 177:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 178:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 179:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         }
+ 180:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         else
+ 181:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         {
+ 182:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 183:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* The timer is not on the actual timer list so it must either be being processed
+ 184:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                or on a temporary list to be processed.   */
+ 185:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 186:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             /* Check to see if this timer is the timer currently being processed.  */
+ 187:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             if (_tx_timer_expired_timer_ptr == internal_ptr)
+ 355              		.loc 1 187 13 is_stmt 1 view .LVU120
+ 356              		.loc 1 187 45 is_stmt 0 view .LVU121
+ 357 00fc 214B     		ldr	r3, .L22+48
+ 358 00fe 1B68     		ldr	r3, [r3]
+ARM GAS  /tmp/cce9zK1x.s 			page 21
+
+
+ 359              		.loc 1 187 16 view .LVU122
+ 360 0100 8B42     		cmp	r3, r1
+ 361 0102 05D0     		beq	.L21
+ 188:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             {
+ 189:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 190:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* Timer dispatch routine is executing, waiting to execute, or just finishing. No m
+ 191:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 ticks_left =  ((ULONG) 0);
+ 192:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 193:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             else
+ 194:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             {
+ 195:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 196:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* Timer is not the one being processed, which means it must be on the temporary ex
+ 197:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                    waiting to be processed.  */
+ 198:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 199:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 /* Calculate the remaining ticks for a timer in the process of expiring.  */
+ 200:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 if (ticks_left > TX_TIMER_ENTRIES)
+ 362              		.loc 1 200 17 is_stmt 1 view .LVU123
+ 363              		.loc 1 200 20 is_stmt 0 view .LVU124
+ 364 0104 202A     		cmp	r2, #32
+ 365 0106 07D9     		bls	.L12
+ 201:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 {
+ 202:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 203:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                     /* Calculate the number of ticks remaining.  */
+ 204:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                     ticks_left =  internal_ptr -> tx_timer_internal_remaining_ticks - TX_TIMER_ENTR
+ 366              		.loc 1 204 21 is_stmt 1 view .LVU125
+ 367              		.loc 1 204 85 is_stmt 0 view .LVU126
+ 368 0108 203A     		subs	r2, r2, #32
+ 369              		.loc 1 204 32 view .LVU127
+ 370 010a 0192     		str	r2, [sp, #4]
+ 125:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 371              		.loc 1 125 22 view .LVU128
+ 372 010c 0123     		movs	r3, #1
+ 373 010e 08E0     		b	.L7
+ 374              	.L21:
+ 191:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 375              		.loc 1 191 17 is_stmt 1 view .LVU129
+ 191:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 376              		.loc 1 191 28 is_stmt 0 view .LVU130
+ 377 0110 0023     		movs	r3, #0
+ 378 0112 0193     		str	r3, [sp, #4]
+ 125:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 379              		.loc 1 125 22 view .LVU131
+ 380 0114 0123     		movs	r3, #1
+ 381 0116 04E0     		b	.L7
+ 382              	.L12:
+ 205:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 }
+ 206:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 else
+ 207:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 {
+ 208:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 209:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                     /* Timer dispatch routine is waiting to execute, no more remaining ticks for th
+ 210:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                     ticks_left =  ((ULONG) 0);
+ 383              		.loc 1 210 21 is_stmt 1 view .LVU132
+ 384              		.loc 1 210 32 is_stmt 0 view .LVU133
+ 385 0118 0023     		movs	r3, #0
+ 386 011a 0193     		str	r3, [sp, #4]
+ 125:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 387              		.loc 1 125 22 view .LVU134
+ARM GAS  /tmp/cce9zK1x.s 			page 22
+
+
+ 388 011c 0123     		movs	r3, #1
+ 389 011e 00E0     		b	.L7
+ 390              	.LVL37:
+ 391              	.L18:
+ 115:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 392              		.loc 1 115 18 view .LVU135
+ 393 0120 0023     		movs	r3, #0
+ 394              	.LVL38:
+ 395              	.L7:
+ 211:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****                 }
+ 212:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****             }
+ 213:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         }
+ 214:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     }
+ 215:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 216:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Setup return values for an inactive timer.  */
+ 217:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     if (active != TX_NULL)
+ 396              		.loc 1 217 5 is_stmt 1 view .LVU136
+ 397              		.loc 1 217 8 is_stmt 0 view .LVU137
+ 398 0122 06B1     		cbz	r6, .L13
+ 218:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     {
+ 219:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 220:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****        /* Setup the timer active indication.  */
+ 221:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****        *active =  timer_active;
+ 399              		.loc 1 221 8 is_stmt 1 view .LVU138
+ 400              		.loc 1 221 16 is_stmt 0 view .LVU139
+ 401 0124 3360     		str	r3, [r6]
+ 402              	.L13:
+ 222:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     }
+ 223:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     if (remaining_ticks != TX_NULL)
+ 403              		.loc 1 223 5 is_stmt 1 view .LVU140
+ 404              		.loc 1 223 8 is_stmt 0 view .LVU141
+ 405 0126 0DB1     		cbz	r5, .L14
+ 224:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     {
+ 225:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 226:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         /* Setup the default remaining ticks value.  */
+ 227:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         *remaining_ticks =  ticks_left;
+ 406              		.loc 1 227 9 is_stmt 1 view .LVU142
+ 407              		.loc 1 227 26 is_stmt 0 view .LVU143
+ 408 0128 019B     		ldr	r3, [sp, #4]
+ 409              	.LVL39:
+ 410              		.loc 1 227 26 view .LVU144
+ 411 012a 2B60     		str	r3, [r5]
+ 412              	.L14:
+ 228:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     }
+ 229:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 230:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Pickup the reschedule ticks value.  */
+ 231:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     if (reschedule_ticks != TX_NULL)
+ 413              		.loc 1 231 5 is_stmt 1 view .LVU145
+ 414              		.loc 1 231 8 is_stmt 0 view .LVU146
+ 415 012c B9F1000F 		cmp	r9, #0
+ 416 0130 02D0     		beq	.L15
+ 232:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     {
+ 233:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 234:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         *reschedule_ticks =  internal_ptr -> tx_timer_internal_re_initialize_ticks;
+ 417              		.loc 1 234 9 is_stmt 1 view .LVU147
+ 418              		.loc 1 234 43 is_stmt 0 view .LVU148
+ 419 0132 E368     		ldr	r3, [r4, #12]
+ARM GAS  /tmp/cce9zK1x.s 			page 23
+
+
+ 420              		.loc 1 234 27 view .LVU149
+ 421 0134 C9F80030 		str	r3, [r9]
+ 422              	.L15:
+ 235:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     }
+ 236:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 237:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Pickup the next created application timer.  */
+ 238:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     if (next_timer != TX_NULL)
+ 423              		.loc 1 238 5 is_stmt 1 view .LVU150
+ 424              		.loc 1 238 8 is_stmt 0 view .LVU151
+ 425 0138 B8F1000F 		cmp	r8, #0
+ 426 013c 02D0     		beq	.L16
+ 239:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     {
+ 240:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 241:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****         *next_timer =  timer_ptr -> tx_timer_created_next;
+ 427              		.loc 1 241 9 is_stmt 1 view .LVU152
+ 428              		.loc 1 241 34 is_stmt 0 view .LVU153
+ 429 013e 636A     		ldr	r3, [r4, #36]
+ 430              		.loc 1 241 21 view .LVU154
+ 431 0140 C8F80030 		str	r3, [r8]
+ 432              	.L16:
+ 242:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     }
+ 243:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 244:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Restore interrupts.  */
+ 245:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     TX_RESTORE
+ 433              		.loc 1 245 5 is_stmt 1 view .LVU155
+ 434              	.LVL40:
+ 435              	.LBB20:
+ 436              	.LBI20:
+ 556:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** {
+ 437              		.loc 2 556 55 view .LVU156
+ 438              	.LBB21:
+ 562:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 439              		.loc 2 562 5 view .LVU157
+ 440              		.syntax unified
+ 441              	@ 562 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h" 1
+ 442 0144 8AF31088 		MSR  PRIMASK,r10
+ 443              	@ 0 "" 2
+ 444              	.LVL41:
+ 562:Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h **** #endif
+ 445              		.loc 2 562 5 is_stmt 0 view .LVU158
+ 446              		.thumb
+ 447              		.syntax unified
+ 448              	.LBE21:
+ 449              	.LBE20:
+ 246:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 247:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     /* Return completion status.  */
+ 248:Middlewares/ST/threadx/common/src/tx_timer_info_get.c ****     return(TX_SUCCESS);
+ 450              		.loc 1 248 5 is_stmt 1 view .LVU159
+ 249:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** }
+ 451              		.loc 1 249 1 is_stmt 0 view .LVU160
+ 452 0148 0020     		movs	r0, #0
+ 453 014a 02B0     		add	sp, sp, #8
+ 454              	.LCFI2:
+ 455              		.cfi_remember_state
+ 456              		.cfi_def_cfa_offset 32
+ 457              		@ sp needed
+ 458 014c BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ARM GAS  /tmp/cce9zK1x.s 			page 24
+
+
+ 459              	.LVL42:
+ 460              	.L19:
+ 461              	.LCFI3:
+ 462              		.cfi_restore_state
+ 125:Middlewares/ST/threadx/common/src/tx_timer_info_get.c **** 
+ 463              		.loc 1 125 22 view .LVU161
+ 464 0150 0123     		movs	r3, #1
+ 465 0152 E6E7     		b	.L7
+ 466              	.L23:
+ 467              		.align	2
+ 468              	.L22:
+ 469 0154 00000000 		.word	_tx_trace_buffer_current_ptr
+ 470 0158 00000000 		.word	_tx_trace_event_enable_bits
+ 471 015c 00000000 		.word	_tx_thread_system_state
+ 472 0160 00000000 		.word	_tx_thread_current_ptr
+ 473 0164 001000E0 		.word	-536866816
+ 474 0168 00000000 		.word	_tx_trace_buffer_end_ptr
+ 475 016c 00000000 		.word	_tx_trace_buffer_start_ptr
+ 476 0170 00000000 		.word	_tx_trace_header_ptr
+ 477 0174 00000000 		.word	_tx_trace_full_notify_function
+ 478 0178 00000000 		.word	_tx_timer_list_start
+ 479 017c 00000000 		.word	_tx_timer_list_end
+ 480 0180 00000000 		.word	_tx_timer_current_ptr
+ 481 0184 00000000 		.word	_tx_timer_expired_timer_ptr
+ 482              		.cfi_endproc
+ 483              	.LFE8:
+ 485              		.text
+ 486              	.Letext0:
+ 487              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 488              		.file 4 "Middlewares/ST/threadx/common/inc/tx_thread.h"
+ 489              		.file 5 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 490              		.file 6 "Middlewares/ST/threadx/common/inc/tx_timer.h"
+ARM GAS  /tmp/cce9zK1x.s 			page 25
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_timer_info_get.c
+     /tmp/cce9zK1x.s:20     .text._tx_timer_info_get:00000000 $t
+     /tmp/cce9zK1x.s:26     .text._tx_timer_info_get:00000000 _tx_timer_info_get
+     /tmp/cce9zK1x.s:469    .text._tx_timer_info_get:00000154 $d
+
+UNDEFINED SYMBOLS
+_tx_trace_buffer_current_ptr
+_tx_trace_event_enable_bits
+_tx_thread_system_state
+_tx_thread_current_ptr
+_tx_trace_buffer_end_ptr
+_tx_trace_buffer_start_ptr
+_tx_trace_header_ptr
+_tx_trace_full_notify_function
+_tx_timer_list_start
+_tx_timer_list_end
+_tx_timer_current_ptr
+_tx_timer_expired_timer_ptr

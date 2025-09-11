@@ -1,0 +1,376 @@
+ARM GAS  /tmp/ccS0VvVY.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_stack_device_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c"
+  19              		.section	.text._ux_host_stack_device_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_device_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_device_get:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ARM GAS  /tmp/ccS0VvVY.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    _ux_host_stack_device_get                           PORTABLE C      */
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    This function returns a device container based on its index. The    */
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    device index start with device 0. Note that the index is a ULONG    */
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    because we could have several controllers and a byte index might    */
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    not be enough.                                                      */
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    device_index                          Index of device               */
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    device                                Destination for device pointer*/
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  OUTPUT                                                                */
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    Completion Status                                                   */
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  CALLS                                                                 */
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    None                                                                */
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  CALLED BY                                                             */
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    Application                                                         */
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    USBX Components                                                     */
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  RELEASE HISTORY                                                       */
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                            optimized based on compile  */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                            definitions,                */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                            resulting in version 6.1    */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /*                                                                        */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** /**************************************************************************/
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** UINT  _ux_host_stack_device_get(ULONG device_index, UX_DEVICE **device)
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** {
+  29              		.loc 1 79 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 79 1 is_stmt 0 view .LVU1
+  34 0000 70B5     		push	{r4, r5, r6, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+ARM GAS  /tmp/ccS0VvVY.s 			page 3
+
+
+  37              		.cfi_offset 4, -16
+  38              		.cfi_offset 5, -12
+  39              		.cfi_offset 6, -8
+  40              		.cfi_offset 14, -4
+  41 0002 84B0     		sub	sp, sp, #16
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0004 0546     		mov	r5, r0
+  45 0006 0E46     		mov	r6, r1
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** UX_DEVICE   *current_device;
+  46              		.loc 1 81 1 is_stmt 1 view .LVU2
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #if UX_MAX_DEVICES > 1
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** ULONG       current_device_index;
+  47              		.loc 1 83 1 view .LVU3
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #endif
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_DEVICE_GET, device_index, 0, 0, 0, UX_TRACE_HOST_ST
+  48              		.loc 1 87 5 view .LVU4
+  49 0008 0022     		movs	r2, #0
+  50 000a 0392     		str	r2, [sp, #12]
+  51 000c 0292     		str	r2, [sp, #8]
+  52 000e 4FF00073 		mov	r3, #33554432
+  53 0012 0193     		str	r3, [sp, #4]
+  54 0014 0092     		str	r2, [sp]
+  55 0016 1346     		mov	r3, r2
+  56 0018 0146     		mov	r1, r0
+  57              	.LVL1:
+  58              		.loc 1 87 5 is_stmt 0 view .LVU5
+  59 001a 4FF41970 		mov	r0, #612
+  60              	.LVL2:
+  61              		.loc 1 87 5 view .LVU6
+  62 001e FFF7FEFF 		bl	_ux_trace_event_insert
+  63              	.LVL3:
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* Check if the device index is still within the limits.  */
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     if (device_index >= UX_SYSTEM_HOST_MAX_DEVICES_GET())
+  64              		.loc 1 90 5 is_stmt 1 view .LVU7
+  65              		.loc 1 90 25 is_stmt 0 view .LVU8
+  66 0022 1C4B     		ldr	r3, .L10
+  67 0024 1B68     		ldr	r3, [r3]
+  68 0026 1C69     		ldr	r4, [r3, #16]
+  69              		.loc 1 90 8 view .LVU9
+  70 0028 AC42     		cmp	r4, r5
+  71 002a 02D9     		bls	.L8
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     {
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         /* Error trap. */
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_DEVICE_HA
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DEVICE_HANDLE_UNKNOWN, device, 0, 0, UX_TRACE_ER
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         return(UX_DEVICE_HANDLE_UNKNOWN);
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     }
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ARM GAS  /tmp/ccS0VvVY.s 			page 4
+
+
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #if UX_MAX_DEVICES > 1
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* Start with the first device.  */
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     current_device =        _ux_system_host -> ux_system_host_device_array;
+  72              		.loc 1 105 5 is_stmt 1 view .LVU10
+  73              		.loc 1 105 20 is_stmt 0 view .LVU11
+  74 002c 5A69     		ldr	r2, [r3, #20]
+  75              	.LVL4:
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     current_device_index =  0;
+  76              		.loc 1 106 5 is_stmt 1 view .LVU12
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* Search the list until the end.  */
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     while (current_device_index < _ux_system_host -> ux_system_host_max_devices)
+  77              		.loc 1 109 5 view .LVU13
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     current_device_index =  0;
+  78              		.loc 1 106 26 is_stmt 0 view .LVU14
+  79 002e 0023     		movs	r3, #0
+  80              		.loc 1 109 11 view .LVU15
+  81 0030 16E0     		b	.L4
+  82              	.LVL5:
+  83              	.L8:
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  84              		.loc 1 94 9 is_stmt 1 view .LVU16
+  85 0032 5022     		movs	r2, #80
+  86 0034 0421     		movs	r1, #4
+  87 0036 0220     		movs	r0, #2
+  88 0038 FFF7FEFF 		bl	_ux_system_error_handler
+  89              	.LVL6:
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+  90              		.loc 1 97 9 view .LVU17
+  91 003c 0023     		movs	r3, #0
+  92 003e 0393     		str	r3, [sp, #12]
+  93 0040 0293     		str	r3, [sp, #8]
+  94 0042 4FF08072 		mov	r2, #16777216
+  95 0046 0192     		str	r2, [sp, #4]
+  96 0048 0093     		str	r3, [sp]
+  97 004a 3246     		mov	r2, r6
+  98 004c 5021     		movs	r1, #80
+  99 004e 40F2E730 		movw	r0, #999
+ 100 0052 FFF7FEFF 		bl	_ux_trace_event_insert
+ 101              	.LVL7:
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     }
+ 102              		.loc 1 99 9 view .LVU18
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     }
+ 103              		.loc 1 99 15 is_stmt 0 view .LVU19
+ 104 0056 5020     		movs	r0, #80
+ 105 0058 1AE0     		b	.L1
+ 106              	.LVL8:
+ 107              	.L5:
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     {
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         /* Check to see if this device is existing.  */
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         if (current_device -> ux_device_handle != UX_UNUSED)
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         {
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             /* Have we reached the index we are looking for?  */
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             if (device_index == current_device_index)
+ARM GAS  /tmp/ccS0VvVY.s 			page 5
+
+
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             {
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****                 /* Yes, return the device pointer.  */
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****                 *device =  current_device;
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****                 /* Return successful completion.  */
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****                 return(UX_SUCCESS);
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             }
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         }
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         /* Move to next device index.  */
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         current_device_index++;
+ 108              		.loc 1 129 9 is_stmt 1 view .LVU20
+ 109              		.loc 1 129 29 is_stmt 0 view .LVU21
+ 110 005a 0133     		adds	r3, r3, #1
+ 111              	.LVL9:
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         /* Move to next device.  */
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         current_device++;
+ 112              		.loc 1 132 9 is_stmt 1 view .LVU22
+ 113              		.loc 1 132 23 is_stmt 0 view .LVU23
+ 114 005c 02F5AE72 		add	r2, r2, #348
+ 115              	.LVL10:
+ 116              	.L4:
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     {
+ 117              		.loc 1 109 33 is_stmt 1 view .LVU24
+ 118 0060 9C42     		cmp	r4, r3
+ 119 0062 07D9     		bls	.L9
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         {
+ 120              		.loc 1 113 9 view .LVU25
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         {
+ 121              		.loc 1 113 12 is_stmt 0 view .LVU26
+ 122 0064 1168     		ldr	r1, [r2]
+ 123 0066 0029     		cmp	r1, #0
+ 124 0068 F7D0     		beq	.L5
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             {
+ 125              		.loc 1 117 13 is_stmt 1 view .LVU27
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             {
+ 126              		.loc 1 117 16 is_stmt 0 view .LVU28
+ 127 006a AB42     		cmp	r3, r5
+ 128 006c F5D1     		bne	.L5
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 129              		.loc 1 121 17 is_stmt 1 view .LVU29
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 130              		.loc 1 121 25 is_stmt 0 view .LVU30
+ 131 006e 3260     		str	r2, [r6]
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             }
+ 132              		.loc 1 124 17 is_stmt 1 view .LVU31
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****             }
+ 133              		.loc 1 124 23 is_stmt 0 view .LVU32
+ 134 0070 0020     		movs	r0, #0
+ 135 0072 0DE0     		b	.L1
+ 136              	.L9:
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     }
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #else
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* Only one device, just check if it's used.  */
+ARM GAS  /tmp/ccS0VvVY.s 			page 6
+
+
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     current_device = _ux_system_host -> ux_system_host_device_array;
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     if (current_device -> ux_device_handle != UX_UNUSED)
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     {
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         *device = current_device;
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****         return(UX_SUCCESS);
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     }
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** #endif
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DEVICE_HANDLE_UNKNOWN, device, 0, 0, UX_TRACE_ERRORS
+ 137              		.loc 1 146 5 is_stmt 1 view .LVU33
+ 138 0074 0023     		movs	r3, #0
+ 139              	.LVL11:
+ 140              		.loc 1 146 5 is_stmt 0 view .LVU34
+ 141 0076 0393     		str	r3, [sp, #12]
+ 142 0078 0293     		str	r3, [sp, #8]
+ 143 007a 4FF08072 		mov	r2, #16777216
+ 144              	.LVL12:
+ 145              		.loc 1 146 5 view .LVU35
+ 146 007e 0192     		str	r2, [sp, #4]
+ 147 0080 0093     		str	r3, [sp]
+ 148 0082 3246     		mov	r2, r6
+ 149 0084 5021     		movs	r1, #80
+ 150 0086 40F2E730 		movw	r0, #999
+ 151 008a FFF7FEFF 		bl	_ux_trace_event_insert
+ 152              	.LVL13:
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** 
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     /* Return error.  */
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c ****     return(UX_DEVICE_HANDLE_UNKNOWN);
+ 153              		.loc 1 149 5 is_stmt 1 view .LVU36
+ 154              		.loc 1 149 11 is_stmt 0 view .LVU37
+ 155 008e 5020     		movs	r0, #80
+ 156              	.LVL14:
+ 157              	.L1:
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_get.c **** }
+ 158              		.loc 1 150 1 view .LVU38
+ 159 0090 04B0     		add	sp, sp, #16
+ 160              	.LCFI2:
+ 161              		.cfi_def_cfa_offset 16
+ 162              		@ sp needed
+ 163 0092 70BD     		pop	{r4, r5, r6, pc}
+ 164              	.LVL15:
+ 165              	.L11:
+ 166              		.loc 1 150 1 view .LVU39
+ 167              		.align	2
+ 168              	.L10:
+ 169 0094 00000000 		.word	_ux_system_host
+ 170              		.cfi_endproc
+ 171              	.LFE11:
+ 173              		.text
+ 174              	.Letext0:
+ 175              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 176              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 177              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 178              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 179              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 180              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccS0VvVY.s 			page 7
+
+
+ARM GAS  /tmp/ccS0VvVY.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_device_get.c
+     /tmp/ccS0VvVY.s:20     .text._ux_host_stack_device_get:00000000 $t
+     /tmp/ccS0VvVY.s:26     .text._ux_host_stack_device_get:00000000 _ux_host_stack_device_get
+     /tmp/ccS0VvVY.s:169    .text._ux_host_stack_device_get:00000094 $d
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_system_error_handler
+_ux_system_host

@@ -1,0 +1,186 @@
+ARM GAS  /tmp/cc2nblwS.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_memory_compare.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c"
+  19              		.section	.text._ux_utility_memory_compare,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_memory_compare
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_memory_compare:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+ARM GAS  /tmp/cc2nblwS.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/ 
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  FUNCTION                                               RELEASE        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    _ux_utility_memory_compare                          PORTABLE C      */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                           6.1          */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    This function compares two memory blocks.                           */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  INPUT                                                                 */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    memory_source                         Pointer to source             */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    memory_destination                    Pointer to destination        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    length                                Number of bytes to compare    */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  OUTPUT                                                                */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    UX_SUCCESS                            If blocks are equal           */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    UX_ERROR                              If blocks are not equal       */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  CALLS                                                                 */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    None                                                                */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  CALLED BY                                                             */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    USBX Components                                                     */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  RELEASE HISTORY                                                       */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** UINT  _ux_utility_memory_compare(VOID *memory_source, VOID *memory_destination, ULONG length)
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** {
+  29              		.loc 1 74 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** UCHAR *   source;
+  34              		.loc 1 76 1 view .LVU1
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** UCHAR *   destination;
+  35              		.loc 1 77 1 view .LVU2
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     /* Setup source and destination byte oriented pointers.  */
+ARM GAS  /tmp/cc2nblwS.s 			page 3
+
+
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     source =  (UCHAR *) memory_source;
+  36              		.loc 1 81 5 view .LVU3
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     destination =  (UCHAR *) memory_destination;
+  37              		.loc 1 82 5 view .LVU4
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     /* Loop to compare blocks.  */
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     while(length--)
+  38              		.loc 1 85 5 view .LVU5
+  39              	.L2:
+  40              		.loc 1 85 11 view .LVU6
+  41 0000 1346     		mov	r3, r2
+  42              		.loc 1 85 17 is_stmt 0 view .LVU7
+  43 0002 013A     		subs	r2, r2, #1
+  44              	.LVL1:
+  45              		.loc 1 85 11 view .LVU8
+  46 0004 33B1     		cbz	r3, .L1
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     {
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****         /* Compare a single byte.  */
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****         if(*destination++ != *source++)
+  47              		.loc 1 89 9 is_stmt 1 view .LVU9
+  48              	.LVL2:
+  49              		.loc 1 89 12 is_stmt 0 view .LVU10
+  50 0006 11F801CB 		ldrb	ip, [r1], #1	@ zero_extendqisi2
+  51              	.LVL3:
+  52              		.loc 1 89 30 view .LVU11
+  53 000a 10F8013B 		ldrb	r3, [r0], #1	@ zero_extendqisi2
+  54              	.LVL4:
+  55              		.loc 1 89 11 view .LVU12
+  56 000e 9C45     		cmp	ip, r3
+  57 0010 F6D0     		beq	.L2
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****         {
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** 
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****             /* Not equal, return an error.  */
+  93:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****             return(UX_ERROR);
+  58              		.loc 1 93 19 view .LVU13
+  59 0012 FF23     		movs	r3, #255
+  60              	.L1:
+  94:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****         }
+  95:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     } 
+  96:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     
+  97:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     /* Blocks are equal, return success.  */           
+  98:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c ****     return(UX_SUCCESS); 
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c **** }
+  61              		.loc 1 99 1 view .LVU14
+  62 0014 1846     		mov	r0, r3
+  63              	.LVL5:
+  64              		.loc 1 99 1 view .LVU15
+  65 0016 7047     		bx	lr
+  66              		.cfi_endproc
+  67              	.LFE11:
+  69              		.text
+  70              	.Letext0:
+  71              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/cc2nblwS.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_memory_compare.c
+     /tmp/cc2nblwS.s:20     .text._ux_utility_memory_compare:00000000 $t
+     /tmp/cc2nblwS.s:26     .text._ux_utility_memory_compare:00000000 _ux_utility_memory_compare
+
+NO UNDEFINED SYMBOLS

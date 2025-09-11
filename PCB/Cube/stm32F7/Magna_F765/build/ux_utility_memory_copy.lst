@@ -1,0 +1,181 @@
+ARM GAS  /tmp/ccRa3wiP.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_memory_copy.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c"
+  19              		.section	.text._ux_utility_memory_copy,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_memory_copy
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_memory_copy:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+ARM GAS  /tmp/ccRa3wiP.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/ 
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  FUNCTION                                               RELEASE        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    _ux_utility_memory_copy                             PORTABLE C      */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                           6.1          */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    This function copies a block of memory from a source to a           */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    destination.                                                        */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    memory_destination                    Pointer to destination        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    memory_source                         Pointer to source             */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    length                                Number of bytes to copy       */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  OUTPUT                                                                */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    None                                                                */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  CALLS                                                                 */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    None                                                                */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  CALLED BY                                                             */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    USBX Components                                                     */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  RELEASE HISTORY                                                       */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** VOID  _ux_utility_memory_copy(VOID *memory_destination, VOID *memory_source, ULONG length)
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** {
+  29              		.loc 1 74 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** UCHAR *   source;
+  34              		.loc 1 76 1 view .LVU1
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** UCHAR *   destination;
+  35              		.loc 1 77 1 view .LVU2
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     /* Setup byte oriented source and destination pointers.  */
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     source =  (UCHAR *) memory_source;
+ARM GAS  /tmp/ccRa3wiP.s 			page 3
+
+
+  36              		.loc 1 80 5 view .LVU3
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     destination =  (UCHAR *) memory_destination;
+  37              		.loc 1 81 5 view .LVU4
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     /* Loop to perform the copy.  */
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     while(length--)
+  38              		.loc 1 84 5 view .LVU5
+  39              		.loc 1 84 10 is_stmt 0 view .LVU6
+  40 0000 04E0     		b	.L2
+  41              	.LVL1:
+  42              	.L3:
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     {
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****         /* Copy one byte.  */
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****         *destination++ =  *source++;
+  43              		.loc 1 88 9 is_stmt 1 view .LVU7
+  44              		.loc 1 88 27 is_stmt 0 view .LVU8
+  45 0002 11F8012B 		ldrb	r2, [r1], #1	@ zero_extendqisi2
+  46              	.LVL2:
+  47              		.loc 1 88 24 view .LVU9
+  48 0006 00F8012B 		strb	r2, [r0], #1
+  49              	.LVL3:
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     {
+  50              		.loc 1 84 17 view .LVU10
+  51 000a 1A46     		mov	r2, r3
+  52              	.LVL4:
+  53              	.L2:
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     {
+  54              		.loc 1 84 11 is_stmt 1 view .LVU11
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     {
+  55              		.loc 1 84 17 is_stmt 0 view .LVU12
+  56 000c 531E     		subs	r3, r2, #1
+  57              	.LVL5:
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     {
+  58              		.loc 1 84 11 view .LVU13
+  59 000e 002A     		cmp	r2, #0
+  60 0010 F7D1     		bne	.L3
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     }
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     /* Return to caller.  */
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c ****     return; 
+  93:Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c **** }
+  61              		.loc 1 93 1 view .LVU14
+  62 0012 7047     		bx	lr
+  63              		.cfi_endproc
+  64              	.LFE11:
+  66              		.text
+  67              	.Letext0:
+  68              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/ccRa3wiP.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_memory_copy.c
+     /tmp/ccRa3wiP.s:20     .text._ux_utility_memory_copy:00000000 $t
+     /tmp/ccRa3wiP.s:26     .text._ux_utility_memory_copy:00000000 _ux_utility_memory_copy
+
+NO UNDEFINED SYMBOLS

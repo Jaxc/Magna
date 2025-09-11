@@ -1,0 +1,184 @@
+ARM GAS  /tmp/ccTNTlCD.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_mutex_on.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c"
+  19              		.section	.text._ux_utility_mutex_on,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_mutex_on
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_mutex_on:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+ARM GAS  /tmp/ccTNTlCD.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/ 
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  FUNCTION                                               RELEASE        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    _ux_utility_mutex_on                                PORTABLE C      */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                           6.1          */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    This function gets system protection.                               */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  INPUT                                                                 */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    Mutex                                                               */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  OUTPUT                                                                */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    None                                                                */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  CALLS                                                                 */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    tx_mutex_get                          ThreadX mutex get             */
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  CALLED BY                                                             */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    USBX Components                                                     */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  RELEASE HISTORY                                                       */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                            used UX prefix to refer to  */
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                            TX symbols instead of using */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                            them directly,              */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** VOID  _ux_utility_mutex_on(UX_MUTEX *mutex)
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** {
+  29              		.loc 1 74 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 74 1 is_stmt 0 view .LVU1
+  34 0000 08B5     		push	{r3, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** UINT    status;
+  39              		.loc 1 76 1 is_stmt 1 view .LVU2
+ARM GAS  /tmp/ccTNTlCD.s 			page 3
+
+
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     /* Call ThreadX to get system mutex.  */
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     status =  tx_mutex_get(mutex, TX_WAIT_FOREVER);
+  40              		.loc 1 79 5 view .LVU3
+  41              		.loc 1 79 15 is_stmt 0 view .LVU4
+  42 0002 4FF0FF31 		mov	r1, #-1
+  43 0006 FFF7FEFF 		bl	_txe_mutex_get
+  44              	.LVL1:
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     /* Check for status.  */
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     if (status != UX_SUCCESS)
+  45              		.loc 1 82 5 is_stmt 1 view .LVU5
+  46              		.loc 1 82 8 is_stmt 0 view .LVU6
+  47 000a 00B9     		cbnz	r0, .L4
+  48              	.LVL2:
+  49              	.L1:
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     {
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****         /* Error trap. */
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_UTILITY, status);
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     }
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     /* Return to caller.  */
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     return;
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** }
+  50              		.loc 1 91 1 view .LVU7
+  51 000c 08BD     		pop	{r3, pc}
+  52              	.LVL3:
+  53              	.L4:
+  54              		.loc 1 91 1 view .LVU8
+  55 000e 0246     		mov	r2, r0
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     }
+  56              		.loc 1 86 9 is_stmt 1 view .LVU9
+  57 0010 0821     		movs	r1, #8
+  58 0012 0220     		movs	r0, #2
+  59              	.LVL4:
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c ****     }
+  60              		.loc 1 86 9 is_stmt 0 view .LVU10
+  61 0014 FFF7FEFF 		bl	_ux_system_error_handler
+  62              	.LVL5:
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c **** }
+  63              		.loc 1 90 5 is_stmt 1 view .LVU11
+  64 0018 F8E7     		b	.L1
+  65              		.cfi_endproc
+  66              	.LFE11:
+  68              		.text
+  69              	.Letext0:
+  70              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  71              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  72              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccTNTlCD.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_mutex_on.c
+     /tmp/ccTNTlCD.s:20     .text._ux_utility_mutex_on:00000000 $t
+     /tmp/ccTNTlCD.s:26     .text._ux_utility_mutex_on:00000000 _ux_utility_mutex_on
+
+UNDEFINED SYMBOLS
+_txe_mutex_get
+_ux_system_error_handler

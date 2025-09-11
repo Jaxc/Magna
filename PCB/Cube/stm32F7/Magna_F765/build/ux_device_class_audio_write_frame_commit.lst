@@ -1,0 +1,357 @@
+ARM GAS  /tmp/ccPgrBsG.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_class_audio_write_frame_commit.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_comm
+  19              		.section	.text._ux_device_class_audio_write_frame_commit,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_class_audio_write_frame_commit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_class_audio_write_frame_commit:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  12:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  13:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**                                                                       */
+  15:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /** USBX Component                                                        */
+  16:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**                                                                       */
+  17:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**   Device Audio Class                                                  */
+  18:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**                                                                       */
+  19:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  20:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  22:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** #define UX_SOURCE_CODE
+  23:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  24:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  25:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /* Include necessary system files.  */
+  26:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  27:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** #include "ux_api.h"
+  28:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** #include "ux_device_class_audio.h"
+  29:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** #include "ux_device_stack.h"
+  30:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ARM GAS  /tmp/ccPgrBsG.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  32:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    _ux_device_class_audio_write_frame_commit           PORTABLE C      */
+  37:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                           6.X          */
+  38:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    This function set frame buffer valid to send in the Audio class.    */
+  45:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  INPUT                                                                 */
+  47:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    stream                                Address of audio stream       */
+  49:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                            instance                    */
+  50:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    buffer                                Pointer to buffer to save     */
+  51:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                            frame data                  */
+  52:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    length                                Frame length in bytes         */
+  53:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  OUTPUT                                                                */
+  55:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  56:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    None                                                                */
+  57:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  CALLS                                                                 */
+  59:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  CALLED BY                                                             */
+  62:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    ThreadX                                                             */
+  64:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  65:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  RELEASE HISTORY                                                       */
+  66:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  67:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*    DATE              NAME                      DESCRIPTION             */
+  68:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  70:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  71:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                            resulting in version 6.1    */
+  72:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  73:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                            fixed frame length check,   */
+  74:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                            resulting in version 6.1.10 */
+  75:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** /**************************************************************************/
+  77:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** UINT _ux_device_class_audio_write_frame_commit(UX_DEVICE_CLASS_AUDIO_STREAM *stream, ULONG length)
+  78:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** {
+  29              		.loc 1 78 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 78 1 is_stmt 0 view .LVU1
+  34 0000 38B5     		push	{r3, r4, r5, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 3, -16
+ARM GAS  /tmp/ccPgrBsG.s 			page 3
+
+
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  79:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  80:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** UX_SLAVE_ENDPOINT           *endpoint;
+  41              		.loc 1 80 1 is_stmt 1 view .LVU2
+  81:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** UX_SLAVE_DEVICE             *device;
+  42              		.loc 1 81 1 view .LVU3
+  82:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** UCHAR                       *next_pos;
+  43              		.loc 1 82 1 view .LVU4
+  83:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  84:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  85:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Get the pointer to the device.  */
+  86:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     device =  &_ux_system_slave -> ux_system_slave_device;
+  44              		.loc 1 86 5 view .LVU5
+  45              		.loc 1 86 33 is_stmt 0 view .LVU6
+  46 0002 1C4B     		ldr	r3, .L13
+  47 0004 1B68     		ldr	r3, [r3]
+  48              	.LVL1:
+  87:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  88:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* As long as the device is in the CONFIGURED state.  */
+  89:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     if (device -> ux_slave_device_state != UX_DEVICE_CONFIGURED)
+  49              		.loc 1 89 5 is_stmt 1 view .LVU7
+  50              		.loc 1 89 16 is_stmt 0 view .LVU8
+  51 0006 1B6A     		ldr	r3, [r3, #32]
+  52              	.LVL2:
+  53              		.loc 1 89 8 view .LVU9
+  54 0008 032B     		cmp	r3, #3
+  55 000a 20D1     		bne	.L11
+  90:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     {
+  91:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  92:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         /* Error trap. */
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_CLASS, UX_CONFIGURATION_
+  94:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  95:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         /* Cannot proceed with command, the interface is down.  */
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         return(UX_CONFIGURATION_HANDLE_UNKNOWN);
+  97:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     }
+  98:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+  99:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Check if endpoint is available.  */
+ 100:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     endpoint = stream -> ux_device_class_audio_stream_endpoint;
+  56              		.loc 1 100 5 is_stmt 1 view .LVU10
+  57              		.loc 1 100 14 is_stmt 0 view .LVU11
+  58 000c 8368     		ldr	r3, [r0, #8]
+  59              	.LVL3:
+ 101:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     if (endpoint == UX_NULL)
+  60              		.loc 1 101 5 is_stmt 1 view .LVU12
+  61              		.loc 1 101 8 is_stmt 0 view .LVU13
+  62 000e 53B3     		cbz	r3, .L6
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         return(UX_ERROR);
+ 103:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Check if endpoint direction is OK.  */
+ 105:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     if ((endpoint -> ux_slave_endpoint_descriptor.bEndpointAddress & UX_ENDPOINT_DIRECTION) == UX_E
+  63              		.loc 1 105 5 is_stmt 1 view .LVU14
+  64              		.loc 1 105 50 is_stmt 0 view .LVU15
+  65 0010 5B69     		ldr	r3, [r3, #20]
+  66              	.LVL4:
+  67              		.loc 1 105 8 view .LVU16
+ARM GAS  /tmp/ccPgrBsG.s 			page 4
+
+
+  68 0012 13F0800F 		tst	r3, #128
+  69 0016 28D0     		beq	.L7
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         return(UX_ERROR);
+ 107:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Check overflow!!  */
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     if (stream -> ux_device_class_audio_stream_access_pos == stream -> ux_device_class_audio_stream
+  70              		.loc 1 109 5 is_stmt 1 view .LVU17
+  71              		.loc 1 109 16 is_stmt 0 view .LVU18
+  72 0018 D0F8D820 		ldr	r2, [r0, #216]
+  73              		.loc 1 109 69 view .LVU19
+  74 001c D0F8D430 		ldr	r3, [r0, #212]
+  75              		.loc 1 109 8 view .LVU20
+  76 0020 9A42     		cmp	r2, r3
+  77 0022 1BD0     		beq	.L12
+  78              	.L4:
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_length != 
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         return(UX_BUFFER_OVERFLOW);
+ 112:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 113:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Check frame length.  */
+ 114:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     if ((stream -> ux_device_class_audio_stream_frame_buffer_size - 8) < length)
+  79              		.loc 1 114 5 is_stmt 1 view .LVU21
+  80              		.loc 1 114 17 is_stmt 0 view .LVU22
+  81 0024 D0F8D030 		ldr	r3, [r0, #208]
+  82              		.loc 1 114 67 view .LVU23
+  83 0028 A3F10804 		sub	r4, r3, #8
+  84              		.loc 1 114 8 view .LVU24
+  85 002c 8C42     		cmp	r4, r1
+  86 002e 1ED3     		bcc	.L9
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         return(UX_ERROR);
+ 116:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Calculate next frame buffer.  */
+ 118:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     next_pos = (UCHAR *)stream -> ux_device_class_audio_stream_access_pos;
+  87              		.loc 1 118 5 is_stmt 1 view .LVU25
+  88              	.LVL5:
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     next_pos += stream -> ux_device_class_audio_stream_frame_buffer_size;
+  89              		.loc 1 119 5 view .LVU26
+  90              		.loc 1 119 14 is_stmt 0 view .LVU27
+  91 0030 1344     		add	r3, r3, r2
+  92              	.LVL6:
+ 120:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     if (next_pos >= stream -> ux_device_class_audio_stream_buffer + stream -> ux_device_class_audio
+  93              		.loc 1 120 5 is_stmt 1 view .LVU28
+  94              		.loc 1 120 28 is_stmt 0 view .LVU29
+  95 0032 D0F8C840 		ldr	r4, [r0, #200]
+  96              		.loc 1 120 67 view .LVU30
+  97 0036 D0F8CC50 		ldr	r5, [r0, #204]
+  98 003a 04EB050C 		add	ip, r4, r5
+  99              		.loc 1 120 8 view .LVU31
+ 100 003e 9C45     		cmp	ip, r3
+ 101 0040 00D9     		bls	.L5
+ 119:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     next_pos += stream -> ux_device_class_audio_stream_frame_buffer_size;
+ 102              		.loc 1 119 14 view .LVU32
+ 103 0042 1C46     		mov	r4, r3
+ 104              	.L5:
+ 105              	.LVL7:
+ 121:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         next_pos = stream -> ux_device_class_audio_stream_buffer;
+ 122:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 123:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Commit frame length.  */
+ARM GAS  /tmp/ccPgrBsG.s 			page 5
+
+
+ 124:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_length = lengt
+ 106              		.loc 1 124 5 is_stmt 1 view .LVU33
+ 107              		.loc 1 124 93 is_stmt 0 view .LVU34
+ 108 0044 1160     		str	r1, [r2]
+ 109              	.LVL8:
+ 125:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 126:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     /* Move frame position.  */
+ 127:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     stream -> ux_device_class_audio_stream_access_pos = (UX_DEVICE_CLASS_AUDIO_FRAME *)next_pos;
+ 110              		.loc 1 127 5 is_stmt 1 view .LVU35
+ 111              		.loc 1 127 55 is_stmt 0 view .LVU36
+ 112 0046 C0F8D840 		str	r4, [r0, #216]
+ 128:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 129:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     return(UX_SUCCESS);
+ 113              		.loc 1 129 5 is_stmt 1 view .LVU37
+ 114              		.loc 1 129 11 is_stmt 0 view .LVU38
+ 115 004a 0020     		movs	r0, #0
+ 116              	.LVL9:
+ 117              	.L1:
+ 130:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** }
+ 118              		.loc 1 130 1 view .LVU39
+ 119 004c 38BD     		pop	{r3, r4, r5, pc}
+ 120              	.LVL10:
+ 121              	.L11:
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 122              		.loc 1 93 9 is_stmt 1 view .LVU40
+ 123 004e 5122     		movs	r2, #81
+ 124 0050 0721     		movs	r1, #7
+ 125              	.LVL11:
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 126              		.loc 1 93 9 is_stmt 0 view .LVU41
+ 127 0052 0220     		movs	r0, #2
+ 128              	.LVL12:
+  93:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 129              		.loc 1 93 9 view .LVU42
+ 130 0054 FFF7FEFF 		bl	_ux_system_error_handler
+ 131              	.LVL13:
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     }
+ 132              		.loc 1 96 9 is_stmt 1 view .LVU43
+  96:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****     }
+ 133              		.loc 1 96 15 is_stmt 0 view .LVU44
+ 134 0058 5120     		movs	r0, #81
+ 135 005a F7E7     		b	.L1
+ 136              	.LVL14:
+ 137              	.L12:
+ 110:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         return(UX_BUFFER_OVERFLOW);
+ 138              		.loc 1 110 59 view .LVU45
+ 139 005c 1368     		ldr	r3, [r2]
+ 109:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c ****         stream -> ux_device_class_audio_stream_access_pos -> ux_device_class_audio_frame_length != 
+ 140              		.loc 1 109 114 discriminator 1 view .LVU46
+ 141 005e 002B     		cmp	r3, #0
+ 142 0060 E0D0     		beq	.L4
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 143              		.loc 1 111 15 view .LVU47
+ 144 0062 5D20     		movs	r0, #93
+ 145              	.LVL15:
+ 111:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 146              		.loc 1 111 15 view .LVU48
+ARM GAS  /tmp/ccPgrBsG.s 			page 6
+
+
+ 147 0064 F2E7     		b	.L1
+ 148              	.LVL16:
+ 149              	.L6:
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 150              		.loc 1 102 15 view .LVU49
+ 151 0066 FF20     		movs	r0, #255
+ 152              	.LVL17:
+ 102:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 153              		.loc 1 102 15 view .LVU50
+ 154 0068 F0E7     		b	.L1
+ 155              	.LVL18:
+ 156              	.L7:
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 157              		.loc 1 106 15 view .LVU51
+ 158 006a FF20     		movs	r0, #255
+ 159              	.LVL19:
+ 106:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 160              		.loc 1 106 15 view .LVU52
+ 161 006c EEE7     		b	.L1
+ 162              	.LVL20:
+ 163              	.L9:
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 164              		.loc 1 115 15 view .LVU53
+ 165 006e FF20     		movs	r0, #255
+ 166              	.LVL21:
+ 115:Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_audio_write_frame_commit.c **** 
+ 167              		.loc 1 115 15 view .LVU54
+ 168 0070 ECE7     		b	.L1
+ 169              	.L14:
+ 170 0072 00BF     		.align	2
+ 171              	.L13:
+ 172 0074 00000000 		.word	_ux_system_slave
+ 173              		.cfi_endproc
+ 174              	.LFE11:
+ 176              		.text
+ 177              	.Letext0:
+ 178              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 179              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 180              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 181              		.file 5 "Middlewares/ST/usbx/common/usbx_device_classes/inc/ux_device_class_audio.h"
+ 182              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 183              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccPgrBsG.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_class_audio_write_frame_commit.c
+     /tmp/ccPgrBsG.s:20     .text._ux_device_class_audio_write_frame_commit:00000000 $t
+     /tmp/ccPgrBsG.s:26     .text._ux_device_class_audio_write_frame_commit:00000000 _ux_device_class_audio_write_frame_commit
+     /tmp/ccPgrBsG.s:172    .text._ux_device_class_audio_write_frame_commit:00000074 $d
+
+UNDEFINED SYMBOLS
+_ux_system_error_handler
+_ux_system_slave

@@ -1,0 +1,364 @@
+ARM GAS  /tmp/ccjJFBBr.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_stack_class_instance_destroy.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c"
+  19              		.section	.text._ux_host_stack_class_instance_destroy,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_class_instance_destroy
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_class_instance_destroy:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ARM GAS  /tmp/ccjJFBBr.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    _ux_host_stack_class_instance_destroy               PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    This function destroys a class instance for a class container.      */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    class                                 Pointer to class              */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    class_instance                        Pointer to class instance     */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  OUTPUT                                                                */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    Completion Status                                                   */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  CALLS                                                                 */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    None                                                                */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  CALLED BY                                                             */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    Application                                                         */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    USBX Components                                                     */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  RELEASE HISTORY                                                       */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** UINT  _ux_host_stack_class_instance_destroy(UX_HOST_CLASS *host_class, VOID *class_instance)
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** {
+  29              		.loc 1 74 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 74 1 is_stmt 0 view .LVU1
+  34 0000 30B5     		push	{r4, r5, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 12
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+  40 0002 85B0     		sub	sp, sp, #20
+  41              	.LCFI1:
+ARM GAS  /tmp/ccjJFBBr.s 			page 3
+
+
+  42              		.cfi_def_cfa_offset 32
+  43 0004 0546     		mov	r5, r0
+  44 0006 0C46     		mov	r4, r1
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** VOID    **current_class_instance;
+  45              		.loc 1 76 1 is_stmt 1 view .LVU2
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** VOID    **next_class_instance;
+  46              		.loc 1 77 1 view .LVU3
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_CLASS_INSTANCE_DESTROY, host_class, class_instance,
+  47              		.loc 1 80 5 view .LVU4
+  48 0008 0023     		movs	r3, #0
+  49 000a 0393     		str	r3, [sp, #12]
+  50 000c 0293     		str	r3, [sp, #8]
+  51 000e 4FF00072 		mov	r2, #33554432
+  52 0012 0192     		str	r2, [sp, #4]
+  53 0014 0093     		str	r3, [sp]
+  54 0016 0A46     		mov	r2, r1
+  55 0018 0146     		mov	r1, r0
+  56              	.LVL1:
+  57              		.loc 1 80 5 is_stmt 0 view .LVU5
+  58 001a 40F25A20 		movw	r0, #602
+  59              	.LVL2:
+  60              		.loc 1 80 5 view .LVU6
+  61 001e FFF7FEFF 		bl	_ux_trace_event_insert
+  62              	.LVL3:
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* If trace is enabled, register this object.  */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     UX_TRACE_OBJECT_UNREGISTER(class_instance);
+  63              		.loc 1 83 5 is_stmt 1 view .LVU7
+  64 0022 2046     		mov	r0, r4
+  65 0024 FFF7FEFF 		bl	_ux_trace_object_unregister
+  66              	.LVL4:
+  67              		.loc 1 83 47 discriminator 1 view .LVU8
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* Get the pointer to the instance pointed by the instance to destroy.  */
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     next_class_instance =  class_instance;
+  68              		.loc 1 86 5 view .LVU9
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     next_class_instance =  *next_class_instance;
+  69              		.loc 1 87 5 view .LVU10
+  70              		.loc 1 87 25 is_stmt 0 view .LVU11
+  71 0028 2168     		ldr	r1, [r4]
+  72              	.LVL5:
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* Start with the first class instance attached to the class container.  */
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     current_class_instance =  host_class -> ux_host_class_first_instance;
+  73              		.loc 1 90 5 is_stmt 1 view .LVU12
+  74              		.loc 1 90 28 is_stmt 0 view .LVU13
+  75 002a AB6C     		ldr	r3, [r5, #72]
+  76              	.LVL6:
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* Check if there are any instances attached.  */
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     if (current_class_instance == UX_NULL)
+  77              		.loc 1 93 5 is_stmt 1 view .LVU14
+  78              		.loc 1 93 8 is_stmt 0 view .LVU15
+  79 002c 4BB1     		cbz	r3, .L7
+ARM GAS  /tmp/ccjJFBBr.s 			page 4
+
+
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     {        
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         /* Error trap. */
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_HOST_CLAS
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_HOST_CLASS_INSTANCE_UNKNOWN, class_instance, 0, 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         return(UX_HOST_CLASS_INSTANCE_UNKNOWN);
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* The first instance is a special case because it is attached to the class
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****        container.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     if (current_class_instance == class_instance)
+  80              		.loc 1 107 5 is_stmt 1 view .LVU16
+  81              		.loc 1 107 8 is_stmt 0 view .LVU17
+  82 002e 9C42     		cmp	r4, r3
+  83 0030 1BD0     		beq	.L8
+  84              	.LVL7:
+  85              	.L4:
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     {
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         /* Point to next class instance.  */
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         host_class -> ux_host_class_first_instance = next_class_instance;
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         /* Return success.  */
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         return(UX_SUCCESS);
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****        
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* Traverse the list of the class instances until we found the right one.  */        
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     while (*current_class_instance != UX_NULL)
+  86              		.loc 1 118 36 is_stmt 1 view .LVU18
+  87 0032 1A46     		mov	r2, r3
+  88              		.loc 1 118 12 is_stmt 0 view .LVU19
+  89 0034 1B68     		ldr	r3, [r3]
+  90              	.LVL8:
+  91              		.loc 1 118 36 view .LVU20
+  92 0036 DBB1     		cbz	r3, .L9
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     {
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         /* Check to see if this class is the one we need to destroy.  */
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         if(*current_class_instance == class_instance)
+  93              		.loc 1 122 9 is_stmt 1 view .LVU21
+  94              		.loc 1 122 11 is_stmt 0 view .LVU22
+  95 0038 A342     		cmp	r3, r4
+  96 003a FAD1     		bne	.L4
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         {
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****             /* Point to next class instance.  */
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****             *current_class_instance =  next_class_instance;
+  97              		.loc 1 126 13 is_stmt 1 view .LVU23
+  98              		.loc 1 126 37 is_stmt 0 view .LVU24
+  99 003c 1160     		str	r1, [r2]
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****             /* Return success.  */
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****             return(UX_SUCCESS);
+ 100              		.loc 1 129 13 is_stmt 1 view .LVU25
+ARM GAS  /tmp/ccjJFBBr.s 			page 5
+
+
+ 101              		.loc 1 129 19 is_stmt 0 view .LVU26
+ 102 003e 0020     		movs	r0, #0
+ 103 0040 29E0     		b	.L1
+ 104              	.LVL9:
+ 105              	.L7:
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 106              		.loc 1 97 9 is_stmt 1 view .LVU27
+ 107 0042 5B22     		movs	r2, #91
+ 108 0044 0421     		movs	r1, #4
+ 109              	.LVL10:
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 110              		.loc 1 97 9 is_stmt 0 view .LVU28
+ 111 0046 0220     		movs	r0, #2
+ 112 0048 FFF7FEFF 		bl	_ux_system_error_handler
+ 113              	.LVL11:
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 114              		.loc 1 100 9 is_stmt 1 view .LVU29
+ 115 004c 0023     		movs	r3, #0
+ 116 004e 0393     		str	r3, [sp, #12]
+ 117 0050 0293     		str	r3, [sp, #8]
+ 118 0052 4FF08072 		mov	r2, #16777216
+ 119 0056 0192     		str	r2, [sp, #4]
+ 120 0058 0093     		str	r3, [sp]
+ 121 005a 2246     		mov	r2, r4
+ 122 005c 5B21     		movs	r1, #91
+ 123 005e 40F2E730 		movw	r0, #999
+ 124 0062 FFF7FEFF 		bl	_ux_trace_event_insert
+ 125              	.LVL12:
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 126              		.loc 1 102 9 view .LVU30
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 127              		.loc 1 102 15 is_stmt 0 view .LVU31
+ 128 0066 5B20     		movs	r0, #91
+ 129 0068 15E0     		b	.L1
+ 130              	.LVL13:
+ 131              	.L8:
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+ 132              		.loc 1 111 9 is_stmt 1 view .LVU32
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+ 133              		.loc 1 111 52 is_stmt 0 view .LVU33
+ 134 006a A964     		str	r1, [r5, #72]
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 135              		.loc 1 114 9 is_stmt 1 view .LVU34
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 136              		.loc 1 114 15 is_stmt 0 view .LVU35
+ 137 006c 0020     		movs	r0, #0
+ 138 006e 12E0     		b	.L1
+ 139              	.LVL14:
+ 140              	.L9:
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         }
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         /* Points to the next class instance.  */
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****         current_class_instance =  *current_class_instance;
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     }
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* Error trap. */
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_HOST_CLASS_IN
+ARM GAS  /tmp/ccjJFBBr.s 			page 6
+
+
+ 141              		.loc 1 137 5 is_stmt 1 view .LVU36
+ 142 0070 5B22     		movs	r2, #91
+ 143              	.LVL15:
+ 144              		.loc 1 137 5 is_stmt 0 view .LVU37
+ 145 0072 0421     		movs	r1, #4
+ 146              	.LVL16:
+ 147              		.loc 1 137 5 view .LVU38
+ 148 0074 0220     		movs	r0, #2
+ 149 0076 FFF7FEFF 		bl	_ux_system_error_handler
+ 150              	.LVL17:
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_HOST_CLASS_INSTANCE_UNKNOWN, class_instance, 0, 0, U
+ 151              		.loc 1 140 5 is_stmt 1 view .LVU39
+ 152 007a 0023     		movs	r3, #0
+ 153 007c 0393     		str	r3, [sp, #12]
+ 154 007e 0293     		str	r3, [sp, #8]
+ 155 0080 4FF08072 		mov	r2, #16777216
+ 156 0084 0192     		str	r2, [sp, #4]
+ 157 0086 0093     		str	r3, [sp]
+ 158 0088 2246     		mov	r2, r4
+ 159 008a 5B21     		movs	r1, #91
+ 160 008c 40F2E730 		movw	r0, #999
+ 161 0090 FFF7FEFF 		bl	_ux_trace_event_insert
+ 162              	.LVL18:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** 
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     /* Return error to caller.  */
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c ****     return(UX_HOST_CLASS_INSTANCE_UNKNOWN);
+ 163              		.loc 1 143 5 view .LVU40
+ 164              		.loc 1 143 11 is_stmt 0 view .LVU41
+ 165 0094 5B20     		movs	r0, #91
+ 166              	.LVL19:
+ 167              	.L1:
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_destroy.c **** }
+ 168              		.loc 1 144 1 view .LVU42
+ 169 0096 05B0     		add	sp, sp, #20
+ 170              	.LCFI2:
+ 171              		.cfi_def_cfa_offset 12
+ 172              		@ sp needed
+ 173 0098 30BD     		pop	{r4, r5, pc}
+ 174              		.loc 1 144 1 view .LVU43
+ 175              		.cfi_endproc
+ 176              	.LFE11:
+ 178              		.text
+ 179              	.Letext0:
+ 180              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 181              		.file 3 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 182              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 183              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/ccjJFBBr.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_class_instance_destroy.c
+     /tmp/ccjJFBBr.s:20     .text._ux_host_stack_class_instance_destroy:00000000 $t
+     /tmp/ccjJFBBr.s:26     .text._ux_host_stack_class_instance_destroy:00000000 _ux_host_stack_class_instance_destroy
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_trace_object_unregister
+_ux_system_error_handler

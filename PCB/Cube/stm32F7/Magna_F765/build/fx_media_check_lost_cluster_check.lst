@@ -1,0 +1,440 @@
+ARM GAS  /tmp/cc3sAJ8K.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_media_check_lost_cluster_check.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c"
+  19              		.section	.text._fx_media_check_lost_cluster_check,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_media_check_lost_cluster_check
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_media_check_lost_cluster_check:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** #include "fx_media.h"
+  30:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** #include "fx_utility.h"
+ARM GAS  /tmp/cc3sAJ8K.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  32:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  33:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  34:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  35:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  FUNCTION                                               RELEASE        */
+  36:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  37:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    _fx_media_check_lost_cluster_check                  PORTABLE C      */
+  38:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                           6.1          */
+  39:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  41:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  42:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  43:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    This function examines all clusters to see if there are any unused  */
+  46:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    clusters that are also unavailable. If specified, this routine will */
+  47:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    also mark the cluster as available.                                 */
+  48:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    media_ptr                             Pointer to a previously       */
+  52:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                            opened media                */
+  53:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    logical_fat                           Pointer to the logical FAT    */
+  54:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                            bit map                     */
+  55:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    total_clusters                        Total number of clusters      */
+  56:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    error_correction_option               Option for correcting lost    */
+  57:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                            cluster errors              */
+  58:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  OUTPUT                                                                */
+  60:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    error                                 Error code                    */
+  62:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  CALLS                                                                 */
+  64:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    _fx_utility_FAT_entry_read            Read a FAT entry              */
+  66:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    _fx_utility_FAT_entry_write           Write a FAT entry             */
+  67:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  CALLED BY                                                             */
+  69:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    _fx_check_media                       Check media function          */
+  71:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  RELEASE HISTORY                                                       */
+  73:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  74:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*    DATE              NAME                      DESCRIPTION             */
+  75:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  76:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  77:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  78:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                            resulting in version 6.1    */
+  79:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /*                                                                        */
+  80:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** /**************************************************************************/
+  81:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** ULONG  _fx_media_check_lost_cluster_check(FX_MEDIA *media_ptr, UCHAR *logical_fat, ULONG total_clus
+  82:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** {
+  29              		.loc 1 82 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 82 1 is_stmt 0 view .LVU1
+ARM GAS  /tmp/cc3sAJ8K.s 			page 3
+
+
+  34 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 32
+  37              		.cfi_offset 4, -32
+  38              		.cfi_offset 5, -28
+  39              		.cfi_offset 6, -24
+  40              		.cfi_offset 7, -20
+  41              		.cfi_offset 8, -16
+  42              		.cfi_offset 9, -12
+  43              		.cfi_offset 10, -8
+  44              		.cfi_offset 14, -4
+  45 0004 82B0     		sub	sp, sp, #8
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 40
+  48 0006 0746     		mov	r7, r0
+  49 0008 0E46     		mov	r6, r1
+  50 000a 1546     		mov	r5, r2
+  51 000c 9846     		mov	r8, r3
+  83:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  84:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** ULONG cluster, next_cluster = 0;
+  52              		.loc 1 84 1 is_stmt 1 view .LVU2
+  53              		.loc 1 84 16 is_stmt 0 view .LVU3
+  54 000e 0023     		movs	r3, #0
+  55              	.LVL1:
+  56              		.loc 1 84 16 view .LVU4
+  57 0010 0193     		str	r3, [sp, #4]
+  85:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** ULONG fat_last;
+  58              		.loc 1 85 1 is_stmt 1 view .LVU5
+  86:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** ULONG error;
+  59              		.loc 1 86 1 view .LVU6
+  87:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** UINT  status;
+  60              		.loc 1 87 1 view .LVU7
+  88:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  89:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  90:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     /* Calculate the FAT reserved and last sector values.  */
+  91:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     if (media_ptr -> fx_media_32_bit_FAT)
+  61              		.loc 1 91 5 view .LVU8
+  62              		.loc 1 91 19 is_stmt 0 view .LVU9
+  63 0012 436E     		ldr	r3, [r0, #100]
+  64              		.loc 1 91 8 view .LVU10
+  65 0014 2BB1     		cbz	r3, .L10
+  92:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     {
+  93:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         fat_last =      FX_LAST_CLUSTER_1_32;
+  66              		.loc 1 93 18 view .LVU11
+  67 0016 DFF884A0 		ldr	r10, .L17
+  68              	.L2:
+  69              	.LVL2:
+  94:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     }
+  95:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     else
+  96:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     {
+  97:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         fat_last =      FX_LAST_CLUSTER_1;
+  98:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     }
+  99:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 100:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     /* Initialize the error.  */
+ 101:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     error =  0;
+  70              		.loc 1 101 5 is_stmt 1 view .LVU12
+ 102:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ARM GAS  /tmp/cc3sAJ8K.s 			page 4
+
+
+ 103:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     /* Loop through all the clusters to see if any clusters NOT in the logical sector FAT have
+ 104:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****        a non zero value.  */
+ 105:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     for (cluster = FX_FAT_ENTRY_START; cluster < total_clusters; cluster++)
+  71              		.loc 1 105 5 view .LVU13
+ 101:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+  72              		.loc 1 101 11 is_stmt 0 view .LVU14
+  73 001a 4FF00009 		mov	r9, #0
+  74              		.loc 1 105 18 view .LVU15
+  75 001e 0224     		movs	r4, #2
+  76              		.loc 1 105 5 view .LVU16
+  77 0020 10E0     		b	.L3
+  78              	.LVL3:
+  79              	.L10:
+  97:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     }
+  80              		.loc 1 97 18 view .LVU17
+  81 0022 4FF6F87A 		movw	r10, #65528
+  82 0026 F8E7     		b	.L2
+  83              	.LVL4:
+  84              	.L15:
+ 106:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     {
+ 107:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 108:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         /* Determine if this cluster is in the logical FAT.  */
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         if (logical_fat[cluster >> 3] & (1 << (cluster & 7)))
+ 110:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 111:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             /* Yes, the cluster is in use by a file or sub-directory.  Just continue the loop.  */
+ 113:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             continue;
+ 114:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         }
+ 115:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 116:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         /* Otherwise, the cluster is not in use.  */
+ 117:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 118:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         /* Read the contents of what should be a free cluster.  */
+ 119:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         status = _fx_utility_FAT_entry_read(media_ptr, cluster, &next_cluster);
+ 120:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 121:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         /* Check for a good status.  */
+ 122:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         if (status)
+ 123:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 124:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 125:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             /* Set the error code.  */
+ 126:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             error = error | FX_IO_ERROR;
+  85              		.loc 1 126 13 is_stmt 1 view .LVU18
+  86              		.loc 1 126 19 is_stmt 0 view .LVU19
+  87 0028 49F09009 		orr	r9, r9, #144
+  88              	.LVL5:
+ 127:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 128:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             /* Return error code.  */
+ 129:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             return(error);
+  89              		.loc 1 129 13 is_stmt 1 view .LVU20
+  90              	.L1:
+ 130:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         }
+ 131:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 132:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         /* Determine if the contents of the cluster is valid.  */
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         if (((next_cluster > (ULONG)FX_FREE_CLUSTER) && (next_cluster < media_ptr -> fx_media_fat_r
+ 134:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ 135:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 136:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 137:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             /* Lost cluster is present.  */
+ARM GAS  /tmp/cc3sAJ8K.s 			page 5
+
+
+ 138:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 139:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             /* Set the error code status.  */
+ 140:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             error =  FX_LOST_CLUSTER_ERROR;
+ 141:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             /* Determine if the lost cluster should be recovered.  */
+ 143:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             if (error_correction_option & FX_LOST_CLUSTER_ERROR)
+ 144:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             {
+ 145:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 146:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 /* Make the cluster available again.  */
+ 147:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 status =  _fx_utility_FAT_entry_write(media_ptr, cluster, FX_FREE_CLUSTER);
+ 148:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 149:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 /* Check for a good status.  */
+ 150:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 if (status)
+ 151:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 {
+ 152:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 153:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                     /* Increment the available clusters.  */
+ 154:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                     media_ptr -> fx_media_available_clusters++;
+ 155:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                     /* Set the error code.  */
+ 157:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                     error =  error | FX_IO_ERROR;
+ 158:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                     /* Return error code.  */
+ 160:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                     return(error);
+ 161:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 }
+ 162:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             }
+ 163:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         }
+ 164:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     }
+ 165:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 166:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     /* Return error code.  */
+ 167:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     return(error);
+ 168:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** }
+  91              		.loc 1 168 1 is_stmt 0 view .LVU21
+  92 002c 4846     		mov	r0, r9
+  93 002e 02B0     		add	sp, sp, #8
+  94              	.LCFI2:
+  95              		.cfi_remember_state
+  96              		.cfi_def_cfa_offset 32
+  97              		@ sp needed
+  98 0030 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+  99              	.LVL6:
+ 100              	.L7:
+ 101              	.LCFI3:
+ 102              		.cfi_restore_state
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ 103              		.loc 1 133 110 discriminator 3 view .LVU22
+ 104 0034 5345     		cmp	r3, r10
+ 105 0036 04D3     		bcc	.L4
+ 106              	.L8:
+ 140:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 107              		.loc 1 140 13 is_stmt 1 view .LVU23
+ 108              	.LVL7:
+ 143:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             {
+ 109              		.loc 1 143 13 view .LVU24
+ 143:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             {
+ 110              		.loc 1 143 16 is_stmt 0 view .LVU25
+ 111 0038 18F0040F 		tst	r8, #4
+ 112 003c 1FD1     		bne	.L14
+ARM GAS  /tmp/cc3sAJ8K.s 			page 6
+
+
+ 140:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 113              		.loc 1 140 19 view .LVU26
+ 114 003e 4FF00409 		mov	r9, #4
+ 115              	.LVL8:
+ 116              	.L4:
+ 105:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     {
+ 117              		.loc 1 105 73 is_stmt 1 discriminator 2 view .LVU27
+ 118 0042 0134     		adds	r4, r4, #1
+ 119              	.LVL9:
+ 120              	.L3:
+ 105:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****     {
+ 121              		.loc 1 105 48 discriminator 1 view .LVU28
+ 122 0044 AC42     		cmp	r4, r5
+ 123 0046 F1D2     		bcs	.L1
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 124              		.loc 1 109 9 view .LVU29
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 125              		.loc 1 109 33 is_stmt 0 view .LVU30
+ 126 0048 E308     		lsrs	r3, r4, #3
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 127              		.loc 1 109 24 view .LVU31
+ 128 004a 16F803C0 		ldrb	ip, [r6, r3]	@ zero_extendqisi2
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 129              		.loc 1 109 56 view .LVU32
+ 130 004e 04F00703 		and	r3, r4, #7
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 131              		.loc 1 109 13 view .LVU33
+ 132 0052 4CFA03FC 		asr	ip, ip, r3
+ 109:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 133              		.loc 1 109 12 view .LVU34
+ 134 0056 1CF0010F 		tst	ip, #1
+ 135 005a F2D1     		bne	.L4
+ 119:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 136              		.loc 1 119 9 is_stmt 1 view .LVU35
+ 119:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 137              		.loc 1 119 18 is_stmt 0 view .LVU36
+ 138 005c 01AA     		add	r2, sp, #4
+ 139 005e 2146     		mov	r1, r4
+ 140 0060 3846     		mov	r0, r7
+ 141 0062 FFF7FEFF 		bl	_fx_utility_FAT_entry_read
+ 142              	.LVL10:
+ 122:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 143              		.loc 1 122 9 is_stmt 1 view .LVU37
+ 122:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****         {
+ 144              		.loc 1 122 12 is_stmt 0 view .LVU38
+ 145 0066 0028     		cmp	r0, #0
+ 146 0068 DED1     		bne	.L15
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ 147              		.loc 1 133 9 is_stmt 1 view .LVU39
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ 148              		.loc 1 133 28 is_stmt 0 view .LVU40
+ 149 006a 019B     		ldr	r3, [sp, #4]
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ 150              		.loc 1 133 12 view .LVU41
+ 151 006c 002B     		cmp	r3, #0
+ 152 006e E1D0     		beq	.L7
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ARM GAS  /tmp/cc3sAJ8K.s 			page 7
+
+
+ 153              		.loc 1 133 83 discriminator 1 view .LVU42
+ 154 0070 07F50052 		add	r2, r7, #8192
+ 155 0074 D2F8A824 		ldr	r2, [r2, #1192]
+ 133:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****             (next_cluster >= fat_last))
+ 156              		.loc 1 133 54 discriminator 1 view .LVU43
+ 157 0078 9342     		cmp	r3, r2
+ 158 007a DDD3     		bcc	.L8
+ 159 007c DAE7     		b	.L7
+ 160              	.LVL11:
+ 161              	.L14:
+ 147:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 162              		.loc 1 147 17 is_stmt 1 view .LVU44
+ 147:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 163              		.loc 1 147 27 is_stmt 0 view .LVU45
+ 164 007e 0022     		movs	r2, #0
+ 165 0080 2146     		mov	r1, r4
+ 166 0082 3846     		mov	r0, r7
+ 167              	.LVL12:
+ 147:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 168              		.loc 1 147 27 view .LVU46
+ 169 0084 FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 170              	.LVL13:
+ 150:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 {
+ 171              		.loc 1 150 17 is_stmt 1 view .LVU47
+ 150:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 {
+ 172              		.loc 1 150 20 is_stmt 0 view .LVU48
+ 173 0088 10B9     		cbnz	r0, .L16
+ 140:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 174              		.loc 1 140 19 view .LVU49
+ 175 008a 4FF00409 		mov	r9, #4
+ 176 008e D8E7     		b	.L4
+ 177              	.L16:
+ 154:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 178              		.loc 1 154 21 is_stmt 1 view .LVU50
+ 154:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 179              		.loc 1 154 31 is_stmt 0 view .LVU51
+ 180 0090 FB6F     		ldr	r3, [r7, #124]
+ 154:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 181              		.loc 1 154 61 view .LVU52
+ 182 0092 0133     		adds	r3, r3, #1
+ 183 0094 FB67     		str	r3, [r7, #124]
+ 157:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c **** 
+ 184              		.loc 1 157 21 is_stmt 1 view .LVU53
+ 185              	.LVL14:
+ 160:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 }
+ 186              		.loc 1 160 21 view .LVU54
+ 160:Middlewares/ST/filex/common/src/fx_media_check_lost_cluster_check.c ****                 }
+ 187              		.loc 1 160 27 is_stmt 0 view .LVU55
+ 188 0096 4FF09409 		mov	r9, #148
+ 189 009a C7E7     		b	.L1
+ 190              	.L18:
+ 191              		.align	2
+ 192              	.L17:
+ 193 009c F8FFFF0F 		.word	268435448
+ 194              		.cfi_endproc
+ 195              	.LFE8:
+ 197              		.text
+ARM GAS  /tmp/cc3sAJ8K.s 			page 8
+
+
+ 198              	.Letext0:
+ 199              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 200              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 201              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 202              		.file 5 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  /tmp/cc3sAJ8K.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_check_lost_cluster_check.c
+     /tmp/cc3sAJ8K.s:20     .text._fx_media_check_lost_cluster_check:00000000 $t
+     /tmp/cc3sAJ8K.s:26     .text._fx_media_check_lost_cluster_check:00000000 _fx_media_check_lost_cluster_check
+     /tmp/cc3sAJ8K.s:193    .text._fx_media_check_lost_cluster_check:0000009c $d
+
+UNDEFINED SYMBOLS
+_fx_utility_FAT_entry_read
+_fx_utility_FAT_entry_write

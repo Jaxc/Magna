@@ -1,0 +1,1497 @@
+ARM GAS  /tmp/ccz5p4gW.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_utility_logical_sector_flush.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c"
+  19              		.section	.text._fx_utility_logical_sector_flush,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_utility_logical_sector_flush
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_utility_logical_sector_flush:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  12:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  13:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**   Utility                                                             */
+  19:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  23:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  25:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  26:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  28:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #include "fx_utility.h"
+ARM GAS  /tmp/ccz5p4gW.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  32:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  33:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  34:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  35:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  FUNCTION                                               RELEASE        */
+  36:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  37:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    _fx_utility_logical_sector_flush                    PORTABLE C      */
+  38:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                           6.1.10       */
+  39:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  41:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  42:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  43:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    This function handles logical sector flush requests for all FileX   */
+  46:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    components. It will process all dirty logical sectors in the        */
+  47:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    logical sector cache within the range specified. This function      */
+  48:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    optionally invalidates sectors.                                     */
+  49:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  INPUT                                                                 */
+  51:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  52:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    media_ptr                             Media control block pointer   */
+  53:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    starting_sector                       Starting sector number        */
+  54:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    sectors                               Number of sectors             */
+  55:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    invalidate                            Invalidate flag               */
+  56:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                            (FX_TRUE -> invalidate)     */
+  57:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  OUTPUT                                                                */
+  59:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    return status                                                       */
+  61:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  CALLS                                                                 */
+  63:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    I/O Driver                                                          */
+  65:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  CALLED BY                                                             */
+  67:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    FileX System Functions                                              */
+  69:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  RELEASE HISTORY                                                       */
+  71:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*    DATE              NAME                      DESCRIPTION             */
+  73:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  74:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  75:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  09-30-2020     William E. Lamie         Modified comment(s), and      */
+  76:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                            added conditional to        */
+  77:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                            disable cache,              */
+  78:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                            resulting in version 6.1    */
+  79:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*  01-31-2022     William E. Lamie         Modified comment(s), fixed    */
+  80:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                            errors without cache,       */
+  81:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                            resulting in version 6.1.10 */
+  82:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /*                                                                        */
+  83:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** /**************************************************************************/
+  84:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** UINT  _fx_utility_logical_sector_flush(FX_MEDIA *media_ptr, ULONG64 starting_sector, ULONG64 sector
+  85:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** {
+  29              		.loc 1 85 1 view -0
+  30              		.cfi_startproc
+ARM GAS  /tmp/ccz5p4gW.s 			page 3
+
+
+  31              		@ args = 12, pretend = 0, frame = 40
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 85 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 36
+  37              		.cfi_offset 4, -36
+  38              		.cfi_offset 5, -32
+  39              		.cfi_offset 6, -28
+  40              		.cfi_offset 7, -24
+  41              		.cfi_offset 8, -20
+  42              		.cfi_offset 9, -16
+  43              		.cfi_offset 10, -12
+  44              		.cfi_offset 11, -8
+  45              		.cfi_offset 14, -4
+  46 0004 8FB0     		sub	sp, sp, #60
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 96
+  49 0006 8146     		mov	r9, r0
+  50 0008 0692     		str	r2, [sp, #24]
+  51 000a 1F46     		mov	r7, r3
+  52 000c 0793     		str	r3, [sp, #28]
+  53 000e DDF860A0 		ldr	r10, [sp, #96]
+  54 0012 DDF86480 		ldr	r8, [sp, #100]
+  55 0016 1A9E     		ldr	r6, [sp, #104]
+  86:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  87:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifndef FX_DISABLE_CACHE
+  88:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** FX_CACHED_SECTOR *cache_entry;
+  56              		.loc 1 88 1 is_stmt 1 view .LVU2
+  89:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** UINT              cache_size;
+  57              		.loc 1 89 1 view .LVU3
+  90:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** UINT              i, bit_set, use_starting_sector;
+  58              		.loc 1 90 1 view .LVU4
+  91:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** ULONG             index;
+  59              		.loc 1 91 1 view .LVU5
+  92:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** ULONG             remaining_valid;
+  60              		.loc 1 92 1 view .LVU6
+  93:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** ULONG             remaining_dirty;
+  61              		.loc 1 93 1 view .LVU7
+  94:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** ULONG64           ending_sector;
+  62              		.loc 1 94 1 view .LVU8
+  95:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** ULONG             valid_bit_map;
+  63              		.loc 1 95 1 view .LVU9
+  96:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  97:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+  98:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     /* Extended port-specific processing macro, which is by default defined to white space.  */
+  99:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     FX_UTILITY_LOGICAL_SECTOR_FLUSH_EXTENSION
+ 100:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 101:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     /* Calculate the ending sector.  */
+ 102:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     ending_sector =  starting_sector + sectors - 1;
+  64              		.loc 1 102 5 view .LVU10
+  65              		.loc 1 102 38 is_stmt 0 view .LVU11
+  66 0018 12EB0A03 		adds	r3, r2, r10
+  67 001c 47EB0802 		adc	r2, r7, r8
+  68              	.LVL1:
+  69              		.loc 1 102 19 view .LVU12
+  70 0020 013B     		subs	r3, r3, #1
+ARM GAS  /tmp/ccz5p4gW.s 			page 4
+
+
+  71 0022 0993     		str	r3, [sp, #36]
+  72 0024 42F1FF33 		adc	r3, r2, #-1
+  73 0028 0A93     		str	r3, [sp, #40]
+  74              	.LVL2:
+ 103:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 104:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     /* Pickup the number of dirty sectors currently in the cache.  */
+ 105:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     remaining_dirty =  media_ptr -> fx_media_sector_cache_dirty_count;
+  75              		.loc 1 105 5 is_stmt 1 view .LVU13
+  76              		.loc 1 105 21 is_stmt 0 view .LVU14
+  77 002a D0F824B0 		ldr	fp, [r0, #36]
+  78              	.LVL3:
+ 106:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 107:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 108:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_MEDIA_FLUSH, media_ptr, media_ptr -> fx_media_sector_
+  79              		.loc 1 108 5 is_stmt 1 view .LVU15
+  80 002e 0023     		movs	r3, #0
+  81              	.LVL4:
+  82              		.loc 1 108 5 is_stmt 0 view .LVU16
+  83 0030 0393     		str	r3, [sp, #12]
+  84 0032 0293     		str	r3, [sp, #8]
+  85 0034 4FF40062 		mov	r2, #2048
+  86 0038 0192     		str	r2, [sp, #4]
+  87 003a 0093     		str	r3, [sp]
+  88 003c 5A46     		mov	r2, fp
+  89 003e 0146     		mov	r1, r0
+  90 0040 CB20     		movs	r0, #203
+  91              	.LVL5:
+  92              		.loc 1 108 5 view .LVU17
+  93 0042 FFF7FEFF 		bl	_fx_trace_event_insert
+  94              	.LVL6:
+ 109:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     /* Determine what type of cache configuration we have.  */
+ 111:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     if (media_ptr -> fx_media_sector_cache_hashed == FX_FALSE)
+  95              		.loc 1 111 5 is_stmt 1 view .LVU18
+  96              		.loc 1 111 19 is_stmt 0 view .LVU19
+  97 0046 D9F81000 		ldr	r0, [r9, #16]
+  98              		.loc 1 111 8 view .LVU20
+  99 004a 0028     		cmp	r0, #0
+ 100 004c 40F08780 		bne	.L2
+ 112:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     {
+ 113:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 114:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Linear cache present, simply walk through the search list until
+ 115:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****            an unused cache entry is present.  */
+ 116:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 117:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Flush and invalidate the internal logical sector cache.  */
+ 118:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         cache_size =            media_ptr -> fx_media_sector_cache_size;
+ 101              		.loc 1 118 9 is_stmt 1 view .LVU21
+ 102              		.loc 1 118 20 is_stmt 0 view .LVU22
+ 103 0050 D9F81430 		ldr	r3, [r9, #20]
+ 104              	.LVL7:
+ 119:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         cache_entry =           media_ptr -> fx_media_sector_cache_list_ptr;
+ 105              		.loc 1 119 9 is_stmt 1 view .LVU23
+ 106              		.loc 1 119 21 is_stmt 0 view .LVU24
+ 107 0054 D9F81C40 		ldr	r4, [r9, #28]
+ 108              	.LVL8:
+ 120:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 121:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Look at the cache entries that have been written to.  */
+ARM GAS  /tmp/ccz5p4gW.s 			page 5
+
+
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         while ((cache_size--) && (cache_entry -> fx_cached_sector))
+ 109              		.loc 1 122 9 is_stmt 1 view .LVU25
+ 110 0058 0590     		str	r0, [sp, #20]
+ 111              		.loc 1 122 15 is_stmt 0 view .LVU26
+ 112 005a 3BE0     		b	.L3
+ 113              	.LVL9:
+ 114              	.L7:
+ 123:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 124:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 125:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if invalidation is not required and there are no
+ 126:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                more dirty sectors. */
+ 127:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if ((remaining_dirty == 0) && (invalidate == FX_FALSE))
+ 128:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 129:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 130:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Yes, nothing left to do.  */
+ 131:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 break;
+ 132:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 133:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 134:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if there are any more sectors to process.  */
+ 135:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if (sectors == 0)
+ 136:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 137:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 138:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* No more sectors required to process.  */
+ 139:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 break;
+ 140:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 141:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if this cached sector is within the specified range and is valid.  */
+ 143:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if ((cache_entry -> fx_cached_sector_valid) &&
+ 144:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 145:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector <= ending_sector))
+ 146:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 147:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 148:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Yes, the cache entry is valid and within the specified range. Determine if
+ 149:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                    the requested sector has been written to.  */
+ 150:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 if (cache_entry -> fx_cached_sector_buffer_dirty)
+ 151:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 152:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 153:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Yes, write the cached sector out to the media.  */
+ 154:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 155:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Check for write protect at the media level (set by driver).  */
+ 156:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     if (media_ptr -> fx_media_driver_write_protect == FX_FALSE)
+ 157:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 158:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 160:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 161:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Increment the number of driver write sector(s) requests.  */
+ 162:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_write_requests++;
+ 163:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 164:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 165:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Build write request to the driver.  */
+ 166:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_request =          FX_DRIVER_WRITE;
+ 167:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 168:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_se
+ 169:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 170:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_logical_sector =   cache_entry -> fx_cached_se
+ 171:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #else
+ 172:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_logical_sector =   (ULONG)cache_entry -> fx_ca
+ARM GAS  /tmp/ccz5p4gW.s 			page 6
+
+
+ 173:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 174:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_sectors =          1;
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_se
+ 176:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 177:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Sectors other than FX_DATA_SECTOR will never be dirty when FX_FAULT_TOLE
+ 178:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifndef FX_FAULT_TOLERANT
+ 179:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Determine if the system write flag needs to be set.  */
+ 180:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         if (cache_entry -> fx_cached_sector_type != FX_DATA_SECTOR)
+ 181:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 182:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 183:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Yes, a system sector write is present so set the flag.  The driver
+ 184:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                can use this flag to make extra safeguards in writing the sector
+ 185:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                out, yielding more fault tolerance.  */
+ 186:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             media_ptr -> fx_media_driver_system_write =  FX_TRUE;
+ 187:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 188:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif /* FX_FAULT_TOLERANT */
+ 189:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 190:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* If trace is enabled, insert this event into the trace buffer.  */
+ 191:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_ptr, cache
+ 115              		.loc 1 191 25 is_stmt 1 view .LVU27
+ 116 005c A268     		ldr	r2, [r4, #8]
+ 117 005e 2368     		ldr	r3, [r4]
+ 118 0060 0021     		movs	r1, #0
+ 119 0062 0391     		str	r1, [sp, #12]
+ 120 0064 0291     		str	r1, [sp, #8]
+ 121 0066 4FF40061 		mov	r1, #2048
+ 122 006a 0191     		str	r1, [sp, #4]
+ 123 006c 0093     		str	r3, [sp]
+ 124 006e 0123     		movs	r3, #1
+ 125 0070 4946     		mov	r1, r9
+ 126 0072 CF20     		movs	r0, #207
+ 127 0074 FFF7FEFF 		bl	_fx_trace_event_insert
+ 128              	.LVL10:
+ 192:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 193:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Invoke the driver to write the sector.  */
+ 194:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 129              		.loc 1 194 25 view .LVU28
+ 130              		.loc 1 194 36 is_stmt 0 view .LVU29
+ 131 0078 D9F8BC30 		ldr	r3, [r9, #188]
+ 132 007c 4846     		mov	r0, r9
+ 133 007e 9847     		blx	r3
+ 134              	.LVL11:
+ 195:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 196:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Clear the system write flag.  */
+ 197:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 135              		.loc 1 197 25 is_stmt 1 view .LVU30
+ 136              		.loc 1 197 67 is_stmt 0 view .LVU31
+ 137 0080 0023     		movs	r3, #0
+ 138 0082 C9F8B030 		str	r3, [r9, #176]
+ 198:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 199:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Check for successful completion.  */
+ 200:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         if (media_ptr -> fx_media_driver_status)
+ 139              		.loc 1 200 25 is_stmt 1 view .LVU32
+ 140              		.loc 1 200 39 is_stmt 0 view .LVU33
+ 141 0086 D9F88C30 		ldr	r3, [r9, #140]
+ 142              		.loc 1 200 28 view .LVU34
+ 143 008a 002B     		cmp	r3, #0
+ARM GAS  /tmp/ccz5p4gW.s 			page 7
+
+
+ 144 008c 40F06181 		bne	.L30
+ 201:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 202:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 203:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Error writing a cached sector out.  Return the
+ 204:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                error status.  */
+ 205:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             return(media_ptr -> fx_media_driver_status);
+ 206:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 207:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 208:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Clear the buffer dirty flag since it has been flushed
+ 209:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                            out.  */
+ 210:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         cache_entry -> fx_cached_sector_buffer_dirty =  FX_FALSE;
+ 145              		.loc 1 210 25 is_stmt 1 view .LVU35
+ 146              		.loc 1 210 70 is_stmt 0 view .LVU36
+ 147 0090 2374     		strb	r3, [r4, #16]
+ 211:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 212:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Decrement the number of dirty sectors currently in the cache.  */
+ 213:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_sector_cache_dirty_count--;
+ 148              		.loc 1 213 25 is_stmt 1 view .LVU37
+ 149              		.loc 1 213 35 is_stmt 0 view .LVU38
+ 150 0092 D9F82430 		ldr	r3, [r9, #36]
+ 151              		.loc 1 213 71 view .LVU39
+ 152 0096 013B     		subs	r3, r3, #1
+ 153 0098 C9F82430 		str	r3, [r9, #36]
+ 214:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         remaining_dirty--;
+ 154              		.loc 1 214 25 is_stmt 1 view .LVU40
+ 155              		.loc 1 214 40 is_stmt 0 view .LVU41
+ 156 009c 0BF1FF3B 		add	fp, fp, #-1
+ 157              	.LVL12:
+ 158              	.L6:
+ 215:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 216:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 }
+ 217:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 218:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Determine if the invalidate option is specified.  */
+ 219:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 if (invalidate)
+ 159              		.loc 1 219 17 is_stmt 1 view .LVU42
+ 160              		.loc 1 219 20 is_stmt 0 view .LVU43
+ 161 00a0 96B1     		cbz	r6, .L8
+ 220:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 221:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 222:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Invalidate the cache entry.  */
+ 223:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     cache_entry -> fx_cached_sector_valid =  FX_FALSE;
+ 162              		.loc 1 223 21 is_stmt 1 view .LVU44
+ 163              		.loc 1 223 59 is_stmt 0 view .LVU45
+ 164 00a2 0023     		movs	r3, #0
+ 165 00a4 6374     		strb	r3, [r4, #17]
+ 224:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 225:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Place all ones in the sector number.  */
+ 226:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     cache_entry -> fx_cached_sector =  (~(ULONG64)0);
+ 166              		.loc 1 226 21 is_stmt 1 view .LVU46
+ 167              		.loc 1 226 53 is_stmt 0 view .LVU47
+ 168 00a6 4FF0FF32 		mov	r2, #-1
+ 169 00aa 4FF0FF33 		mov	r3, #-1
+ 170 00ae C4E90223 		strd	r2, [r4, #8]
+ 227:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 228:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Determine if this sector is still dirty, this could be the case if
+ 229:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                        write protection was turned on.  */
+ 230:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     if (cache_entry -> fx_cached_sector_buffer_dirty)
+ARM GAS  /tmp/ccz5p4gW.s 			page 8
+
+
+ 171              		.loc 1 230 21 is_stmt 1 view .LVU48
+ 172              		.loc 1 230 37 is_stmt 0 view .LVU49
+ 173 00b2 237C     		ldrb	r3, [r4, #16]	@ zero_extendqisi2
+ 174              		.loc 1 230 24 view .LVU50
+ 175 00b4 43B1     		cbz	r3, .L8
+ 231:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 232:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 233:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Yes, clear the dirty flag.  */
+ 234:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         cache_entry -> fx_cached_sector_buffer_dirty =  FX_FALSE;
+ 176              		.loc 1 234 25 is_stmt 1 view .LVU51
+ 177              		.loc 1 234 70 is_stmt 0 view .LVU52
+ 178 00b6 0023     		movs	r3, #0
+ 179 00b8 2374     		strb	r3, [r4, #16]
+ 235:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 236:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Decrement the number of dirty sectors currently in the cache.  */
+ 237:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_sector_cache_dirty_count--;
+ 180              		.loc 1 237 25 is_stmt 1 view .LVU53
+ 181              		.loc 1 237 35 is_stmt 0 view .LVU54
+ 182 00ba D9F82430 		ldr	r3, [r9, #36]
+ 183              		.loc 1 237 71 view .LVU55
+ 184 00be 013B     		subs	r3, r3, #1
+ 185 00c0 C9F82430 		str	r3, [r9, #36]
+ 238:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         remaining_dirty--;
+ 186              		.loc 1 238 25 is_stmt 1 view .LVU56
+ 187              		.loc 1 238 40 is_stmt 0 view .LVU57
+ 188 00c4 0BF1FF3B 		add	fp, fp, #-1
+ 189              	.LVL13:
+ 190              	.L8:
+ 239:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 240:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 }
+ 241:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 242:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Decrement the number of sectors in the range that have been processed.  */
+ 243:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 sectors--;
+ 191              		.loc 1 243 17 is_stmt 1 view .LVU58
+ 192              		.loc 1 243 24 is_stmt 0 view .LVU59
+ 193 00c8 1AF1FF3A 		adds	r10, r10, #-1
+ 194              	.LVL14:
+ 195              		.loc 1 243 24 view .LVU60
+ 196 00cc 48F1FF38 		adc	r8, r8, #-1
+ 197              	.LVL15:
+ 198              	.L5:
+ 244:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 245:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 246:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Move to the next entry in the sector cache.  */
+ 247:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             cache_entry =  cache_entry -> fx_cached_sector_next_used;
+ 199              		.loc 1 247 13 is_stmt 1 view .LVU61
+ 200              		.loc 1 247 25 is_stmt 0 view .LVU62
+ 201 00d0 6469     		ldr	r4, [r4, #20]
+ 202              	.LVL16:
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 203              		.loc 1 122 27 view .LVU63
+ 204 00d2 2B46     		mov	r3, r5
+ 205              	.LVL17:
+ 206              	.L3:
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 207              		.loc 1 122 31 is_stmt 1 view .LVU64
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ARM GAS  /tmp/ccz5p4gW.s 			page 9
+
+
+ 208              		.loc 1 122 27 is_stmt 0 view .LVU65
+ 209 00d4 5D1E     		subs	r5, r3, #1
+ 210              	.LVL18:
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 211              		.loc 1 122 31 view .LVU66
+ 212 00d6 002B     		cmp	r3, #0
+ 213 00d8 00F03D81 		beq	.L31
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 214              		.loc 1 122 47 discriminator 1 view .LVU67
+ 215 00dc A268     		ldr	r2, [r4, #8]
+ 216 00de E368     		ldr	r3, [r4, #12]
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 217              		.loc 1 122 31 discriminator 1 view .LVU68
+ 218 00e0 52EA0301 		orrs	r1, r2, r3
+ 219 00e4 39D0     		beq	.L38
+ 127:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 220              		.loc 1 127 13 is_stmt 1 view .LVU69
+ 127:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 221              		.loc 1 127 16 is_stmt 0 view .LVU70
+ 222 00e6 5BEA0601 		orrs	r1, fp, r6
+ 223 00ea 00F03081 		beq	.L29
+ 135:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 224              		.loc 1 135 13 is_stmt 1 view .LVU71
+ 135:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 225              		.loc 1 135 16 is_stmt 0 view .LVU72
+ 226 00ee 5AEA0801 		orrs	r1, r10, r8
+ 227 00f2 00F03681 		beq	.L33
+ 143:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 228              		.loc 1 143 13 is_stmt 1 view .LVU73
+ 143:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 229              		.loc 1 143 30 is_stmt 0 view .LVU74
+ 230 00f6 617C     		ldrb	r1, [r4, #17]	@ zero_extendqisi2
+ 143:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 231              		.loc 1 143 16 view .LVU75
+ 232 00f8 0029     		cmp	r1, #0
+ 233 00fa E9D0     		beq	.L5
+ 143:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 234              		.loc 1 143 57 discriminator 1 view .LVU76
+ 235 00fc 0699     		ldr	r1, [sp, #24]
+ 236 00fe 8A42     		cmp	r2, r1
+ 237 0100 73EB0701 		sbcs	r1, r3, r7
+ 238 0104 E4D3     		bcc	.L5
+ 144:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 (cache_entry -> fx_cached_sector <= ending_sector))
+ 239              		.loc 1 144 70 view .LVU77
+ 240 0106 0999     		ldr	r1, [sp, #36]
+ 241 0108 9142     		cmp	r1, r2
+ 242 010a 0A9A     		ldr	r2, [sp, #40]
+ 243 010c 72EB0303 		sbcs	r3, r2, r3
+ 244 0110 DED3     		bcc	.L5
+ 150:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 245              		.loc 1 150 17 is_stmt 1 view .LVU78
+ 150:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 246              		.loc 1 150 33 is_stmt 0 view .LVU79
+ 247 0112 237C     		ldrb	r3, [r4, #16]	@ zero_extendqisi2
+ 150:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 248              		.loc 1 150 20 view .LVU80
+ 249 0114 002B     		cmp	r3, #0
+ARM GAS  /tmp/ccz5p4gW.s 			page 10
+
+
+ 250 0116 C3D0     		beq	.L6
+ 156:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 251              		.loc 1 156 21 is_stmt 1 view .LVU81
+ 156:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 252              		.loc 1 156 35 is_stmt 0 view .LVU82
+ 253 0118 D9F8A830 		ldr	r3, [r9, #168]
+ 156:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 254              		.loc 1 156 24 view .LVU83
+ 255 011c 002B     		cmp	r3, #0
+ 256 011e BFD1     		bne	.L6
+ 162:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 257              		.loc 1 162 25 is_stmt 1 view .LVU84
+ 162:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 258              		.loc 1 162 35 is_stmt 0 view .LVU85
+ 259 0120 D9F8B031 		ldr	r3, [r9, #432]
+ 162:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 260              		.loc 1 162 68 view .LVU86
+ 261 0124 0133     		adds	r3, r3, #1
+ 262 0126 C9F8B031 		str	r3, [r9, #432]
+ 166:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 263              		.loc 1 166 25 is_stmt 1 view .LVU87
+ 166:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 264              		.loc 1 166 62 is_stmt 0 view .LVU88
+ 265 012a 0123     		movs	r3, #1
+ 266 012c C9F88830 		str	r3, [r9, #136]
+ 167:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_se
+ 267              		.loc 1 167 25 is_stmt 1 view .LVU89
+ 167:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_se
+ 268              		.loc 1 167 61 is_stmt 0 view .LVU90
+ 269 0130 9022     		movs	r2, #144
+ 270 0132 C9F88C20 		str	r2, [r9, #140]
+ 168:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 271              		.loc 1 168 25 is_stmt 1 view .LVU91
+ 168:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 272              		.loc 1 168 85 is_stmt 0 view .LVU92
+ 273 0136 2268     		ldr	r2, [r4]
+ 168:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 274              		.loc 1 168 61 view .LVU93
+ 275 0138 C9F89020 		str	r2, [r9, #144]
+ 172:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 276              		.loc 1 172 25 is_stmt 1 view .LVU94
+ 172:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 277              		.loc 1 172 92 is_stmt 0 view .LVU95
+ 278 013c A268     		ldr	r2, [r4, #8]
+ 172:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 279              		.loc 1 172 69 view .LVU96
+ 280 013e C9F89420 		str	r2, [r9, #148]
+ 174:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_se
+ 281              		.loc 1 174 25 is_stmt 1 view .LVU97
+ 174:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_se
+ 282              		.loc 1 174 62 is_stmt 0 view .LVU98
+ 283 0142 C9F89830 		str	r3, [r9, #152]
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 284              		.loc 1 175 25 is_stmt 1 view .LVU99
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 285              		.loc 1 175 85 is_stmt 0 view .LVU100
+ 286 0146 A37C     		ldrb	r3, [r4, #18]	@ zero_extendqisi2
+ARM GAS  /tmp/ccz5p4gW.s 			page 11
+
+
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 287              		.loc 1 175 66 view .LVU101
+ 288 0148 C9F8B830 		str	r3, [r9, #184]
+ 180:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 289              		.loc 1 180 25 is_stmt 1 view .LVU102
+ 180:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 290              		.loc 1 180 41 is_stmt 0 view .LVU103
+ 291 014c A37C     		ldrb	r3, [r4, #18]	@ zero_extendqisi2
+ 180:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 292              		.loc 1 180 28 view .LVU104
+ 293 014e 042B     		cmp	r3, #4
+ 294 0150 84D0     		beq	.L7
+ 186:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 295              		.loc 1 186 29 is_stmt 1 view .LVU105
+ 186:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 296              		.loc 1 186 71 is_stmt 0 view .LVU106
+ 297 0152 0123     		movs	r3, #1
+ 298 0154 C9F8B030 		str	r3, [r9, #176]
+ 299 0158 80E7     		b	.L7
+ 300              	.L38:
+ 186:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 301              		.loc 1 186 71 view .LVU107
+ 302 015a 0598     		ldr	r0, [sp, #20]
+ 303 015c FCE0     		b	.L1
+ 304              	.LVL19:
+ 305              	.L2:
+ 248:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         }
+ 249:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     }
+ 250:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     else
+ 251:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     {
+ 252:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 253:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Hashed cache is present. Pickup the cache size.  */
+ 254:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         cache_size =            media_ptr -> fx_media_sector_cache_size;
+ 306              		.loc 1 254 9 is_stmt 1 view .LVU108
+ 307              		.loc 1 254 20 is_stmt 0 view .LVU109
+ 308 015e D9F81430 		ldr	r3, [r9, #20]
+ 309 0162 0893     		str	r3, [sp, #32]
+ 310              	.LVL20:
+ 255:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 256:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Initialize the loop control parameters.  */
+ 257:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         bit_set =  0;
+ 311              		.loc 1 257 9 is_stmt 1 view .LVU110
+ 258:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         valid_bit_map =  media_ptr -> fx_media_sector_cache_hashed_sector_valid;
+ 312              		.loc 1 258 9 view .LVU111
+ 313              		.loc 1 258 23 is_stmt 0 view .LVU112
+ 314 0164 D9F82040 		ldr	r4, [r9, #32]
+ 315              	.LVL21:
+ 259:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 260:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Determine how to process the hashed cache based on the number of sectors
+ 261:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****            to process. If the sequential sector range is less than the bit map size,
+ 262:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****            simply use the starting sector to derive the index into the cache.  */
+ 263:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         if (sectors < 32)
+ 316              		.loc 1 263 9 is_stmt 1 view .LVU113
+ 317              		.loc 1 263 12 is_stmt 0 view .LVU114
+ 318 0168 BAF1200F 		cmp	r10, #32
+ 319 016c 78F10003 		sbcs	r3, r8, #0
+ 320              	.LVL22:
+ARM GAS  /tmp/ccz5p4gW.s 			page 12
+
+
+ 321              		.loc 1 263 12 view .LVU115
+ 322 0170 C0F0E980 		bcc	.L10
+ 264:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 265:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             use_starting_sector =  FX_TRUE;
+ 266:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         }
+ 267:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         else
+ 268:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 269:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             use_starting_sector =  FX_FALSE;
+ 323              		.loc 1 269 33 view .LVU116
+ 324 0174 0023     		movs	r3, #0
+ 325              	.L11:
+ 265:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         }
+ 326              		.loc 1 265 33 view .LVU117
+ 327 0176 0025     		movs	r5, #0
+ 328 0178 2746     		mov	r7, r4
+ 329 017a AC46     		mov	ip, r5
+ 330 017c 4D46     		mov	r5, r9
+ 331 017e B7E0     		b	.L27
+ 332              	.LVL23:
+ 333              	.L14:
+ 270:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         }
+ 271:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 272:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         /* Determine if there is anything valid in the cache.  */
+ 273:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         while (valid_bit_map)
+ 274:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 275:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 276:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if invalidation is not required and there are no
+ 277:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                more dirty sectors. */
+ 278:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if ((remaining_dirty == 0) && (invalidate == FX_FALSE))
+ 279:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 280:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 281:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Yes, nothing left to do.  */
+ 282:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 break;
+ 283:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 284:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 285:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if there are any more sectors to process.  */
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if ((sectors == 0) || (starting_sector > ending_sector))
+ 287:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 288:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 289:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* No more sectors required to process.  */
+ 290:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 break;
+ 291:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 292:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 293:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine how to compute the hash index.  */
+ 294:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if (use_starting_sector)
+ 295:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 296:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 297:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Calculate the hash value of this sector using the lower bits.  */
+ 298:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 index =  (ULONG)(starting_sector & media_ptr -> fx_media_sector_cache_hash_mask);
+ 299:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 300:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Calculate the bit set indicating there is one or more valid sectors at this cach
+ 301:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 bit_set =  (index % 32);
+ 302:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 303:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Compute the actual array index by multiplying by the cache depth.  */
+ 304:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 index =  (bit_set * FX_SECTOR_CACHE_DEPTH);
+ 305:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 306:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             else
+ARM GAS  /tmp/ccz5p4gW.s 			page 13
+
+
+ 307:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 308:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 309:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Walk the bit map to find the next valid entry.  */
+ 310:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 311:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Find the next set bit.  */
+ 312:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 while ((valid_bit_map & 1) == 0)
+ 313:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 314:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 315:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Otherwise, shift down the bit in the bit map.  */
+ 316:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     valid_bit_map =  valid_bit_map >> 1;
+ 334              		.loc 1 316 21 is_stmt 1 view .LVU118
+ 335              		.loc 1 316 35 is_stmt 0 view .LVU119
+ 336 0180 7F08     		lsrs	r7, r7, #1
+ 337              	.LVL24:
+ 317:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 318:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Increment the set bit marker.  */
+ 319:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     bit_set++;
+ 338              		.loc 1 319 21 is_stmt 1 view .LVU120
+ 339              		.loc 1 319 28 is_stmt 0 view .LVU121
+ 340 0182 0CF1010C 		add	ip, ip, #1
+ 341              	.LVL25:
+ 342              	.L12:
+ 312:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 343              		.loc 1 312 44 is_stmt 1 view .LVU122
+ 344 0186 17F0010F 		tst	r7, #1
+ 345 018a F9D0     		beq	.L14
+ 320:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 }
+ 321:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 322:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Compute the first actual index into the hashed cache.  */
+ 323:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 index =  (bit_set * FX_SECTOR_CACHE_DEPTH);
+ 346              		.loc 1 323 17 view .LVU123
+ 347              		.loc 1 323 23 is_stmt 0 view .LVU124
+ 348 018c 4FEA8C04 		lsl	r4, ip, #2
+ 349              	.LVL26:
+ 350              		.loc 1 323 23 view .LVU125
+ 351 0190 CDE0     		b	.L13
+ 352              	.LVL27:
+ 353              	.L16:
+ 324:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 325:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 326:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* At this point, bit_set represents the next group of hashed sectors that could
+ 327:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                have valid cache entries and index represents the index into the sector cache
+ 328:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                of that sector group.  */
+ 329:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 330:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Clear the remaining valid sectors for this entry in the bit map.  */
+ 331:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             remaining_valid =  0;
+ 332:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 333:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Loop to check the corresponding hash entries.  */
+ 334:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             do
+ 335:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 336:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 337:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Setup pointer to the cache entry.  */
+ 338:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 cache_entry =  &(media_ptr -> fx_media_sector_cache[index]);
+ 339:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 340:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Loop to examine the full depth of the hashed cache.  */
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 for (i = 0; i < 4; i++)
+ 342:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ARM GAS  /tmp/ccz5p4gW.s 			page 14
+
+
+ 343:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 344:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Determine if this cached sector is within the specified range and is valid. 
+ 345:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     if ((cache_entry -> fx_cached_sector_valid) &&
+ 346:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 347:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector <= ending_sector))
+ 348:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 349:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 350:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Determine if the requested sector has been written to.  */
+ 351:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         if (cache_entry -> fx_cached_sector_buffer_dirty)
+ 352:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 353:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 354:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 355:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Yes, write the cached sector out to the media.  */
+ 356:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 357:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Check for write protect at the media level (set by driver).  */
+ 358:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             if (media_ptr -> fx_media_driver_write_protect == FX_FALSE)
+ 359:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 360:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 361:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 362:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 363:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Increment the number of driver write sector(s) requests.  */
+ 364:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_write_requests++;
+ 365:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 366:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 367:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Build Write request to the driver.  */
+ 368:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_request =          FX_DRIVER_WRITE;
+ 369:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 370:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_c
+ 371:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 372:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_logical_sector =   cache_entry -> fx_c
+ 373:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #else
+ 374:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_logical_sector =   (ULONG)cache_entry 
+ 375:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 376:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_sectors =          1;
+ 377:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_c
+ 378:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 379:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Sectors other than FX_DATA_SECTOR will never be dirty when FX_FA
+ 380:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifndef FX_FAULT_TOLERANT
+ 381:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Determine if the system write flag needs to be set.  */
+ 382:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 if (cache_entry -> fx_cached_sector_type != FX_DATA_SECTOR)
+ 383:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 384:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 385:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                     /* Yes, a system sector write is present so set the flag.  The 
+ 386:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                        can use this flag to make extra safeguards in writing the se
+ 387:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                        out, yielding more fault tolerance.  */
+ 388:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                     media_ptr -> fx_media_driver_system_write =  FX_TRUE;
+ 389:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 }
+ 390:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif /* FX_FAULT_TOLERANT */
+ 391:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 392:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* If trace is enabled, insert this event into the trace buffer.  *
+ 393:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_pt
+ 394:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 395:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Invoke the driver to write the sector.  */
+ 396:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 397:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 398:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Clear the system write flag.  */
+ 399:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ARM GAS  /tmp/ccz5p4gW.s 			page 15
+
+
+ 400:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 401:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Check for successful completion.  */
+ 402:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 if (media_ptr -> fx_media_driver_status)
+ 403:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 404:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                     /* Error writing a cached sector out.  Return the
+ 406:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                        error status.  */
+ 407:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                     return(media_ptr -> fx_media_driver_status);
+ 408:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 }
+ 409:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 410:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Clear the buffer dirty flag since it has been flushed
+ 411:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                    out.  */
+ 412:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 cache_entry -> fx_cached_sector_buffer_dirty =  FX_FALSE;
+ 413:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 414:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Decrement the number of dirty sectors currently in the cache.  *
+ 415:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_sector_cache_dirty_count--;
+ 416:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 417:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             }
+ 418:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 419:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 420:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Determine if the invalidate option is specified.  */
+ 421:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         if (invalidate)
+ 422:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 423:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 424:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Invalidate the cache entry.  */
+ 425:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             cache_entry -> fx_cached_sector_valid =  FX_FALSE;
+ 426:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 427:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Place all ones in the sector number.  */
+ 428:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             cache_entry -> fx_cached_sector =  (~(ULONG64)0);
+ 429:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 430:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Determine if this sector is still dirty, this could be the case if
+ 431:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                write protection was turned on.  */
+ 432:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             if (cache_entry -> fx_cached_sector_buffer_dirty)
+ 433:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 434:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 435:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Yes, clear the dirty flag.  */
+ 436:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 cache_entry -> fx_cached_sector_buffer_dirty =  FX_FALSE;
+ 437:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 438:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 /* Decrement the number of dirty sectors currently in the cache.  *
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_sector_cache_dirty_count--;
+ 440:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 441:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             }
+ 442:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 443:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 444:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Decrement the number of sectors in the range that have been processed.  
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         sectors--;
+ 446:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 447:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     else
+ 448:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 449:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 450:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Determine if the sector is valid.  */
+ 451:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         if (cache_entry -> fx_cached_sector_valid)
+ 354              		.loc 1 451 25 is_stmt 1 view .LVU126
+ 355              		.loc 1 451 28 is_stmt 0 view .LVU127
+ 356 0192 13B1     		cbz	r3, .L20
+ 452:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 453:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ARM GAS  /tmp/ccz5p4gW.s 			page 16
+
+
+ 454:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             /* Increment the number of still remaining but out of range sectors.  *
+ 455:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             remaining_valid++;
+ 357              		.loc 1 455 29 is_stmt 1 view .LVU128
+ 358              		.loc 1 455 44 is_stmt 0 view .LVU129
+ 359 0194 059B     		ldr	r3, [sp, #20]
+ 360 0196 0133     		adds	r3, r3, #1
+ 361 0198 0593     		str	r3, [sp, #20]
+ 362              	.LVL28:
+ 363              	.L20:
+ 456:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 457:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 458:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 459:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Determine if invalidation is not required and there are no
+ 460:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                        more dirty sectors. */
+ 461:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     if ((remaining_dirty == 0) && (invalidate == FX_FALSE))
+ 364              		.loc 1 461 21 is_stmt 1 view .LVU130
+ 365              		.loc 1 461 24 is_stmt 0 view .LVU131
+ 366 019a 5BEA0603 		orrs	r3, fp, r6
+ 367 019e 7DD0     		beq	.L21
+ 462:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 463:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 464:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* Yes, nothing left to do.  */
+ 465:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         break;
+ 466:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 467:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 468:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Determine if there are any more sectors to process.  */
+ 469:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     if ((sectors == 0) && (invalidate == FX_FALSE))
+ 368              		.loc 1 469 21 is_stmt 1 view .LVU132
+ 369              		.loc 1 469 34 is_stmt 0 view .LVU133
+ 370 01a0 5AEA0803 		orrs	r3, r10, r8
+ 371 01a4 0CBF     		ite	eq
+ 372 01a6 0123     		moveq	r3, #1
+ 373 01a8 0023     		movne	r3, #0
+ 374              		.loc 1 469 40 view .LVU134
+ 375 01aa 002E     		cmp	r6, #0
+ 376 01ac 14BF     		ite	ne
+ 377 01ae 0023     		movne	r3, #0
+ 378 01b0 03F00103 		andeq	r3, r3, #1
+ 379              		.loc 1 469 24 view .LVU135
+ 380 01b4 002B     		cmp	r3, #0
+ 381 01b6 71D1     		bne	.L21
+ 470:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     {
+ 471:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 472:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         /* No more sectors required to process.  */
+ 473:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         break;
+ 474:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 475:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 476:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     /* Move to the next cache entry.  */
+ 477:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     cache_entry++;
+ 382              		.loc 1 477 21 is_stmt 1 view .LVU136
+ 383              		.loc 1 477 32 is_stmt 0 view .LVU137
+ 384 01b8 1835     		adds	r5, r5, #24
+ 385              	.LVL29:
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 386              		.loc 1 341 37 is_stmt 1 discriminator 2 view .LVU138
+ 387 01ba 0137     		adds	r7, r7, #1
+ 388              	.LVL30:
+ARM GAS  /tmp/ccz5p4gW.s 			page 17
+
+
+ 389              	.L15:
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 390              		.loc 1 341 31 discriminator 1 view .LVU139
+ 391 01bc 032F     		cmp	r7, #3
+ 392 01be 6DD8     		bhi	.L21
+ 345:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 393              		.loc 1 345 21 view .LVU140
+ 345:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 394              		.loc 1 345 38 is_stmt 0 view .LVU141
+ 395 01c0 6B7C     		ldrb	r3, [r5, #17]	@ zero_extendqisi2
+ 345:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 396              		.loc 1 345 24 view .LVU142
+ 397 01c2 002B     		cmp	r3, #0
+ 398 01c4 E5D0     		beq	.L16
+ 346:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector <= ending_sector))
+ 399              		.loc 1 346 38 view .LVU143
+ 400 01c6 A968     		ldr	r1, [r5, #8]
+ 401 01c8 EA68     		ldr	r2, [r5, #12]
+ 345:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector >= starting_sector) &&
+ 402              		.loc 1 345 65 discriminator 1 view .LVU144
+ 403 01ca 0698     		ldr	r0, [sp, #24]
+ 404 01cc 8142     		cmp	r1, r0
+ 405 01ce 0798     		ldr	r0, [sp, #28]
+ 406 01d0 72EB0000 		sbcs	r0, r2, r0
+ 407 01d4 DDD3     		bcc	.L16
+ 346:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         (cache_entry -> fx_cached_sector <= ending_sector))
+ 408              		.loc 1 346 78 view .LVU145
+ 409 01d6 0998     		ldr	r0, [sp, #36]
+ 410 01d8 8842     		cmp	r0, r1
+ 411 01da 0A99     		ldr	r1, [sp, #40]
+ 412 01dc 71EB0202 		sbcs	r2, r1, r2
+ 413 01e0 D7D3     		bcc	.L16
+ 351:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 414              		.loc 1 351 25 is_stmt 1 view .LVU146
+ 351:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 415              		.loc 1 351 41 is_stmt 0 view .LVU147
+ 416 01e2 2B7C     		ldrb	r3, [r5, #16]	@ zero_extendqisi2
+ 351:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 417              		.loc 1 351 28 view .LVU148
+ 418 01e4 002B     		cmp	r3, #0
+ 419 01e6 40D0     		beq	.L17
+ 358:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 420              		.loc 1 358 29 is_stmt 1 view .LVU149
+ 358:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 421              		.loc 1 358 43 is_stmt 0 view .LVU150
+ 422 01e8 D9F8A830 		ldr	r3, [r9, #168]
+ 358:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 423              		.loc 1 358 32 view .LVU151
+ 424 01ec 002B     		cmp	r3, #0
+ 425 01ee 3CD1     		bne	.L17
+ 364:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 426              		.loc 1 364 33 is_stmt 1 view .LVU152
+ 364:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 427              		.loc 1 364 43 is_stmt 0 view .LVU153
+ 428 01f0 D9F8B031 		ldr	r3, [r9, #432]
+ 364:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 429              		.loc 1 364 76 view .LVU154
+ARM GAS  /tmp/ccz5p4gW.s 			page 18
+
+
+ 430 01f4 0133     		adds	r3, r3, #1
+ 431 01f6 C9F8B031 		str	r3, [r9, #432]
+ 368:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 432              		.loc 1 368 33 is_stmt 1 view .LVU155
+ 368:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 433              		.loc 1 368 70 is_stmt 0 view .LVU156
+ 434 01fa 0123     		movs	r3, #1
+ 435 01fc C9F88830 		str	r3, [r9, #136]
+ 369:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_c
+ 436              		.loc 1 369 33 is_stmt 1 view .LVU157
+ 369:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_c
+ 437              		.loc 1 369 69 is_stmt 0 view .LVU158
+ 438 0200 9022     		movs	r2, #144
+ 439 0202 C9F88C20 		str	r2, [r9, #140]
+ 370:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 440              		.loc 1 370 33 is_stmt 1 view .LVU159
+ 370:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 441              		.loc 1 370 93 is_stmt 0 view .LVU160
+ 442 0206 2A68     		ldr	r2, [r5]
+ 370:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 443              		.loc 1 370 69 view .LVU161
+ 444 0208 C9F89020 		str	r2, [r9, #144]
+ 374:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 445              		.loc 1 374 33 is_stmt 1 view .LVU162
+ 374:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 446              		.loc 1 374 100 is_stmt 0 view .LVU163
+ 447 020c AA68     		ldr	r2, [r5, #8]
+ 374:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif
+ 448              		.loc 1 374 77 view .LVU164
+ 449 020e C9F89420 		str	r2, [r9, #148]
+ 376:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_c
+ 450              		.loc 1 376 33 is_stmt 1 view .LVU165
+ 376:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_c
+ 451              		.loc 1 376 70 is_stmt 0 view .LVU166
+ 452 0212 C9F89830 		str	r3, [r9, #152]
+ 377:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 453              		.loc 1 377 33 is_stmt 1 view .LVU167
+ 377:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 454              		.loc 1 377 93 is_stmt 0 view .LVU168
+ 455 0216 AB7C     		ldrb	r3, [r5, #18]	@ zero_extendqisi2
+ 377:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 456              		.loc 1 377 74 view .LVU169
+ 457 0218 C9F8B830 		str	r3, [r9, #184]
+ 382:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 458              		.loc 1 382 33 is_stmt 1 view .LVU170
+ 382:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 459              		.loc 1 382 49 is_stmt 0 view .LVU171
+ 460 021c AB7C     		ldrb	r3, [r5, #18]	@ zero_extendqisi2
+ 382:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 461              		.loc 1 382 36 view .LVU172
+ 462 021e 042B     		cmp	r3, #4
+ 463 0220 02D0     		beq	.L18
+ 388:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 }
+ 464              		.loc 1 388 37 is_stmt 1 view .LVU173
+ 388:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 }
+ 465              		.loc 1 388 79 is_stmt 0 view .LVU174
+ 466 0222 0123     		movs	r3, #1
+ARM GAS  /tmp/ccz5p4gW.s 			page 19
+
+
+ 467 0224 C9F8B030 		str	r3, [r9, #176]
+ 468              	.L18:
+ 393:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 469              		.loc 1 393 33 is_stmt 1 view .LVU175
+ 470 0228 2B68     		ldr	r3, [r5]
+ 471 022a 0022     		movs	r2, #0
+ 472 022c 0392     		str	r2, [sp, #12]
+ 473 022e 0292     		str	r2, [sp, #8]
+ 474 0230 4FF40062 		mov	r2, #2048
+ 475 0234 0192     		str	r2, [sp, #4]
+ 476 0236 0093     		str	r3, [sp]
+ 477 0238 0123     		movs	r3, #1
+ 478 023a AA68     		ldr	r2, [r5, #8]
+ 479 023c 4946     		mov	r1, r9
+ 480 023e CF20     		movs	r0, #207
+ 481 0240 FFF7FEFF 		bl	_fx_trace_event_insert
+ 482              	.LVL31:
+ 396:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 483              		.loc 1 396 33 view .LVU176
+ 396:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 484              		.loc 1 396 44 is_stmt 0 view .LVU177
+ 485 0244 D9F8BC30 		ldr	r3, [r9, #188]
+ 486 0248 4846     		mov	r0, r9
+ 487 024a 9847     		blx	r3
+ 488              	.LVL32:
+ 399:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 489              		.loc 1 399 33 is_stmt 1 view .LVU178
+ 399:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 490              		.loc 1 399 75 is_stmt 0 view .LVU179
+ 491 024c 0023     		movs	r3, #0
+ 492 024e C9F8B030 		str	r3, [r9, #176]
+ 402:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 493              		.loc 1 402 33 is_stmt 1 view .LVU180
+ 402:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 494              		.loc 1 402 47 is_stmt 0 view .LVU181
+ 495 0252 D9F88C00 		ldr	r0, [r9, #140]
+ 402:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 {
+ 496              		.loc 1 402 36 view .LVU182
+ 497 0256 0028     		cmp	r0, #0
+ 498 0258 7ED1     		bne	.L1
+ 412:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 499              		.loc 1 412 33 is_stmt 1 view .LVU183
+ 412:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 500              		.loc 1 412 78 is_stmt 0 view .LVU184
+ 501 025a 2B74     		strb	r3, [r5, #16]
+ 415:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 502              		.loc 1 415 33 is_stmt 1 view .LVU185
+ 415:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 503              		.loc 1 415 43 is_stmt 0 view .LVU186
+ 504 025c D9F82430 		ldr	r3, [r9, #36]
+ 415:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 505              		.loc 1 415 79 view .LVU187
+ 506 0260 013B     		subs	r3, r3, #1
+ 507 0262 C9F82430 		str	r3, [r9, #36]
+ 416:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             }
+ 508              		.loc 1 416 33 is_stmt 1 view .LVU188
+ 416:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             }
+ARM GAS  /tmp/ccz5p4gW.s 			page 20
+
+
+ 509              		.loc 1 416 48 is_stmt 0 view .LVU189
+ 510 0266 0BF1FF3B 		add	fp, fp, #-1
+ 511              	.LVL33:
+ 512              	.L17:
+ 421:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 513              		.loc 1 421 25 is_stmt 1 view .LVU190
+ 421:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         {
+ 514              		.loc 1 421 28 is_stmt 0 view .LVU191
+ 515 026a 96B1     		cbz	r6, .L19
+ 425:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 516              		.loc 1 425 29 is_stmt 1 view .LVU192
+ 425:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 517              		.loc 1 425 67 is_stmt 0 view .LVU193
+ 518 026c 0023     		movs	r3, #0
+ 519 026e 6B74     		strb	r3, [r5, #17]
+ 428:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 520              		.loc 1 428 29 is_stmt 1 view .LVU194
+ 428:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 521              		.loc 1 428 61 is_stmt 0 view .LVU195
+ 522 0270 4FF0FF32 		mov	r2, #-1
+ 523 0274 4FF0FF33 		mov	r3, #-1
+ 524 0278 C5E90223 		strd	r2, [r5, #8]
+ 432:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 525              		.loc 1 432 29 is_stmt 1 view .LVU196
+ 432:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 526              		.loc 1 432 45 is_stmt 0 view .LVU197
+ 527 027c 2B7C     		ldrb	r3, [r5, #16]	@ zero_extendqisi2
+ 432:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             {
+ 528              		.loc 1 432 32 view .LVU198
+ 529 027e 43B1     		cbz	r3, .L19
+ 436:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 530              		.loc 1 436 33 is_stmt 1 view .LVU199
+ 436:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 531              		.loc 1 436 78 is_stmt 0 view .LVU200
+ 532 0280 0023     		movs	r3, #0
+ 533 0282 2B74     		strb	r3, [r5, #16]
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 534              		.loc 1 439 33 is_stmt 1 view .LVU201
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 535              		.loc 1 439 43 is_stmt 0 view .LVU202
+ 536 0284 D9F82430 		ldr	r3, [r9, #36]
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                                 remaining_dirty--;
+ 537              		.loc 1 439 79 view .LVU203
+ 538 0288 013B     		subs	r3, r3, #1
+ 539 028a C9F82430 		str	r3, [r9, #36]
+ 440:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             }
+ 540              		.loc 1 440 33 is_stmt 1 view .LVU204
+ 440:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                             }
+ 541              		.loc 1 440 48 is_stmt 0 view .LVU205
+ 542 028e 0BF1FF3B 		add	fp, fp, #-1
+ 543              	.LVL34:
+ 544              	.L19:
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 545              		.loc 1 445 25 is_stmt 1 view .LVU206
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 546              		.loc 1 445 32 is_stmt 0 view .LVU207
+ 547 0292 1AF1FF3A 		adds	r10, r10, #-1
+ARM GAS  /tmp/ccz5p4gW.s 			page 21
+
+
+ 548              	.LVL35:
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 549              		.loc 1 445 32 view .LVU208
+ 550 0296 48F1FF38 		adc	r8, r8, #-1
+ 551              	.LVL36:
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                     }
+ 552              		.loc 1 445 32 view .LVU209
+ 553 029a 7EE7     		b	.L20
+ 554              	.LVL37:
+ 555              	.L21:
+ 478:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 }
+ 479:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 480:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Move the index to the next position since the bit map can only represent 32
+ 481:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                    cache entries.  */
+ 482:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 index =  index + (32 * FX_SECTOR_CACHE_DEPTH);
+ 556              		.loc 1 482 17 is_stmt 1 view .LVU210
+ 557              		.loc 1 482 23 is_stmt 0 view .LVU211
+ 558 029c 8034     		adds	r4, r4, #128
+ 559              	.LVL38:
+ 483:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             } while (index < cache_size);
+ 560              		.loc 1 483 28 is_stmt 1 view .LVU212
+ 561 029e 089B     		ldr	r3, [sp, #32]
+ 562 02a0 A342     		cmp	r3, r4
+ 563 02a2 07D9     		bls	.L39
+ 564              	.LVL39:
+ 565              	.L23:
+ 334:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 566              		.loc 1 334 13 view .LVU213
+ 338:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 567              		.loc 1 338 17 view .LVU214
+ 338:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 568              		.loc 1 338 29 is_stmt 0 view .LVU215
+ 569 02a4 04EB4405 		add	r5, r4, r4, lsl #1
+ 570 02a8 ED00     		lsls	r5, r5, #3
+ 571 02aa 05F54A65 		add	r5, r5, #3232
+ 572 02ae 4D44     		add	r5, r5, r9
+ 573              	.LVL40:
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 574              		.loc 1 341 17 is_stmt 1 view .LVU216
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 575              		.loc 1 341 24 is_stmt 0 view .LVU217
+ 576 02b0 0027     		movs	r7, #0
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 {
+ 577              		.loc 1 341 17 view .LVU218
+ 578 02b2 83E7     		b	.L15
+ 579              	.LVL41:
+ 580              	.L39:
+ 484:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 485:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if invalidation was required and there are no more valid sectors
+ 486:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                associated with this bit position.  */
+ 487:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if ((invalidate) && (remaining_valid == 0))
+ 581              		.loc 1 487 30 view .LVU219
+ 582 02b4 0B9F     		ldr	r7, [sp, #44]
+ 583              	.LVL42:
+ 584              		.loc 1 487 30 view .LVU220
+ 585 02b6 DDF830C0 		ldr	ip, [sp, #48]
+ 586 02ba 0D9B     		ldr	r3, [sp, #52]
+ARM GAS  /tmp/ccz5p4gW.s 			page 22
+
+
+ 587 02bc 4D46     		mov	r5, r9
+ 588              	.LVL43:
+ 589              		.loc 1 487 13 is_stmt 1 view .LVU221
+ 590              		.loc 1 487 30 is_stmt 0 view .LVU222
+ 591 02be 0599     		ldr	r1, [sp, #20]
+ 592 02c0 321E     		subs	r2, r6, #0
+ 593 02c2 18BF     		it	ne
+ 594 02c4 0122     		movne	r2, #1
+ 595 02c6 0029     		cmp	r1, #0
+ 596 02c8 18BF     		it	ne
+ 597 02ca 0022     		movne	r2, #0
+ 598              		.loc 1 487 16 view .LVU223
+ 599 02cc 42B1     		cbz	r2, .L24
+ 600              	.LVL44:
+ 488:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 489:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 490:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Clear this bit position.  */
+ 491:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 media_ptr -> fx_media_sector_cache_hashed_sector_valid &=  ~(((ULONG)1) << bit_set)
+ 601              		.loc 1 491 17 is_stmt 1 view .LVU224
+ 602              		.loc 1 491 27 is_stmt 0 view .LVU225
+ 603 02ce D9F82020 		ldr	r2, [r9, #32]
+ 604              		.loc 1 491 89 view .LVU226
+ 605 02d2 0121     		movs	r1, #1
+ 606 02d4 01FA0CF1 		lsl	r1, r1, ip
+ 607              		.loc 1 491 72 view .LVU227
+ 608 02d8 22EA0102 		bic	r2, r2, r1
+ 609 02dc C9F82020 		str	r2, [r9, #32]
+ 610              	.L24:
+ 492:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 493:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 494:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             /* Determine if the starting sector is being used for examination of the hash.  */
+ 495:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             if (use_starting_sector)
+ 611              		.loc 1 495 13 is_stmt 1 view .LVU228
+ 612              		.loc 1 495 16 is_stmt 0 view .LVU229
+ 613 02e0 6BB3     		cbz	r3, .L25
+ 496:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 497:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 498:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Move to the next sector.  */
+ 499:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 starting_sector++;
+ 614              		.loc 1 499 17 is_stmt 1 view .LVU230
+ 615              		.loc 1 499 32 is_stmt 0 view .LVU231
+ 616 02e2 069A     		ldr	r2, [sp, #24]
+ 617 02e4 0132     		adds	r2, r2, #1
+ 618 02e6 0692     		str	r2, [sp, #24]
+ 619              	.LVL45:
+ 620              		.loc 1 499 32 view .LVU232
+ 621 02e8 079A     		ldr	r2, [sp, #28]
+ 622 02ea 42F10002 		adc	r2, r2, #0
+ 623 02ee 0792     		str	r2, [sp, #28]
+ 624              	.LVL46:
+ 625              	.L27:
+ 273:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         {
+ 626              		.loc 1 273 16 is_stmt 1 view .LVU233
+ 627 02f0 5FB3     		cbz	r7, .L40
+ 278:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 628              		.loc 1 278 13 view .LVU234
+ 278:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ARM GAS  /tmp/ccz5p4gW.s 			page 23
+
+
+ 629              		.loc 1 278 16 is_stmt 0 view .LVU235
+ 630 02f2 5BEA0600 		orrs	r0, fp, r6
+ 631 02f6 2FD0     		beq	.L1
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 632              		.loc 1 286 13 is_stmt 1 view .LVU236
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 633              		.loc 1 286 26 is_stmt 0 view .LVU237
+ 634 02f8 5AEA0802 		orrs	r2, r10, r8
+ 635 02fc 0CBF     		ite	eq
+ 636 02fe 0122     		moveq	r2, #1
+ 637 0300 0022     		movne	r2, #0
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 638              		.loc 1 286 52 view .LVU238
+ 639 0302 0999     		ldr	r1, [sp, #36]
+ 640 0304 0698     		ldr	r0, [sp, #24]
+ 641 0306 8142     		cmp	r1, r0
+ 642 0308 0A99     		ldr	r1, [sp, #40]
+ 643 030a 079C     		ldr	r4, [sp, #28]
+ 644 030c A141     		sbcs	r1, r1, r4
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 645              		.loc 1 286 32 view .LVU239
+ 646 030e 38BF     		it	cc
+ 647 0310 42F00102 		orrcc	r2, r2, #1
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 648              		.loc 1 286 16 view .LVU240
+ 649 0314 1ABB     		cbnz	r2, .L32
+ 294:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 650              		.loc 1 294 13 is_stmt 1 view .LVU241
+ 294:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 651              		.loc 1 294 16 is_stmt 0 view .LVU242
+ 652 0316 002B     		cmp	r3, #0
+ 653 0318 3FF435AF 		beq	.L12
+ 298:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 654              		.loc 1 298 17 is_stmt 1 view .LVU243
+ 298:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 655              		.loc 1 298 62 is_stmt 0 view .LVU244
+ 656 031c 05F50052 		add	r2, r5, #8192
+ 657 0320 D2F8A024 		ldr	r2, [r2, #1184]
+ 298:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 658              		.loc 1 298 23 view .LVU245
+ 659 0324 0240     		ands	r2, r2, r0
+ 660              	.LVL47:
+ 301:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 661              		.loc 1 301 17 is_stmt 1 view .LVU246
+ 301:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 662              		.loc 1 301 25 is_stmt 0 view .LVU247
+ 663 0326 02F01F0C 		and	ip, r2, #31
+ 664              	.LVL48:
+ 304:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 665              		.loc 1 304 17 is_stmt 1 view .LVU248
+ 304:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 666              		.loc 1 304 23 is_stmt 0 view .LVU249
+ 667 032a 4FEA8C04 		lsl	r4, ip, #2
+ 668              	.LVL49:
+ 669              	.L13:
+ 331:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 670              		.loc 1 331 13 is_stmt 1 view .LVU250
+ARM GAS  /tmp/ccz5p4gW.s 			page 24
+
+
+ 331:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 671              		.loc 1 331 29 is_stmt 0 view .LVU251
+ 672 032e 0022     		movs	r2, #0
+ 673 0330 0592     		str	r2, [sp, #20]
+ 674 0332 0B97     		str	r7, [sp, #44]
+ 675 0334 CDF830C0 		str	ip, [sp, #48]
+ 676 0338 0D93     		str	r3, [sp, #52]
+ 677 033a A946     		mov	r9, r5
+ 678 033c B2E7     		b	.L23
+ 679              	.LVL50:
+ 680              	.L25:
+ 500:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 501:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             else
+ 502:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             {
+ 503:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 504:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Move to next bit in the map.  */
+ 505:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 valid_bit_map =  valid_bit_map >> 1;
+ 681              		.loc 1 505 17 is_stmt 1 view .LVU252
+ 682              		.loc 1 505 31 is_stmt 0 view .LVU253
+ 683 033e 7F08     		lsrs	r7, r7, #1
+ 684              	.LVL51:
+ 506:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 /* Increment the set bit marker.  */
+ 508:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                 bit_set++;
+ 685              		.loc 1 508 17 is_stmt 1 view .LVU254
+ 686              		.loc 1 508 24 is_stmt 0 view .LVU255
+ 687 0340 0CF1010C 		add	ip, ip, #1
+ 688              	.LVL52:
+ 689              		.loc 1 508 24 view .LVU256
+ 690 0344 D4E7     		b	.L27
+ 691              	.LVL53:
+ 692              	.L10:
+ 265:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         }
+ 693              		.loc 1 265 33 view .LVU257
+ 694 0346 0123     		movs	r3, #1
+ 695 0348 15E7     		b	.L11
+ 696              	.LVL54:
+ 697              	.L40:
+ 509:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****             }
+ 510:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****         }
+ 511:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     }
+ 512:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #else
+ 513:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     FX_PARAMETER_NOT_USED(media_ptr);
+ 514:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     FX_PARAMETER_NOT_USED(starting_sector);
+ 515:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     FX_PARAMETER_NOT_USED(sectors);
+ 516:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     FX_PARAMETER_NOT_USED(invalidate);
+ 517:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** #endif /* FX_DISABLE_CACHE */
+ 518:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** 
+ 519:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     /* If we get here, return successful status to the caller.  */
+ 520:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****     return(FX_SUCCESS);
+ 698              		.loc 1 520 11 view .LVU258
+ 699 034a 3846     		mov	r0, r7
+ 700 034c 04E0     		b	.L1
+ 701              	.LVL55:
+ 702              	.L29:
+ 703              		.loc 1 520 11 view .LVU259
+ 704 034e 0846     		mov	r0, r1
+ARM GAS  /tmp/ccz5p4gW.s 			page 25
+
+
+ 705 0350 02E0     		b	.L1
+ 706              	.L30:
+ 205:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c ****                         }
+ 707              		.loc 1 205 46 view .LVU260
+ 708 0352 1846     		mov	r0, r3
+ 709 0354 00E0     		b	.L1
+ 710              	.L31:
+ 711              		.loc 1 520 11 view .LVU261
+ 712 0356 1846     		mov	r0, r3
+ 713              	.LVL56:
+ 714              	.L1:
+ 521:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** }
+ 715              		.loc 1 521 1 view .LVU262
+ 716 0358 0FB0     		add	sp, sp, #60
+ 717              	.LCFI2:
+ 718              		.cfi_remember_state
+ 719              		.cfi_def_cfa_offset 36
+ 720              		@ sp needed
+ 721 035a BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 722              	.LVL57:
+ 723              	.L32:
+ 724              	.LCFI3:
+ 725              		.cfi_restore_state
+ 520:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** }
+ 726              		.loc 1 520 11 view .LVU263
+ 727 035e 0020     		movs	r0, #0
+ 728              	.LVL58:
+ 520:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** }
+ 729              		.loc 1 520 11 view .LVU264
+ 730 0360 FAE7     		b	.L1
+ 731              	.LVL59:
+ 732              	.L33:
+ 520:Middlewares/ST/filex/common/src/fx_utility_logical_sector_flush.c **** }
+ 733              		.loc 1 520 11 view .LVU265
+ 734 0362 0598     		ldr	r0, [sp, #20]
+ 735 0364 F8E7     		b	.L1
+ 736              		.cfi_endproc
+ 737              	.LFE8:
+ 739              		.text
+ 740              	.Letext0:
+ 741              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 742              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 743              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 744              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ARM GAS  /tmp/ccz5p4gW.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_utility_logical_sector_flush.c
+     /tmp/ccz5p4gW.s:20     .text._fx_utility_logical_sector_flush:00000000 $t
+     /tmp/ccz5p4gW.s:26     .text._fx_utility_logical_sector_flush:00000000 _fx_utility_logical_sector_flush
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert

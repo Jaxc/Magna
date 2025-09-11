@@ -1,0 +1,1326 @@
+ARM GAS  /tmp/ccPAgCqz.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_directory_rename.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_rename.c"
+  19              		.section	.text._fx_directory_rename,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_rename
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_rename:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccPAgCqz.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_file.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_utility.h"
+  33:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+  34:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_directory_exFAT.h"
+  35:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_EXFAT */
+  36:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+  37:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #include "fx_fault_tolerant.h"
+  38:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+  39:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  40:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  41:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  42:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  43:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  FUNCTION                                               RELEASE        */
+  44:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_directory_rename                                PORTABLE C      */
+  46:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                           6.1          */
+  47:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  AUTHOR                                                                */
+  48:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  50:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  DESCRIPTION                                                           */
+  52:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    This function first attempts to find the specified directory.       */
+  54:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    If found, the rename request is valid and the directory will be     */
+  55:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    changed to the new name.  Otherwise, if the directory is not found, */
+  56:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    the appropriate error code is returned to the caller.               */
+  57:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  INPUT                                                                 */
+  59:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    media_ptr                             Media control block pointer   */
+  61:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    old_directory_name                    Old file directory pointer    */
+  62:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    new_directory_name                    New file directory pointer    */
+  63:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  OUTPUT                                                                */
+  65:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    return status                                                       */
+  67:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  CALLS                                                                 */
+  69:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_directory_entry_write             Write the new directory entry */
+  71:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_directory_free_search             Search for a free directory   */
+  72:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                            entry                       */
+  73:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_directory_name_extract            Extract directory name        */
+  74:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_directory_search                  Search for the file name in   */
+  75:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                          the directory structure       */
+  76:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_fault_tolerant_transaction_start  Start fault tolerant          */
+  77:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                            transaction                 */
+  78:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_fault_tolerant_transaction_end    End fault tolerant transaction*/
+  79:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_fault_tolerant_recover            Recover FAT chain             */
+  80:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    _fx_fault_tolerant_reset_log_file     Reset the log file            */
+  81:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  82:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  CALLED BY                                                             */
+  83:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  84:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    Application Code                                                    */
+  85:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  86:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  RELEASE HISTORY                                                       */
+  87:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+ARM GAS  /tmp/ccPAgCqz.s 			page 3
+
+
+  88:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*    DATE              NAME                      DESCRIPTION             */
+  89:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  90:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  91:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  92:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                            resulting in version 6.1    */
+  93:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /*                                                                        */
+  94:Middlewares/ST/filex/common/src/fx_directory_rename.c **** /**************************************************************************/
+  95:Middlewares/ST/filex/common/src/fx_directory_rename.c **** UINT  _fx_directory_rename(FX_MEDIA *media_ptr, CHAR *old_directory_name, CHAR *new_directory_name)
+  96:Middlewares/ST/filex/common/src/fx_directory_rename.c **** {
+  29              		.loc 1 96 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 344
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 96 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+  43 0004 DAB0     		sub	sp, sp, #360
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 384
+  46 0006 0546     		mov	r5, r0
+  47 0008 0F46     		mov	r7, r1
+  48 000a 1646     		mov	r6, r2
+  97:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+  98:Middlewares/ST/filex/common/src/fx_directory_rename.c **** UINT         status;
+  49              		.loc 1 98 1 is_stmt 1 view .LVU2
+  99:Middlewares/ST/filex/common/src/fx_directory_rename.c **** FX_DIR_ENTRY old_dir_entry;
+  50              		.loc 1 99 1 view .LVU3
+ 100:Middlewares/ST/filex/common/src/fx_directory_rename.c **** FX_DIR_ENTRY new_dir_entry;
+  51              		.loc 1 100 1 view .LVU4
+ 101:Middlewares/ST/filex/common/src/fx_directory_rename.c **** FX_DIR_ENTRY search_directory;
+  52              		.loc 1 101 1 view .LVU5
+ 102:Middlewares/ST/filex/common/src/fx_directory_rename.c **** CHAR        *new_name_ptr;
+  53              		.loc 1 102 1 view .LVU6
+ 103:Middlewares/ST/filex/common/src/fx_directory_rename.c **** ULONG        i;
+  54              		.loc 1 103 1 view .LVU7
+ 104:Middlewares/ST/filex/common/src/fx_directory_rename.c **** CHAR        *work_ptr;
+  55              		.loc 1 104 1 view .LVU8
+ 105:Middlewares/ST/filex/common/src/fx_directory_rename.c **** CHAR         alpha, beta;
+  56              		.loc 1 105 1 view .LVU9
+ 106:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_RENAME_PATH_INHERIT
+ 107:Middlewares/ST/filex/common/src/fx_directory_rename.c **** UINT         j;
+ 108:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif
+ 109:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 111:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 112:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 113:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Increment the number of times this service has been called.  */
+ 114:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     media_ptr -> fx_media_directory_renames++;
+  57              		.loc 1 114 5 view .LVU10
+  58              		.loc 1 114 15 is_stmt 0 view .LVU11
+ARM GAS  /tmp/ccPAgCqz.s 			page 4
+
+
+  59 000c D0F81831 		ldr	r3, [r0, #280]
+  60              		.loc 1 114 44 view .LVU12
+  61 0010 0133     		adds	r3, r3, #1
+  62 0012 C0F81831 		str	r3, [r0, #280]
+ 115:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif
+ 116:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 117:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Setup pointers to media name buffers.  */
+ 118:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     old_dir_entry.fx_dir_entry_name =     media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+  63              		.loc 1 118 5 is_stmt 1 view .LVU13
+  64              		.loc 1 118 77 is_stmt 0 view .LVU14
+  65 0016 00F69C13 		addw	r3, r0, #2460
+  66              		.loc 1 118 37 view .LVU15
+  67 001a 3E93     		str	r3, [sp, #248]
+ 119:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_name =     media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN 
+  68              		.loc 1 119 5 is_stmt 1 view .LVU16
+  69              		.loc 1 119 77 is_stmt 0 view .LVU17
+  70 001c 00F69C23 		addw	r3, r0, #2716
+  71              		.loc 1 119 37 view .LVU18
+  72 0020 2293     		str	r3, [sp, #136]
+ 120:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     search_directory.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN 
+  73              		.loc 1 120 5 is_stmt 1 view .LVU19
+  74              		.loc 1 120 77 is_stmt 0 view .LVU20
+  75 0022 00F69C33 		addw	r3, r0, #2972
+  76              		.loc 1 120 40 view .LVU21
+  77 0026 0693     		str	r3, [sp, #24]
+ 121:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Clear the short name strings.  */
+ 123:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     old_dir_entry.fx_dir_entry_short_name[0] =     0;
+  78              		.loc 1 123 5 is_stmt 1 view .LVU22
+  79              		.loc 1 123 46 is_stmt 0 view .LVU23
+  80 0028 0024     		movs	r4, #0
+  81 002a 8DF8FC40 		strb	r4, [sp, #252]
+ 124:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_short_name[0] =     0;
+  82              		.loc 1 124 5 is_stmt 1 view .LVU24
+  83              		.loc 1 124 46 is_stmt 0 view .LVU25
+  84 002e 8DF88C40 		strb	r4, [sp, #140]
+ 125:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     search_directory.fx_dir_entry_short_name[0] =  0;
+  85              		.loc 1 125 5 is_stmt 1 view .LVU26
+  86              		.loc 1 125 49 is_stmt 0 view .LVU27
+  87 0032 8DF81C40 		strb	r4, [sp, #28]
+ 126:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 127:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the supplied name is less than the maximum supported name size. The
+ 128:Middlewares/ST/filex/common/src/fx_directory_rename.c ****        maximum name (FX_MAX_LONG_NAME_LEN) is defined in fx_api.h.  */
+ 129:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     i =  0;
+  88              		.loc 1 129 5 is_stmt 1 view .LVU28
+  89              	.LVL1:
+ 130:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     work_ptr =  (CHAR *)new_directory_name;
+  90              		.loc 1 130 5 view .LVU29
+ 131:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     while (*work_ptr && (i < FX_MAX_LONG_NAME_LEN))
+  91              		.loc 1 131 5 view .LVU30
+ 130:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     work_ptr =  (CHAR *)new_directory_name;
+  92              		.loc 1 130 14 is_stmt 0 view .LVU31
+  93 0036 9446     		mov	ip, r2
+  94              		.loc 1 131 11 view .LVU32
+  95 0038 04E0     		b	.L2
+  96              	.LVL2:
+  97              	.L27:
+ARM GAS  /tmp/ccPAgCqz.s 			page 5
+
+
+ 132:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 133:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 134:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Determine if the character designates a new path.  */
+ 135:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         if ((*work_ptr == '\\') || (*work_ptr == '/'))
+ 136:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 137:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Yes, reset the name size.  */
+ 138:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             i =  0;
+ 139:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 140:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Check for leading spaces.  */
+ 141:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         else if ((*work_ptr != ' ') || (i != 0))
+  98              		.loc 1 141 37 discriminator 1 view .LVU33
+  99 003a 0CB1     		cbz	r4, .L3
+ 100 003c 0DE0     		b	.L4
+ 101              	.L21:
+ 138:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 102              		.loc 1 138 15 view .LVU34
+ 103 003e 0024     		movs	r4, #0
+ 104              	.LVL3:
+ 105              	.L3:
+ 142:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 143:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 144:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* No leading spaces, increment the name size.  */
+ 145:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             i++;
+ 146:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 147:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 148:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Move to the next character.  */
+ 149:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         work_ptr++;
+ 106              		.loc 1 149 9 is_stmt 1 view .LVU35
+ 107              		.loc 1 149 17 is_stmt 0 view .LVU36
+ 108 0040 0CF1010C 		add	ip, ip, #1
+ 109              	.LVL4:
+ 110              	.L2:
+ 131:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 111              		.loc 1 131 22 is_stmt 1 view .LVU37
+ 131:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 112              		.loc 1 131 12 is_stmt 0 view .LVU38
+ 113 0044 9CF80030 		ldrb	r3, [ip]	@ zero_extendqisi2
+ 131:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 114              		.loc 1 131 22 view .LVU39
+ 115 0048 4BB1     		cbz	r3, .L5
+ 131:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 116              		.loc 1 131 22 discriminator 1 view .LVU40
+ 117 004a FF2C     		cmp	r4, #255
+ 118 004c 07D8     		bhi	.L5
+ 135:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 119              		.loc 1 135 9 is_stmt 1 view .LVU41
+ 135:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 120              		.loc 1 135 12 is_stmt 0 view .LVU42
+ 121 004e 2F2B     		cmp	r3, #47
+ 122 0050 18BF     		it	ne
+ 123 0052 5C2B     		cmpne	r3, #92
+ 124 0054 F3D0     		beq	.L21
+ 141:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 125              		.loc 1 141 14 is_stmt 1 view .LVU43
+ 141:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 126              		.loc 1 141 17 is_stmt 0 view .LVU44
+ 127 0056 202B     		cmp	r3, #32
+ARM GAS  /tmp/ccPAgCqz.s 			page 6
+
+
+ 128 0058 EFD0     		beq	.L27
+ 129              	.L4:
+ 145:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 130              		.loc 1 145 13 is_stmt 1 view .LVU45
+ 145:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 131              		.loc 1 145 14 is_stmt 0 view .LVU46
+ 132 005a 0134     		adds	r4, r4, #1
+ 133              	.LVL5:
+ 145:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 134              		.loc 1 145 14 view .LVU47
+ 135 005c F0E7     		b	.L3
+ 136              	.L5:
+ 150:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 151:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 152:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the supplied name is valid.  */
+ 153:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if ((i == 0) || (i >= FX_MAX_LONG_NAME_LEN))
+ 137              		.loc 1 153 5 is_stmt 1 view .LVU48
+ 138              		.loc 1 153 18 is_stmt 0 view .LVU49
+ 139 005e 013C     		subs	r4, r4, #1
+ 140              	.LVL6:
+ 141              		.loc 1 153 8 view .LVU50
+ 142 0060 FE2C     		cmp	r4, #254
+ 143 0062 00F2DE80 		bhi	.L22
+ 154:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 155:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return an invalid name value.  */
+ 157:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(FX_INVALID_NAME);
+ 158:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 159:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 160:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Check the media to make sure it is open.  */
+ 161:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+ 144              		.loc 1 161 5 is_stmt 1 view .LVU51
+ 145              		.loc 1 161 19 is_stmt 0 view .LVU52
+ 146 0066 2A68     		ldr	r2, [r5]
+ 147              	.LVL7:
+ 148              		.loc 1 161 8 view .LVU53
+ 149 0068 714B     		ldr	r3, .L38
+ 150 006a 9A42     		cmp	r2, r3
+ 151 006c 05D0     		beq	.L28
+ 162:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 163:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 164:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the media not opened error.  */
+ 165:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(FX_MEDIA_NOT_OPEN);
+ 152              		.loc 1 165 15 view .LVU54
+ 153 006e 4FF01108 		mov	r8, #17
+ 154              	.LVL8:
+ 155              	.L1:
+ 166:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 167:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 168:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 169:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_DIRECTORY_RENAME, media_ptr, old_directory_name, new_directory
+ 170:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 171:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Protect against other threads accessing the media.  */
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     FX_PROTECT
+ 173:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 174:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 175:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Start transaction. */
+ARM GAS  /tmp/ccPAgCqz.s 			page 7
+
+
+ 176:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     _fx_fault_tolerant_transaction_start(media_ptr);
+ 177:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 178:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 179:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Check for write protect at the media level (set by driver).  */
+ 180:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (media_ptr -> fx_media_driver_write_protect)
+ 181:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 182:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 183:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 184:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 185:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 186:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 187:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Release media protection.  */
+ 188:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 189:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 190:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return write protect error.  */
+ 191:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(FX_WRITE_PROTECT);
+ 192:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 193:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 194:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Search the system for the supplied directory name.  */
+ 195:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     status =  _fx_directory_search(media_ptr, old_directory_name, &old_dir_entry, &search_directory
+ 196:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 197:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the search was successful.  */
+ 198:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (status != FX_SUCCESS)
+ 199:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 200:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 201:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 202:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 203:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 204:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 205:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Release media protection.  */
+ 206:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 207:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 208:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the error code.  */
+ 209:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(status);
+ 210:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 211:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 212:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Check to make sure the found entry is a directory.  */
+ 213:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (!(old_dir_entry.fx_dir_entry_attributes & (UCHAR)(FX_DIRECTORY)))
+ 214:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 215:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 216:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 217:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 218:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 219:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 220:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Release media protection.  */
+ 221:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 222:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 223:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the not a directory error code.  */
+ 224:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(FX_NOT_DIRECTORY);
+ 225:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 226:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 227:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_RENAME_PATH_INHERIT
+ 228:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 229:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the source directory name has a path and the target directory name does not.  *
+ 230:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (((old_directory_name[0] == '/') || (old_directory_name[0] == '\\')) && (new_directory_name[
+ 231:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 232:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ARM GAS  /tmp/ccPAgCqz.s 			page 8
+
+
+ 233:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* In this case, we need to prepend the path of the old directory name to that of the new d
+ 234:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 235:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Setup pointer to the rename buffer.  */
+ 236:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         work_ptr =  (CHAR *)media_ptr -> fx_media_rename_buffer;
+ 237:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 238:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* First, copy the path of the old directory name.  */
+ 239:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         i =  0;
+ 240:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         j =  0;
+ 241:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         while ((old_directory_name[i]) && (i < FX_MAXIMUM_PATH))
+ 242:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 243:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 244:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Copy a character into the rename buffer.  */
+ 245:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             *work_ptr++ =  old_directory_name[i];
+ 246:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 247:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Determine if this character is directory separator.  */
+ 248:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((old_directory_name[i] == '/') || (old_directory_name[i] == '\\'))
+ 249:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 250:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 251:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 /* Yes, directory separator has been found - remember the index.  */
+ 252:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 j =  i;
+ 253:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 254:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 255:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Move to next position in the old directory name.  */
+ 256:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             i++;
+ 257:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 258:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 259:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* At this point, we have the path stored in the rename buffer.  */
+ 260:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 261:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Position past the last slash or backslash.  */
+ 262:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         j++;
+ 263:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 264:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Reset the working pointer to the position after the last directory separator.  */
+ 265:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         work_ptr =  (CHAR *)&(media_ptr -> fx_media_rename_buffer[j]);
+ 266:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 267:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Now copy the new directory name into the rename buffer.  */
+ 268:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         i =  0;
+ 269:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         while ((new_directory_name[i]) && (j < FX_MAXIMUM_PATH))
+ 270:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 271:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 272:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Copy a character into the rename buffer.  */
+ 273:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             *work_ptr++ =  new_directory_name[i];
+ 274:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 275:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Move to next character.  */
+ 276:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             i++;
+ 277:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             j++;
+ 278:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 279:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 280:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Determine if the path was successfully prepended.  */
+ 281:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         if (new_directory_name[i])
+ 282:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 283:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 284:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* No, there was not enough room in the destination buffer.  */
+ 285:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 286:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 287:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 288:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 289:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ARM GAS  /tmp/ccPAgCqz.s 			page 9
+
+
+ 290:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Release media protection.  */
+ 291:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             FX_UNPROTECT
+ 292:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 293:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Return the invalid path error code.  */
+ 294:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             return(FX_INVALID_PATH);
+ 295:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 296:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 297:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Place a NULL at the end of the string.  */
+ 298:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         *work_ptr =  (CHAR)FX_NULL;
+ 299:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 300:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* At this point, we have successfully prepended the path in the new directory name, overri
+ 301:Middlewares/ST/filex/common/src/fx_directory_rename.c ****            the new directory name so it is used from now on.  */
+ 302:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_directory_name =  (CHAR *)media_ptr -> fx_media_rename_buffer;
+ 303:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 304:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif
+ 305:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 306:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Search the media for the new directory name - including any supplied path.  */
+ 307:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     status = _fx_directory_search(media_ptr, new_directory_name, &new_dir_entry, &search_directory,
+ 308:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 309:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the search found anything.  */
+ 310:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (status == FX_SUCCESS)
+ 311:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 312:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 313:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Determine if the new name simply has an ASCII case change. If so, simply let the process
+ 314:Middlewares/ST/filex/common/src/fx_directory_rename.c ****            continue.  */
+ 315:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         i =  0;
+ 316:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         do
+ 317:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 318:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 319:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Pickup an old name and new name character and convert to upper case if necessary.  *
+ 320:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             alpha =  old_directory_name[i];
+ 321:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((alpha >= 'a') && (alpha <= 'z'))
+ 322:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 323:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 324:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 /* Lower case, convert to upper case!  */
+ 325:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 alpha =  (CHAR)((INT)alpha - 0x20);
+ 326:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 327:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             beta =   new_directory_name[i];
+ 328:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((beta >= 'a') && (beta <= 'z'))
+ 329:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 330:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 331:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 /* Lower case, convert to upper case!  */
+ 332:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 beta =  (CHAR)((INT)beta - 0x20);
+ 333:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 334:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 335:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Now compare the characters.  */
+ 336:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((alpha != beta) || (alpha == 0))
+ 337:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 338:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 339:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 /* Get out of this loop!  */
+ 340:Middlewares/ST/filex/common/src/fx_directory_rename.c ****                 break;
+ 341:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 342:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 343:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Move to next character.  */
+ 344:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             i++;
+ 345:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         } while (i < (FX_MAXIMUM_PATH-1));
+ 346:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ARM GAS  /tmp/ccPAgCqz.s 			page 10
+
+
+ 347:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Now determine if the names match.  */
+ 348:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         if (alpha != beta)
+ 349:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 350:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 351:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Yes, the directory name already exists in the target location.  */
+ 352:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 353:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 354:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 355:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 356:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 357:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Release media protection.  */
+ 358:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             FX_UNPROTECT
+ 359:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 360:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             /* Return the error code.  */
+ 361:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             return(FX_ALREADY_CREATED);
+ 362:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 363:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 364:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 365:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Make sure the name is valid.  */
+ 366:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (_fx_directory_name_extract(new_name_ptr, &new_dir_entry.fx_dir_entry_name[0]))
+ 367:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 368:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 369:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 370:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 371:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 372:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 373:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Release media protection */
+ 374:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 375:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 376:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the error code */
+ 377:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(FX_INVALID_NAME);
+ 378:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 379:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 380:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Look for a free slot in the target directory.  */
+ 381:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     status =  _fx_directory_free_search(media_ptr, &search_directory, &new_dir_entry);
+ 382:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 383:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Was a free slot found?  */
+ 384:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (status != FX_SUCCESS)
+ 385:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 386:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 387:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 388:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 389:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 390:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 391:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* No, release protection.  */
+ 392:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 393:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 394:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the error code.  */
+ 395:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(status);
+ 396:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 397:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 398:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Extract the new directory name.  */
+ 399:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     _fx_directory_name_extract(new_name_ptr, &new_dir_entry.fx_dir_entry_name[0]);
+ 400:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 401:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the name was a long directory name.   */
+ 402:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (new_dir_entry.fx_dir_entry_long_name_present)
+ 403:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ARM GAS  /tmp/ccPAgCqz.s 			page 11
+
+
+ 404:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Yes, clear the short directory name to force a new one.  */
+ 406:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_dir_entry.fx_dir_entry_short_name[0] =  0;
+ 407:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 408:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 409:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Setup new attributes for the new directory entry.  */
+ 410:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_attributes = old_dir_entry.fx_dir_entry_attributes;
+ 411:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_cluster    = old_dir_entry.fx_dir_entry_cluster;
+ 412:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_file_size  = old_dir_entry.fx_dir_entry_file_size;
+ 413:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 414:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Save the reserved field.  */
+ 415:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_reserved =            old_dir_entry.fx_dir_entry_reserved;
+ 416:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 417:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Set time and date stamps.  */
+ 418:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_time_ms =     old_dir_entry.fx_dir_entry_created_time_ms;
+ 419:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_time =        old_dir_entry.fx_dir_entry_created_time;
+ 420:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_date =        old_dir_entry.fx_dir_entry_created_date;
+ 421:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_last_accessed_date =  old_dir_entry.fx_dir_entry_last_accessed_date;
+ 422:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_time =                old_dir_entry.fx_dir_entry_time;
+ 423:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_date =                old_dir_entry.fx_dir_entry_date;
+ 424:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 425:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 426:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 427:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 428:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 429:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_dir_entry.fx_dir_entry_dont_use_fat =           old_dir_entry.fx_dir_entry_dont_use_fat
+ 430:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_dir_entry.fx_dir_entry_type =                   old_dir_entry.fx_dir_entry_type;
+ 431:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_dir_entry.fx_dir_entry_available_file_size =    old_dir_entry.fx_dir_entry_available_fi
+ 432:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_dir_entry.fx_dir_entry_secondary_count =        old_dir_entry.fx_dir_entry_secondary_co
+ 433:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 434:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_EXFAT */
+ 435:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 436:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Is there a leading dot?  */
+ 437:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (new_dir_entry.fx_dir_entry_name[0] == '.')
+ 438:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 439:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 440:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Yes, toggle the hidden attribute bit.  */
+ 441:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         new_dir_entry.fx_dir_entry_attributes |=  FX_HIDDEN;
+ 442:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 443:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 444:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifndef FX_MEDIA_DISABLE_SEARCH_CACHE
+ 445:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 446:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Invalidate the directory cache.  */
+ 447:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     media_ptr -> fx_media_last_found_name[0] =  FX_NULL;
+ 448:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif
+ 449:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 450:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Now write out the directory entry.  */
+ 451:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 452:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 453:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 454:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 455:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         status = _fx_directory_exFAT_entry_write(media_ptr, &new_dir_entry, UPDATE_FULL);
+ 456:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 457:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     else
+ 458:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 459:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_EXFAT */
+ 460:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         status =  _fx_directory_entry_write(media_ptr, &new_dir_entry);
+ARM GAS  /tmp/ccPAgCqz.s 			page 12
+
+
+ 461:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 462:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 463:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_EXFAT */
+ 464:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 465:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Determine if the write was successful.  */
+ 466:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (status != FX_SUCCESS)
+ 467:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 468:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 469:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 470:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 471:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 472:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 473:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Release media protection.  */
+ 474:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 475:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 476:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the error code.  */
+ 477:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(status);
+ 478:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 479:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 480:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Set the old directory entry to free.  */
+ 481:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     old_dir_entry.fx_dir_entry_name[0] =        (CHAR)FX_DIR_ENTRY_FREE;
+ 482:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     old_dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 483:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 484:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Now wipe out the old directory entry.  */
+ 485:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 486:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 487:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 488:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 489:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         status = _fx_directory_exFAT_entry_write(media_ptr, &old_dir_entry, UPDATE_DELETE);
+ 490:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 491:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     else
+ 492:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 493:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_EXFAT */
+ 494:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         status =  _fx_directory_entry_write(media_ptr, &old_dir_entry);
+ 495:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 496:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 497:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_EXFAT */
+ 498:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 499:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 500:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Check for a bad status.  */
+ 501:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     if (status != FX_SUCCESS)
+ 502:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 503:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 504:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 505:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 506:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Release media protection.  */
+ 507:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         FX_UNPROTECT
+ 508:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 509:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         /* Return the bad status.  */
+ 510:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         return(status);
+ 511:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 512:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 513:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* End transaction. */
+ 514:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     status = _fx_fault_tolerant_transaction_end(media_ptr);
+ 515:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 516:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 517:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Release media protection.  */
+ARM GAS  /tmp/ccPAgCqz.s 			page 13
+
+
+ 518:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     FX_UNPROTECT
+ 519:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 520:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     /* Directory rename is complete, return status.  */
+ 521:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     return(status);
+ 522:Middlewares/ST/filex/common/src/fx_directory_rename.c **** }
+ 156              		.loc 1 522 1 view .LVU55
+ 157 0072 4046     		mov	r0, r8
+ 158 0074 5AB0     		add	sp, sp, #360
+ 159              	.LCFI2:
+ 160              		.cfi_remember_state
+ 161              		.cfi_def_cfa_offset 24
+ 162              		@ sp needed
+ 163 0076 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 164              	.LVL9:
+ 165              	.L28:
+ 166              	.LCFI3:
+ 167              		.cfi_restore_state
+ 169:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 168              		.loc 1 169 5 is_stmt 1 view .LVU56
+ 169 007a 0023     		movs	r3, #0
+ 170 007c 0393     		str	r3, [sp, #12]
+ 171 007e 0293     		str	r3, [sp, #8]
+ 172 0080 4FF40052 		mov	r2, #8192
+ 173 0084 0192     		str	r2, [sp, #4]
+ 174 0086 0093     		str	r3, [sp]
+ 175 0088 3346     		mov	r3, r6
+ 176 008a 3A46     		mov	r2, r7
+ 177 008c 2946     		mov	r1, r5
+ 178              	.LVL10:
+ 169:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 179              		.loc 1 169 5 is_stmt 0 view .LVU57
+ 180 008e ED20     		movs	r0, #237
+ 181              	.LVL11:
+ 169:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 182              		.loc 1 169 5 view .LVU58
+ 183 0090 FFF7FEFF 		bl	_fx_trace_event_insert
+ 184              	.LVL12:
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 185              		.loc 1 172 5 is_stmt 1 view .LVU59
+ 186 0094 2A68     		ldr	r2, [r5]
+ 187 0096 664B     		ldr	r3, .L38
+ 188 0098 9A42     		cmp	r2, r3
+ 189 009a 02D0     		beq	.L29
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 190              		.loc 1 172 5 is_stmt 0 discriminator 1 view .LVU60
+ 191 009c 4FF01108 		mov	r8, #17
+ 192 00a0 E7E7     		b	.L1
+ 193              	.L29:
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 194              		.loc 1 172 5 is_stmt 1 discriminator 2 view .LVU61
+ 195 00a2 05F5E474 		add	r4, r5, #456
+ 196              	.LVL13:
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 197              		.loc 1 172 5 is_stmt 0 discriminator 2 view .LVU62
+ 198 00a6 4FF0FF31 		mov	r1, #-1
+ 199 00aa 2046     		mov	r0, r4
+ 200 00ac FFF7FEFF 		bl	_tx_mutex_get
+ARM GAS  /tmp/ccPAgCqz.s 			page 14
+
+
+ 201              	.LVL14:
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 202              		.loc 1 172 5 discriminator 1 view .LVU63
+ 203 00b0 0028     		cmp	r0, #0
+ 204 00b2 40F0B980 		bne	.L25
+ 180:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 205              		.loc 1 180 5 is_stmt 1 view .LVU64
+ 180:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 206              		.loc 1 180 19 is_stmt 0 view .LVU65
+ 207 00b6 D5F8A830 		ldr	r3, [r5, #168]
+ 180:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 208              		.loc 1 180 8 view .LVU66
+ 209 00ba CBB9     		cbnz	r3, .L30
+ 195:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 210              		.loc 1 195 5 is_stmt 1 view .LVU67
+ 195:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 211              		.loc 1 195 15 is_stmt 0 view .LVU68
+ 212 00bc 0023     		movs	r3, #0
+ 213 00be 0093     		str	r3, [sp]
+ 214 00c0 06AB     		add	r3, sp, #24
+ 215 00c2 3EAA     		add	r2, sp, #248
+ 216 00c4 3946     		mov	r1, r7
+ 217 00c6 2846     		mov	r0, r5
+ 218 00c8 FFF7FEFF 		bl	_fx_directory_search
+ 219              	.LVL15:
+ 198:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 220              		.loc 1 198 5 is_stmt 1 view .LVU69
+ 198:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 221              		.loc 1 198 8 is_stmt 0 view .LVU70
+ 222 00cc 8046     		mov	r8, r0
+ 223 00ce A8B9     		cbnz	r0, .L31
+ 213:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 224              		.loc 1 213 5 is_stmt 1 view .LVU71
+ 213:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 225              		.loc 1 213 24 is_stmt 0 view .LVU72
+ 226 00d0 9DF81431 		ldrb	r3, [sp, #276]	@ zero_extendqisi2
+ 213:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 227              		.loc 1 213 8 view .LVU73
+ 228 00d4 13F0100F 		tst	r3, #16
+ 229 00d8 14D0     		beq	.L32
+ 307:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 230              		.loc 1 307 5 is_stmt 1 view .LVU74
+ 307:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 231              		.loc 1 307 14 is_stmt 0 view .LVU75
+ 232 00da 05AB     		add	r3, sp, #20
+ 233 00dc 0093     		str	r3, [sp]
+ 234 00de 06AB     		add	r3, sp, #24
+ 235 00e0 22AA     		add	r2, sp, #136
+ 236 00e2 3146     		mov	r1, r6
+ 237 00e4 2846     		mov	r0, r5
+ 238              	.LVL16:
+ 307:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 239              		.loc 1 307 14 view .LVU76
+ 240 00e6 FFF7FEFF 		bl	_fx_directory_search
+ 241              	.LVL17:
+ 310:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 242              		.loc 1 310 5 is_stmt 1 view .LVU77
+ARM GAS  /tmp/ccPAgCqz.s 			page 15
+
+
+ 310:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 243              		.loc 1 310 8 is_stmt 0 view .LVU78
+ 244 00ea 8446     		mov	ip, r0
+ 245 00ec E8B1     		cbz	r0, .L15
+ 246 00ee 31E0     		b	.L11
+ 247              	.LVL18:
+ 248              	.L30:
+ 188:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 249              		.loc 1 188 9 is_stmt 1 view .LVU79
+ 250 00f0 2046     		mov	r0, r4
+ 251 00f2 FFF7FEFF 		bl	_tx_mutex_put
+ 252              	.LVL19:
+ 191:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 253              		.loc 1 191 9 view .LVU80
+ 191:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 254              		.loc 1 191 15 is_stmt 0 view .LVU81
+ 255 00f6 4FF02308 		mov	r8, #35
+ 256 00fa BAE7     		b	.L1
+ 257              	.LVL20:
+ 258              	.L31:
+ 206:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 259              		.loc 1 206 9 is_stmt 1 view .LVU82
+ 260 00fc 2046     		mov	r0, r4
+ 261              	.LVL21:
+ 206:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 262              		.loc 1 206 9 is_stmt 0 view .LVU83
+ 263 00fe FFF7FEFF 		bl	_tx_mutex_put
+ 264              	.LVL22:
+ 209:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 265              		.loc 1 209 9 is_stmt 1 view .LVU84
+ 209:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 266              		.loc 1 209 15 is_stmt 0 view .LVU85
+ 267 0102 B6E7     		b	.L1
+ 268              	.LVL23:
+ 269              	.L32:
+ 221:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 270              		.loc 1 221 9 is_stmt 1 view .LVU86
+ 271 0104 2046     		mov	r0, r4
+ 272              	.LVL24:
+ 221:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 273              		.loc 1 221 9 is_stmt 0 view .LVU87
+ 274 0106 FFF7FEFF 		bl	_tx_mutex_put
+ 275              	.LVL25:
+ 224:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 276              		.loc 1 224 9 is_stmt 1 view .LVU88
+ 224:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 277              		.loc 1 224 15 is_stmt 0 view .LVU89
+ 278 010a 4FF00E08 		mov	r8, #14
+ 279              	.LVL26:
+ 224:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 280              		.loc 1 224 15 view .LVU90
+ 281 010e B0E7     		b	.L1
+ 282              	.LVL27:
+ 283              	.L13:
+ 336:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 284              		.loc 1 336 13 is_stmt 1 view .LVU91
+ 336:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ARM GAS  /tmp/ccPAgCqz.s 			page 16
+
+
+ 285              		.loc 1 336 43 is_stmt 0 view .LVU92
+ 286 0110 B3FA83F2 		clz	r2, r3
+ 287 0114 5209     		lsrs	r2, r2, #5
+ 336:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 288              		.loc 1 336 33 view .LVU93
+ 289 0116 8B42     		cmp	r3, r1
+ 290 0118 18BF     		it	ne
+ 291 011a 42F00102 		orrne	r2, r2, #1
+ 336:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 292              		.loc 1 336 16 view .LVU94
+ 293 011e BAB9     		cbnz	r2, .L14
+ 344:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         } while (i < (FX_MAXIMUM_PATH-1));
+ 294              		.loc 1 344 13 is_stmt 1 view .LVU95
+ 344:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         } while (i < (FX_MAXIMUM_PATH-1));
+ 295              		.loc 1 344 14 is_stmt 0 view .LVU96
+ 296 0120 0CF1010C 		add	ip, ip, #1
+ 297              	.LVL28:
+ 345:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 298              		.loc 1 345 20 is_stmt 1 view .LVU97
+ 299 0124 BCF1FE0F 		cmp	ip, #254
+ 300 0128 12D8     		bhi	.L14
+ 301              	.LVL29:
+ 302              	.L15:
+ 316:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 303              		.loc 1 316 9 view .LVU98
+ 320:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((alpha >= 'a') && (alpha <= 'z'))
+ 304              		.loc 1 320 13 view .LVU99
+ 320:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((alpha >= 'a') && (alpha <= 'z'))
+ 305              		.loc 1 320 19 is_stmt 0 view .LVU100
+ 306 012a 17F80C30 		ldrb	r3, [r7, ip]	@ zero_extendqisi2
+ 307              	.LVL30:
+ 321:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 308              		.loc 1 321 13 is_stmt 1 view .LVU101
+ 321:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 309              		.loc 1 321 32 is_stmt 0 view .LVU102
+ 310 012e A3F16102 		sub	r2, r3, #97
+ 311 0132 D2B2     		uxtb	r2, r2
+ 321:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 312              		.loc 1 321 16 view .LVU103
+ 313 0134 192A     		cmp	r2, #25
+ 314 0136 01D8     		bhi	.L12
+ 325:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 315              		.loc 1 325 17 is_stmt 1 view .LVU104
+ 325:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 316              		.loc 1 325 23 is_stmt 0 view .LVU105
+ 317 0138 203B     		subs	r3, r3, #32
+ 318              	.LVL31:
+ 325:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 319              		.loc 1 325 23 view .LVU106
+ 320 013a DBB2     		uxtb	r3, r3
+ 321              	.LVL32:
+ 322              	.L12:
+ 327:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((beta >= 'a') && (beta <= 'z'))
+ 323              		.loc 1 327 13 is_stmt 1 view .LVU107
+ 327:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             if ((beta >= 'a') && (beta <= 'z'))
+ 324              		.loc 1 327 18 is_stmt 0 view .LVU108
+ 325 013c 16F80C10 		ldrb	r1, [r6, ip]	@ zero_extendqisi2
+ARM GAS  /tmp/ccPAgCqz.s 			page 17
+
+
+ 326              	.LVL33:
+ 328:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 327              		.loc 1 328 13 is_stmt 1 view .LVU109
+ 328:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 328              		.loc 1 328 31 is_stmt 0 view .LVU110
+ 329 0140 A1F16102 		sub	r2, r1, #97
+ 330 0144 D2B2     		uxtb	r2, r2
+ 328:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             {
+ 331              		.loc 1 328 16 view .LVU111
+ 332 0146 192A     		cmp	r2, #25
+ 333 0148 E2D8     		bhi	.L13
+ 332:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 334              		.loc 1 332 17 is_stmt 1 view .LVU112
+ 332:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 335              		.loc 1 332 22 is_stmt 0 view .LVU113
+ 336 014a 2039     		subs	r1, r1, #32
+ 337              	.LVL34:
+ 332:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 338              		.loc 1 332 22 view .LVU114
+ 339 014c C9B2     		uxtb	r1, r1
+ 340              	.LVL35:
+ 332:Middlewares/ST/filex/common/src/fx_directory_rename.c ****             }
+ 341              		.loc 1 332 22 view .LVU115
+ 342 014e DFE7     		b	.L13
+ 343              	.L14:
+ 348:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 344              		.loc 1 348 9 is_stmt 1 view .LVU116
+ 348:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         {
+ 345              		.loc 1 348 12 is_stmt 0 view .LVU117
+ 346 0150 8B42     		cmp	r3, r1
+ 347 0152 4DD1     		bne	.L33
+ 348              	.LVL36:
+ 349              	.L11:
+ 366:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 350              		.loc 1 366 5 is_stmt 1 view .LVU118
+ 366:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 351              		.loc 1 366 9 is_stmt 0 view .LVU119
+ 352 0154 2299     		ldr	r1, [sp, #136]
+ 353 0156 0598     		ldr	r0, [sp, #20]
+ 354              	.LVL37:
+ 366:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 355              		.loc 1 366 9 view .LVU120
+ 356 0158 FFF7FEFF 		bl	_fx_directory_name_extract
+ 357              	.LVL38:
+ 366:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 358              		.loc 1 366 8 discriminator 1 view .LVU121
+ 359 015c 0028     		cmp	r0, #0
+ 360 015e 4DD1     		bne	.L34
+ 381:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 361              		.loc 1 381 5 is_stmt 1 view .LVU122
+ 381:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 362              		.loc 1 381 15 is_stmt 0 view .LVU123
+ 363 0160 22AA     		add	r2, sp, #136
+ 364 0162 06A9     		add	r1, sp, #24
+ 365 0164 2846     		mov	r0, r5
+ 366 0166 FFF7FEFF 		bl	_fx_directory_free_search
+ 367              	.LVL39:
+ARM GAS  /tmp/ccPAgCqz.s 			page 18
+
+
+ 384:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 368              		.loc 1 384 5 is_stmt 1 view .LVU124
+ 384:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 369              		.loc 1 384 8 is_stmt 0 view .LVU125
+ 370 016a 8046     		mov	r8, r0
+ 371 016c 0028     		cmp	r0, #0
+ 372 016e 4BD1     		bne	.L35
+ 399:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 373              		.loc 1 399 5 is_stmt 1 view .LVU126
+ 374 0170 2299     		ldr	r1, [sp, #136]
+ 375 0172 0598     		ldr	r0, [sp, #20]
+ 376              	.LVL40:
+ 399:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 377              		.loc 1 399 5 is_stmt 0 view .LVU127
+ 378 0174 FFF7FEFF 		bl	_fx_directory_name_extract
+ 379              	.LVL41:
+ 402:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 380              		.loc 1 402 5 is_stmt 1 view .LVU128
+ 402:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 381              		.loc 1 402 22 is_stmt 0 view .LVU129
+ 382 0178 279B     		ldr	r3, [sp, #156]
+ 402:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 383              		.loc 1 402 8 view .LVU130
+ 384 017a 13B1     		cbz	r3, .L18
+ 406:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 385              		.loc 1 406 9 is_stmt 1 view .LVU131
+ 406:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 386              		.loc 1 406 50 is_stmt 0 view .LVU132
+ 387 017c 0023     		movs	r3, #0
+ 388 017e 8DF88C30 		strb	r3, [sp, #140]
+ 389              	.L18:
+ 410:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_cluster    = old_dir_entry.fx_dir_entry_cluster;
+ 390              		.loc 1 410 5 is_stmt 1 view .LVU133
+ 410:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_cluster    = old_dir_entry.fx_dir_entry_cluster;
+ 391              		.loc 1 410 58 is_stmt 0 view .LVU134
+ 392 0182 9DF81431 		ldrb	r3, [sp, #276]	@ zero_extendqisi2
+ 410:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_cluster    = old_dir_entry.fx_dir_entry_cluster;
+ 393              		.loc 1 410 43 view .LVU135
+ 394 0186 8DF8A430 		strb	r3, [sp, #164]
+ 411:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_file_size  = old_dir_entry.fx_dir_entry_file_size;
+ 395              		.loc 1 411 5 is_stmt 1 view .LVU136
+ 411:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_file_size  = old_dir_entry.fx_dir_entry_file_size;
+ 396              		.loc 1 411 58 is_stmt 0 view .LVU137
+ 397 018a 4B9A     		ldr	r2, [sp, #300]
+ 411:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_file_size  = old_dir_entry.fx_dir_entry_file_size;
+ 398              		.loc 1 411 43 view .LVU138
+ 399 018c 2F92     		str	r2, [sp, #188]
+ 412:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 400              		.loc 1 412 5 is_stmt 1 view .LVU139
+ 412:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 401              		.loc 1 412 58 is_stmt 0 view .LVU140
+ 402 018e DDE94C01 		ldrd	r0, [sp, #304]
+ 412:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 403              		.loc 1 412 43 view .LVU141
+ 404 0192 CDE93001 		strd	r0, [sp, #192]
+ 415:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 405              		.loc 1 415 5 is_stmt 1 view .LVU142
+ARM GAS  /tmp/ccPAgCqz.s 			page 19
+
+
+ 415:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 406              		.loc 1 415 67 is_stmt 0 view .LVU143
+ 407 0196 9DF81521 		ldrb	r2, [sp, #277]	@ zero_extendqisi2
+ 415:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 408              		.loc 1 415 41 view .LVU144
+ 409 019a 8DF8A520 		strb	r2, [sp, #165]
+ 418:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_time =        old_dir_entry.fx_dir_entry_created_time;
+ 410              		.loc 1 418 5 is_stmt 1 view .LVU145
+ 418:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_time =        old_dir_entry.fx_dir_entry_created_time;
+ 411              		.loc 1 418 67 is_stmt 0 view .LVU146
+ 412 019e 9DF81621 		ldrb	r2, [sp, #278]	@ zero_extendqisi2
+ 418:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_time =        old_dir_entry.fx_dir_entry_created_time;
+ 413              		.loc 1 418 48 view .LVU147
+ 414 01a2 8DF8A620 		strb	r2, [sp, #166]
+ 419:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_date =        old_dir_entry.fx_dir_entry_created_date;
+ 415              		.loc 1 419 5 is_stmt 1 view .LVU148
+ 419:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_date =        old_dir_entry.fx_dir_entry_created_date;
+ 416              		.loc 1 419 67 is_stmt 0 view .LVU149
+ 417 01a6 469A     		ldr	r2, [sp, #280]
+ 419:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_created_date =        old_dir_entry.fx_dir_entry_created_date;
+ 418              		.loc 1 419 45 view .LVU150
+ 419 01a8 2A92     		str	r2, [sp, #168]
+ 420:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_last_accessed_date =  old_dir_entry.fx_dir_entry_last_accessed_date;
+ 420              		.loc 1 420 5 is_stmt 1 view .LVU151
+ 420:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_last_accessed_date =  old_dir_entry.fx_dir_entry_last_accessed_date;
+ 421              		.loc 1 420 67 is_stmt 0 view .LVU152
+ 422 01aa 479A     		ldr	r2, [sp, #284]
+ 420:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_last_accessed_date =  old_dir_entry.fx_dir_entry_last_accessed_date;
+ 423              		.loc 1 420 45 view .LVU153
+ 424 01ac 2B92     		str	r2, [sp, #172]
+ 421:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_time =                old_dir_entry.fx_dir_entry_time;
+ 425              		.loc 1 421 5 is_stmt 1 view .LVU154
+ 421:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_time =                old_dir_entry.fx_dir_entry_time;
+ 426              		.loc 1 421 67 is_stmt 0 view .LVU155
+ 427 01ae 489A     		ldr	r2, [sp, #288]
+ 421:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_time =                old_dir_entry.fx_dir_entry_time;
+ 428              		.loc 1 421 51 view .LVU156
+ 429 01b0 2C92     		str	r2, [sp, #176]
+ 422:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_date =                old_dir_entry.fx_dir_entry_date;
+ 430              		.loc 1 422 5 is_stmt 1 view .LVU157
+ 422:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_date =                old_dir_entry.fx_dir_entry_date;
+ 431              		.loc 1 422 67 is_stmt 0 view .LVU158
+ 432 01b2 499A     		ldr	r2, [sp, #292]
+ 422:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     new_dir_entry.fx_dir_entry_date =                old_dir_entry.fx_dir_entry_date;
+ 433              		.loc 1 422 37 view .LVU159
+ 434 01b4 2D92     		str	r2, [sp, #180]
+ 423:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 435              		.loc 1 423 5 is_stmt 1 view .LVU160
+ 423:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 436              		.loc 1 423 67 is_stmt 0 view .LVU161
+ 437 01b6 4A9A     		ldr	r2, [sp, #296]
+ 423:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 438              		.loc 1 423 37 view .LVU162
+ 439 01b8 2E92     		str	r2, [sp, #184]
+ 437:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 440              		.loc 1 437 5 is_stmt 1 view .LVU163
+ 437:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ARM GAS  /tmp/ccPAgCqz.s 			page 20
+
+
+ 441              		.loc 1 437 22 is_stmt 0 view .LVU164
+ 442 01ba 229A     		ldr	r2, [sp, #136]
+ 437:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 443              		.loc 1 437 40 view .LVU165
+ 444 01bc 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 437:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 445              		.loc 1 437 8 view .LVU166
+ 446 01be 2E2A     		cmp	r2, #46
+ 447 01c0 26D0     		beq	.L36
+ 448              	.L19:
+ 447:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif
+ 449              		.loc 1 447 5 is_stmt 1 view .LVU167
+ 447:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #endif
+ 450              		.loc 1 447 46 is_stmt 0 view .LVU168
+ 451 01c2 0023     		movs	r3, #0
+ 452 01c4 85F8E033 		strb	r3, [r5, #992]
+ 460:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 453              		.loc 1 460 9 is_stmt 1 view .LVU169
+ 460:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 454              		.loc 1 460 19 is_stmt 0 view .LVU170
+ 455 01c8 22A9     		add	r1, sp, #136
+ 456 01ca 2846     		mov	r0, r5
+ 457 01cc FFF7FEFF 		bl	_fx_directory_entry_write
+ 458              	.LVL42:
+ 466:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 459              		.loc 1 466 5 is_stmt 1 view .LVU171
+ 466:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     {
+ 460              		.loc 1 466 8 is_stmt 0 view .LVU172
+ 461 01d0 8046     		mov	r8, r0
+ 462 01d2 10BB     		cbnz	r0, .L37
+ 481:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     old_dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 463              		.loc 1 481 5 is_stmt 1 view .LVU173
+ 481:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     old_dir_entry.fx_dir_entry_short_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 464              		.loc 1 481 40 is_stmt 0 view .LVU174
+ 465 01d4 E523     		movs	r3, #229
+ 466 01d6 3E9A     		ldr	r2, [sp, #248]
+ 467 01d8 1370     		strb	r3, [r2]
+ 482:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 468              		.loc 1 482 5 is_stmt 1 view .LVU175
+ 482:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 469              		.loc 1 482 46 is_stmt 0 view .LVU176
+ 470 01da 8DF8FC30 		strb	r3, [sp, #252]
+ 494:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 471              		.loc 1 494 9 is_stmt 1 view .LVU177
+ 494:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 472              		.loc 1 494 19 is_stmt 0 view .LVU178
+ 473 01de 3EA9     		add	r1, sp, #248
+ 474 01e0 2846     		mov	r0, r5
+ 475              	.LVL43:
+ 494:Middlewares/ST/filex/common/src/fx_directory_rename.c **** #ifdef FX_ENABLE_EXFAT
+ 476              		.loc 1 494 19 view .LVU179
+ 477 01e2 FFF7FEFF 		bl	_fx_directory_entry_write
+ 478              	.LVL44:
+ 479 01e6 8046     		mov	r8, r0
+ 480              	.LVL45:
+ 518:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 481              		.loc 1 518 5 is_stmt 1 view .LVU180
+ARM GAS  /tmp/ccPAgCqz.s 			page 21
+
+
+ 482 01e8 2046     		mov	r0, r4
+ 483              	.LVL46:
+ 518:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 484              		.loc 1 518 5 is_stmt 0 view .LVU181
+ 485 01ea FFF7FEFF 		bl	_tx_mutex_put
+ 486              	.LVL47:
+ 521:Middlewares/ST/filex/common/src/fx_directory_rename.c **** }
+ 487              		.loc 1 521 5 is_stmt 1 view .LVU182
+ 521:Middlewares/ST/filex/common/src/fx_directory_rename.c **** }
+ 488              		.loc 1 521 11 is_stmt 0 view .LVU183
+ 489 01ee 40E7     		b	.L1
+ 490              	.LVL48:
+ 491              	.L33:
+ 358:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 492              		.loc 1 358 13 is_stmt 1 view .LVU184
+ 493 01f0 2046     		mov	r0, r4
+ 494              	.LVL49:
+ 358:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 495              		.loc 1 358 13 is_stmt 0 view .LVU185
+ 496 01f2 FFF7FEFF 		bl	_tx_mutex_put
+ 497              	.LVL50:
+ 361:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 498              		.loc 1 361 13 is_stmt 1 view .LVU186
+ 361:Middlewares/ST/filex/common/src/fx_directory_rename.c ****         }
+ 499              		.loc 1 361 19 is_stmt 0 view .LVU187
+ 500 01f6 4FF00B08 		mov	r8, #11
+ 501 01fa 3AE7     		b	.L1
+ 502              	.LVL51:
+ 503              	.L34:
+ 374:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 504              		.loc 1 374 9 is_stmt 1 view .LVU188
+ 505 01fc 2046     		mov	r0, r4
+ 506 01fe FFF7FEFF 		bl	_tx_mutex_put
+ 507              	.LVL52:
+ 377:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 508              		.loc 1 377 9 view .LVU189
+ 377:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 509              		.loc 1 377 15 is_stmt 0 view .LVU190
+ 510 0202 4FF00C08 		mov	r8, #12
+ 511 0206 34E7     		b	.L1
+ 512              	.LVL53:
+ 513              	.L35:
+ 392:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 514              		.loc 1 392 9 is_stmt 1 view .LVU191
+ 515 0208 2046     		mov	r0, r4
+ 516              	.LVL54:
+ 392:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 517              		.loc 1 392 9 is_stmt 0 view .LVU192
+ 518 020a FFF7FEFF 		bl	_tx_mutex_put
+ 519              	.LVL55:
+ 395:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 520              		.loc 1 395 9 is_stmt 1 view .LVU193
+ 395:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 521              		.loc 1 395 15 is_stmt 0 view .LVU194
+ 522 020e 30E7     		b	.L1
+ 523              	.L36:
+ 441:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ARM GAS  /tmp/ccPAgCqz.s 			page 22
+
+
+ 524              		.loc 1 441 9 is_stmt 1 view .LVU195
+ 441:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 525              		.loc 1 441 47 is_stmt 0 view .LVU196
+ 526 0210 43F00203 		orr	r3, r3, #2
+ 527 0214 8DF8A430 		strb	r3, [sp, #164]
+ 528 0218 D3E7     		b	.L19
+ 529              	.LVL56:
+ 530              	.L37:
+ 474:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 531              		.loc 1 474 9 is_stmt 1 view .LVU197
+ 532 021a 2046     		mov	r0, r4
+ 533              	.LVL57:
+ 474:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 534              		.loc 1 474 9 is_stmt 0 view .LVU198
+ 535 021c FFF7FEFF 		bl	_tx_mutex_put
+ 536              	.LVL58:
+ 477:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 537              		.loc 1 477 9 is_stmt 1 view .LVU199
+ 477:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 538              		.loc 1 477 15 is_stmt 0 view .LVU200
+ 539 0220 27E7     		b	.L1
+ 540              	.LVL59:
+ 541              	.L22:
+ 157:Middlewares/ST/filex/common/src/fx_directory_rename.c ****     }
+ 542              		.loc 1 157 15 view .LVU201
+ 543 0222 4FF00C08 		mov	r8, #12
+ 544 0226 24E7     		b	.L1
+ 545              	.LVL60:
+ 546              	.L25:
+ 172:Middlewares/ST/filex/common/src/fx_directory_rename.c **** 
+ 547              		.loc 1 172 5 discriminator 3 view .LVU202
+ 548 0228 4FF01108 		mov	r8, #17
+ 549 022c 21E7     		b	.L1
+ 550              	.L39:
+ 551 022e 00BF     		.align	2
+ 552              	.L38:
+ 553 0230 4944454D 		.word	1296385097
+ 554              		.cfi_endproc
+ 555              	.LFE8:
+ 557              		.text
+ 558              	.Letext0:
+ 559              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 560              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 561              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 562              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 563              		.file 6 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ARM GAS  /tmp/ccPAgCqz.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_rename.c
+     /tmp/ccPAgCqz.s:20     .text._fx_directory_rename:00000000 $t
+     /tmp/ccPAgCqz.s:26     .text._fx_directory_rename:00000000 _fx_directory_rename
+     /tmp/ccPAgCqz.s:553    .text._fx_directory_rename:00000230 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_fx_directory_search
+_tx_mutex_put
+_fx_directory_name_extract
+_fx_directory_free_search
+_fx_directory_entry_write

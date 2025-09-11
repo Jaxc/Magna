@@ -1,0 +1,533 @@
+ARM GAS  /tmp/ccicrV6W.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_memory_free.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c"
+  19              		.section	.text._ux_utility_memory_free,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_memory_free
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_memory_free:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ARM GAS  /tmp/ccicrV6W.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/ 
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  FUNCTION                                               RELEASE        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    _ux_utility_memory_free                             PORTABLE C      */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                           6.1.10       */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  AUTHOR                                                                */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  DESCRIPTION                                                           */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    This function frees a previously allocated memory block.            */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  INPUT                                                                 */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    memory                                Pointer to memory block       */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  OUTPUT                                                                */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    None                                                                */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  CALLS                                                                 */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    _ux_utility_mutex_on                  Start system protection       */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    _ux_utility_mutex_off                 End system protection         */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  CALLED BY                                                             */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    USBX Components                                                     */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  RELEASE HISTORY                                                       */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                            resulting in version 6.1    */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                            added standalone support,   */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                            resulting in version 6.1.10 */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /*                                                                        */
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** /**************************************************************************/
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** VOID  _ux_utility_memory_free(VOID *memory)
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** {
+  29              		.loc 1 75 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 75 1 is_stmt 0 view .LVU1
+  34 0000 10B5     		push	{r4, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 14, -4
+  39 0002 84B0     		sub	sp, sp, #16
+  40              	.LCFI1:
+ARM GAS  /tmp/ccicrV6W.s 			page 3
+
+
+  41              		.cfi_def_cfa_offset 24
+  42 0004 0446     		mov	r4, r0
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** UX_MEMORY_BLOCK     *memory_block;
+  43              		.loc 1 77 1 is_stmt 1 view .LVU2
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** UX_MEMORY_BLOCK     *next_block;
+  44              		.loc 1 78 1 view .LVU3
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** ULONG               memory_size_returned;
+  45              		.loc 1 79 1 view .LVU4
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** UCHAR               *memory_address;
+  46              		.loc 1 80 1 view .LVU5
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #ifdef UX_ENABLE_MEMORY_POOL_SANITY_CHECK
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** UCHAR               *regular_start, *regular_end;
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** UCHAR               *cache_safe_start, *cache_safe_end;
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #endif
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Get the mutex as this is a critical section.  */
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     _ux_system_mutex_on(&_ux_system -> ux_system_mutex);
+  47              		.loc 1 87 5 view .LVU6
+  48              		.loc 1 87 37 is_stmt 0 view .LVU7
+  49 0006 2E4B     		ldr	r3, .L18
+  50 0008 1868     		ldr	r0, [r3]
+  51              	.LVL1:
+  52              		.loc 1 87 5 view .LVU8
+  53 000a 1C30     		adds	r0, r0, #28
+  54 000c FFF7FEFF 		bl	_ux_utility_mutex_on
+  55              	.LVL2:
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #ifdef UX_ENABLE_MEMORY_POOL_SANITY_CHECK
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Sanity check, check if the memory is in memory pool.  */
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     regular_start = (UCHAR *)_ux_system -> ux_system_regular_memory_pool_start;
+  93:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     regular_end = regular_start + _ux_system -> ux_system_regular_memory_pool_size;
+  94:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     regular_start += sizeof(UX_MEMORY_BLOCK);
+  95:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     cache_safe_start = (UCHAR *)_ux_system -> ux_system_cache_safe_memory_pool_start;
+  96:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     cache_safe_end = cache_safe_start + _ux_system -> ux_system_cache_safe_memory_pool_size;
+  97:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     cache_safe_start += sizeof(UX_MEMORY_BLOCK);
+  98:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     memory_address = (UCHAR *)memory;
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     if (!((memory_address >= regular_start    && memory_address < regular_end) ||
+ 100:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****           (memory_address >= cache_safe_start && memory_address < cache_safe_end)))
+ 101:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 102:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 103:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Not valid. Release the protection.  */
+ 104:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system_mutex_off(&_ux_system -> ux_system_mutex);
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 106:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Error trap.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD,
+ 108:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****                                 UX_SYSTEM_CONTEXT_UTILITY, UX_MEMORY_CORRUPTED);
+ 109:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 110:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* No action taken.  */
+ 111:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         return;
+ 112:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 113:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #endif
+ 114:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 115:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* The memory block for this memory pointer is located right before the
+ 116:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****        memory.  */
+ 117:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     memory_block =  (UX_MEMORY_BLOCK *) (((UCHAR *) memory) - sizeof(UX_MEMORY_BLOCK));
+ARM GAS  /tmp/ccicrV6W.s 			page 4
+
+
+  56              		.loc 1 117 5 is_stmt 1 view .LVU9
+ 118:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     
+ 119:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Keep track of the memory returned to the pool.  */
+ 120:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     memory_size_returned = memory_block -> ux_memory_block_size + (ULONG)sizeof(UX_MEMORY_BLOCK);
+  57              		.loc 1 120 5 view .LVU10
+  58              		.loc 1 120 41 is_stmt 0 view .LVU11
+  59 0010 54F8102C 		ldr	r2, [r4, #-16]
+  60              		.loc 1 120 26 view .LVU12
+  61 0014 02F1100C 		add	ip, r2, #16
+  62              	.LVL3:
+ 121:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 122:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Check this memory block to see if it valid.  */
+ 123:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     if (memory_block -> ux_memory_block_status != (UX_MEMORY_USED | UX_REGULAR_MEMORY) &&
+  63              		.loc 1 123 5 is_stmt 1 view .LVU13
+  64              		.loc 1 123 22 is_stmt 0 view .LVU14
+  65 0018 54F80C2C 		ldr	r2, [r4, #-12]
+  66              		.loc 1 123 88 view .LVU15
+  67 001c 02F10042 		add	r2, r2, #-2147483648
+  68              		.loc 1 123 8 view .LVU16
+  69 0020 012A     		cmp	r2, #1
+  70 0022 17D8     		bhi	.L15
+  71 0024 A4F11003 		sub	r3, r4, #16
+  72              	.LVL4:
+ 124:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         memory_block -> ux_memory_block_status != (UX_MEMORY_USED | UX_CACHE_SAFE_MEMORY))
+ 125:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 126:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 127:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Not valid. Release the protection.  */
+ 128:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system_mutex_off(&_ux_system -> ux_system_mutex);
+ 129:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 130:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Error trap. */
+ 131:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_UTILITY, UX_MEMORY_CORRU
+ 132:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 133:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 134:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_MEMORY_CORRUPTED, memory, 0, 0, UX_TRACE_ERRORS,
+ 135:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 136:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Return to caller.  */
+ 137:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         return;
+ 138:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 139:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 140:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #ifdef UX_ENABLE_MEMORY_STATISTICS
+ 141:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 142:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Update allocate count, total size.  */
+ 143:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     if (memory_block -> ux_memory_block_status == (UX_MEMORY_USED | UX_REGULAR_MEMORY))
+ 144:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 145:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system -> ux_system_regular_memory_pool_alloc_count --;
+ 146:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system -> ux_system_regular_memory_pool_alloc_total -= memory_block -> ux_memory_block_
+ 147:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 148:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     else
+ 149:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 150:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system -> ux_system_cache_safe_memory_pool_alloc_count --;
+ 151:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system -> ux_system_cache_safe_memory_pool_alloc_total -= memory_block -> ux_memory_blo
+ 152:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 153:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** #endif
+ 154:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 155:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* We mark this memory block as being unused.  */
+ 156:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     memory_block -> ux_memory_block_status =  UX_MEMORY_UNUSED;
+  73              		.loc 1 156 5 is_stmt 1 view .LVU17
+ARM GAS  /tmp/ccicrV6W.s 			page 5
+
+
+  74              		.loc 1 156 44 is_stmt 0 view .LVU18
+  75 0028 0022     		movs	r2, #0
+  76 002a 44F80C2C 		str	r2, [r4, #-12]
+ 157:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     
+ 158:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Now we must concatenate as many free blocks as possible,
+ 159:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****        that include the blocks before and the blocks after the current
+ 160:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****        block.  Scan memory backwards.  */
+ 161:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 162:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****      while (memory_block -> ux_memory_block_previous !=UX_NULL)
+  77              		.loc 1 162 6 is_stmt 1 view .LVU19
+  78              	.LVL5:
+  79              	.L4:
+  80              		.loc 1 162 54 view .LVU20
+  81 002e 1946     		mov	r1, r3
+  82              		.loc 1 162 26 is_stmt 0 view .LVU21
+  83 0030 DB68     		ldr	r3, [r3, #12]
+  84              	.LVL6:
+  85              		.loc 1 162 54 view .LVU22
+  86 0032 13B1     		cbz	r3, .L5
+ 163:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****      {
+ 164:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 165:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Check if the block is free.  */            
+ 166:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         if (memory_block -> ux_memory_block_previous -> ux_memory_block_status == UX_MEMORY_UNUSED)
+  87              		.loc 1 166 9 is_stmt 1 view .LVU23
+  88              		.loc 1 166 54 is_stmt 0 view .LVU24
+  89 0034 5A68     		ldr	r2, [r3, #4]
+  90              		.loc 1 166 12 view .LVU25
+  91 0036 002A     		cmp	r2, #0
+  92 0038 F9D0     		beq	.L4
+  93              	.L5:
+ 167:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 168:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             /* The memory block before is free. This will be our starting point to 
+ 169:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****                concatenate memory.  */
+ 170:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             memory_block =  memory_block -> ux_memory_block_previous;
+ 171:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 172:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         else
+ 173:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 174:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             /* The previous memory block is not free.  */
+ 175:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             break;
+ 176:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 177:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 178:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* The pointer to the memory block is now our first free block. We use this 
+ 179:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****        starting address to concatenate all the contiguous memory block.  */
+ 180:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     next_block =  memory_block -> ux_memory_block_next;
+  94              		.loc 1 180 5 is_stmt 1 view .LVU26
+  95              		.loc 1 180 16 is_stmt 0 view .LVU27
+  96 003a 8B68     		ldr	r3, [r1, #8]
+  97              	.LVL7:
+ 181:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     while (next_block != UX_NULL)
+  98              		.loc 1 181 5 is_stmt 1 view .LVU28
+  99              	.L7:
+ 100              		.loc 1 181 23 view .LVU29
+ 101 003c 23B3     		cbz	r3, .L9
+ 182:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 183:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 184:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Determine if the memory block is used.  */
+ 185:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         if (next_block -> ux_memory_block_status != UX_MEMORY_UNUSED)
+ARM GAS  /tmp/ccicrV6W.s 			page 6
+
+
+ 102              		.loc 1 185 9 view .LVU30
+ 103              		.loc 1 185 24 is_stmt 0 view .LVU31
+ 104 003e 5A68     		ldr	r2, [r3, #4]
+ 105              		.loc 1 185 12 view .LVU32
+ 106 0040 02BB     		cbnz	r2, .L16
+ 186:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         {
+ 187:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 188:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             /* Yes, move to next block.  */
+ 189:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             memory_block -> ux_memory_block_next =  next_block;
+ 190:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             next_block -> ux_memory_block_previous =  memory_block;
+ 191:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             break;
+ 192:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         }
+ 193:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 194:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         memory_block -> ux_memory_block_next =  next_block -> ux_memory_block_next;
+ 107              		.loc 1 194 9 is_stmt 1 view .LVU33
+ 108              		.loc 1 194 60 is_stmt 0 view .LVU34
+ 109 0042 9A68     		ldr	r2, [r3, #8]
+ 110              		.loc 1 194 46 view .LVU35
+ 111 0044 8A60     		str	r2, [r1, #8]
+ 195:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         memory_block -> ux_memory_block_size +=  next_block -> ux_memory_block_size + (ULONG)sizeof
+ 112              		.loc 1 195 9 is_stmt 1 view .LVU36
+ 113              		.loc 1 195 22 is_stmt 0 view .LVU37
+ 114 0046 0A68     		ldr	r2, [r1]
+ 115              		.loc 1 195 61 view .LVU38
+ 116 0048 1868     		ldr	r0, [r3]
+ 117              		.loc 1 195 46 view .LVU39
+ 118 004a 0244     		add	r2, r2, r0
+ 119 004c 1032     		adds	r2, r2, #16
+ 120 004e 0A60     		str	r2, [r1]
+ 196:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         next_block =  next_block -> ux_memory_block_next;                       
+ 121              		.loc 1 196 9 is_stmt 1 view .LVU40
+ 122              		.loc 1 196 20 is_stmt 0 view .LVU41
+ 123 0050 9B68     		ldr	r3, [r3, #8]
+ 124              	.LVL8:
+ 125              		.loc 1 196 20 view .LVU42
+ 126 0052 F3E7     		b	.L7
+ 127              	.LVL9:
+ 128              	.L15:
+ 128:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 129              		.loc 1 128 9 is_stmt 1 view .LVU43
+ 128:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 130              		.loc 1 128 42 is_stmt 0 view .LVU44
+ 131 0054 1A4B     		ldr	r3, .L18
+ 132 0056 1868     		ldr	r0, [r3]
+ 128:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 133              		.loc 1 128 9 view .LVU45
+ 134 0058 1C30     		adds	r0, r0, #28
+ 135 005a FFF7FEFF 		bl	_ux_utility_mutex_off
+ 136              	.LVL10:
+ 131:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 137              		.loc 1 131 9 is_stmt 1 view .LVU46
+ 138 005e 1922     		movs	r2, #25
+ 139 0060 0821     		movs	r1, #8
+ 140 0062 0220     		movs	r0, #2
+ 141 0064 FFF7FEFF 		bl	_ux_system_error_handler
+ 142              	.LVL11:
+ 134:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ARM GAS  /tmp/ccicrV6W.s 			page 7
+
+
+ 143              		.loc 1 134 9 view .LVU47
+ 144 0068 0023     		movs	r3, #0
+ 145 006a 0393     		str	r3, [sp, #12]
+ 146 006c 0293     		str	r3, [sp, #8]
+ 147 006e 4FF08072 		mov	r2, #16777216
+ 148 0072 0192     		str	r2, [sp, #4]
+ 149 0074 0093     		str	r3, [sp]
+ 150 0076 2246     		mov	r2, r4
+ 151 0078 1921     		movs	r1, #25
+ 152 007a 40F2E730 		movw	r0, #999
+ 153 007e FFF7FEFF 		bl	_ux_trace_event_insert
+ 154              	.LVL12:
+ 137:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 155              		.loc 1 137 9 view .LVU48
+ 156 0082 1BE0     		b	.L1
+ 157              	.LVL13:
+ 158              	.L16:
+ 189:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             next_block -> ux_memory_block_previous =  memory_block;
+ 159              		.loc 1 189 13 view .LVU49
+ 189:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             next_block -> ux_memory_block_previous =  memory_block;
+ 160              		.loc 1 189 50 is_stmt 0 view .LVU50
+ 161 0084 8B60     		str	r3, [r1, #8]
+ 190:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             break;
+ 162              		.loc 1 190 13 is_stmt 1 view .LVU51
+ 190:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             break;
+ 163              		.loc 1 190 52 is_stmt 0 view .LVU52
+ 164 0086 D960     		str	r1, [r3, #12]
+ 191:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         }
+ 165              		.loc 1 191 13 is_stmt 1 view .LVU53
+ 166              	.L9:
+ 197:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 198:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 199:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Update the memory free in the appropriate pool.  We need to know if this 
+ 200:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****        block is in regular memory or cache safe memory.  */
+ 201:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     if(_ux_system -> ux_system_cache_safe_memory_pool_start == _ux_system -> ux_system_regular_memo
+ 167              		.loc 1 201 5 view .LVU54
+ 168              		.loc 1 201 19 is_stmt 0 view .LVU55
+ 169 0088 0D4B     		ldr	r3, .L18
+ 170              	.LVL14:
+ 171              		.loc 1 201 19 view .LVU56
+ 172 008a 1868     		ldr	r0, [r3]
+ 173 008c C268     		ldr	r2, [r0, #12]
+ 174              		.loc 1 201 75 view .LVU57
+ 175 008e 0368     		ldr	r3, [r0]
+ 176              		.loc 1 201 7 view .LVU58
+ 177 0090 9A42     		cmp	r2, r3
+ 178 0092 09D0     		beq	.L17
+ 202:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 203:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 204:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* There is only one regular memory pool.  */
+ 205:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         _ux_system -> ux_system_regular_memory_pool_free += memory_size_returned;
+ 206:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 207:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ 208:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     else
+ 209:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     {
+ 210:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 211:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* Which pool is this memory in ?  */
+ARM GAS  /tmp/ccicrV6W.s 			page 8
+
+
+ 212:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         memory_address = (UCHAR *) _ux_system -> ux_system_regular_memory_pool_start;
+ 179              		.loc 1 212 9 is_stmt 1 view .LVU59
+ 180              	.LVL15:
+ 213:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 214:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         /* If the memory address is in this range, we are in the regular memory pool.  */
+ 215:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         if ((UCHAR *) memory_block >= memory_address && (UCHAR *) memory_block < (memory_address + 
+ 181              		.loc 1 215 9 view .LVU60
+ 182              		.loc 1 215 12 is_stmt 0 view .LVU61
+ 183 0094 8B42     		cmp	r3, r1
+ 184 0096 0BD8     		bhi	.L13
+ 185              		.loc 1 215 111 discriminator 1 view .LVU62
+ 186 0098 4268     		ldr	r2, [r0, #4]
+ 187              		.loc 1 215 98 discriminator 1 view .LVU63
+ 188 009a 1344     		add	r3, r3, r2
+ 189              	.LVL16:
+ 190              		.loc 1 215 54 discriminator 1 view .LVU64
+ 191 009c 8B42     		cmp	r3, r1
+ 192 009e 07D9     		bls	.L13
+ 216:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 217:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             /* Update the regular memory pool.  */
+ 218:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             _ux_system -> ux_system_regular_memory_pool_free += memory_size_returned;
+ 193              		.loc 1 218 13 is_stmt 1 view .LVU65
+ 194              		.loc 1 218 24 is_stmt 0 view .LVU66
+ 195 00a0 8368     		ldr	r3, [r0, #8]
+ 196              		.loc 1 218 62 view .LVU67
+ 197 00a2 6344     		add	r3, r3, ip
+ 198 00a4 8360     		str	r3, [r0, #8]
+ 199 00a6 06E0     		b	.L12
+ 200              	.LVL17:
+ 201              	.L17:
+ 205:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 202              		.loc 1 205 9 is_stmt 1 view .LVU68
+ 205:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 203              		.loc 1 205 20 is_stmt 0 view .LVU69
+ 204 00a8 8368     		ldr	r3, [r0, #8]
+ 205:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 205              		.loc 1 205 58 view .LVU70
+ 206 00aa 6344     		add	r3, r3, ip
+ 207 00ac 8360     		str	r3, [r0, #8]
+ 208 00ae 02E0     		b	.L12
+ 209              	.LVL18:
+ 210              	.L13:
+ 219:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 220:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         else
+ 221:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 222:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             /* Update the cache safe memory pool.  */
+ 223:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****             _ux_system -> ux_system_cache_safe_memory_pool_free += memory_size_returned;
+ 211              		.loc 1 223 13 is_stmt 1 view .LVU71
+ 212              		.loc 1 223 24 is_stmt 0 view .LVU72
+ 213 00b0 4369     		ldr	r3, [r0, #20]
+ 214              		.loc 1 223 65 view .LVU73
+ 215 00b2 6344     		add	r3, r3, ip
+ 216 00b4 4361     		str	r3, [r0, #20]
+ 217              	.LVL19:
+ 218              	.L12:
+ 224:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****         
+ 225:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     }
+ARM GAS  /tmp/ccicrV6W.s 			page 9
+
+
+ 226:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 227:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Release the protection.  */
+ 228:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     _ux_system_mutex_off(&_ux_system -> ux_system_mutex);
+ 219              		.loc 1 228 5 is_stmt 1 view .LVU74
+ 220 00b6 1C30     		adds	r0, r0, #28
+ 221 00b8 FFF7FEFF 		bl	_ux_utility_mutex_off
+ 222              	.LVL20:
+ 229:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** 
+ 230:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     /* Return to caller.  */
+ 231:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c ****     return;
+ 223              		.loc 1 231 5 view .LVU75
+ 224              	.L1:
+ 232:Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c **** }
+ 225              		.loc 1 232 1 is_stmt 0 view .LVU76
+ 226 00bc 04B0     		add	sp, sp, #16
+ 227              	.LCFI2:
+ 228              		.cfi_def_cfa_offset 8
+ 229              		@ sp needed
+ 230 00be 10BD     		pop	{r4, pc}
+ 231              	.LVL21:
+ 232              	.L19:
+ 233              		.loc 1 232 1 view .LVU77
+ 234              		.align	2
+ 235              	.L18:
+ 236 00c0 00000000 		.word	_ux_system
+ 237              		.cfi_endproc
+ 238              	.LFE11:
+ 240              		.text
+ 241              	.Letext0:
+ 242              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 243              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 244              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 245              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 246              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 247              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccicrV6W.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_memory_free.c
+     /tmp/ccicrV6W.s:20     .text._ux_utility_memory_free:00000000 $t
+     /tmp/ccicrV6W.s:26     .text._ux_utility_memory_free:00000000 _ux_utility_memory_free
+     /tmp/ccicrV6W.s:236    .text._ux_utility_memory_free:000000c0 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_mutex_on
+_ux_utility_mutex_off
+_ux_system_error_handler
+_ux_trace_event_insert
+_ux_system

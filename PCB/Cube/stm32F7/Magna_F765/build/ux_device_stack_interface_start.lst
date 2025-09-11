@@ -1,0 +1,345 @@
+ARM GAS  /tmp/ccMHf7VG.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_device_stack_interface_start.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c"
+  19              		.section	.text._ux_device_stack_interface_start,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_device_stack_interface_start
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_device_stack_interface_start:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**   Device Stack                                                        */
+  19:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** #define UX_SOURCE_CODE
+  24:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  25:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** #include "ux_device_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ARM GAS  /tmp/ccMHf7VG.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    _ux_device_stack_interface_start                    PORTABLE C      */
+  37:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    This function starts an interface associated with the enabled       */
+  45:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    configuration.                                                      */
+  46:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  INPUT                                                                 */
+  48:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    interface                             Pointer to interface          */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  OUTPUT                                                                */
+  52:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    Completion Status                                                   */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  CALLS                                                                 */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    (ux_slave_class_entry_function)       Device class entry function   */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  CALLED BY                                                             */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    Application                                                         */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    Device Stack                                                        */
+  63:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  RELEASE HISTORY                                                       */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                            resulting in version 6.1    */
+  71:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** /**************************************************************************/
+  73:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** UINT  _ux_device_stack_interface_start(UX_SLAVE_INTERFACE *interface)
+  74:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** {
+  29              		.loc 1 74 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 48
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 74 1 is_stmt 0 view .LVU1
+  34 0000 30B5     		push	{r4, r5, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 12
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+  40 0002 8DB0     		sub	sp, sp, #52
+  41              	.LCFI1:
+ARM GAS  /tmp/ccMHf7VG.s 			page 3
+
+
+  42              		.cfi_def_cfa_offset 64
+  75:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  76:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** UX_SLAVE_DEVICE             *device;
+  43              		.loc 1 76 1 is_stmt 1 view .LVU2
+  77:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** UX_SLAVE_CLASS              *class;
+  44              		.loc 1 77 1 view .LVU3
+  78:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** UINT                        status;
+  45              		.loc 1 78 1 view .LVU4
+  79:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** UX_SLAVE_CLASS_COMMAND      class_command;
+  46              		.loc 1 79 1 view .LVU5
+  80:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  81:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  82:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* Get the class for the interface.  */
+  83:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class =  _ux_system_slave -> ux_system_slave_interface_class_array[interface -> ux_slave_interf
+  47              		.loc 1 83 5 view .LVU6
+  48              		.loc 1 83 31 is_stmt 0 view .LVU7
+  49 0004 154B     		ldr	r3, .L8
+  50 0006 1A68     		ldr	r2, [r3]
+  51              		.loc 1 83 114 view .LVU8
+  52 0008 4369     		ldr	r3, [r0, #20]
+  53              		.loc 1 83 11 view .LVU9
+  54 000a 5633     		adds	r3, r3, #86
+  55 000c 02EB8303 		add	r3, r2, r3, lsl #2
+  56 0010 5D68     		ldr	r5, [r3, #4]
+  57              	.LVL1:
+  84:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  85:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* Check if class driver is available. */
+  86:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     if (class == UX_NULL)
+  58              		.loc 1 86 5 is_stmt 1 view .LVU10
+  59              		.loc 1 86 8 is_stmt 0 view .LVU11
+  60 0012 05B3     		cbz	r5, .L4
+  61 0014 0446     		mov	r4, r0
+  87:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  88:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         /* There is no class driver supported. */
+  89:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         return (UX_NO_CLASS_MATCH);
+  90:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* Get the pointer to the device.  */
+  92:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     device =  &_ux_system_slave -> ux_system_slave_device;
+  62              		.loc 1 92 5 is_stmt 1 view .LVU12
+  63              	.LVL2:
+  93:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+  94:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* Build all the fields of the Class Command.  */
+  95:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_request   =    UX_SLAVE_CLASS_COMMAND_QUERY;
+  64              		.loc 1 95 5 view .LVU13
+  65              		.loc 1 95 52 is_stmt 0 view .LVU14
+  66 0016 0123     		movs	r3, #1
+  67 0018 0193     		str	r3, [sp, #4]
+  96:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_interface =   (VOID *)interface;
+  68              		.loc 1 96 5 is_stmt 1 view .LVU15
+  69              		.loc 1 96 52 is_stmt 0 view .LVU16
+  70 001a 0390     		str	r0, [sp, #12]
+  97:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_class     =   interface -> ux_slave_interface_descriptor.b
+  71              		.loc 1 97 5 is_stmt 1 view .LVU17
+  72              		.loc 1 97 98 is_stmt 0 view .LVU18
+  73 001c 036A     		ldr	r3, [r0, #32]
+  74              		.loc 1 97 52 view .LVU19
+  75 001e 0693     		str	r3, [sp, #24]
+ARM GAS  /tmp/ccMHf7VG.s 			page 4
+
+
+  98:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_subclass  =   interface -> ux_slave_interface_descriptor.b
+  76              		.loc 1 98 5 is_stmt 1 view .LVU20
+  77              		.loc 1 98 98 is_stmt 0 view .LVU21
+  78 0020 436A     		ldr	r3, [r0, #36]
+  79              		.loc 1 98 52 view .LVU22
+  80 0022 0793     		str	r3, [sp, #28]
+  99:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_protocol  =   interface -> ux_slave_interface_descriptor.b
+  81              		.loc 1 99 5 is_stmt 1 view .LVU23
+  82              		.loc 1 99 98 is_stmt 0 view .LVU24
+  83 0024 836A     		ldr	r3, [r0, #40]
+  84              		.loc 1 99 52 view .LVU25
+  85 0026 0893     		str	r3, [sp, #32]
+ 100:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_vid       =   device -> ux_slave_device_descriptor.idVendo
+  86              		.loc 1 100 5 is_stmt 1 view .LVU26
+  87              		.loc 1 100 92 is_stmt 0 view .LVU27
+  88 0028 136C     		ldr	r3, [r2, #64]
+  89              		.loc 1 100 52 view .LVU28
+  90 002a 0593     		str	r3, [sp, #20]
+ 101:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class_command.ux_slave_class_command_pid       =   device -> ux_slave_device_descriptor.idProdu
+  91              		.loc 1 101 5 is_stmt 1 view .LVU29
+  92              		.loc 1 101 92 is_stmt 0 view .LVU30
+  93 002c 536C     		ldr	r3, [r2, #68]
+  94              		.loc 1 101 52 view .LVU31
+  95 002e 0493     		str	r3, [sp, #16]
+ 102:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 103:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* We can now memorize the interface pointer associated with this class.  */
+ 104:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     class -> ux_slave_class_interface = interface;
+  96              		.loc 1 104 5 is_stmt 1 view .LVU32
+  97              		.loc 1 104 39 is_stmt 0 view .LVU33
+  98 0030 C5F81001 		str	r0, [r5, #272]
+ 105:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     
+ 106:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* We have found a potential candidate. Call this registered class entry function.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     status = class -> ux_slave_class_entry_function(&class_command);
+  99              		.loc 1 107 5 is_stmt 1 view .LVU34
+ 100              		.loc 1 107 20 is_stmt 0 view .LVU35
+ 101 0034 6B6C     		ldr	r3, [r5, #68]
+ 102              		.loc 1 107 14 view .LVU36
+ 103 0036 01A8     		add	r0, sp, #4
+ 104              	.LVL3:
+ 105              		.loc 1 107 14 view .LVU37
+ 106 0038 9847     		blx	r3
+ 107              	.LVL4:
+ 108:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 109:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* The status tells us if the registered class wants to own this class.  */
+ 110:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     if (status == UX_SUCCESS)
+ 108              		.loc 1 110 5 is_stmt 1 view .LVU38
+ 109              		.loc 1 110 8 is_stmt 0 view .LVU39
+ 110 003a 10B1     		cbz	r0, .L7
+ 111:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     {
+ 112:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 113:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         /* Store the class container. */
+ 114:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         class_command.ux_slave_class_command_class_ptr =  class;
+ 115:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         
+ 116:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         /* Store the command.  */
+ 117:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         class_command.ux_slave_class_command_request =  UX_SLAVE_CLASS_COMMAND_ACTIVATE;
+ 118:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         
+ 119:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         /* Activate the class.  */
+ARM GAS  /tmp/ccMHf7VG.s 			page 5
+
+
+ 120:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         status = class -> ux_slave_class_entry_function(&class_command);
+ 121:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 122:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         /* If the class was successfully activated, set the class for the interface.  */
+ 123:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         if(status == UX_SUCCESS)
+ 124:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****             interface -> ux_slave_interface_class =  class;
+ 125:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 126:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         return(status); 
+ 127:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     }
+ 128:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 129:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     /* There is no driver who want to own this class!  */
+ 130:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     return(UX_NO_CLASS_MATCH);
+ 111              		.loc 1 130 11 view .LVU40
+ 112 003c 5720     		movs	r0, #87
+ 113              	.LVL5:
+ 114              	.L1:
+ 131:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** }
+ 115              		.loc 1 131 1 view .LVU41
+ 116 003e 0DB0     		add	sp, sp, #52
+ 117              	.LCFI2:
+ 118              		.cfi_remember_state
+ 119              		.cfi_def_cfa_offset 12
+ 120              		@ sp needed
+ 121 0040 30BD     		pop	{r4, r5, pc}
+ 122              	.LVL6:
+ 123              	.L7:
+ 124              	.LCFI3:
+ 125              		.cfi_restore_state
+ 114:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         
+ 126              		.loc 1 114 9 is_stmt 1 view .LVU42
+ 114:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         
+ 127              		.loc 1 114 56 is_stmt 0 view .LVU43
+ 128 0042 0995     		str	r5, [sp, #36]
+ 117:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         
+ 129              		.loc 1 117 9 is_stmt 1 view .LVU44
+ 117:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****         
+ 130              		.loc 1 117 54 is_stmt 0 view .LVU45
+ 131 0044 0223     		movs	r3, #2
+ 132 0046 0193     		str	r3, [sp, #4]
+ 120:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 133              		.loc 1 120 9 is_stmt 1 view .LVU46
+ 120:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 134              		.loc 1 120 24 is_stmt 0 view .LVU47
+ 135 0048 6B6C     		ldr	r3, [r5, #68]
+ 120:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 136              		.loc 1 120 18 view .LVU48
+ 137 004a 01A8     		add	r0, sp, #4
+ 138              	.LVL7:
+ 120:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 139              		.loc 1 120 18 view .LVU49
+ 140 004c 9847     		blx	r3
+ 141              	.LVL8:
+ 123:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****             interface -> ux_slave_interface_class =  class;
+ 142              		.loc 1 123 9 is_stmt 1 view .LVU50
+ 123:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****             interface -> ux_slave_interface_class =  class;
+ 143              		.loc 1 123 11 is_stmt 0 view .LVU51
+ 144 004e 0028     		cmp	r0, #0
+ 145 0050 F5D1     		bne	.L1
+ARM GAS  /tmp/ccMHf7VG.s 			page 6
+
+
+ 124:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 146              		.loc 1 124 13 is_stmt 1 view .LVU52
+ 124:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 147              		.loc 1 124 51 is_stmt 0 view .LVU53
+ 148 0052 6560     		str	r5, [r4, #4]
+ 126:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     }
+ 149              		.loc 1 126 9 is_stmt 1 view .LVU54
+ 126:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c ****     }
+ 150              		.loc 1 126 15 is_stmt 0 view .LVU55
+ 151 0054 F3E7     		b	.L1
+ 152              	.LVL9:
+ 153              	.L4:
+  89:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 154              		.loc 1 89 16 view .LVU56
+ 155 0056 5720     		movs	r0, #87
+ 156              	.LVL10:
+  89:Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c **** 
+ 157              		.loc 1 89 16 view .LVU57
+ 158 0058 F1E7     		b	.L1
+ 159              	.L9:
+ 160 005a 00BF     		.align	2
+ 161              	.L8:
+ 162 005c 00000000 		.word	_ux_system_slave
+ 163              		.cfi_endproc
+ 164              	.LFE11:
+ 166              		.text
+ 167              	.Letext0:
+ 168              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 169              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 170              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 171              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccMHf7VG.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_device_stack_interface_start.c
+     /tmp/ccMHf7VG.s:20     .text._ux_device_stack_interface_start:00000000 $t
+     /tmp/ccMHf7VG.s:26     .text._ux_device_stack_interface_start:00000000 _ux_device_stack_interface_start
+     /tmp/ccMHf7VG.s:162    .text._ux_device_stack_interface_start:0000005c $d
+
+UNDEFINED SYMBOLS
+_ux_system_slave

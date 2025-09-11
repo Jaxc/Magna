@@ -1,0 +1,166 @@
+ARM GAS  /tmp/cc5zQtK3.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_utility_memory_allocate_add_safe.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c"
+  19              		.section	.text._ux_utility_memory_allocate_add_safe,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_memory_allocate_add_safe
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_memory_allocate_add_safe:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /* Include necessary system files.  */
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** #define UX_SOURCE_CODE
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** #include "ux_api.h"
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+ARM GAS  /tmp/cc5zQtK3.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  FUNCTION                                               RELEASE        */
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    _ux_utility_memory_allocate_add_safe                PORTABLE C      */
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                           6.1          */
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  AUTHOR                                                                */
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  DESCRIPTION                                                           */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    This function allocates a block of memory for the specified added   */
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    size and alignment.                                                 */
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    Note if adding result overflow, no memory is allocated.             */
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  INPUT                                                                 */
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    align                                 Memory alignment required     */
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    cache                                 Memory pool source            */
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    size_add_a                            Number of bytes a to add      */
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    size_add_b                            Number of bytes b to add      */
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  OUTPUT                                                                */
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    Pointer to block of memory                                          */
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  CALLS                                                                 */
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    _ux_utility_memory_allocate           Allocate block of memory      */
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  CALLED BY                                                             */
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    USBX Components                                                     */
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  RELEASE HISTORY                                                       */
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*    DATE              NAME                      DESCRIPTION             */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                            resulting in version 6.1    */
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** /**************************************************************************/
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** VOID* _ux_utility_memory_allocate_add_safe(ULONG align,ULONG cache,ULONG size_add_a,ULONG size_add_
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** {
+  29              		.loc 1 76 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c ****     return UX_UTILITY_MEMORY_ALLOCATE_ADD_SAFE(align, cache, size_add_a, size_add_b);
+  33              		.loc 1 77 5 view .LVU1
+  34              		.loc 1 77 12 is_stmt 0 view .LVU2
+  35 0000 6FEA030C 		mvn	ip, r3
+  36 0004 9445     		cmp	ip, r2
+  37 0006 04D3     		bcc	.L3
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c ****     return UX_UTILITY_MEMORY_ALLOCATE_ADD_SAFE(align, cache, size_add_a, size_add_b);
+ARM GAS  /tmp/cc5zQtK3.s 			page 3
+
+
+  38              		.loc 1 76 1 view .LVU3
+  39 0008 08B5     		push	{r3, lr}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 3, -8
+  43              		.cfi_offset 14, -4
+  44              		.loc 1 77 12 discriminator 1 view .LVU4
+  45 000a 1A44     		add	r2, r2, r3
+  46              	.LVL1:
+  47              		.loc 1 77 12 discriminator 1 view .LVU5
+  48 000c FFF7FEFF 		bl	_ux_utility_memory_allocate
+  49              	.LVL2:
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c **** }
+  50              		.loc 1 78 1 view .LVU6
+  51 0010 08BD     		pop	{r3, pc}
+  52              	.LVL3:
+  53              	.L3:
+  54              	.LCFI1:
+  55              		.cfi_def_cfa_offset 0
+  56              		.cfi_restore 3
+  57              		.cfi_restore 14
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c ****     return UX_UTILITY_MEMORY_ALLOCATE_ADD_SAFE(align, cache, size_add_a, size_add_b);
+  58              		.loc 1 77 12 discriminator 2 view .LVU7
+  59 0012 0020     		movs	r0, #0
+  60              	.LVL4:
+  61              		.loc 1 78 1 view .LVU8
+  62 0014 7047     		bx	lr
+  63              		.cfi_endproc
+  64              	.LFE11:
+  66              		.text
+  67              	.Letext0:
+  68              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  69              		.file 3 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  /tmp/cc5zQtK3.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_memory_allocate_add_safe.c
+     /tmp/cc5zQtK3.s:20     .text._ux_utility_memory_allocate_add_safe:00000000 $t
+     /tmp/cc5zQtK3.s:26     .text._ux_utility_memory_allocate_add_safe:00000000 _ux_utility_memory_allocate_add_safe
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate

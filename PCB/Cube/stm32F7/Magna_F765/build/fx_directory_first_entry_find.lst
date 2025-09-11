@@ -1,0 +1,344 @@
+ARM GAS  /tmp/ccxGngvP.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_directory_first_entry_find.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c"
+  19              		.section	.text._fx_directory_first_entry_find,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_first_entry_find
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_first_entry_find:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccxGngvP.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  33:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #ifndef FX_NO_LOCAL_PATH
+  34:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** FX_LOCAL_PATH_SETUP
+  35:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #endif
+  36:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  37:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  38:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  39:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  FUNCTION                                               RELEASE        */
+  41:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    _fx_directory_first_entry_find                      PORTABLE C      */
+  43:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                           6.1          */
+  44:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  AUTHOR                                                                */
+  45:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  47:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  DESCRIPTION                                                           */
+  49:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    This function returns the first directory entry of the current      */
+  51:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    working directory.                                                  */
+  52:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  INPUT                                                                 */
+  54:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    media_ptr                             Media control block pointer   */
+  56:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    directory_name                        Destination for directory     */
+  57:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                            name                        */
+  58:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  OUTPUT                                                                */
+  60:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    return status                                                       */
+  62:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  CALLS                                                                 */
+  64:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    _fx_directory_next_entry_find         Find next directory entry     */
+  66:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  CALLED BY                                                             */
+  68:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    FileX System Functions                                              */
+  70:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  RELEASE HISTORY                                                       */
+  72:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  73:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*    DATE              NAME                      DESCRIPTION             */
+  74:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  76:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  77:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                            resulting in version 6.1    */
+  78:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /*                                                                        */
+  79:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** /**************************************************************************/
+  80:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** UINT  _fx_directory_first_entry_find(FX_MEDIA *media_ptr, CHAR *directory_name)
+  81:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** {
+  29              		.loc 1 81 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 81 1 is_stmt 0 view .LVU1
+  34 0000 70B5     		push	{r4, r5, r6, lr}
+ARM GAS  /tmp/ccxGngvP.s 			page 3
+
+
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 4, -16
+  38              		.cfi_offset 5, -12
+  39              		.cfi_offset 6, -8
+  40              		.cfi_offset 14, -4
+  41 0002 84B0     		sub	sp, sp, #16
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0004 0446     		mov	r4, r0
+  82:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  83:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** UINT status;
+  45              		.loc 1 83 1 is_stmt 1 view .LVU2
+  84:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  85:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  86:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  87:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  88:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Increment the number of times this service has been called.  */
+  89:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     media_ptr -> fx_media_directory_first_entry_finds++;
+  46              		.loc 1 89 5 view .LVU3
+  47              		.loc 1 89 15 is_stmt 0 view .LVU4
+  48 0006 D0F8F030 		ldr	r3, [r0, #240]
+  49              		.loc 1 89 54 view .LVU5
+  50 000a 0133     		adds	r3, r3, #1
+  51 000c C0F8F030 		str	r3, [r0, #240]
+  90:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #endif
+  91:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  92:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Check the media to make sure it is open.  */
+  93:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  52              		.loc 1 93 5 is_stmt 1 view .LVU6
+  53              		.loc 1 93 19 is_stmt 0 view .LVU7
+  54 0010 0068     		ldr	r0, [r0]
+  55              	.LVL1:
+  56              		.loc 1 93 8 view .LVU8
+  57 0012 1B4B     		ldr	r3, .L11
+  58 0014 9842     		cmp	r0, r3
+  59 0016 02D0     		beq	.L9
+  94:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     {
+  95:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  96:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****         /* Return the media not opened error.  */
+  97:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****         return(FX_MEDIA_NOT_OPEN);
+  60              		.loc 1 97 15 view .LVU9
+  61 0018 1120     		movs	r0, #17
+  62              	.LVL2:
+  63              	.L1:
+  98:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+  99:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 100:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 101:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_DIRECTORY_FIRST_ENTRY_FIND, media_ptr, directory_name, 0, 0, F
+ 102:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 103:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Protect against other threads accessing the media.  */
+ 104:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     FX_PROTECT
+ 105:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 106:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Determine if a local path is in effect at this point.  */
+ 107:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #ifndef FX_NO_LOCAL_PATH
+ 108:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     if (_tx_thread_current_ptr -> tx_thread_filex_ptr)
+ 109:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     {
+ARM GAS  /tmp/ccxGngvP.s 			page 4
+
+
+ 110:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 111:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****         /* Yes, there is a local path.  Set the current entry to zero.  */
+ 112:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****         ((FX_PATH *)_tx_thread_current_ptr -> tx_thread_filex_ptr) -> fx_path_current_entry =  0;
+ 113:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+ 114:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     else
+ 115:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     {
+ 116:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 117:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****         /* Use global default directory.  Set the current entry to 0 in
+ 118:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****            order to pickup the first entry.  */
+ 119:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****         media_ptr -> fx_media_default_path.fx_path_current_entry =  0;
+ 120:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+ 121:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #else
+ 122:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 123:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Set the current entry to 0 in order to pickup the first entry.  */
+ 124:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     media_ptr -> fx_media_default_path.fx_path_current_entry =  0;
+ 125:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** #endif
+ 126:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 127:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Release media protection.  */
+ 128:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     FX_UNPROTECT
+ 129:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 130:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Call the next directory entry to pickup the first entry.  */
+ 131:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     status =  _fx_directory_next_entry_find(media_ptr, directory_name);
+ 132:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     /* Return status to the caller.  */
+ 134:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     return(status);
+ 135:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** }
+  64              		.loc 1 135 1 view .LVU10
+  65 001a 04B0     		add	sp, sp, #16
+  66              	.LCFI2:
+  67              		.cfi_remember_state
+  68              		.cfi_def_cfa_offset 16
+  69              		@ sp needed
+  70 001c 70BD     		pop	{r4, r5, r6, pc}
+  71              	.LVL3:
+  72              	.L9:
+  73              	.LCFI3:
+  74              		.cfi_restore_state
+  75              		.loc 1 135 1 view .LVU11
+  76 001e 0D46     		mov	r5, r1
+ 101:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  77              		.loc 1 101 5 is_stmt 1 view .LVU12
+  78 0020 0023     		movs	r3, #0
+  79 0022 0393     		str	r3, [sp, #12]
+  80 0024 0293     		str	r3, [sp, #8]
+  81 0026 4FF40052 		mov	r2, #8192
+  82 002a 0192     		str	r2, [sp, #4]
+  83 002c 0093     		str	r3, [sp]
+  84 002e 0A46     		mov	r2, r1
+  85 0030 2146     		mov	r1, r4
+  86              	.LVL4:
+ 101:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  87              		.loc 1 101 5 is_stmt 0 view .LVU13
+  88 0032 E220     		movs	r0, #226
+  89 0034 FFF7FEFF 		bl	_fx_trace_event_insert
+  90              	.LVL5:
+ 104:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  91              		.loc 1 104 5 is_stmt 1 view .LVU14
+ARM GAS  /tmp/ccxGngvP.s 			page 5
+
+
+  92 0038 2268     		ldr	r2, [r4]
+  93 003a 114B     		ldr	r3, .L11
+  94 003c 9A42     		cmp	r2, r3
+  95 003e 01D0     		beq	.L10
+ 104:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+  96              		.loc 1 104 5 is_stmt 0 discriminator 1 view .LVU15
+  97 0040 1120     		movs	r0, #17
+  98 0042 EAE7     		b	.L1
+  99              	.L10:
+ 104:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 100              		.loc 1 104 5 is_stmt 1 discriminator 2 view .LVU16
+ 101 0044 04F5E476 		add	r6, r4, #456
+ 102 0048 4FF0FF31 		mov	r1, #-1
+ 103 004c 3046     		mov	r0, r6
+ 104 004e FFF7FEFF 		bl	_tx_mutex_get
+ 105              	.LVL6:
+ 104:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 106              		.loc 1 104 5 is_stmt 0 discriminator 1 view .LVU17
+ 107 0052 98B9     		cbnz	r0, .L7
+ 108:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     {
+ 108              		.loc 1 108 5 is_stmt 1 view .LVU18
+ 108:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     {
+ 109              		.loc 1 108 32 is_stmt 0 view .LVU19
+ 110 0054 0B4B     		ldr	r3, .L11+4
+ 111 0056 1B68     		ldr	r3, [r3]
+ 112 0058 D3F89030 		ldr	r3, [r3, #144]
+ 108:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     {
+ 113              		.loc 1 108 8 view .LVU20
+ 114 005c 53B1     		cbz	r3, .L3
+ 112:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+ 115              		.loc 1 112 9 is_stmt 1 view .LVU21
+ 112:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+ 116              		.loc 1 112 93 is_stmt 0 view .LVU22
+ 117 005e 0022     		movs	r2, #0
+ 118 0060 C3F87022 		str	r2, [r3, #624]
+ 119              	.L4:
+ 128:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 120              		.loc 1 128 5 is_stmt 1 view .LVU23
+ 121 0064 3046     		mov	r0, r6
+ 122 0066 FFF7FEFF 		bl	_tx_mutex_put
+ 123              	.LVL7:
+ 131:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 124              		.loc 1 131 5 view .LVU24
+ 131:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 125              		.loc 1 131 15 is_stmt 0 view .LVU25
+ 126 006a 2946     		mov	r1, r5
+ 127 006c 2046     		mov	r0, r4
+ 128 006e FFF7FEFF 		bl	_fx_directory_next_entry_find
+ 129              	.LVL8:
+ 134:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** }
+ 130              		.loc 1 134 5 is_stmt 1 view .LVU26
+ 134:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** }
+ 131              		.loc 1 134 11 is_stmt 0 view .LVU27
+ 132 0072 D2E7     		b	.L1
+ 133              	.LVL9:
+ 134              	.L3:
+ 119:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+ARM GAS  /tmp/ccxGngvP.s 			page 6
+
+
+ 135              		.loc 1 119 9 is_stmt 1 view .LVU28
+ 119:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c ****     }
+ 136              		.loc 1 119 66 is_stmt 0 view .LVU29
+ 137 0074 0023     		movs	r3, #0
+ 138 0076 C4F85037 		str	r3, [r4, #1872]
+ 139 007a F3E7     		b	.L4
+ 140              	.L7:
+ 104:Middlewares/ST/filex/common/src/fx_directory_first_entry_find.c **** 
+ 141              		.loc 1 104 5 discriminator 3 view .LVU30
+ 142 007c 1120     		movs	r0, #17
+ 143 007e CCE7     		b	.L1
+ 144              	.L12:
+ 145              		.align	2
+ 146              	.L11:
+ 147 0080 4944454D 		.word	1296385097
+ 148 0084 00000000 		.word	_tx_thread_current_ptr
+ 149              		.cfi_endproc
+ 150              	.LFE8:
+ 152              		.text
+ 153              	.Letext0:
+ 154              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 155              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 156              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 157              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 158              		.file 6 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ 159              		.file 7 "Middlewares/ST/threadx/common/inc/tx_thread.h"
+ARM GAS  /tmp/ccxGngvP.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_first_entry_find.c
+     /tmp/ccxGngvP.s:20     .text._fx_directory_first_entry_find:00000000 $t
+     /tmp/ccxGngvP.s:26     .text._fx_directory_first_entry_find:00000000 _fx_directory_first_entry_find
+     /tmp/ccxGngvP.s:147    .text._fx_directory_first_entry_find:00000080 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_mutex_get
+_tx_mutex_put
+_fx_directory_next_entry_find
+_tx_thread_current_ptr

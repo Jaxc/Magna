@@ -1,0 +1,165 @@
+ARM GAS  /tmp/ccoZ1ZyD.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_unicode_short_name_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c"
+  19              		.section	.text._fx_unicode_short_name_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_unicode_short_name_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_unicode_short_name_get:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  12:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  13:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**   Unicode                                                             */
+  19:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  23:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  25:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  26:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  28:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** #include "fx_unicode.h"
+  30:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+ARM GAS  /tmp/ccoZ1ZyD.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  32:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  33:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  34:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    _fx_unicode_short_name_get                          PORTABLE C      */
+  37:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                           6.1          */
+  38:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  41:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    This function finds the short name associated with the supplied     */
+  45:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    unicode name.                                                       */
+  46:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  47:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    Note, this API is deprecated as fx_unicode_short_name_get_extended  */
+  48:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    should be used. The maximum written size to destination_short_name  */
+  49:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    could be 13.                                                        */
+  50:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  INPUT                                                                 */
+  52:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    media_ptr                             Pointer to media              */
+  54:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    source_unicode_name                   Pointer to unicode name       */
+  55:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    source_unicode_length                 Length of unicode name        */
+  56:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    destination_short_name                Pointer to destination name   */
+  57:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  OUTPUT                                                                */
+  59:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    Completion Status                                                   */
+  61:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  CALLS                                                                 */
+  63:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    _fx_unicode_short_name_get_extended   Actual unicode short name get */
+  65:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                            service                     */
+  66:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  CALLED BY                                                             */
+  68:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    Application Code                                                    */
+  70:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  RELEASE HISTORY                                                       */
+  72:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  73:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  74:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  76:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  77:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                            resulting in version 6.1    */
+  78:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /*                                                                        */
+  79:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** /**************************************************************************/
+  80:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** UINT  _fx_unicode_short_name_get(FX_MEDIA *media_ptr, UCHAR *source_unicode_name, ULONG source_unic
+  81:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c ****                                  CHAR *destination_short_name)
+  82:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** {
+  29              		.loc 1 82 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 82 1 is_stmt 0 view .LVU1
+ARM GAS  /tmp/ccoZ1ZyD.s 			page 3
+
+
+  34 0000 10B5     		push	{r4, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 14, -4
+  39 0002 82B0     		sub	sp, sp, #8
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 16
+  83:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** 
+  84:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c ****     /* Call the extended version with 13 bytes short name length.  */
+  85:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c ****     return(_fx_unicode_short_name_get_extended(media_ptr, source_unicode_name, source_unicode_lengt
+  42              		.loc 1 85 5 is_stmt 1 view .LVU2
+  43              		.loc 1 85 12 is_stmt 0 view .LVU3
+  44 0004 0D24     		movs	r4, #13
+  45 0006 0094     		str	r4, [sp]
+  46 0008 FFF7FEFF 		bl	_fx_unicode_short_name_get_extended
+  47              	.LVL1:
+  86:Middlewares/ST/filex/common/src/fx_unicode_short_name_get.c **** }
+  48              		.loc 1 86 1 view .LVU4
+  49 000c 02B0     		add	sp, sp, #8
+  50              	.LCFI2:
+  51              		.cfi_def_cfa_offset 8
+  52              		@ sp needed
+  53 000e 10BD     		pop	{r4, pc}
+  54              		.cfi_endproc
+  55              	.LFE8:
+  57              		.text
+  58              	.Letext0:
+  59              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+  60              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  61              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+  62              		.file 5 "Middlewares/ST/filex/common/inc/fx_unicode.h"
+ARM GAS  /tmp/ccoZ1ZyD.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_unicode_short_name_get.c
+     /tmp/ccoZ1ZyD.s:20     .text._fx_unicode_short_name_get:00000000 $t
+     /tmp/ccoZ1ZyD.s:26     .text._fx_unicode_short_name_get:00000000 _fx_unicode_short_name_get
+
+UNDEFINED SYMBOLS
+_fx_unicode_short_name_get_extended

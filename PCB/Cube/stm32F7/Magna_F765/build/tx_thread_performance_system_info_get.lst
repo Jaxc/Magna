@@ -1,0 +1,374 @@
+ARM GAS  /tmp/ccOL1KZZ.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tx_thread_performance_system_info_get.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c"
+  19              		.section	.text._tx_thread_performance_system_info_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_thread_performance_system_info_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_thread_performance_system_info_get:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**   Thread                                                              */
+  19:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #include "tx_api.h"
+  29:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #include "tx_thread.h"
+  30:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #ifdef TX_THREAD_ENABLE_PERFORMANCE_INFO
+ARM GAS  /tmp/ccOL1KZZ.s 			page 2
+
+
+  31:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #include "tx_trace.h"
+  32:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #endif
+  33:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  34:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+  35:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+  36:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  37:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  FUNCTION                                               RELEASE        */
+  38:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  39:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    _tx_thread_performance_system_info_get              PORTABLE C      */
+  40:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                           6.1          */
+  41:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  AUTHOR                                                                */
+  42:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  43:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  44:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  45:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  DESCRIPTION                                                           */
+  46:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  47:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    This function retrieves thread system performance information.      */
+  48:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  49:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  51:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    resumptions                       Destination for total number of   */
+  52:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        thread resumptions              */
+  53:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    suspensions                       Destination for total number of   */
+  54:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        thread suspensions              */
+  55:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    solicited_preemptions             Destination for total number of   */
+  56:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        thread preemption from thread   */
+  57:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        API calls                       */
+  58:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    interrupt_preemptions             Destination for total number of   */
+  59:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        thread preemptions as a result  */
+  60:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        of threads made ready inside of */
+  61:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        Interrupt Service Routines      */
+  62:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    priority_inversions               Destination for total number of   */
+  63:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        priority inversions             */
+  64:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    time_slices                       Destination for total number of   */
+  65:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        time-slices                     */
+  66:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    relinquishes                      Destination for total number of   */
+  67:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        relinquishes                    */
+  68:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    timeouts                          Destination for total number of   */
+  69:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        timeouts                        */
+  70:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    wait_aborts                       Destination for total number of   */
+  71:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        wait aborts                     */
+  72:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    non_idle_returns                  Destination for total number of   */
+  73:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        times threads return when       */
+  74:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        another thread is ready         */
+  75:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    idle_returns                      Destination for total number of   */
+  76:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        times threads return when no    */
+  77:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                        other thread is ready           */
+  78:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  79:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  OUTPUT                                                                */
+  80:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  81:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    status                            Completion status                 */
+  82:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  83:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  CALLS                                                                 */
+  84:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  85:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    None                                                                */
+  86:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  87:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  CALLED BY                                                             */
+ARM GAS  /tmp/ccOL1KZZ.s 			page 3
+
+
+  88:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  89:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    Application Code                                                    */
+  90:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  91:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  RELEASE HISTORY                                                       */
+  92:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  93:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  94:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  95:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  96:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*  09-30-2020     Yuxin Zhou               Modified comment(s),          */
+  97:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                            resulting in version 6.1    */
+  98:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /*                                                                        */
+  99:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** /**************************************************************************/
+ 100:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** UINT  _tx_thread_performance_system_info_get(ULONG *resumptions, ULONG *suspensions,
+ 101:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****                 ULONG *solicited_preemptions, ULONG *interrupt_preemptions, ULONG *priority_inversi
+ 102:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****                 ULONG *time_slices, ULONG *relinquishes, ULONG *timeouts, ULONG *wait_aborts,
+ 103:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****                 ULONG *non_idle_returns, ULONG *idle_returns)
+ 104:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** {
+  29              		.loc 1 104 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 28, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+ 105:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 106:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #ifdef TX_THREAD_ENABLE_PERFORMANCE_INFO
+ 107:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 108:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** TX_INTERRUPT_SAVE_AREA
+ 109:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 110:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 111:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Disable interrupts.  */
+ 112:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     TX_DISABLE
+ 113:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 114:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 115:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     TX_TRACE_IN_LINE_INSERT(TX_TRACE_THREAD_PERFORMANCE_SYSTEM_INFO_GET, 0, 0, 0, 0, TX_TRACE_THREA
+ 116:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 117:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Log this kernel call.  */
+ 118:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     TX_EL_THREAD_PERFORMANCE_SYSTEM_INFO_GET_INSERT
+ 119:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 120:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve all the pertinent information and return it in the supplied
+ 121:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****        destinations.  */
+ 122:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 123:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread resumptions.  */
+ 124:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (resumptions != TX_NULL)
+ 125:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 126:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 127:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *resumptions =  _tx_thread_performance_resume_count;
+ 128:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 129:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 130:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread suspensions.  */
+ 131:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (suspensions != TX_NULL)
+ 132:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 133:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 134:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *suspensions =  _tx_thread_performance_suspend_count;
+ 135:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 136:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 137:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of solicited thread preemptions.  */
+ 138:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (solicited_preemptions != TX_NULL)
+ 139:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ARM GAS  /tmp/ccOL1KZZ.s 			page 4
+
+
+ 140:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 141:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *solicited_preemptions =  _tx_thread_performance_solicited_preemption_count;
+ 142:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 143:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 144:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of interrupt thread preemptions.  */
+ 145:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (interrupt_preemptions != TX_NULL)
+ 146:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 147:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 148:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *interrupt_preemptions =  _tx_thread_performance_interrupt_preemption_count;
+ 149:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 150:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 151:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread priority inversions.  */
+ 152:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (priority_inversions != TX_NULL)
+ 153:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 154:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 155:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *priority_inversions =  _tx_thread_performance_priority_inversion_count;
+ 156:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 157:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 158:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread time-slices.  */
+ 159:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (time_slices != TX_NULL)
+ 160:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 161:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 162:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *time_slices =  _tx_thread_performance_time_slice_count;
+ 163:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 164:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 165:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread relinquishes.  */
+ 166:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (relinquishes != TX_NULL)
+ 167:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 168:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 169:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *relinquishes =  _tx_thread_performance_relinquish_count;
+ 170:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 171:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 172:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread timeouts.  */
+ 173:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (timeouts != TX_NULL)
+ 174:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 175:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 176:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *timeouts =  _tx_thread_performance_timeout_count;
+ 177:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 178:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 179:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread wait aborts.  */
+ 180:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (wait_aborts != TX_NULL)
+ 181:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 182:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 183:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *wait_aborts =  _tx_thread_performance_wait_abort_count;
+ 184:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 185:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 186:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread non-idle system returns.  */
+ 187:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (non_idle_returns != TX_NULL)
+ 188:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 189:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 190:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *non_idle_returns =  _tx_thread_performance_non_idle_return_count;
+ 191:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 192:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 193:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Retrieve total number of thread idle system returns.  */
+ 194:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (idle_returns != TX_NULL)
+ 195:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 196:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ARM GAS  /tmp/ccOL1KZZ.s 			page 5
+
+
+ 197:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         *idle_returns =  _tx_thread_performance_idle_return_count;
+ 198:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 199:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 200:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Restore interrupts.  */
+ 201:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     TX_RESTORE
+ 202:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 203:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Return completion status.  */
+ 204:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     return(TX_SUCCESS);
+ 205:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 206:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #else
+ 207:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 208:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** UINT        status;
+  34              		.loc 1 208 1 view .LVU1
+ 209:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 210:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 211:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Access input arguments just for the sake of lint, MISRA, etc.  */
+ 212:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     if (resumptions != TX_NULL)
+  35              		.loc 1 212 5 view .LVU2
+ 213:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 214:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 215:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 216:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 217:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 218:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (suspensions != TX_NULL)
+  36              		.loc 1 218 10 view .LVU3
+ 219:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 220:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 221:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 222:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 223:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 224:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (solicited_preemptions != TX_NULL)
+  37              		.loc 1 224 10 view .LVU4
+ 225:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 226:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 227:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 228:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 229:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 230:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (interrupt_preemptions != TX_NULL)
+  38              		.loc 1 230 10 view .LVU5
+ 231:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 232:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 233:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 234:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 235:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 236:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (priority_inversions != TX_NULL)
+  39              		.loc 1 236 10 view .LVU6
+ 237:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 238:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 239:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 240:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 241:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 242:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (time_slices != TX_NULL)
+  40              		.loc 1 242 10 view .LVU7
+ 243:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 244:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 245:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 246:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ARM GAS  /tmp/ccOL1KZZ.s 			page 6
+
+
+ 247:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 248:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (relinquishes != TX_NULL)
+  41              		.loc 1 248 10 view .LVU8
+ 249:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 250:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 251:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 252:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 253:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 254:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (timeouts != TX_NULL)
+  42              		.loc 1 254 10 view .LVU9
+ 255:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 256:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 257:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 258:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 259:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 260:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (wait_aborts != TX_NULL)
+  43              		.loc 1 260 10 view .LVU10
+ 261:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 262:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 263:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 264:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 265:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 266:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (non_idle_returns != TX_NULL)
+  44              		.loc 1 266 10 view .LVU11
+ 267:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 268:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 269:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 270:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 271:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 272:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else if (idle_returns != TX_NULL)
+  45              		.loc 1 272 10 view .LVU12
+ 273:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 274:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 275:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 276:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+ 277:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 278:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     else
+ 279:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     {
+ 280:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 281:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         /* Not enabled, return error.  */
+ 282:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****         status =  TX_FEATURE_NOT_ENABLED;
+  46              		.loc 1 282 9 view .LVU13
+ 283:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     }
+ 284:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** 
+ 285:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     /* Return completion status.  */
+ 286:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c ****     return(status);
+  47              		.loc 1 286 5 view .LVU14
+ 287:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** #endif
+ 288:Middlewares/ST/threadx/common/src/tx_thread_performance_system_info_get.c **** }
+  48              		.loc 1 288 1 is_stmt 0 view .LVU15
+  49 0000 FF20     		movs	r0, #255
+  50              	.LVL1:
+  51              		.loc 1 288 1 view .LVU16
+  52 0002 7047     		bx	lr
+  53              		.cfi_endproc
+  54              	.LFE8:
+  56              		.text
+ARM GAS  /tmp/ccOL1KZZ.s 			page 7
+
+
+  57              	.Letext0:
+  58              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ARM GAS  /tmp/ccOL1KZZ.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_thread_performance_system_info_get.c
+     /tmp/ccOL1KZZ.s:20     .text._tx_thread_performance_system_info_get:00000000 $t
+     /tmp/ccOL1KZZ.s:26     .text._tx_thread_performance_system_info_get:00000000 _tx_thread_performance_system_info_get
+
+NO UNDEFINED SYMBOLS

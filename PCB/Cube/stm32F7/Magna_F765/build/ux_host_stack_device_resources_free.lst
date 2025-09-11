@@ -1,0 +1,621 @@
+ARM GAS  /tmp/ccdncCpp.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ux_host_stack_device_resources_free.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c"
+  19              		.section	.text._ux_host_stack_device_resources_free,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_device_resources_free
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_device_resources_free:
+  27              	.LVL0:
+  28              	.LFB11:
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ARM GAS  /tmp/ccdncCpp.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_host_stack_device_resources_free                PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                           6.1.10       */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    This function will free all the device resources allocated.         */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    device                                Device pointer                */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  OUTPUT                                                                */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    Completion Status                                                   */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  CALLS                                                                 */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_host_stack_endpoint_transfer_abort                              */
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                          Abort transfer                */
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_host_stack_endpoint_instance_delete                             */
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                          Delete endpoint instance      */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_utility_memory_free               Free memory block             */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_utility_memory_set                Set memory with a value       */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_utility_semaphore_delete          Semaphore delete              */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    _ux_utility_thread_schedule_other     Sleep thread to let others    */
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                          run                           */
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    (ux_hcd_entry_function)               HCD entry function            */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  CALLED BY                                                             */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    USBX Components                                                     */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  RELEASE HISTORY                                                       */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                            optimized based on compile  */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                            definitions, verified       */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                            memset and memcpy cases,    */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                            resulting in version 6.1    */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                            added standalone support,   */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                            resulting in version 6.1.10 */
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** /**************************************************************************/
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UINT  _ux_host_stack_device_resources_free(UX_DEVICE *device)
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** {
+ARM GAS  /tmp/ccdncCpp.s 			page 3
+
+
+  29              		.loc 1 87 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 87 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 28
+  37              		.cfi_offset 4, -28
+  38              		.cfi_offset 5, -24
+  39              		.cfi_offset 6, -20
+  40              		.cfi_offset 7, -16
+  41              		.cfi_offset 8, -12
+  42              		.cfi_offset 9, -8
+  43              		.cfi_offset 14, -4
+  44 0004 85B0     		sub	sp, sp, #20
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 48
+  47 0006 8146     		mov	r9, r0
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UX_CONFIGURATION        *configuration;
+  48              		.loc 1 89 1 is_stmt 1 view .LVU2
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UX_INTERFACE            *interface;
+  49              		.loc 1 90 1 view .LVU3
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UX_ENDPOINT             *endpoint;
+  50              		.loc 1 91 1 view .LVU4
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** VOID                    *container;
+  51              		.loc 1 92 1 view .LVU5
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** ULONG                   current_alternate_setting;
+  52              		.loc 1 93 1 view .LVU6
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UX_HCD                  *hcd;
+  53              		.loc 1 94 1 view .LVU7
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #if UX_MAX_DEVICES > 1
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UINT                    device_address_byte_index;
+  54              		.loc 1 96 1 view .LVU8
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UINT                    device_address_bit_index;
+  55              		.loc 1 97 1 view .LVU9
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** UCHAR                   device_address_byte;
+  56              		.loc 1 98 1 view .LVU10
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #endif
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_DEVICE_RESOURCE_FREE, device, 0, 0, 0, UX_TRACE_HOS
+  57              		.loc 1 102 5 view .LVU11
+  58 0008 0027     		movs	r7, #0
+  59 000a 0397     		str	r7, [sp, #12]
+  60 000c 0297     		str	r7, [sp, #8]
+  61 000e 4FF00073 		mov	r3, #33554432
+  62 0012 0193     		str	r3, [sp, #4]
+  63 0014 0097     		str	r7, [sp]
+  64 0016 3B46     		mov	r3, r7
+  65 0018 3A46     		mov	r2, r7
+  66 001a 0146     		mov	r1, r0
+  67 001c 40F26620 		movw	r0, #614
+  68              	.LVL1:
+  69              		.loc 1 102 5 is_stmt 0 view .LVU12
+  70 0020 FFF7FEFF 		bl	_ux_trace_event_insert
+ARM GAS  /tmp/ccdncCpp.s 			page 4
+
+
+  71              	.LVL2:
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #if defined(UX_HOST_STANDALONE)
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Free possible allocated enumeration resources.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     if (device -> ux_device_flags & UX_DEVICE_FLAG_ENUM)
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     {
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* If transfer buffer is not freed, free it.  */
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         if (device -> ux_device_enum_trans &&
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             device -> ux_device_enum_trans -> ux_transfer_request_data_pointer)
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         {
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             _ux_utility_memory_free(device -> ux_device_enum_trans ->
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                                             ux_transfer_request_data_pointer);
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         }
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* If configuration is not attached, free it.  */
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         if ((device -> ux_device_enum_state == UX_HOST_STACK_ENUM_CONFIG_DESCR_PARSE) ||
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             ((device -> ux_device_enum_state == UX_HOST_STACK_ENUM_TRANS_WAIT) &&
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             (device -> ux_device_enum_next_state == UX_HOST_STACK_ENUM_CONFIG_DESCR_PARSE)))
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         {
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             if (device -> ux_device_enum_inst.configuration &&
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 device -> ux_device_enum_inst.configuration ->
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                                             ux_configuration_device == UX_NULL)
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             {
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 _ux_utility_memory_free(device -> ux_device_enum_inst.ptr);
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             }
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         }
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Reset device flags.  */
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     device -> ux_device_flags = 0;
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #endif
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Set the alternate setting to zero.  */
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     current_alternate_setting = 0;
+  72              		.loc 1 138 5 is_stmt 1 view .LVU13
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Get the first configuration registered to the device.  */
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     configuration =  device -> ux_device_first_configuration;
+  73              		.loc 1 141 5 view .LVU14
+  74              		.loc 1 141 19 is_stmt 0 view .LVU15
+  75 0024 D9F84080 		ldr	r8, [r9, #64]
+  76              	.LVL3:
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Parse all the configurations, remove all resources for the possible configuration.  */
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     while (configuration != UX_NULL)
+  77              		.loc 1 144 5 is_stmt 1 view .LVU16
+  78              		.loc 1 144 11 is_stmt 0 view .LVU17
+  79 0028 1DE0     		b	.L2
+  80              	.LVL4:
+  81              	.L6:
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     {
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* We have the correct configuration, search the interface(s).  */
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         interface =  configuration -> ux_configuration_first_interface;
+ARM GAS  /tmp/ccdncCpp.s 			page 5
+
+
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Parse all the interfaces.  */
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         while (interface != UX_NULL)
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         {
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             /* The alternate setting 0 has the selected alternate setting value.  */
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             if (interface -> ux_interface_descriptor.bAlternateSetting == 0)
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 current_alternate_setting = interface -> ux_interface_current_alternate_setting;
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             /* If this is the selected interface, we need to free all the endpoints 
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             attached to the alternate setting for this interface.  */
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             endpoint =  interface -> ux_interface_first_endpoint;
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             /* Parse all the endpoints.  */
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             while (endpoint != UX_NULL)
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             {
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 /* Check if this is the selected interface.  */
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 if (interface -> ux_interface_descriptor.bAlternateSetting == current_alternate_set
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 {
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                     /* Delete the endpoint instance first.  */
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                     _ux_host_stack_endpoint_instance_delete(endpoint);
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 }
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 /* Memorize the endpoint container address.  */
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 container =  (VOID *) endpoint;                  
+  82              		.loc 1 175 17 is_stmt 1 view .LVU18
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 /* Get the next endpoint.  */      
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 endpoint =  endpoint -> ux_endpoint_next_endpoint;
+  83              		.loc 1 178 17 view .LVU19
+  84              		.loc 1 178 26 is_stmt 0 view .LVU20
+  85 002a 656A     		ldr	r5, [r4, #36]
+  86              	.LVL5:
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 /* Delete the endpoint container.  */
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 _ux_utility_memory_free(container);
+  87              		.loc 1 181 17 is_stmt 1 view .LVU21
+  88 002c 2046     		mov	r0, r4
+  89 002e FFF7FEFF 		bl	_ux_utility_memory_free
+  90              	.LVL6:
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 
+  91              		.loc 1 178 26 is_stmt 0 view .LVU22
+  92 0032 2C46     		mov	r4, r5
+  93              	.LVL7:
+  94              	.L5:
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             {
+  95              		.loc 1 163 29 is_stmt 1 view .LVU23
+  96 0034 34B1     		cbz	r4, .L13
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 {
+  97              		.loc 1 167 17 view .LVU24
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 {
+  98              		.loc 1 167 57 is_stmt 0 view .LVU25
+  99 0036 B369     		ldr	r3, [r6, #24]
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 {
+ 100              		.loc 1 167 20 view .LVU26
+ARM GAS  /tmp/ccdncCpp.s 			page 6
+
+
+ 101 0038 BB42     		cmp	r3, r7
+ 102 003a F6D1     		bne	.L6
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 }
+ 103              		.loc 1 171 21 is_stmt 1 view .LVU27
+ 104 003c 2046     		mov	r0, r4
+ 105 003e FFF7FEFF 		bl	_ux_host_stack_endpoint_instance_delete
+ 106              	.LVL8:
+ 107 0042 F2E7     		b	.L6
+ 108              	.L13:
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             }
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             /* Memorize the interface container address.  */
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             container =  (VOID *) interface;                  
+ 109              		.loc 1 186 13 view .LVU28
+ 110              	.LVL9:
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             /* Get the next interface.  */      
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             interface =  interface -> ux_interface_next_interface;
+ 111              		.loc 1 189 13 view .LVU29
+ 112              		.loc 1 189 23 is_stmt 0 view .LVU30
+ 113 0044 F46B     		ldr	r4, [r6, #60]
+ 114              	.LVL10:
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             /* Delete the interface container.  */
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             _ux_utility_memory_free(container);
+ 115              		.loc 1 192 13 is_stmt 1 view .LVU31
+ 116 0046 3046     		mov	r0, r6
+ 117 0048 FFF7FEFF 		bl	_ux_utility_memory_free
+ 118              	.LVL11:
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 119              		.loc 1 189 23 is_stmt 0 view .LVU32
+ 120 004c 2646     		mov	r6, r4
+ 121              	.LVL12:
+ 122              	.L3:
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         {
+ 123              		.loc 1 151 26 is_stmt 1 view .LVU33
+ 124 004e 26B1     		cbz	r6, .L14
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 current_alternate_setting = interface -> ux_interface_current_alternate_setting;
+ 125              		.loc 1 155 13 view .LVU34
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 current_alternate_setting = interface -> ux_interface_current_alternate_setting;
+ 126              		.loc 1 155 53 is_stmt 0 view .LVU35
+ 127 0050 B369     		ldr	r3, [r6, #24]
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****                 current_alternate_setting = interface -> ux_interface_current_alternate_setting;
+ 128              		.loc 1 155 16 view .LVU36
+ 129 0052 03B9     		cbnz	r3, .L4
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 130              		.loc 1 156 17 is_stmt 1 view .LVU37
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 131              		.loc 1 156 43 is_stmt 0 view .LVU38
+ 132 0054 B768     		ldr	r7, [r6, #8]
+ 133              	.LVL13:
+ 134              	.L4:
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             
+ 135              		.loc 1 160 13 is_stmt 1 view .LVU39
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             
+ 136              		.loc 1 160 22 is_stmt 0 view .LVU40
+ARM GAS  /tmp/ccdncCpp.s 			page 7
+
+
+ 137 0056 B46B     		ldr	r4, [r6, #56]
+ 138              	.LVL14:
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             {
+ 139              		.loc 1 163 13 is_stmt 1 view .LVU41
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             {
+ 140              		.loc 1 163 19 is_stmt 0 view .LVU42
+ 141 0058 ECE7     		b	.L5
+ 142              	.LVL15:
+ 143              	.L14:
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         }
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Memorize this configuration address before we free it.  */
+ 196:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         container =  (VOID *) configuration;
+ 144              		.loc 1 196 9 is_stmt 1 view .LVU43
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 198:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Move to the next configuration in the list.  */
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         configuration =  configuration -> ux_configuration_next_configuration;                     
+ 145              		.loc 1 199 9 view .LVU44
+ 146              		.loc 1 199 23 is_stmt 0 view .LVU45
+ 147 005a D8F83040 		ldr	r4, [r8, #48]
+ 148              	.LVL16:
+ 200:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Free the configuration.  */
+ 202:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         _ux_utility_memory_free(container);
+ 149              		.loc 1 202 9 is_stmt 1 view .LVU46
+ 150 005e 4046     		mov	r0, r8
+ 151 0060 FFF7FEFF 		bl	_ux_utility_memory_free
+ 152              	.LVL17:
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 153              		.loc 1 199 23 is_stmt 0 view .LVU47
+ 154 0064 A046     		mov	r8, r4
+ 155              	.LVL18:
+ 156              	.L2:
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     {
+ 157              		.loc 1 144 26 is_stmt 1 view .LVU48
+ 158 0066 B8F1000F 		cmp	r8, #0
+ 159 006a 02D0     		beq	.L15
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 160              		.loc 1 148 9 view .LVU49
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 161              		.loc 1 148 19 is_stmt 0 view .LVU50
+ 162 006c D8F82C60 		ldr	r6, [r8, #44]
+ 163              	.LVL19:
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         {
+ 164              		.loc 1 151 9 is_stmt 1 view .LVU51
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         {
+ 165              		.loc 1 151 15 is_stmt 0 view .LVU52
+ 166 0070 EDE7     		b	.L3
+ 167              	.LVL20:
+ 168              	.L15:
+ 203:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }                       
+ 204:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 205:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* We need the HCD address for the control endpoint removal and to free
+ 206:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****        the device address.  */
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     hcd = UX_DEVICE_HCD_GET(device);
+ 169              		.loc 1 207 5 is_stmt 1 view .LVU53
+ 170              		.loc 1 207 11 is_stmt 0 view .LVU54
+ARM GAS  /tmp/ccdncCpp.s 			page 8
+
+
+ 171 0072 1C4B     		ldr	r3, .L17
+ 172 0074 1B68     		ldr	r3, [r3]
+ 173              		.loc 1 207 9 view .LVU55
+ 174 0076 DC68     		ldr	r4, [r3, #12]
+ 175              	.LVL21:
+ 208:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Was the control endpoint already created ? */
+ 210:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     if (device -> ux_device_control_endpoint.ux_endpoint_state != 0)
+ 176              		.loc 1 210 5 is_stmt 1 view .LVU56
+ 177              		.loc 1 210 45 is_stmt 0 view .LVU57
+ 178 0078 D9F88030 		ldr	r3, [r9, #128]
+ 179              		.loc 1 210 8 view .LVU58
+ 180 007c 23BB     		cbnz	r3, .L16
+ 181              	.L10:
+ 211:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     {
+ 212:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 213:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* There may be pending transactions on the control endpoint. They need to be aborted.  */
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         _ux_host_stack_endpoint_transfer_abort(&device -> ux_device_control_endpoint);
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     
+ 216:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* The enumeration thread needs to sleep a while to allow the application or the class that
+ 217:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****             the control endpoint to exit properly.  */
+ 218:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         _ux_host_thread_schedule_other(UX_THREAD_PRIORITY_ENUM); 
+ 219:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     
+ 220:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* The control endpoint should be destroyed at the HCD level.  */
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         hcd -> ux_hcd_entry_function(hcd, UX_HCD_DESTROY_ENDPOINT, (VOID *) &device -> ux_device_co
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }
+ 223:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 224:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* The semaphore attached to the control endpoint must be destroyed.  */
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     _ux_host_semaphore_delete(&device -> ux_device_control_endpoint.ux_endpoint_transfer_request.ux
+ 182              		.loc 1 225 5 is_stmt 1 view .LVU59
+ 183 007e 09F1F000 		add	r0, r9, #240
+ 184 0082 FFF7FEFF 		bl	_ux_utility_semaphore_delete
+ 185              	.LVL22:
+ 226:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 227:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #if UX_MAX_DEVICES > 1
+ 228:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Check if the device had an assigned address.  */
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     if (device -> ux_device_address != 0)    
+ 186              		.loc 1 229 5 view .LVU60
+ 187              		.loc 1 229 16 is_stmt 0 view .LVU61
+ 188 0086 D9F80C20 		ldr	r2, [r9, #12]
+ 189              		.loc 1 229 8 view .LVU62
+ 190 008a 6AB1     		cbz	r2, .L11
+ 230:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     {
+ 231:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 232:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* The USB address of this device can now be returned to the pool
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****            We need the HCD pointer for this operation.  */
+ 234:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 235:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Calculate in which byte index the device address belongs.  */
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         device_address_byte_index =  (UINT) (device -> ux_device_address-1)/8;        
+ 191              		.loc 1 236 9 is_stmt 1 view .LVU63
+ 192              		.loc 1 236 73 is_stmt 0 view .LVU64
+ 193 008c 013A     		subs	r2, r2, #1
+ 194              	.LVL23:
+ 237:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Now calculate the amount left in the byte index in bit.  */
+ 239:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         device_address_bit_index =  (UINT) (device -> ux_device_address-1)%8;     
+ 195              		.loc 1 239 9 is_stmt 1 view .LVU65
+ARM GAS  /tmp/ccdncCpp.s 			page 9
+
+
+ 196              		.loc 1 239 34 is_stmt 0 view .LVU66
+ 197 008e 02F00701 		and	r1, r2, #7
+ 198              	.LVL24:
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 241:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Build the mask for the address.  */
+ 242:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         device_address_byte =  (UCHAR)(1 << device_address_bit_index);
+ 199              		.loc 1 242 9 is_stmt 1 view .LVU67
+ 200              		.loc 1 242 42 is_stmt 0 view .LVU68
+ 201 0092 0123     		movs	r3, #1
+ 202 0094 8B40     		lsls	r3, r3, r1
+ 203              		.loc 1 242 29 view .LVU69
+ 204 0096 DBB2     		uxtb	r3, r3
+ 205              	.LVL25:
+ 243:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 244:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         /* Free the address.  */
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****         hcd -> ux_hcd_address[device_address_byte_index] &=  (UCHAR)~device_address_byte;
+ 206              		.loc 1 245 9 is_stmt 1 view .LVU70
+ 207              		.loc 1 245 30 is_stmt 0 view .LVU71
+ 208 0098 04EBD204 		add	r4, r4, r2, lsr #3
+ 209              	.LVL26:
+ 210              		.loc 1 245 30 view .LVU72
+ 211 009c 94F87820 		ldrb	r2, [r4, #120]	@ zero_extendqisi2
+ 212              	.LVL27:
+ 213              		.loc 1 245 58 view .LVU73
+ 214 00a0 22EA0303 		bic	r3, r2, r3
+ 215              	.LVL28:
+ 216              		.loc 1 245 58 view .LVU74
+ 217 00a4 84F87830 		strb	r3, [r4, #120]
+ 218              	.LVL29:
+ 219              	.L11:
+ 246:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** #endif
+ 248:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 249:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* The semaphore for endpoint 0 protection must be destroyed.  */
+ 250:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     _ux_host_semaphore_delete(&device -> ux_device_protection_semaphore);
+ 220              		.loc 1 250 5 is_stmt 1 view .LVU75
+ 221 00a8 09F11C00 		add	r0, r9, #28
+ 222 00ac FFF7FEFF 		bl	_ux_utility_semaphore_delete
+ 223              	.LVL30:
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 252:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Now this device can be free and its container return to the pool.  */
+ 253:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     _ux_utility_memory_set(device, 0, sizeof(UX_DEVICE)); /* Use case of memset is verified. */
+ 224              		.loc 1 253 5 view .LVU76
+ 225 00b0 4FF4AE72 		mov	r2, #348
+ 226 00b4 0021     		movs	r1, #0
+ 227 00b6 4846     		mov	r0, r9
+ 228 00b8 FFF7FEFF 		bl	_ux_utility_memory_set
+ 229              	.LVL31:
+ 254:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 255:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Mark the device handle as unused.  */
+ 256:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     device -> ux_device_handle =  UX_UNUSED;
+ 230              		.loc 1 256 5 view .LVU77
+ 231              		.loc 1 256 32 is_stmt 0 view .LVU78
+ 232 00bc 0020     		movs	r0, #0
+ 233 00be C9F80000 		str	r0, [r9]
+ 257:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** 
+ 258:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     /* Return successful completion.  */
+ARM GAS  /tmp/ccdncCpp.s 			page 10
+
+
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     return(UX_SUCCESS);
+ 234              		.loc 1 259 5 is_stmt 1 view .LVU79
+ 260:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c **** }
+ 235              		.loc 1 260 1 is_stmt 0 view .LVU80
+ 236 00c2 05B0     		add	sp, sp, #20
+ 237              	.LCFI2:
+ 238              		.cfi_remember_state
+ 239              		.cfi_def_cfa_offset 28
+ 240              		@ sp needed
+ 241 00c4 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 242              	.LVL32:
+ 243              	.L16:
+ 244              	.LCFI3:
+ 245              		.cfi_restore_state
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     
+ 246              		.loc 1 214 9 is_stmt 1 view .LVU81
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     
+ 247              		.loc 1 214 48 is_stmt 0 view .LVU82
+ 248 00c8 09F17C05 		add	r5, r9, #124
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     
+ 249              		.loc 1 214 9 view .LVU83
+ 250 00cc 2846     		mov	r0, r5
+ 251 00ce FFF7FEFF 		bl	_ux_host_stack_endpoint_transfer_abort
+ 252              	.LVL33:
+ 218:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     
+ 253              		.loc 1 218 9 is_stmt 1 view .LVU84
+ 254 00d2 1420     		movs	r0, #20
+ 255 00d4 FFF7FEFF 		bl	_ux_utility_thread_schedule_other
+ 256              	.LVL34:
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }
+ 257              		.loc 1 221 9 view .LVU85
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }
+ 258              		.loc 1 221 13 is_stmt 0 view .LVU86
+ 259 00d8 236F     		ldr	r3, [r4, #112]
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_resources_free.c ****     }
+ 260              		.loc 1 221 9 view .LVU87
+ 261 00da 2A46     		mov	r2, r5
+ 262 00dc 0F21     		movs	r1, #15
+ 263 00de 2046     		mov	r0, r4
+ 264 00e0 9847     		blx	r3
+ 265              	.LVL35:
+ 266 00e2 CCE7     		b	.L10
+ 267              	.L18:
+ 268              		.align	2
+ 269              	.L17:
+ 270 00e4 00000000 		.word	_ux_system_host
+ 271              		.cfi_endproc
+ 272              	.LFE11:
+ 274              		.text
+ 275              	.Letext0:
+ 276              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 277              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 278              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 279              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 280              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 281              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 282              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  /tmp/ccdncCpp.s 			page 11
+
+
+ARM GAS  /tmp/ccdncCpp.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_device_resources_free.c
+     /tmp/ccdncCpp.s:20     .text._ux_host_stack_device_resources_free:00000000 $t
+     /tmp/ccdncCpp.s:26     .text._ux_host_stack_device_resources_free:00000000 _ux_host_stack_device_resources_free
+     /tmp/ccdncCpp.s:270    .text._ux_host_stack_device_resources_free:000000e4 $d
+
+UNDEFINED SYMBOLS
+_ux_trace_event_insert
+_ux_utility_memory_free
+_ux_host_stack_endpoint_instance_delete
+_ux_utility_semaphore_delete
+_ux_utility_memory_set
+_ux_host_stack_endpoint_transfer_abort
+_ux_utility_thread_schedule_other
+_ux_system_host

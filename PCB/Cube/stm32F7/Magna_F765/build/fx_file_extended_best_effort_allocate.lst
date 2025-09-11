@@ -1,0 +1,1896 @@
+ARM GAS  /tmp/cccASC4E.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_file_extended_best_effort_allocate.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c"
+  19              		.global	__aeabi_uldivmod
+  20              		.section	.text._fx_file_extended_best_effort_allocate,"ax",%progbits
+  21              		.align	1
+  22              		.global	_fx_file_extended_best_effort_allocate
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	_fx_file_extended_best_effort_allocate:
+  28              	.LVL0:
+  29              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  12:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  13:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**   File                                                                */
+  19:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  23:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  25:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  26:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  28:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #include "fx_system.h"
+ARM GAS  /tmp/cccASC4E.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #include "fx_file.h"
+  31:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #include "fx_directory.h"
+  33:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+  34:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #include "fx_fault_tolerant.h"
+  35:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+  36:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  37:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+  38:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  39:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  FUNCTION                                               RELEASE        */
+  41:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_file_extended_best_effort_allocate              PORTABLE C      */
+  43:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                           6.1          */
+  44:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  AUTHOR                                                                */
+  45:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  47:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  DESCRIPTION                                                           */
+  49:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    This function attempts to allocate the number of consecutive        */
+  51:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    clusters required to satisfy the user's request.  If there are not  */
+  52:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    enough clusters, the largest set of clusters are allocated and      */
+  53:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    linked to the file.  If there are no free clusters, an error        */
+  54:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    code is returned to the caller.                                     */
+  55:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  INPUT                                                                 */
+  57:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    file_ptr                              File control block pointer    */
+  59:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    size                                  Number of bytes to allocate   */
+  60:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    actual_size_allocated                 Number of bytes allocated     */
+  61:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  OUTPUT                                                                */
+  63:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    return status                                                       */
+  65:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  CALLS                                                                 */
+  67:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_directory_entry_write             Update directory entry        */
+  69:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_exFAT_bitmap_flush        Flush exFAT allocation bitmap */
+  70:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_exFAT_bitmap_free_cluster_find                          */
+  71:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                            Find exFAT free cluster     */
+  72:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_exFAT_cluster_state_get   Get cluster state             */
+  73:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_exFAT_cluster_state_set   Set cluster state             */
+  74:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_FAT_entry_read            Read a FAT entry              */
+  75:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_FAT_entry_write           Write a FAT entry             */
+  76:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_FAT_flush                 Flush written FAT entries     */
+  77:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_utility_logical_sector_flush      Flush the written log sector  */
+  78:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_fault_tolerant_transaction_start  Start fault tolerant          */
+  79:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                            transaction                 */
+  80:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_fault_tolerant_transaction_end    End fault tolerant transaction*/
+  81:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_fault_tolerant_recover            Recover FAT chain             */
+  82:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_fault_tolerant_reset_log_file     Reset the log file            */
+  83:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    _fx_fault_tolerant_set_FAT_chain      Set data of FAT chain         */
+  84:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  85:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  CALLED BY                                                             */
+  86:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+ARM GAS  /tmp/cccASC4E.s 			page 3
+
+
+  87:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    Application Code                                                    */
+  88:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  89:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  RELEASE HISTORY                                                       */
+  90:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  91:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*    DATE              NAME                      DESCRIPTION             */
+  92:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  93:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  94:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  95:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                            resulting in version 6.1    */
+  96:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /*                                                                        */
+  97:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** /**************************************************************************/
+  98:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** UINT  _fx_file_extended_best_effort_allocate(FX_FILE *file_ptr, ULONG64 size, ULONG64 *actual_size_
+  99:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** {
+  30              		.loc 1 99 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 4, pretend = 0, frame = 40
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 99 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 36
+  38              		.cfi_offset 4, -36
+  39              		.cfi_offset 5, -32
+  40              		.cfi_offset 6, -28
+  41              		.cfi_offset 7, -24
+  42              		.cfi_offset 8, -20
+  43              		.cfi_offset 9, -16
+  44              		.cfi_offset 10, -12
+  45              		.cfi_offset 11, -8
+  46              		.cfi_offset 14, -4
+  47 0004 8FB0     		sub	sp, sp, #60
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 96
+  50 0006 1546     		mov	r5, r2
+  51 0008 1F46     		mov	r7, r3
+ 100:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 101:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** UINT                   status;
+  52              		.loc 1 101 1 is_stmt 1 view .LVU2
+ 102:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** ULONG                  i;
+  53              		.loc 1 102 1 view .LVU3
+ 103:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** UINT                   found;
+  54              		.loc 1 103 1 view .LVU4
+ 104:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** ULONG                  bytes_per_cluster;
+  55              		.loc 1 104 1 view .LVU5
+ 105:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** ULONG                  FAT_index, start_FAT_index;
+  56              		.loc 1 105 1 view .LVU6
+ 106:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** ULONG                  FAT_value;
+  57              		.loc 1 106 1 view .LVU7
+ 107:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** ULONG                  clusters, maximum_clusters;
+  58              		.loc 1 107 1 view .LVU8
+ 108:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** FX_MEDIA              *media_ptr;
+  59              		.loc 1 108 1 view .LVU9
+ 109:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 111:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** UCHAR                  cluster_state;
+ 112:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 113:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ARM GAS  /tmp/cccASC4E.s 			page 4
+
+
+ 114:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef TX_ENABLE_EVENT_TRACE
+ 115:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** TX_TRACE_BUFFER_ENTRY *trace_event;
+  60              		.loc 1 115 1 view .LVU10
+ 116:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** ULONG                  trace_timestamp;
+  61              		.loc 1 116 1 view .LVU11
+ 117:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif
+ 118:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 119:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 120:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* First, determine if the file is still open.  */
+ 121:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (file_ptr -> fx_file_id != FX_FILE_ID)
+  62              		.loc 1 121 5 view .LVU12
+  63              		.loc 1 121 18 is_stmt 0 view .LVU13
+  64 000a 0268     		ldr	r2, [r0]
+  65              	.LVL1:
+  66              		.loc 1 121 8 view .LVU14
+  67 000c A54B     		ldr	r3, .L50
+  68 000e 9A42     		cmp	r2, r3
+  69 0010 40F08581 		bne	.L25
+  70 0014 0646     		mov	r6, r0
+ 122:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 123:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 124:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return the file not open error status.  */
+ 125:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_NOT_OPEN);
+ 126:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 127:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 128:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 129:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Setup pointer to media structure.  */
+ 130:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     media_ptr =  file_ptr -> fx_file_media_ptr;
+  71              		.loc 1 130 5 is_stmt 1 view .LVU15
+  72              		.loc 1 130 15 is_stmt 0 view .LVU16
+  73 0016 826D     		ldr	r2, [r0, #88]
+  74              	.LVL2:
+ 131:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 132:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Increment the number of times this service has been called.  */
+ 133:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     media_ptr -> fx_media_file_best_effort_allocates++;
+  75              		.loc 1 133 5 is_stmt 1 view .LVU17
+  76              		.loc 1 133 15 is_stmt 0 view .LVU18
+  77 0018 D2F82831 		ldr	r3, [r2, #296]
+  78              		.loc 1 133 53 view .LVU19
+  79 001c 0133     		adds	r3, r3, #1
+  80 001e C2F82831 		str	r3, [r2, #296]
+ 134:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif
+ 135:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 136:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Make sure this file is open for writing.  */
+ 137:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (file_ptr -> fx_file_open_mode != FX_OPEN_FOR_WRITE)
+  81              		.loc 1 137 5 is_stmt 1 view .LVU20
+  82              		.loc 1 137 18 is_stmt 0 view .LVU21
+  83 0022 8468     		ldr	r4, [r0, #8]
+  84              		.loc 1 137 8 view .LVU22
+  85 0024 012C     		cmp	r4, #1
+  86 0026 40F07F81 		bne	.L26
+ 138:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 139:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 140:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return the access error exception - a write was attempted from
+ 141:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****            a file opened for reading!  */
+ 142:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_ACCESS_ERROR);
+ 143:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ARM GAS  /tmp/cccASC4E.s 			page 5
+
+
+ 144:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 145:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Determine if the requested allocation is for zero bytes.  */
+ 146:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (size == 0)
+  87              		.loc 1 146 5 is_stmt 1 view .LVU23
+  88              		.loc 1 146 8 is_stmt 0 view .LVU24
+  89 002a 55EA0703 		orrs	r3, r5, r7
+  90 002e 06D1     		bne	.L3
+ 147:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 148:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 149:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return a size allocated of zero.  */
+ 150:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         *actual_size_allocated =  0;
+  91              		.loc 1 150 9 is_stmt 1 view .LVU25
+  92              		.loc 1 150 32 is_stmt 0 view .LVU26
+  93 0030 0022     		movs	r2, #0
+  94              	.LVL3:
+  95              		.loc 1 150 32 view .LVU27
+  96 0032 0023     		movs	r3, #0
+  97 0034 1899     		ldr	r1, [sp, #96]
+  98 0036 C1E90023 		strd	r2, [r1]
+ 151:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 152:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return a successful completion - nothing needs to be done.  */
+ 153:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_SUCCESS);
+  99              		.loc 1 153 9 is_stmt 1 view .LVU28
+ 100              		.loc 1 153 15 is_stmt 0 view .LVU29
+ 101 003a 0027     		movs	r7, #0
+ 102 003c 70E1     		b	.L1
+ 103              	.LVL4:
+ 104              	.L3:
+ 154:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 155:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Setup pointer to associated media control block.  */
+ 157:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     media_ptr =  file_ptr -> fx_file_media_ptr;
+ 105              		.loc 1 157 5 is_stmt 1 view .LVU30
+ 106              		.loc 1 157 15 is_stmt 0 view .LVU31
+ 107 003e D0F85880 		ldr	r8, [r0, #88]
+ 108              	.LVL5:
+ 158:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 160:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_FILE_BEST_EFFORT_ALLOCATE, file_ptr, size, 0, 0, FX_TRACE_FILE
+ 109              		.loc 1 160 5 is_stmt 1 view .LVU32
+ 110 0042 0BAB     		add	r3, sp, #44
+ 111 0044 0393     		str	r3, [sp, #12]
+ 112 0046 0CAB     		add	r3, sp, #48
+ 113 0048 0293     		str	r3, [sp, #8]
+ 114 004a 4FF48043 		mov	r3, #16384
+ 115 004e 0193     		str	r3, [sp, #4]
+ 116 0050 0023     		movs	r3, #0
+ 117 0052 0093     		str	r3, [sp]
+ 118 0054 2A46     		mov	r2, r5
+ 119 0056 0146     		mov	r1, r0
+ 120 0058 F220     		movs	r0, #242
+ 121              	.LVL6:
+ 122              		.loc 1 160 5 is_stmt 0 view .LVU33
+ 123 005a FFF7FEFF 		bl	_fx_trace_event_insert
+ 124              	.LVL7:
+ 161:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 162:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Protect against other threads accessing the media.  */
+ARM GAS  /tmp/cccASC4E.s 			page 6
+
+
+ 163:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     FX_PROTECT
+ 125              		.loc 1 163 5 is_stmt 1 view .LVU34
+ 126 005e D8F80020 		ldr	r2, [r8]
+ 127 0062 914B     		ldr	r3, .L50+4
+ 128 0064 9A42     		cmp	r2, r3
+ 129 0066 01D0     		beq	.L36
+ 130              		.loc 1 163 5 is_stmt 0 discriminator 1 view .LVU35
+ 131 0068 1127     		movs	r7, #17
+ 132 006a 59E1     		b	.L1
+ 133              	.L36:
+ 134              		.loc 1 163 5 is_stmt 1 discriminator 2 view .LVU36
+ 135 006c 08F5E473 		add	r3, r8, #456
+ 136 0070 0593     		str	r3, [sp, #20]
+ 137 0072 4FF0FF31 		mov	r1, #-1
+ 138 0076 1846     		mov	r0, r3
+ 139 0078 FFF7FEFF 		bl	_tx_mutex_get
+ 140              	.LVL8:
+ 141              		.loc 1 163 5 is_stmt 0 discriminator 1 view .LVU37
+ 142 007c 0028     		cmp	r0, #0
+ 143 007e 40F05581 		bne	.L28
+ 164:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 165:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 166:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Start transaction. */
+ 167:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     _fx_fault_tolerant_transaction_start(media_ptr);
+ 168:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 169:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 170:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Check for write protect at the media level (set by driver).  */
+ 171:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (media_ptr -> fx_media_driver_write_protect)
+ 144              		.loc 1 171 5 is_stmt 1 view .LVU38
+ 145              		.loc 1 171 19 is_stmt 0 view .LVU39
+ 146 0082 D8F8A8A0 		ldr	r10, [r8, #168]
+ 147              		.loc 1 171 8 view .LVU40
+ 148 0086 BAF1000F 		cmp	r10, #0
+ 149 008a 36D1     		bne	.L37
+ 172:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 173:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 174:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 175:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 176:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 177:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 178:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 179:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 180:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 181:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return write protect error.  */
+ 182:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_WRITE_PROTECT);
+ 183:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 184:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 185:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Calculate the number of bytes per cluster.  */
+ 186:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     bytes_per_cluster =  ((ULONG)media_ptr -> fx_media_bytes_per_sector) *
+ 150              		.loc 1 186 5 is_stmt 1 view .LVU41
+ 151              		.loc 1 186 44 is_stmt 0 view .LVU42
+ 152 008c D8F82830 		ldr	r3, [r8, #40]
+ 187:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         ((ULONG)media_ptr -> fx_media_sectors_per_cluster);
+ 153              		.loc 1 187 27 view .LVU43
+ 154 0090 D8F85420 		ldr	r2, [r8, #84]
+ 186:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         ((ULONG)media_ptr -> fx_media_sectors_per_cluster);
+ 155              		.loc 1 186 23 view .LVU44
+ARM GAS  /tmp/cccASC4E.s 			page 7
+
+
+ 156 0094 02FB03FB 		mul	fp, r2, r3
+ 157              	.LVL9:
+ 188:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 189:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Check for invalid value.  */
+ 190:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (bytes_per_cluster == 0)
+ 158              		.loc 1 190 5 is_stmt 1 view .LVU45
+ 159              		.loc 1 190 8 is_stmt 0 view .LVU46
+ 160 0098 BBF1000F 		cmp	fp, #0
+ 161 009c 32D0     		beq	.L38
+ 191:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 192:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 193:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 194:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 195:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 196:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 197:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 198:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 199:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 200:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Invalid media, return error.  */
+ 201:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_MEDIA_INVALID);
+ 202:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 203:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 204:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Calculate the number of consecutive clusters needed to satisfy this
+ 205:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****        request.  */
+ 206:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     clusters =  (ULONG)(((size + bytes_per_cluster - 1) / bytes_per_cluster));
+ 162              		.loc 1 206 5 is_stmt 1 view .LVU47
+ 163              		.loc 1 206 32 is_stmt 0 view .LVU48
+ 164 009e CDF818B0 		str	fp, [sp, #24]
+ 165 00a2 1BEB0505 		adds	r5, fp, r5
+ 166 00a6 47F10001 		adc	r1, r7, #0
+ 167              		.loc 1 206 52 view .LVU49
+ 168 00aa 681E     		subs	r0, r5, #1
+ 169              		.loc 1 206 57 view .LVU50
+ 170 00ac 5A46     		mov	r2, fp
+ 171 00ae 4FF00003 		mov	r3, #0
+ 172 00b2 41F1FF31 		adc	r1, r1, #-1
+ 173 00b6 FFF7FEFF 		bl	__aeabi_uldivmod
+ 174              	.LVL10:
+ 175 00ba 0346     		mov	r3, r0
+ 176              		.loc 1 206 14 view .LVU51
+ 177 00bc 8146     		mov	r9, r0
+ 178              	.LVL11:
+ 207:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     
+ 208:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Determine if cluster count is 0.  */
+ 209:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (clusters == 0)
+ 179              		.loc 1 209 5 is_stmt 1 view .LVU52
+ 180              		.loc 1 209 8 is_stmt 0 view .LVU53
+ 181 00be 30B3     		cbz	r0, .L39
+ 210:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 211:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 212:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 213:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 214:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 215:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 216:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 217:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 218:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ARM GAS  /tmp/cccASC4E.s 			page 8
+
+
+ 219:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Size overflow when rounding to the next cluster, return an error status.  */
+ 220:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_NO_MORE_SPACE);
+ 221:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 222:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 223:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Determine if there are no available clusters on the media.  */
+ 224:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (!media_ptr -> fx_media_available_clusters)
+ 182              		.loc 1 224 5 is_stmt 1 view .LVU54
+ 183              		.loc 1 224 20 is_stmt 0 view .LVU55
+ 184 00c0 D8F87C10 		ldr	r1, [r8, #124]
+ 185              		.loc 1 224 8 view .LVU56
+ 186 00c4 41B3     		cbz	r1, .L40
+ 225:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 226:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 227:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 228:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 229:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 230:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 231:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 232:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 233:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 234:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return a size allocated of zero, since no clusters were available.  */
+ 235:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         *actual_size_allocated =  0;
+ 236:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 237:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Not enough clusters, return an error status.  */
+ 238:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_NO_MORE_SPACE);
+ 239:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 240:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 241:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Determine if the requested file allocation would exceed the physical limit of the file.  */
+ 242:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (((file_ptr -> fx_file_current_available_size + (((ULONG64) clusters) * ((ULONG64) bytes_per
+ 187              		.loc 1 242 5 is_stmt 1 view .LVU57
+ 188              		.loc 1 242 20 is_stmt 0 view .LVU58
+ 189 00c6 316D     		ldr	r1, [r6, #80]
+ 190 00c8 706D     		ldr	r0, [r6, #84]
+ 191              	.LVL12:
+ 192              		.loc 1 242 78 view .LVU59
+ 193 00ca 069D     		ldr	r5, [sp, #24]
+ 194 00cc A3FB0525 		umull	r2, r5, r3, r5
+ 195              		.loc 1 242 54 view .LVU60
+ 196 00d0 8A18     		adds	r2, r1, r2
+ 197 00d2 45EB0005 		adc	r5, r5, r0
+ 198              		.loc 1 242 8 view .LVU61
+ 199 00d6 8A42     		cmp	r2, r1
+ 200 00d8 75EB0000 		sbcs	r0, r5, r0
+ 201 00dc 26D3     		bcc	.L8
+ 202              		.loc 1 242 158 discriminator 1 view .LVU62
+ 203 00de 4FF0FF31 		mov	r1, #-1
+ 204 00e2 9142     		cmp	r1, r2
+ 205 00e4 4FF00002 		mov	r2, #0
+ 206 00e8 AA41     		sbcs	r2, r2, r5
+ 207 00ea 1FD3     		bcc	.L8
+ 243:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         ((file_ptr -> fx_file_current_available_size + (((ULONG64) clusters) * ((ULONG64) bytes_per
+ 244:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 245:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 246:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 247:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 248:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 249:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ARM GAS  /tmp/cccASC4E.s 			page 9
+
+
+ 250:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 251:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 252:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 253:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return the no more space error, since the new file size would be larger than
+ 254:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****            the 32-bit field to represent it in the file's directory entry.  */
+ 255:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_NO_MORE_SPACE);
+ 256:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 257:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 258:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Now we need to find the consecutive clusters.  */
+ 259:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     found =             FX_FALSE;
+ 260:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 261:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if ((file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat & 1) &&
+ 262:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         (file_ptr -> fx_file_last_physical_cluster > FX_FAT_ENTRY_START) &&
+ 263:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         (file_ptr -> fx_file_last_physical_cluster < media_ptr -> fx_media_total_clusters - cluster
+ 264:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 265:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         found = FX_TRUE;
+ 266:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 267:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Try to keep clusters consecutive.  */
+ 268:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         for (FAT_index = file_ptr -> fx_file_last_physical_cluster + 1;
+ 269:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****              FAT_index < clusters + file_ptr -> fx_file_last_physical_cluster + 1;
+ 270:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****              FAT_index++)
+ 271:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 272:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 273:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Get cluster state.  */
+ 274:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             status = _fx_utility_exFAT_cluster_state_get(media_ptr, FAT_index, &cluster_state);
+ 275:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 276:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Check for a successful status.  */
+ 277:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (status != FX_SUCCESS)
+ 278:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 279:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 280:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 281:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 282:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 283:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 284:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Release media protection.  */
+ 285:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FX_UNPROTECT
+ 286:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 287:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Return the error status.  */
+ 288:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 return(status);
+ 289:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 290:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 291:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Determine if the entry is free.  */
+ 292:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (cluster_state == FX_EXFAT_BITMAP_CLUSTER_OCCUPIED)
+ 293:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 294:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 found = FX_FALSE;
+ 295:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 break;
+ 296:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 297:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 298:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FAT_index = file_ptr -> fx_file_last_physical_cluster + 1;
+ 299:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 300:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 301:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (!found)
+ 302:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 303:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 304:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FAT_index =         FX_FAT_ENTRY_START;
+ 305:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         maximum_clusters =  0;
+ 306:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         start_FAT_index =   FAT_index;
+ARM GAS  /tmp/cccASC4E.s 			page 10
+
+
+ 208              		.loc 1 306 25 view .LVU63
+ 209 00ec 0222     		movs	r2, #2
+ 210 00ee 0792     		str	r2, [sp, #28]
+ 304:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         maximum_clusters =  0;
+ 211              		.loc 1 304 19 view .LVU64
+ 212 00f0 1546     		mov	r5, r2
+ 213 00f2 0894     		str	r4, [sp, #32]
+ 214 00f4 5446     		mov	r4, r10
+ 215 00f6 0993     		str	r3, [sp, #36]
+ 216 00f8 2AE0     		b	.L9
+ 217              	.LVL13:
+ 218              	.L37:
+ 179:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 219              		.loc 1 179 9 is_stmt 1 view .LVU65
+ 220 00fa 0598     		ldr	r0, [sp, #20]
+ 221 00fc FFF7FEFF 		bl	_tx_mutex_put
+ 222              	.LVL14:
+ 182:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 223              		.loc 1 182 9 view .LVU66
+ 182:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 224              		.loc 1 182 15 is_stmt 0 view .LVU67
+ 225 0100 2327     		movs	r7, #35
+ 226 0102 0DE1     		b	.L1
+ 227              	.LVL15:
+ 228              	.L38:
+ 198:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 229              		.loc 1 198 9 is_stmt 1 view .LVU68
+ 230 0104 0598     		ldr	r0, [sp, #20]
+ 231 0106 FFF7FEFF 		bl	_tx_mutex_put
+ 232              	.LVL16:
+ 201:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 233              		.loc 1 201 9 view .LVU69
+ 201:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 234              		.loc 1 201 15 is_stmt 0 view .LVU70
+ 235 010a 0227     		movs	r7, #2
+ 236 010c 08E1     		b	.L1
+ 237              	.LVL17:
+ 238              	.L39:
+ 217:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 239              		.loc 1 217 9 is_stmt 1 view .LVU71
+ 240 010e 0598     		ldr	r0, [sp, #20]
+ 241              	.LVL18:
+ 217:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 242              		.loc 1 217 9 is_stmt 0 view .LVU72
+ 243 0110 FFF7FEFF 		bl	_tx_mutex_put
+ 244              	.LVL19:
+ 220:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 245              		.loc 1 220 9 is_stmt 1 view .LVU73
+ 220:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 246              		.loc 1 220 15 is_stmt 0 view .LVU74
+ 247 0114 0A27     		movs	r7, #10
+ 248 0116 03E1     		b	.L1
+ 249              	.LVL20:
+ 250              	.L40:
+ 232:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 251              		.loc 1 232 9 is_stmt 1 view .LVU75
+ 252 0118 0598     		ldr	r0, [sp, #20]
+ARM GAS  /tmp/cccASC4E.s 			page 11
+
+
+ 253              	.LVL21:
+ 232:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 254              		.loc 1 232 9 is_stmt 0 view .LVU76
+ 255 011a FFF7FEFF 		bl	_tx_mutex_put
+ 256              	.LVL22:
+ 235:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 257              		.loc 1 235 9 is_stmt 1 view .LVU77
+ 235:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 258              		.loc 1 235 32 is_stmt 0 view .LVU78
+ 259 011e 0022     		movs	r2, #0
+ 260 0120 0023     		movs	r3, #0
+ 261 0122 1899     		ldr	r1, [sp, #96]
+ 262 0124 C1E90023 		strd	r2, [r1]
+ 238:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 263              		.loc 1 238 9 is_stmt 1 view .LVU79
+ 238:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 264              		.loc 1 238 15 is_stmt 0 view .LVU80
+ 265 0128 0A27     		movs	r7, #10
+ 266 012a F9E0     		b	.L1
+ 267              	.LVL23:
+ 268              	.L8:
+ 251:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 269              		.loc 1 251 9 is_stmt 1 view .LVU81
+ 270 012c 0598     		ldr	r0, [sp, #20]
+ 271 012e FFF7FEFF 		bl	_tx_mutex_put
+ 272              	.LVL24:
+ 255:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 273              		.loc 1 255 9 view .LVU82
+ 255:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 274              		.loc 1 255 15 is_stmt 0 view .LVU83
+ 275 0132 0A27     		movs	r7, #10
+ 276 0134 F4E0     		b	.L1
+ 277              	.LVL25:
+ 278              	.L42:
+ 307:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 308:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         while (FAT_index < (media_ptr -> fx_media_total_clusters + FX_FAT_ENTRY_START))
+ 309:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 310:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 311:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Determine if enough consecutive FAT entries are available.  */
+ 312:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             i =  0;
+ 313:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 314:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 315:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 316:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 317:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 do
+ 318:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 319:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 320:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Get cluster state.  */
+ 321:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     status = _fx_utility_exFAT_cluster_state_get(media_ptr, (FAT_index + i), &clust
+ 322:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 323:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Check for a successful status.  */
+ 324:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (status != FX_SUCCESS)
+ 325:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 326:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 327:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 328:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 329:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ARM GAS  /tmp/cccASC4E.s 			page 12
+
+
+ 330:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 331:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Release media protection.  */
+ 332:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_UNPROTECT
+ 333:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 334:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Return the error status.  */
+ 335:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         return(status);
+ 336:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 337:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 338:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Determine if the entry is free.  */
+ 339:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (cluster_state == FX_EXFAT_BITMAP_CLUSTER_OCCUPIED)
+ 340:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 341:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         break;
+ 342:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 343:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 344:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Otherwise, increment the consecutive FAT indices.  */
+ 345:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     i++;
+ 346:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 } while ((i < clusters) && ((FAT_index + i) < media_ptr -> fx_media_total_clusters 
+ 347:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 348:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             else
+ 349:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 350:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 351:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 352:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 do
+ 353:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 354:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 355:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Read a FAT entry.  */
+ 356:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     status =  _fx_utility_FAT_entry_read(media_ptr, (FAT_index + i), &FAT_value);
+ 357:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 358:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Check for a successful status.  */
+ 359:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (status != FX_SUCCESS)
+ 360:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 361:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 362:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 363:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 364:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 365:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 366:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Release media protection.  */
+ 367:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_UNPROTECT
+ 279              		.loc 1 367 25 view .LVU84
+ 280 0136 0746     		mov	r7, r0
+ 281              	.LVL26:
+ 282              		.loc 1 367 25 is_stmt 1 view .LVU85
+ 283 0138 0598     		ldr	r0, [sp, #20]
+ 284              	.LVL27:
+ 285              		.loc 1 367 25 is_stmt 0 view .LVU86
+ 286 013a FFF7FEFF 		bl	_tx_mutex_put
+ 287              	.LVL28:
+ 368:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 369:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Return the error status.  */
+ 370:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         return(status);
+ 288              		.loc 1 370 25 is_stmt 1 view .LVU87
+ 289              		.loc 1 370 31 is_stmt 0 view .LVU88
+ 290 013e EFE0     		b	.L1
+ 291              	.LVL29:
+ 292              	.L11:
+ 371:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 372:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ARM GAS  /tmp/cccASC4E.s 			page 13
+
+
+ 373:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Determine if the entry is free.  */
+ 374:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (FAT_value != FX_FREE_CLUSTER)
+ 375:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 376:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         break;
+ 377:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 378:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 379:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Otherwise, increment the consecutive FAT indices.  */
+ 380:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     i++;
+ 381:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 } while ((i < clusters) && ((FAT_index + i) < media_ptr -> fx_media_total_clusters 
+ 382:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 383:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 384:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 385:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 386:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Determine if a new maximum number of clusters has been found.  */
+ 387:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (i > maximum_clusters)
+ 293              		.loc 1 387 13 is_stmt 1 view .LVU89
+ 294              		.loc 1 387 16 is_stmt 0 view .LVU90
+ 295 0140 A742     		cmp	r7, r4
+ 296 0142 01D9     		bls	.L13
+ 388:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 389:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 390:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Yes, remember the maximum number of clusters and the starting
+ 391:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                    cluster.  */
+ 392:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 maximum_clusters =      i;
+ 297              		.loc 1 392 34 view .LVU91
+ 298 0144 3C46     		mov	r4, r7
+ 299              	.LVL30:
+ 393:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 start_FAT_index =       FAT_index;
+ 300              		.loc 1 393 33 view .LVU92
+ 301 0146 0795     		str	r5, [sp, #28]
+ 302              	.LVL31:
+ 303              	.L13:
+ 394:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 395:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 396:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Determine if we found enough FAT entries.  */
+ 397:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (i >= clusters)
+ 304              		.loc 1 397 13 is_stmt 1 view .LVU93
+ 305              		.loc 1 397 16 is_stmt 0 view .LVU94
+ 306 0148 4F45     		cmp	r7, r9
+ 307 014a 37D2     		bcs	.L31
+ 398:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 399:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 400:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Yes, we have found enough FAT entries - set the found
+ 401:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                    flag and get out of this loop.  */
+ 402:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 found =  FX_TRUE;
+ 403:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 break;
+ 404:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 405:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             else
+ 406:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 407:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 408:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 409:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 410:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 411:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Find free cluster from exFAT media.  */
+ 412:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     status = _fx_utility_exFAT_bitmap_free_cluster_find(media_ptr,
+ 413:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                                                         FAT_index + i + 1,
+ 414:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                                                         &FAT_value);
+ARM GAS  /tmp/cccASC4E.s 			page 14
+
+
+ 415:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (status != FX_SUCCESS)
+ 416:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 417:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 418:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 419:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 420:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 421:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 422:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Release media protection.  */
+ 423:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_UNPROTECT
+ 424:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 425:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Return the error status.  */
+ 426:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         return(status);
+ 427:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 428:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 429:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (FAT_value < FAT_index + i + 1)
+ 430:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 431:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 432:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* If we wrapped.  */
+ 433:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FAT_index = media_ptr -> fx_media_total_clusters  + FX_FAT_ENTRY_START;
+ 434:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 435:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     else
+ 436:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 437:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FAT_index = FAT_value;
+ 438:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 439:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 440:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 else
+ 441:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 442:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 443:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 444:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Position to the next possibly free FAT entry.  */
+ 445:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FAT_index =  FAT_index + i + 1;
+ 308              		.loc 1 445 21 is_stmt 1 view .LVU95
+ 309              		.loc 1 445 44 is_stmt 0 view .LVU96
+ 310 014c 2F44     		add	r7, r7, r5
+ 311              	.LVL32:
+ 312              		.loc 1 445 31 view .LVU97
+ 313 014e 7D1C     		adds	r5, r7, #1
+ 314              	.LVL33:
+ 315              	.L9:
+ 308:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 316              		.loc 1 308 26 is_stmt 1 view .LVU98
+ 308:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 317              		.loc 1 308 39 is_stmt 0 view .LVU99
+ 318 0150 D8F84030 		ldr	r3, [r8, #64]
+ 308:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 319              		.loc 1 308 66 view .LVU100
+ 320 0154 0233     		adds	r3, r3, #2
+ 308:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 321              		.loc 1 308 26 view .LVU101
+ 322 0156 AB42     		cmp	r3, r5
+ 323 0158 14D9     		bls	.L41
+ 312:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 324              		.loc 1 312 15 view .LVU102
+ 325 015a 5746     		mov	r7, r10
+ 326              	.L12:
+ 327              	.LVL34:
+ 352:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ARM GAS  /tmp/cccASC4E.s 			page 15
+
+
+ 328              		.loc 1 352 17 is_stmt 1 view .LVU103
+ 356:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 329              		.loc 1 356 21 view .LVU104
+ 356:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 330              		.loc 1 356 31 is_stmt 0 view .LVU105
+ 331 015c 0DAA     		add	r2, sp, #52
+ 332 015e 7919     		adds	r1, r7, r5
+ 333 0160 4046     		mov	r0, r8
+ 334 0162 FFF7FEFF 		bl	_fx_utility_FAT_entry_read
+ 335              	.LVL35:
+ 359:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 336              		.loc 1 359 21 is_stmt 1 view .LVU106
+ 359:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 337              		.loc 1 359 24 is_stmt 0 view .LVU107
+ 338 0166 0028     		cmp	r0, #0
+ 339 0168 E5D1     		bne	.L42
+ 374:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 340              		.loc 1 374 21 is_stmt 1 view .LVU108
+ 374:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 341              		.loc 1 374 35 is_stmt 0 view .LVU109
+ 342 016a 0D9B     		ldr	r3, [sp, #52]
+ 374:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 343              		.loc 1 374 24 view .LVU110
+ 344 016c 002B     		cmp	r3, #0
+ 345 016e E7D1     		bne	.L11
+ 380:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 } while ((i < clusters) && ((FAT_index + i) < media_ptr -> fx_media_total_clusters 
+ 346              		.loc 1 380 21 is_stmt 1 view .LVU111
+ 380:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 } while ((i < clusters) && ((FAT_index + i) < media_ptr -> fx_media_total_clusters 
+ 347              		.loc 1 380 22 is_stmt 0 view .LVU112
+ 348 0170 0137     		adds	r7, r7, #1
+ 349              	.LVL36:
+ 381:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 350              		.loc 1 381 41 is_stmt 1 view .LVU113
+ 351 0172 B945     		cmp	r9, r7
+ 352 0174 E4D9     		bls	.L11
+ 381:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 353              		.loc 1 381 56 is_stmt 0 discriminator 1 view .LVU114
+ 354 0176 EA19     		adds	r2, r5, r7
+ 381:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 355              		.loc 1 381 73 discriminator 1 view .LVU115
+ 356 0178 D8F84030 		ldr	r3, [r8, #64]
+ 381:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 357              		.loc 1 381 100 discriminator 1 view .LVU116
+ 358 017c 0233     		adds	r3, r3, #2
+ 381:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 359              		.loc 1 381 41 discriminator 1 view .LVU117
+ 360 017e 9A42     		cmp	r2, r3
+ 361 0180 ECD3     		bcc	.L12
+ 362 0182 DDE7     		b	.L11
+ 363              	.LVL37:
+ 364              	.L41:
+ 259:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 365              		.loc 1 259 11 view .LVU118
+ 366 0184 A146     		mov	r9, r4
+ 367              	.LVL38:
+ 259:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 368              		.loc 1 259 11 view .LVU119
+ARM GAS  /tmp/cccASC4E.s 			page 16
+
+
+ 369 0186 089C     		ldr	r4, [sp, #32]
+ 370              	.LVL39:
+ 259:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 371              		.loc 1 259 11 view .LVU120
+ 372 0188 099B     		ldr	r3, [sp, #36]
+ 373 018a 5246     		mov	r2, r10
+ 374              	.L14:
+ 375              	.LVL40:
+ 446:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 447:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 448:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 449:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 450:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 451:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 452:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Determine if the total request could not be satisfied, but a partial allocation
+ 453:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****            could be satisfied.  */
+ 454:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (maximum_clusters)
+ 376              		.loc 1 454 9 is_stmt 1 view .LVU121
+ 377              		.loc 1 454 12 is_stmt 0 view .LVU122
+ 378 018c 4946     		mov	r1, r9
+ 379 018e 11B9     		cbnz	r1, .L15
+ 380              	.LVL41:
+ 206:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     
+ 381              		.loc 1 206 14 view .LVU123
+ 382 0190 9946     		mov	r9, r3
+ 383              		.loc 1 454 12 view .LVU124
+ 384 0192 0795     		str	r5, [sp, #28]
+ 385              	.LVL42:
+ 386              		.loc 1 454 12 view .LVU125
+ 387 0194 1446     		mov	r4, r2
+ 388              	.L15:
+ 389              	.LVL43:
+ 455:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 456:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 457:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Yes, there was at least one cluster.  Prepare to return this
+ 458:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                to the caller.  */
+ 459:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             FAT_index =  start_FAT_index;
+ 460:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             clusters =   maximum_clusters;
+ 461:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             found =      FX_TRUE;
+ 462:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 463:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 464:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 465:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif
+ 466:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 467:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Determine if we found enough consecutive clusters to satisfy the
+ 468:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****        request.  */
+ 469:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (found)
+ 390              		.loc 1 469 5 is_stmt 1 view .LVU126
+ 391              		.loc 1 469 8 is_stmt 0 view .LVU127
+ 392 0196 002C     		cmp	r4, #0
+ 393 0198 00F0B780 		beq	.L43
+ 394 019c 079D     		ldr	r5, [sp, #28]
+ 395 019e 4C46     		mov	r4, r9
+ 396              	.LVL44:
+ 397              	.L16:
+ 470:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 471:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ARM GAS  /tmp/cccASC4E.s 			page 17
+
+
+ 472:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 473:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 474:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 475:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 476:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Record the FAT chain being applied to the file system. This information aids
+ 477:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                recovery effort if fault happens. */
+ 478:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             media_ptr -> fx_media_fault_tolerant_state |= FX_FAULT_TOLERANT_STATE_SET_FAT_CHAIN;
+ 479:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             _fx_fault_tolerant_set_FAT_chain(media_ptr, FX_FALSE, file_ptr -> fx_file_last_physical
+ 480:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                              FAT_index, media_ptr -> fx_media_fat_last, media_ptr -
+ 481:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 482:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 483:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 484:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 485:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat & 1)
+ 486:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 487:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if ((file_ptr -> fx_file_total_clusters) &&
+ 488:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (FAT_index != file_ptr -> fx_file_last_physical_cluster + 1))
+ 489:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 490:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 491:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Clusters are not consecutive.  */
+ 492:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat &= (CHAR)0xfe; /* Set 0bit 
+ 493:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 494:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Rebuild FAT.  */
+ 495:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FAT_value = file_ptr -> fx_file_dir_entry.fx_dir_entry_cluster +
+ 496:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                             file_ptr -> fx_file_total_clusters - 1; /* Last cluster */
+ 497:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 498:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 for (i = file_ptr -> fx_file_dir_entry.fx_dir_entry_cluster; i < FAT_value; ++i)
+ 499:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 500:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     status = _fx_utility_FAT_entry_write(media_ptr, i, i + 1);
+ 501:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     if (status != FX_SUCCESS)
+ 502:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     {
+ 503:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 504:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 505:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 506:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 507:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 508:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Release media protection.  */
+ 509:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         FX_UNPROTECT
+ 510:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 511:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         /* Return the bad status.  */
+ 512:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         return(status);
+ 513:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     }
+ 514:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 515:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 516:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Close chain.  */
+ 517:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 status = _fx_utility_FAT_entry_write(media_ptr, FAT_value, media_ptr -> fx_media_fa
+ 518:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (status != FX_SUCCESS)
+ 519:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 520:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 521:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 522:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 523:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 524:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 525:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Release media protection.  */
+ 526:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_UNPROTECT
+ 527:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 528:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Return the bad status.  */
+ARM GAS  /tmp/cccASC4E.s 			page 18
+
+
+ 529:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     return(status);
+ 530:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 531:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 532:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 533:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 534:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 535:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 536:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Clear the Fault Tolerant Set FAT Chain flag. */
+ 537:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     media_ptr -> fx_media_fault_tolerant_state &= (UCHAR)(~FX_FAULT_TOLERANT_STATE_
+ 538:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 539:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 540:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 541:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Update stream.  */
+ 542:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 status = _fx_directory_exFAT_entry_write(
+ 543:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                         media_ptr, &(file_ptr -> fx_file_dir_entry), UPDATE_STREAM);
+ 544:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 545:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (status != FX_SUCCESS)
+ 546:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 547:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 548:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 549:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 550:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 551:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 552:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Release media protection.  */
+ 553:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_UNPROTECT
+ 554:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 555:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Return the bad status.  */
+ 556:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     return(status);
+ 557:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 558:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 559:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 560:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 561:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 562:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 563:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Set undo phase. */
+ 564:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     media_ptr -> fx_media_fault_tolerant_state |= FX_FAULT_TOLERANT_STATE_SET_FAT_C
+ 565:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 566:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 567:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 568:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 569:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 570:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 571:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Update the link pointers in the new clusters.  */
+ 572:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         for (i = 0; i < (clusters - 1); i++)
+ 398              		.loc 1 572 23 is_stmt 1 discriminator 1 view .LVU128
+ 399              		.loc 1 572 35 is_stmt 0 discriminator 1 view .LVU129
+ 400 01a0 631E     		subs	r3, r4, #1
+ 401              		.loc 1 572 23 discriminator 1 view .LVU130
+ 402 01a2 5345     		cmp	r3, r10
+ 403 01a4 13D9     		bls	.L44
+ 573:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 574:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 575:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (!(file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat & 1)
+ 576:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 577:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 || (media_ptr -> fx_media_fault_tolerant_enabled == FX_TRUE)
+ 578:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 579:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                )
+ARM GAS  /tmp/cccASC4E.s 			page 19
+
+
+ 580:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 581:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 582:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 583:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Update the cluster links.  Since the allocation is
+ 584:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                    sequential, we just have to link each FAT entry to the
+ 585:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                    next one.  */
+ 586:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 status =  _fx_utility_FAT_entry_write(media_ptr, FAT_index + i, FAT_index + i + 1);
+ 404              		.loc 1 586 17 is_stmt 1 view .LVU131
+ 405              		.loc 1 586 27 is_stmt 0 view .LVU132
+ 406 01a6 0AEB0501 		add	r1, r10, r5
+ 407 01aa 4A1C     		adds	r2, r1, #1
+ 408 01ac 4046     		mov	r0, r8
+ 409 01ae FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 410              	.LVL45:
+ 587:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 588:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Check for a bad status.  */
+ 589:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (status != FX_SUCCESS)
+ 411              		.loc 1 589 17 is_stmt 1 view .LVU133
+ 412              		.loc 1 589 20 is_stmt 0 view .LVU134
+ 413 01b2 0746     		mov	r7, r0
+ 414 01b4 38B9     		cbnz	r0, .L45
+ 572:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 415              		.loc 1 572 42 is_stmt 1 discriminator 2 view .LVU135
+ 416 01b6 0AF1010A 		add	r10, r10, #1
+ 417              	.LVL46:
+ 572:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 418              		.loc 1 572 42 is_stmt 0 discriminator 2 view .LVU136
+ 419 01ba F1E7     		b	.L16
+ 420              	.LVL47:
+ 421              	.L31:
+ 402:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 break;
+ 422              		.loc 1 402 23 view .LVU137
+ 423 01bc A146     		mov	r9, r4
+ 424              	.LVL48:
+ 402:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 break;
+ 425              		.loc 1 402 23 view .LVU138
+ 426 01be 089C     		ldr	r4, [sp, #32]
+ 427              	.LVL49:
+ 402:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 break;
+ 428              		.loc 1 402 23 view .LVU139
+ 429 01c0 099B     		ldr	r3, [sp, #36]
+ 430 01c2 2246     		mov	r2, r4
+ 431 01c4 E2E7     		b	.L14
+ 432              	.LVL50:
+ 433              	.L45:
+ 590:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 591:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 592:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 593:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 594:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 595:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 596:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Release media protection.  */
+ 597:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_UNPROTECT
+ 434              		.loc 1 597 21 is_stmt 1 view .LVU140
+ 435 01c6 0598     		ldr	r0, [sp, #20]
+ 436              	.LVL51:
+ 437              		.loc 1 597 21 is_stmt 0 view .LVU141
+ARM GAS  /tmp/cccASC4E.s 			page 20
+
+
+ 438 01c8 FFF7FEFF 		bl	_tx_mutex_put
+ 439              	.LVL52:
+ 598:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 599:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Return the error status.  */
+ 600:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     return(status);
+ 440              		.loc 1 600 21 is_stmt 1 view .LVU142
+ 441              		.loc 1 600 27 is_stmt 0 view .LVU143
+ 442 01cc A8E0     		b	.L1
+ 443              	.LVL53:
+ 444              	.L44:
+ 601:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 602:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 603:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 604:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 605:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 606:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 607:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 608:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Mark the cluster as used.  */
+ 609:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 status = _fx_utility_exFAT_cluster_state_set(media_ptr, FAT_index + i, FX_EXFAT_BIT
+ 610:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 611:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Check for a bad status.  */
+ 612:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (status != FX_SUCCESS)
+ 613:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 614:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 615:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 616:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 617:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 618:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 619:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Release media protection.  */
+ 620:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_UNPROTECT
+ 621:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 622:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Return the error status.  */
+ 623:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     return(status);
+ 624:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 625:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 626:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 627:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 628:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 629:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 630:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (!(file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat & 1))
+ 631:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 632:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 633:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 634:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Now place an EOF in the last cluster entry.  */
+ 635:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             status =  _fx_utility_FAT_entry_write(media_ptr, FAT_index + clusters - 1, media_ptr ->
+ 445              		.loc 1 635 13 is_stmt 1 view .LVU144
+ 446              		.loc 1 635 72 is_stmt 0 view .LVU145
+ 447 01ce 079B     		ldr	r3, [sp, #28]
+ 448 01d0 4A46     		mov	r2, r9
+ 449 01d2 9C18     		adds	r4, r3, r2
+ 450              	.LVL54:
+ 451              		.loc 1 635 23 view .LVU146
+ 452 01d4 013C     		subs	r4, r4, #1
+ 453 01d6 08F50053 		add	r3, r8, #8192
+ 454 01da D3F8AC24 		ldr	r2, [r3, #1196]
+ 455 01de 2146     		mov	r1, r4
+ 456 01e0 4046     		mov	r0, r8
+ARM GAS  /tmp/cccASC4E.s 			page 21
+
+
+ 457 01e2 FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 458              	.LVL55:
+ 636:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 637:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Check for a bad status.  */
+ 638:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (status != FX_SUCCESS)
+ 459              		.loc 1 638 13 is_stmt 1 view .LVU147
+ 460              		.loc 1 638 16 is_stmt 0 view .LVU148
+ 461 01e6 0746     		mov	r7, r0
+ 462 01e8 0028     		cmp	r0, #0
+ 463 01ea 57D1     		bne	.L46
+ 639:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 640:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 641:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 642:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 643:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 644:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 645:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Release media protection.  */
+ 646:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FX_UNPROTECT
+ 647:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 648:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Return the error status.  */
+ 649:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 return(status);
+ 650:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 651:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 652:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 653:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 654:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 655:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 656:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 657:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Mark the cluster as used.  */
+ 658:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             status = _fx_utility_exFAT_cluster_state_set(media_ptr, FAT_index + clusters - 1, FX_EX
+ 659:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 660:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Check for a bad status.  */
+ 661:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (status != FX_SUCCESS)
+ 662:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 663:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 664:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 665:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 666:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 667:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 668:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Release media protection.  */
+ 669:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 FX_UNPROTECT
+ 670:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 671:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Return the error status.  */
+ 672:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 return(status);
+ 673:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 674:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 675:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 676:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 677:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_FAULT_TOLERANT
+ 678:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 679:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Flush the cached individual FAT entries */
+ 680:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         _fx_utility_FAT_flush(media_ptr);
+ 681:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 682:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 683:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 684:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             _fx_utility_exFAT_bitmap_flush(media_ptr);
+ 685:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ARM GAS  /tmp/cccASC4E.s 			page 22
+
+
+ 686:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 687:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif
+ 688:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 689:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Actually link up the new clusters to the file.  */
+ 690:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 691:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Determine if there are already clusters allocated for this file.  */
+ 692:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (file_ptr -> fx_file_total_clusters)
+ 464              		.loc 1 692 9 is_stmt 1 view .LVU149
+ 465              		.loc 1 692 22 is_stmt 0 view .LVU150
+ 466 01ec 3369     		ldr	r3, [r6, #16]
+ 467              		.loc 1 692 12 view .LVU151
+ 468 01ee 002B     		cmp	r3, #0
+ 469 01f0 5CD1     		bne	.L47
+ 693:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 694:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 695:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 696:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (!(file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat & 1))
+ 697:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 698:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 699:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 700:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Linkup the last cluster.  */
+ 701:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 status =  _fx_utility_FAT_entry_write(media_ptr,
+ 702:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                                       file_ptr -> fx_file_last_physical_cluster, FA
+ 703:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 704:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Check for a bad status.  */
+ 705:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 if (status != FX_SUCCESS)
+ 706:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 707:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 708:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 709:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 710:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 711:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 712:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Release media protection.  */
+ 713:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     FX_UNPROTECT
+ 714:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 715:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     /* Return the error status.  */
+ 716:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     return(status);
+ 717:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 718:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 719:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 720:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 721:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 722:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Determine if we are adding a sector after a write filled the previously
+ 723:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                allocated cluster exactly.  */
+ 724:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if ((file_ptr -> fx_file_current_relative_sector >=
+ 725:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                  (media_ptr -> fx_media_sectors_per_cluster - 1)) &&            
+ 726:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (file_ptr -> fx_file_current_logical_offset >=
+ 727:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     media_ptr -> fx_media_bytes_per_sector))
+ 728:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 729:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 730:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Yes, we need to adjust all of the pertinent file parameters for
+ 731:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                    access into this newly allocated cluster.  */
+ 732:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_physical_cluster =  FAT_index;
+ 733:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_cluster++;
+ 734:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_sector =   0;
+ 735:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_logical_sector =    ((ULONG)media_ptr -> fx_media_data_
+ 736:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     (((ULONG64)(FAT_index - FX_FAT_ENTRY_START)) *
+ARM GAS  /tmp/cccASC4E.s 			page 23
+
+
+ 737:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                      ((ULONG)media_ptr -> fx_media_sectors_per_cluster));
+ 738:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_logical_offset =    0;
+ 739:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 740:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 741:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         else
+ 742:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 743:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 744:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* These new clusters are also the first!  Setup the initial
+ 745:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                file parameters.  */
+ 746:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_first_physical_cluster =    FAT_index;
+ 470              		.loc 1 746 13 is_stmt 1 view .LVU152
+ 471              		.loc 1 746 56 is_stmt 0 view .LVU153
+ 472 01f2 079D     		ldr	r5, [sp, #28]
+ 473              	.LVL56:
+ 474              		.loc 1 746 56 view .LVU154
+ 475 01f4 7561     		str	r5, [r6, #20]
+ 747:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_physical_cluster =  file_ptr -> fx_file_first_physical_clus
+ 476              		.loc 1 747 13 is_stmt 1 view .LVU155
+ 477              		.loc 1 747 58 is_stmt 0 view .LVU156
+ 478 01f6 3562     		str	r5, [r6, #32]
+ 748:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_relative_cluster =  0;
+ 479              		.loc 1 748 13 is_stmt 1 view .LVU157
+ 480              		.loc 1 748 58 is_stmt 0 view .LVU158
+ 481 01f8 0021     		movs	r1, #0
+ 482 01fa 7163     		str	r1, [r6, #52]
+ 749:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_logical_sector =    ((ULONG)media_ptr -> fx_media_data_sect
+ 483              		.loc 1 749 13 is_stmt 1 view .LVU159
+ 484              		.loc 1 749 79 is_stmt 0 view .LVU160
+ 485 01fc D8F85020 		ldr	r2, [r8, #80]
+ 750:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (((ULONG64)(file_ptr -> fx_file_first_physical_cluster - FX_FAT_ENTRY_START)) *
+ 486              		.loc 1 750 72 view .LVU161
+ 487 0200 A81E     		subs	r0, r5, #2
+ 488              	.LVL57:
+ 751:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                  ((ULONG)media_ptr -> fx_media_sectors_per_cluster));
+ 489              		.loc 1 751 36 view .LVU162
+ 490 0202 D8F85430 		ldr	r3, [r8, #84]
+ 750:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (((ULONG64)(file_ptr -> fx_file_first_physical_cluster - FX_FAT_ENTRY_START)) *
+ 491              		.loc 1 750 95 view .LVU163
+ 492 0206 A0FB0303 		umull	r0, r3, r0, r3
+ 749:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_logical_sector =    ((ULONG)media_ptr -> fx_media_data_sect
+ 493              		.loc 1 749 110 view .LVU164
+ 494 020a 1218     		adds	r2, r2, r0
+ 495 020c 43F10003 		adc	r3, r3, #0
+ 749:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_logical_sector =    ((ULONG)media_ptr -> fx_media_data_sect
+ 496              		.loc 1 749 56 view .LVU165
+ 497 0210 B262     		str	r2, [r6, #40]
+ 498 0212 F362     		str	r3, [r6, #44]
+ 752:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_logical_offset =    0;
+ 499              		.loc 1 752 13 is_stmt 1 view .LVU166
+ 500              		.loc 1 752 56 is_stmt 0 view .LVU167
+ 501 0214 3163     		str	r1, [r6, #48]
+ 753:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_file_offset =       0;
+ 502              		.loc 1 753 13 is_stmt 1 view .LVU168
+ 503              		.loc 1 753 53 is_stmt 0 view .LVU169
+ 504 0216 0022     		movs	r2, #0
+ 505 0218 0023     		movs	r3, #0
+ 506 021a C6E91023 		strd	r2, [r6, #64]
+ARM GAS  /tmp/cccASC4E.s 			page 24
+
+
+ 754:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 755:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Setup the consecutive clusters at the beginning of the file.  */
+ 756:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_consecutive_cluster =       clusters;
+ 507              		.loc 1 756 13 is_stmt 1 view .LVU170
+ 508              		.loc 1 756 53 is_stmt 0 view .LVU171
+ 509 021e C6F81890 		str	r9, [r6, #24]
+ 757:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 758:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Update the first cluster in the directory entry.  */
+ 759:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_dir_entry.fx_dir_entry_cluster =  FAT_index;
+ 510              		.loc 1 759 13 is_stmt 1 view .LVU172
+ 511              		.loc 1 759 64 is_stmt 0 view .LVU173
+ 512 0222 C6F89C50 		str	r5, [r6, #156]
+ 513              	.L23:
+ 760:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 761:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 762:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 763:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 764:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 765:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 /* Clear undo phase. */
+ 766:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 media_ptr -> fx_media_fault_tolerant_state &= (UCHAR)(~FX_FAULT_TOLERANT_STATE_SET_
+ 767:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 768:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 769:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 770:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 771:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Remember the last physical cluster.  */
+ 772:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         file_ptr -> fx_file_last_physical_cluster =     FAT_index + clusters - 1;
+ 514              		.loc 1 772 9 is_stmt 1 view .LVU174
+ 515              		.loc 1 772 51 is_stmt 0 view .LVU175
+ 516 0226 F461     		str	r4, [r6, #28]
+ 773:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 774:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Update the available size.  */
+ 775:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 776:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (file_ptr -> fx_file_current_available_size > (file_ptr -> fx_file_current_available_siz
+ 777:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 778:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* 64-bit wrap around condition is present.  Just set the available file size to all on
+ 779:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                the maximum file size.  */
+ 780:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_available_size =  0xFFFFFFFFFFFFFFFFULL;
+ 781:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 782:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 783:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Check for wrap-around when updating the available size.  */
+ 784:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if ((media_ptr -> fx_media_FAT_type != FX_exFAT) &&
+ 785:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             (file_ptr -> fx_file_current_available_size + (bytes_per_cluster * clusters) > 0xFFFFFF
+ 786:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 787:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 788:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* 32-bit wrap around condition is present.  Just set the available file size to all on
+ 789:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                the maximum file size.  */
+ 790:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_available_size =  0xFFFFFFFFUL;
+ 791:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 792:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         else
+ 793:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 794:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 795:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 796:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Normal condition, update the available size.  */
+ 797:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_available_size =
+ 517              		.loc 1 797 13 is_stmt 1 view .LVU176
+ 798:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_available_size + bytes_per_cluster * clusters;
+ 518              		.loc 1 798 26 is_stmt 0 view .LVU177
+ARM GAS  /tmp/cccASC4E.s 			page 25
+
+
+ 519 0228 326D     		ldr	r2, [r6, #80]
+ 520 022a 716D     		ldr	r1, [r6, #84]
+ 521              		.loc 1 798 80 view .LVU178
+ 522 022c 4846     		mov	r0, r9
+ 523 022e 0BFB09FB 		mul	fp, fp, r9
+ 524              	.LVL58:
+ 525              		.loc 1 798 80 view .LVU179
+ 526 0232 0023     		movs	r3, #0
+ 527              		.loc 1 798 60 view .LVU180
+ 528 0234 12EB0B02 		adds	r2, r2, fp
+ 529 0238 41F10001 		adc	r1, r1, #0
+ 797:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_available_size + bytes_per_cluster * clusters;
+ 530              		.loc 1 797 56 view .LVU181
+ 531 023c 3265     		str	r2, [r6, #80]
+ 532 023e 7165     		str	r1, [r6, #84]
+ 799:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 800:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 801:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 802:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (file_ptr -> fx_file_dir_entry.fx_dir_entry_dont_use_fat & 1)
+ 803:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 804:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_consecutive_cluster += clusters;
+ 805:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 806:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 807:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 808:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Increment the total clusters for this file.  */
+ 809:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         file_ptr -> fx_file_total_clusters =
+ 533              		.loc 1 809 9 is_stmt 1 view .LVU182
+ 810:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_total_clusters + clusters;
+ 534              		.loc 1 810 22 is_stmt 0 view .LVU183
+ 535 0240 3269     		ldr	r2, [r6, #16]
+ 536              		.loc 1 810 48 view .LVU184
+ 537 0242 4A44     		add	r2, r2, r9
+ 809:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_total_clusters + clusters;
+ 538              		.loc 1 809 44 view .LVU185
+ 539 0244 3261     		str	r2, [r6, #16]
+ 811:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 812:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Decrease the available clusters on the media.  */
+ 813:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         media_ptr -> fx_media_available_clusters =
+ 540              		.loc 1 813 9 is_stmt 1 view .LVU186
+ 814:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             media_ptr -> fx_media_available_clusters - clusters;
+ 541              		.loc 1 814 23 is_stmt 0 view .LVU187
+ 542 0246 D8F87C20 		ldr	r2, [r8, #124]
+ 543              		.loc 1 814 54 view .LVU188
+ 544 024a 121A     		subs	r2, r2, r0
+ 813:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             media_ptr -> fx_media_available_clusters - clusters;
+ 545              		.loc 1 813 50 view .LVU189
+ 546 024c C8F87C20 		str	r2, [r8, #124]
+ 815:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 816:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return the actual size allocated.  */
+ 817:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         *actual_size_allocated =  ((ULONG64)clusters) * bytes_per_cluster;
+ 547              		.loc 1 817 9 is_stmt 1 view .LVU190
+ 548              		.loc 1 817 55 is_stmt 0 view .LVU191
+ 549 0250 069A     		ldr	r2, [sp, #24]
+ 550 0252 A2FB0912 		umull	r1, r2, r2, r9
+ 551              		.loc 1 817 32 view .LVU192
+ 552 0256 1898     		ldr	r0, [sp, #96]
+ 553 0258 0160     		str	r1, [r0]
+ARM GAS  /tmp/cccASC4E.s 			page 26
+
+
+ 554 025a 4260     		str	r2, [r0, #4]
+ 818:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 819:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #if defined(FX_UPDATE_FILE_SIZE_ON_ALLOCATE) || defined(FX_ENABLE_FAULT_TOLERANT)
+ 820:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 821:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Set the file size the current size plus what what was added.  */
+ 822:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (size < *actual_size_allocated)
+ 823:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 824:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_file_size +=  size;
+ 825:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 826:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         else
+ 827:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 828:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             file_ptr -> fx_file_current_file_size +=  *actual_size_allocated;
+ 829:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 830:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 831:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Copy the new file size into the directory entry.  */
+ 832:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         file_ptr -> fx_file_dir_entry.fx_dir_entry_file_size =  file_ptr -> fx_file_current_file_si
+ 833:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif
+ 834:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 835:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Update the trace event with the bytes allocated.  */
+ 836:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_FILE_BEST_EFFORT_ALLOCATE, 0, 
+ 555              		.loc 1 836 9 is_stmt 1 view .LVU193
+ 556 025c 0293     		str	r3, [sp, #8]
+ 557 025e 0191     		str	r1, [sp, #4]
+ 558 0260 0093     		str	r3, [sp]
+ 559 0262 F222     		movs	r2, #242
+ 560 0264 0B99     		ldr	r1, [sp, #44]
+ 561 0266 0C98     		ldr	r0, [sp, #48]
+ 562 0268 FFF7FEFF 		bl	_fx_trace_event_update
+ 563              	.LVL59:
+ 564              		.loc 1 836 129 discriminator 1 view .LVU194
+ 837:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 838:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Write the directory entry to the media.  */
+ 839:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 840:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (media_ptr -> fx_media_FAT_type == FX_exFAT)
+ 841:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 842:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             status = _fx_directory_exFAT_entry_write(
+ 843:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     media_ptr, &(file_ptr -> fx_file_dir_entry), UPDATE_STREAM);
+ 844:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 845:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         else
+ 846:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 847:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 848:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             status = _fx_directory_entry_write(media_ptr, &(file_ptr -> fx_file_dir_entry));
+ 565              		.loc 1 848 13 view .LVU195
+ 566              		.loc 1 848 22 is_stmt 0 view .LVU196
+ 567 026c 06F16801 		add	r1, r6, #104
+ 568 0270 4046     		mov	r0, r8
+ 569 0272 FFF7FEFF 		bl	_fx_directory_entry_write
+ 570              	.LVL60:
+ 849:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_EXFAT
+ 850:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 851:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_EXFAT */
+ 852:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 853:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Check for a good status.  */
+ 854:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         if (status != FX_SUCCESS)
+ 571              		.loc 1 854 9 is_stmt 1 view .LVU197
+ 572              		.loc 1 854 12 is_stmt 0 view .LVU198
+ 573 0276 0746     		mov	r7, r0
+ARM GAS  /tmp/cccASC4E.s 			page 27
+
+
+ 574 0278 0028     		cmp	r0, #0
+ 575 027a 42D1     		bne	.L48
+ 855:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         {
+ 856:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 857:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 858:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 859:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 860:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 861:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Release media protection.  */
+ 862:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             FX_UNPROTECT
+ 863:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 864:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             /* Return the error status.  */
+ 865:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             return(status);
+ 866:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 867:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 868:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     else
+ 869:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 870:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 871:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 872:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 873:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 874:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 875:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 876:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 877:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 878:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return a size allocated of zero, since no clusters were available.  */
+ 879:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         *actual_size_allocated =  0;
+ 880:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 881:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Not enough contiguous space on the media.  Return error status.  */
+ 882:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(FX_NO_MORE_SPACE);
+ 883:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 884:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 885:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_FAULT_TOLERANT
+ 886:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 887:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Flush the cached individual FAT entries */
+ 888:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     _fx_utility_FAT_flush(media_ptr);
+ 889:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif
+ 890:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 891:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Flush the internal logical sector cache.  */
+ 892:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     status =  _fx_utility_logical_sector_flush(media_ptr, ((ULONG64) 1), (ULONG64) (media_ptr -> fx
+ 576              		.loc 1 892 5 is_stmt 1 view .LVU199
+ 577              		.loc 1 892 95 is_stmt 0 view .LVU200
+ 578 027c D8F85820 		ldr	r2, [r8, #88]
+ 579              		.loc 1 892 15 view .LVU201
+ 580 0280 0023     		movs	r3, #0
+ 581 0282 0293     		str	r3, [sp, #8]
+ 582 0284 0092     		str	r2, [sp]
+ 583 0286 0193     		str	r3, [sp, #4]
+ 584 0288 0122     		movs	r2, #1
+ 585 028a 0023     		movs	r3, #0
+ 586 028c 4046     		mov	r0, r8
+ 587              	.LVL61:
+ 588              		.loc 1 892 15 view .LVU202
+ 589 028e FFF7FEFF 		bl	_fx_utility_logical_sector_flush
+ 590              	.LVL62:
+ 591 0292 0746     		mov	r7, r0
+ 592              	.LVL63:
+ARM GAS  /tmp/cccASC4E.s 			page 28
+
+
+ 893:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 894:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 895:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Check for a bad status.  */
+ 896:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     if (status != FX_SUCCESS)
+ 897:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     {
+ 898:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 899:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_FAULT_TOLERANT_TRANSACTION_FAIL(media_ptr);
+ 900:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 901:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Release media protection.  */
+ 902:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         FX_UNPROTECT
+ 903:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 904:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         /* Return the bad status.  */
+ 905:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         return(status);
+ 906:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 907:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 908:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* End transaction. */
+ 909:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     status = _fx_fault_tolerant_transaction_end(media_ptr);
+ 910:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 911:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 912:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Release media protection.  */
+ 913:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     FX_UNPROTECT
+ 593              		.loc 1 913 5 is_stmt 1 view .LVU203
+ 594 0294 0598     		ldr	r0, [sp, #20]
+ 595              	.LVL64:
+ 596              		.loc 1 913 5 is_stmt 0 view .LVU204
+ 597 0296 FFF7FEFF 		bl	_tx_mutex_put
+ 598              	.LVL65:
+ 914:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 915:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     /* Return status to the caller.  */
+ 916:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     return(status);
+ 599              		.loc 1 916 5 is_stmt 1 view .LVU205
+ 600              		.loc 1 916 11 is_stmt 0 view .LVU206
+ 601 029a 41E0     		b	.L1
+ 602              	.LVL66:
+ 603              	.L46:
+ 646:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 604              		.loc 1 646 17 is_stmt 1 view .LVU207
+ 605 029c 0598     		ldr	r0, [sp, #20]
+ 606              	.LVL67:
+ 646:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 607              		.loc 1 646 17 is_stmt 0 view .LVU208
+ 608 029e FFF7FEFF 		bl	_tx_mutex_put
+ 609              	.LVL68:
+ 649:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 610              		.loc 1 649 17 is_stmt 1 view .LVU209
+ 649:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 611              		.loc 1 649 23 is_stmt 0 view .LVU210
+ 612 02a2 3DE0     		b	.L1
+ 613              	.L51:
+ 614              		.align	2
+ 615              	.L50:
+ 616 02a4 454C4946 		.word	1179208773
+ 617 02a8 4944454D 		.word	1296385097
+ 618              	.LVL69:
+ 619              	.L47:
+ 701:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                                       file_ptr -> fx_file_last_physical_cluster, FA
+ 620              		.loc 1 701 17 is_stmt 1 view .LVU211
+ARM GAS  /tmp/cccASC4E.s 			page 29
+
+
+ 701:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                                       file_ptr -> fx_file_last_physical_cluster, FA
+ 621              		.loc 1 701 27 is_stmt 0 view .LVU212
+ 622 02ac 079A     		ldr	r2, [sp, #28]
+ 623 02ae F169     		ldr	r1, [r6, #28]
+ 624 02b0 4046     		mov	r0, r8
+ 625              	.LVL70:
+ 701:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                                                       file_ptr -> fx_file_last_physical_cluster, FA
+ 626              		.loc 1 701 27 view .LVU213
+ 627 02b2 FFF7FEFF 		bl	_fx_utility_FAT_entry_write
+ 628              	.LVL71:
+ 705:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 629              		.loc 1 705 17 is_stmt 1 view .LVU214
+ 705:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 {
+ 630              		.loc 1 705 20 is_stmt 0 view .LVU215
+ 631 02b6 0746     		mov	r7, r0
+ 632 02b8 F8B9     		cbnz	r0, .L49
+ 724:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                  (media_ptr -> fx_media_sectors_per_cluster - 1)) &&            
+ 633              		.loc 1 724 13 is_stmt 1 view .LVU216
+ 724:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                  (media_ptr -> fx_media_sectors_per_cluster - 1)) &&            
+ 634              		.loc 1 724 27 is_stmt 0 view .LVU217
+ 635 02ba B26B     		ldr	r2, [r6, #56]
+ 725:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (file_ptr -> fx_file_current_logical_offset >=
+ 636              		.loc 1 725 29 view .LVU218
+ 637 02bc D8F85430 		ldr	r3, [r8, #84]
+ 725:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (file_ptr -> fx_file_current_logical_offset >=
+ 638              		.loc 1 725 61 view .LVU219
+ 639 02c0 013B     		subs	r3, r3, #1
+ 724:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                  (media_ptr -> fx_media_sectors_per_cluster - 1)) &&            
+ 640              		.loc 1 724 16 view .LVU220
+ 641 02c2 9A42     		cmp	r2, r3
+ 642 02c4 AFD3     		bcc	.L23
+ 726:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     media_ptr -> fx_media_bytes_per_sector))
+ 643              		.loc 1 726 27 view .LVU221
+ 644 02c6 326B     		ldr	r2, [r6, #48]
+ 727:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             {
+ 645              		.loc 1 727 31 view .LVU222
+ 646 02c8 D8F82830 		ldr	r3, [r8, #40]
+ 725:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 (file_ptr -> fx_file_current_logical_offset >=
+ 647              		.loc 1 725 67 view .LVU223
+ 648 02cc 9A42     		cmp	r2, r3
+ 649 02ce AAD3     		bcc	.L23
+ 732:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_cluster++;
+ 650              		.loc 1 732 17 is_stmt 1 view .LVU224
+ 732:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_cluster++;
+ 651              		.loc 1 732 62 is_stmt 0 view .LVU225
+ 652 02d0 0798     		ldr	r0, [sp, #28]
+ 653              	.LVL72:
+ 732:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_cluster++;
+ 654              		.loc 1 732 62 view .LVU226
+ 655 02d2 3062     		str	r0, [r6, #32]
+ 733:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_sector =   0;
+ 656              		.loc 1 733 17 is_stmt 1 view .LVU227
+ 733:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_sector =   0;
+ 657              		.loc 1 733 26 is_stmt 0 view .LVU228
+ 658 02d4 736B     		ldr	r3, [r6, #52]
+ 733:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_relative_sector =   0;
+ 659              		.loc 1 733 61 view .LVU229
+ARM GAS  /tmp/cccASC4E.s 			page 30
+
+
+ 660 02d6 0133     		adds	r3, r3, #1
+ 661 02d8 7363     		str	r3, [r6, #52]
+ 734:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_logical_sector =    ((ULONG)media_ptr -> fx_media_data_
+ 662              		.loc 1 734 17 is_stmt 1 view .LVU230
+ 734:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_logical_sector =    ((ULONG)media_ptr -> fx_media_data_
+ 663              		.loc 1 734 61 is_stmt 0 view .LVU231
+ 664 02da 0021     		movs	r1, #0
+ 665 02dc B163     		str	r1, [r6, #56]
+ 735:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     (((ULONG64)(FAT_index - FX_FAT_ENTRY_START)) *
+ 666              		.loc 1 735 17 is_stmt 1 view .LVU232
+ 735:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     (((ULONG64)(FAT_index - FX_FAT_ENTRY_START)) *
+ 667              		.loc 1 735 83 is_stmt 0 view .LVU233
+ 668 02de D8F85020 		ldr	r2, [r8, #80]
+ 736:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                      ((ULONG)media_ptr -> fx_media_sectors_per_cluster));
+ 669              		.loc 1 736 43 view .LVU234
+ 670 02e2 0238     		subs	r0, r0, #2
+ 737:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 file_ptr -> fx_file_current_logical_offset =    0;
+ 671              		.loc 1 737 40 view .LVU235
+ 672 02e4 D8F85430 		ldr	r3, [r8, #84]
+ 736:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                      ((ULONG)media_ptr -> fx_media_sectors_per_cluster));
+ 673              		.loc 1 736 66 view .LVU236
+ 674 02e8 A0FB0303 		umull	r0, r3, r0, r3
+ 735:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     (((ULONG64)(FAT_index - FX_FAT_ENTRY_START)) *
+ 675              		.loc 1 735 114 view .LVU237
+ 676 02ec 1218     		adds	r2, r2, r0
+ 677 02ee 43F10003 		adc	r3, r3, #0
+ 735:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                     (((ULONG64)(FAT_index - FX_FAT_ENTRY_START)) *
+ 678              		.loc 1 735 60 view .LVU238
+ 679 02f2 B262     		str	r2, [r6, #40]
+ 680 02f4 F362     		str	r3, [r6, #44]
+ 738:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 681              		.loc 1 738 17 is_stmt 1 view .LVU239
+ 738:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****             }
+ 682              		.loc 1 738 60 is_stmt 0 view .LVU240
+ 683 02f6 3163     		str	r1, [r6, #48]
+ 684 02f8 95E7     		b	.L23
+ 685              	.LVL73:
+ 686              	.L49:
+ 713:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 687              		.loc 1 713 21 is_stmt 1 view .LVU241
+ 688 02fa 0598     		ldr	r0, [sp, #20]
+ 689              	.LVL74:
+ 713:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 690              		.loc 1 713 21 is_stmt 0 view .LVU242
+ 691 02fc FFF7FEFF 		bl	_tx_mutex_put
+ 692              	.LVL75:
+ 716:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 693              		.loc 1 716 21 is_stmt 1 view .LVU243
+ 716:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****                 }
+ 694              		.loc 1 716 27 is_stmt 0 view .LVU244
+ 695 0300 0EE0     		b	.L1
+ 696              	.LVL76:
+ 697              	.L48:
+ 862:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 698              		.loc 1 862 13 is_stmt 1 view .LVU245
+ 699 0302 0598     		ldr	r0, [sp, #20]
+ 700              	.LVL77:
+ARM GAS  /tmp/cccASC4E.s 			page 31
+
+
+ 862:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 701              		.loc 1 862 13 is_stmt 0 view .LVU246
+ 702 0304 FFF7FEFF 		bl	_tx_mutex_put
+ 703              	.LVL78:
+ 865:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 704              		.loc 1 865 13 is_stmt 1 view .LVU247
+ 865:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****         }
+ 705              		.loc 1 865 19 is_stmt 0 view .LVU248
+ 706 0308 0AE0     		b	.L1
+ 707              	.LVL79:
+ 708              	.L43:
+ 876:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 709              		.loc 1 876 9 is_stmt 1 view .LVU249
+ 710 030a 0598     		ldr	r0, [sp, #20]
+ 711 030c FFF7FEFF 		bl	_tx_mutex_put
+ 712              	.LVL80:
+ 879:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 713              		.loc 1 879 9 view .LVU250
+ 879:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ 714              		.loc 1 879 32 is_stmt 0 view .LVU251
+ 715 0310 0022     		movs	r2, #0
+ 716 0312 0023     		movs	r3, #0
+ 717 0314 1899     		ldr	r1, [sp, #96]
+ 718 0316 C1E90023 		strd	r2, [r1]
+ 882:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 719              		.loc 1 882 9 is_stmt 1 view .LVU252
+ 882:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 720              		.loc 1 882 15 is_stmt 0 view .LVU253
+ 721 031a 0A27     		movs	r7, #10
+ 722 031c 00E0     		b	.L1
+ 723              	.LVL81:
+ 724              	.L25:
+ 125:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 725              		.loc 1 125 15 view .LVU254
+ 726 031e 0727     		movs	r7, #7
+ 727              	.LVL82:
+ 728              	.L1:
+ 917:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** }
+ 729              		.loc 1 917 1 view .LVU255
+ 730 0320 3846     		mov	r0, r7
+ 731 0322 0FB0     		add	sp, sp, #60
+ 732              	.LCFI2:
+ 733              		.cfi_remember_state
+ 734              		.cfi_def_cfa_offset 36
+ 735              		@ sp needed
+ 736 0324 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 737              	.LVL83:
+ 738              	.L26:
+ 739              	.LCFI3:
+ 740              		.cfi_restore_state
+ 142:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c ****     }
+ 741              		.loc 1 142 15 view .LVU256
+ 742 0328 0627     		movs	r7, #6
+ 743 032a F9E7     		b	.L1
+ 744              	.LVL84:
+ 745              	.L28:
+ 163:Middlewares/ST/filex/common/src/fx_file_extended_best_effort_allocate.c **** 
+ARM GAS  /tmp/cccASC4E.s 			page 32
+
+
+ 746              		.loc 1 163 5 discriminator 3 view .LVU257
+ 747 032c 1127     		movs	r7, #17
+ 748 032e F7E7     		b	.L1
+ 749              		.cfi_endproc
+ 750              	.LFE8:
+ 752              		.text
+ 753              	.Letext0:
+ 754              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 755              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 756              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 757              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 758              		.file 6 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ 759              		.file 7 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ARM GAS  /tmp/cccASC4E.s 			page 33
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_file_extended_best_effort_allocate.c
+     /tmp/cccASC4E.s:21     .text._fx_file_extended_best_effort_allocate:00000000 $t
+     /tmp/cccASC4E.s:27     .text._fx_file_extended_best_effort_allocate:00000000 _fx_file_extended_best_effort_allocate
+     /tmp/cccASC4E.s:616    .text._fx_file_extended_best_effort_allocate:000002a4 $d
+     /tmp/cccASC4E.s:622    .text._fx_file_extended_best_effort_allocate:000002ac $t
+
+UNDEFINED SYMBOLS
+__aeabi_uldivmod
+_fx_trace_event_insert
+_tx_mutex_get
+_tx_mutex_put
+_fx_utility_FAT_entry_read
+_fx_utility_FAT_entry_write
+_fx_trace_event_update
+_fx_directory_entry_write
+_fx_utility_logical_sector_flush

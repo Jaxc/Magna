@@ -1,0 +1,2379 @@
+ARM GAS  /tmp/ccDgGeIw.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_directory_entry_read.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_entry_read.c"
+  19              		.section	.text._fx_directory_entry_read,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_entry_read
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_entry_read:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccDgGeIw.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #ifdef FX_ENABLE_EXFAT
+  33:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #include "fx_directory_exFAT.h"
+  34:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  35:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  36:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  37:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif /* FX_ENABLE_EXFAT */
+  38:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  39:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  40:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  41:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  FUNCTION                                               RELEASE        */
+  43:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    _fx_directory_entry_read                            PORTABLE C      */
+  45:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                           6.1          */
+  46:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  AUTHOR                                                                */
+  47:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  49:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  DESCRIPTION                                                           */
+  51:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  52:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    This function reads the supplied directory entry from the supplied  */
+  53:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    source directory.  If the supplied directory entry is NULL, then    */
+  54:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    the root directory is assumed.                                      */
+  55:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  INPUT                                                                 */
+  57:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    media_ptr                             Media control block pointer   */
+  59:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    source_dir                            Source directory entry        */
+  60:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    entry_ptr                             Directory entry number        */
+  61:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    destination_ptr                       Pointer to destination for    */
+  62:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                            the directory entry         */
+  63:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  OUTPUT                                                                */
+  65:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    return status                                                       */
+  67:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    *entry_ptr should point to the 8:3 entry if it is a long name       */
+  68:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  CALLS                                                                 */
+  70:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    _fx_directory_exFAT_entry_read        Read exFAT entries            */
+  72:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    _fx_utility_FAT_entry_read            Read a FAT entry              */
+  73:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    _fx_utility_logical_sector_read       Read directory sector         */
+  74:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    _fx_utility_16_unsigned_read          Read a UINT from memory       */
+  75:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    _fx_utility_32_unsigned_read          Read a ULONG from memory      */
+  76:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  77:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  CALLED BY                                                             */
+  78:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  79:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    FileX System Functions                                              */
+  80:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  81:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  RELEASE HISTORY                                                       */
+  82:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  83:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*    DATE              NAME                      DESCRIPTION             */
+  84:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  85:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  86:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  87:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                            resulting in version 6.1    */
+ARM GAS  /tmp/ccDgGeIw.s 			page 3
+
+
+  88:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /*                                                                        */
+  89:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** /**************************************************************************/
+  90:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #ifdef FX_ENABLE_EXFAT
+  91:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT  _fx_directory_entry_read_FAT(FX_MEDIA *media_ptr, FX_DIR_ENTRY *source_dir,
+  92:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                    ULONG *entry_ptr, FX_DIR_ENTRY *destination_ptr)
+  93:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #else
+  94:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT  _fx_directory_entry_read(FX_MEDIA *media_ptr, FX_DIR_ENTRY *source_dir,
+  95:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                ULONG *entry_ptr, FX_DIR_ENTRY *destination_ptr)
+  96:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif /* FX_ENABLE_EXFAT */
+  97:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** {
+  29              		.loc 1 97 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 97 1 is_stmt 0 view .LVU1
+  34 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 36
+  37              		.cfi_offset 4, -36
+  38              		.cfi_offset 5, -32
+  39              		.cfi_offset 6, -28
+  40              		.cfi_offset 7, -24
+  41              		.cfi_offset 8, -20
+  42              		.cfi_offset 9, -16
+  43              		.cfi_offset 10, -12
+  44              		.cfi_offset 11, -8
+  45              		.cfi_offset 14, -4
+  46 0004 8FB0     		sub	sp, sp, #60
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 96
+  49 0006 0546     		mov	r5, r0
+  50 0008 8A46     		mov	r10, r1
+  51 000a 1146     		mov	r1, r2
+  52              	.LVL1:
+  53              		.loc 1 97 1 view .LVU2
+  54 000c 0692     		str	r2, [sp, #24]
+  55 000e 1F46     		mov	r7, r3
+  98:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+  99:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT   i, j, card, dotflag, get_short_name;
+  56              		.loc 1 99 1 is_stmt 1 view .LVU3
+ 100:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT   number_of_lfns;
+  57              		.loc 1 100 1 view .LVU4
+ 101:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT   status;
+  58              		.loc 1 101 1 view .LVU5
+ 102:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** ULONG  cluster, next_cluster = 0;
+  59              		.loc 1 102 1 view .LVU6
+  60              		.loc 1 102 17 is_stmt 0 view .LVU7
+  61 0010 0022     		movs	r2, #0
+  62              	.LVL2:
+  63              		.loc 1 102 17 view .LVU8
+  64 0012 0D92     		str	r2, [sp, #52]
+ 103:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT   relative_cluster;
+  65              		.loc 1 103 1 is_stmt 1 view .LVU9
+ 104:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UINT   relative_sector;
+  66              		.loc 1 104 1 view .LVU10
+ 105:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** ULONG  logical_sector;
+  67              		.loc 1 105 1 view .LVU11
+ARM GAS  /tmp/ccDgGeIw.s 			page 4
+
+
+ 106:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** ULONG  byte_offset;
+  68              		.loc 1 106 1 view .LVU12
+ 107:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** ULONG  bytes_per_cluster;
+  69              		.loc 1 107 1 view .LVU13
+ 108:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** UCHAR *read_ptr;
+  70              		.loc 1 108 1 view .LVU14
+ 109:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** CHAR  *short_name_ptr;
+  71              		.loc 1 109 1 view .LVU15
+ 110:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** ULONG  entry = *entry_ptr;
+  72              		.loc 1 110 1 view .LVU16
+  73              		.loc 1 110 8 is_stmt 0 view .LVU17
+  74 0014 0C68     		ldr	r4, [r1]
+  75 0016 0594     		str	r4, [sp, #20]
+  76              	.LVL3:
+ 111:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 113:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 114:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 115:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Increment the number of directory entry read requests.  */
+ 116:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     media_ptr -> fx_media_directory_entry_reads++;
+  77              		.loc 1 116 5 is_stmt 1 view .LVU18
+  78              		.loc 1 116 15 is_stmt 0 view .LVU19
+  79 0018 D0F86831 		ldr	r3, [r0, #360]
+  80              	.LVL4:
+  81              		.loc 1 116 48 view .LVU20
+  82 001c 0133     		adds	r3, r3, #1
+  83 001e C0F86831 		str	r3, [r0, #360]
+ 117:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif
+ 118:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 119:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Extended port-specific processing macro, which is by default defined to white space.  */
+ 120:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     FX_DIRECTORY_ENTRY_READ_EXTENSION
+ 121:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 123:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_DIR_ENTRY_READ, media_ptr, 0, 0, 0, FX_TRACE_INTERNAL
+  84              		.loc 1 123 5 is_stmt 1 view .LVU21
+  85 0022 0392     		str	r2, [sp, #12]
+  86 0024 0292     		str	r2, [sp, #8]
+  87 0026 4FF40063 		mov	r3, #2048
+  88 002a 0193     		str	r3, [sp, #4]
+  89 002c 0092     		str	r2, [sp]
+  90 002e 1346     		mov	r3, r2
+  91 0030 0146     		mov	r1, r0
+  92              	.LVL5:
+  93              		.loc 1 123 5 is_stmt 0 view .LVU22
+  94 0032 CC20     		movs	r0, #204
+  95              	.LVL6:
+  96              		.loc 1 123 5 view .LVU23
+  97 0034 FFF7FEFF 		bl	_fx_trace_event_insert
+  98              	.LVL7:
+ 124:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 125:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Calculate the byte offset of this directory entry.  */
+ 126:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     byte_offset =  entry * FX_DIR_ENTRY_SIZE;
+  99              		.loc 1 126 5 is_stmt 1 view .LVU24
+ 100              		.loc 1 126 17 is_stmt 0 view .LVU25
+ 101 0038 6601     		lsls	r6, r4, #5
+ 102              	.LVL8:
+ 127:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ARM GAS  /tmp/ccDgGeIw.s 			page 5
+
+
+ 128:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Determine if a sub-directory or FAT32 root directory is specified.  */
+ 129:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #ifdef FX_ENABLE_EXFAT
+ 130:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((source_dir) || (media_ptr -> fx_media_FAT_type == FX_FAT32))
+ 131:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #else
+ 132:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((source_dir) || (media_ptr -> fx_media_32_bit_FAT))
+ 103              		.loc 1 132 5 is_stmt 1 view .LVU26
+ 104              		.loc 1 132 8 is_stmt 0 view .LVU27
+ 105 003a BAF1000F 		cmp	r10, #0
+ 106 003e 40D0     		beq	.L71
+ 107              	.L2:
+ 133:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif
+ 134:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 135:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 136:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Yes, a sub-directory is present.  */
+ 137:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 138:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Calculate the number of bytes per cluster.  */
+ 139:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         bytes_per_cluster =  ((ULONG)media_ptr -> fx_media_bytes_per_sector) *
+ 108              		.loc 1 139 9 is_stmt 1 view .LVU28
+ 109              		.loc 1 139 48 is_stmt 0 view .LVU29
+ 110 0040 AA6A     		ldr	r2, [r5, #40]
+ 140:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             ((ULONG)media_ptr -> fx_media_sectors_per_cluster);
+ 111              		.loc 1 140 31 view .LVU30
+ 112 0042 6B6D     		ldr	r3, [r5, #84]
+ 139:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             ((ULONG)media_ptr -> fx_media_sectors_per_cluster);
+ 113              		.loc 1 139 27 view .LVU31
+ 114 0044 02FB03F3 		mul	r3, r2, r3
+ 115              	.LVL9:
+ 141:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check for invalid value.  */
+ 143:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (bytes_per_cluster == 0)
+ 116              		.loc 1 143 9 is_stmt 1 view .LVU32
+ 117              		.loc 1 143 12 is_stmt 0 view .LVU33
+ 118 0048 002B     		cmp	r3, #0
+ 119 004a 00F03F82 		beq	.L50
+ 144:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 145:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 146:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Invalid media, return error.  */
+ 147:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             return(FX_MEDIA_INVALID);
+ 148:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 149:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 150:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Now determine the relative cluster in the sub-directory file.  */
+ 151:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         relative_cluster =   (UINT)(byte_offset / bytes_per_cluster);
+ 120              		.loc 1 151 9 is_stmt 1 view .LVU34
+ 121              		.loc 1 151 26 is_stmt 0 view .LVU35
+ 122 004e B6FBF3F9 		udiv	r9, r6, r3
+ 123              	.LVL10:
+ 152:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 153:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Calculate the byte offset within the cluster.  */
+ 154:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         byte_offset =  byte_offset % bytes_per_cluster;
+ 124              		.loc 1 154 9 is_stmt 1 view .LVU36
+ 125              		.loc 1 154 21 is_stmt 0 view .LVU37
+ 126 0052 03FB1966 		mls	r6, r3, r9, r6
+ 127              	.LVL11:
+ 155:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 156:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Now figure out the relative sector within the cluster.  */
+ 157:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         relative_sector =    (UINT)(byte_offset / ((ULONG)media_ptr -> fx_media_bytes_per_sector));
+ 128              		.loc 1 157 9 is_stmt 1 view .LVU38
+ARM GAS  /tmp/ccDgGeIw.s 			page 6
+
+
+ 129              		.loc 1 157 25 is_stmt 0 view .LVU39
+ 130 0056 B6FBF2F3 		udiv	r3, r6, r2
+ 131              	.LVL12:
+ 132              		.loc 1 157 25 view .LVU40
+ 133 005a 0893     		str	r3, [sp, #32]
+ 134              	.LVL13:
+ 158:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Read the directory sector into the internal memory buffer.  */
+ 160:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 161:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Determine if there is a sub-directory.  */
+ 162:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (source_dir)
+ 135              		.loc 1 162 9 is_stmt 1 view .LVU41
+ 136              		.loc 1 162 12 is_stmt 0 view .LVU42
+ 137 005c BAF1000F 		cmp	r10, #0
+ 138 0060 5CD0     		beq	.L5
+ 163:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 164:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 165:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Determine if this source directory has valid information from the previous call.  */
+ 166:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if ((source_dir -> fx_dir_entry_last_search_cluster) &&
+ 139              		.loc 1 166 13 is_stmt 1 view .LVU43
+ 140              		.loc 1 166 29 is_stmt 0 view .LVU44
+ 141 0062 DAF85040 		ldr	r4, [r10, #80]
+ 142              	.LVL14:
+ 143              		.loc 1 166 16 view .LVU45
+ 144 0066 7CB1     		cbz	r4, .L6
+ 167:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 (source_dir -> fx_dir_entry_last_search_relative_cluster <= relative_cluster) &&
+ 145              		.loc 1 167 29 view .LVU46
+ 146 0068 DAF85480 		ldr	r8, [r10, #84]
+ 166:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 (source_dir -> fx_dir_entry_last_search_relative_cluster <= relative_cluster) &&
+ 147              		.loc 1 166 66 discriminator 1 view .LVU47
+ 148 006c C845     		cmp	r8, r9
+ 149 006e 0BD8     		bhi	.L6
+ 168:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 (source_dir -> fx_dir_entry_last_search_log_sector == source_dir -> fx_dir_entry_lo
+ 150              		.loc 1 168 29 view .LVU48
+ 151 0070 DAF85800 		ldr	r0, [r10, #88]
+ 152 0074 DAF85C20 		ldr	r2, [r10, #92]
+ 153              	.LVL15:
+ 154              		.loc 1 168 82 view .LVU49
+ 155 0078 DAF84010 		ldr	r1, [r10, #64]
+ 156 007c DAF84430 		ldr	r3, [r10, #68]
+ 157              	.LVL16:
+ 167:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 (source_dir -> fx_dir_entry_last_search_relative_cluster <= relative_cluster) &&
+ 158              		.loc 1 167 95 view .LVU50
+ 159 0080 9A42     		cmp	r2, r3
+ 160 0082 08BF     		it	eq
+ 161 0084 8842     		cmpeq	r0, r1
+ 162 0086 3ED0     		beq	.L72
+ 163              	.L6:
+ 169:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 (source_dir -> fx_dir_entry_last_search_byte_offset == source_dir -> fx_dir_entry_b
+ 170:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 171:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 172:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Use the previous information to start the search.  */
+ 173:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 cluster =  source_dir -> fx_dir_entry_last_search_cluster;
+ 174:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 175:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Setup the relative cluster index to the saved relative cluster.  */
+ 176:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 i =  source_dir -> fx_dir_entry_last_search_relative_cluster;
+ 177:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ARM GAS  /tmp/ccDgGeIw.s 			page 7
+
+
+ 178:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Clear the search cluster.  It will be updated prior to successful return.  */
+ 179:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 source_dir -> fx_dir_entry_last_search_cluster =  0;
+ 180:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 181:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             else
+ 182:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 183:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 184:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Nothing from the previous directory read, just setup the starting cluster to the
+ 185:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                    beginning of the sub-directory.  */
+ 186:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 cluster =  source_dir -> fx_dir_entry_cluster;
+ 164              		.loc 1 186 17 is_stmt 1 view .LVU51
+ 165              		.loc 1 186 25 is_stmt 0 view .LVU52
+ 166 0088 DAF83440 		ldr	r4, [r10, #52]
+ 167              	.LVL17:
+ 187:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 188:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Setup the relative cluster index to zero.  */
+ 189:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 i =  0;
+ 168              		.loc 1 189 17 is_stmt 1 view .LVU53
+ 169              		.loc 1 189 19 is_stmt 0 view .LVU54
+ 170 008c 4FF00008 		mov	r8, #0
+ 171 0090 2146     		mov	r1, r4
+ 172              	.LVL18:
+ 173              	.L8:
+ 190:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 191:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 192:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         else
+ 193:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 194:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 195:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* No, setup the starting cluster to the FAT32 root cluster.  */
+ 196:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             cluster =  media_ptr -> fx_media_root_cluster_32;
+ 197:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 198:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Setup the relative cluster index to zero.  */
+ 199:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             i =  0;
+ 200:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 201:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 202:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Loop to position to the appropriate cluster.  */
+ 203:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         while (i < relative_cluster)
+ 174              		.loc 1 203 18 is_stmt 1 view .LVU55
+ 175 0092 C845     		cmp	r8, r9
+ 176 0094 47D2     		bcs	.L73
+ 204:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 205:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 206:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Check the value of the new cluster - it must be a valid cluster number
+ 207:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                or something is really wrong!  */
+ 208:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if ((cluster < FX_FAT_ENTRY_START) || (cluster >= media_ptr -> fx_media_fat_reserved))
+ 177              		.loc 1 208 13 view .LVU56
+ 178              		.loc 1 208 16 is_stmt 0 view .LVU57
+ 179 0096 0129     		cmp	r1, #1
+ 180 0098 40F21D82 		bls	.L51
+ 181              		.loc 1 208 73 discriminator 1 view .LVU58
+ 182 009c 05F50053 		add	r3, r5, #8192
+ 183 00a0 D3F8A834 		ldr	r3, [r3, #1192]
+ 184              		.loc 1 208 48 discriminator 1 view .LVU59
+ 185 00a4 8B42     		cmp	r3, r1
+ 186 00a6 40F21882 		bls	.L52
+ 209:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 210:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 211:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Send error message back to caller.  */
+ARM GAS  /tmp/ccDgGeIw.s 			page 8
+
+
+ 212:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 return(FX_FILE_CORRUPT);
+ 213:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 214:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 215:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Read the next cluster.  */
+ 216:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             status =  _fx_utility_FAT_entry_read(media_ptr, cluster, &next_cluster);
+ 187              		.loc 1 216 13 is_stmt 1 view .LVU60
+ 188              		.loc 1 216 23 is_stmt 0 view .LVU61
+ 189 00aa 0DAA     		add	r2, sp, #52
+ 190 00ac 2846     		mov	r0, r5
+ 191 00ae FFF7FEFF 		bl	_fx_utility_FAT_entry_read
+ 192              	.LVL19:
+ 217:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 218:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* There is a potential for loop, but hardly anything can be done */
+ 219:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 220:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Check for I/O error.  */
+ 221:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if (status != FX_SUCCESS)
+ 193              		.loc 1 221 13 is_stmt 1 view .LVU62
+ 194              		.loc 1 221 16 is_stmt 0 view .LVU63
+ 195 00b2 0346     		mov	r3, r0
+ 196 00b4 0028     		cmp	r0, #0
+ 197 00b6 40F00A82 		bne	.L1
+ 222:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 223:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 224:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Return error code.  */
+ 225:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 return(status);
+ 226:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 227:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 228:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Setup the actual cluster.  */
+ 229:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             cluster = next_cluster;
+ 198              		.loc 1 229 13 is_stmt 1 view .LVU64
+ 199              		.loc 1 229 21 is_stmt 0 view .LVU65
+ 200 00ba 0D99     		ldr	r1, [sp, #52]
+ 201              	.LVL20:
+ 230:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 231:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Increment the relative cluster number.  */
+ 232:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             i++;
+ 202              		.loc 1 232 13 is_stmt 1 view .LVU66
+ 203              		.loc 1 232 14 is_stmt 0 view .LVU67
+ 204 00bc 08F10108 		add	r8, r8, #1
+ 205              	.LVL21:
+ 206              		.loc 1 232 14 view .LVU68
+ 207 00c0 E7E7     		b	.L8
+ 208              	.LVL22:
+ 209              	.L71:
+ 132:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif
+ 210              		.loc 1 132 36 discriminator 1 view .LVU69
+ 211 00c2 6B6E     		ldr	r3, [r5, #100]
+ 132:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif
+ 212              		.loc 1 132 22 discriminator 1 view .LVU70
+ 213 00c4 002B     		cmp	r3, #0
+ 214 00c6 BBD1     		bne	.L2
+ 233:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 234:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 235:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* At this point, the directory data sector needs to be read.  */
+ 236:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         logical_sector =    ((ULONG)media_ptr -> fx_media_data_sector_start) +
+ 237:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 238:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****              ((ULONG)media_ptr -> fx_media_sectors_per_cluster)) +
+ARM GAS  /tmp/ccDgGeIw.s 			page 9
+
+
+ 239:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             relative_sector;
+ 240:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 241:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Read the logical directory sector.  */
+ 242:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) logical_sector,
+ 243:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                   media_ptr -> fx_media_memory_buffer, ((ULONG) 1),
+ 244:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 245:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Determine if an error occurred.  */
+ 246:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (status != FX_SUCCESS)
+ 247:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 248:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 249:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Return error code.  */
+ 250:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             return(status);
+ 251:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 252:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 253:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Calculate the byte offset within this sector.  */
+ 254:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         byte_offset =  byte_offset % media_ptr -> fx_media_bytes_per_sector;
+ 255:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 256:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     else
+ 257:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 258:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 259:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Read the entry from the root directory.  */
+ 260:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 261:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Determine which sector the requested root directory entry is in.  */
+ 262:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         logical_sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+ 215              		.loc 1 262 9 is_stmt 1 view .LVU71
+ 216              		.loc 1 262 52 is_stmt 0 view .LVU72
+ 217 00c8 AB6A     		ldr	r3, [r5, #40]
+ 218              		.loc 1 262 40 view .LVU73
+ 219 00ca B6FBF3F3 		udiv	r3, r6, r3
+ 263:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (ULONG)media_ptr -> fx_media_root_sector_start;
+ 220              		.loc 1 263 30 view .LVU74
+ 221 00ce AA6C     		ldr	r2, [r5, #72]
+ 262:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (ULONG)media_ptr -> fx_media_root_sector_start;
+ 222              		.loc 1 262 24 view .LVU75
+ 223 00d0 9918     		adds	r1, r3, r2
+ 224 00d2 0C46     		mov	r4, r1
+ 225              	.LVL23:
+ 262:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (ULONG)media_ptr -> fx_media_root_sector_start;
+ 226              		.loc 1 262 24 view .LVU76
+ 227 00d4 0991     		str	r1, [sp, #36]
+ 228              	.LVL24:
+ 264:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 265:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Read the logical directory sector.  */
+ 266:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) logical_sector,
+ 229              		.loc 1 266 9 is_stmt 1 view .LVU77
+ 267:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                   media_ptr -> fx_media_memory_buffer, ((ULONG) 1),
+ 230              		.loc 1 267 61 is_stmt 0 view .LVU78
+ 231 00d6 AB68     		ldr	r3, [r5, #8]
+ 266:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                   media_ptr -> fx_media_memory_buffer, ((ULONG) 1),
+ 232              		.loc 1 266 19 view .LVU79
+ 233 00d8 0322     		movs	r2, #3
+ 234 00da 0292     		str	r2, [sp, #8]
+ 235 00dc 0122     		movs	r2, #1
+ 236 00de 0192     		str	r2, [sp, #4]
+ 237 00e0 0093     		str	r3, [sp]
+ 238 00e2 0A46     		mov	r2, r1
+ 239 00e4 0023     		movs	r3, #0
+ARM GAS  /tmp/ccDgGeIw.s 			page 10
+
+
+ 240 00e6 2846     		mov	r0, r5
+ 241 00e8 FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 242              	.LVL25:
+ 268:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 269:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Determine if an error occurred.  */
+ 270:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (status != FX_SUCCESS)
+ 243              		.loc 1 270 9 is_stmt 1 view .LVU80
+ 244              		.loc 1 270 12 is_stmt 0 view .LVU81
+ 245 00ec 0346     		mov	r3, r0
+ 246 00ee 0028     		cmp	r0, #0
+ 247 00f0 40F0ED81 		bne	.L1
+ 271:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 272:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 273:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Return error code.  */
+ 274:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             return(status);
+ 275:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 276:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 277:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Set the cluster and relative variables (not used in this case) to avoid any compiler
+ 278:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            warnings.  */
+ 279:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         relative_cluster =  relative_sector =  cluster =  0;
+ 248              		.loc 1 279 9 is_stmt 1 view .LVU82
+ 249              	.LVL26:
+ 280:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 281:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Now calculate the byte offset into this sector.  */
+ 282:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         byte_offset =  byte_offset -
+ 250              		.loc 1 282 9 view .LVU83
+ 283:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             ((logical_sector - (ULONG)media_ptr -> fx_media_root_sector_start) *
+ 251              		.loc 1 283 49 is_stmt 0 view .LVU84
+ 252 00f4 AA6C     		ldr	r2, [r5, #72]
+ 253              		.loc 1 283 30 view .LVU85
+ 254 00f6 A21A     		subs	r2, r4, r2
+ 284:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****              media_ptr -> fx_media_bytes_per_sector);
+ 255              		.loc 1 284 24 view .LVU86
+ 256 00f8 A96A     		ldr	r1, [r5, #40]
+ 282:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             ((logical_sector - (ULONG)media_ptr -> fx_media_root_sector_start) *
+ 257              		.loc 1 282 21 view .LVU87
+ 258 00fa 01FB1262 		mls	r2, r1, r2, r6
+ 259              	.LVL27:
+ 279:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 260              		.loc 1 279 45 view .LVU88
+ 261 00fe 0890     		str	r0, [sp, #32]
+ 279:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 262              		.loc 1 279 26 view .LVU89
+ 263 0100 8146     		mov	r9, r0
+ 279:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 264              		.loc 1 279 56 view .LVU90
+ 265 0102 0446     		mov	r4, r0
+ 266              	.LVL28:
+ 279:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 267              		.loc 1 279 56 view .LVU91
+ 268 0104 2CE0     		b	.L10
+ 269              	.LVL29:
+ 270              	.L72:
+ 169:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 271              		.loc 1 169 29 view .LVU92
+ 272 0106 DAF86020 		ldr	r2, [r10, #96]
+ 169:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ARM GAS  /tmp/ccDgGeIw.s 			page 11
+
+
+ 273              		.loc 1 169 83 view .LVU93
+ 274 010a DAF84830 		ldr	r3, [r10, #72]
+ 168:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 (source_dir -> fx_dir_entry_last_search_byte_offset == source_dir -> fx_dir_entry_b
+ 275              		.loc 1 168 110 view .LVU94
+ 276 010e 9A42     		cmp	r2, r3
+ 277 0110 BAD1     		bne	.L6
+ 173:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 278              		.loc 1 173 17 is_stmt 1 view .LVU95
+ 279              	.LVL30:
+ 176:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 280              		.loc 1 176 17 view .LVU96
+ 179:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 281              		.loc 1 179 17 view .LVU97
+ 179:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 282              		.loc 1 179 64 is_stmt 0 view .LVU98
+ 283 0112 0023     		movs	r3, #0
+ 284 0114 CAF85030 		str	r3, [r10, #80]
+ 285              	.LVL31:
+ 179:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 286              		.loc 1 179 64 view .LVU99
+ 287 0118 2146     		mov	r1, r4
+ 288 011a BAE7     		b	.L8
+ 289              	.LVL32:
+ 290              	.L5:
+ 196:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 291              		.loc 1 196 13 is_stmt 1 view .LVU100
+ 196:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 292              		.loc 1 196 21 is_stmt 0 view .LVU101
+ 293 011c 6C6F     		ldr	r4, [r5, #116]
+ 294              	.LVL33:
+ 199:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 295              		.loc 1 199 13 is_stmt 1 view .LVU102
+ 199:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 296              		.loc 1 199 15 is_stmt 0 view .LVU103
+ 297 011e 4FF00008 		mov	r8, #0
+ 298 0122 2146     		mov	r1, r4
+ 299 0124 B5E7     		b	.L8
+ 300              	.LVL34:
+ 301              	.L73:
+ 236:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 302              		.loc 1 236 47 view .LVU104
+ 303 0126 0C46     		mov	r4, r1
+ 236:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 304              		.loc 1 236 9 is_stmt 1 view .LVU105
+ 236:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 305              		.loc 1 236 47 is_stmt 0 view .LVU106
+ 306 0128 2B6D     		ldr	r3, [r5, #80]
+ 237:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****              ((ULONG)media_ptr -> fx_media_sectors_per_cluster)) +
+ 307              		.loc 1 237 30 view .LVU107
+ 308 012a 8A1E     		subs	r2, r1, #2
+ 238:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             relative_sector;
+ 309              		.loc 1 238 32 view .LVU108
+ 310 012c 696D     		ldr	r1, [r5, #84]
+ 311              	.LVL35:
+ 236:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 312              		.loc 1 236 78 view .LVU109
+ 313 012e 01FB0233 		mla	r3, r1, r2, r3
+ARM GAS  /tmp/ccDgGeIw.s 			page 12
+
+
+ 236:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 314              		.loc 1 236 24 view .LVU110
+ 315 0132 089A     		ldr	r2, [sp, #32]
+ 316 0134 9918     		adds	r1, r3, r2
+ 317 0136 0991     		str	r1, [sp, #36]
+ 318              	.LVL36:
+ 242:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                   media_ptr -> fx_media_memory_buffer, ((ULONG) 1),
+ 319              		.loc 1 242 9 is_stmt 1 view .LVU111
+ 243:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 320              		.loc 1 243 61 is_stmt 0 view .LVU112
+ 321 0138 AB68     		ldr	r3, [r5, #8]
+ 242:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                   media_ptr -> fx_media_memory_buffer, ((ULONG) 1),
+ 322              		.loc 1 242 19 view .LVU113
+ 323 013a 0322     		movs	r2, #3
+ 324 013c 0292     		str	r2, [sp, #8]
+ 325 013e 0122     		movs	r2, #1
+ 326 0140 0192     		str	r2, [sp, #4]
+ 327 0142 0093     		str	r3, [sp]
+ 328 0144 0A46     		mov	r2, r1
+ 329 0146 0023     		movs	r3, #0
+ 330 0148 2846     		mov	r0, r5
+ 331 014a FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 332              	.LVL37:
+ 246:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 333              		.loc 1 246 9 is_stmt 1 view .LVU114
+ 246:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 334              		.loc 1 246 12 is_stmt 0 view .LVU115
+ 335 014e 0346     		mov	r3, r0
+ 336 0150 0028     		cmp	r0, #0
+ 337 0152 40F0BC81 		bne	.L1
+ 254:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 338              		.loc 1 254 9 is_stmt 1 view .LVU116
+ 254:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 339              		.loc 1 254 48 is_stmt 0 view .LVU117
+ 340 0156 AB6A     		ldr	r3, [r5, #40]
+ 254:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 341              		.loc 1 254 21 view .LVU118
+ 342 0158 B6FBF3F2 		udiv	r2, r6, r3
+ 343 015c 03FB1262 		mls	r2, r3, r2, r6
+ 344              	.LVL38:
+ 345              	.L10:
+ 285:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 286:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 287:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Setup a pointer into the buffer.  */
+ 288:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  (UCHAR *)media_ptr -> fx_media_memory_buffer + (UINT)byte_offset;
+ 346              		.loc 1 288 5 is_stmt 1 view .LVU119
+ 347              		.loc 1 288 36 is_stmt 0 view .LVU120
+ 348 0160 A968     		ldr	r1, [r5, #8]
+ 349              		.loc 1 288 14 view .LVU121
+ 350 0162 8E18     		adds	r6, r1, r2
+ 351              	.LVL39:
+ 289:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 290:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Save the logical sector and byte offset in the returned directory entry.  */
+ 291:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_log_sector =       logical_sector;
+ 352              		.loc 1 291 5 is_stmt 1 view .LVU122
+ 353              		.loc 1 291 48 is_stmt 0 view .LVU123
+ 354 0164 0023     		movs	r3, #0
+ARM GAS  /tmp/ccDgGeIw.s 			page 13
+
+
+ 355 0166 0998     		ldr	r0, [sp, #36]
+ 356              	.LVL40:
+ 357              		.loc 1 291 48 view .LVU124
+ 358 0168 3864     		str	r0, [r7, #64]
+ 359 016a 7B64     		str	r3, [r7, #68]
+ 292:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_byte_offset =      byte_offset;
+ 360              		.loc 1 292 5 is_stmt 1 view .LVU125
+ 361              		.loc 1 292 49 is_stmt 0 view .LVU126
+ 362 016c BA64     		str	r2, [r7, #72]
+ 293:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 294:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Clear the short file name information.  */
+ 295:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_long_name_shorted =  0;
+ 363              		.loc 1 295 5 is_stmt 1 view .LVU127
+ 364              		.loc 1 295 55 is_stmt 0 view .LVU128
+ 365 016e BB61     		str	r3, [r7, #24]
+ 296:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_short_name[0]     =  0;
+ 366              		.loc 1 296 5 is_stmt 1 view .LVU129
+ 367              		.loc 1 296 55 is_stmt 0 view .LVU130
+ 368 0170 3B71     		strb	r3, [r7, #4]
+ 297:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 298:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Setup short name pointer.  */
+ 299:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     short_name_ptr =  destination_ptr -> fx_dir_entry_name;
+ 369              		.loc 1 299 5 is_stmt 1 view .LVU131
+ 370              		.loc 1 299 20 is_stmt 0 view .LVU132
+ 371 0172 D7F800E0 		ldr	lr, [r7]
+ 372              	.LVL41:
+ 300:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 301:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Check if long file name exists.  */
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     get_short_name =  0;
+ 373              		.loc 1 302 5 is_stmt 1 view .LVU133
+ 303:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 374              		.loc 1 303 5 view .LVU134
+ 375              		.loc 1 303 10 is_stmt 0 view .LVU135
+ 376 0176 F37A     		ldrb	r3, [r6, #11]	@ zero_extendqisi2
+ 377              		.loc 1 303 8 view .LVU136
+ 378 0178 0F2B     		cmp	r3, #15
+ 379 017a 0BD0     		beq	.L74
+ 304:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 305:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 306:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Collate the long name. */
+ 307:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 308:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Pickup the file name length.  */
+ 309:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         i = (((UINT)(*read_ptr & (UCHAR)0x1f) - 1) * FX_LONG_NAME_ENTRY_LEN) & 0xFFFFFFFF;
+ 310:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 311:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Save the number of LFN entries.  */
+ 312:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         number_of_lfns =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 313:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 314:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check the file name size.  */
+ 315:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (i >= (FX_MAX_LONG_NAME_LEN - 1))
+ 316:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 317:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 318:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Name is too big, shorten it.  */
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             get_short_name = 1;
+ 320:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 321:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 322:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         else
+ 323:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ARM GAS  /tmp/ccDgGeIw.s 			page 14
+
+
+ 324:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 325:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Size of name is fine, save pointer to short file name.  */
+ 326:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             short_name_ptr = destination_ptr -> fx_dir_entry_short_name;
+ 327:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 328:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Loop to make sure the long file name is NULL terminated.  */
+ 329:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             j = i + FX_LONG_NAME_ENTRY_LEN + 1;
+ 330:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             do
+ 331:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 332:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Place a NULL in the long name.  */
+ 333:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 destination_ptr -> fx_dir_entry_name[i] =  0;
+ 334:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 335:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Position to the next entry.  */
+ 336:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 i++;
+ 337:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             } while ((i < j) && (i < FX_MAX_LONG_NAME_LEN));
+ 338:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 339:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 340:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Loop to pickup the rest of the name.  */
+ 341:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         do
+ 342:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 343:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 344:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Get the lower 5 bit containing the cardinality.  */
+ 345:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             card = (UINT)(*read_ptr & (UCHAR)0x1f) - 1;
+ 346:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 347:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* For simplicity no checksum or cardinality checking is done */
+ 348:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if (get_short_name == 0)
+ 349:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 350:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 351:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Loop to pickup name.  */
+ 352:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 for (i = 1, j = 0; i < FX_DIR_ENTRY_SIZE; i += 2)
+ 353:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 354:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 355:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if ((i == 11) || (i == 26))
+ 356:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 357:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         continue;
+ 358:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 359:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 360:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* i = 12, 27 is not generated due to +=2 */
+ 361:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if (i == 13)
+ 362:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 363:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         i = 12;
+ 364:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         continue; /* this time next unicode is byte offset 14*/
+ 365:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 366:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 367:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Determine if there is an actual unicode character present.  */
+ 368:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if (read_ptr[i + 1])
+ 369:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 370:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 371:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Extended byte is non-zero, make sure both bytes of the unicode entry are
+ 372:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                            all ones, since this is a normal case.  */
+ 373:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         if ((read_ptr[i + 1] != (UCHAR)0xFF) || (read_ptr[i] != (UCHAR)0xFF))
+ 374:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 375:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 376:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             /* Name is an actual unicode name, shorten it.  */
+ 377:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             get_short_name = 1;
+ 378:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 379:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             /* Save the number of directory entries the LFN has.  This will be
+ 380:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                used later when updating the 8.3 portion of the LFN.  */
+ARM GAS  /tmp/ccDgGeIw.s 			page 15
+
+
+ 381:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             destination_ptr -> fx_dir_entry_long_name_shorted =  number_of_lfns;
+ 382:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 383:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             /* Setup short name pointer.  */
+ 384:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             short_name_ptr =  destination_ptr -> fx_dir_entry_name;
+ 385:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 386:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 387:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 388:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Determine if the character is NULL.  */
+ 389:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if ((read_ptr[i] == FX_NULL) || (read_ptr[i] == (UCHAR)0xFF))
+ 390:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 391:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         continue;
+ 392:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 393:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 394:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Determine if the name is too big.  */
+ 395:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if ((card * 13 + j) >= (FX_MAX_LONG_NAME_LEN - 1))
+ 396:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 397:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 398:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Name is actually too big, shorten it.  */
+ 399:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         get_short_name =  1;
+ 400:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 401:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Save the number of directory entries the LFN has.  This will be
+ 402:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                            used later when updating the 8.3 portion of the LFN.  */
+ 403:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         destination_ptr -> fx_dir_entry_long_name_shorted =  number_of_lfns;
+ 404:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Also reposition the short name pointer.  */
+ 406:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         short_name_ptr =  destination_ptr -> fx_dir_entry_name;
+ 407:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 408:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         break;
+ 409:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 410:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 411:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Each entry contains 13 unicode and first byte ASCII, second byte is extended
+ 412:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     destination_ptr -> fx_dir_entry_name[13 * card + j] = (CHAR)read_ptr[i];
+ 413:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 414:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     j++;
+ 415:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 416:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 417:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 418:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Determine if a new sector needs to be read.  */
+ 419:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if (byte_offset + FX_DIR_ENTRY_SIZE >= media_ptr -> fx_media_bytes_per_sector)
+ 420:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 421:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 422:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Determine if a sub-directory or FAT32 root directory is specified.  */
+ 423:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 if ((source_dir) || (media_ptr -> fx_media_32_bit_FAT))
+ 424:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 425:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 426:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Determine the next sector of the directory entry.  */
+ 427:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if (relative_sector < (media_ptr -> fx_media_sectors_per_cluster - 1))
+ 428:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 429:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 430:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* More sectors in this cluster.  */
+ 431:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 432:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Simply increment the logical sector.  */
+ 433:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         logical_sector++;
+ 434:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 435:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Increment the relative sector.  */
+ 436:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         relative_sector++;
+ 437:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ARM GAS  /tmp/ccDgGeIw.s 			page 16
+
+
+ 438:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     else
+ 439:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 440:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 441:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* We need to move to the next cluster.  */
+ 442:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 443:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Pickup the next cluster.  */
+ 444:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         status =  _fx_utility_FAT_entry_read(media_ptr, cluster, &next_cluster);
+ 445:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 446:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Check for I/O error.  */
+ 447:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         if (status != FX_SUCCESS)
+ 448:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 449:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 450:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             /* Return error code.  */
+ 451:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             return(status);
+ 452:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 453:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 454:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Copy next cluster to the current cluster.  */
+ 455:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         cluster =  next_cluster;
+ 456:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 457:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Check the value of the new cluster - it must be a valid cluster number
+ 458:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                            or something is really wrong!  */
+ 459:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         if ((cluster < FX_FAT_ENTRY_START) || (cluster >= media_ptr -> fx_media_fat
+ 460:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 461:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 462:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             /* Send error message back to caller.  */
+ 463:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             return(FX_FILE_CORRUPT);
+ 464:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 465:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 466:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Now increment the relative cluster.  */
+ 467:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         relative_cluster++;
+ 468:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 469:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Setup the relative sector (this is zero for subsequent cluster.  */
+ 470:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         relative_sector =  0;
+ 471:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 472:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Calculate the next logical sector.  */
+ 473:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         logical_sector =   ((ULONG)media_ptr -> fx_media_data_sector_start) +
+ 474:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 475:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                              ((ULONG)media_ptr -> fx_media_sectors_per_cluster));
+ 476:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 477:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 478:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 else
+ 479:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 480:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 481:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Non-FAT 32 root directory.  */
+ 482:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 483:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Advance to the next sector.  */
+ 484:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     logical_sector++;
+ 485:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 486:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     /* Determine if the logical sector is valid.  */
+ 487:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     if (logical_sector >= (ULONG)(media_ptr -> fx_media_root_sector_start + media_p
+ 488:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 489:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 490:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         /* Trying to read past root directory - send error message back to caller. 
+ 491:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         return(FX_FILE_CORRUPT);
+ 492:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 493:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 494:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ARM GAS  /tmp/ccDgGeIw.s 			page 17
+
+
+ 495:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Read the new sector.  */
+ 496:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) logical_sector,
+ 497:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 498:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 499:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Check I/O status.  */
+ 500:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 if (status != FX_SUCCESS)
+ 501:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 502:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     return(status);
+ 503:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 504:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 505:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Set the byte offset to 0 for new sector.  */
+ 506:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 byte_offset = 0;
+ 507:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 508:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             else
+ 509:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 510:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 511:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Calculate the new byte offset.  */
+ 512:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 byte_offset += FX_DIR_ENTRY_SIZE;
+ 513:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 514:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 515:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Calculate the next read pointer.  */
+ 516:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             read_ptr =  (UCHAR *)media_ptr -> fx_media_memory_buffer + (UINT) byte_offset;
+ 517:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 518:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Move to the next entry.  */
+ 519:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             entry++;
+ 520:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         } while (card > 0);
+ 521:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 522:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Set flag indicating long file name is present.  */
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_long_name_present = 1;
+ 524:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 525:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     else
+ 526:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 527:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* No long file name is present.  */
+ 528:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         get_short_name = 1;
+ 380              		.loc 1 528 24 view .LVU137
+ 381 017c 4FF0010B 		mov	fp, #1
+ 382              	.LVL42:
+ 383              	.L11:
+ 529:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 530:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 531:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Determine if we need to clear the long name flag.  */
+ 532:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if (get_short_name == 1)
+ 384              		.loc 1 532 5 is_stmt 1 view .LVU138
+ 385              		.loc 1 532 8 is_stmt 0 view .LVU139
+ 386 0180 BBF1010F 		cmp	fp, #1
+ 387 0184 00F0F180 		beq	.L75
+ 388              	.L29:
+ 533:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 534:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 535:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Clear the long name flag.  */
+ 536:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_long_name_present =  0;
+ 537:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 538:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 539:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Pickup the short file name.  */
+ 540:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     short_name_ptr[0] =  0;
+ 389              		.loc 1 540 5 is_stmt 1 view .LVU140
+ 390              		.loc 1 540 23 is_stmt 0 view .LVU141
+ARM GAS  /tmp/ccDgGeIw.s 			page 18
+
+
+ 391 0188 0023     		movs	r3, #0
+ 392 018a 8EF80030 		strb	r3, [lr]
+ 541:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     dotflag =  0;
+ 393              		.loc 1 541 5 is_stmt 1 view .LVU142
+ 394              	.LVL43:
+ 542:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     for (i = 0, j = 0; i < (FX_DIR_NAME_SIZE + FX_DIR_EXT_SIZE); i++)
+ 395              		.loc 1 542 5 view .LVU143
+ 541:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     dotflag =  0;
+ 396              		.loc 1 541 13 is_stmt 0 view .LVU144
+ 397 018e 1846     		mov	r0, r3
+ 398              		.loc 1 542 19 view .LVU145
+ 399 0190 1A46     		mov	r2, r3
+ 400              	.LVL44:
+ 401              		.loc 1 542 5 view .LVU146
+ 402 0192 FEE0     		b	.L30
+ 403              	.LVL45:
+ 404              	.L74:
+ 303:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 405              		.loc 1 303 55 discriminator 1 view .LVU147
+ 406 0194 8B5C     		ldrb	r3, [r1, r2]	@ zero_extendqisi2
+ 303:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 407              		.loc 1 303 51 discriminator 1 view .LVU148
+ 408 0196 E52B     		cmp	r3, #229
+ 409 0198 00F0E480 		beq	.L54
+ 309:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 410              		.loc 1 309 9 is_stmt 1 view .LVU149
+ 309:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 411              		.loc 1 309 15 is_stmt 0 view .LVU150
+ 412 019c 03F01F01 		and	r1, r3, #31
+ 413 01a0 0791     		str	r1, [sp, #28]
+ 309:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 414              		.loc 1 309 78 view .LVU151
+ 415 01a2 01EB4100 		add	r0, r1, r1, lsl #1
+ 416              	.LVL46:
+ 309:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 417              		.loc 1 309 78 view .LVU152
+ 418 01a6 01EB8000 		add	r0, r1, r0, lsl #2
+ 309:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 419              		.loc 1 309 11 view .LVU153
+ 420 01aa A0F10D03 		sub	r3, r0, #13
+ 421              	.LVL47:
+ 312:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 422              		.loc 1 312 9 is_stmt 1 view .LVU154
+ 315:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 423              		.loc 1 315 9 view .LVU155
+ 315:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 424              		.loc 1 315 12 is_stmt 0 view .LVU156
+ 425 01ae FE2B     		cmp	r3, #254
+ 426 01b0 12D9     		bls	.L12
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 427              		.loc 1 319 13 is_stmt 1 view .LVU157
+ 428              	.LVL48:
+ 320:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 429              		.loc 1 320 13 view .LVU158
+ 320:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 430              		.loc 1 320 63 is_stmt 0 view .LVU159
+ 431 01b2 B961     		str	r1, [r7, #24]
+ARM GAS  /tmp/ccDgGeIw.s 			page 19
+
+
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 432              		.loc 1 319 28 view .LVU160
+ 433 01b4 4FF0010B 		mov	fp, #1
+ 434 01b8 0A94     		str	r4, [sp, #40]
+ 435 01ba CDF82C90 		str	r9, [sp, #44]
+ 436 01be 3046     		mov	r0, r6
+ 437 01c0 7646     		mov	r6, lr
+ 438              	.LVL49:
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 439              		.loc 1 319 28 view .LVU161
+ 440 01c2 DDF81490 		ldr	r9, [sp, #20]
+ 441              	.LVL50:
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 442              		.loc 1 319 28 view .LVU162
+ 443 01c6 A846     		mov	r8, r5
+ 444 01c8 5D46     		mov	r5, fp
+ 445              	.LVL51:
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 446              		.loc 1 319 28 view .LVU163
+ 447 01ca DDF820B0 		ldr	fp, [sp, #32]
+ 448 01ce CDF820A0 		str	r10, [sp, #32]
+ 449              	.LVL52:
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 450              		.loc 1 319 28 view .LVU164
+ 451 01d2 DDF824A0 		ldr	r10, [sp, #36]
+ 452              	.LVL53:
+ 319:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             destination_ptr -> fx_dir_entry_long_name_shorted =  (UINT)(*read_ptr & (UCHAR)0x1f);
+ 453              		.loc 1 319 28 view .LVU165
+ 454 01d6 9FE0     		b	.L28
+ 455              	.LVL54:
+ 456              	.L12:
+ 326:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 457              		.loc 1 326 13 is_stmt 1 view .LVU166
+ 326:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 458              		.loc 1 326 28 is_stmt 0 view .LVU167
+ 459 01d8 07F1040E 		add	lr, r7, #4
+ 460              	.LVL55:
+ 329:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             do
+ 461              		.loc 1 329 13 is_stmt 1 view .LVU168
+ 329:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             do
+ 462              		.loc 1 329 15 is_stmt 0 view .LVU169
+ 463 01dc 0130     		adds	r0, r0, #1
+ 464              	.LVL56:
+ 465              	.L14:
+ 330:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 466              		.loc 1 330 13 is_stmt 1 view .LVU170
+ 333:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 467              		.loc 1 333 17 view .LVU171
+ 333:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 468              		.loc 1 333 33 is_stmt 0 view .LVU172
+ 469 01de 3968     		ldr	r1, [r7]
+ 333:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 470              		.loc 1 333 57 view .LVU173
+ 471 01e0 4FF0000C 		mov	ip, #0
+ 472 01e4 01F803C0 		strb	ip, [r1, r3]
+ 336:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             } while ((i < j) && (i < FX_MAX_LONG_NAME_LEN));
+ 473              		.loc 1 336 17 is_stmt 1 view .LVU174
+ARM GAS  /tmp/ccDgGeIw.s 			page 20
+
+
+ 336:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             } while ((i < j) && (i < FX_MAX_LONG_NAME_LEN));
+ 474              		.loc 1 336 18 is_stmt 0 view .LVU175
+ 475 01e8 0133     		adds	r3, r3, #1
+ 476              	.LVL57:
+ 337:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 477              		.loc 1 337 30 is_stmt 1 discriminator 1 view .LVU176
+ 337:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 478              		.loc 1 337 36 is_stmt 0 discriminator 1 view .LVU177
+ 479 01ea FF2B     		cmp	r3, #255
+ 480 01ec 8CBF     		ite	hi
+ 481 01ee 0021     		movhi	r1, #0
+ 482 01f0 0121     		movls	r1, #1
+ 337:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 483              		.loc 1 337 30 discriminator 1 view .LVU178
+ 484 01f2 9842     		cmp	r0, r3
+ 485 01f4 01D9     		bls	.L67
+ 486 01f6 0029     		cmp	r1, #0
+ 487 01f8 F1D1     		bne	.L14
+ 488              	.L67:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 489              		.loc 1 302 20 view .LVU179
+ 490 01fa 4FF0000B 		mov	fp, #0
+ 491 01fe 0A94     		str	r4, [sp, #40]
+ 492 0200 CDF82C90 		str	r9, [sp, #44]
+ 493 0204 3046     		mov	r0, r6
+ 494              	.LVL58:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 495              		.loc 1 302 20 view .LVU180
+ 496 0206 7646     		mov	r6, lr
+ 497              	.LVL59:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 498              		.loc 1 302 20 view .LVU181
+ 499 0208 DDF81490 		ldr	r9, [sp, #20]
+ 500              	.LVL60:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 501              		.loc 1 302 20 view .LVU182
+ 502 020c A846     		mov	r8, r5
+ 503 020e 5D46     		mov	r5, fp
+ 504              	.LVL61:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 505              		.loc 1 302 20 view .LVU183
+ 506 0210 DDF820B0 		ldr	fp, [sp, #32]
+ 507 0214 CDF820A0 		str	r10, [sp, #32]
+ 508              	.LVL62:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 509              		.loc 1 302 20 view .LVU184
+ 510 0218 DDF824A0 		ldr	r10, [sp, #36]
+ 511              	.LVL63:
+ 302:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((*(read_ptr + 11) == (UCHAR)FX_LONG_NAME) && (*read_ptr != (UCHAR)FX_DIR_ENTRY_FREE))
+ 512              		.loc 1 302 20 view .LVU185
+ 513 021c 7CE0     		b	.L28
+ 514              	.LVL64:
+ 515              	.L20:
+ 377:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 516              		.loc 1 377 29 is_stmt 1 view .LVU186
+ 381:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 517              		.loc 1 381 29 view .LVU187
+ARM GAS  /tmp/ccDgGeIw.s 			page 21
+
+
+ 381:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 518              		.loc 1 381 79 is_stmt 0 view .LVU188
+ 519 021e 079A     		ldr	r2, [sp, #28]
+ 520 0220 BA61     		str	r2, [r7, #24]
+ 384:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 521              		.loc 1 384 29 is_stmt 1 view .LVU189
+ 384:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 522              		.loc 1 384 44 is_stmt 0 view .LVU190
+ 523 0222 3E68     		ldr	r6, [r7]
+ 524              	.LVL65:
+ 377:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 525              		.loc 1 377 44 view .LVU191
+ 526 0224 4FF0010E 		mov	lr, #1
+ 527              	.LVL66:
+ 528              	.L19:
+ 389:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 529              		.loc 1 389 21 is_stmt 1 view .LVU192
+ 389:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 530              		.loc 1 389 34 is_stmt 0 view .LVU193
+ 531 0228 10F803C0 		ldrb	ip, [r0, r3]	@ zero_extendqisi2
+ 389:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 532              		.loc 1 389 50 view .LVU194
+ 533 022c 0CF1FF31 		add	r1, ip, #-1
+ 534 0230 C9B2     		uxtb	r1, r1
+ 389:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 535              		.loc 1 389 24 view .LVU195
+ 536 0232 FD29     		cmp	r1, #253
+ 537 0234 0AD8     		bhi	.L18
+ 395:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 538              		.loc 1 395 21 is_stmt 1 view .LVU196
+ 395:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 539              		.loc 1 395 31 is_stmt 0 view .LVU197
+ 540 0236 04EB4401 		add	r1, r4, r4, lsl #1
+ 541 023a 04EB8101 		add	r1, r4, r1, lsl #2
+ 395:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 542              		.loc 1 395 36 view .LVU198
+ 543 023e 2944     		add	r1, r1, r5
+ 395:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 544              		.loc 1 395 24 view .LVU199
+ 545 0240 FE29     		cmp	r1, #254
+ 546 0242 16D8     		bhi	.L76
+ 412:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 547              		.loc 1 412 21 is_stmt 1 view .LVU200
+ 412:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 548              		.loc 1 412 73 is_stmt 0 view .LVU201
+ 549 0244 3A68     		ldr	r2, [r7]
+ 550 0246 02F801C0 		strb	ip, [r2, r1]
+ 414:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 551              		.loc 1 414 21 is_stmt 1 view .LVU202
+ 414:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 552              		.loc 1 414 22 is_stmt 0 view .LVU203
+ 553 024a 0135     		adds	r5, r5, #1
+ 554              	.LVL67:
+ 555              	.L18:
+ 352:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 556              		.loc 1 352 61 is_stmt 1 discriminator 2 view .LVU204
+ 557 024c 0233     		adds	r3, r3, #2
+ARM GAS  /tmp/ccDgGeIw.s 			page 22
+
+
+ 558              	.LVL68:
+ 559              	.L16:
+ 352:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 560              		.loc 1 352 38 discriminator 1 view .LVU205
+ 561 024e 1F2B     		cmp	r3, #31
+ 562 0250 1BD8     		bhi	.L77
+ 355:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 563              		.loc 1 355 21 view .LVU206
+ 355:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 564              		.loc 1 355 24 is_stmt 0 view .LVU207
+ 565 0252 1A2B     		cmp	r3, #26
+ 566 0254 18BF     		it	ne
+ 567 0256 0B2B     		cmpne	r3, #11
+ 568 0258 F8D0     		beq	.L18
+ 361:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 569              		.loc 1 361 21 is_stmt 1 view .LVU208
+ 361:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 570              		.loc 1 361 24 is_stmt 0 view .LVU209
+ 571 025a 0D2B     		cmp	r3, #13
+ 572 025c 0FD0     		beq	.L56
+ 368:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 573              		.loc 1 368 21 is_stmt 1 view .LVU210
+ 368:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 574              		.loc 1 368 33 is_stmt 0 view .LVU211
+ 575 025e C118     		adds	r1, r0, r3
+ 576 0260 4978     		ldrb	r1, [r1, #1]	@ zero_extendqisi2
+ 368:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 577              		.loc 1 368 24 view .LVU212
+ 578 0262 0029     		cmp	r1, #0
+ 579 0264 E0D0     		beq	.L19
+ 373:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 580              		.loc 1 373 25 is_stmt 1 view .LVU213
+ 373:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 581              		.loc 1 373 28 is_stmt 0 view .LVU214
+ 582 0266 FF29     		cmp	r1, #255
+ 583 0268 D9D1     		bne	.L20
+ 373:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 584              		.loc 1 373 74 discriminator 1 view .LVU215
+ 585 026a C15C     		ldrb	r1, [r0, r3]	@ zero_extendqisi2
+ 373:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 586              		.loc 1 373 62 discriminator 1 view .LVU216
+ 587 026c FF29     		cmp	r1, #255
+ 588 026e D6D1     		bne	.L20
+ 589 0270 DAE7     		b	.L19
+ 590              	.L76:
+ 403:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 591              		.loc 1 403 75 view .LVU217
+ 592 0272 059A     		ldr	r2, [sp, #20]
+ 399:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 593              		.loc 1 399 25 is_stmt 1 view .LVU218
+ 594              	.LVL69:
+ 403:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 595              		.loc 1 403 25 view .LVU219
+ 403:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 596              		.loc 1 403 75 is_stmt 0 view .LVU220
+ 597 0274 079B     		ldr	r3, [sp, #28]
+ 598              	.LVL70:
+ARM GAS  /tmp/ccDgGeIw.s 			page 23
+
+
+ 403:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 599              		.loc 1 403 75 view .LVU221
+ 600 0276 BB61     		str	r3, [r7, #24]
+ 406:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 601              		.loc 1 406 25 is_stmt 1 view .LVU222
+ 406:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 602              		.loc 1 406 40 is_stmt 0 view .LVU223
+ 603 0278 3E68     		ldr	r6, [r7]
+ 604              	.LVL71:
+ 408:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 605              		.loc 1 408 25 is_stmt 1 view .LVU224
+ 399:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 606              		.loc 1 399 40 is_stmt 0 view .LVU225
+ 607 027a 0125     		movs	r5, #1
+ 608              	.LVL72:
+ 408:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 609              		.loc 1 408 25 view .LVU226
+ 610 027c 52E0     		b	.L17
+ 611              	.LVL73:
+ 612              	.L56:
+ 363:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         continue; /* this time next unicode is byte offset 14*/
+ 613              		.loc 1 363 27 view .LVU227
+ 614 027e 0C23     		movs	r3, #12
+ 615              	.LVL74:
+ 363:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         continue; /* this time next unicode is byte offset 14*/
+ 616              		.loc 1 363 27 view .LVU228
+ 617 0280 E4E7     		b	.L18
+ 618              	.LVL75:
+ 619              	.L79:
+ 363:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         continue; /* this time next unicode is byte offset 14*/
+ 620              		.loc 1 363 27 view .LVU229
+ 621 0282 AE46     		mov	lr, r5
+ 352:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 622              		.loc 1 352 24 view .LVU230
+ 623 0284 0123     		movs	r3, #1
+ 624 0286 0592     		str	r2, [sp, #20]
+ 625 0288 E1E7     		b	.L16
+ 626              	.LVL76:
+ 627              	.L77:
+ 352:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 628              		.loc 1 352 24 view .LVU231
+ 629 028a 059A     		ldr	r2, [sp, #20]
+ 630 028c 7546     		mov	r5, lr
+ 631              	.LVL77:
+ 352:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 632              		.loc 1 352 24 view .LVU232
+ 633 028e 49E0     		b	.L17
+ 634              	.LVL78:
+ 635              	.L80:
+ 423:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 636              		.loc 1 423 48 discriminator 1 view .LVU233
+ 637 0290 D8F86430 		ldr	r3, [r8, #100]
+ 423:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 638              		.loc 1 423 34 discriminator 1 view .LVU234
+ 639 0294 002B     		cmp	r3, #0
+ 640 0296 4DD1     		bne	.L24
+ 484:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ARM GAS  /tmp/ccDgGeIw.s 			page 24
+
+
+ 641              		.loc 1 484 21 is_stmt 1 view .LVU235
+ 484:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 642              		.loc 1 484 35 is_stmt 0 view .LVU236
+ 643 0298 0AF1010A 		add	r10, r10, #1
+ 644              	.LVL79:
+ 487:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 645              		.loc 1 487 21 is_stmt 1 view .LVU237
+ 487:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 646              		.loc 1 487 61 is_stmt 0 view .LVU238
+ 647 029c D8F84830 		ldr	r3, [r8, #72]
+ 487:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 648              		.loc 1 487 103 view .LVU239
+ 649 02a0 D8F84C20 		ldr	r2, [r8, #76]
+ 487:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 650              		.loc 1 487 91 view .LVU240
+ 651 02a4 1344     		add	r3, r3, r2
+ 487:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 652              		.loc 1 487 24 view .LVU241
+ 653 02a6 5345     		cmp	r3, r10
+ 654 02a8 20D8     		bhi	.L27
+ 491:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 655              		.loc 1 491 31 view .LVU242
+ 656 02aa 0823     		movs	r3, #8
+ 657 02ac 0FE1     		b	.L1
+ 658              	.L26:
+ 444:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 659              		.loc 1 444 25 is_stmt 1 view .LVU243
+ 444:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 660              		.loc 1 444 35 is_stmt 0 view .LVU244
+ 661 02ae 0DAA     		add	r2, sp, #52
+ 662 02b0 0A99     		ldr	r1, [sp, #40]
+ 663 02b2 4046     		mov	r0, r8
+ 664              	.LVL80:
+ 444:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 665              		.loc 1 444 35 view .LVU245
+ 666 02b4 FFF7FEFF 		bl	_fx_utility_FAT_entry_read
+ 667              	.LVL81:
+ 447:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 668              		.loc 1 447 25 is_stmt 1 view .LVU246
+ 447:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 669              		.loc 1 447 28 is_stmt 0 view .LVU247
+ 670 02b8 8346     		mov	fp, r0
+ 671              	.LVL82:
+ 447:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 672              		.loc 1 447 28 view .LVU248
+ 673 02ba 0028     		cmp	r0, #0
+ 674 02bc 40F00F81 		bne	.L57
+ 455:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 675              		.loc 1 455 25 is_stmt 1 view .LVU249
+ 455:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 676              		.loc 1 455 33 is_stmt 0 view .LVU250
+ 677 02c0 0D99     		ldr	r1, [sp, #52]
+ 678 02c2 0A91     		str	r1, [sp, #40]
+ 679              	.LVL83:
+ 459:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 680              		.loc 1 459 25 is_stmt 1 view .LVU251
+ 459:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ARM GAS  /tmp/ccDgGeIw.s 			page 25
+
+
+ 681              		.loc 1 459 28 is_stmt 0 view .LVU252
+ 682 02c4 0129     		cmp	r1, #1
+ 683 02c6 40F20C81 		bls	.L58
+ 459:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 684              		.loc 1 459 85 discriminator 1 view .LVU253
+ 685 02ca 08F50053 		add	r3, r8, #8192
+ 686 02ce D3F8A834 		ldr	r3, [r3, #1192]
+ 459:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         {
+ 687              		.loc 1 459 60 discriminator 1 view .LVU254
+ 688 02d2 8B42     		cmp	r3, r1
+ 689 02d4 40F20781 		bls	.L59
+ 467:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 690              		.loc 1 467 25 is_stmt 1 view .LVU255
+ 467:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 691              		.loc 1 467 41 is_stmt 0 view .LVU256
+ 692 02d8 0B9B     		ldr	r3, [sp, #44]
+ 693 02da 0133     		adds	r3, r3, #1
+ 694 02dc 0B93     		str	r3, [sp, #44]
+ 695              	.LVL84:
+ 470:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 696              		.loc 1 470 25 is_stmt 1 view .LVU257
+ 473:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 697              		.loc 1 473 25 view .LVU258
+ 473:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 698              		.loc 1 473 62 is_stmt 0 view .LVU259
+ 699 02de D8F85020 		ldr	r2, [r8, #80]
+ 474:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                              ((ULONG)media_ptr -> fx_media_sectors_per_cluster));
+ 700              		.loc 1 474 46 view .LVU260
+ 701 02e2 8B1E     		subs	r3, r1, #2
+ 702              	.LVL85:
+ 475:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 703              		.loc 1 475 48 view .LVU261
+ 704 02e4 D8F85410 		ldr	r1, [r8, #84]
+ 705              	.LVL86:
+ 473:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                             (((ULONG)cluster - FX_FAT_ENTRY_START) *
+ 706              		.loc 1 473 40 view .LVU262
+ 707 02e8 01FB032A 		mla	r10, r1, r3, r2
+ 708              	.LVL87:
+ 709              	.L27:
+ 496:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 710              		.loc 1 496 17 is_stmt 1 view .LVU263
+ 497:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 711              		.loc 1 497 69 is_stmt 0 view .LVU264
+ 712 02ec D8F80830 		ldr	r3, [r8, #8]
+ 496:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 713              		.loc 1 496 27 view .LVU265
+ 714 02f0 0322     		movs	r2, #3
+ 715 02f2 0292     		str	r2, [sp, #8]
+ 716 02f4 0122     		movs	r2, #1
+ 717 02f6 0192     		str	r2, [sp, #4]
+ 718 02f8 0093     		str	r3, [sp]
+ 719 02fa 5246     		mov	r2, r10
+ 720 02fc 0023     		movs	r3, #0
+ 721 02fe 4046     		mov	r0, r8
+ 722 0300 FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 723              	.LVL88:
+ 500:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ARM GAS  /tmp/ccDgGeIw.s 			page 26
+
+
+ 724              		.loc 1 500 17 is_stmt 1 view .LVU266
+ 500:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 725              		.loc 1 500 20 is_stmt 0 view .LVU267
+ 726 0304 0246     		mov	r2, r0
+ 727 0306 0028     		cmp	r0, #0
+ 728 0308 40F0EF80 		bne	.L61
+ 729              	.LVL89:
+ 730              	.L23:
+ 516:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 731              		.loc 1 516 13 is_stmt 1 view .LVU268
+ 516:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 732              		.loc 1 516 44 is_stmt 0 view .LVU269
+ 733 030c D8F80800 		ldr	r0, [r8, #8]
+ 516:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 734              		.loc 1 516 22 view .LVU270
+ 735 0310 1044     		add	r0, r0, r2
+ 736              	.LVL90:
+ 519:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         } while (card > 0);
+ 737              		.loc 1 519 13 is_stmt 1 view .LVU271
+ 519:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         } while (card > 0);
+ 738              		.loc 1 519 18 is_stmt 0 view .LVU272
+ 739 0312 09F10109 		add	r9, r9, #1
+ 740              	.LVL91:
+ 520:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 741              		.loc 1 520 23 is_stmt 1 view .LVU273
+ 742 0316 BCB1     		cbz	r4, .L78
+ 743              	.LVL92:
+ 744              	.L28:
+ 341:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 745              		.loc 1 341 9 view .LVU274
+ 345:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 746              		.loc 1 345 13 view .LVU275
+ 345:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 747              		.loc 1 345 27 is_stmt 0 view .LVU276
+ 748 0318 0478     		ldrb	r4, [r0]	@ zero_extendqisi2
+ 345:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 749              		.loc 1 345 20 view .LVU277
+ 750 031a 04F01F04 		and	r4, r4, #31
+ 345:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 751              		.loc 1 345 18 view .LVU278
+ 752 031e 013C     		subs	r4, r4, #1
+ 753              	.LVL93:
+ 348:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 754              		.loc 1 348 13 is_stmt 1 view .LVU279
+ 348:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 755              		.loc 1 348 16 is_stmt 0 view .LVU280
+ 756 0320 002D     		cmp	r5, #0
+ 757 0322 AED0     		beq	.L79
+ 758              	.LVL94:
+ 759              	.L17:
+ 419:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 760              		.loc 1 419 13 is_stmt 1 view .LVU281
+ 419:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 761              		.loc 1 419 29 is_stmt 0 view .LVU282
+ 762 0324 2032     		adds	r2, r2, #32
+ 419:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 763              		.loc 1 419 62 view .LVU283
+ARM GAS  /tmp/ccDgGeIw.s 			page 27
+
+
+ 764 0326 D8F82830 		ldr	r3, [r8, #40]
+ 419:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 765              		.loc 1 419 16 view .LVU284
+ 766 032a 9A42     		cmp	r2, r3
+ 767 032c EED3     		bcc	.L23
+ 423:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 768              		.loc 1 423 17 is_stmt 1 view .LVU285
+ 423:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 {
+ 769              		.loc 1 423 20 is_stmt 0 view .LVU286
+ 770 032e 089B     		ldr	r3, [sp, #32]
+ 771 0330 002B     		cmp	r3, #0
+ 772 0332 ADD0     		beq	.L80
+ 773              	.L24:
+ 427:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 774              		.loc 1 427 21 is_stmt 1 view .LVU287
+ 427:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 775              		.loc 1 427 54 is_stmt 0 view .LVU288
+ 776 0334 D8F85430 		ldr	r3, [r8, #84]
+ 427:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 777              		.loc 1 427 86 view .LVU289
+ 778 0338 013B     		subs	r3, r3, #1
+ 427:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     {
+ 779              		.loc 1 427 24 view .LVU290
+ 780 033a 5B45     		cmp	r3, fp
+ 781 033c B7D9     		bls	.L26
+ 433:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 782              		.loc 1 433 25 is_stmt 1 view .LVU291
+ 433:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 783              		.loc 1 433 39 is_stmt 0 view .LVU292
+ 784 033e 0AF1010A 		add	r10, r10, #1
+ 785              	.LVL95:
+ 436:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 786              		.loc 1 436 25 is_stmt 1 view .LVU293
+ 436:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 787              		.loc 1 436 40 is_stmt 0 view .LVU294
+ 788 0342 0BF1010B 		add	fp, fp, #1
+ 789              	.LVL96:
+ 436:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                     }
+ 790              		.loc 1 436 40 view .LVU295
+ 791 0346 D1E7     		b	.L27
+ 792              	.LVL97:
+ 793              	.L78:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 794              		.loc 1 523 59 view .LVU296
+ 795 0348 AB46     		mov	fp, r5
+ 796              	.LVL98:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 797              		.loc 1 523 59 view .LVU297
+ 798 034a 0A9C     		ldr	r4, [sp, #40]
+ 799              	.LVL99:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 800              		.loc 1 523 59 view .LVU298
+ 801 034c B646     		mov	lr, r6
+ 802 034e 0646     		mov	r6, r0
+ 803              	.LVL100:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 804              		.loc 1 523 59 view .LVU299
+ARM GAS  /tmp/ccDgGeIw.s 			page 28
+
+
+ 805 0350 CDF81490 		str	r9, [sp, #20]
+ 806 0354 DDF82C90 		ldr	r9, [sp, #44]
+ 807              	.LVL101:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 808              		.loc 1 523 59 view .LVU300
+ 809 0358 4546     		mov	r5, r8
+ 810              	.LVL102:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 811              		.loc 1 523 59 view .LVU301
+ 812 035a DDF820A0 		ldr	r10, [sp, #32]
+ 813              	.LVL103:
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 814              		.loc 1 523 9 is_stmt 1 view .LVU302
+ 523:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 815              		.loc 1 523 59 is_stmt 0 view .LVU303
+ 816 035e 0123     		movs	r3, #1
+ 817 0360 7B61     		str	r3, [r7, #20]
+ 818 0362 0DE7     		b	.L11
+ 819              	.LVL104:
+ 820              	.L54:
+ 528:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 821              		.loc 1 528 24 view .LVU304
+ 822 0364 4FF0010B 		mov	fp, #1
+ 823 0368 0AE7     		b	.L11
+ 824              	.LVL105:
+ 825              	.L75:
+ 536:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 826              		.loc 1 536 9 is_stmt 1 view .LVU305
+ 536:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 827              		.loc 1 536 59 is_stmt 0 view .LVU306
+ 828 036a 0023     		movs	r3, #0
+ 829 036c 7B61     		str	r3, [r7, #20]
+ 830 036e 0BE7     		b	.L29
+ 831              	.LVL106:
+ 832              	.L81:
+ 543:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 544:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 545:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check for a NULL.  */
+ 546:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if ((CHAR)read_ptr[i] == 0)
+ 547:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 548:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             break;
+ 549:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 550:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 551:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check for a dot.  This happens for the first two directory entries, no
+ 552:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            extra dot is needed.  */
+ 553:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if ((CHAR)read_ptr[i] == '.')
+ 554:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 555:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             dotflag =  2;
+ 833              		.loc 1 555 21 view .LVU307
+ 834 0370 0220     		movs	r0, #2
+ 835              	.LVL107:
+ 836              		.loc 1 555 21 view .LVU308
+ 837 0372 16E0     		b	.L32
+ 838              	.LVL108:
+ 839              	.L82:
+ 556:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 557:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ARM GAS  /tmp/ccDgGeIw.s 			page 29
+
+
+ 558:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check for a space.  */
+ 559:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if ((CHAR)read_ptr[i] == ' ')
+ 560:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 561:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Put a dot if a character comes after space.  */
+ 562:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if (dotflag == 0)
+ 840              		.loc 1 562 13 is_stmt 1 view .LVU309
+ 841              		.loc 1 562 16 is_stmt 0 view .LVU310
+ 842 0374 60B9     		cbnz	r0, .L35
+ 563:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 564:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 dotflag =  1;
+ 843              		.loc 1 564 25 view .LVU311
+ 844 0376 0120     		movs	r0, #1
+ 845              	.LVL109:
+ 565:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 566:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             continue;
+ 846              		.loc 1 566 13 is_stmt 1 view .LVU312
+ 847 0378 0AE0     		b	.L35
+ 848              	.LVL110:
+ 849              	.L83:
+ 567:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 568:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 569:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check for the main short file name size.  */
+ 570:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (i == FX_DIR_NAME_SIZE)
+ 571:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 572:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Check to see if we need to insert a dot.  */
+ 573:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if (dotflag == 0)
+ 850              		.loc 1 573 13 view .LVU313
+ 851              		.loc 1 573 16 is_stmt 0 view .LVU314
+ 852 037a B0B9     		cbnz	r0, .L36
+ 853              	.L37:
+ 854              	.LVL111:
+ 574:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 575:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 dotflag =  1;
+ 576:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 577:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 578:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 579:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Check to see if we need to add a dot.  */
+ 580:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         if (dotflag == 1)
+ 581:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 582:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Add dot to short file name.  */
+ 583:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             short_name_ptr[j++] =  '.';
+ 855              		.loc 1 583 13 is_stmt 1 view .LVU315
+ 856              		.loc 1 583 33 is_stmt 0 view .LVU316
+ 857 037c 2E21     		movs	r1, #46
+ 858 037e 0EF80210 		strb	r1, [lr, r2]
+ 584:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             dotflag =  2;    /* no more dot for spaces */
+ 859              		.loc 1 584 13 is_stmt 1 view .LVU317
+ 860              	.LVL112:
+ 583:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             dotflag =  2;    /* no more dot for spaces */
+ 861              		.loc 1 583 29 is_stmt 0 view .LVU318
+ 862 0382 0132     		adds	r2, r2, #1
+ 863              	.LVL113:
+ 864              		.loc 1 584 21 view .LVU319
+ 865 0384 0220     		movs	r0, #2
+ 866              	.LVL114:
+ 867              	.L38:
+ 585:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ARM GAS  /tmp/ccDgGeIw.s 			page 30
+
+
+ 586:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 587:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Copy a character.  */
+ 588:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         short_name_ptr[j] =  (CHAR)read_ptr[i];
+ 868              		.loc 1 588 9 is_stmt 1 view .LVU320
+ 869              		.loc 1 588 30 is_stmt 0 view .LVU321
+ 870 0386 9CF80010 		ldrb	r1, [ip]	@ zero_extendqisi2
+ 871              		.loc 1 588 27 view .LVU322
+ 872 038a 0EF80210 		strb	r1, [lr, r2]
+ 589:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 590:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Increment size.  */
+ 591:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         j++;
+ 873              		.loc 1 591 9 is_stmt 1 view .LVU323
+ 874              		.loc 1 591 10 is_stmt 0 view .LVU324
+ 875 038e 0132     		adds	r2, r2, #1
+ 876              	.LVL115:
+ 877              	.L35:
+ 542:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 878              		.loc 1 542 67 is_stmt 1 discriminator 2 view .LVU325
+ 879 0390 0133     		adds	r3, r3, #1
+ 880              	.LVL116:
+ 881              	.L30:
+ 542:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 882              		.loc 1 542 26 discriminator 1 view .LVU326
+ 883 0392 0A2B     		cmp	r3, #10
+ 884 0394 0CD8     		bhi	.L31
+ 546:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 885              		.loc 1 546 9 view .LVU327
+ 546:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 886              		.loc 1 546 27 is_stmt 0 view .LVU328
+ 887 0396 06EB030C 		add	ip, r6, r3
+ 888 039a F15C     		ldrb	r1, [r6, r3]	@ zero_extendqisi2
+ 546:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 889              		.loc 1 546 12 view .LVU329
+ 890 039c 41B1     		cbz	r1, .L31
+ 553:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 891              		.loc 1 553 9 is_stmt 1 view .LVU330
+ 553:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 892              		.loc 1 553 12 is_stmt 0 view .LVU331
+ 893 039e 2E29     		cmp	r1, #46
+ 894 03a0 E6D0     		beq	.L81
+ 895              	.LVL117:
+ 896              	.L32:
+ 559:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 897              		.loc 1 559 9 is_stmt 1 view .LVU332
+ 559:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 898              		.loc 1 559 12 is_stmt 0 view .LVU333
+ 899 03a2 2029     		cmp	r1, #32
+ 900 03a4 E6D0     		beq	.L82
+ 570:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 901              		.loc 1 570 9 is_stmt 1 view .LVU334
+ 570:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 902              		.loc 1 570 12 is_stmt 0 view .LVU335
+ 903 03a6 082B     		cmp	r3, #8
+ 904 03a8 E7D0     		beq	.L83
+ 905              	.L36:
+ 580:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 906              		.loc 1 580 9 is_stmt 1 view .LVU336
+ARM GAS  /tmp/ccDgGeIw.s 			page 31
+
+
+ 580:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 907              		.loc 1 580 12 is_stmt 0 view .LVU337
+ 908 03aa 0128     		cmp	r0, #1
+ 909 03ac EBD1     		bne	.L38
+ 910 03ae E5E7     		b	.L37
+ 911              	.L31:
+ 592:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 593:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 594:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Determine if a long file name is present and its associated short file
+ 595:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****        name is actually free.  */
+ 596:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((destination_ptr -> fx_dir_entry_long_name_present) && (((UCHAR)short_name_ptr[0]) == (UCHA
+ 912              		.loc 1 596 5 is_stmt 1 view .LVU338
+ 913              		.loc 1 596 26 is_stmt 0 view .LVU339
+ 914 03b0 7B69     		ldr	r3, [r7, #20]
+ 915              	.LVL118:
+ 916              		.loc 1 596 8 view .LVU340
+ 917 03b2 1BB1     		cbz	r3, .L40
+ 918              		.loc 1 596 87 discriminator 1 view .LVU341
+ 919 03b4 9EF80030 		ldrb	r3, [lr]	@ zero_extendqisi2
+ 920              		.loc 1 596 61 discriminator 1 view .LVU342
+ 921 03b8 E52B     		cmp	r3, #229
+ 922 03ba 5ED0     		beq	.L84
+ 923              	.L40:
+ 597:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 598:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 599:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Yes, the short file name is really free even though long file name entries directly prec
+ 600:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            In this case, simply place the free directory marker at the front of the long file name.
+ 601:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_name[0] =  (CHAR)FX_DIR_ENTRY_FREE;
+ 602:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         short_name_ptr[0] =  (CHAR)0;
+ 603:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 604:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 605:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Determine if the short name pointer is NULL while the read pointer is
+ 606:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****        non-NULL.  */
+ 607:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((short_name_ptr[0] == 0) && (read_ptr[0] == ' '))
+ 924              		.loc 1 607 5 is_stmt 1 view .LVU343
+ 925              		.loc 1 607 24 is_stmt 0 view .LVU344
+ 926 03bc 9EF80030 		ldrb	r3, [lr]	@ zero_extendqisi2
+ 927              		.loc 1 607 8 view .LVU345
+ 928 03c0 13B9     		cbnz	r3, .L41
+ 929              		.loc 1 607 46 discriminator 1 view .LVU346
+ 930 03c2 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 931              		.loc 1 607 34 discriminator 1 view .LVU347
+ 932 03c4 202B     		cmp	r3, #32
+ 933 03c6 66D0     		beq	.L85
+ 934              	.L41:
+ 608:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 609:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 610:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* This condition can occur with an all blank volume name.  Simply
+ 611:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            copy the volume name to the short name in this case.  */
+ 612:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         for (j = 0; j < (FX_DIR_NAME_SIZE + FX_DIR_EXT_SIZE); j++)
+ 613:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 614:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 615:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Copy a byte of the volume name.  */
+ 616:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             short_name_ptr[j] =  (CHAR)read_ptr[j];
+ 617:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 618:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 619:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ARM GAS  /tmp/ccDgGeIw.s 			page 32
+
+
+ 620:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Set end of string to null.  */
+ 621:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     short_name_ptr[j] = 0;
+ 935              		.loc 1 621 5 is_stmt 1 view .LVU348
+ 936              		.loc 1 621 23 is_stmt 0 view .LVU349
+ 937 03c8 0023     		movs	r3, #0
+ 938 03ca 0EF80230 		strb	r3, [lr, r2]
+ 622:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 623:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Load up the destination directory entry.  */
+ 624:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr += (FX_DIR_NAME_SIZE + FX_DIR_EXT_SIZE);
+ 939              		.loc 1 624 5 is_stmt 1 view .LVU350
+ 940              	.LVL119:
+ 625:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 626:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Copy the attribute into the destination.  */
+ 627:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_attributes =  *read_ptr++;
+ 941              		.loc 1 627 5 view .LVU351
+ 942              		.loc 1 627 51 is_stmt 0 view .LVU352
+ 943 03ce F37A     		ldrb	r3, [r6, #11]	@ zero_extendqisi2
+ 944              		.loc 1 627 48 view .LVU353
+ 945 03d0 3B77     		strb	r3, [r7, #28]
+ 628:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 629:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Pickup the reserved byte.  */
+ 630:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_reserved =  *read_ptr++;
+ 946              		.loc 1 630 5 is_stmt 1 view .LVU354
+ 947              	.LVL120:
+ 948              		.loc 1 630 49 is_stmt 0 view .LVU355
+ 949 03d2 337B     		ldrb	r3, [r6, #12]	@ zero_extendqisi2
+ 950              		.loc 1 630 46 view .LVU356
+ 951 03d4 7B77     		strb	r3, [r7, #29]
+ 631:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 632:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Check for an undocumented NT file name feature for optimizing the storage
+ 633:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****        of all lower case file names that otherwise are valid 8.3 file names. The
+ 634:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****        following reserved bit definitions are present:
+ 635:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 636:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****          BIT3 - set if 8.3 is all in lower case and no extended filename.
+ 637:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****          BIT4 - set for file, clear for directory entry if no extended filename.
+ 638:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 639:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****        This is true for all NT systems. Prior to NT follows MSDOS FAT documentation and
+ 640:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****        is set to 0x00, all bits cleared. Therefore if BIT3 is set force lowercase.  */
+ 641:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if ((get_short_name) && (destination_ptr -> fx_dir_entry_reserved & 0x08))
+ 952              		.loc 1 641 5 is_stmt 1 view .LVU357
+ 953              		.loc 1 641 8 is_stmt 0 view .LVU358
+ 954 03d6 BBF1000F 		cmp	fp, #0
+ 955 03da 02D0     		beq	.L44
+ 956              		.loc 1 641 26 discriminator 1 view .LVU359
+ 957 03dc 13F0080F 		tst	r3, #8
+ 958 03e0 6CD1     		bne	.L65
+ 959              	.LVL121:
+ 960              	.L44:
+ 642:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 643:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 644:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Microsoft undocumented NT file name feature... convert short name to lower
+ 645:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            case.  */
+ 646:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         for (j = 0; j <= (FX_DIR_NAME_SIZE + FX_DIR_EXT_SIZE) && (short_name_ptr[j] != 0x00); j++)
+ 647:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 648:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 649:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             /* Determine if an upper case character is present.  */
+ 650:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             if ((short_name_ptr[j] >= 'A') && (short_name_ptr[j] <= 'Z'))
+ARM GAS  /tmp/ccDgGeIw.s 			page 33
+
+
+ 651:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 652:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 653:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 /* Yes, an upper case character is present. Force it to lower case.  */
+ 654:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 short_name_ptr[j] =  (CHAR)(short_name_ptr[j] + 32);
+ 655:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 656:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 657:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 658:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 659:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Pickup the created time in milliseconds.  */
+ 660:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_created_time_ms =  *read_ptr++;
+ 961              		.loc 1 660 5 is_stmt 1 view .LVU360
+ 962              		.loc 1 660 56 is_stmt 0 view .LVU361
+ 963 03e2 737B     		ldrb	r3, [r6, #13]	@ zero_extendqisi2
+ 964              		.loc 1 660 53 view .LVU362
+ 965 03e4 BB77     		strb	r3, [r7, #30]
+ 661:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 662:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Pickup the created time.  */
+ 663:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_created_time =  _fx_utility_16_unsigned_read(read_ptr);
+ 966              		.loc 1 663 5 is_stmt 1 view .LVU363
+ 967              		.loc 1 663 53 is_stmt 0 view .LVU364
+ 968 03e6 06F10E00 		add	r0, r6, #14
+ 969              	.LVL122:
+ 970              		.loc 1 663 53 view .LVU365
+ 971 03ea FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 972              	.LVL123:
+ 973              		.loc 1 663 50 discriminator 1 view .LVU366
+ 974 03ee 3862     		str	r0, [r7, #32]
+ 664:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 975              		.loc 1 664 5 is_stmt 1 view .LVU367
+ 976              	.LVL124:
+ 665:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 666:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Pickup the created date.  */
+ 667:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_created_date =  _fx_utility_16_unsigned_read(read_ptr);
+ 977              		.loc 1 667 5 view .LVU368
+ 978              		.loc 1 667 53 is_stmt 0 view .LVU369
+ 979 03f0 06F11000 		add	r0, r6, #16
+ 980              	.LVL125:
+ 981              		.loc 1 667 53 view .LVU370
+ 982 03f4 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 983              	.LVL126:
+ 984              		.loc 1 667 50 discriminator 1 view .LVU371
+ 985 03f8 7862     		str	r0, [r7, #36]
+ 668:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 986              		.loc 1 668 5 is_stmt 1 view .LVU372
+ 987              	.LVL127:
+ 669:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 670:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Pickup the last accessed date.  */
+ 671:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_last_accessed_date =  _fx_utility_16_unsigned_read(read_ptr);
+ 988              		.loc 1 671 5 view .LVU373
+ 989              		.loc 1 671 59 is_stmt 0 view .LVU374
+ 990 03fa 06F11200 		add	r0, r6, #18
+ 991              	.LVL128:
+ 992              		.loc 1 671 59 view .LVU375
+ 993 03fe FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 994              	.LVL129:
+ 995              		.loc 1 671 56 discriminator 1 view .LVU376
+ 996 0402 B862     		str	r0, [r7, #40]
+ARM GAS  /tmp/ccDgGeIw.s 			page 34
+
+
+ 672:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 997              		.loc 1 672 5 is_stmt 1 view .LVU377
+ 998              		.loc 1 672 14 is_stmt 0 view .LVU378
+ 999 0404 06F11400 		add	r0, r6, #20
+ 1000              	.LVL130:
+ 673:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 674:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* read the upper 2 bytes of starting cluster - required only for 32 bit FAT */
+ 675:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if (media_ptr -> fx_media_32_bit_FAT)
+ 1001              		.loc 1 675 5 is_stmt 1 view .LVU379
+ 1002              		.loc 1 675 19 is_stmt 0 view .LVU380
+ 1003 0408 6B6E     		ldr	r3, [r5, #100]
+ 1004              		.loc 1 675 8 view .LVU381
+ 1005 040a 002B     		cmp	r3, #0
+ 1006 040c 58D1     		bne	.L86
+ 676:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 677:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 678:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* FAT32 only.  */
+ 679:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_cluster =  _fx_utility_16_unsigned_read(read_ptr);
+ 680:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_cluster <<= 16;
+ 681:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 682:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     else
+ 683:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 684:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Not required for non FAT32.  */
+ 685:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_cluster =  0;
+ 1007              		.loc 1 685 9 is_stmt 1 view .LVU382
+ 1008              		.loc 1 685 49 is_stmt 0 view .LVU383
+ 1009 040e 0023     		movs	r3, #0
+ 1010 0410 7B63     		str	r3, [r7, #52]
+ 1011              	.LVL131:
+ 1012              	.L49:
+ 686:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 687:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 688:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Advance the read pointer.  */
+ 689:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 1013              		.loc 1 689 5 is_stmt 1 view .LVU384
+ 690:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 691:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Copy the time into the destination.  */
+ 692:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_time =  _fx_utility_16_unsigned_read(read_ptr);
+ 1014              		.loc 1 692 5 view .LVU385
+ 1015              		.loc 1 692 45 is_stmt 0 view .LVU386
+ 1016 0412 06F11600 		add	r0, r6, #22
+ 1017              	.LVL132:
+ 1018              		.loc 1 692 45 view .LVU387
+ 1019 0416 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 1020              	.LVL133:
+ 1021              		.loc 1 692 42 discriminator 1 view .LVU388
+ 1022 041a F862     		str	r0, [r7, #44]
+ 693:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 1023              		.loc 1 693 5 is_stmt 1 view .LVU389
+ 1024              	.LVL134:
+ 694:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 695:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Copy the date into the destination.  */
+ 696:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_date =  _fx_utility_16_unsigned_read(read_ptr);
+ 1025              		.loc 1 696 5 view .LVU390
+ 1026              		.loc 1 696 45 is_stmt 0 view .LVU391
+ 1027 041c 06F11800 		add	r0, r6, #24
+ 1028              	.LVL135:
+ARM GAS  /tmp/ccDgGeIw.s 			page 35
+
+
+ 1029              		.loc 1 696 45 view .LVU392
+ 1030 0420 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 1031              	.LVL136:
+ 1032              		.loc 1 696 42 discriminator 1 view .LVU393
+ 1033 0424 3863     		str	r0, [r7, #48]
+ 697:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 1034              		.loc 1 697 5 is_stmt 1 view .LVU394
+ 1035              	.LVL137:
+ 698:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 699:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Copy the starting cluster into the destination.  */
+ 700:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_cluster +=  _fx_utility_16_unsigned_read(read_ptr);
+ 1036              		.loc 1 700 5 view .LVU395
+ 1037              		.loc 1 700 49 is_stmt 0 view .LVU396
+ 1038 0426 06F11A00 		add	r0, r6, #26
+ 1039              	.LVL138:
+ 1040              		.loc 1 700 49 view .LVU397
+ 1041 042a FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 1042              	.LVL139:
+ 1043              		.loc 1 700 21 discriminator 1 view .LVU398
+ 1044 042e 7B6B     		ldr	r3, [r7, #52]
+ 1045              		.loc 1 700 45 discriminator 1 view .LVU399
+ 1046 0430 0344     		add	r3, r3, r0
+ 1047 0432 7B63     		str	r3, [r7, #52]
+ 701:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     read_ptr =  read_ptr + 2;  /* Always 2 bytes */
+ 1048              		.loc 1 701 5 is_stmt 1 view .LVU400
+ 1049              	.LVL140:
+ 702:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 703:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Copy the file size into the destination.  */
+ 704:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_file_size =  _fx_utility_32_unsigned_read(read_ptr);
+ 1050              		.loc 1 704 5 view .LVU401
+ 1051              		.loc 1 704 50 is_stmt 0 view .LVU402
+ 1052 0434 06F11C00 		add	r0, r6, #28
+ 1053              	.LVL141:
+ 1054              		.loc 1 704 50 view .LVU403
+ 1055 0438 FFF7FEFF 		bl	_fx_utility_32_unsigned_read
+ 1056              	.LVL142:
+ 1057              		.loc 1 704 50 discriminator 1 view .LVU404
+ 1058 043c 0023     		movs	r3, #0
+ 1059              		.loc 1 704 47 discriminator 1 view .LVU405
+ 1060 043e B863     		str	r0, [r7, #56]
+ 1061 0440 FB63     		str	r3, [r7, #60]
+ 705:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 706:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Clear the destination search specific fields.  */
+ 707:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_last_search_cluster =           0;
+ 1062              		.loc 1 707 5 is_stmt 1 view .LVU406
+ 1063              		.loc 1 707 57 is_stmt 0 view .LVU407
+ 1064 0442 3B65     		str	r3, [r7, #80]
+ 708:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_last_search_relative_cluster =  0;
+ 1065              		.loc 1 708 5 is_stmt 1 view .LVU408
+ 1066              		.loc 1 708 66 is_stmt 0 view .LVU409
+ 1067 0444 7B65     		str	r3, [r7, #84]
+ 709:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_last_search_log_sector =        0;
+ 1068              		.loc 1 709 5 is_stmt 1 view .LVU410
+ 1069              		.loc 1 709 60 is_stmt 0 view .LVU411
+ 1070 0446 0020     		movs	r0, #0
+ 1071 0448 0021     		movs	r1, #0
+ 1072 044a C7E91601 		strd	r0, [r7, #88]
+ARM GAS  /tmp/ccDgGeIw.s 			page 36
+
+
+ 710:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_last_search_byte_offset =       0;
+ 1073              		.loc 1 710 5 is_stmt 1 view .LVU412
+ 1074              		.loc 1 710 61 is_stmt 0 view .LVU413
+ 1075 044e 3B66     		str	r3, [r7, #96]
+ 711:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 712:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Remember the entry number.  */
+ 713:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_number =  entry;
+ 1076              		.loc 1 713 5 is_stmt 1 view .LVU414
+ 1077              		.loc 1 713 44 is_stmt 0 view .LVU415
+ 1078 0450 059B     		ldr	r3, [sp, #20]
+ 1079 0452 FB64     		str	r3, [r7, #76]
+ 714:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 715:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Return entry number.  */
+ 716:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     *entry_ptr =  entry;
+ 1080              		.loc 1 716 5 is_stmt 1 view .LVU416
+ 1081              		.loc 1 716 16 is_stmt 0 view .LVU417
+ 1082 0454 069A     		ldr	r2, [sp, #24]
+ 1083 0456 1360     		str	r3, [r2]
+ 717:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 718:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Determine if we should remember the last cluster and relative cluster.  */
+ 719:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if (source_dir)
+ 1084              		.loc 1 719 5 is_stmt 1 view .LVU418
+ 1085              		.loc 1 719 8 is_stmt 0 view .LVU419
+ 1086 0458 BAF1000F 		cmp	r10, #0
+ 1087 045c 47D0     		beq	.L66
+ 720:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 721:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 722:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Yes, remember the last cluster and relative cluster for a subsequent call
+ 723:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            to read a directory entry.  */
+ 724:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         source_dir -> fx_dir_entry_last_search_cluster =           cluster;
+ 1088              		.loc 1 724 9 is_stmt 1 view .LVU420
+ 1089              		.loc 1 724 56 is_stmt 0 view .LVU421
+ 1090 045e CAF85040 		str	r4, [r10, #80]
+ 725:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         source_dir -> fx_dir_entry_last_search_relative_cluster =  relative_cluster;
+ 1091              		.loc 1 725 9 is_stmt 1 view .LVU422
+ 1092              		.loc 1 725 65 is_stmt 0 view .LVU423
+ 1093 0462 CAF85490 		str	r9, [r10, #84]
+ 726:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 727:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         /* Also remember several other items that are unique to the directory... just to verify tha
+ 728:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****            search information can be used.  */
+ 729:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         source_dir -> fx_dir_entry_last_search_log_sector =        source_dir -> fx_dir_entry_log_s
+ 1094              		.loc 1 729 9 is_stmt 1 view .LVU424
+ 1095              		.loc 1 729 79 is_stmt 0 view .LVU425
+ 1096 0466 DAE91023 		ldrd	r2, [r10, #64]
+ 1097              		.loc 1 729 59 view .LVU426
+ 1098 046a CAE91623 		strd	r2, [r10, #88]
+ 730:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         source_dir -> fx_dir_entry_last_search_byte_offset =       source_dir -> fx_dir_entry_byte_
+ 1099              		.loc 1 730 9 is_stmt 1 view .LVU427
+ 1100              		.loc 1 730 79 is_stmt 0 view .LVU428
+ 1101 046e DAF84830 		ldr	r3, [r10, #72]
+ 1102              		.loc 1 730 60 view .LVU429
+ 1103 0472 CAF86030 		str	r3, [r10, #96]
+ 731:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 732:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #ifdef FX_ENABLE_EXFAT
+ 733:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     destination_ptr -> fx_dir_entry_dont_use_fat = 0;
+ 734:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 735:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* If a file whose first byte of long name is read, fx_dir_entry_short_name will not be empty. 
+ARM GAS  /tmp/ccDgGeIw.s 			page 37
+
+
+ 736:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* If a free dir_entry is obtained, fx_dir_entry_short_name[0] will not be assigned as 0 around
+ 737:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* If there is only a free dir_entry without front long name dir_entries, fx_dir_entry_name[0] 
+ 738:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     if (((UCHAR)destination_ptr -> fx_dir_entry_name[0] == FX_DIR_ENTRY_FREE) && ((UCHAR)destinatio
+ 739:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 740:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_type = FX_EXFAT_DIR_ENTRY_TYPE_FREE;
+ 741:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 742:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     else if ((UCHAR)destination_ptr -> fx_dir_entry_name[0] == FX_DIR_ENTRY_DONE)
+ 743:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 744:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_type = FX_EXFAT_DIR_ENTRY_TYPE_END_MARKER;
+ 745:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 746:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     else
+ 747:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     {
+ 748:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_type = FX_EXFAT_DIR_ENTRY_TYPE_FILE_DIRECTORY;
+ 749:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 750:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** #endif /* FX_ENABLE_EXFAT */
+ 751:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** 
+ 752:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     /* Return success to the caller.  */
+ 753:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     return(FX_SUCCESS);
+ 1104              		.loc 1 753 11 view .LVU430
+ 1105 0476 0023     		movs	r3, #0
+ 1106 0478 29E0     		b	.L1
+ 1107              	.LVL143:
+ 1108              	.L84:
+ 601:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         short_name_ptr[0] =  (CHAR)0;
+ 1109              		.loc 1 601 9 is_stmt 1 view .LVU431
+ 601:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         short_name_ptr[0] =  (CHAR)0;
+ 1110              		.loc 1 601 25 is_stmt 0 view .LVU432
+ 1111 047a 3B68     		ldr	r3, [r7]
+ 601:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         short_name_ptr[0] =  (CHAR)0;
+ 1112              		.loc 1 601 49 view .LVU433
+ 1113 047c E521     		movs	r1, #229
+ 1114 047e 1970     		strb	r1, [r3]
+ 602:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 1115              		.loc 1 602 9 is_stmt 1 view .LVU434
+ 602:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 1116              		.loc 1 602 27 is_stmt 0 view .LVU435
+ 1117 0480 0023     		movs	r3, #0
+ 1118 0482 8EF80030 		strb	r3, [lr]
+ 1119 0486 99E7     		b	.L40
+ 1120              	.L43:
+ 616:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 1121              		.loc 1 616 13 is_stmt 1 view .LVU436
+ 616:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 1122              		.loc 1 616 34 is_stmt 0 view .LVU437
+ 1123 0488 B35C     		ldrb	r3, [r6, r2]	@ zero_extendqisi2
+ 616:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 1124              		.loc 1 616 31 view .LVU438
+ 1125 048a 0EF80230 		strb	r3, [lr, r2]
+ 612:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1126              		.loc 1 612 64 is_stmt 1 discriminator 3 view .LVU439
+ 1127 048e 0132     		adds	r2, r2, #1
+ 1128              	.LVL144:
+ 1129              	.L42:
+ 612:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1130              		.loc 1 612 23 discriminator 1 view .LVU440
+ 1131 0490 0A2A     		cmp	r2, #10
+ 1132 0492 F9D9     		bls	.L43
+ARM GAS  /tmp/ccDgGeIw.s 			page 38
+
+
+ 1133 0494 98E7     		b	.L41
+ 1134              	.L85:
+ 612:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1135              		.loc 1 612 16 is_stmt 0 view .LVU441
+ 1136 0496 0022     		movs	r2, #0
+ 1137              	.LVL145:
+ 612:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1138              		.loc 1 612 16 view .LVU442
+ 1139 0498 FAE7     		b	.L42
+ 1140              	.LVL146:
+ 1141              	.L46:
+ 646:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1142              		.loc 1 646 96 is_stmt 1 discriminator 2 view .LVU443
+ 1143 049a 0133     		adds	r3, r3, #1
+ 1144              	.LVL147:
+ 1145              	.L45:
+ 646:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1146              		.loc 1 646 63 discriminator 1 view .LVU444
+ 1147 049c 0B2B     		cmp	r3, #11
+ 1148 049e A0D8     		bhi	.L44
+ 646:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1149              		.loc 1 646 81 is_stmt 0 discriminator 3 view .LVU445
+ 1150 04a0 0EEB0300 		add	r0, lr, r3
+ 1151 04a4 1EF80320 		ldrb	r2, [lr, r3]	@ zero_extendqisi2
+ 646:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1152              		.loc 1 646 63 discriminator 3 view .LVU446
+ 1153 04a8 002A     		cmp	r2, #0
+ 1154 04aa 9AD0     		beq	.L44
+ 650:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 1155              		.loc 1 650 13 is_stmt 1 view .LVU447
+ 650:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 1156              		.loc 1 650 44 is_stmt 0 view .LVU448
+ 1157 04ac A2F14101 		sub	r1, r2, #65
+ 1158 04b0 C9B2     		uxtb	r1, r1
+ 650:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             {
+ 1159              		.loc 1 650 16 view .LVU449
+ 1160 04b2 1929     		cmp	r1, #25
+ 1161 04b4 F1D8     		bhi	.L46
+ 654:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 1162              		.loc 1 654 17 is_stmt 1 view .LVU450
+ 654:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 1163              		.loc 1 654 38 is_stmt 0 view .LVU451
+ 1164 04b6 2032     		adds	r2, r2, #32
+ 654:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 1165              		.loc 1 654 35 view .LVU452
+ 1166 04b8 0270     		strb	r2, [r0]
+ 1167 04ba EEE7     		b	.L46
+ 1168              	.LVL148:
+ 1169              	.L65:
+ 646:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         {
+ 1170              		.loc 1 646 16 view .LVU453
+ 1171 04bc 0023     		movs	r3, #0
+ 1172 04be EDE7     		b	.L45
+ 1173              	.LVL149:
+ 1174              	.L86:
+ 679:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_cluster <<= 16;
+ 1175              		.loc 1 679 9 is_stmt 1 view .LVU454
+ARM GAS  /tmp/ccDgGeIw.s 			page 39
+
+
+ 679:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_cluster <<= 16;
+ 1176              		.loc 1 679 52 is_stmt 0 view .LVU455
+ 1177 04c0 FFF7FEFF 		bl	_fx_utility_16_unsigned_read
+ 1178              	.LVL150:
+ 679:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         destination_ptr -> fx_dir_entry_cluster <<= 16;
+ 1179              		.loc 1 679 49 discriminator 1 view .LVU456
+ 1180 04c4 7863     		str	r0, [r7, #52]
+ 680:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 1181              		.loc 1 680 9 is_stmt 1 view .LVU457
+ 680:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****     }
+ 1182              		.loc 1 680 49 is_stmt 0 view .LVU458
+ 1183 04c6 0004     		lsls	r0, r0, #16
+ 1184 04c8 7863     		str	r0, [r7, #52]
+ 1185 04ca A2E7     		b	.L49
+ 1186              	.LVL151:
+ 1187              	.L50:
+ 147:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****         }
+ 1188              		.loc 1 147 19 view .LVU459
+ 1189 04cc 0223     		movs	r3, #2
+ 1190              	.LVL152:
+ 1191              	.L1:
+ 754:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** }
+ 1192              		.loc 1 754 1 view .LVU460
+ 1193 04ce 1846     		mov	r0, r3
+ 1194 04d0 0FB0     		add	sp, sp, #60
+ 1195              	.LCFI2:
+ 1196              		.cfi_remember_state
+ 1197              		.cfi_def_cfa_offset 36
+ 1198              		@ sp needed
+ 1199 04d2 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1200              	.LVL153:
+ 1201              	.L51:
+ 1202              	.LCFI3:
+ 1203              		.cfi_restore_state
+ 212:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 1204              		.loc 1 212 23 view .LVU461
+ 1205 04d6 0823     		movs	r3, #8
+ 1206 04d8 F9E7     		b	.L1
+ 1207              	.L52:
+ 212:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****             }
+ 1208              		.loc 1 212 23 view .LVU462
+ 1209 04da 0823     		movs	r3, #8
+ 1210 04dc F7E7     		b	.L1
+ 1211              	.LVL154:
+ 1212              	.L57:
+ 451:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 1213              		.loc 1 451 35 view .LVU463
+ 1214 04de 0346     		mov	r3, r0
+ 1215 04e0 F5E7     		b	.L1
+ 1216              	.LVL155:
+ 1217              	.L58:
+ 463:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                         }
+ 1218              		.loc 1 463 35 view .LVU464
+ 1219 04e2 0823     		movs	r3, #8
+ 1220 04e4 F3E7     		b	.L1
+ 1221              	.L59:
+ 1222 04e6 0823     		movs	r3, #8
+ARM GAS  /tmp/ccDgGeIw.s 			page 40
+
+
+ 1223 04e8 F1E7     		b	.L1
+ 1224              	.LVL156:
+ 1225              	.L61:
+ 502:Middlewares/ST/filex/common/src/fx_directory_entry_read.c ****                 }
+ 1226              		.loc 1 502 27 view .LVU465
+ 1227 04ea 0346     		mov	r3, r0
+ 1228 04ec EFE7     		b	.L1
+ 1229              	.LVL157:
+ 1230              	.L66:
+ 753:Middlewares/ST/filex/common/src/fx_directory_entry_read.c **** }
+ 1231              		.loc 1 753 11 view .LVU466
+ 1232 04ee 0023     		movs	r3, #0
+ 1233 04f0 EDE7     		b	.L1
+ 1234              		.cfi_endproc
+ 1235              	.LFE8:
+ 1237              		.text
+ 1238              	.Letext0:
+ 1239              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 1240              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 1241              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 1242              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 1243              		.file 6 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  /tmp/ccDgGeIw.s 			page 41
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_entry_read.c
+     /tmp/ccDgGeIw.s:20     .text._fx_directory_entry_read:00000000 $t
+     /tmp/ccDgGeIw.s:26     .text._fx_directory_entry_read:00000000 _fx_directory_entry_read
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_fx_utility_FAT_entry_read
+_fx_utility_logical_sector_read
+_fx_utility_16_unsigned_read
+_fx_utility_32_unsigned_read

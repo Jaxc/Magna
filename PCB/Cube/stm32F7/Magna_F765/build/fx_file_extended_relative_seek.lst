@@ -1,0 +1,425 @@
+ARM GAS  /tmp/ccjLOEyn.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_file_extended_relative_seek.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c"
+  19              		.section	.text._fx_file_extended_relative_seek,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_file_extended_relative_seek
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_file_extended_relative_seek:
+  27              	.LVL0:
+  28              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  12:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  13:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**   File                                                                */
+  19:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  23:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  25:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  26:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  28:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #include "fx_system.h"
+  30:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #include "fx_directory.h"
+ARM GAS  /tmp/ccjLOEyn.s 			page 2
+
+
+  31:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #include "fx_file.h"
+  32:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #include "fx_utility.h"
+  33:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  34:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  35:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  36:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  37:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  FUNCTION                                               RELEASE        */
+  38:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  39:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    _fx_file_extended_relative_seek                     PORTABLE C      */
+  40:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                           6.1          */
+  41:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  AUTHOR                                                                */
+  42:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  43:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  44:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  DESCRIPTION                                                           */
+  46:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  47:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    This function positions the internal file pointers to the specified */
+  48:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    byte relative offset such that the next read or write operation is  */
+  49:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    performed there.                                                    */
+  50:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  INPUT                                                                 */
+  52:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    file_ptr                              File control block pointer    */
+  54:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    byte_offset                           Byte offset of the seek       */
+  55:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    seek_from                             Direction for relative seek,  */
+  56:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                          legal values are:             */
+  57:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                              FX_SEEK_BEGIN             */
+  59:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                              FX_SEEK_END               */
+  60:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                              FX_SEEK_FORWARD           */
+  61:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                              FX_SEEK_BACK              */
+  62:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  OUTPUT                                                                */
+  64:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    return status                                                       */
+  66:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  CALLS                                                                 */
+  68:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    _fx_file_extended_seek                Seek to specified position    */
+  70:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  CALLED BY                                                             */
+  72:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  73:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    Application Code                                                    */
+  74:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  RELEASE HISTORY                                                       */
+  76:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  77:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*    DATE              NAME                      DESCRIPTION             */
+  78:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  79:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  80:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  81:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                            resulting in version 6.1    */
+  82:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /*                                                                        */
+  83:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** /**************************************************************************/
+  84:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** UINT  _fx_file_extended_relative_seek(FX_FILE *file_ptr, ULONG64 byte_offset, UINT seek_from)
+  85:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** {
+  29              		.loc 1 85 1 view -0
+  30              		.cfi_startproc
+ARM GAS  /tmp/ccjLOEyn.s 			page 3
+
+
+  31              		@ args = 4, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 85 1 is_stmt 0 view .LVU1
+  34 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 20
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 85B0     		sub	sp, sp, #20
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 40
+  45 0004 1546     		mov	r5, r2
+  46 0006 0A9F     		ldr	r7, [sp, #40]
+  86:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  87:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  88:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** FX_MEDIA *media_ptr;
+  47              		.loc 1 88 1 is_stmt 1 view .LVU2
+  89:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  90:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* First, determine if the file is still open.  */
+  91:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     if (file_ptr -> fx_file_id != FX_FILE_ID)
+  48              		.loc 1 91 5 view .LVU3
+  49              		.loc 1 91 18 is_stmt 0 view .LVU4
+  50 0008 0168     		ldr	r1, [r0]
+  51              		.loc 1 91 8 view .LVU5
+  52 000a 2B4A     		ldr	r2, .L14
+  53              	.LVL1:
+  54              		.loc 1 91 8 view .LVU6
+  55 000c 9142     		cmp	r1, r2
+  56 000e 02D0     		beq	.L10
+  92:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+  93:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  94:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         /* Return the file not open error status.  */
+  95:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         return(FX_NOT_OPEN);
+  57              		.loc 1 95 15 view .LVU7
+  58 0010 0720     		movs	r0, #7
+  59              	.LVL2:
+  60              	.L1:
+  96:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+  97:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  98:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* Setup pointer to media structure.  */
+  99:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     media_ptr =  file_ptr -> fx_file_media_ptr;
+ 100:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 101:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* Increment the number of times this service has been called.  */
+ 102:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     media_ptr -> fx_media_file_relative_seeks++;
+ 103:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #endif
+ 104:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 105:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 106:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_FILE_RELATIVE_SEEK, file_ptr, byte_offset, seek_from, file_ptr
+ 107:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 108:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* Determine if seeking from the beginning is requested.  */
+ 109:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     if (seek_from == FX_SEEK_BEGIN)
+ 110:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 111:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         /* Yes, use the base file seek routine to seek from the beginning of
+ARM GAS  /tmp/ccjLOEyn.s 			page 4
+
+
+ 113:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****            the file.  */
+ 114:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         return(_fx_file_extended_seek(file_ptr, byte_offset));
+ 115:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 116:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* Otherwise, determine if seeking from the end is requested.  */
+ 117:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     else if (seek_from == FX_SEEK_END)
+ 118:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 119:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 120:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         /* Yes, seek from the end of the file.  */
+ 121:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         /* Determine if the requested seek offset is greater than
+ 123:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****            the file size.  */
+ 124:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         if (byte_offset >= file_ptr -> fx_file_current_file_size)
+ 125:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 126:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 127:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             /* Yes, just seek to the beginning of the file.  */
+ 128:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             return(_fx_file_extended_seek(file_ptr, ((ULONG64) 0)));
+ 129:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 130:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         else
+ 131:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 132:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             /* Logically seek from the end of the file.  */
+ 134:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             return(_fx_file_extended_seek(file_ptr, file_ptr -> fx_file_current_file_size - byte_of
+ 135:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 136:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 137:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* Otherwise, determine if seeking from the current position is requested.  */
+ 138:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     else if (seek_from == FX_SEEK_FORWARD)
+ 139:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 140:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 141:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         /* Yes, just seek ahead from the current file position.  */
+ 142:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         return(_fx_file_extended_seek(file_ptr, file_ptr -> fx_file_current_file_offset + byte_offs
+ 143:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 144:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     /* Otherwise, seeking backward from the current position is assumed.  */
+ 145:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     else
+ 146:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 147:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 148:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         /* Determine if the backward offset is greater than the current file offset.  */
+ 149:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         if (byte_offset >= file_ptr -> fx_file_current_file_offset)
+ 150:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 151:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 152:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             /* Yes, just position the file to the beginning.  */
+ 153:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             return(_fx_file_extended_seek(file_ptr, ((ULONG64) 0)));
+ 154:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 155:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         else
+ 156:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 157:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 158:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             /* Seek backward relative to the current position.  */
+ 159:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****             return(_fx_file_extended_seek(file_ptr, file_ptr -> fx_file_current_file_offset - byte_
+ 160:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 161:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 162:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** }
+  61              		.loc 1 162 1 view .LVU8
+  62 0012 05B0     		add	sp, sp, #20
+  63              	.LCFI2:
+  64              		.cfi_remember_state
+  65              		.cfi_def_cfa_offset 20
+  66              		@ sp needed
+  67 0014 F0BD     		pop	{r4, r5, r6, r7, pc}
+ARM GAS  /tmp/ccjLOEyn.s 			page 5
+
+
+  68              	.LVL3:
+  69              	.L10:
+  70              	.LCFI3:
+  71              		.cfi_restore_state
+  72              		.loc 1 162 1 view .LVU9
+  73 0016 0446     		mov	r4, r0
+  74 0018 1E46     		mov	r6, r3
+  99:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  75              		.loc 1 99 5 is_stmt 1 view .LVU10
+  99:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  76              		.loc 1 99 15 is_stmt 0 view .LVU11
+  77 001a 826D     		ldr	r2, [r0, #88]
+  78              	.LVL4:
+ 102:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #endif
+  79              		.loc 1 102 5 is_stmt 1 view .LVU12
+ 102:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #endif
+  80              		.loc 1 102 15 is_stmt 0 view .LVU13
+  81 001c D2F84031 		ldr	r3, [r2, #320]
+ 102:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** #endif
+  82              		.loc 1 102 46 view .LVU14
+  83 0020 0133     		adds	r3, r3, #1
+  84 0022 C2F84031 		str	r3, [r2, #320]
+ 106:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  85              		.loc 1 106 5 is_stmt 1 view .LVU15
+  86 0026 026C     		ldr	r2, [r0, #64]
+  87              	.LVL5:
+ 106:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+  88              		.loc 1 106 5 is_stmt 0 view .LVU16
+  89 0028 0023     		movs	r3, #0
+  90 002a 0393     		str	r3, [sp, #12]
+  91 002c 0293     		str	r3, [sp, #8]
+  92 002e 4FF48043 		mov	r3, #16384
+  93 0032 0193     		str	r3, [sp, #4]
+  94 0034 0092     		str	r2, [sp]
+  95 0036 3B46     		mov	r3, r7
+  96 0038 2A46     		mov	r2, r5
+  97 003a 0146     		mov	r1, r0
+  98 003c F920     		movs	r0, #249
+  99              	.LVL6:
+ 106:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c **** 
+ 100              		.loc 1 106 5 view .LVU17
+ 101 003e FFF7FEFF 		bl	_fx_trace_event_insert
+ 102              	.LVL7:
+ 109:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 103              		.loc 1 109 5 is_stmt 1 view .LVU18
+ 109:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 104              		.loc 1 109 8 is_stmt 0 view .LVU19
+ 105 0042 7FB1     		cbz	r7, .L11
+ 117:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 106              		.loc 1 117 10 is_stmt 1 view .LVU20
+ 117:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 107              		.loc 1 117 13 is_stmt 0 view .LVU21
+ 108 0044 012F     		cmp	r7, #1
+ 109 0046 13D0     		beq	.L12
+ 138:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ 110              		.loc 1 138 10 is_stmt 1 view .LVU22
+ 138:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     {
+ARM GAS  /tmp/ccjLOEyn.s 			page 6
+
+
+ 111              		.loc 1 138 13 is_stmt 0 view .LVU23
+ 112 0048 022F     		cmp	r7, #2
+ 113 004a 24D0     		beq	.L13
+ 149:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 114              		.loc 1 149 9 is_stmt 1 view .LVU24
+ 149:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 115              		.loc 1 149 37 is_stmt 0 view .LVU25
+ 116 004c 226C     		ldr	r2, [r4, #64]
+ 117 004e 636C     		ldr	r3, [r4, #68]
+ 149:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 118              		.loc 1 149 12 view .LVU26
+ 119 0050 9542     		cmp	r5, r2
+ 120 0052 76EB0301 		sbcs	r1, r6, r3
+ 121 0056 27D3     		bcc	.L7
+ 153:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 122              		.loc 1 153 13 is_stmt 1 view .LVU27
+ 153:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 123              		.loc 1 153 20 is_stmt 0 view .LVU28
+ 124 0058 0022     		movs	r2, #0
+ 125 005a 0023     		movs	r3, #0
+ 126 005c 2046     		mov	r0, r4
+ 127 005e FFF7FEFF 		bl	_fx_file_extended_seek
+ 128              	.LVL8:
+ 129 0062 D6E7     		b	.L1
+ 130              	.L11:
+ 114:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 131              		.loc 1 114 9 is_stmt 1 view .LVU29
+ 114:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 132              		.loc 1 114 16 is_stmt 0 view .LVU30
+ 133 0064 2A46     		mov	r2, r5
+ 134 0066 3346     		mov	r3, r6
+ 135 0068 2046     		mov	r0, r4
+ 136 006a FFF7FEFF 		bl	_fx_file_extended_seek
+ 137              	.LVL9:
+ 138 006e D0E7     		b	.L1
+ 139              	.L12:
+ 124:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 140              		.loc 1 124 9 is_stmt 1 view .LVU31
+ 124:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 141              		.loc 1 124 37 is_stmt 0 view .LVU32
+ 142 0070 A26C     		ldr	r2, [r4, #72]
+ 143 0072 E36C     		ldr	r3, [r4, #76]
+ 124:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         {
+ 144              		.loc 1 124 12 view .LVU33
+ 145 0074 9542     		cmp	r5, r2
+ 146 0076 76EB0301 		sbcs	r1, r6, r3
+ 147 007a 05D3     		bcc	.L5
+ 128:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 148              		.loc 1 128 13 is_stmt 1 view .LVU34
+ 128:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 149              		.loc 1 128 20 is_stmt 0 view .LVU35
+ 150 007c 0022     		movs	r2, #0
+ 151 007e 0023     		movs	r3, #0
+ 152 0080 2046     		mov	r0, r4
+ 153 0082 FFF7FEFF 		bl	_fx_file_extended_seek
+ 154              	.LVL10:
+ 155 0086 C4E7     		b	.L1
+ARM GAS  /tmp/ccjLOEyn.s 			page 7
+
+
+ 156              	.L5:
+ 134:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 157              		.loc 1 134 13 is_stmt 1 view .LVU36
+ 134:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 158              		.loc 1 134 20 is_stmt 0 view .LVU37
+ 159 0088 521B     		subs	r2, r2, r5
+ 160 008a 63EB0603 		sbc	r3, r3, r6
+ 161 008e 2046     		mov	r0, r4
+ 162 0090 FFF7FEFF 		bl	_fx_file_extended_seek
+ 163              	.LVL11:
+ 164 0094 BDE7     		b	.L1
+ 165              	.L13:
+ 142:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 166              		.loc 1 142 9 is_stmt 1 view .LVU38
+ 142:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 167              		.loc 1 142 58 is_stmt 0 view .LVU39
+ 168 0096 226C     		ldr	r2, [r4, #64]
+ 169 0098 636C     		ldr	r3, [r4, #68]
+ 142:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****     }
+ 170              		.loc 1 142 16 view .LVU40
+ 171 009a 5219     		adds	r2, r2, r5
+ 172 009c 43EB0603 		adc	r3, r3, r6
+ 173 00a0 2046     		mov	r0, r4
+ 174 00a2 FFF7FEFF 		bl	_fx_file_extended_seek
+ 175              	.LVL12:
+ 176 00a6 B4E7     		b	.L1
+ 177              	.L7:
+ 159:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 178              		.loc 1 159 13 is_stmt 1 view .LVU41
+ 159:Middlewares/ST/filex/common/src/fx_file_extended_relative_seek.c ****         }
+ 179              		.loc 1 159 20 is_stmt 0 view .LVU42
+ 180 00a8 521B     		subs	r2, r2, r5
+ 181 00aa 63EB0603 		sbc	r3, r3, r6
+ 182 00ae 2046     		mov	r0, r4
+ 183 00b0 FFF7FEFF 		bl	_fx_file_extended_seek
+ 184              	.LVL13:
+ 185 00b4 ADE7     		b	.L1
+ 186              	.L15:
+ 187 00b6 00BF     		.align	2
+ 188              	.L14:
+ 189 00b8 454C4946 		.word	1179208773
+ 190              		.cfi_endproc
+ 191              	.LFE8:
+ 193              		.text
+ 194              	.Letext0:
+ 195              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 196              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 197              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 198              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 199              		.file 6 "Middlewares/ST/filex/common/inc/fx_file.h"
+ARM GAS  /tmp/ccjLOEyn.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_file_extended_relative_seek.c
+     /tmp/ccjLOEyn.s:20     .text._fx_file_extended_relative_seek:00000000 $t
+     /tmp/ccjLOEyn.s:26     .text._fx_file_extended_relative_seek:00000000 _fx_file_extended_relative_seek
+     /tmp/ccjLOEyn.s:189    .text._fx_file_extended_relative_seek:000000b8 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_fx_file_extended_seek

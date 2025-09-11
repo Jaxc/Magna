@@ -1,0 +1,523 @@
+ARM GAS  /tmp/cclZ3h3Q.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fx_system_initialize.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Middlewares/ST/filex/common/src/fx_system_initialize.c"
+  19              		.section	.rodata._fx_system_initialize.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 46696C65 		.ascii	"FileX System Timer\000"
+  22      58205379 
+  22      7374656D 
+  22      2054696D 
+  22      657200
+  23              		.section	.text._fx_system_initialize,"ax",%progbits
+  24              		.align	1
+  25              		.global	_fx_system_initialize
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	_fx_system_initialize:
+  31              	.LFB8:
+   1:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  12:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  13:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**   System                                                              */
+  19:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  23:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #define FX_SOURCE_CODE
+ARM GAS  /tmp/cclZ3h3Q.s 			page 2
+
+
+  24:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  25:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  26:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /* Locate FileX control component data in this file.  */
+  27:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  28:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #define FX_SYSTEM_INIT
+  29:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  30:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  31:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /* Include necessary system files.  */
+  32:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  33:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #include "fx_api.h"
+  34:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #include "fx_system.h"
+  35:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  36:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  37:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  38:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  39:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  FUNCTION                                               RELEASE        */
+  40:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  41:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    _fx_system_initialize                               PORTABLE C      */
+  42:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                           6.1          */
+  43:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  AUTHOR                                                                */
+  44:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  46:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  47:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  DESCRIPTION                                                           */
+  48:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    This function initializes the various control data structures for   */
+  50:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    the FileX System component.                                         */
+  51:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  52:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  INPUT                                                                 */
+  53:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    None                                                                */
+  55:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  OUTPUT                                                                */
+  57:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    None                                                                */
+  59:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  CALLS                                                                 */
+  61:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    tx_timer_create                       Create system timer           */
+  63:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    Application Initialization                                          */
+  67:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  73:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*  09-30-2020     William E. Lamie         Modified comment(s), and      */
+  74:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                            added conditional to        */
+  75:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                            disable build options,      */
+  76:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                            resulting in version 6.1    */
+  77:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /*                                                                        */
+  78:Middlewares/ST/filex/common/src/fx_system_initialize.c **** /**************************************************************************/
+  79:Middlewares/ST/filex/common/src/fx_system_initialize.c **** VOID  _fx_system_initialize(VOID)
+  80:Middlewares/ST/filex/common/src/fx_system_initialize.c **** {
+ARM GAS  /tmp/cclZ3h3Q.s 			page 3
+
+
+  32              		.loc 1 80 1 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36 0000 10B5     		push	{r4, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 4, -8
+  40              		.cfi_offset 14, -4
+  41 0002 84B0     		sub	sp, sp, #16
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 24
+  81:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  82:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  83:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_SYSTEM_INITIALIZE, 0, 0, 0, 0, FX_TRACE_INTERNAL_EVENTS, 0, 0)
+  44              		.loc 1 83 5 view .LVU1
+  45 0004 0024     		movs	r4, #0
+  46 0006 0394     		str	r4, [sp, #12]
+  47 0008 0294     		str	r4, [sp, #8]
+  48 000a 4FF40063 		mov	r3, #2048
+  49 000e 0193     		str	r3, [sp, #4]
+  50 0010 0094     		str	r4, [sp]
+  51 0012 2346     		mov	r3, r4
+  52 0014 2246     		mov	r2, r4
+  53 0016 2146     		mov	r1, r4
+  54 0018 40F20D10 		movw	r0, #269
+  55 001c FFF7FEFF 		bl	_fx_trace_event_insert
+  56              	.LVL0:
+  84:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  85:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Initialize the head pointer of the opened media list and the
+  86:Middlewares/ST/filex/common/src/fx_system_initialize.c ****        number of opened media.  */
+  87:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_media_opened_ptr =       FX_NULL;
+  57              		.loc 1 87 5 view .LVU2
+  58              		.loc 1 87 33 is_stmt 0 view .LVU3
+  59 0020 1C4B     		ldr	r3, .L3
+  60 0022 1C60     		str	r4, [r3]
+  88:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_media_opened_count =     0;
+  61              		.loc 1 88 5 is_stmt 1 view .LVU4
+  62              		.loc 1 88 35 is_stmt 0 view .LVU5
+  63 0024 1C4B     		ldr	r3, .L3+4
+  64 0026 1C60     		str	r4, [r3]
+  89:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  90:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Initialize the time and date fields with their default values.  */
+  91:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_date =   FX_INITIAL_DATE;
+  65              		.loc 1 91 5 is_stmt 1 view .LVU6
+  66              		.loc 1 91 21 is_stmt 0 view .LVU7
+  67 0028 1C4B     		ldr	r3, .L3+8
+  68 002a 44F62122 		movw	r2, #18977
+  69 002e 1A60     		str	r2, [r3]
+  92:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_time =   FX_INITIAL_TIME;
+  70              		.loc 1 92 5 is_stmt 1 view .LVU8
+  71              		.loc 1 92 21 is_stmt 0 view .LVU9
+  72 0030 1B4B     		ldr	r3, .L3+12
+  73 0032 1C60     		str	r4, [r3]
+  93:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  94:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Initialize the sector and FAT cache sizes.  */
+  95:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_media_max_sector_cache =  FX_MAX_SECTOR_CACHE;
+ARM GAS  /tmp/cclZ3h3Q.s 			page 4
+
+
+  74              		.loc 1 95 5 is_stmt 1 view .LVU10
+  75              		.loc 1 95 39 is_stmt 0 view .LVU11
+  76 0034 1B4B     		ldr	r3, .L3+16
+  77 0036 4FF48072 		mov	r2, #256
+  78 003a 1A60     		str	r2, [r3]
+  96:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_media_max_fat_cache =     FX_MAX_FAT_CACHE;
+  79              		.loc 1 96 5 is_stmt 1 view .LVU12
+  80              		.loc 1 96 36 is_stmt 0 view .LVU13
+  81 003c 1A4B     		ldr	r3, .L3+20
+  82 003e 1022     		movs	r2, #16
+  83 0040 1A60     		str	r2, [r3]
+  97:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+  98:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Create the FileX system timer.  This is responsible for updating
+  99:Middlewares/ST/filex/common/src/fx_system_initialize.c ****        the specified date and time at the rate specified by
+ 100:Middlewares/ST/filex/common/src/fx_system_initialize.c ****        FX_UPDATE_RATE_IN_TICKS.  Note that the timer is not necessary for
+ 101:Middlewares/ST/filex/common/src/fx_system_initialize.c ****        regular FileX operation - it is only needed for accurate system
+ 102:Middlewares/ST/filex/common/src/fx_system_initialize.c ****        date and time stamps on files.  */
+ 103:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 104:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifndef FX_NO_TIMER
+ 105:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     tx_timer_create(&_fx_system_timer, "FileX System Timer", _fx_system_timer_entry, FX_TIMER_ID,
+  84              		.loc 1 105 5 is_stmt 1 view .LVU14
+  85 0042 0123     		movs	r3, #1
+  86 0044 0293     		str	r3, [sp, #8]
+  87 0046 4FF47A73 		mov	r3, #1000
+  88 004a 0193     		str	r3, [sp, #4]
+  89 004c 0093     		str	r3, [sp]
+  90 004e 174B     		ldr	r3, .L3+24
+  91 0050 174A     		ldr	r2, .L3+28
+  92 0052 1849     		ldr	r1, .L3+32
+  93 0054 1848     		ldr	r0, .L3+36
+  94 0056 FFF7FEFF 		bl	_tx_timer_create
+  95              	.LVL1:
+ 106:Middlewares/ST/filex/common/src/fx_system_initialize.c ****                     FX_UPDATE_RATE_IN_TICKS, FX_UPDATE_RATE_IN_TICKS, TX_AUTO_ACTIVATE);
+ 107:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 108:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 109:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifndef FX_DISABLE_BUILD_OPTIONS
+ 110:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Setup the build options variables.  */
+ 111:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Setup the first build options variable.  */
+ 113:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_MAX_LONG_NAME_LEN > 0xFF)
+  96              		.loc 1 113 5 view .LVU15
+ 114:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 115:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_1 =  _fx_system_build_options_1 | (((ULONG)0xFF) << 24);
+  97              		.loc 1 115 9 view .LVU16
+  98              		.loc 1 115 66 is_stmt 0 view .LVU17
+  99 005a 184B     		ldr	r3, .L3+40
+ 100 005c 1968     		ldr	r1, [r3]
+ 101 005e 41F07F42 		orr	r2, r1, #-16777216
+ 102              		.loc 1 115 36 view .LVU18
+ 103 0062 1A60     		str	r2, [r3]
+ 116:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 117:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 118:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 119:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_1 =  _fx_system_build_options_1 | (((ULONG)(FX_MAX_LONG_NAME_LEN &
+ 120:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 121:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_MAX_LAST_NAME_LEN > 0xFF)
+ 104              		.loc 1 121 5 is_stmt 1 view .LVU19
+ARM GAS  /tmp/cclZ3h3Q.s 			page 5
+
+
+ 122:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 123:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_1 =  _fx_system_build_options_1 | (((ULONG)0xFF) << 16);
+ 105              		.loc 1 123 9 view .LVU20
+ 106              		.loc 1 123 66 is_stmt 0 view .LVU21
+ 107 0064 164A     		ldr	r2, .L3+44
+ 108 0066 0A43     		orrs	r2, r2, r1
+ 109              		.loc 1 123 36 view .LVU22
+ 110 0068 1A60     		str	r2, [r3]
+ 124:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 125:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 126:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 127:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_1 =  _fx_system_build_options_1 | (((ULONG)(FX_MAX_LAST_NAME_LEN &
+ 128:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 129:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 130:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_NO_TIMER
+ 131:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 10);
+ 132:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 133:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_SINGLE_THREAD
+ 134:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 9);
+ 135:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 136:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_DONT_UPDATE_OPEN_FILES
+ 137:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 8);
+ 138:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 139:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_MEDIA_DISABLE_SEARCH_CACHE
+ 140:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 7);
+ 141:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 142:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_MEDIA_STATISTICS_DISABLE
+ 143:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 6);
+ 144:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 145:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 146:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_SINGLE_OPEN_LEGACY
+ 147:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 4);
+ 148:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 149:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_RENAME_PATH_INHERIT
+ 150:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 3);
+ 151:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 152:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_NO_LOCAL_PATH
+ 153:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 2);
+ 154:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 155:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_FAULT_TOLERANT_DATA
+ 156:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | (((ULONG)1) << 1);
+ 157:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 158:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #ifdef FX_FAULT_TOLERANT
+ 159:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     _fx_system_build_options_1 = _fx_system_build_options_1 | ((ULONG)1);
+ 160:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif
+ 161:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 162:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Setup the second build options variable.  */
+ 163:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_MAX_SECTOR_CACHE > ((ULONG)0xFFFF))
+ 111              		.loc 1 163 5 is_stmt 1 view .LVU23
+ 164:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 165:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_2 =  _fx_system_build_options_2 | (((ULONG)0xFFFF) << 16);
+ 166:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 167:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 168:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 169:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_2 =  _fx_system_build_options_2 | (((ULONG)FX_MAX_SECTOR_CACHE) <<
+ 112              		.loc 1 169 9 view .LVU24
+ 113              		.loc 1 169 66 is_stmt 0 view .LVU25
+ARM GAS  /tmp/cclZ3h3Q.s 			page 6
+
+
+ 114 006a 164B     		ldr	r3, .L3+48
+ 115 006c 1968     		ldr	r1, [r3]
+ 116 006e 41F08072 		orr	r2, r1, #16777216
+ 117              		.loc 1 169 36 view .LVU26
+ 118 0072 1A60     		str	r2, [r3]
+ 170:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 171:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_FAT_MAP_SIZE > 0xFF)
+ 119              		.loc 1 171 5 is_stmt 1 view .LVU27
+ 172:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 173:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_2 =  _fx_system_build_options_2 | (((ULONG)0xFF) << 8);
+ 174:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 175:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 176:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 177:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_2 =  _fx_system_build_options_2 | (((ULONG)FX_FAT_MAP_SIZE) << 8);
+ 120              		.loc 1 177 9 view .LVU28
+ 121              		.loc 1 177 66 is_stmt 0 view .LVU29
+ 122 0074 144A     		ldr	r2, .L3+52
+ 123 0076 0A43     		orrs	r2, r2, r1
+ 124              		.loc 1 177 36 view .LVU30
+ 125 0078 1A60     		str	r2, [r3]
+ 178:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 179:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_MAX_FAT_CACHE > 0xFF)
+ 126              		.loc 1 179 5 is_stmt 1 view .LVU31
+ 180:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 181:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_2 =  _fx_system_build_options_2 | ((ULONG)0xFF);
+ 182:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 183:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 184:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 185:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_2 =  _fx_system_build_options_2 | ((ULONG)FX_MAX_FAT_CACHE);
+ 127              		.loc 1 185 9 view .LVU32
+ 128              		.loc 1 185 66 is_stmt 0 view .LVU33
+ 129 007a 144A     		ldr	r2, .L3+56
+ 130 007c 0A43     		orrs	r2, r2, r1
+ 131              		.loc 1 185 36 view .LVU34
+ 132 007e 1A60     		str	r2, [r3]
+ 186:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 187:Middlewares/ST/filex/common/src/fx_system_initialize.c **** 
+ 188:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     /* Setup the third build options variable.  */
+ 189:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_UPDATE_RATE_IN_SECONDS > 0xFF)
+ 133              		.loc 1 189 5 is_stmt 1 view .LVU35
+ 190:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 191:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_3 =  _fx_system_build_options_3 | (((ULONG)0xFF) << 16);
+ 192:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 193:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 194:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 195:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_3 =  _fx_system_build_options_3 | (((ULONG)FX_UPDATE_RATE_IN_SECON
+ 134              		.loc 1 195 9 view .LVU36
+ 135              		.loc 1 195 66 is_stmt 0 view .LVU37
+ 136 0080 134B     		ldr	r3, .L3+60
+ 137 0082 1968     		ldr	r1, [r3]
+ 138 0084 41F42022 		orr	r2, r1, #655360
+ 139              		.loc 1 195 36 view .LVU38
+ 140 0088 1A60     		str	r2, [r3]
+ 196:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 197:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     if (FX_UPDATE_RATE_IN_TICKS > ((ULONG)0xFFFF))
+ 141              		.loc 1 197 5 is_stmt 1 view .LVU39
+ 198:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ARM GAS  /tmp/cclZ3h3Q.s 			page 7
+
+
+ 199:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_3 =  _fx_system_build_options_3 | ((ULONG)0xFFFF);
+ 200:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 201:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     else
+ 202:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     {
+ 203:Middlewares/ST/filex/common/src/fx_system_initialize.c ****         _fx_system_build_options_3 =  _fx_system_build_options_3 | ((ULONG)FX_UPDATE_RATE_IN_TICKS)
+ 142              		.loc 1 203 9 view .LVU40
+ 143              		.loc 1 203 66 is_stmt 0 view .LVU41
+ 144 008a 124A     		ldr	r2, .L3+64
+ 145 008c 0A43     		orrs	r2, r2, r1
+ 146              		.loc 1 203 36 view .LVU42
+ 147 008e 1A60     		str	r2, [r3]
+ 204:Middlewares/ST/filex/common/src/fx_system_initialize.c ****     }
+ 205:Middlewares/ST/filex/common/src/fx_system_initialize.c **** #endif /* FX_DISABLE_BUILD_OPTIONS */
+ 206:Middlewares/ST/filex/common/src/fx_system_initialize.c **** }
+ 148              		.loc 1 206 1 view .LVU43
+ 149 0090 04B0     		add	sp, sp, #16
+ 150              	.LCFI2:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		@ sp needed
+ 153 0092 10BD     		pop	{r4, pc}
+ 154              	.L4:
+ 155              		.align	2
+ 156              	.L3:
+ 157 0094 00000000 		.word	_fx_system_media_opened_ptr
+ 158 0098 00000000 		.word	_fx_system_media_opened_count
+ 159 009c 00000000 		.word	_fx_system_date
+ 160 00a0 00000000 		.word	_fx_system_time
+ 161 00a4 00000000 		.word	_fx_system_media_max_sector_cache
+ 162 00a8 00000000 		.word	_fx_system_media_max_fat_cache
+ 163 00ac 59535846 		.word	1180193625
+ 164 00b0 00000000 		.word	_fx_system_timer_entry
+ 165 00b4 00000000 		.word	.LC0
+ 166 00b8 00000000 		.word	_fx_system_timer
+ 167 00bc 00000000 		.word	_fx_system_build_options_1
+ 168 00c0 0000FFFF 		.word	-65536
+ 169 00c4 00000000 		.word	_fx_system_build_options_2
+ 170 00c8 00800001 		.word	16809984
+ 171 00cc 10800001 		.word	16810000
+ 172 00d0 00000000 		.word	_fx_system_build_options_3
+ 173 00d4 E8030A00 		.word	656360
+ 174              		.cfi_endproc
+ 175              	.LFE8:
+ 177              		.global	_fx_system_timer
+ 178              		.section	.bss._fx_system_timer,"aw",%nobits
+ 179              		.align	2
+ 182              	_fx_system_timer:
+ 183 0000 00000000 		.space	44
+ 183      00000000 
+ 183      00000000 
+ 183      00000000 
+ 183      00000000 
+ 184              		.global	_fx_system_build_options_3
+ 185              		.section	.bss._fx_system_build_options_3,"aw",%nobits
+ 186              		.align	2
+ 189              	_fx_system_build_options_3:
+ 190 0000 00000000 		.space	4
+ 191              		.global	_fx_system_build_options_2
+ARM GAS  /tmp/cclZ3h3Q.s 			page 8
+
+
+ 192              		.section	.bss._fx_system_build_options_2,"aw",%nobits
+ 193              		.align	2
+ 196              	_fx_system_build_options_2:
+ 197 0000 00000000 		.space	4
+ 198              		.global	_fx_system_build_options_1
+ 199              		.section	.bss._fx_system_build_options_1,"aw",%nobits
+ 200              		.align	2
+ 203              	_fx_system_build_options_1:
+ 204 0000 00000000 		.space	4
+ 205              		.global	_fx_system_media_max_fat_cache
+ 206              		.section	.bss._fx_system_media_max_fat_cache,"aw",%nobits
+ 207              		.align	2
+ 210              	_fx_system_media_max_fat_cache:
+ 211 0000 00000000 		.space	4
+ 212              		.global	_fx_system_media_max_sector_cache
+ 213              		.section	.bss._fx_system_media_max_sector_cache,"aw",%nobits
+ 214              		.align	2
+ 217              	_fx_system_media_max_sector_cache:
+ 218 0000 00000000 		.space	4
+ 219              		.global	_fx_system_time
+ 220              		.section	.bss._fx_system_time,"aw",%nobits
+ 221              		.align	2
+ 224              	_fx_system_time:
+ 225 0000 00000000 		.space	4
+ 226              		.global	_fx_system_date
+ 227              		.section	.bss._fx_system_date,"aw",%nobits
+ 228              		.align	2
+ 231              	_fx_system_date:
+ 232 0000 00000000 		.space	4
+ 233              		.global	_fx_system_media_opened_count
+ 234              		.section	.bss._fx_system_media_opened_count,"aw",%nobits
+ 235              		.align	2
+ 238              	_fx_system_media_opened_count:
+ 239 0000 00000000 		.space	4
+ 240              		.global	_fx_system_media_opened_ptr
+ 241              		.section	.bss._fx_system_media_opened_ptr,"aw",%nobits
+ 242              		.align	2
+ 245              	_fx_system_media_opened_ptr:
+ 246 0000 00000000 		.space	4
+ 247              		.global	_fx_version_id
+ 248              		.section	.data._fx_version_id,"aw"
+ 249              		.align	2
+ 252              	_fx_version_id:
+ 253 0000 436F7079 		.ascii	"Copyright (c) Microsoft Corporation. All rights res"
+ 253      72696768 
+ 253      74202863 
+ 253      29204D69 
+ 253      63726F73 
+ 254 0033 65727665 		.ascii	"erved.  *  FileX Generic Version 6.1.10 *\000"
+ 254      642E2020 
+ 254      2A202046 
+ 254      696C6558 
+ 254      2047656E 
+ 255              		.text
+ 256              	.Letext0:
+ 257              		.file 2 "Middlewares/ST/threadx/ports/cortex_m7/gnu/inc/tx_port.h"
+ 258              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ARM GAS  /tmp/cclZ3h3Q.s 			page 9
+
+
+ 259              		.file 4 "Middlewares/ST/threadx/common/inc/tx_trace.h"
+ 260              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 261              		.file 6 "Middlewares/ST/filex/ports/generic/inc/fx_port.h"
+ 262              		.file 7 "Middlewares/ST/filex/common/inc/fx_system.h"
+ARM GAS  /tmp/cclZ3h3Q.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_system_initialize.c
+     /tmp/cclZ3h3Q.s:20     .rodata._fx_system_initialize.str1.4:00000000 $d
+     /tmp/cclZ3h3Q.s:24     .text._fx_system_initialize:00000000 $t
+     /tmp/cclZ3h3Q.s:30     .text._fx_system_initialize:00000000 _fx_system_initialize
+     /tmp/cclZ3h3Q.s:157    .text._fx_system_initialize:00000094 $d
+     /tmp/cclZ3h3Q.s:245    .bss._fx_system_media_opened_ptr:00000000 _fx_system_media_opened_ptr
+     /tmp/cclZ3h3Q.s:238    .bss._fx_system_media_opened_count:00000000 _fx_system_media_opened_count
+     /tmp/cclZ3h3Q.s:231    .bss._fx_system_date:00000000 _fx_system_date
+     /tmp/cclZ3h3Q.s:224    .bss._fx_system_time:00000000 _fx_system_time
+     /tmp/cclZ3h3Q.s:217    .bss._fx_system_media_max_sector_cache:00000000 _fx_system_media_max_sector_cache
+     /tmp/cclZ3h3Q.s:210    .bss._fx_system_media_max_fat_cache:00000000 _fx_system_media_max_fat_cache
+     /tmp/cclZ3h3Q.s:182    .bss._fx_system_timer:00000000 _fx_system_timer
+     /tmp/cclZ3h3Q.s:203    .bss._fx_system_build_options_1:00000000 _fx_system_build_options_1
+     /tmp/cclZ3h3Q.s:196    .bss._fx_system_build_options_2:00000000 _fx_system_build_options_2
+     /tmp/cclZ3h3Q.s:189    .bss._fx_system_build_options_3:00000000 _fx_system_build_options_3
+     /tmp/cclZ3h3Q.s:179    .bss._fx_system_timer:00000000 $d
+     /tmp/cclZ3h3Q.s:186    .bss._fx_system_build_options_3:00000000 $d
+     /tmp/cclZ3h3Q.s:193    .bss._fx_system_build_options_2:00000000 $d
+     /tmp/cclZ3h3Q.s:200    .bss._fx_system_build_options_1:00000000 $d
+     /tmp/cclZ3h3Q.s:207    .bss._fx_system_media_max_fat_cache:00000000 $d
+     /tmp/cclZ3h3Q.s:214    .bss._fx_system_media_max_sector_cache:00000000 $d
+     /tmp/cclZ3h3Q.s:221    .bss._fx_system_time:00000000 $d
+     /tmp/cclZ3h3Q.s:228    .bss._fx_system_date:00000000 $d
+     /tmp/cclZ3h3Q.s:235    .bss._fx_system_media_opened_count:00000000 $d
+     /tmp/cclZ3h3Q.s:242    .bss._fx_system_media_opened_ptr:00000000 $d
+     /tmp/cclZ3h3Q.s:252    .data._fx_version_id:00000000 _fx_version_id
+     /tmp/cclZ3h3Q.s:249    .data._fx_version_id:00000000 $d
+
+UNDEFINED SYMBOLS
+_fx_trace_event_insert
+_tx_timer_create
+_fx_system_timer_entry
