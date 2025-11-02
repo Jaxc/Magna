@@ -33,7 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define THREAD_STACK_SIZE   512
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -43,12 +43,19 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+UCHAR thread_stack1[THREAD_STACK_SIZE];
+UCHAR thread_stack2[THREAD_STACK_SIZE];
+UCHAR thread_stack3[THREAD_STACK_SIZE];
+TX_THREAD thread_ptr1;
+TX_THREAD thread_ptr2;
+TX_THREAD thread_ptr3;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-
+VOID blinky (ULONG initial_input);
+VOID audio_handler (ULONG initial_input);
+VOID io_handler (ULONG initial_input);
 /* USER CODE END PFP */
 
 /**
@@ -66,6 +73,9 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   /* USER CODE END App_ThreadX_MEM_POOL */
 
   /* USER CODE BEGIN App_ThreadX_Init */
+  tx_thread_create(&thread_ptr1,"Thread1",blinky, 0, thread_stack1,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr2,"Thread2",audio_handler, 0, thread_stack2,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr3,"Thread3",io_handler, 0, thread_stack3,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
 
   /* USER CODE END App_ThreadX_Init */
 
