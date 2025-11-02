@@ -73,9 +73,9 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   /* USER CODE END App_ThreadX_MEM_POOL */
 
   /* USER CODE BEGIN App_ThreadX_Init */
-  tx_thread_create(&thread_ptr1,"Thread1",blinky, 0, thread_stack1,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
-  tx_thread_create(&thread_ptr2,"Thread2",audio_handler, 0, thread_stack2,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
-  tx_thread_create(&thread_ptr3,"Thread3",io_handler, 0, thread_stack3,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr1,"blinky",blinky, 0, thread_stack1,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr2,"Audio",audio_handler, 0, thread_stack2,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr3,"IO",io_handler, 0, thread_stack3,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
 
   /* USER CODE END App_ThreadX_Init */
 

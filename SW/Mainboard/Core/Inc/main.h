@@ -71,6 +71,10 @@ void Error_Handler(void);
 #define serial_CLR_GPIO_Port GPIOE
 #define serial_data_Pin GPIO_PIN_14
 #define serial_data_GPIO_Port GPIOE
+#define MIDI_TX_Pin GPIO_PIN_8
+#define MIDI_TX_GPIO_Port GPIOD
+#define MIDI_RX_Pin GPIO_PIN_9
+#define MIDI_RX_GPIO_Port GPIOD
 #define Pot_sel_0_Pin GPIO_PIN_12
 #define Pot_sel_0_GPIO_Port GPIOD
 #define Pot_sel_1_Pin GPIO_PIN_13
