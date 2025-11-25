@@ -43,6 +43,9 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
+
+TX_SEMAPHORE semaphore_audio_dma;
+
 UCHAR thread_stack1[THREAD_STACK_SIZE];
 UCHAR thread_stack2[THREAD_STACK_SIZE];
 UCHAR thread_stack3[THREAD_STACK_SIZE];
@@ -73,6 +76,10 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   /* USER CODE END App_ThreadX_MEM_POOL */
 
   /* USER CODE BEGIN App_ThreadX_Init */
+
+  tx_semaphore_create(&semaphore_audio_dma,"Audio buffers ready",0);
+
+
   tx_thread_create(&thread_ptr1,"blinky",blinky, 0, thread_stack1,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
   tx_thread_create(&thread_ptr2,"Audio",audio_handler, 0, thread_stack2,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
   tx_thread_create(&thread_ptr3,"IO",io_handler, 0, thread_stack3,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
