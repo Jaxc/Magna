@@ -34,6 +34,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define THREAD_STACK_SIZE   512
+#define AUDIO_THREAD_STACK_SIZE   2048
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,9 +47,9 @@
 
 TX_SEMAPHORE semaphore_audio_dma;
 
-UCHAR thread_stack1[THREAD_STACK_SIZE];
-UCHAR thread_stack2[THREAD_STACK_SIZE];
-UCHAR thread_stack3[THREAD_STACK_SIZE];
+UCHAR __attribute__((section(".stack")))blinky_stack[THREAD_STACK_SIZE];
+UCHAR __attribute__((section(".stack")))audio_stack[AUDIO_THREAD_STACK_SIZE];
+UCHAR __attribute__((section(".stack")))io_stack[THREAD_STACK_SIZE];
 TX_THREAD thread_ptr1;
 TX_THREAD thread_ptr2;
 TX_THREAD thread_ptr3;
@@ -80,9 +81,9 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   tx_semaphore_create(&semaphore_audio_dma,"Audio buffers ready",0);
 
 
-  tx_thread_create(&thread_ptr1,"blinky",blinky, 0, thread_stack1,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
-  tx_thread_create(&thread_ptr2,"Audio",audio_handler, 0, thread_stack2,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
-  tx_thread_create(&thread_ptr3,"IO",io_handler, 0, thread_stack3,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr1,"blinky",blinky, 0, blinky_stack,THREAD_STACK_SIZE,15,15,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr2,"Audio",audio_handler, 0, audio_stack,AUDIO_THREAD_STACK_SIZE,10,10,1,TX_AUTO_START);
+  tx_thread_create(&thread_ptr3,"IO",io_handler, 0, io_stack,THREAD_STACK_SIZE,12,12,1,TX_AUTO_START);
 
   /* USER CODE END App_ThreadX_Init */
 

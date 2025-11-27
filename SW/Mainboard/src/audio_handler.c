@@ -58,13 +58,13 @@ enum buffer_enum active_buffer = buf_2;
 
 struct audio_buffer_dma_states dma_states;
 
-uint32_t channel_1_input_buffer[INPUT_BUFFER_SIZE];
-uint32_t channel_2_input_buffer[INPUT_BUFFER_SIZE];
-uint32_t channel_3_input_buffer[INPUT_BUFFER_SIZE];
-uint32_t channel_4_input_buffer[INPUT_BUFFER_SIZE];
+uint32_t __attribute__((section(".dma_data")))channel_1_input_buffer[INPUT_BUFFER_SIZE];
+uint32_t __attribute__((section(".dma_data")))channel_2_input_buffer[INPUT_BUFFER_SIZE];
+uint32_t __attribute__((section(".dma_data")))channel_3_input_buffer[INPUT_BUFFER_SIZE];
+uint32_t __attribute__((section(".dma_data")))channel_4_input_buffer[INPUT_BUFFER_SIZE];
 
-uint32_t master_output_buffer[OUTPUT_BUFFER_SIZE];
-uint32_t cue_output_buffer[OUTPUT_BUFFER_SIZE];
+uint32_t __attribute__((section(".dma_data")))master_output_buffer[OUTPUT_BUFFER_SIZE];
+uint32_t __attribute__((section(".dma_data")))cue_output_buffer[OUTPUT_BUFFER_SIZE];
 
 static void init_audio (void);
 static void start_i2s(void);
@@ -91,9 +91,12 @@ VOID audio_handler(ULONG initial_input) {
         for (uint16_t i = 0; i < SAMPLES_PER_BUFFER; i++) {
 
 
-            log_info(__LINE__,__FILE__);
-            log_info(__LINE__,__FILE__);
+
         }
+        tx_interrupt_control(TX_INT_DISABLE);
+        log_info(__LINE__,__FILE__);
+        log_info(__LINE__,__FILE__);
+        tx_interrupt_control(TX_INT_ENABLE);
 
         if (active_buffer == buf_1) {
 

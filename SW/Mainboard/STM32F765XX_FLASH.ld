@@ -53,7 +53,7 @@
 ENTRY(Reset_Handler)
 
 /* Highest address of the user mode stack */
-_estack = ORIGIN(RAM) + LENGTH(RAM);    /* end of RAM */
+_estack = ORIGIN(DTCM_RAM) + LENGTH(DTCM_RAM);    /* end of RAM */
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x000;      /* required amount of heap  */
 _Min_Stack_Size = 0x400; /* required amount of stack */
@@ -61,8 +61,10 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 512K
-FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 1024K
+DTCM_RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 128K
+SRAM1 (xrw)         : ORIGIN = 0x20020000, LENGTH = 368K
+SRAM2 (xrw)         : ORIGIN = 0x2007C000, LENGTH = 16K
+FLASH (rx)          : ORIGIN = 0x8000000, LENGTH = 1024K
 }
 
 /* Define output sections */
@@ -162,7 +164,7 @@ SECTIONS
 
     . = ALIGN(4);
     _edata = .;        /* define a global symbol at data end */
-  } >RAM AT> FLASH
+  } >SRAM2 AT> FLASH
 
 
   /* Uninitialized data section */
@@ -179,7 +181,7 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
-  } >RAM
+  } >SRAM2
 
   /* User_heap_stack section, used to check that there is enough RAM left */
   ._user_heap_stack :
@@ -190,9 +192,20 @@ SECTIONS
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
-  } >RAM
+  } >SRAM1
 
+  .stack :
+  {
+    . = ALIGN(8);
+    *(.stack)
 
+  } > DTCM_RAM
+
+  .dma_data :
+  {
+    . = ALIGN(4);
+    *(.dma_data)
+  } > SRAM1
 
   /* Remove information from the standard libraries */
   /DISCARD/ :
