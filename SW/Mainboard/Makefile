@@ -766,10 +766,12 @@ USBX/App/app_usbx_device.c \
 USBX/App/app_usbx_host.c \
 FileX/App/app_filex.c \
 AZURE_RTOS/App/app_azure_rtos.c \
+src/adc_callbacks.c \
 src/blinky.c \
 src/io_handler.c \
 src/audio_handler.c \
 src/debug.c \
+src/system_monitor.c \
 $(EXTERNAL_C_SOURCES)
 
 # ASM sources
@@ -913,7 +915,7 @@ $(warning $(sort $(dir $(ASM_SOURCES))))
 
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	@echo 'CC ' $@
-	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
 	@echo 'AS ' $@

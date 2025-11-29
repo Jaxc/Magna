@@ -80,10 +80,20 @@ VOID audio_handler(ULONG initial_input) {
 
     init_audio();
 
-    while(1) {
-        uint32_t semaphore_status = tx_semaphore_get(&semaphore_audio_dma, TX_WAIT_FOREVER/*AUDIO_SEMAPHORE_TIMEOUT*/);
+    /* wait extra long for the first buffer to account for extra setup time*/
+    {
+        uint32_t semaphore_status = tx_semaphore_get(&semaphore_audio_dma, AUDIO_SEMAPHORE_TIMEOUT);
         if (TX_SUCCESS != semaphore_status) {
             log_fatal(__LINE__,__FILE__);
+        }
+    }
+
+    while(1) {
+        {
+            uint32_t semaphore_status = tx_semaphore_get(&semaphore_audio_dma, AUDIO_SEMAPHORE_TIMEOUT);
+            if (TX_SUCCESS != semaphore_status) {
+                log_fatal(__LINE__,__FILE__);
+            }
         }
         /* Data is available, do stuff!!!! */
 
@@ -93,10 +103,6 @@ VOID audio_handler(ULONG initial_input) {
 
 
         }
-        tx_interrupt_control(TX_INT_DISABLE);
-        log_info(__LINE__,__FILE__);
-        log_info(__LINE__,__FILE__);
-        tx_interrupt_control(TX_INT_ENABLE);
 
         if (active_buffer == buf_1) {
 
