@@ -113,6 +113,8 @@ int main(void)
   MX_USART3_UART_Init();
   MX_I2C4_Init();
   MX_TIM14_Init();
+  MX_TIM3_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
   SEGGER_RTT_WriteString(0, "Init complete\r\n");
 

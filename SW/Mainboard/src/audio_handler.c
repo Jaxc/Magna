@@ -30,7 +30,7 @@
 
 #define WAIT_INTERRUPT_TIMEOUT    (uint32_t)(1.5f*108000000u / 48000u)
 
-#define AUDIO_SEMAPHORE_TIMEOUT   (uint32_t)(1.5f* SAMPLES_PER_BUFFER/TX_TIMER_TICKS_PER_SECOND)
+#define AUDIO_SEMAPHORE_TIMEOUT   (uint32_t)(20)/*(1.5f* SAMPLES_PER_BUFFER/TX_TIMER_TICKS_PER_SECOND)*/
 
 
 /* Struct to keep track of which part of the DMA transfer has been processed
@@ -82,7 +82,7 @@ VOID audio_handler(ULONG initial_input) {
 
     /* wait extra long for the first buffer to account for extra setup time*/
     {
-        uint32_t semaphore_status = tx_semaphore_get(&semaphore_audio_dma, AUDIO_SEMAPHORE_TIMEOUT);
+        uint32_t semaphore_status = tx_semaphore_get(&semaphore_audio_dma, AUDIO_SEMAPHORE_TIMEOUT*100);
         if (TX_SUCCESS != semaphore_status) {
             log_fatal(__LINE__,__FILE__);
         }
@@ -239,7 +239,7 @@ static void start_i2s(void) {
 
     /* Channel 1 is initialzed last as it is the one driving the clocks. This should
      * lead to all channels being synchonized. */
-    HAL_SAI_Receive_DMA(&channel1_i2s,(uint8_t *) channel_1_input_buffer, INPUT_BUFFER_SIZE);
+    //HAL_SAI_Receive_DMA(&channel1_i2s,(uint8_t *) channel_1_input_buffer, INPUT_BUFFER_SIZE);
 }
 
 

@@ -36,10 +36,13 @@
 #define THREAD_STACK_SIZE           (512u)
 #define AUDIO_THREAD_STACK_SIZE     (8096u)
 #define IO_THREAD_STACK_SIZE        (8096u)
-#define MONITOR_THREAD_STACK_SIZE   (512u)
+#define MONITOR_THREAD_STACK_SIZE   (1024u)
 
 #define MONITOR_QUEUE_LENGTH        (1u)
 #define MONITOR_QUEUE_SIZE          (4u * MONITOR_QUEUE_LENGTH)
+
+#define IO_ADC_QUEUE_LENGTH        (1u)
+#define IO_ADC_QUEUE_SIZE          (4u * IO_ADC_QUEUE_LENGTH)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -61,11 +64,12 @@ UCHAR __attribute__((section(".stack")))stack_blinky[THREAD_STACK_SIZE];
 
 
 UCHAR __attribute__((section(".stack")))monitor_data_queue[MONITOR_QUEUE_SIZE];
+UCHAR __attribute__((section(".stack")))io_adc_data_queue[IO_ADC_QUEUE_SIZE];
 
 TX_SEMAPHORE __attribute__((section(".stack")))semaphore_audio_dma;
+
 TX_QUEUE __attribute__((section(".stack")))monitor_data_ptr_queue;
-
-
+TX_QUEUE __attribute__((section(".stack")))io_adc_data_ptr_queue;
 
 TX_THREAD __attribute__((section(".stack")))thread_ptr_blinky;
 TX_THREAD __attribute__((section(".stack")))thread_ptr_audio;
@@ -98,7 +102,9 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   /* USER CODE BEGIN App_ThreadX_Init */
 
   tx_semaphore_create(&semaphore_audio_dma,"Audio buffers ready",0);
+
   tx_queue_create(&monitor_data_ptr_queue, "monitor ADC queue", 1, &monitor_data_queue, MONITOR_QUEUE_SIZE);
+  tx_queue_create(&io_adc_data_ptr_queue, "IO ADC queue", 1, &io_adc_data_queue, IO_ADC_QUEUE_SIZE);
 
   tx_thread_create(
     &thread_ptr_blinky,  "blinky",         blinky,         0,  stack_blinky,   THREAD_STACK_SIZE,         15,  15,  1,  TX_AUTO_START);
